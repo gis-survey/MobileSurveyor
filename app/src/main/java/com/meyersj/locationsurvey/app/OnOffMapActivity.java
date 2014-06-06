@@ -33,7 +33,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String DIR = "DIR";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
-    private final String TILES = "OSMTriMet_larger_font_test.mbtiles";
+    private final String TILES = "OSMTriMet.mbtiles";
     private final String BOARD = "Boarding";
     private final String ALIGHT = "Alighting";
 

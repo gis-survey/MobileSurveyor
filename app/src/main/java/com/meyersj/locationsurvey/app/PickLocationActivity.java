@@ -68,8 +68,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet/");
-    private final String TILESNAME = "OSMTriMet_larger_font_test.mbtiles";
-
+    private final String TILESNAME = "OSMTriMet.mbtiles";
     private EditText address;
     private Button search;
     private Button clear;

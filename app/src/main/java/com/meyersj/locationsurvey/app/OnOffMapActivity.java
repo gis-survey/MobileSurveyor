@@ -1,6 +1,7 @@
 package com.meyersj.locationsurvey.app;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,25 +37,34 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String BOARD = "Boarding";
     private final String ALIGHT = "Alighting";
 
+    Context context;
     private Button submit;
     private MapView mv;
-
     private String line;
     private String dir;
     private String url;
-
     private Marker board;
     private Marker alight;
     private Marker current;
     private String locType;
+    private Drawable onIcon;
+    private Drawable offIcon;
+    private Drawable stopIcon;
+
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_off_map);
+
+        context = getApplicationContext();
+        onIcon =getResources().getDrawable(R.drawable.transit_green_40);
+        offIcon = getResources().getDrawable(R.drawable.transit_red_40);
+        stopIcon = getResources().getDrawable(R.drawable.circle_filled_dark_tan_30);
 
         //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
@@ -159,32 +169,29 @@ public class OnOffMapActivity extends ActionBarActivity {
         if (locType != null) {
 
             //if board or alight marker is already set switch it back to default icon
-            Drawable defIcon = getResources().getDrawable(R.drawable.defpin);
             if (alight != null && alight == current) {
-                alight.setMarker(defIcon);
+                alight.setMarker(stopIcon);
                 alight = null;
             }
             if (board != null && board == current) {
-                board.setMarker(defIcon);
+                board.setMarker(stopIcon);
                 board = null;
             }
 
             if (locType.equals(BOARD)) {
                 if(board != null) {
-                    board.setMarker(defIcon);
+                    board.setMarker(stopIcon);
                 }
                 board = current;
-                Drawable boardIcon = getResources().getDrawable(R.drawable.green_square);
-                board.setMarker(boardIcon);
+                board.setMarker(onIcon);
                 Log.d(TAG, BOARD + ": " + board.getTitle());
             }
             else {
                 if (alight != null) {
-                    alight.setMarker(defIcon);
+                    alight.setMarker(stopIcon);
                 }
                 alight = current;
-                Drawable alightIcon = getResources().getDrawable(R.drawable.red_square);
-                alight.setMarker(alightIcon);
+                alight.setMarker(offIcon);
                 Log.d(TAG, ALIGHT + ": " + alight.getTitle());
             }
             current = null;
@@ -275,7 +282,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     protected ArrayList<Marker> getStops(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         File stopsFile = new File(GEOJSONPATH, geoJSONName);
-        BuildStops stops = new BuildStops(mv, stopsFile);
+        BuildStops stops = new BuildStops(context, mv, stopsFile);
         return stops.getMarkers();
     }
 

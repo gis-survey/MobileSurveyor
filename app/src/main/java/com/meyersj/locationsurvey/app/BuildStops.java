@@ -1,5 +1,7 @@
 package com.meyersj.locationsurvey.app;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.cocoahero.android.geojson.Feature;
@@ -23,11 +25,13 @@ import java.util.Scanner;
 public class BuildStops {
     private String TAG = "BuildStops";
 
+    private Context context;
     private MapView mv;
     private String geoJSON;
     private ArrayList<Marker> markers;
 
-    protected BuildStops(MapView inMv, File inRoute) {
+    protected BuildStops(Context aContext, MapView inMv, File inRoute) {
+        context = aContext;
         mv = inMv;
         markers = new ArrayList<Marker>();
         String geoJSONString = openGeoJSON(inRoute);
@@ -35,6 +39,8 @@ public class BuildStops {
     }
 
     private void parseGeoJSON(String geoJSON) {
+        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_dark_tan_30);
+
         try {
             FeatureCollection parsed = (FeatureCollection) GeoJSON.parse(geoJSON);
 
@@ -54,6 +60,7 @@ public class BuildStops {
                     Log.d(TAG, stopName);
 
                     Marker newMarker = new Marker(mv, stopName, stopID, new LatLng(lat, lon));
+                    newMarker.setMarker(circleIcon);
                     markers.add(newMarker);
                 }
             }

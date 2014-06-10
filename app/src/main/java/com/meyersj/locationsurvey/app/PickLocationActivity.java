@@ -58,13 +58,15 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class PickLocationActivity extends ActionBarActivity {
 
-    private final String TAG = "MainActivity";
+    private final String TAG = "PickLocationActivity";
     private final String LINE = "line";
     private final String DIR = "dir";
+    private final String RLIS_TOKEN = "rlis_token";
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet/");
@@ -78,6 +80,7 @@ public class PickLocationActivity extends ActionBarActivity {
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     private MapView mv;
     private String line = null;
+    Properties prop;
 
 
     @Override
@@ -98,7 +101,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
         //bundle to get extras if started via ODK collect
         Bundle extras = getExtras();
-
+        prop = getProperties();
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,13 +270,6 @@ public class PickLocationActivity extends ActionBarActivity {
             if(extras.containsKey("uuid")) {
                 Log.d(TAG, extras.getString("uuid"));
             }
-            //if(extras.containsKey("line")) {
-            //    Log.d(TAG, extras.getString("line"));
-            //    line = extras.getString("line");
-                //String geoJSONName = line + ".geojson";
-                //File geojson = new File(GEOJSONPATH, geoJSONName);
-                //mv.loadFromGeoJSONURL("file://" + geojson.toString());
-            //}
             if(extras.containsKey(LINE) && extras.containsKey(DIR)) {
                 String line = extras.getString(LINE);
                 String dir = extras.getString(DIR);
@@ -294,7 +290,8 @@ public class PickLocationActivity extends ActionBarActivity {
 
         File stopsFile = new File(GEOJSONPATH, stops);
         File routesFile = new File(GEOJSONPATH, routes);
-        //TODO
+
+        // /TODO
         //look at sdk and determine if loadfrom__url is best method?
         //use BuildStops.java from onandoff project
         //for stops if this is boarding or alighting question
@@ -302,8 +299,7 @@ public class PickLocationActivity extends ActionBarActivity {
         mv.loadFromGeoJSONURL("file://" + stopsFile.toString());
         mv.loadFromGeoJSONURL("file://" + routesFile.toString());
 
-        //mv.loadFromGeoJSONURL("file://" + GEOJSONPATH + routes);
-        //mv.loadFromGeoJSONURL("file://" + GEOJSONPATH + stops);
+
 
     }
 
@@ -360,8 +356,9 @@ public class PickLocationActivity extends ActionBarActivity {
         String address = this.address.getText().toString();
         String addressEncode = null;
 
-        //String baseUrl = "http://www.fakeurl.com";
-        String baseUrl = "http://gis.oregonmetro.gov/rlisapi/?token=oZBiZzetGc2kGIF5W_nz44cHxsUOT9WKxF6Zz28IqkA.&mode=locate&form=json&";
+        String token = prop.getProperty(RLIS_TOKEN);
+        Log.d(TAG, token);
+        String baseUrl = "http://gis.oregonmetro.gov/rlisapi/?token=" + token + "&mode=locate&form=json&";
         String url = null;
 
         try {
@@ -401,9 +398,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
         }catch(ParseException pe){
             Log.e(TAG, pe.toString());
-        }// catch (JSONException e) {
-        //    e.printStackTrace();
-        //}
+        }
         return loc;
     }
 
@@ -412,11 +407,6 @@ public class PickLocationActivity extends ActionBarActivity {
         if(latLng != null) {
             clearMarkers();
             Marker m = new Marker(null, null, latLng);
-            //Drawable icon = getResources().getDrawable(R.drawable.circle);
-
-            //icon.setBounds(0,0,10,10);
-            //Log.d(TAG, icon.getBounds().toShortString());
-            //m.setMarker(icon);
             m.addTo(mv);
             locOverlay.addItem(m);
             mv.invalidate();
@@ -485,6 +475,20 @@ public class PickLocationActivity extends ActionBarActivity {
             e.printStackTrace();
         }
         return entireFileText;
+    }
+
+    protected Properties getProperties() {
+        Properties properties = null;
+
+        try {
+            InputStream inputStream = this.getResources().getAssets().open("config.properties");
+            properties = new Properties();
+            properties.load(inputStream);
+            Log.d(TAG, "properties are now loaded");
+        } catch (IOException e) {
+            Log.e(TAG, "properties failed to load, " + e);
+        }
+        return properties;
     }
 
 

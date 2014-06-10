@@ -97,10 +97,9 @@ public class LocationService extends Service {
 	}
 	
 	@Override
-	public void onDestroy() {       
-	   // handler.removeCallbacks(sendUpdatesToUI);     
+	public void onDestroy() {
 	    super.onDestroy();
-	    Log.d(TAG, "STOP_SERVICE + DONE");
+	    Log.d(TAG, "LocationService onDestroy()");
 	    locationManager.removeUpdates(listener);        
 	}   
 	

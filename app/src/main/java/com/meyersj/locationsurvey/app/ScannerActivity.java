@@ -1,8 +1,10 @@
 package com.meyersj.locationsurvey.app;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,14 +32,17 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     private String TAG = "ScannerActivity";
 
-    private static final String MODE = "MODE";
-    private static final String ON = "ON";
-    private static final String OFF = "OFF";
-    private static final String URL = "URL";
-    private static final String LINE = "LINE";
-    private static final String DIR = "DIR";
-    private static final String UUID = "UUID";
-    private static final String DATE = "DATE";
+    private static final String MODE = "mode";
+    private static final String URL = "url";
+    private static final String LINE = "rte";
+    private static final String DIR = "dir";
+    private static final String UUID = "uuid";
+    private static final String DATE = "date";
+    private static final String ON = "on";
+    private static final String OFF = "off";
+    private static final String LAT = "lat";
+    private static final String LON = "lon";
+    private static final String TYPE = "type";
 
     private ZXingScannerView mScannerView;
     private LinearLayout btnLayout;
@@ -46,6 +51,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private static Context mContext;
     private Bundle params;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    BroadcastReceiver receiver;
+    private String lat = "0";
+    private String lon = "0";
 
     @Override
     public void onCreate(Bundle state) {
@@ -64,21 +73,38 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     public void onResume() {
         super.onResume();
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
-        mScannerView.startCamera();          // Start camera on resume
+        mScannerView.startCamera();// Start camera on resume
+
+        startService(new Intent(this, LocationService.class));
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "new location received");
+                lat = intent.getStringExtra("Latitude");
+                lon = intent.getStringExtra("Longitude");
+            }
+        };
+        registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
     }
 
     @Override
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera();           // Stop camera on pause
+        stopService(new Intent(this, LocationService.class));
+        unregisterReceiver(receiver);
     }
 
-    @Override
+
+
+    /*@Override
     public void onStart() {
         super.onStart();
-        Log.d(TAG, "start location service");
-        startService(new Intent(this, LocationService.class));
+        Log.d(TAG, "scanner activity started");
+
     }
+    */
 
     public void onStop() {
         super.onStart();
@@ -97,9 +123,11 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         Log.d(TAG, rawResult.getText()); // Prints scan results
         Log.d(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
-        //Intent post = new Intent(getApplicationContext(), PostService.class);
-        //post.putExtras(extras);
-        //context.startService(post);
+        Intent post = new Intent(getApplicationContext(), PostService.class);
+
+        //params.putString(UUID, rawResult.getText());
+        //post.putExtras(params);
+        //getApplicationContext().startService(post);
 
         postResults(rawResult);
         mScannerView.startCamera();
@@ -174,8 +202,19 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                     check.containsKey(DIR) &&
                     check.containsKey(UUID) &&
                     check.containsKey(MODE) &&
-                    check.containsKey(DATE)) {
-                retVal = true;
+                    check.containsKey(DATE) &&
+                    check.containsKey(LAT) &&
+                    check.containsKey(LON)) {
+
+                if (check.getString(LAT).equals("0") ||
+                        check.getString(LON).equals("0")) {
+                    Log.d(TAG, "lat and lon have not been set");
+                }
+                else {
+                    Log.d(TAG, "params are valid");
+                    retVal = true;
+                }
+
             }
             else {
                 Log.d(TAG, "params do no contain correct extras");
@@ -196,18 +235,20 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private void postResults(Result rawResult) {
         Date date = new Date();
         params.putString(UUID, rawResult.toString());
-        params.putString(DATE, dateFormat.format(date).toString());
+        params.putString(DATE, dateFormat.format(date));
+        params.putString(LAT, lat);
+        params.putString(LON, lon);
 
         if (checkParams(params)) {
-            //Intent broadcast = new Intent("com.example.BroadcastScanReceiver");
-            //broadcast.putExtras(params);
             Log.d(TAG, "posting results");
+            Log.d(TAG, params.getString(LINE));
+            Log.d(TAG, params.getString(LAT));
+            Log.d(TAG, params.getString(LON));
 
+            params.putString(TYPE, "scan");
             Intent post = new Intent(getApplicationContext(), PostService.class);
             post.putExtras(params);
             getApplicationContext().startService(post);
-
-            //sendBroadcast(broadcast);
         }
         else {
             Log.e(TAG, "params are not valid");

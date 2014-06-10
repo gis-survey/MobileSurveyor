@@ -2,6 +2,8 @@ package com.meyersj.locationsurvey.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,17 +20,30 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+
+
 public class SetLineActivity extends Activity {
 
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.locationsurvey.app.SCANNER";
     private final String ONOFFMAP = "com.meyersj.locationsurvey.app.ONOFFMAP";
     private final String[] TRAINS = {"190", "193", "194", "200"};
-    private final String URL = "URL";
-    private final String LINE = "LINE";
-    private final String DIR = "DIR";
-    private final String url = "http://54.244.253.136/submit";
 
+    private static final String URL = "url";
+    private static final String LINE = "rte";
+    private static final String DIR = "dir";
+    private static final String BASE_URL = "base_url";
+
+    //private static final String RLIS_TOKEN = "rlis_token";
+
+
+    //private final String url = "http://54.244.253.136/submit";
+
+    Properties prop;
     Spinner line, dir;
     String line_code;
     String dir_code;
@@ -37,13 +52,9 @@ public class SetLineActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
-            readIDs();
-        } catch (IOException e) {
-            Log.d(TAG, "error opening lines_id.txt");
-            e.printStackTrace();
-        }
-        Log.i(TAG, "onCreate() called");
+        readIDs();
+        prop = getProperties();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_line);
 
@@ -99,15 +110,18 @@ public class SetLineActivity extends Activity {
 
             public void onClick(View v) {
                 Intent intent;
+                String url = prop.getProperty(BASE_URL);
 
                 Log.d(TAG, "line_code for intent:" + line_code + ":end");
 
                 if (ifTrain(line_code)) {
                     intent = new Intent(ONOFFMAP);
                     Log.d(TAG, "start map for selection");
+                    url = url + "/insertPair";
                 }
                 else {
                     intent = new Intent(SCANNER);
+                    url = url + "/insertScan";
                     Log.d(TAG, "start barcode scanner");
                 }
 
@@ -118,6 +132,23 @@ public class SetLineActivity extends Activity {
             }
         });
 
+
+
+    }
+
+    protected Properties getProperties() {
+        Properties properties = null;
+
+        try {
+            InputStream inputStream = this.getResources().getAssets().open("config.properties");
+            properties = new Properties();
+            properties.load(inputStream);
+            Log.d(TAG, "properties are now loaded");
+            //System.out.println("properties: " + properties);
+        } catch (IOException e) {
+            Log.e(TAG, "properties failed to load, " + e);
+        }
+        return properties;
     }
 
     protected Boolean ifTrain(String line) {
@@ -154,8 +185,28 @@ public class SetLineActivity extends Activity {
 
     //read Line IDs and route description from text file
     //used to build spinner for selecting route and direction
-    protected void readIDs() throws IOException {
+    protected void readIDs() {
         InputStream fileStream = getResources().openRawResource(R.raw.line_ids);
+
+        try {
+            //readIDs();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" ");
+                Log.d(TAG, line);
+                if(parts.length == 2) {
+                    Log.d(TAG, parts[0]);
+                    Log.d(TAG, parts[1]);
+                    map.put(parts[0], parts[1]);
+                }
+            }
+        } catch (IOException e) {
+            Log.d(TAG, "error opening lines_id.txt");
+            e.printStackTrace();
+        }
+
+        /*
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
         String line;
         while ((line = reader.readLine()) != null) {
@@ -167,6 +218,7 @@ public class SetLineActivity extends Activity {
                 map.put(parts[0], parts[1]);
             }
         }
+        */
     }
 
 }

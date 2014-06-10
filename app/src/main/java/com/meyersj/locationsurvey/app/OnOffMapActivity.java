@@ -3,6 +3,7 @@ package com.meyersj.locationsurvey.app;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.zxing.Result;
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -23,19 +25,28 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
     private final String TAG = "MapActivity";
-    private final String URL = "URL";
-    private final String LINE = "LINE";
-    private final String DIR = "DIR";
+    private final String URL = "url";
+    private final String LINE = "rte";
+    private final String DIR = "dir";
+    private final String DATE = "date";
+    private final String ON_STOP = "on_stop";
+    private final String OFF_STOP = "off_stop";
+    private final String TYPE = "type";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
     private final String TILES = "OSMTriMet.mbtiles";
     private final String BOARD = "Boarding";
     private final String ALIGHT = "Alighting";
+
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     Context context;
     private Button submit;
@@ -57,7 +68,7 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_off_map);
 
@@ -92,11 +103,43 @@ public class OnOffMapActivity extends ActionBarActivity {
                     //verify correct locations
                     verifyLocations();
 
+                    String onStop = board.getDescription();
+                    String offStop = alight.getDescription();
+
                 }
 
             }
         });
 
+    }
+
+    protected void postResults(String onStop, String offStop) {
+        Date date = new Date();
+
+        Bundle extras = new Bundle();
+        extras.putString(URL, url);
+        extras.putString(LINE, line);
+        extras.putString(DIR, dir);
+        extras.putString(DATE, dateFormat.format(date));
+        extras.putString(ON_STOP, onStop);
+        extras.putString(OFF_STOP, offStop);
+        extras.putString(TYPE, "pair");
+
+        Intent post = new Intent(getApplicationContext(), PostService.class);
+        post.putExtras(extras);
+        getApplicationContext().startService(post);
+    }
+
+    protected void resetMap() {
+        clearCurrentMarker();
+        if (alight != null) {
+            alight.setMarker(stopIcon);
+            alight = null;
+        }
+        if (board != null) {
+            board.setMarker(stopIcon);
+            board = null;
+        }
     }
 
 
@@ -232,7 +275,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         select.show();
     }
 
-
     protected void verifyLocations() {
         String boardLoc = board.getTitle();
         String alightLoc = alight.getTitle();
@@ -243,16 +285,18 @@ public class OnOffMapActivity extends ActionBarActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "Clicked OK to submit");
-                        //saveCurrentMarker();
+                        //get stop ids
+                        String onStop = board.getDescription();
+                        String offStop = alight.getDescription();
+                        //call function to post on off pair
+                        postResults(onStop, offStop);
+                        resetMap();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //do nothing
-                        Log.d(TAG, "Clicked Cancel - do not submit");
-                        //clearCurrentMarker();
                     }
                 });
 

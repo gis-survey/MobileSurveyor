@@ -40,3 +40,4 @@ Thumbs.db
 gradle/
 build/
 
+config.properties

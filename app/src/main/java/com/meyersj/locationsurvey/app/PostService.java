@@ -24,6 +24,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONObject;
+import org.keyczar.Crypter;
+import org.keyczar.exceptions.KeyczarException;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -35,6 +38,8 @@ public class PostService extends Service {
     private static final String TAG = "PostService";
 
     //url params
+    private static final String USER_ID = "user_id";
+    private static final String DATA = "data";
     private static final String MODE = "mode";
     private static final String URL = "url";
     private static final String LINE = "rte";
@@ -47,10 +52,8 @@ public class PostService extends Service {
     private static final String OFF_STOP = "off_stop";
     private static final String TYPE= "type";
 
-    //BroadcastReceiver receiver;
+    private Crypter mCrypter;
 
-	//private String lat = "0";
-	//private String lon = "0";
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -62,6 +65,13 @@ public class PostService extends Service {
 	public void onCreate() {
 		Log.d(TAG, "PostService onCreate() called");
 	    super.onCreate();
+
+        try {
+            mCrypter = new Crypter(new AndroidKeyczarReader(getResources(), "keys"));
+        } catch (KeyczarException e) {
+            //mPlaintext.setText(R.string.problem);
+            Log.d(TAG, "Couldn't load keyczar keys", e);
+        }
 
         /*
 	    receiver = new BroadcastReceiver() {
@@ -75,6 +85,7 @@ public class PostService extends Service {
 	    registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
 	    */
 	}
+
 
 
 	@Override
@@ -150,21 +161,11 @@ public class PostService extends Service {
 			
 			//Create HttpPost object with base url
 			HttpClient client = new DefaultHttpClient();
-
-
 			HttpPost post = new HttpPost(passed[0]);
 
-
-            //TODO change keys to uppercase in flask api app and change keys to constancs
 			//Build parameters
 			ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-			postParam.add(new BasicNameValuePair(UUID, passed[1]));
-			postParam.add(new BasicNameValuePair(DATE, passed[2]));
-			postParam.add(new BasicNameValuePair(LINE, passed[3]));
-			postParam.add(new BasicNameValuePair(DIR, passed[4]));
-			postParam.add(new BasicNameValuePair(MODE, passed[5]));
-			postParam.add(new BasicNameValuePair(LON, passed[6]));
-			postParam.add(new BasicNameValuePair(LAT, passed[7]));
+			postParam.add(new BasicNameValuePair(DATA, passed[1]));
 
 			//Encode parameters with base URL
 			try {
@@ -224,16 +225,18 @@ public class PostService extends Service {
 	} //End of ScanPostTask class definition
 		
 	public String[] getScanParams(Bundle bundle) {
-		String[] params = new String[8];
-		params[0] = bundle.getString(URL);
-		params[1] = bundle.getString(UUID);
-		params[2] = bundle.getString(DATE);
-        params[3] = bundle.getString(LINE);
-        params[4] = bundle.getString(DIR);
-        params[5] = bundle.getString(MODE);
-        params[6] = bundle.getString(LON);
-        params[7] = bundle.getString(LAT);
-		return params;	
+		String[] params = new String[2];
+        JSONObject json = new JSONObject();
+        json.put(UUID, bundle.getString(UUID));
+        json.put(DATE, bundle.getString(DATE));
+        json.put(LINE, bundle.getString(LINE));
+        json.put(DIR, bundle.getString(DIR));
+        json.put(MODE, bundle.getString(MODE));
+        json.put(LON, bundle.getString(LON));
+        json.put(LAT, bundle.getString(LAT));
+        params[0] = bundle.getString(URL) + "/insertScan";
+		params[1] = encryptMessage(json.toJSONString());
+		return params;
 	}
 
 
@@ -254,11 +257,7 @@ public class PostService extends Service {
             //TODO change keys to uppercase in flask api app and change keys to constancs
             //Build parameters
             ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-            postParam.add(new BasicNameValuePair(DATE, passed[1]));
-            postParam.add(new BasicNameValuePair(LINE, passed[2]));
-            postParam.add(new BasicNameValuePair(DIR, passed[3]));
-            postParam.add(new BasicNameValuePair(ON_STOP, passed[4]));
-            postParam.add(new BasicNameValuePair(OFF_STOP, passed[5]));
+            postParam.add(new BasicNameValuePair(DATA, passed[1]));
 
             //Encode parameters with base URL
             try {
@@ -299,13 +298,16 @@ public class PostService extends Service {
 
 
     public String[] getPairParams(Bundle bundle) {
-        String[] params = new String[6];
-        params[0] = bundle.getString(URL);
-        params[1] = bundle.getString(DATE);
-        params[2] = bundle.getString(LINE);
-        params[3] = bundle.getString(DIR);
-        params[4] = bundle.getString(ON_STOP);
-        params[5] = bundle.getString(OFF_STOP);
+        String[] params = new String[2];
+        JSONObject json = new JSONObject();
+        json.put(USER_ID, bundle.getString(USER_ID));
+        json.put(DATE, bundle.getString(DATE));
+        json.put(LINE, bundle.getString(LINE));
+        json.put(DIR, bundle.getString(DIR));
+        json.put(ON_STOP, bundle.getString(ON_STOP));
+        json.put(OFF_STOP, bundle.getString(OFF_STOP));
+        params[0] = bundle.getString(URL) + "/insertPair";
+        params[1] = encryptMessage(json.toJSONString());
         return params;
     }
 
@@ -314,6 +316,29 @@ public class PostService extends Service {
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    protected String encryptMessage(String message) {
+        String ciphertext = null;
+        try {
+            ciphertext = mCrypter.encrypt(message);
+        } catch (KeyczarException e) {
+            Log.d(TAG, "Couldn't encrypt message", e);
+        }
+
+        return ciphertext;
+    }
+
+    protected String decryptMessage(String ciphertext) {
+        String decrypt = null;
+        try {
+            decrypt = mCrypter.decrypt(ciphertext);
+
+
+        } catch (KeyczarException e) {
+            Log.d(TAG, "Couldn't decrypt message", e);
+        }
+        return decrypt;
     }
 
 }

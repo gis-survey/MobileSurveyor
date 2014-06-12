@@ -36,24 +36,21 @@ public class SetLineActivity extends Activity {
     private static final String URL = "url";
     private static final String LINE = "rte";
     private static final String DIR = "dir";
-    private static final String BASE_URL = "base_url";
+    private static final String USER_ID = "user_id";
 
-    //private static final String RLIS_TOKEN = "rlis_token";
-
-
-    //private final String url = "http://54.244.253.136/submit";
-
-    Properties prop;
-    Spinner line, dir;
-    String line_code;
-    String dir_code;
-    Button record;
-    Map<String, String> map = new HashMap<String, String>();
+    private Properties prop;
+    private Spinner line, dir;
+    private String line_code;
+    private String dir_code;
+    private String user_id;
+    private String url;
+    private Button record;
+    private Map<String, String> map = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         readIDs();
-        prop = getProperties();
+        //prop = getProperties();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_line);
@@ -62,6 +59,8 @@ public class SetLineActivity extends Activity {
         dir = (Spinner)findViewById(R.id.dir_spinner);
         line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
         record = (Button) findViewById(R.id.record);
+
+        getExtras();
 
         line.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -110,22 +109,20 @@ public class SetLineActivity extends Activity {
 
             public void onClick(View v) {
                 Intent intent;
-                String url = prop.getProperty(BASE_URL);
 
                 Log.d(TAG, "line_code for intent:" + line_code + ":end");
 
                 if (ifTrain(line_code)) {
                     intent = new Intent(ONOFFMAP);
                     Log.d(TAG, "start map for selection");
-                    url = url + "/insertPair";
                 }
                 else {
                     intent = new Intent(SCANNER);
-                    url = url + "/insertScan";
                     Log.d(TAG, "start barcode scanner");
                 }
 
                 intent.putExtra(URL, url);
+                intent.putExtra(USER_ID, user_id);
                 intent.putExtra(LINE, line_code);
                 intent.putExtra(DIR, dir_code);
                 startActivity(intent);
@@ -136,6 +133,7 @@ public class SetLineActivity extends Activity {
 
     }
 
+    /*
     protected Properties getProperties() {
         Properties properties = null;
 
@@ -150,6 +148,7 @@ public class SetLineActivity extends Activity {
         }
         return properties;
     }
+    */
 
     protected Boolean ifTrain(String line) {
         Boolean ifTrain = false;
@@ -183,6 +182,26 @@ public class SetLineActivity extends Activity {
     }
 
 
+    protected void getExtras() {
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            if(extras.containsKey(URL)) {
+                url = extras.getString(URL);
+                Log.d(TAG, url);
+            }
+            if(extras.containsKey(USER_ID)) {
+                user_id = extras.getString(USER_ID);
+                Log.d(TAG, extras.getString(USER_ID));
+            }
+            //}
+            //if(extras.containsKey(URL)) {
+            //    Log.d(TAG, extras.getString(URL));
+            //    url = extras.getString(URL);
+            //}
+        }
+    }
+
     //read Line IDs and route description from text file
     //used to build spinner for selecting route and direction
     protected void readIDs() {
@@ -206,19 +225,7 @@ public class SetLineActivity extends Activity {
             e.printStackTrace();
         }
 
-        /*
-        BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(" ");
-            Log.d(TAG, line);
-            if(parts.length == 2) {
-                Log.d(TAG, parts[0]);
-                Log.d(TAG, parts[1]);
-                map.put(parts[0], parts[1]);
-            }
-        }
-        */
+
     }
 
 }

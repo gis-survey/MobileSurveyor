@@ -244,6 +244,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             Log.d(TAG, params.getString(LINE));
             Log.d(TAG, params.getString(LAT));
             Log.d(TAG, params.getString(LON));
+            Log.d(TAG, "MY URL: " + params.getString(URL));
 
             params.putString(TYPE, "scan");
             Intent post = new Intent(getApplicationContext(), PostService.class);

@@ -48,10 +48,17 @@
             android:name=".OnOffMapActivity"
             android:hardwareAccelerated="false"
             android:theme="@style/Theme.AppCompat">
+
             <intent-filter >
                 <action android:name="com.meyersj.locationsurvey.app.ONOFFMAP" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
+            <intent-filter >
+                <action android:name="com.meyersj.locationsurvey.app.ODK_ONOFFMAP" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
         </activity>
 
         <activity

@@ -29,10 +29,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
     private final String TAG = "MapActivity";
+    private final String ODK_ACTION = "com.meyersj.locationsurvey.app.ODK_ONOFFMAP";
+    private final String ONOFF_ACTION = "com.meyersj.locationsurvey.app.ONOFFMAP";
     private final String URL = "url";
     private final String LINE = "rte";
     private final String DIR = "dir";
@@ -85,6 +88,8 @@ public class OnOffMapActivity extends ActionBarActivity {
         getExtras();
         setTiles(mv);
 
+
+
         if (line != null && dir != null) {
             locList = getStops(line, dir);
             addRoute(line, dir);
@@ -92,25 +97,43 @@ public class OnOffMapActivity extends ActionBarActivity {
 
         setItemizedOverlay(mv, locList);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(board == null || alight == null) {
-                    Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                        Toast.LENGTH_LONG).show();
+
+        Intent i = this.getIntent();
+        String action = i.getAction();
+
+
+        if (action.equals(ONOFF_ACTION)) {
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(board == null || alight == null) {
+                        Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        //verify correct locations
+                        verifyAndSubmitLocationsPOST();
+                    }
+
                 }
-                else {
-                    //verify correct locations
-                    verifyLocations();
-
-                    String onStop = board.getDescription();
-                    String offStop = alight.getDescription();
+            });
+        }
+        else if (action.equals(ODK_ACTION)) {
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(board == null || alight == null) {
+                        Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        //verify correct locations
+                        verifyAndSubmitLocationsODK();
+                    }
 
                 }
-
-            }
-        });
-
+            });
+        }
     }
 
     protected void postResults(String onStop, String offStop) {
@@ -275,7 +298,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         select.show();
     }
 
-    protected void verifyLocations() {
+    protected void verifyAndSubmitLocationsPOST() {
         String boardLoc = board.getTitle();
         String alightLoc = alight.getTitle();
         String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
@@ -304,6 +327,44 @@ public class OnOffMapActivity extends ActionBarActivity {
         select.show();
     }
 
+    protected void verifyAndSubmitLocationsODK() {
+        String boardLoc = board.getTitle();
+        String alightLoc = alight.getTitle();
+        String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
+        AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
+        builder.setTitle("Are you sure you want to submit these locations?")
+                .setMessage(message)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //get stop ids
+                        String onStop = board.getDescription();
+                        String offStop = alight.getDescription();
+                        exitWithStopIDs(onStop, offStop);
+
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //do nothing
+                    }
+                });
+
+        AlertDialog select = builder.create();
+        select.show();
+    }
+
+    private boolean exitWithStopIDs(String onStop, String offStop) {
+        Intent intent = new Intent();
+        intent.putExtra("boarding", onStop);
+        intent.putExtra("alighting", offStop);
+        setResult(RESULT_OK, intent);
+        finish();
+        return true;
+    }
+
+
     protected void getExtras() {
         Bundle extras = getIntent().getExtras();
 
@@ -331,9 +392,9 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected void addRoute(String line, String dir) {
-        String geoJSONName = line + "_" + dir + "_stops.geojson";
+        String geoJSONName = line + "_" + dir + "_routes.geojson";
         File routesFile = new File(GEOJSONPATH, geoJSONName);
-        mv.loadFromGeoJSONURL(routesFile.toString());
+        mv.loadFromGeoJSONURL("file://" + routesFile.toString());
     }
 
 }

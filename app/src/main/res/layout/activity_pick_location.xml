@@ -24,6 +24,7 @@
         android:weightSum="1">
         <EditText
             android:id="@+id/input_address"
+            android:inputType="textNoSuggestions"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text=""

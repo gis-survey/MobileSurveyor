@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,9 +8,11 @@ import com.cocoahero.android.geojson.Feature;
 import com.cocoahero.android.geojson.FeatureCollection;
 import com.cocoahero.android.geojson.GeoJSON;
 import com.cocoahero.android.geojson.Point;
+import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.locationsurvey.app.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,13 +31,17 @@ public class BuildStops {
     private MapView mv;
     private String geoJSON;
     private ArrayList<Marker> markers;
+    private BuildBoundingBox bboxBuilder;
 
-    protected BuildStops(Context aContext, MapView inMv, File inRoute) {
+    public BuildStops(Context aContext, MapView inMv, File inRoute) {
         context = aContext;
         mv = inMv;
         markers = new ArrayList<Marker>();
         String geoJSONString = openGeoJSON(inRoute);
+        bboxBuilder = new BuildBoundingBox();
         parseGeoJSON(geoJSONString);
+
+
     }
 
     private void parseGeoJSON(String geoJSON) {
@@ -51,6 +57,10 @@ public class BuildStops {
                     coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
                     double lon = (Double) coordinates.get(0);
                     double lat = (Double) coordinates.get(1);
+
+                    Log.d(TAG, String.valueOf(lon));
+                    Log.d(TAG, String.valueOf(lat));
+                    bboxBuilder.checkPoint(lon, lat);
 
                     JSONObject properties = f.getProperties();
                     String stopID = properties.get("stop_id").toString();
@@ -85,6 +95,10 @@ public class BuildStops {
 
     public ArrayList<Marker> getMarkers() {
         return markers;
+    }
+
+    public BoundingBox getBoundingBox() {
+        return bboxBuilder.getBoundingBox();
     }
 
 }

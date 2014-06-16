@@ -1,5 +1,7 @@
 package com.meyersj.locationsurvey.app;
 
+import com.meyersj.locationsurvey.app.util.BuildStops;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,12 +10,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+//import android.support.v7.internal.widget.AdapterViewICS;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.zxing.Result;
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -23,13 +29,20 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.locationsurvey.app.util.BuildStops;
+import com.meyersj.locationsurvey.app.util.MarkerAdapter;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
@@ -64,10 +77,13 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Drawable onIcon;
     private Drawable offIcon;
     private Drawable stopIcon;
+    private AutoCompleteTextView stopName;
 
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
+    private BoundingBox bbox;
+    private HashMap<String, Marker> stopsMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +99,54 @@ public class OnOffMapActivity extends ActionBarActivity {
         //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
         mv = (MapView) findViewById(R.id.mapview);
+
+        stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
+
+
         //mv.setMapViewListener(new MyMapViewListener());
 
         getExtras();
         setTiles(mv);
 
-
-
         if (line != null && dir != null) {
             locList = getStops(line, dir);
             addRoute(line, dir);
+
+            String[] stopNames = buildStopsArray();
+            //String[] stopNames = {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512" };
+            final ArrayList<String> stopsList = new ArrayList<String>();
+            Collections.addAll(stopsList, stopNames);
+
+            MarkerAdapter adapter = new MarkerAdapter
+                    (this,android.R.layout.simple_list_item_1,stopsList);
+            stopName.setAdapter(adapter);
+
+
+            stopName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position,
+                                        long id) {
+                    stopName.setText("");
+
+                    //close keypad
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    selectLocType(stopsMap.get(stopsList.get(position)));
+                }
+            });
+
+
+
+
         }
+
+
+
+
 
         setItemizedOverlay(mv, locList);
 
@@ -114,7 +167,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                         //verify correct locations
                         verifyAndSubmitLocationsPOST();
                     }
-
                 }
             });
         }
@@ -130,11 +182,37 @@ public class OnOffMapActivity extends ActionBarActivity {
                         //verify correct locations
                         verifyAndSubmitLocationsODK();
                     }
-
                 }
             });
         }
     }
+
+    //protected void promptLocType(Marker m) {
+    //    Log.d(TAG, m.getDescription());
+    //    Log.d(TAG, m.getTitle());
+    //}
+
+    protected String[] buildStopsArray() {
+
+        stopsMap = new HashMap<String, Marker>();
+
+        for(Marker m: locList) {
+            stopsMap.put(m.getTitle(), m);
+            stopsMap.put(m.getDescription(), m);
+        }
+
+        String[] stopNames = new String[stopsMap.size()];
+
+        Integer i = 0;
+        for (String key : stopsMap.keySet()) {
+            stopNames[i] = key;
+            Log.d(TAG, key);
+            i += 1;
+        }
+
+        return stopNames;
+    }
+
 
     protected void postResults(String onStop, String offStop) {
         Date date = new Date();
@@ -163,6 +241,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             board.setMarker(stopIcon);
             board = null;
         }
+        mv.zoomToBoundingBox(bbox, true, false, true, true);
     }
 
 
@@ -388,6 +467,10 @@ public class OnOffMapActivity extends ActionBarActivity {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         File stopsFile = new File(GEOJSONPATH, geoJSONName);
         BuildStops stops = new BuildStops(context, mv, stopsFile);
+        bbox = stops.getBoundingBox();
+        Log.d(TAG, bbox.toString());
+        //zoom to extent of stops
+        mv.zoomToBoundingBox(bbox, true, false, true, true);
         return stops.getMarkers();
     }
 

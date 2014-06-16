@@ -14,28 +14,35 @@
         mapid="Your MapBox mapid" />
 
 
-    <!--LinearLayout
-        android:id="@+id/address"
+
+
+    <LinearLayout
+        android:id="@+id/location"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:weightSum="1">
-        <EditText
-            android:id="@+id/input_address"
+        <!--EditText
+            android:id="@+id/input_stop"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:layout_weight="0.25"
-            android:layout_margin="-10dp"/>
-        <Button
-            android:id="@+id/search_address"
+            android:layout_margin="-10dp"/-->
+
+        <AutoCompleteTextView
+            android:id="@+id/input_stop"
+            android:inputType="textNoSuggestions"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Search"
-            android:layout_weight="0.75"
-            android:layout_margin="-5dp"/>
-    </LinearLayout-->
+            android:hint="Enter Stop Name"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:ems="10" />
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttons"

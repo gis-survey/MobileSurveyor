@@ -35,14 +35,16 @@
             android:id="@+id/input_stop"
             android:inputType="textNoSuggestions"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Stop Name"
+            android:layout_height="61dp"
+            android:background="@drawable/grey_button"
+            android:hint="Enter Stop Name or Stop ID"
             android:layout_weight="1"
-            android:textColor="@color/black"
-            android:ems="10" />
+            android:textColor="@color/white"
+            android:layout_margin="5dp"/>
 
 
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -58,14 +60,30 @@
             android:text="Clear"
             android:layout_weight="0.5"
             android:layout_margin="-5dp"/-->
+
+
+
         <Button
             android:id="@+id/submit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/grey_button"
+            style="@style/ButtonText"
             android:text="Submit"
             android:layout_weight="1"
-            android:layout_margin="-5dp"/>
+            android:layout_margin="5dp"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\u00A9 OpenStreetMap contributors"
+        android:gravity="right"
+        android:layout_above="@+id/buttons"
+        android:layout_alignParentEnd="true"
+        android:textSize="25px"
+        android:textColor="@color/black"
+        android:layout_marginRight="5dp"/>
 
 </RelativeLayout>
 

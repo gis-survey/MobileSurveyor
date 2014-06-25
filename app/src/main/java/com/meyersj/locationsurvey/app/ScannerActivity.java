@@ -136,20 +136,20 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private void setButtonsLayout() {
         btnLayout = new LinearLayout(mContext);
         //btnLayout.setBackgroundColor(Color.BLACK);
-        onBtn = new Button(mContext);
-        offBtn = new Button(mContext);
+        onBtn = new Button(mContext, null, R.style.ButtonText);
+        offBtn = new Button(mContext, null, R.style.ButtonText);
 
         onBtn.setText("On");
         offBtn.setText("Off");
 
-        onBtn.setTextColor(Color.parseColor("#ffffffff"));
-        offBtn.setTextColor(Color.parseColor("#ffffffff"));
+        //onBtn.setTextColor(Color.parseColor("#ffffffff"));
+        //offBtn.setTextColor(Color.parseColor("#ffffffff"));
 
         onBtn.setTextSize(20);
         offBtn.setTextSize(20);
 
         onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-        offBtn.setBackground(getResources().getDrawable(R.drawable.black_button));
+        offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
 
         onBtn.setGravity(Gravity.CENTER);
         offBtn.setGravity(Gravity.CENTER);
@@ -174,7 +174,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             @Override
             public void onClick(View v) {
                 onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                offBtn.setBackground(getResources().getDrawable(R.drawable.black_button));
+                offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
                 params.putString(MODE, ON);
                 Log.d(TAG, ON);
             }
@@ -184,7 +184,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             @Override
             public void onClick(View v) {
                 offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                onBtn.setBackground(getResources().getDrawable(R.drawable.black_button));
+                onBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
                 params.putString(MODE, OFF);
                 Log.d(TAG, OFF);
             }

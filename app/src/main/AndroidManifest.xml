@@ -18,7 +18,8 @@
 
 
         <activity
-            android:name=".LoginActivity">
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter >
         <action android:name="android.intent.action.MAIN" />
         <action android:name="com.meyersj.locationsurvey.app.LOGIN" />
@@ -47,6 +48,7 @@
         <activity
             android:name=".OnOffMapActivity"
             android:hardwareAccelerated="false"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
 
             <intent-filter >
@@ -64,6 +66,7 @@
         <activity
             android:name=".PickLocationActivity"
             android:hardwareAccelerated="false"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
             <intent-filter >
                 <action android:name="com.meyersj.locationsurvey.app.PICKLOCATION" />

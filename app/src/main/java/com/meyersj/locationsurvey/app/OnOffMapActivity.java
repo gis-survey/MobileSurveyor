@@ -46,7 +46,7 @@ import java.util.Set;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
-    private final String TAG = "MapActivity";
+    private final String TAG = "OnOffMapActivity";
     private final String ODK_ACTION = "com.meyersj.locationsurvey.app.ODK_ONOFFMAP";
     private final String ONOFF_ACTION = "com.meyersj.locationsurvey.app.ONOFFMAP";
     private final String URL = "url";
@@ -56,6 +56,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String ON_STOP = "on_stop";
     private final String OFF_STOP = "off_stop";
     private final String TYPE = "type";
+    private final String ODK_BOARD = "board_stop_id";
+    private final String ODK_ALIGHT = "alight_stop_id";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
     private final String TILES = "OSMTriMet.mbtiles";
@@ -102,6 +104,13 @@ public class OnOffMapActivity extends ActionBarActivity {
 
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
+        stopName.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                stopName.setText("");
+                return false;
+            }
+        });
 
         //mv.setMapViewListener(new MyMapViewListener());
 
@@ -356,6 +365,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                         String choice = items[i].toString();
                         Log.d(TAG, "Choice: " + choice);
                         setCurrentMarker(selectedMarker, choice);
+
                     }
                 })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -363,6 +373,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
                         saveCurrentMarker();
+                        mv.zoomToBoundingBox(bbox, true, false, true, true);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -436,8 +447,8 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     private boolean exitWithStopIDs(String onStop, String offStop) {
         Intent intent = new Intent();
-        intent.putExtra("boarding", onStop);
-        intent.putExtra("alighting", offStop);
+        intent.putExtra(ODK_BOARD, onStop);
+        intent.putExtra(ODK_ALIGHT, offStop);
         setResult(RESULT_OK, intent);
         finish();
         return true;
@@ -466,18 +477,24 @@ public class OnOffMapActivity extends ActionBarActivity {
     protected ArrayList<Marker> getStops(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         File stopsFile = new File(GEOJSONPATH, geoJSONName);
-        BuildStops stops = new BuildStops(context, mv, stopsFile);
-        bbox = stops.getBoundingBox();
-        Log.d(TAG, bbox.toString());
-        //zoom to extent of stops
-        mv.zoomToBoundingBox(bbox, true, false, true, true);
-        return stops.getMarkers();
+
+        if (stopsFile.exists()) {
+            BuildStops stops = new BuildStops(context, mv, stopsFile);
+            bbox = stops.getBoundingBox();
+            Log.d(TAG, bbox.toString());
+            //zoom to extent of stops
+            mv.zoomToBoundingBox(bbox, true, false, true, true);
+            return stops.getMarkers();
+        }
+        else
+            return null;
     }
 
     protected void addRoute(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
         File routesFile = new File(GEOJSONPATH, geoJSONName);
-        mv.loadFromGeoJSONURL("file://" + routesFile.toString());
+        if (routesFile.exists())
+            mv.loadFromGeoJSONURL("file://" + routesFile.toString());
     }
 
 }

@@ -45,6 +45,7 @@ public class SetLineActivity extends Activity {
     private String user_id;
     private String url;
     private Button record;
+    private Button logout;
     private Map<String, String> map = new HashMap<String, String>();
 
     @Override
@@ -59,6 +60,7 @@ public class SetLineActivity extends Activity {
         dir = (Spinner)findViewById(R.id.dir_spinner);
         line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
         record = (Button) findViewById(R.id.record);
+        logout = (Button) findViewById(R.id.logout);
 
         getExtras();
 
@@ -129,6 +131,14 @@ public class SetLineActivity extends Activity {
             }
         });
 
+        logout.setOnClickListener(new Button.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
 
     }
@@ -167,11 +177,10 @@ public class SetLineActivity extends Activity {
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
-            //finish();
-            Log.d(TAG, "stopping location service by keydown");
-            //Intent locationServiceIntent = new Intent(this, LocationService.class);
-            //this.stopService(locationServiceIntent);
+            //do nothing
+            return true;
         }
+
         return super.onKeyDown(keyCode, event);
     }
 

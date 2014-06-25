@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -64,8 +65,10 @@ import java.util.Scanner;
 public class PickLocationActivity extends ActionBarActivity {
 
     private final String TAG = "PickLocationActivity";
-    private final String LINE = "line";
+    private final String LINE = "rte";
     private final String DIR = "dir";
+    private final String ODK_LAT = "lat";
+    private final String ODK_LNG = "lng";
     private final String RLIS_TOKEN = "rlis_token";
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
@@ -73,7 +76,7 @@ public class PickLocationActivity extends ActionBarActivity {
     private final String TILESNAME = "OSMTriMet.mbtiles";
     private EditText address;
     private Button search;
-    private Button clear;
+    //private Button clear;
     private Button submit;
 
     private ItemizedIconOverlay locOverlay;
@@ -90,7 +93,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
         address = (EditText) findViewById(R.id.input_address);
         search = (Button) findViewById(R.id.search_address);
-        clear = (Button) findViewById(R.id.clear);
+        //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
 
         mv = (MapView) findViewById(R.id.mapview);
@@ -102,6 +105,20 @@ public class PickLocationActivity extends ActionBarActivity {
         //bundle to get extras if started via ODK collect
         Bundle extras = getExtras();
         prop = getProperties();
+
+
+        address.setOnLongClickListener(new View.OnLongClickListener() {
+
+
+            @Override
+            public boolean onLongClick(View view) {
+                Log.d(TAG, "Long Click on EditText");
+
+                address.setText("");
+                return false;
+            }
+        });
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,6 +143,9 @@ public class PickLocationActivity extends ActionBarActivity {
             }
         });
 
+
+
+        /*
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,6 +163,7 @@ public class PickLocationActivity extends ActionBarActivity {
                 mv.invalidate();
             }
         });
+        */
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,16 +245,17 @@ public class PickLocationActivity extends ActionBarActivity {
         Map<String, Double> coordinates = getCoordinates();
 
         //TODO should I return 0-0 or not put and extras?
-        Double lat = 0.0;
-        Double lon = 0.0;
+        //Double lat = 0.0;
+        //Double lon = 0.0;
 
         if(coordinates != null) {
-            lat = coordinates.get("lat");
-            lon = coordinates.get("lon");
+            intent.putExtra(ODK_LAT, coordinates.get("lat"));
+            intent.putExtra(ODK_LNG, coordinates.get("lon"));
+            setResult(RESULT_OK, intent);
         }
-        intent.putExtra("latitude", lat);
-        intent.putExtra("longitude", lon);
-        setResult(RESULT_OK, intent);
+        else
+            setResult(RESULT_CANCELED, intent);
+
         finish();
         return true;
     }
@@ -242,7 +264,10 @@ public class PickLocationActivity extends ActionBarActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-               exitWithLocation();
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED, intent);
+                finish();
+                //exitWithLocation();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -262,6 +287,7 @@ public class PickLocationActivity extends ActionBarActivity {
         return coordinates;
     }
 
+    //
     private Bundle getExtras() {
         Bundle extras = getIntent().getExtras();
 
@@ -270,10 +296,12 @@ public class PickLocationActivity extends ActionBarActivity {
             if(extras.containsKey("uuid")) {
                 Log.d(TAG, extras.getString("uuid"));
             }
+
             if(extras.containsKey(LINE) && extras.containsKey(DIR)) {
                 String line = extras.getString(LINE);
                 String dir = extras.getString(DIR);
-                loadGeoJSON(line, dir);
+                String routes = line + "_" + dir + "_" + "routes.geojson";
+                loadGeoJSON(routes);
             }
         }
 
@@ -281,6 +309,13 @@ public class PickLocationActivity extends ActionBarActivity {
     }
 
 
+    private void loadGeoJSON(String file) {
+        Log.d(TAG, file);
+        File newFile = new File(GEOJSONPATH, file);
+        mv.loadFromGeoJSONURL("file://" + newFile.toString());
+    }
+
+    /*
     private void loadGeoJSON(String line, String dir) {
         String routes = line + "_" + dir + "_" + "routes.geojson";
         String stops = line + "_" + dir + "_" + "stops.geojson";
@@ -291,17 +326,10 @@ public class PickLocationActivity extends ActionBarActivity {
         File stopsFile = new File(GEOJSONPATH, stops);
         File routesFile = new File(GEOJSONPATH, routes);
 
-        // /TODO
-        //look at sdk and determine if loadfrom__url is best method?
-        //use BuildStops.java from onandoff project
-        //for stops if this is boarding or alighting question
-
         mv.loadFromGeoJSONURL("file://" + stopsFile.toString());
         mv.loadFromGeoJSONURL("file://" + routesFile.toString());
-
-
-
     }
+    */
 
     private class GeocodeTask extends AsyncTask<String, String, String> {
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by jeff on 05/05/14.
  */
-public class MyMapViewListener implements MapViewListener {
+public class mMapViewListener implements MapViewListener {
     String TAG = "MyMapViewListener";
 
     @Override

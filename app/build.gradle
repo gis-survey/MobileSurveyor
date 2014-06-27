@@ -29,6 +29,11 @@ dependencies {
         transitive=true
     }
 
+    //compile group: 'org.geotools', name: 'gt-shapefile', version: '10.7-SNAPSHOT'
+
+    //compile group: 'org.geotools', name: 'geometry', version: '2.5-SNAPSHOT'
+    //compile group: 'org.geotools', name: 'gt-shapefile', version: '11-SNAPSHOT'
+
     //keyczar
     compile 'com.google.code.gson:gson:2.2.2'
 }

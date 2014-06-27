@@ -13,5 +13,6 @@ allprojects {
     repositories {
         mavenCentral()
 		maven { url 'https://oss.sonatype.org/content/repositories/snapshots'}
+        //maven { name = "osgeo"; url = "http://download.osgeo.org/webdav/geotools/"}
     }
 }

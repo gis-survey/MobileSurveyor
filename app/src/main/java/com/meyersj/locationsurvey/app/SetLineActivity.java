@@ -1,6 +1,8 @@
 package com.meyersj.locationsurvey.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -135,7 +137,42 @@ public class SetLineActivity extends Activity {
             @Override
 
             public void onClick(View v) {
-                finish();
+
+                //String boardLoc = board.getTitle();
+                //String alightLoc = alight.getTitle();
+                //String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
+                AlertDialog.Builder builder = new AlertDialog.Builder(SetLineActivity.this);
+                builder.setMessage("Are you sure you want to logout?")
+                        //.setMessage(message)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                                //get stop ids
+                                //String onStop = board.getDescription();
+                                //String offStop = alight.getDescription();
+                                //exitWithStopIDs(onStop, offStop);
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //do nothing
+                            }
+                        });
+
+                AlertDialog select = builder.create();
+                select.show();
+
+
+
+
+                //finish();
+
+
+
+
             }
         });
 

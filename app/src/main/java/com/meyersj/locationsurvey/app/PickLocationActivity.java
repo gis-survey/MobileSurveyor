@@ -12,14 +12,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.cocoahero.android.geojson.FeatureCollection;
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -29,7 +27,6 @@ import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
-import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.util.PathUtils;
 
@@ -40,29 +37,22 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Scanner;
 
 public class PickLocationActivity extends ActionBarActivity {
 
@@ -99,7 +89,7 @@ public class PickLocationActivity extends ActionBarActivity {
         submit = (Button) findViewById(R.id.submit);
 
         mv = (MapView) findViewById(R.id.mapview);
-        mv.setMapViewListener(new MyMapViewListener());
+        mv.setMapViewListener(new mMapViewListener());
 
         setTiles(mv);
         setItemizedOverlay(mv);

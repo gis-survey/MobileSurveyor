@@ -13,6 +13,8 @@ import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 //import android.support.v7.internal.widget.AdapterViewICS;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -114,9 +116,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         getExtras();
         setTiles(mv);
 
+
+
         if (line != null && dir != null) {
             Log.d(TAG, "getStops");
             locList = getStops(line, dir);
+
+            for (Marker marker: locList)
+                setToolTipListener(marker);
 
             if(bbox == null)
                 Log.d(TAG, "bbox null");
@@ -153,10 +160,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 }
             });
 
-
-
-
         }
+
+        MarkerPopUpListener listener = new MarkerPopUpListener(mv, locList);
+        mv.addListener(listener);
 
         Intent i = this.getIntent();
         String action = i.getAction();
@@ -167,8 +174,14 @@ public class OnOffMapActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View view) {
                     if(board == null || alight == null) {
-                        Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                                Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
+                                Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        //toast.set
+
+                        //Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
+                        //        Toast.LENGTH_LONG).setGravity(Gravity.CENTER, 0, 0).show();
                     }
                     else {
                         //verify correct locations
@@ -286,18 +299,15 @@ public class OnOffMapActivity extends ActionBarActivity {
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        Log.d(TAG, "locOverlay item tapped");
-                        Log.d(TAG, item.getTitle());
-                        //mapView.selectMarker(item);
-                        selectLocType(item);
+                        //do nothing
                         return true;
                     }
 
                     public boolean onItemLongPress(final int index, final Marker item) {
-                        //item.getDescription();
-                        Log.d(TAG, "LongPress: " + item.getDescription());
+                        Log.d(TAG, "locOverlay item LongPress");
+                        Log.d(TAG, item.getTitle());
+                        selectLocType(item);
                         return true;
-
                     }
                 }
         );
@@ -488,6 +498,43 @@ public class OnOffMapActivity extends ActionBarActivity {
             return null;
     }
 
+
+    //modify mView for each toolTip in each marker to prevent closing it when touched
+    protected void setToolTipListener(Marker marker) {
+
+        final Marker aMarker = marker;
+
+        View mView = aMarker.getToolTip(mv).getView();
+        //mView.setClickable(true);
+        //mView.setLongClickable(true);
+
+        //from InfoWindow Constructor but commented out close
+        mView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_UP) {
+                    //do nothing (don't close)
+                    //close();
+                }
+                return false;
+            }
+        });
+
+        //prompt user to pick location type if LongClick
+        mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d(TAG, "locOverlay toolTip LongPress");
+                Log.d(TAG, aMarker.getTitle());
+                selectLocType(aMarker);
+                return true;
+            }
+        });
+
+        //mv.setOn
+
+    }
+
     protected void addRoute(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
 
@@ -499,42 +546,4 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
 
     }
-
-    /*
-    protected ArrayList<PathOverlay> getPaths(String assetsFile) {
-        ArrayList<PathOverlay> paths = new ArrayList<PathOverlay>();
-
-        Paint mPaint = new Paint();
-        mPaint.setColor(getResources().getColor(R.color.black_light));
-        mPaint.setAntiAlias(true);
-        mPaint.setStrokeWidth(10.0f);
-        mPaint.setStyle(Paint.Style.STROKE);
-
-        try {
-            FeatureCollection route = DataLoadingUtils.loadGeoJSONFromAssets(this, assetsFile);
-            ArrayList<Object> data = DataLoadingUtils.createUIObjectsFromGeoJSONObjects(route, null);
-
-            for(Object x: data) {
-                if (x.getClass().getCanonicalName().equals(PATHOVERLAY)) {
-                    PathOverlay path = (PathOverlay) x;
-                    path.setPaint(mPaint);
-                    paths.add(path);
-                }
-
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d(TAG, "could not open asset: " + assetsFile);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        if (paths.size() == 0)
-            return null;
-        else
-            return paths;
-    }
-    */
 }

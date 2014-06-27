@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
         <EditText
             android:id="@+id/input_address"
             android:inputType="textNoSuggestions"
@@ -31,7 +33,7 @@
             android:hint="Enter Address"
             android:selectAllOnFocus="true"
             android:background="@drawable/grey_button"
-            android:layout_weight="0.25"
+            android:layout_weight="0.30"
             android:layout_margin="5dp"/>
         <Button
             android:id="@+id/search_address"
@@ -40,7 +42,7 @@
             android:background="@drawable/grey_button"
             style="@style/ButtonText"
             android:text="Search"
-            android:layout_weight="0.75"
+            android:layout_weight="0.70"
             android:layout_margin="5dp"/>
     </LinearLayout>
 
@@ -50,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
     <!--Button
         android:id="@+id/clear"
         android:layout_width="fill_parent"
@@ -78,6 +82,7 @@
         android:layout_alignParentEnd="true"
         android:textSize="25px"
         android:textColor="@color/black"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="5dp"
+        android:paddingRight="10dp"/>
 
 </RelativeLayout>

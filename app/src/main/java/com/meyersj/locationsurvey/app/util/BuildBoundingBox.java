@@ -10,7 +10,7 @@ import com.mapbox.mapboxsdk.geometry.BoundingBox;
 public class BuildBoundingBox {
 
     private static final String TAG = "BoundingBox";
-    private static final Double BUFFER = 0.001;
+    private static final Double BUFFER = 0.005;
 
     private Double north = 0.0;
     private Double east = 0.0;

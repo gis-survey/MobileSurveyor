@@ -42,3 +42,6 @@ build/
 keys/
 
 config.properties
+gradle.properties
+icons/
+

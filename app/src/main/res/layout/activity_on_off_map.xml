@@ -22,7 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
         <!--EditText
             android:id="@+id/input_stop"
             android:layout_width="fill_parent"
@@ -52,7 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
         <!--Button
             android:id="@+id/clear"
             android:layout_width="fill_parent"
@@ -71,7 +76,8 @@
             style="@style/ButtonText"
             android:text="Submit"
             android:layout_weight="1"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+/>
     </LinearLayout>
 
     <TextView
@@ -83,7 +89,8 @@
         android:layout_alignParentEnd="true"
         android:textSize="25px"
         android:textColor="@color/black"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="5dp"
+        android:paddingRight="10dp"/>
 
 </RelativeLayout>
 

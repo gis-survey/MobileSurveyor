@@ -44,9 +44,19 @@
             style="@style/ButtonText"
             android:background="@drawable/grey_button"
             />
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="4dp"
+            android:text="Logout"
+            style="@style/ButtonText"
+            android:background="@drawable/grey_button"
+            />
     </LinearLayout>
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -64,7 +74,7 @@
             style="@style/ButtonText"
             android:background="@drawable/grey_button"
             />
-        </LinearLayout>
+        </LinearLayout-->
 
 
 </RelativeLayout>

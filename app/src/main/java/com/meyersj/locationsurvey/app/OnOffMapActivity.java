@@ -1,5 +1,6 @@
 package com.meyersj.locationsurvey.app;
 
+import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.meyersj.locationsurvey.app.util.BuildStops;
 
 import android.app.AlertDialog;
@@ -15,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
@@ -29,20 +29,16 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
-import com.meyersj.locationsurvey.app.util.BuildStops;
 import com.meyersj.locationsurvey.app.util.MarkerAdapter;
+import com.meyersj.locationsurvey.app.util.PathUtils;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
@@ -58,6 +54,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String TYPE = "type";
     private final String ODK_BOARD = "board_stop_id";
     private final String ODK_ALIGHT = "alight_stop_id";
+
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
     private final String TILES = "OSMTriMet.mbtiles";
@@ -118,7 +115,15 @@ public class OnOffMapActivity extends ActionBarActivity {
         setTiles(mv);
 
         if (line != null && dir != null) {
+            Log.d(TAG, "getStops");
             locList = getStops(line, dir);
+
+            if(bbox == null)
+                Log.d(TAG, "bbox null");
+            else
+                mv.zoomToBoundingBox(bbox, true, false, true, true);
+
+            setItemizedOverlay(mv, locList);
             addRoute(line, dir);
 
             String[] stopNames = buildStopsArray();
@@ -152,13 +157,6 @@ public class OnOffMapActivity extends ActionBarActivity {
 
 
         }
-
-
-
-
-
-        setItemizedOverlay(mv, locList);
-
 
         Intent i = this.getIntent();
         String action = i.getAction();
@@ -279,7 +277,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
         mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
-        mv.setZoom(14);
+        //mv.setZoom(14);
     }
 
 
@@ -492,9 +490,51 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected void addRoute(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
-        File routesFile = new File(GEOJSONPATH, geoJSONName);
-        if (routesFile.exists())
-            mv.loadFromGeoJSONURL("file://" + routesFile.toString());
+
+        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
+
+        if (paths != null) {
+            for(PathOverlay path: paths)
+                mv.addOverlay(path);
+        }
+
     }
 
+    /*
+    protected ArrayList<PathOverlay> getPaths(String assetsFile) {
+        ArrayList<PathOverlay> paths = new ArrayList<PathOverlay>();
+
+        Paint mPaint = new Paint();
+        mPaint.setColor(getResources().getColor(R.color.black_light));
+        mPaint.setAntiAlias(true);
+        mPaint.setStrokeWidth(10.0f);
+        mPaint.setStyle(Paint.Style.STROKE);
+
+        try {
+            FeatureCollection route = DataLoadingUtils.loadGeoJSONFromAssets(this, assetsFile);
+            ArrayList<Object> data = DataLoadingUtils.createUIObjectsFromGeoJSONObjects(route, null);
+
+            for(Object x: data) {
+                if (x.getClass().getCanonicalName().equals(PATHOVERLAY)) {
+                    PathOverlay path = (PathOverlay) x;
+                    path.setPaint(mPaint);
+                    paths.add(path);
+                }
+
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d(TAG, "could not open asset: " + assetsFile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (paths.size() == 0)
+            return null;
+        else
+            return paths;
+    }
+    */
 }

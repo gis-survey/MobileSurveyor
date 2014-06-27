@@ -25,11 +25,13 @@ import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
+import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.locationsurvey.app.util.PathUtils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -301,7 +303,7 @@ public class PickLocationActivity extends ActionBarActivity {
                 String line = extras.getString(LINE);
                 String dir = extras.getString(DIR);
                 String routes = line + "_" + dir + "_" + "routes.geojson";
-                loadGeoJSON(routes);
+                loadGeoJSONPaths(routes);
             }
         }
 
@@ -309,27 +311,16 @@ public class PickLocationActivity extends ActionBarActivity {
     }
 
 
-    private void loadGeoJSON(String file) {
-        Log.d(TAG, file);
-        File newFile = new File(GEOJSONPATH, file);
-        mv.loadFromGeoJSONURL("file://" + newFile.toString());
+    private void loadGeoJSONPaths(String geoJSONName) {
+
+        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
+
+        if (paths != null) {
+            for(PathOverlay path: paths)
+                mv.addOverlay(path);
+        }
+
     }
-
-    /*
-    private void loadGeoJSON(String line, String dir) {
-        String routes = line + "_" + dir + "_" + "routes.geojson";
-        String stops = line + "_" + dir + "_" + "stops.geojson";
-
-        Log.d(TAG, routes);
-        Log.d(TAG, stops);
-
-        File stopsFile = new File(GEOJSONPATH, stops);
-        File routesFile = new File(GEOJSONPATH, routes);
-
-        mv.loadFromGeoJSONURL("file://" + stopsFile.toString());
-        mv.loadFromGeoJSONURL("file://" + routesFile.toString());
-    }
-    */
 
     private class GeocodeTask extends AsyncTask<String, String, String> {
 
@@ -478,6 +469,8 @@ public class PickLocationActivity extends ActionBarActivity {
         return sb.toString();
     }
 
+
+    /*
     private void addGeoJSON(String geoJSON) throws IOException {
         InputStream is;
         String jsonText;
@@ -492,7 +485,6 @@ public class PickLocationActivity extends ActionBarActivity {
 
     }
 
-
     private String openGeoJSON(String path) {
         String entireFileText = null;
         try {
@@ -504,6 +496,7 @@ public class PickLocationActivity extends ActionBarActivity {
         }
         return entireFileText;
     }
+    */
 
     protected Properties getProperties() {
         Properties properties = null;

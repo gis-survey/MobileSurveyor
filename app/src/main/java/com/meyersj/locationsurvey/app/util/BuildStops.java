@@ -11,8 +11,10 @@ import com.cocoahero.android.geojson.Point;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
+import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.R;
+import com.meyersj.locationsurvey.app.mMarker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,22 +36,25 @@ public class BuildStops {
     private ArrayList<Marker> markers;
     private BuildBoundingBox bboxBuilder;
 
-    public BuildStops(Context aContext, MapView inMv, File inRoute) {
+    public BuildStops(Context aContext, MapView inMv, String inRoute) {
         context = aContext;
         mv = inMv;
         markers = new ArrayList<Marker>();
-        String geoJSONString = openGeoJSON(inRoute);
+        FeatureCollection geoJSON = openGeoJSON(inRoute);
         bboxBuilder = new BuildBoundingBox();
-        parseGeoJSON(geoJSONString);
+        parseGeoJSON(geoJSON);
 
 
     }
 
-    private void parseGeoJSON(String geoJSON) {
-        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_dark_tan_30);
+    private void parseGeoJSON(FeatureCollection parsed) {
+        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
 
         try {
-            FeatureCollection parsed = (FeatureCollection) GeoJSON.parse(geoJSON);
+
+            //FeatureCollection parsed = DataLoadingUtils.loadGeoJSONFromAssets(context, assetsFile);
+
+            //FeatureCollection parsed = (FeatureCollection) GeoJSON.parse(geoJSON);
 
             for (Feature f : parsed.getFeatures()) {
 
@@ -69,7 +75,7 @@ public class BuildStops {
                     Log.d(TAG, stopID);
                     Log.d(TAG, stopName);
 
-                    Marker newMarker = new Marker(mv, stopName, stopID, new LatLng(lat, lon));
+                    Marker newMarker = new mMarker(mv, stopName, stopID, new LatLng(lat, lon));
                     newMarker.setMarker(circleIcon);
                     markers.add(newMarker);
                 }
@@ -80,7 +86,23 @@ public class BuildStops {
         }
     }
 
-    private String openGeoJSON(File file) {
+    private FeatureCollection openGeoJSON(String assetsFile) {
+        FeatureCollection parsed = null;
+
+        try {
+            parsed = DataLoadingUtils.loadGeoJSONFromAssets(context, assetsFile);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return parsed;
+
+
+        /*
         String entireFileText = null;
         try {
             entireFileText = new Scanner(file)
@@ -90,6 +112,7 @@ public class BuildStops {
             e.printStackTrace();
         }
         return entireFileText;
+        */
     }
 
 

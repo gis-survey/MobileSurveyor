@@ -22,8 +22,8 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp">
         <EditText
             android:id="@+id/input_address"
             android:inputType="textNoSuggestions"
@@ -53,8 +53,8 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp">
     <!--Button
         android:id="@+id/clear"
         android:layout_width="fill_parent"

@@ -93,9 +93,10 @@ public class OnOffMapActivity extends ActionBarActivity {
         setContentView(R.layout.activity_on_off_map);
 
         context = getApplicationContext();
-        onIcon =getResources().getDrawable(R.drawable.transit_green_40);
+        onIcon = getResources().getDrawable(R.drawable.transit_green_40);
         offIcon = getResources().getDrawable(R.drawable.transit_red_40);
-        stopIcon = getResources().getDrawable(R.drawable.circle_filled_dark_tan_30);
+        stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
+        //stopIcon = getResources().getDrawable(R.drawable.circle);
 
         //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
@@ -484,18 +485,21 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected ArrayList<Marker> getStops(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
-        File stopsFile = new File(GEOJSONPATH, geoJSONName);
+        //File stopsFile = new File(GEOJSONPATH, geoJSONName);
 
-        if (stopsFile.exists()) {
-            BuildStops stops = new BuildStops(context, mv, stopsFile);
-            bbox = stops.getBoundingBox();
-            Log.d(TAG, bbox.toString());
-            //zoom to extent of stops
-            mv.zoomToBoundingBox(bbox, true, false, true, true);
-            return stops.getMarkers();
-        }
-        else
-            return null;
+        //if (stopsFile.exists()) {
+        BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName);
+        bbox = stops.getBoundingBox();
+        Log.d(TAG, bbox.toString());
+        //zoom to extent of stops
+        mv.zoomToBoundingBox(bbox, true, false, true, true);
+        return stops.getMarkers();
+        //}
+        //else {
+        //    Log.d(TAG, "stopsFile does not exist");
+        //    return null;
+        //}
+
     }
 
 

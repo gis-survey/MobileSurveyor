@@ -6,7 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.media.ToneGenerator;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -116,9 +124,11 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     public void handleResult(Result rawResult) {
         // Do something with the result here
 
+        final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+        tg.startTone(ToneGenerator.TONE_PROP_BEEP2);
+
         Toast.makeText(getApplicationContext(),
-                "Scan successful, ID: " + rawResult.getText(),
-                Toast.LENGTH_SHORT).show();
+                "Scan successful", Toast.LENGTH_SHORT).show();
 
         Log.d(TAG, rawResult.getText()); // Prints scan results
         Log.d(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)

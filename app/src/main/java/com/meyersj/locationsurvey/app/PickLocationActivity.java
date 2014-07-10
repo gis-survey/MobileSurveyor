@@ -293,7 +293,7 @@ public class PickLocationActivity extends ActionBarActivity {
                 String line = extras.getString(LINE);
                 String dir = extras.getString(DIR);
                 String routes = line + "_" + dir + "_" + "routes.geojson";
-                loadGeoJSONPaths(routes);
+                //loadGeoJSONPaths(routes);
             }
         }
 

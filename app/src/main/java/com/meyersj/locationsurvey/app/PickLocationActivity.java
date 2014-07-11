@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,6 +31,8 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.util.PathUtils;
+import com.meyersj.locationsurvey.app.util.SolrAdapter;
+import com.meyersj.locationsurvey.app.util.SolrServer;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -66,8 +70,8 @@ public class PickLocationActivity extends ActionBarActivity {
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet/");
     private final String TILESNAME = "OSMTriMet.mbtiles";
-    private EditText address;
-    private Button search;
+    //private EditText address;
+    //private Button search;
     //private Button clear;
     private Button submit;
 
@@ -77,14 +81,17 @@ public class PickLocationActivity extends ActionBarActivity {
     private String line = null;
     Properties prop;
 
+    private AutoCompleteTextView solrSearch;
+    private SolrAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_location);
 
-        address = (EditText) findViewById(R.id.input_address);
-        search = (Button) findViewById(R.id.search_address);
+        //address = (EditText) findViewById(R.id.input_address);
+        //search = (Button) findViewById(R.id.search_address);
         //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
 
@@ -99,6 +106,42 @@ public class PickLocationActivity extends ActionBarActivity {
         prop = getProperties();
 
 
+        //solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
+
+        adapter = new SolrAdapter(new SolrServer(),this,android.R.layout.simple_list_item_1);
+        solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
+
+        solrSearch.setAdapter(adapter);
+
+
+        solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                //Log.d(TAG, id)
+                Log.d(TAG, parent.getItemAtPosition(position).toString());
+                //stopName.setText("");
+
+                //close keypad
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+
+                //getLocation(position);
+                //Log.d(TAG, adapter.getItem(position));
+
+                //selectLocType(stopsMap.get(stopsList.get(position)));
+            }
+        });
+
+
+
+
+
+        /*
         address.setOnLongClickListener(new View.OnLongClickListener() {
 
 
@@ -110,7 +153,11 @@ public class PickLocationActivity extends ActionBarActivity {
                 return false;
             }
         });
+        */
 
+
+
+        /*
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +181,7 @@ public class PickLocationActivity extends ActionBarActivity {
                         InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
+        */
 
 
 
@@ -164,6 +212,14 @@ public class PickLocationActivity extends ActionBarActivity {
             }
         });
     }
+
+
+    private void getLocation(int position) {
+        //adapter.getItem(position);
+        //adapter.getItem(adapter.getItemId(position));
+        //Log.d(TAG, adapter.getItem(position));
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -361,6 +417,7 @@ public class PickLocationActivity extends ActionBarActivity {
         }
     }
 
+    /*
     private String buildURL() {
         String address = this.address.getText().toString();
         String addressEncode = null;
@@ -378,6 +435,7 @@ public class PickLocationActivity extends ActionBarActivity {
         }
         return url;
     }
+    */
 
 
     private LatLng getLatLng(String jsonInput) {

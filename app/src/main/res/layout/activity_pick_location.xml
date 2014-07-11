@@ -24,7 +24,19 @@
         android:weightSum="1"
         android:paddingLeft="0dp"
         android:paddingRight="0dp">
-        <EditText
+
+        <AutoCompleteTextView
+            android:id="@+id/solr_input"
+            android:inputType="textNoSuggestions"
+            android:layout_width="fill_parent"
+            android:layout_height="61dp"
+            android:background="@drawable/grey_button"
+            android:hint="Enter Address or Location"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_margin="5dp"/>
+
+        <!--EditText
             android:id="@+id/input_address"
             android:inputType="textNoSuggestions"
             android:layout_width="fill_parent"
@@ -43,7 +55,7 @@
             style="@style/ButtonText"
             android:text="Search"
             android:layout_weight="0.70"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"/-->
     </LinearLayout>
 
     <LinearLayout

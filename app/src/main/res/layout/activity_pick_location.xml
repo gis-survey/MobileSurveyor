@@ -15,48 +15,35 @@
 
 
 
-    <LinearLayout
-        android:id="@+id/address"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp">
+        android:layout_margin="5dp">
 
         <AutoCompleteTextView
             android:id="@+id/solr_input"
             android:inputType="textNoSuggestions"
             android:layout_width="fill_parent"
-            android:layout_height="61dp"
-            android:background="@drawable/grey_button"
-            android:hint="Enter Address or Location"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:layout_margin="5dp"/>
-
-        <!--EditText
-            android:id="@+id/input_address"
-            android:inputType="textNoSuggestions"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:hint="Enter Address"
-            android:selectAllOnFocus="true"
-            android:background="@drawable/grey_button"
-            android:layout_weight="0.30"
-            android:layout_margin="5dp"/>
-        <Button
-            android:id="@+id/search_address"
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_button"
-            style="@style/ButtonText"
-            android:text="Search"
-            android:layout_weight="0.70"
-            android:layout_margin="5dp"/-->
-    </LinearLayout>
+            android:hint="Enter Address or Location"
+            android:textColor="@color/white"
+            android:padding="15dp"/>
+
+        <ImageButton android:id="@+id/clear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clear_text"
+            android:background="#00FFFFFF"
+            android:padding="10dp"
+            android:layout_margin="0dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -95,6 +82,7 @@
         android:textSize="25px"
         android:textColor="@color/black"
         android:layout_marginRight="5dp"
-        android:paddingRight="10dp"/>
+        android:paddingRight="10dp"
+        android:id="@+id/textView" />
 
 </RelativeLayout>

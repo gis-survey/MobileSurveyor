@@ -24,7 +24,8 @@ public class SolrActivity extends ActionBarActivity {
 
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
 
-        SolrAdapter adapter = new SolrAdapter(new SolrServer(),this,android.R.layout.simple_list_item_1);
+
+        SolrAdapter adapter = new SolrAdapter(this, android.R.layout.simple_list_item_1);
         solrSearch.setAdapter(adapter);
 
         //ArrayList<String> options=new ArrayList<String>();

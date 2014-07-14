@@ -1,5 +1,6 @@
 package com.meyersj.locationsurvey.app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -18,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -30,6 +33,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.locationsurvey.app.util.LocationResult;
 import com.meyersj.locationsurvey.app.util.PathUtils;
 import com.meyersj.locationsurvey.app.util.SolrAdapter;
 import com.meyersj.locationsurvey.app.util.SolrServer;
@@ -58,6 +62,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+
+//ActionBarActivity
 public class PickLocationActivity extends ActionBarActivity {
 
     private final String TAG = "PickLocationActivity";
@@ -72,7 +78,7 @@ public class PickLocationActivity extends ActionBarActivity {
     private final String TILESNAME = "OSMTriMet.mbtiles";
     //private EditText address;
     //private Button search;
-    //private Button clear;
+    private ImageButton clear;
     private Button submit;
 
     private ItemizedIconOverlay locOverlay;
@@ -92,11 +98,13 @@ public class PickLocationActivity extends ActionBarActivity {
 
         //address = (EditText) findViewById(R.id.input_address);
         //search = (Button) findViewById(R.id.search_address);
-        //clear = (Button) findViewById(R.id.clear);
+        clear = (ImageButton) findViewById(R.id.clear_text);
         submit = (Button) findViewById(R.id.submit);
 
         mv = (MapView) findViewById(R.id.mapview);
         mv.setMapViewListener(new mMapViewListener());
+
+
 
         setTiles(mv);
         setItemizedOverlay(mv);
@@ -105,13 +113,20 @@ public class PickLocationActivity extends ActionBarActivity {
         Bundle extras = getExtras();
         prop = getProperties();
 
-
         //solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
 
-        adapter = new SolrAdapter(new SolrServer(),this,android.R.layout.simple_list_item_1);
+        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1);
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
-
         solrSearch.setAdapter(adapter);
+
+
+        solrSearch.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                solrSearch.selectAll();
+                return false;
+            }
+        });
 
 
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -121,8 +136,18 @@ public class PickLocationActivity extends ActionBarActivity {
                                     long id) {
 
                 //Log.d(TAG, id)
-                Log.d(TAG, parent.getItemAtPosition(position).toString());
-                //stopName.setText("");
+
+                String address = parent.getItemAtPosition(position).toString();
+                LocationResult locationResult = adapter.getLocationResultItem(address);
+
+                if (locationResult != null) {
+                    Log.d(TAG, locationResult.getAddress());
+                    Log.d(TAG, locationResult.getLatLng().toString());
+                    addMarker(locationResult.getLatLng());
+                }
+                else {
+                    Log.e(TAG, "did not find record: " + address);
+                }
 
                 //close keypad
                 InputMethodManager inputManager = (InputMethodManager)
@@ -137,73 +162,14 @@ public class PickLocationActivity extends ActionBarActivity {
             }
         });
 
-
-
-
-
-        /*
-        address.setOnLongClickListener(new View.OnLongClickListener() {
-
-
-            @Override
-            public boolean onLongClick(View view) {
-                Log.d(TAG, "Long Click on EditText");
-
-                address.setText("");
-                return false;
-            }
-        });
-        */
-
-
-
-        /*
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "search_address clicked");
-
-                if (isNetworkAvailable()) {
-                    String url = buildURL();
-                    new GeocodeTask().execute(url);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),
-                            "Network unavailable, manually select location",
-                            Toast.LENGTH_LONG).show();
-                }
-
-                //close keypad
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-            }
-        });
-        */
-
-
-
-        /*
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                int length = locList.size();
-                for (Marker m: locList){
-                    //(int i = 0; i < length; ++i) {
-                    //Marker m = locList.get(i);
-                    m.closeToolTip();
-                }
-
-                //locOverlay
-                locOverlay.setFocus(null);
-                locOverlay.removeAllItems();
-                mv.invalidate();
+                solrSearch.clearListSelection();
+                solrSearch.setText("");
             }
         });
-        */
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,11 +180,13 @@ public class PickLocationActivity extends ActionBarActivity {
     }
 
 
+    /*
     private void getLocation(int position) {
         //adapter.getItem(position);
         //adapter.getItem(adapter.getItemId(position));
         //Log.d(TAG, adapter.getItem(position));
     }
+    */
 
 
     @Override
@@ -242,28 +210,41 @@ public class PickLocationActivity extends ActionBarActivity {
 
     protected void setTiles(MapView mv) {
         ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-        ITileLayer source;
+        ITileLayer mbTilesSource = null;
+        ITileLayer osmSource = null;
         BoundingBox box = new BoundingBox(46.0 ,-122 ,45.0, -123.5);
+
+
+        Log.d(TAG, "unable to open local mbtiles");
+        osmSource = new WebSourceTileLayer("openstreetmap",
+                "http://tile.openstreetmap.org/{z}/{x}/{y}.png").setName("OpenStreetMap")
+                .setAttribution("© OpenStreetMap Contributors");
+
 
         try {
             File tiles = new File(TILESPATH, TILESNAME);
-            source = new MBTilesLayer(tiles);
-            mv.setTileSource(source);
-            box = source.getBoundingBox();
+            mbTilesSource = new MBTilesLayer(tiles);
+
+
+            mv.setTileSource(mbTilesSource);
+            Log.d(TAG, String.valueOf(mbTilesSource.getMaximumZoomLevel()));
+            Log.d(TAG, String.valueOf(mbTilesSource.getMinimumZoomLevel()));
+
+            //box = source.getBoundingBox();
+            //Log.d(TAG, box.toString());
+            //TilesListener tilesListener = new TilesListener(mv, mbTilesSource, osmSource);
+            //mv.addListener(tilesListener);
         }
         catch(Exception e) {
             Log.d(TAG, "unable to open local mbtiles");
-            source = new WebSourceTileLayer("openstreetmap",
-                    "http://tile.openstreetmap.org/{z}/{x}/{y}.png").setName("OpenStreetMap")
-                    .setAttribution("© OpenStreetMap Contributors")
-                    .setMinimumZoomLevel(11)
-                    .setMaximumZoomLevel(17);
-            mv.setTileSource(source);
+            mv.setTileSource(osmSource);
         }
 
-        mv.setScrollableAreaLimit(box);
-        mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
-        mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
+        //mv.setTileSource(osmSource);
+
+        //mv.setScrollableAreaLimit(box);
+        //mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
+        //mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
         mv.setZoom(14);
     }

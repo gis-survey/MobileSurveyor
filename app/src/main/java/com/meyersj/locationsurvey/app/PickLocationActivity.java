@@ -1,6 +1,5 @@
 package com.meyersj.locationsurvey.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -19,7 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -36,7 +34,6 @@ import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.util.LocationResult;
 import com.meyersj.locationsurvey.app.util.PathUtils;
 import com.meyersj.locationsurvey.app.util.SolrAdapter;
-import com.meyersj.locationsurvey.app.util.SolrServer;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -55,8 +52,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -278,13 +273,15 @@ public class PickLocationActivity extends ActionBarActivity {
         //Double lon = 0.0;
 
         if(coordinates != null) {
+            Log.d(TAG, "coordinates not null");
             intent.putExtra(ODK_LAT, coordinates.get("lat"));
             intent.putExtra(ODK_LNG, coordinates.get("lon"));
             setResult(RESULT_OK, intent);
         }
-        else
+        else {
+            Log.d(TAG, "coordinates null");
             setResult(RESULT_CANCELED, intent);
-
+        }
         finish();
         return true;
     }
@@ -460,6 +457,7 @@ public class PickLocationActivity extends ActionBarActivity {
             mv.invalidate();
             mv.setCenter(latLng);
             mv.setZoom(16);
+            //Log.d(locOverlay.size())
         }
     }
 

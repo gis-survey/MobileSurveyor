@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
 
-        <!--activity
+        <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter >
@@ -25,10 +25,10 @@
         <action android:name="com.meyersj.locationsurvey.app.LOGIN" />
         <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity-->
+        </activity>
 
 
-        <activity
+        <!--activity
             android:name=".SolrActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
@@ -37,7 +37,7 @@
                 <action android:name="com.meyersj.locationsurvey.app.LOGIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-->
 
         <activity
             android:name=".SetLineActivity">

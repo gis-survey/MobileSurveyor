@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -79,7 +80,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Drawable offIcon;
     private Drawable stopIcon;
     private AutoCompleteTextView stopName;
-
+    private ImageButton clear;
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
@@ -101,16 +102,19 @@ public class OnOffMapActivity extends ActionBarActivity {
         //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
         mv = (MapView) findViewById(R.id.mapview);
+        clear = (ImageButton) findViewById(R.id.clear_input_stop);
 
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
         stopName.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                stopName.setText("");
+                stopName.selectAll();
                 return false;
             }
         });
+
+
 
         //mv.setMapViewListener(new MyMapViewListener());
 
@@ -158,6 +162,14 @@ public class OnOffMapActivity extends ActionBarActivity {
                             InputMethodManager.HIDE_NOT_ALWAYS);
 
                     selectLocType(stopsMap.get(stopsList.get(position)));
+                }
+            });
+
+            clear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    stopName.clearListSelection();
+                    stopName.setText("");
                 }
             });
 

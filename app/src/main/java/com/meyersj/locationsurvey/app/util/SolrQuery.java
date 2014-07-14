@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by meyersj on 7/11/2014.
  */
-public class SolrServer {
+public class SolrQuery {
 
     private final String TAG = "SolrServer";
 
@@ -39,7 +39,7 @@ public class SolrServer {
     private HashMap<String, LocationResult> solrResults = new HashMap<String, LocationResult>();
 
 
-    public SolrServer() {
+    public SolrQuery() {
 
     }
 
@@ -80,6 +80,7 @@ public class SolrServer {
         HttpResponse response;
         //String responseString = null;
 
+        //String url = "http://ride.trimet.org/solr/select?start=0&wt=json&qt=dismax&rows=5&q=" + input.replace(" ", "%20");
         String url = "http://maps10.trimet.org/solr/select?start=0&wt=json&qt=dismax&rows=5&q=" + input.replace(" ", "%20");
 
 

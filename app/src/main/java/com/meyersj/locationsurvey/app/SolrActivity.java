@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
 
-import com.meyersj.locationsurvey.app.util.SolrServer;
 import com.meyersj.locationsurvey.app.util.SolrAdapter;
 
 /**

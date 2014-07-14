@@ -14,9 +14,36 @@
         mapid="Your MapBox mapid" />
 
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/input_stop"
+            android:inputType="textNoSuggestions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grey_button"
+            android:hint="Enter Stop Name or Stop ID"
+            android:textColor="@color/white"
+            android:padding="15dp"/>
+
+        <ImageButton android:id="@+id/clear_input_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clear_text"
+            android:background="#00FFFFFF"
+            android:padding="10dp"
+            android:layout_margin="0dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
 
 
-    <LinearLayout
+    <!--LinearLayout
         android:id="@+id/location"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -26,13 +53,7 @@
 
         android:paddingLeft="0dp"
         android:paddingRight="0dp">
-        <!--EditText
-            android:id="@+id/input_stop"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="0.25"
-            android:layout_margin="-10dp"/-->
+
 
         <AutoCompleteTextView
             android:id="@+id/input_stop"
@@ -46,7 +67,7 @@
             android:layout_margin="5dp"/>
 
 
-    </LinearLayout>
+    </LinearLayout-->
 
 
     <LinearLayout

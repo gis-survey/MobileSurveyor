@@ -6,20 +6,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +25,7 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
     private Context mContext;
     //private List<LocationResult> mData = new ArrayList<LocationResult>();
     private List<String> mData = new ArrayList<String>();
-    private SolrServer mSolrServer;
+    private SolrQuery mSolrQuery;
     private HashMap<String, LocationResult> mResults;
 
 
@@ -47,7 +35,7 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
     public SolrAdapter(Context context, int resource) {
         super(context, resource);
         mContext = context;
-        mSolrServer = new SolrServer();
+        mSolrQuery = new SolrQuery();
 
     }
 
@@ -170,8 +158,8 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
                         //List<String> results2 = getNames(mResults);
 
 
-                        mSolrServer.solrLookup(constraint.toString());
-                        mResults = mSolrServer.getSolrResults();
+                        mSolrQuery.solrLookup(constraint.toString());
+                        mResults = mSolrQuery.getSolrResults();
                         List<String> results = getNames(mResults);
 
 

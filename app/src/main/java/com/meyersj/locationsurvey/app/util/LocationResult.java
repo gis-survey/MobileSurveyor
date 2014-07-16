@@ -12,7 +12,6 @@ public class LocationResult {
     protected Double score;
 
     public LocationResult() {
-
     }
 
     public String getAddress() {

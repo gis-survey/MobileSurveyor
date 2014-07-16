@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -66,20 +67,21 @@ public class PickLocationActivity extends ActionBarActivity {
     private final String DIR = "dir";
     private final String ODK_LAT = "lat";
     private final String ODK_LNG = "lng";
-    private final String RLIS_TOKEN = "rlis_token";
+    //private final String RLIS_TOKEN = "rlis_token";
+    private final String SOLR_URL = "solr_url";
+    private final String NO_NETWORK = "No network connection, pick location from map";
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet/");
     private final String TILESNAME = "OSMTriMet.mbtiles";
-    //private EditText address;
-    //private Button search;
+
     private ImageButton clear;
     private Button submit;
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     private MapView mv;
-    private String line = null;
+    //private String line = null;
     Properties prop;
 
     private AutoCompleteTextView solrSearch;
@@ -99,21 +101,20 @@ public class PickLocationActivity extends ActionBarActivity {
         mv = (MapView) findViewById(R.id.mapview);
         mv.setMapViewListener(new mMapViewListener());
 
-
-
         setTiles(mv);
         setItemizedOverlay(mv);
-
-        //bundle to get extras if started via ODK collect
-        Bundle extras = getExtras();
         prop = getProperties();
 
-        //solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
+        if (!isNetworkAvailable()) {
+            Toast toast = Toast.makeText(this, "No network connection, pick location from map", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
 
-        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1);
+
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
+        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(SOLR_URL));
         solrSearch.setAdapter(adapter);
-
 
         solrSearch.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -123,15 +124,11 @@ public class PickLocationActivity extends ActionBarActivity {
             }
         });
 
-
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-
-                //Log.d(TAG, id)
-
                 String address = parent.getItemAtPosition(position).toString();
                 LocationResult locationResult = adapter.getLocationResultItem(address);
 
@@ -141,7 +138,7 @@ public class PickLocationActivity extends ActionBarActivity {
                     addMarker(locationResult.getLatLng());
                 }
                 else {
-                    Log.e(TAG, "did not find record: " + address);
+                    Log.e(TAG, "Did not find record: " + address);
                 }
 
                 //close keypad
@@ -149,11 +146,6 @@ public class PickLocationActivity extends ActionBarActivity {
                         getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
-
-                //getLocation(position);
-                //Log.d(TAG, adapter.getItem(position));
-
-                //selectLocType(stopsMap.get(stopsList.get(position)));
             }
         });
 
@@ -173,16 +165,6 @@ public class PickLocationActivity extends ActionBarActivity {
             }
         });
     }
-
-
-    /*
-    private void getLocation(int position) {
-        //adapter.getItem(position);
-        //adapter.getItem(adapter.getItemId(position));
-        //Log.d(TAG, adapter.getItem(position));
-    }
-    */
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -205,41 +187,25 @@ public class PickLocationActivity extends ActionBarActivity {
 
     protected void setTiles(MapView mv) {
         ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-        ITileLayer mbTilesSource = null;
-        ITileLayer osmSource = null;
-        BoundingBox box = new BoundingBox(46.0 ,-122 ,45.0, -123.5);
-
-
-        Log.d(TAG, "unable to open local mbtiles");
-        osmSource = new WebSourceTileLayer("openstreetmap",
+        ITileLayer mbTilesSource;
+        ITileLayer osmSource = new WebSourceTileLayer("openstreetmap",
                 "http://tile.openstreetmap.org/{z}/{x}/{y}.png").setName("OpenStreetMap")
                 .setAttribution("© OpenStreetMap Contributors");
-
 
         try {
             File tiles = new File(TILESPATH, TILESNAME);
             mbTilesSource = new MBTilesLayer(tiles);
-
-
             mv.setTileSource(mbTilesSource);
             Log.d(TAG, String.valueOf(mbTilesSource.getMaximumZoomLevel()));
             Log.d(TAG, String.valueOf(mbTilesSource.getMinimumZoomLevel()));
-
-            //box = source.getBoundingBox();
-            //Log.d(TAG, box.toString());
-            //TilesListener tilesListener = new TilesListener(mv, mbTilesSource, osmSource);
-            //mv.addListener(tilesListener);
         }
         catch(Exception e) {
-            Log.d(TAG, "unable to open local mbtiles");
+            Log.e(TAG, "unable to open local mbtiles");
             mv.setTileSource(osmSource);
         }
 
-        //mv.setTileSource(osmSource);
-
-        //mv.setScrollableAreaLimit(box);
-        //mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
-        //mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
+        mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
+        mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
         mv.setZoom(14);
     }
@@ -249,14 +215,10 @@ public class PickLocationActivity extends ActionBarActivity {
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        mapView.selectMarker(item);
                         return true;
                     }
 
                     public boolean onItemLongPress(final int index, final Marker item) {
-                        //if (mMapViewListener != null) {
-                        //    mMapViewListener.onLongPressMarker(MapView.this, item);
-                        //}
                         return true;
                     }
                 }
@@ -267,10 +229,6 @@ public class PickLocationActivity extends ActionBarActivity {
     private boolean exitWithLocation() {
         Intent intent = new Intent();
         Map<String, Double> coordinates = getCoordinates();
-
-        //TODO should I return 0-0 or not put and extras?
-        //Double lat = 0.0;
-        //Double lon = 0.0;
 
         if(coordinates != null) {
             Log.d(TAG, "coordinates not null");
@@ -293,7 +251,6 @@ public class PickLocationActivity extends ActionBarActivity {
                 Intent intent = new Intent();
                 setResult(RESULT_CANCELED, intent);
                 finish();
-                //exitWithLocation();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -313,139 +270,7 @@ public class PickLocationActivity extends ActionBarActivity {
         return coordinates;
     }
 
-    //
-    private Bundle getExtras() {
-        Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
-            Log.d(TAG, "extras not null");
-            if(extras.containsKey("uuid")) {
-                Log.d(TAG, extras.getString("uuid"));
-            }
-
-            if(extras.containsKey(LINE) && extras.containsKey(DIR)) {
-                String line = extras.getString(LINE);
-                String dir = extras.getString(DIR);
-                String routes = line + "_" + dir + "_" + "routes.geojson";
-                //loadGeoJSONPaths(routes);
-            }
-        }
-
-        return extras;
-    }
-
-
-    private void loadGeoJSONPaths(String geoJSONName) {
-
-        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
-
-        if (paths != null) {
-            for(PathOverlay path: paths)
-                mv.addOverlay(path);
-        }
-
-    }
-
-    private class GeocodeTask extends AsyncTask<String, String, String> {
-
-        @Override
-        protected String doInBackground(String... uri) {
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpResponse response;
-            String responseString = null;
-            try {
-                response = httpclient.execute(new HttpGet(uri[0]));
-                StatusLine statusLine = response.getStatusLine();
-                Log.d(TAG, statusLine.toString());
-                if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    response.getEntity().writeTo(out);
-                    out.close();
-                    responseString = out.toString();
-                    Log.d(TAG, responseString);
-                } else{
-                    //Closes the connection.
-                    response.getEntity().getContent().close();
-                    throw new IOException(statusLine.getReasonPhrase());
-                }
-
-            } catch (ClientProtocolException e) {
-                Log.d(TAG, "ClientProtocolException");
-                Log.d(TAG, e.toString());//TODO Handle problems..
-            } catch (IOException e) {
-                Log.d(TAG, "IOException");
-                Log.d(TAG, e.toString());//TODO Handle problems..
-            }
-
-            return responseString;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            if (result != null) {
-                addMarker(getLatLng(result));
-            }
-            else {
-                Log.d(TAG, "geocode query not successful");
-            }
-
-            //Do anything with response..
-        }
-    }
-
-    /*
-    private String buildURL() {
-        String address = this.address.getText().toString();
-        String addressEncode = null;
-
-        String token = prop.getProperty(RLIS_TOKEN);
-        Log.d(TAG, token);
-        String baseUrl = "http://gis.oregonmetro.gov/rlisapi/?token=" + token + "&mode=locate&form=json&";
-        String url = null;
-
-        try {
-            addressEncode = "input=" + URLEncoder.encode(address, "UTF-8");
-            url = baseUrl + addressEncode;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return url;
-    }
-    */
-
-
-    private LatLng getLatLng(String jsonInput) {
-        JSONParser parser=new JSONParser();
-        LatLng loc = null;
-        Double lat;
-        Double lon;
-
-        try{
-            Object obj = parser.parse(jsonInput);
-            JSONObject results = (JSONObject) obj;
-            Log.d(TAG, results.toString());
-            String error = results.get("error").toString();
-
-            if(results.get("error").toString().equals("false")) {
-                JSONArray data = (JSONArray)results.get("data");
-                JSONObject dataJson = (JSONObject)data.get(0);
-                lat = Double.parseDouble(dataJson.get("lat").toString());
-                lon = Double.parseDouble(dataJson.get("lng").toString());
-                loc = new LatLng(lat, lon);
-            }
-            else {
-                Log.d(TAG, "failed to geocode: " + error);
-                Toast.makeText(this, (String) "Invalid Address: " + error,
-                    Toast.LENGTH_LONG).show();
-            }
-
-        }catch(ParseException pe){
-            Log.e(TAG, pe.toString());
-        }
-        return loc;
-    }
 
     private void addMarker(LatLng latLng) {
 
@@ -456,8 +281,7 @@ public class PickLocationActivity extends ActionBarActivity {
             locOverlay.addItem(m);
             mv.invalidate();
             mv.setCenter(latLng);
-            mv.setZoom(16);
-            //Log.d(locOverlay.size())
+            mv.setZoom(17);
         }
     }
 
@@ -487,44 +311,7 @@ public class PickLocationActivity extends ActionBarActivity {
         }
     }
 
-    private String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-
-    /*
-    private void addGeoJSON(String geoJSON) throws IOException {
-        InputStream is;
-        String jsonText;
-
-
-        is = new URL(geoJSON).openStream();
-        BufferedReader rd =
-                new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-        jsonText = readAll(rd);
-        Log.d(TAG, "JSON TEST");
-        Log.d(TAG, jsonText);
-
-    }
-
-    private String openGeoJSON(String path) {
-        String entireFileText = null;
-        try {
-            entireFileText = new Scanner(new File(path))
-                    .useDelimiter("\\A").next();
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, "unable to open " + path);
-            e.printStackTrace();
-        }
-        return entireFileText;
-    }
-    */
-
+    //read properties from config file
     protected Properties getProperties() {
         Properties properties = null;
 
@@ -538,6 +325,4 @@ public class PickLocationActivity extends ActionBarActivity {
         }
         return properties;
     }
-
-
 }

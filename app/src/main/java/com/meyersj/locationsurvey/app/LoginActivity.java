@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -46,7 +47,7 @@ import java.util.Properties;
  */
 public class LoginActivity extends Activity {
 
-    private static final String TAG = "KeyczarDemo";
+    private static final String TAG = "LoginActivity";
     private final String SETLINE = "com.meyersj.locationsurvey.app.SETLINE";
     private static final String BASE_URL = "base_url";
     private static final String URL = "url";
@@ -91,11 +92,10 @@ public class LoginActivity extends Activity {
                 json.put(PASSWORD, pass);
 
                 String credentials = json.toJSONString();
-
                 loginEncrypt = encryptMessage(credentials);
 
-                Log.d(TAG, credentials);
-                Log.d(TAG, loginEncrypt);
+                Log.d(TAG, "login Credentials: " + credentials);
+                Log.d(TAG, "login Credentials Encrypted: " + loginEncrypt);
 
                 String[] params = new String[2];
                 params[0] = url + "/verifyUser";
@@ -150,13 +150,13 @@ public class LoginActivity extends Activity {
     }
 
     protected String decryptMessage(String ciphertext) {
-        String decrypt = null;
+        String decrypt;
         try {
             decrypt = mCrypter.decrypt(ciphertext);
 
-
         } catch (KeyczarException e) {
             Log.d(TAG, "Couldn't decrypt message", e);
+            decrypt = ciphertext;
         }
         return decrypt;
     }
@@ -176,7 +176,6 @@ public class LoginActivity extends Activity {
             HttpClient client = new DefaultHttpClient();
             HttpPost post = new HttpPost(passed[0]);
 
-            //TODO change keys to uppercase in flask api app and change keys to constancs
             //Build parameters
             ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
             postParam.add(new BasicNameValuePair(CRED, passed[1]));
@@ -203,8 +202,9 @@ public class LoginActivity extends Activity {
                     out.close();
                     responseString = out.toString();
                     decryptResponseString = decryptMessage(responseString);
-                    Log.d(TAG, responseString);
-                    Log.d(TAG, decryptResponseString);
+
+                    Log.d(TAG, "response: " + responseString);
+                    Log.d(TAG, "decrypted response: " + decryptResponseString);
                 } else{
                     //Closes the connection.
                     response.getEntity().getContent().close();
@@ -223,10 +223,8 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPostExecute(String response) {
             if (response != null) {
-                Log.d(TAG, "onPostExecute(): " + response);
                 validateResponse(response);
             }
-
         }
 
     } //End of ScanPostTask class definition
@@ -248,7 +246,6 @@ public class LoginActivity extends Activity {
 
     private void validateResponse(String jsonInput) {
 
-
         JSONParser parser=new JSONParser();
 
         try{
@@ -267,14 +264,17 @@ public class LoginActivity extends Activity {
 
             if (user_match.equals("false")) {
                 Log.d(TAG, "username did not match");
-                   Toast.makeText(this, (String) "No record of that user, please re-enter.",
-                           Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(this, (String) "No record of that user, please re-enter.", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
             else if (password_match.equals("false")) {
                 Log.d(TAG, "password not correct");
-                Toast.makeText(this, (String) "Incorrect password, please re-enter.",
-                        Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(this, (String) "Incorrect password, please re-enter.", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
+
             //user and password match
             //move user to SetLineActivity
             else {

@@ -55,8 +55,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String ON_STOP = "on_stop";
     private final String OFF_STOP = "off_stop";
     private final String TYPE = "type";
-    private final String ODK_BOARD = "board_stop_id";
-    private final String ODK_ALIGHT = "alight_stop_id";
+    private final String ODK_BOARD = "board_id";
+    private final String ODK_ALIGHT = "alight_id";
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
@@ -186,17 +186,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(board == null || alight == null) {
-                        Toast toast = Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                                Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                        //toast.set
-
-                        //Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                        //        Toast.LENGTH_LONG).setGravity(Gravity.CENTER, 0, 0).show();
-                    }
-                    else {
+                    if (validSelection(board, alight)) {
                         //verify correct locations
                         verifyAndSubmitLocationsPOST();
                     }
@@ -207,16 +197,25 @@ public class OnOffMapActivity extends ActionBarActivity {
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(board == null || alight == null) {
-                        Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                                Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        //verify correct locations
-                        verifyAndSubmitLocationsODK();
+                    if (validSelection(board, alight)) {
+                        //verifyAndSubmitLocationsODK();
+                        String onStop = board.getDescription();
+                        String offStop = alight.getDescription();
+                        exitWithStopIDs(onStop, offStop);
                     }
                 }
             });
+        }
+    }
+
+    protected boolean validSelection(Marker board, Marker alight) {
+        if(board == null || alight == null) {
+            Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else {
+            return true;
         }
     }
 
@@ -239,7 +238,8 @@ public class OnOffMapActivity extends ActionBarActivity {
         Integer i = 0;
         for (String key : stopsMap.keySet()) {
             stopNames[i] = key;
-            Log.d(TAG, key);
+            //
+            // Log.d(TAG, key);
             i += 1;
         }
 
@@ -502,7 +502,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         //if (stopsFile.exists()) {
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName);
         bbox = stops.getBoundingBox();
-        Log.d(TAG, bbox.toString());
+        //Log.d(TAG, bbox.toString());
         //zoom to extent of stops
         mv.zoomToBoundingBox(bbox, true, false, true, true);
         return stops.getMarkers();

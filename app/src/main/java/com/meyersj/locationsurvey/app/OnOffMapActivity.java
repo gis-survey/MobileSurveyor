@@ -57,6 +57,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String TYPE = "type";
     private final String ODK_BOARD = "board_id";
     private final String ODK_ALIGHT = "alight_id";
+    private static final String USER_ID = "user_id";
 
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
@@ -72,6 +73,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private String line;
     private String dir;
     private String url;
+    private String user_id;
     private Marker board;
     private Marker alight;
     private Marker current;
@@ -257,6 +259,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         extras.putString(DATE, dateFormat.format(date));
         extras.putString(ON_STOP, onStop);
         extras.putString(OFF_STOP, offStop);
+        extras.putString(USER_ID, user_id);
         extras.putString(TYPE, "pair");
 
         Intent post = new Intent(getApplicationContext(), PostService.class);
@@ -491,6 +494,10 @@ public class OnOffMapActivity extends ActionBarActivity {
             if(extras.containsKey(URL)) {
                 Log.d(TAG, extras.getString(URL));
                 url = extras.getString(URL);
+            }
+            if(extras.containsKey(USER_ID)) {
+                Log.d(TAG, extras.getString(USER_ID));
+                user_id = extras.getString(USER_ID);
             }
         }
     }

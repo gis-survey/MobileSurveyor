@@ -229,6 +229,7 @@ public class PostService extends Service {
         JSONObject json = new JSONObject();
         json.put(UUID, bundle.getString(UUID));
         json.put(DATE, bundle.getString(DATE));
+        json.put(USER_ID, bundle.getString(USER_ID));
         json.put(LINE, bundle.getString(LINE));
         json.put(DIR, bundle.getString(DIR));
         json.put(MODE, bundle.getString(MODE));
@@ -301,6 +302,7 @@ public class PostService extends Service {
         String[] params = new String[2];
         JSONObject json = new JSONObject();
         json.put(USER_ID, bundle.getString(USER_ID));
+        Log.d(TAG, "user: " + bundle.getString(USER_ID));
         json.put(DATE, bundle.getString(DATE));
         json.put(LINE, bundle.getString(LINE));
         json.put(DIR, bundle.getString(DIR));

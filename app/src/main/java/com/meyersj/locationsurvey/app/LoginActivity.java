@@ -281,6 +281,7 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent(SETLINE);
                 intent.putExtra(URL, url);
                 intent.putExtra(USER_ID, user_id);
+                Log.d(TAG, "user: " + user_id);
                 startActivity(intent);
             }
 

@@ -127,6 +127,7 @@ public class SetLineActivity extends Activity {
 
                 intent.putExtra(URL, url);
                 intent.putExtra(USER_ID, user_id);
+                Log.d(TAG, "user: " + user_id);
                 intent.putExtra(LINE, line_code);
                 intent.putExtra(DIR, dir_code);
                 startActivity(intent);
@@ -223,7 +224,7 @@ public class SetLineActivity extends Activity {
 
     protected String stripSelection(String in) {
         String newSelec = in.replaceAll("[^A-Za-z]", "");
-        Log.d(TAG, "stripped: " + newSelec);
+        //Log.d(TAG, "stripped: " + newSelec);
         return newSelec;
     }
 
@@ -259,10 +260,10 @@ public class SetLineActivity extends Activity {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
-                Log.d(TAG, line);
+                //Log.d(TAG, line);
                 if(parts.length == 2) {
-                    Log.d(TAG, parts[0]);
-                    Log.d(TAG, parts[1]);
+                    //Log.d(TAG, parts[0]);
+                    //Log.d(TAG, parts[1]);
                     map.put(parts[0], parts[1]);
                 }
             }

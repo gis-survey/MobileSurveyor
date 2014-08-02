@@ -51,6 +51,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private static final String LAT = "lat";
     private static final String LON = "lon";
     private static final String TYPE = "type";
+    private static final String USER_ID = "user_id";
 
     private ZXingScannerView mScannerView;
     private LinearLayout btnLayout;
@@ -73,6 +74,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         setButtonListeners();
         setFormats();
         params = getIntent().getExtras();
+        Log.d(TAG, params.getString(USER_ID));
         params.putString(MODE, ON);
         setContentView(mScannerView);                // Set the scanner view as the content view
     }
@@ -140,7 +142,15 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         //getApplicationContext().startService(post);
 
         postResults(rawResult);
-        mScannerView.startCamera();
+
+        Handler mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
+            public void run() {
+                mScannerView.startCamera();
+            }
+        }, 500);
+
+        //
     }
 
     private void setButtonsLayout() {

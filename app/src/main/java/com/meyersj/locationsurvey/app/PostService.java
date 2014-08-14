@@ -13,6 +13,8 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.meyersj.locationsurvey.app.util.Utils;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -21,8 +23,14 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.keyczar.Crypter;
@@ -50,9 +58,9 @@ public class PostService extends Service {
     private static final String LON = "lon";
     private static final String ON_STOP = "on_stop";
     private static final String OFF_STOP = "off_stop";
-    private static final String TYPE= "type";
+    private static final String TYPE = "type";
+    private static final Integer PORT = 8493;
 
-    private Crypter mCrypter;
 
 
 	@Override
@@ -65,25 +73,6 @@ public class PostService extends Service {
 	public void onCreate() {
 		Log.d(TAG, "PostService onCreate() called");
 	    super.onCreate();
-
-        try {
-            mCrypter = new Crypter(new AndroidKeyczarReader(getResources(), "keys"));
-        } catch (KeyczarException e) {
-            //mPlaintext.setText(R.string.problem);
-            Log.d(TAG, "Couldn't load keyczar keys", e);
-        }
-
-        /*
-	    receiver = new BroadcastReceiver() {
-	        @Override
-	        public void onReceive(Context context, Intent intent) {
-	    		Log.d(TAG, "new location received");
-                lat = intent.getStringExtra("Latitude");
-	    		lon = intent.getStringExtra("Longitude");
-	        }
-	    };
-	    registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
-	    */
 	}
 
 
@@ -92,140 +81,81 @@ public class PostService extends Service {
 	public void onStart(Intent intent, int startId) {
 
         Bundle extras = intent.getExtras();
+        String[] params = null;
         if (extras != null) {
-
-            if (isNetworkAvailable()) {
-                String type = extras.getString(TYPE);
-
-                if (type.equals("scan")) {
-                    //get params and do ScanPostTask
-                    String[] params = getScanParams(extras);
-
-                    Log.d(TAG, "params after getParams()");
-                    for (String x: params) {
-                        Log.d(TAG, x);
-                    }
-
-                    Log.d(TAG, "execute post task");
-                    ScanPostTask task = new ScanPostTask();
-                    task.execute(params);
-
-
-                }
-                else if (type.equals("pair")){
-                    //get params and do PairPostTask
-                    String[] params = getPairParams(extras);
-
-                    Log.d(TAG, "params after getParams()");
-                    for (String x: params) {
-                        Log.d(TAG, x);
-                    }
-
-                    Log.d(TAG, "execute post task");
-                    PairPostTask task = new PairPostTask();
-                    task.execute(params);
-                }
-
-
+            String type = extras.getString(TYPE);
+            if (type.equals("scan")) {
+                params = getScanParams(extras);
             }
-            else {
-                Log.d(TAG, "No network connection");
-                Toast.makeText(getApplicationContext(),
-                        "Network connection not available",
-                        Toast.LENGTH_SHORT).show();
+            else if (type.equals("pair")){
+                params = getPairParams(extras);
+            }
+            if (params != null) {
+                PostTask task = new PostTask();
+                task.execute(params);
             }
         }
         else {
             Log.e(TAG, "extras are null");
         }
-
 	}
 
-    //@Override
-    //public void onDestroy() {
-        //super.onDestroy();
-        //unregisterReceiver(receiver);
-        //Toast.makeText(this, "onDestroy for LocationReceiver has been called", Toast.LENGTH_LONG).show();
-    //}
+    class PostTask extends AsyncTask<String[], Void, String> {
 
-	
-	class ScanPostTask extends AsyncTask<String[], Void, String> {
+        @Override
+        protected String doInBackground(String[]... inParams) {
+            String[] params = inParams[0];
+            Log.d(TAG, "url:" + params[0]);
+            Log.d(TAG, "data:" + params[1]);
+            return post(params);
+        }
+        @Override
+        protected void onPostExecute(String response) {
+            Log.d(TAG, "onPostExecute(): " + response);
+        }
+    }
+
+    protected String post(String[] params) {
 
         String retVal = null;
+        SchemeRegistry schemeRegistry = new SchemeRegistry();
+        schemeRegistry.register(new Scheme("https",
+                SSLSocketFactory.getSocketFactory(), PORT));
+        HttpParams conn_params = new BasicHttpParams();
+        SingleClientConnManager mgr = new SingleClientConnManager(conn_params, schemeRegistry);
+        HttpClient client = new DefaultHttpClient(mgr, conn_params);
+        HttpPost post = new HttpPost(params[0]);
 
-		@Override
-		protected String doInBackground(String[]... inParams) {
+        ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
+        postParam.add(new BasicNameValuePair(DATA, params[1]));
 
-            String[] passed = inParams[0];
-			Log.i(TAG, "Base url: " + passed[0]);
-			
-			//Create HttpPost object with base url
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(passed[0]);
+        try {
+            post.setEntity(new UrlEncodedFormEntity(postParam));
+            HttpResponse response = client.execute(post);
+            HttpEntity entityR = response.getEntity();
+            Log.d(TAG, EntityUtils.toString(entityR));
+            retVal = response.toString();
 
-			//Build parameters
-			ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-			postParam.add(new BasicNameValuePair(DATA, passed[1]));
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "UnsupportedEncodingException");
+            Log.e(TAG, e.toString());
+            retVal = "UnsupportedEncodingException";
+        } catch (ClientProtocolException e) {
+            Log.e(TAG, "ClientProtocolException: " + e.toString());
+            Log.e(TAG, e.toString());
+            retVal = "ClientProtocolException";
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.toString());
+            Log.e(TAG, e.toString());
+            retVal = "IOException";
+        }
 
-			//Encode parameters with base URL
-			try {
-				post.setEntity(new UrlEncodedFormEntity(postParam));
-			} catch (UnsupportedEncodingException e1) {
-				Log.i(TAG, "UnsupportedEncodingException");
-			}
-			
-			Log.d(TAG, post.toString());
-
-        	//Execute response
-			HttpResponse response = null;
-
-			try {
-
-                Header[] headersP = post.getAllHeaders();
-
-                HttpEntity entityP = post.getEntity();
-                Log.d(TAG, EntityUtils.toString(entityP));
+        return retVal;
+    }
 
 
-                Log.d(TAG, "POST HEADERS");
-                for (Header header: headersP) {
-                    Log.d(TAG, "Name: " + header.getName());
-                    Log.d(TAG, "Value: " + header.getValue());
-                }
-				response = client.execute(post);
-
-                Header[] headersR = response.getAllHeaders();
-
-                Log.d(TAG, "RESPONSE HEADERS");
-                for (Header header: headersR) {
-                    Log.d(TAG, "Name: " + header.getName());
-                    Log.d(TAG, "Value: " + header.getValue());
-                }
-
-                HttpEntity entityR = response.getEntity();
-                Log.d(TAG, EntityUtils.toString(entityR));
-
-                retVal = response.toString();
-			} catch (ClientProtocolException e) {
-				Log.d(TAG, "ClientProtocolException: " + e.toString());
-			    retVal = "ClientProtocolException";
-			} catch (IOException e) {
-                Log.d(TAG, "IOException: " + e.toString());
-                retVal = "IOException";
-			}
-		    return retVal;
-		}
-	
-		// call setData to update TextView content
-		@Override
-		protected void onPostExecute(String response) {
-            Log.i(TAG, "onPostExecute(): " + response);
-		}
-	
-	} //End of ScanPostTask class definition
-		
-	public String[] getScanParams(Bundle bundle) {
-		String[] params = new String[2];
+	protected String[] getScanParams(Bundle bundle) {
+        String[] params = new String[2];
         JSONObject json = new JSONObject();
         json.put(UUID, bundle.getString(UUID));
         json.put(DATE, bundle.getString(DATE));
@@ -236,111 +166,22 @@ public class PostService extends Service {
         json.put(LON, bundle.getString(LON));
         json.put(LAT, bundle.getString(LAT));
         params[0] = bundle.getString(URL) + "/insertScan";
-		params[1] = encryptMessage(json.toJSONString());
+        params[1] = json.toJSONString();
 		return params;
 	}
 
-
-    class PairPostTask extends AsyncTask<String[], Void, String> {
-
-        String retVal = null;
-
-        @Override
-        protected String doInBackground(String[]... inParams) {
-
-            String[] passed = inParams[0];
-            Log.i(TAG, "Base url: " + passed[0]);
-
-            //Create HttpPost object with base url
-            HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(passed[0]);
-
-            //TODO change keys to uppercase in flask api app and change keys to constancs
-            //Build parameters
-            ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-            postParam.add(new BasicNameValuePair(DATA, passed[1]));
-
-            //Encode parameters with base URL
-            try {
-                post.setEntity(new UrlEncodedFormEntity(postParam));
-            } catch (UnsupportedEncodingException e1) {
-                Log.i(TAG, "UnsupportedEncodingException");
-            }
-
-            Log.d(TAG, post.toString());
-
-            //Execute response
-            HttpResponse response = null;
-
-            try {
-                response = client.execute(post);
-                HttpEntity entity = response.getEntity();
-
-                Log.d(TAG, EntityUtils.toString(entity));
-
-                retVal = response.toString();
-            } catch (ClientProtocolException e) {
-                Log.d(TAG, "ClientProtocolException: " + e.toString());
-                retVal = "ClientProtocolException";
-            } catch (IOException e) {
-                Log.d(TAG, "IOException: " + e.toString());
-                retVal = "IOException";
-            }
-            return retVal;
-        }
-
-        // call setData to update TextView content
-        @Override
-        protected void onPostExecute(String response) {
-            Log.i(TAG, "onPostExecute(): " + response);
-        }
-
-    } //End of ScanPostTask class definition
-
-
-    public String[] getPairParams(Bundle bundle) {
+    protected String[] getPairParams(Bundle bundle) {
         String[] params = new String[2];
         JSONObject json = new JSONObject();
         json.put(USER_ID, bundle.getString(USER_ID));
-        Log.d(TAG, "user: " + bundle.getString(USER_ID));
         json.put(DATE, bundle.getString(DATE));
         json.put(LINE, bundle.getString(LINE));
         json.put(DIR, bundle.getString(DIR));
         json.put(ON_STOP, bundle.getString(ON_STOP));
         json.put(OFF_STOP, bundle.getString(OFF_STOP));
         params[0] = bundle.getString(URL) + "/insertPair";
-        params[1] = encryptMessage(json.toJSONString());
+        params[1] = json.toJSONString();
         return params;
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-    protected String encryptMessage(String message) {
-        String ciphertext = null;
-        try {
-            ciphertext = mCrypter.encrypt(message);
-        } catch (KeyczarException e) {
-            Log.d(TAG, "Couldn't encrypt message", e);
-        }
-
-        return ciphertext;
-    }
-
-    protected String decryptMessage(String ciphertext) {
-        String decrypt = null;
-        try {
-            decrypt = mCrypter.decrypt(ciphertext);
-
-
-        } catch (KeyczarException e) {
-            Log.d(TAG, "Couldn't decrypt message", e);
-        }
-        return decrypt;
     }
 
 }

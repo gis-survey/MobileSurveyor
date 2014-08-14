@@ -1,8 +1,10 @@
 package com.meyersj.locationsurvey.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -33,6 +35,8 @@ import java.util.List;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.meyersj.locationsurvey.app.util.Utils;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
@@ -96,6 +100,12 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             }
         };
         registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
+
+        if (!Utils.isNetworkAvailable(getApplicationContext())) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     @Override

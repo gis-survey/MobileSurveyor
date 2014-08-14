@@ -34,6 +34,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.util.MarkerAdapter;
 import com.meyersj.locationsurvey.app.util.PathUtils;
+import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -207,6 +208,12 @@ public class OnOffMapActivity extends ActionBarActivity {
                     }
                 }
             });
+        }
+
+        if (!Utils.isNetworkAvailable(getApplicationContext())) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         }
     }
 
@@ -413,34 +420,43 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected void verifyAndSubmitLocationsPOST() {
-        String boardLoc = board.getTitle();
-        String alightLoc = alight.getTitle();
-        String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
-        AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
-        builder.setTitle("Are you sure you want to submit these locations?")
-                .setMessage(message)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //get stop ids
-                        String onStop = board.getDescription();
-                        String offStop = alight.getDescription();
-                        //call function to post on off pair
-                        postResults(onStop, offStop);
-                        resetMap();
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //do nothing
-                    }
-                });
+        if (Utils.isNetworkAvailable(getApplicationContext())) {
+            String boardLoc = board.getTitle();
+            String alightLoc = alight.getTitle();
+            String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
+            AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
+            builder.setTitle("Are you sure you want to submit these locations?")
+                    .setMessage(message)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //get stop ids
+                            String onStop = board.getDescription();
+                            String offStop = alight.getDescription();
+                            //call function to post on off pair
+                            postResults(onStop, offStop);
+                            resetMap();
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //do nothing
+                        }
+                    });
 
-        AlertDialog select = builder.create();
-        select.show();
+            AlertDialog select = builder.create();
+            select.show();
+        }
+        else {
+            Log.d(TAG, "No network connection");
+            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
+    /*
     protected void verifyAndSubmitLocationsODK() {
         String boardLoc = board.getTitle();
         String alightLoc = alight.getTitle();
@@ -468,6 +484,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         AlertDialog select = builder.create();
         select.show();
     }
+    */
 
     private boolean exitWithStopIDs(String onStop, String offStop) {
         Intent intent = new Intent();

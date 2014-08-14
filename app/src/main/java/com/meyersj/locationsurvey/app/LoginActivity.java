@@ -25,8 +25,14 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -58,17 +64,12 @@ public class LoginActivity extends Activity {
     private static final String PASS_MATCH = "password_match";
     private static final String CRED = "credentials";
 
-    private Crypter mCrypter;
     private EditText username;
     private EditText password;
     private Button login, skip_login;
-    private String loginEncrypt;
     private Properties prop;
     String url;
 
-
-
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,14 +93,11 @@ public class LoginActivity extends Activity {
                 json.put(PASSWORD, pass);
 
                 String credentials = json.toJSONString();
-                loginEncrypt = encryptMessage(credentials);
-
                 Log.d(TAG, "login Credentials: " + credentials);
-                Log.d(TAG, "login Credentials Encrypted: " + loginEncrypt);
 
                 String[] params = new String[2];
                 params[0] = url + "/verifyUser";
-                params[1] = loginEncrypt;
+                params[1] = credentials;
 
                 //close keypad
                 InputMethodManager inputManager = (InputMethodManager)
@@ -109,6 +107,7 @@ public class LoginActivity extends Activity {
                         InputMethodManager.HIDE_NOT_ALWAYS);
 
                 //verify login credentials
+                //start SetLineActivity if credentials are valid
                 VerifyLoginTask task = new VerifyLoginTask();
                 task.execute(params);
 
@@ -124,110 +123,54 @@ public class LoginActivity extends Activity {
             }
         });
 
-
-
-
-
-        try {
-            mCrypter = new Crypter(new AndroidKeyczarReader(getResources(), "keys"));
-        } catch (KeyczarException e) {
-            //mPlaintext.setText(R.string.problem);
-            Log.d(TAG, "Couldn't load keyczar keys", e);
-        }
-
     }
-
-
-    protected String encryptMessage(String message) {
-        String ciphertext = null;
-        try {
-            ciphertext = mCrypter.encrypt(message);
-        } catch (KeyczarException e) {
-            Log.d(TAG, "Couldn't encrypt message", e);
-        }
-
-        return ciphertext;
-    }
-
-    protected String decryptMessage(String ciphertext) {
-        String decrypt;
-        try {
-            decrypt = mCrypter.decrypt(ciphertext);
-
-        } catch (KeyczarException e) {
-            Log.d(TAG, "Couldn't decrypt message", e);
-            decrypt = ciphertext;
-        }
-        return decrypt;
-    }
-
 
     class VerifyLoginTask extends AsyncTask<String[], Void, String> {
 
         @Override
         protected String doInBackground(String[]... inParams) {
-
-            String[] passed = inParams[0];
-            Log.i(TAG, "Base url: " + passed[0]);
-            String responseString = null;
-            String decryptResponseString = null;
-
-            //Create HttpPost object with base url
-            HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(passed[0]);
-
-            //Build parameters
-            ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-            postParam.add(new BasicNameValuePair(CRED, passed[1]));
-
-            //Encode parameters with base URL
-            try {
-                post.setEntity(new UrlEncodedFormEntity(postParam));
-            } catch (UnsupportedEncodingException e1) {
-                Log.i(TAG, "UnsupportedEncodingException");
-            }
-
-            Log.d(TAG, post.toString());
-
-            //Execute response
-            HttpResponse response = null;
-
-            try {
-                response = client.execute(post);
-                StatusLine statusLine = response.getStatusLine();
-                Log.d(TAG, statusLine.toString());
-                if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    response.getEntity().writeTo(out);
-                    out.close();
-                    responseString = out.toString();
-                    decryptResponseString = decryptMessage(responseString);
-
-                    Log.d(TAG, "response: " + responseString);
-                    Log.d(TAG, "decrypted response: " + decryptResponseString);
-                } else{
-                    //Closes the connection.
-                    response.getEntity().getContent().close();
-                    throw new IOException(statusLine.getReasonPhrase());
-                }
-
-            } catch (ClientProtocolException e) {
-                Log.d(TAG, "ClientProtocolException: " + e.toString());
-            } catch (IOException e) {
-                Log.d(TAG, "IOException: " + e.toString());
-            }
-            return decryptResponseString;
+            String[] params = inParams[0];
+            Log.d(TAG, "url:" + params[0]);
+            Log.d(TAG, "data:" + params[1]);
+            return post(params);
         }
-
-        // call setData to update TextView content
         @Override
         protected void onPostExecute(String response) {
             if (response != null) {
                 validateResponse(response);
             }
         }
+    }
 
-    } //End of ScanPostTask class definition
+    protected String post(String[] params) {
+
+        String responseString = null;
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost(params[0]);
+
+        ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
+        postParam.add(new BasicNameValuePair(CRED, params[1]));
+
+        try {
+            post.setEntity(new UrlEncodedFormEntity(postParam));
+            HttpResponse response = client.execute(post);
+            HttpEntity entityR = response.getEntity();
+            responseString = EntityUtils.toString(entityR);
+            Log.d(TAG, responseString);
+
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "UnsupportedEncodingException");
+            Log.e(TAG, e.toString());
+        } catch (ClientProtocolException e) {
+            Log.e(TAG, "ClientProtocolException: " + e.toString());
+            Log.e(TAG, e.toString());
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.toString());
+            Log.e(TAG, e.toString());
+        }
+        return responseString;
+    }
+
 
     protected Properties getProperties() {
         Properties properties = null;
@@ -237,7 +180,6 @@ public class LoginActivity extends Activity {
             properties = new Properties();
             properties.load(inputStream);
             Log.d(TAG, "properties are now loaded");
-            //System.out.println("properties: " + properties);
         } catch (IOException e) {
             Log.e(TAG, "properties failed to load, " + e);
         }
@@ -246,13 +188,12 @@ public class LoginActivity extends Activity {
 
     private void validateResponse(String jsonInput) {
 
-        JSONParser parser=new JSONParser();
+        JSONParser parser = new JSONParser();
 
         try{
             Object obj = parser.parse(jsonInput);
             JSONObject results = (JSONObject) obj;
             Log.d(TAG, results.toString());
-
 
             String user_match = results.get(USER_MATCH).toString();
             String password_match = results.get(PASS_MATCH).toString();
@@ -264,15 +205,16 @@ public class LoginActivity extends Activity {
 
             if (user_match.equals("false")) {
                 Log.d(TAG, "username did not match");
-                Toast toast = Toast.makeText(this, (String) "No record of that user, please re-enter.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, "No record of that user, please re-enter username.", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
             else if (password_match.equals("false")) {
                 Log.d(TAG, "password not correct");
-                Toast toast = Toast.makeText(this, (String) "Incorrect password, please re-enter.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, "Incorrect password, please re-enter.", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+                password.setText("");
             }
 
             //user and password match
@@ -282,13 +224,11 @@ public class LoginActivity extends Activity {
                 intent.putExtra(URL, url);
                 intent.putExtra(USER_ID, user_id);
                 Log.d(TAG, "user: " + user_id);
-
-
-
+                password.setText("");
                 startActivity(intent);
             }
 
-        }catch(ParseException pe){
+        } catch(ParseException pe){
             Log.e(TAG, pe.toString());
         }
     }

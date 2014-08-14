@@ -1,21 +1,11 @@
 package com.meyersj.locationsurvey.app;
 
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.meyersj.locationsurvey.app.util.Utils;
-
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -33,13 +23,9 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
-import org.keyczar.Crypter;
-import org.keyczar.exceptions.KeyczarException;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 public class PostService extends Service {
 
@@ -59,9 +45,6 @@ public class PostService extends Service {
     private static final String ON_STOP = "on_stop";
     private static final String OFF_STOP = "off_stop";
     private static final String TYPE = "type";
-    private static final Integer PORT = 8493;
-
-
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -74,8 +57,6 @@ public class PostService extends Service {
 		Log.d(TAG, "PostService onCreate() called");
 	    super.onCreate();
 	}
-
-
 
 	@Override
 	public void onStart(Intent intent, int startId) {
@@ -118,12 +99,7 @@ public class PostService extends Service {
     protected String post(String[] params) {
 
         String retVal = null;
-        SchemeRegistry schemeRegistry = new SchemeRegistry();
-        schemeRegistry.register(new Scheme("https",
-                SSLSocketFactory.getSocketFactory(), PORT));
-        HttpParams conn_params = new BasicHttpParams();
-        SingleClientConnManager mgr = new SingleClientConnManager(conn_params, schemeRegistry);
-        HttpClient client = new DefaultHttpClient(mgr, conn_params);
+        HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(params[0]);
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();

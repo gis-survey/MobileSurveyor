@@ -43,5 +43,7 @@ keys/
 
 config.properties
 gradle.properties
+geojson.1
+
 icons/
 

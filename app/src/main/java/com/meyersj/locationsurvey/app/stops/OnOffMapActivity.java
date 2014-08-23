@@ -1,7 +1,8 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.stops;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
-import com.meyersj.locationsurvey.app.util.BuildStops;
+import com.meyersj.locationsurvey.app.PostService;
+import com.meyersj.locationsurvey.app.R;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -32,7 +33,6 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
-import com.meyersj.locationsurvey.app.util.MarkerAdapter;
 import com.meyersj.locationsurvey.app.util.PathUtils;
 import com.meyersj.locationsurvey.app.util.Utils;
 
@@ -146,7 +146,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             final ArrayList<String> stopsList = new ArrayList<String>();
             Collections.addAll(stopsList, stopNames);
 
-            MarkerAdapter adapter = new MarkerAdapter
+            StopSearchAdapter adapter = new StopSearchAdapter
                     (this,android.R.layout.simple_list_item_1,stopsList);
             stopName.setAdapter(adapter);
 
@@ -228,11 +228,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
-    //protected void promptLocType(Marker m) {
-    //    Log.d(TAG, m.getDescription());
-    //    Log.d(TAG, m.getTitle());
-    //}
-
     protected String[] buildStopsArray() {
 
         stopsMap = new HashMap<String, Marker>();
@@ -247,8 +242,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         Integer i = 0;
         for (String key : stopsMap.keySet()) {
             stopNames[i] = key;
-            //
-            // Log.d(TAG, key);
             i += 1;
         }
 

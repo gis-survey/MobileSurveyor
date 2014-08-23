@@ -1,10 +1,8 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.locations;
 
-import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
 
-import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.meyersj.locationsurvey.app.locations.LocationResult;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -22,9 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by meyersj on 7/11/2014.

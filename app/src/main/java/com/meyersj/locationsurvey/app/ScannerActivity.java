@@ -120,15 +120,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     }
 
 
-
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "scanner activity started");
-
-    }
-    */
-
     public void onStop() {
         super.onStart();
         Log.d(TAG, "scanner activity stopped");
@@ -137,7 +128,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result rawResult) {
-        // Do something with the result here
 
         final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
         tg.startTone(ToneGenerator.TONE_PROP_BEEP2);
@@ -150,12 +140,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         Intent post = new Intent(getApplicationContext(), PostService.class);
 
-        //params.putString(UUID, rawResult.getText());
-        //post.putExtras(params);
-        //getApplicationContext().startService(post);
-
         postResults(rawResult);
 
+        // pause before restarting camera to prevent multiple scans
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
@@ -163,7 +150,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             }
         }, 500);
 
-        //
     }
 
     private void setButtonsLayout() {
@@ -174,9 +160,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         onBtn.setText("On");
         offBtn.setText("Off");
-
-        //onBtn.setTextColor(Color.parseColor("#ffffffff"));
-        //offBtn.setTextColor(Color.parseColor("#ffffffff"));
 
         onBtn.setTextSize(20);
         offBtn.setTextSize(20);

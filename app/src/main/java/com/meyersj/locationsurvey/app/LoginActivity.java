@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.meyersj.locationsurvey.app.util.Utils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -38,8 +39,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.keyczar.Crypter;
-import org.keyczar.exceptions.KeyczarException;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -55,6 +55,7 @@ public class LoginActivity extends Activity {
 
     private static final String TAG = "LoginActivity";
     private final String SETLINE = "com.meyersj.locationsurvey.app.SETLINE";
+    private final String PROPERTIES = "config.properties";
     private static final String BASE_URL = "base_url";
     private static final String URL = "url";
     private static final String USER_NAME = "username";
@@ -80,7 +81,7 @@ public class LoginActivity extends Activity {
         login = (Button) findViewById(R.id.login);
         skip_login = (Button) findViewById(R.id.skip_login);
 
-        prop = getProperties();
+        prop = Utils.getProperties(getApplicationContext(), PROPERTIES);
         url = prop.getProperty(BASE_URL);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +119,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(SETLINE);
                 intent.putExtra(URL, url);
-                intent.putExtra(USER_ID, "1");
+                intent.putExtra(USER_ID, "testuser");
                 startActivity(intent);
             }
         });
@@ -169,21 +170,6 @@ public class LoginActivity extends Activity {
             Log.e(TAG, e.toString());
         }
         return responseString;
-    }
-
-
-    protected Properties getProperties() {
-        Properties properties = null;
-
-        try {
-            InputStream inputStream = this.getResources().getAssets().open("config.properties");
-            properties = new Properties();
-            properties.load(inputStream);
-            Log.d(TAG, "properties are now loaded");
-        } catch (IOException e) {
-            Log.e(TAG, "properties failed to load, " + e);
-        }
-        return properties;
     }
 
     private void validateResponse(String jsonInput) {

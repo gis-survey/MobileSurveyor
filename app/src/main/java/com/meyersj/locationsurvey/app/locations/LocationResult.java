@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.locations;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 

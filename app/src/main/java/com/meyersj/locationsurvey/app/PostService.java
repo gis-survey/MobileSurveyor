@@ -155,7 +155,10 @@ public class PostService extends Service {
         json.put(DIR, bundle.getString(DIR));
         json.put(ON_STOP, bundle.getString(ON_STOP));
         json.put(OFF_STOP, bundle.getString(OFF_STOP));
+
+        Log.d(TAG, bundle.getString(URL));
         params[0] = bundle.getString(URL) + "/insertPair";
+        Log.d(TAG, params[0]);
         params[1] = json.toJSONString();
         return params;
     }

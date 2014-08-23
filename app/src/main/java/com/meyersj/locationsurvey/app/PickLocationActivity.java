@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
@@ -23,36 +22,20 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
-import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
-import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
-import com.meyersj.locationsurvey.app.util.LocationResult;
-import com.meyersj.locationsurvey.app.util.PathUtils;
-import com.meyersj.locationsurvey.app.util.SolrAdapter;
+import com.meyersj.locationsurvey.app.locations.LocationResult;
+import com.meyersj.locationsurvey.app.locations.SolrAdapter;
+import com.meyersj.locationsurvey.app.util.Utils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,16 +46,11 @@ import java.util.Properties;
 public class PickLocationActivity extends ActionBarActivity {
 
     private final String TAG = "PickLocationActivity";
-    private final String LINE = "rte";
-    private final String DIR = "dir";
+    private final String PROPERTIES = "config.properties";
     private final String ODK_LAT = "lat";
     private final String ODK_LNG = "lng";
-    //private final String RLIS_TOKEN = "rlis_token";
     private final String SOLR_URL = "solr_url";
-    private final String NO_NETWORK = "No network connection, pick location from map";
-
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
-    private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet/");
     private final String TILESNAME = "OSMTriMet.mbtiles";
 
     private ImageButton clear;
@@ -81,7 +59,6 @@ public class PickLocationActivity extends ActionBarActivity {
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     private MapView mv;
-    //private String line = null;
     Properties prop;
 
     private AutoCompleteTextView solrSearch;
@@ -93,8 +70,6 @@ public class PickLocationActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_location);
 
-        //address = (EditText) findViewById(R.id.input_address);
-        //search = (Button) findViewById(R.id.search_address);
         clear = (ImageButton) findViewById(R.id.clear_text);
         submit = (Button) findViewById(R.id.submit);
 
@@ -103,9 +78,9 @@ public class PickLocationActivity extends ActionBarActivity {
 
         setTiles(mv);
         setItemizedOverlay(mv);
-        prop = getProperties();
+        prop = Utils.getProperties(getApplicationContext(), PROPERTIES);
 
-        if (!isNetworkAvailable()) {
+        if (!Utils.isNetworkAvailable(getApplicationContext())) {
             Toast toast = Toast.makeText(this, "No network connection, pick location from map", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -285,12 +260,6 @@ public class PickLocationActivity extends ActionBarActivity {
         }
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
 
     private void clearMarkers() {
         ArrayList<ItemizedIconOverlay> overlays = mv.getItemizedOverlays();
@@ -311,18 +280,4 @@ public class PickLocationActivity extends ActionBarActivity {
         }
     }
 
-    //read properties from config file
-    protected Properties getProperties() {
-        Properties properties = null;
-
-        try {
-            InputStream inputStream = this.getResources().getAssets().open("config.properties");
-            properties = new Properties();
-            properties.load(inputStream);
-            Log.d(TAG, "properties are now loaded");
-        } catch (IOException e) {
-            Log.e(TAG, "properties failed to load, " + e);
-        }
-        return properties;
-    }
 }

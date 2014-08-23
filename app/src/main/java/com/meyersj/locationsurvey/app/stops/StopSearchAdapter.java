@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.stops;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarkerAdapter extends ArrayAdapter<String> {
+public class StopSearchAdapter extends ArrayAdapter<String> {
 
     private static final String TAG = "MarkerAdapter";
 
@@ -24,18 +24,12 @@ public class MarkerAdapter extends ArrayAdapter<String> {
 
 
 
-    public MarkerAdapter(Context aContext, int resource, List<String> objects) {
+    public StopSearchAdapter(Context aContext, int resource, List<String> objects) {
         super(aContext, resource, objects);
         //super(aContext, resource, objects);
 
         stopsList = objects;
         origStopsList = new ArrayList<String>(objects);
-
-
-        //for(String s: objects) {
-        //    origStopsList.add(s);
-        //    stopsList.add(s);
-        //}
 
         context = aContext;
     }

@@ -29,7 +29,7 @@
 
 
         <!--activity
-            android:name=".SolrActivity"
+            android:name=".stops.StopsListActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
             <intent-filter >
@@ -57,7 +57,7 @@
         </activity>
 
         <activity
-            android:name=".OnOffMapActivity"
+            android:name=".stops.OnOffMapActivity"
             android:hardwareAccelerated="false"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
@@ -84,6 +84,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
 
 
         <service

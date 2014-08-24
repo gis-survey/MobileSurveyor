@@ -6,10 +6,12 @@ import com.mapbox.mapboxsdk.views.InfoWindow;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.R;
 
+import java.util.Comparator;
+
 /**
  * Created by meyersj on 7/2/2014.
  */
-public class Stop extends Marker {
+public class Stop extends Marker implements Comparable<Stop> {
 
     private String desc;
     private String stopID;
@@ -50,11 +52,19 @@ public class Stop extends Marker {
         return stopID;
     }
 
+    public Integer getStopSeq() {
+        return stopSeq;
+    }
     @Override
     public String toString() {
         return this.getLabel();
     }
 
-
+    @Override
+    public int compareTo(Stop compare) {
+        Integer stopSeq =((Stop)compare).getStopSeq();
+        /* For Ascending order*/
+        return this.stopSeq - stopSeq;
+    }
 
 }

@@ -19,9 +19,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -43,6 +47,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
@@ -75,15 +80,31 @@ public class OnOffMapActivity extends ActionBarActivity {
     private String dir;
     private String url;
     private String user_id;
+
+
     private Marker board;
     private Marker alight;
     private Marker current;
+
+
     private String locType;
     private Drawable onIcon;
     private Drawable offIcon;
     private Drawable stopIcon;
     private AutoCompleteTextView stopName;
     private ImageButton clear;
+
+
+
+
+    // for drop down stop sequence lists
+    private ListView onSeqListView;
+    private ListView offSeqListView;
+    private Button onSeqBtn;
+    private Button offSeqBtn;
+    private StopSequenceAdapter onSeqListAdapter;
+    private StopSequenceAdapter offSeqListAdapter;
+
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
@@ -118,6 +139,12 @@ public class OnOffMapActivity extends ActionBarActivity {
         });
 
 
+        onSeqBtn = (Button) findViewById(R.id.on_stops_btn);
+        offSeqBtn = (Button) findViewById(R.id.off_stops_btn);
+
+        onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
+        offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
+
 
         //mv.setMapViewListener(new MyMapViewListener());
 
@@ -130,6 +157,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             Log.d(TAG, "getStops");
             locList = getStops(line, dir);
 
+            // set listener for when marker tooltip is selected
             for (Marker marker: locList)
                 setToolTipListener(marker);
 
@@ -141,7 +169,25 @@ public class OnOffMapActivity extends ActionBarActivity {
             setItemizedOverlay(mv, locList);
             addRoute(line, dir);
 
-            String[] stopNames = buildStopsArray();
+            //TODO
+            //TODO
+            //TODO
+
+            ArrayList<Stop> stops = prepareListData(locList);
+
+            onSeqListAdapter = new StopSequenceAdapter(this, stops);
+            offSeqListAdapter = new StopSequenceAdapter(this, stops);
+
+            stopSequenceSetup(onSeqListView, onSeqListAdapter, onSeqBtn);
+            stopSequenceSetup(offSeqListView, offSeqListAdapter, offSeqBtn);
+
+
+            //TODO
+            //TODO
+            //TODO
+
+
+            String[] stopNames = buildStopsArray(locList);
             //String[] stopNames = {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512" };
             final ArrayList<String> stopsList = new ArrayList<String>();
             Collections.addAll(stopsList, stopNames);
@@ -217,6 +263,85 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
+
+    protected void stopSequenceSetup(final ListView listView, final StopSequenceAdapter adapter, final Button button) {
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                adapter.setSelectedIndex(position);
+
+                Stop stop = (Stop) adapterView.getAdapter().getItem(position);
+
+
+                if (listView == onSeqListView) {
+                    Log.d(TAG, "on: " + stop.getDescription());
+
+                    if (board != null) {
+                        Log.d(TAG, "board not null");
+                    }
+
+                    saveSequenceMarker(BOARD, stop);
+
+                }
+                else {
+                    saveSequenceMarker(ALIGHT, stop);
+                }
+
+                Toast.makeText(getBaseContext(), stop.getDesc(), Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                if (listView.getVisibility() == View.INVISIBLE) {
+                    listView.setVisibility(View.VISIBLE);
+                } else if (listView.getVisibility() == View.VISIBLE) {
+                    listView.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
+
+
+    }
+
+
+
+    protected ArrayList<Stop> prepareListData(final ArrayList<Marker> locList) {
+
+        ArrayList<Stop> stops = new ArrayList<Stop>();
+
+        Log.d(TAG, "\n\nUnsorted\n");
+        for(Marker marker: locList) {
+            //Stop stop = (Stop) marker;
+            stops.add((Stop) marker);
+            Log.d(TAG, ((Stop) marker).getStopSeq().toString());
+        }
+
+        Collections.sort(stops);
+        Log.d(TAG, "\n\nSorted\n");
+
+        for(Stop stop: stops) {;
+            Log.d(TAG, stop.getStopSeq().toString());
+        }
+
+        return stops;
+    }
+
+
+
+
+
+
+
+
     protected boolean validSelection(Marker board, Marker alight) {
         if(board == null || alight == null) {
             Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
@@ -228,7 +353,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
-    protected String[] buildStopsArray() {
+    protected String[] buildStopsArray(ArrayList<Marker> locList) {
 
         stopsMap = new HashMap<String, Marker>();
 
@@ -312,7 +437,9 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected void setItemizedOverlay(MapView mv, ArrayList<Marker> locList) {
         final MapView mapView = mv;
+
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
+
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         //do nothing
@@ -325,6 +452,9 @@ public class OnOffMapActivity extends ActionBarActivity {
                         selectLocType(item);
                         return true;
                     }
+
+
+
                 }
         );
         mv.addItemizedOverlay(locOverlay);
@@ -340,6 +470,31 @@ public class OnOffMapActivity extends ActionBarActivity {
     protected void clearCurrentMarker() {
         current = null;
         locType = null;
+    }
+
+    protected void saveSequenceMarker(String mode, Marker newMarker) {
+
+        if (mode.equals(BOARD)) {
+            if (board != null) {
+                board.setMarker(stopIcon);
+            }
+            if(newMarker == alight) {
+                alight.setMarker(stopIcon);
+            }
+            board = newMarker;
+            board.setMarker(onIcon);
+        }
+        else {
+            if (alight != null) {
+                alight.setMarker(stopIcon);
+            }
+            if(newMarker == board) {
+                board.setMarker(stopIcon);
+            }
+            alight = newMarker;
+            alight.setMarker(offIcon);
+        }
+
     }
 
     //saves selected marker and type if user selects 'OK' in AlertDialog for boarding and alighting location
@@ -376,6 +531,8 @@ public class OnOffMapActivity extends ActionBarActivity {
             locType = null;
         }
     }
+
+
 
     protected void selectLocType(final Marker selectedMarker) {
         String message = selectedMarker.getTitle();
@@ -512,6 +669,10 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
+    /* open stops geojson for current route
+     * parse into ArrayList of markers
+     * each marker contains stop description, stop id, stop sequence and LatLng
+     */
     protected ArrayList<Marker> getStops(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         //File stopsFile = new File(GEOJSONPATH, geoJSONName);
@@ -522,12 +683,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         //Log.d(TAG, bbox.toString());
         //zoom to extent of stops
         mv.zoomToBoundingBox(bbox, true, false, true, true);
-        return stops.getMarkers();
-        //}
-        //else {
-        //    Log.d(TAG, "stopsFile does not exist");
-        //    return null;
-        //}
+        return stops.getStops();
 
     }
 
@@ -564,7 +720,6 @@ public class OnOffMapActivity extends ActionBarActivity {
             }
         });
 
-        //mv.setOn
 
     }
 
@@ -579,4 +734,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
 
     }
+
+
 }

@@ -30,13 +30,13 @@ public class BuildStops {
     private Context context;
     private MapView mv;
     private String geoJSON;
-    private ArrayList<Marker> markers;
+    private ArrayList<Marker> stops;
     private BuildBoundingBox bboxBuilder;
 
     public BuildStops(Context aContext, MapView inMv, String inRoute) {
         context = aContext;
         mv = inMv;
-        markers = new ArrayList<Marker>();
+        stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
         bboxBuilder = new BuildBoundingBox();
         parseGeoJSON(geoJSON);
@@ -44,14 +44,11 @@ public class BuildStops {
 
     }
 
+
     private void parseGeoJSON(FeatureCollection parsed) {
         Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
 
         try {
-
-            //FeatureCollection parsed = DataLoadingUtils.loadGeoJSONFromAssets(context, assetsFile);
-
-            //FeatureCollection parsed = (FeatureCollection) GeoJSON.parse(geoJSON);
 
             for (Feature f : parsed.getFeatures()) {
 
@@ -76,10 +73,10 @@ public class BuildStops {
 
 
 
-                    Marker newMarker = new Stop(
+                    Stop stop = new Stop(
                             mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon));
-                    newMarker.setMarker(circleIcon);
-                    markers.add(newMarker);
+                    stop.setMarker(circleIcon);
+                    stops.add(stop);
                 }
             }
 
@@ -102,24 +99,11 @@ public class BuildStops {
         }
 
         return parsed;
-
-
-        /*
-        String entireFileText = null;
-        try {
-            entireFileText = new Scanner(file)
-                    .useDelimiter("\\A").next();
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, "unable to open " + file.toString());
-            e.printStackTrace();
-        }
-        return entireFileText;
-        */
     }
 
 
-    public ArrayList<Marker> getMarkers() {
-        return markers;
+    public ArrayList<Marker> getStops() {
+        return stops;
     }
 
     public BoundingBox getBoundingBox() {

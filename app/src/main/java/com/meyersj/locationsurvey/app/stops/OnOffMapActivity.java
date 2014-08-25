@@ -106,7 +106,11 @@ public class OnOffMapActivity extends ActionBarActivity {
     private StopSequenceAdapter offSeqListAdapter;
 
     private ItemizedIconOverlay locOverlay;
+    private ItemizedIconOverlay selOverlay;
+
     private ArrayList<Marker> locList = new ArrayList<Marker>();
+    private ArrayList<Marker> selList = new ArrayList<Marker>();
+
     private BoundingBox bbox;
     private HashMap<String, Marker> stopsMap;
 
@@ -123,6 +127,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
         onIcon = getResources().getDrawable(R.drawable.transit_green_40);
+        //onIcon = getResources().getDrawable(R.drawable.circle_red2);
         offIcon = getResources().getDrawable(R.drawable.transit_red_40);
         stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
 
@@ -142,6 +147,7 @@ public class OnOffMapActivity extends ActionBarActivity {
 
         if (line != null && dir != null) {
             locList = getStops(line, dir);
+            selList = new ArrayList<Marker>();
 
             // set listener for when marker tooltip is selected
             for (Marker marker: locList)
@@ -151,7 +157,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                 mv.zoomToBoundingBox(bbox, true, false, true, true);
             }
 
-            setItemizedOverlay(mv, locList);
+            setItemizedOverlay(mv, locList, selList);
             addRoute(line, dir);
             setupStopSequenceList();
             setupStopSearch();
@@ -473,29 +479,39 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
 
-    protected void setItemizedOverlay(MapView mv, ArrayList<Marker> locList) {
-        final MapView mapView = mv;
+    protected void setItemizedOverlay(
+            final MapView mapView, ArrayList<Marker> locList, ArrayList<Marker> selList) {
 
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
 
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        //do nothing
-                        return true;
-                    }
-
-                    public boolean onItemLongPress(final int index, final Marker item) {
-                        Log.d(TAG, "locOverlay item LongPress");
-                        Log.d(TAG, item.getTitle());
                         selectLocType(item);
                         return true;
                     }
 
-
-
+                    public boolean onItemLongPress(final int index, final Marker item) {
+                        return true;
+                    }
                 }
         );
+
+        selOverlay = new ItemizedIconOverlay(mv.getContext(), selList, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+            @Override
+            public boolean onItemSingleTapUp(int i, Marker marker) {
+                Log.d(TAG, "selOverlay single tap");
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int i, Marker marker) {
+                Log.d(TAG, "selOverlay long press");
+                return false;
+            }
+        });
+
         mv.addItemizedOverlay(locOverlay);
+        mv.addItemizedOverlay(selOverlay);
     }
 
     //Used to set current marker and type chosen in AlertDialog for boarding and alighting location
@@ -537,6 +553,9 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     //saves selected marker and type if user selects 'OK' in AlertDialog for boarding and alighting location
     protected void saveCurrentMarker(Marker marker) {
+
+
+
 
         if (locType != null) {
 
@@ -585,6 +604,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         String message = selectedMarker.getTitle();
 
         final CharSequence[] items = {BOARD, ALIGHT};
+
         AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
         builder.setTitle(message)
                 .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
@@ -601,6 +621,8 @@ public class OnOffMapActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
                         saveCurrentMarker(selectedMarker);
+
+
                         mv.zoomToBoundingBox(bbox, true, false, true, true);
                     }
                 })
@@ -769,6 +791,16 @@ public class OnOffMapActivity extends ActionBarActivity {
         });
 
         //prompt user to pick location type if LongClick
+
+        mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.d(TAG, "locOverlay toolTip tapPress");
+                //Log.d(TAG, aMarker.getTitle());
+                //selectLocType(aMarker);
+            }
+        });
+
         mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

@@ -7,7 +7,7 @@
         android:orientation="vertical">
 
     <LinearLayout
-            android:background="@color/white"
+            android:background="@drawable/shape_rect_grey_fade_round_all"
             android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
                 android:id="@+id/tooltip_title"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:maxEms="17"
                 android:layout_gravity="left"
@@ -45,8 +45,8 @@
                 android:visibility="gone"/>
     </LinearLayout>
 
-    <com.mapbox.mapboxsdk.views.TipView
+    <!--com.mapbox.mapboxsdk.views.TipView
             android:layout_width="fill_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="10dp"/-->
 
 </LinearLayout>

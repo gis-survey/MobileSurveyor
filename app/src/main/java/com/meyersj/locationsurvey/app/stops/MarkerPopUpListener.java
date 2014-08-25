@@ -29,8 +29,8 @@ public class MarkerPopUpListener implements MapListener {
         mv = mapView;
     }
 
-    public MarkerPopUpListener(MapView aMv, ArrayList<Marker> aMarkers) {
-        mv = aMv;
+    public MarkerPopUpListener(MapView mapView, ArrayList<Marker> aMarkers) {
+        mv = mapView;
         markers = aMarkers;
     }
 

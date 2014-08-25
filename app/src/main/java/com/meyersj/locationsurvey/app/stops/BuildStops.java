@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.stops;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.cocoahero.android.geojson.Feature;
 import com.cocoahero.android.geojson.FeatureCollection;
-import com.cocoahero.android.geojson.GeoJSON;
 import com.cocoahero.android.geojson.Point;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -14,17 +13,15 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.R;
-import com.meyersj.locationsurvey.app.mMarker;
+import com.meyersj.locationsurvey.app.stops.Stop;
+import com.meyersj.locationsurvey.app.util.BuildBoundingBox;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class BuildStops {
@@ -33,13 +30,13 @@ public class BuildStops {
     private Context context;
     private MapView mv;
     private String geoJSON;
-    private ArrayList<Marker> markers;
+    private ArrayList<Marker> stops;
     private BuildBoundingBox bboxBuilder;
 
     public BuildStops(Context aContext, MapView inMv, String inRoute) {
         context = aContext;
         mv = inMv;
-        markers = new ArrayList<Marker>();
+        stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
         bboxBuilder = new BuildBoundingBox();
         parseGeoJSON(geoJSON);
@@ -47,14 +44,11 @@ public class BuildStops {
 
     }
 
+
     private void parseGeoJSON(FeatureCollection parsed) {
         Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
 
         try {
-
-            //FeatureCollection parsed = DataLoadingUtils.loadGeoJSONFromAssets(context, assetsFile);
-
-            //FeatureCollection parsed = (FeatureCollection) GeoJSON.parse(geoJSON);
 
             for (Feature f : parsed.getFeatures()) {
 
@@ -71,13 +65,18 @@ public class BuildStops {
                     JSONObject properties = f.getProperties();
                     String stopID = properties.get("stop_id").toString();
                     String stopName = properties.get("stop_name").toString();
+                    String stopSeq = properties.get("stop_seq").toString();
 
                     Log.d(TAG, stopID);
                     Log.d(TAG, stopName);
+                    Log.d(TAG, stopSeq);
 
-                    Marker newMarker = new mMarker(mv, stopName, stopID, new LatLng(lat, lon));
-                    newMarker.setMarker(circleIcon);
-                    markers.add(newMarker);
+
+
+                    Stop stop = new Stop(
+                            mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon));
+                    stop.setMarker(circleIcon);
+                    stops.add(stop);
                 }
             }
 
@@ -100,24 +99,11 @@ public class BuildStops {
         }
 
         return parsed;
-
-
-        /*
-        String entireFileText = null;
-        try {
-            entireFileText = new Scanner(file)
-                    .useDelimiter("\\A").next();
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, "unable to open " + file.toString());
-            e.printStackTrace();
-        }
-        return entireFileText;
-        */
     }
 
 
-    public ArrayList<Marker> getMarkers() {
-        return markers;
+    public ArrayList<Marker> getStops() {
+        return stops;
     }
 
     public BoundingBox getBoundingBox() {

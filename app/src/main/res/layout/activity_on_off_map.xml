@@ -2,10 +2,8 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.db_write_test">
+    android:layout_height="match_parent">
 
     <com.mapbox.mapboxsdk.views.MapView
         android:id="@+id/mapview"
@@ -14,104 +12,151 @@
         mapid="Your MapBox mapid" />
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <AutoCompleteTextView
-            android:id="@+id/input_stop"
-            android:inputType="textNoSuggestions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/grey_button"
-            android:hint="Enter Stop Name or Stop ID"
-            android:textColor="@color/white"
-            android:padding="15dp"/>
+       <LinearLayout
+           android:id="@+id/top_layout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@drawable/shape_rect_grey_fade_round_all"
+           android:padding="9dp"
+           android:gravity="top"
+           android:weightSum="1">
 
-        <ImageButton android:id="@+id/clear_input_stop"
-            android:layout_width="wrap_content"
+           <!-- AutoCompleteTextView -->
+           <AutoCompleteTextView
+               android:id="@+id/input_stop"
+               android:inputType="textNoSuggestions"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="18dp"
+               android:layout_weight="0.8"
+               android:layout_marginLeft="5dp"
+               android:hint="Enter Stop Name or Stop ID"
+               android:textColor="@color/white"
+               android:layout_gravity="center_vertical"
+               android:background="#00FFFFFF"/>
+
+           <ImageButton
+               android:id="@+id/clear_input_stop"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="0.2"
+               android:src="@drawable/clear_text"
+               android:padding="5dp"
+               android:background="#00FFFFFF" />
+
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/center_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/clear_text"
-            android:background="#00FFFFFF"
-            android:padding="10dp"
-            android:layout_margin="0dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@id/top_layout"
+            android:layout_above="@+id/bottom_layout"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/stop_seq_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stop Sequence"
+                style="@style/ButtonText"
+                android:background="@drawable/shape_rect_grey_fade_round_all" />
+
+
+            <!-- Split View Group in half vertically for on and off stop sequences -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- On stops sequence ListView (left side of screen) -->
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:orientation="vertical">
+
+
+
+                    <ListView
+                        android:id="@+id/on_stops_seq"
+                        android:background="@color/black"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:choiceMode="singleChoice"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+                <!-- Off stops sequence ListView (right side of screen) -->
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/off_stops_seq"
+                        android:background="@color/black"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:choiceMode="singleChoice"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/bottom_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="3dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="\u00A9 OpenStreetMap contributors"
+                android:textSize="20px"
+                android:textColor="@color/black"
+                android:padding="5dp"/>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_grey_fade_round_all"
+                android:text="Submit"
+                style="@style/ButtonText"
+                android:padding="5dp"/>
+
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 
 
-    <!--LinearLayout
-        android:id="@+id/location"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:weightSum="1"
-
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp">
-
-
-        <AutoCompleteTextView
-            android:id="@+id/input_stop"
-            android:inputType="textNoSuggestions"
-            android:layout_width="fill_parent"
-            android:layout_height="61dp"
-            android:background="@drawable/grey_button"
-            android:hint="Enter Stop Name or Stop ID"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:layout_margin="5dp"/>
-
-
-    </LinearLayout-->
-
-
-    <LinearLayout
-        android:id="@+id/buttons"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp">
-        <!--Button
-            android:id="@+id/clear"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Clear"
-            android:layout_weight="0.5"
-            android:layout_margin="-5dp"/-->
 
 
 
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/grey_button"
-            style="@style/ButtonText"
-            android:text="Submit"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="\u00A9 OpenStreetMap contributors"
-        android:gravity="right"
-        android:layout_above="@+id/buttons"
-        android:layout_alignParentEnd="true"
-        android:textSize="25px"
-        android:textColor="@color/black"
-        android:layout_marginRight="5dp"
-        android:paddingRight="10dp"/>
 
 </RelativeLayout>
-

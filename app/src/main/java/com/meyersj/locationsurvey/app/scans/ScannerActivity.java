@@ -1,23 +1,15 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.scans;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.location.LocationManager;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.media.ToneGenerator;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -36,6 +28,9 @@ import java.util.List;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.meyersj.locationsurvey.app.util.LocationService;
+import com.meyersj.locationsurvey.app.util.PostService;
+import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -104,9 +99,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         //verifyGPS();
         if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            Utils.longToastCenter(getApplicationContext(), "Please enable network connections.");
         }
 
     }
@@ -120,15 +113,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     }
 
 
-
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "scanner activity started");
-
-    }
-    */
-
     public void onStop() {
         super.onStart();
         Log.d(TAG, "scanner activity stopped");
@@ -137,25 +121,20 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result rawResult) {
-        // Do something with the result here
 
         final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
         tg.startTone(ToneGenerator.TONE_PROP_BEEP2);
 
-        Toast.makeText(getApplicationContext(),
-                "Scan successful", Toast.LENGTH_SHORT).show();
+        Utils.shortToast(getApplicationContext(), "Scan successful");
 
         Log.d(TAG, rawResult.getText()); // Prints scan results
         Log.d(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         Intent post = new Intent(getApplicationContext(), PostService.class);
 
-        //params.putString(UUID, rawResult.getText());
-        //post.putExtras(params);
-        //getApplicationContext().startService(post);
-
         postResults(rawResult);
 
+        // pause before restarting camera to prevent multiple scans
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
@@ -163,7 +142,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             }
         }, 500);
 
-        //
     }
 
     private void setButtonsLayout() {
@@ -174,9 +152,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         onBtn.setText("On");
         offBtn.setText("Off");
-
-        //onBtn.setTextColor(Color.parseColor("#ffffffff"));
-        //offBtn.setTextColor(Color.parseColor("#ffffffff"));
 
         onBtn.setTextSize(20);
         offBtn.setTextSize(20);

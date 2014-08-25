@@ -18,7 +18,7 @@
 
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".menu.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter >
         <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
 
 
         <!--activity
-            android:name=".SolrActivity"
+            android:name=".stops.StopsListActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
             <intent-filter >
@@ -40,7 +40,7 @@
         </activity-->
 
         <activity
-            android:name=".SetLineActivity">
+            android:name=".menu.SetLineActivity">
             <intent-filter >
                 <!--action android:name="android.intent.action.MAIN" /-->
                 <action android:name="com.meyersj.locationsurvey.app.SETLINE" />
@@ -49,7 +49,7 @@
         </activity>
 
         <activity
-            android:name=".ScannerActivity">
+            android:name=".scans.ScannerActivity">
             <intent-filter >
                 <action android:name="com.meyersj.locationsurvey.app.SCANNER" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -57,7 +57,7 @@
         </activity>
 
         <activity
-            android:name=".OnOffMapActivity"
+            android:name=".stops.OnOffMapActivity"
             android:hardwareAccelerated="false"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
@@ -75,7 +75,7 @@
         </activity>
 
         <activity
-            android:name=".PickLocationActivity"
+            android:name=".locations.PickLocationActivity"
             android:hardwareAccelerated="false"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat">
@@ -86,11 +86,12 @@
         </activity>
 
 
+
         <service
-            android:name=".PostService"
+            android:name=".util.PostService"
             android:exported="false"/>
         <service
-            android:name=".LocationService"
+            android:name=".util.LocationService"
             android:exported="false"/>
 
     </application>

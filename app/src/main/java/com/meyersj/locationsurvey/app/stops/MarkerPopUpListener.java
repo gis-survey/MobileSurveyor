@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.stops;
 
 import android.content.Context;
 import android.util.Log;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class MarkerPopUpListener implements MapListener {
 
-    private static final String TAG = "mMapListener";
+    private static final String TAG = "MarkerPopUpMapListener";
 
     MapView mv;
     ArrayList<Marker> markers;

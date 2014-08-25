@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.stops;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarkerAdapter extends ArrayAdapter<String> {
+public class StopSearchAdapter extends ArrayAdapter<String> {
 
     private static final String TAG = "MarkerAdapter";
 
@@ -24,18 +24,12 @@ public class MarkerAdapter extends ArrayAdapter<String> {
 
 
 
-    public MarkerAdapter(Context aContext, int resource, List<String> objects) {
+    public StopSearchAdapter(Context aContext, int resource, List<String> objects) {
         super(aContext, resource, objects);
         //super(aContext, resource, objects);
 
         stopsList = objects;
         origStopsList = new ArrayList<String>(objects);
-
-
-        //for(String s: objects) {
-        //    origStopsList.add(s);
-        //    stopsList.add(s);
-        //}
 
         context = aContext;
     }
@@ -55,26 +49,18 @@ public class MarkerAdapter extends ArrayAdapter<String> {
             FilterResults results = new FilterResults();
 
             if (constraint == null || constraint.length() == 0) {
-
                 results.values = origStopsList;
                 results.count = origStopsList.size();
-                //Log.d(TAG, "constraint is null");
+
             } else {
 
-                //Log.d(TAG, "constraint is not null");
-                //Log.d(TAG, constraint.toString().toUpperCase());
                 ArrayList<String> nStopsList = new ArrayList<String>();
 
                 for (String stop : origStopsList) {
-                    //stop.toUpperCase().contains(constraint.toString().toUpperCase())
-                    //stop.toUpperCase().startsWith(constraint.toString().toUpperCase())
-
                     if (stop.toUpperCase().contains(constraint.toString().toUpperCase())) {
                         nStopsList.add(stop);
-                        Log.d(TAG, "match: " + stop);
                     }
                     else {
-                        Log.d(TAG, "no match: " + stop);
                     }
                 }
                 results.values = nStopsList;
@@ -89,7 +75,6 @@ public class MarkerAdapter extends ArrayAdapter<String> {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
 
             if (results.count == 0)
                 notifyDataSetInvalidated();

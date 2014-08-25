@@ -49,26 +49,18 @@ public class StopSearchAdapter extends ArrayAdapter<String> {
             FilterResults results = new FilterResults();
 
             if (constraint == null || constraint.length() == 0) {
-
                 results.values = origStopsList;
                 results.count = origStopsList.size();
-                //Log.d(TAG, "constraint is null");
+
             } else {
 
-                //Log.d(TAG, "constraint is not null");
-                //Log.d(TAG, constraint.toString().toUpperCase());
                 ArrayList<String> nStopsList = new ArrayList<String>();
 
                 for (String stop : origStopsList) {
-                    //stop.toUpperCase().contains(constraint.toString().toUpperCase())
-                    //stop.toUpperCase().startsWith(constraint.toString().toUpperCase())
-
                     if (stop.toUpperCase().contains(constraint.toString().toUpperCase())) {
                         nStopsList.add(stop);
-                        Log.d(TAG, "match: " + stop);
                     }
                     else {
-                        Log.d(TAG, "no match: " + stop);
                     }
                 }
                 results.values = nStopsList;
@@ -83,7 +75,6 @@ public class StopSearchAdapter extends ArrayAdapter<String> {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
 
             if (results.count == 0)
                 notifyDataSetInvalidated();

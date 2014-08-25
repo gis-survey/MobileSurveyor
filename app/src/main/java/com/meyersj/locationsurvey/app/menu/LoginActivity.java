@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.menu;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import org.apache.http.HttpEntity;
@@ -191,15 +192,13 @@ public class LoginActivity extends Activity {
 
             if (user_match.equals("false")) {
                 Log.d(TAG, "username did not match");
-                Toast toast = Toast.makeText(this, "No record of that user, please re-enter username.", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+                Utils.shortToastCenter(getApplicationContext(),
+                        "No record of that user, please re-enter username.");
             }
             else if (password_match.equals("false")) {
                 Log.d(TAG, "password not correct");
-                Toast toast = Toast.makeText(this, "Incorrect password, please re-enter.", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+                Utils.shortToastCenter(getApplicationContext(),
+                        "Incorrect password, please re-enter.");
                 password.setText("");
             }
 

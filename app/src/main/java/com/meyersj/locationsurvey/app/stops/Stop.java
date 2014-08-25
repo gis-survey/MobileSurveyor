@@ -44,12 +44,15 @@ public class Stop extends Marker implements Comparable<Stop> {
         return desc;
     }
 
-    public String getLabel(){
-        return stopSeq.toString() + " - " + desc;
-    }
 
     public String getStopID() {
         return stopID;
+    }
+
+    // returns negative if 'this' stop is less Stop passed as argument
+    public Integer compareSeq(Stop stop) {
+        return this.stopSeq - stop.getStopSeq();
+
     }
 
     public Integer getStopSeq() {
@@ -57,7 +60,7 @@ public class Stop extends Marker implements Comparable<Stop> {
     }
     @Override
     public String toString() {
-        return this.getLabel();
+        return this.desc;
     }
 
     @Override

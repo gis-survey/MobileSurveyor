@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.util;
 
 import android.app.Service;
 import android.content.Intent;

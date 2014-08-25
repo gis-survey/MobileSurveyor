@@ -1,7 +1,7 @@
 package com.meyersj.locationsurvey.app.stops;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
-import com.meyersj.locationsurvey.app.PostService;
+import com.meyersj.locationsurvey.app.util.PostService;
 import com.meyersj.locationsurvey.app.R;
 
 import android.app.AlertDialog;
@@ -19,13 +19,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -47,7 +44,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class OnOffMapActivity extends ActionBarActivity {
@@ -61,50 +57,45 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String ON_STOP = "on_stop";
     private final String OFF_STOP = "off_stop";
     private final String TYPE = "type";
+    private final String USER_ID = "user_id";
     private final String ODK_BOARD = "board_id";
     private final String ODK_ALIGHT = "alight_id";
-    private static final String USER_ID = "user_id";
-
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
-    private final File GEOJSONPATH = new File(Environment.getExternalStorageDirectory(), "maps/geojson/trimet");
     private final String TILES = "OSMTriMet.mbtiles";
-    private final String BOARD = "Boarding";
-    private final String ALIGHT = "Alighting";
+    private final String BOARD = "On";
+    private final String ALIGHT = "Off";
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private Context context;
 
-    Context context;
-    private Button submit;
-    private MapView mv;
+    // parameters for HTTP POST
     private String line;
     private String dir;
     private String url;
     private String user_id;
 
-
+    // Variables for stop selection
     private Marker board;
     private Marker alight;
     private Marker current;
-
-
     private String locType;
+
+    // Stop Icons
     private Drawable onIcon;
     private Drawable offIcon;
     private Drawable stopIcon;
+
+    // Views
+    private MapView mv;
     private AutoCompleteTextView stopName;
     private ImageButton clear;
-
-
-
-
-    // for drop down stop sequence lists
     private ListView onSeqListView;
     private ListView offSeqListView;
-    private Button onSeqBtn;
-    private Button offSeqBtn;
+    private Button stopSeqBtn;
+    private Button submit;
+
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
-
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
@@ -113,22 +104,22 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_off_map);
 
         context = getApplicationContext();
-        onIcon = getResources().getDrawable(R.drawable.transit_green_40);
-        offIcon = getResources().getDrawable(R.drawable.transit_red_40);
-        stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
-        //stopIcon = getResources().getDrawable(R.drawable.circle);
 
-        //clear = (Button) findViewById(R.id.clear);
         submit = (Button) findViewById(R.id.submit);
         mv = (MapView) findViewById(R.id.mapview);
         clear = (ImageButton) findViewById(R.id.clear_input_stop);
-
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
+        stopSeqBtn = (Button) findViewById(R.id.stop_seq_btn);
+        onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
+        offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
+
+        onIcon = getResources().getDrawable(R.drawable.transit_green_40);
+        offIcon = getResources().getDrawable(R.drawable.transit_red_40);
+        stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
 
         stopName.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -138,20 +129,10 @@ public class OnOffMapActivity extends ActionBarActivity {
             }
         });
 
-
-        onSeqBtn = (Button) findViewById(R.id.on_stops_btn);
-        offSeqBtn = (Button) findViewById(R.id.off_stops_btn);
-
-        onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
-        offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
-
-
         //mv.setMapViewListener(new MyMapViewListener());
 
         getExtras();
         setTiles(mv);
-
-
 
         if (line != null && dir != null) {
             Log.d(TAG, "getStops");
@@ -169,22 +150,32 @@ public class OnOffMapActivity extends ActionBarActivity {
             setItemizedOverlay(mv, locList);
             addRoute(line, dir);
 
-            //TODO
-            //TODO
-            //TODO
-
-            ArrayList<Stop> stops = prepareListData(locList);
+            ArrayList<Stop> stops = stopsSequenceSort(locList);
 
             onSeqListAdapter = new StopSequenceAdapter(this, stops);
             offSeqListAdapter = new StopSequenceAdapter(this, stops);
 
-            stopSequenceSetup(onSeqListView, onSeqListAdapter, onSeqBtn);
-            stopSequenceSetup(offSeqListView, offSeqListAdapter, offSeqBtn);
+            stopSequenceSetup(onSeqListView, onSeqListAdapter, stopSeqBtn);
+            stopSequenceSetup(offSeqListView, offSeqListAdapter, stopSeqBtn);
+
+            stopSeqBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (onSeqListView.getVisibility() == View.INVISIBLE) {
+                        onSeqListView.setVisibility(View.VISIBLE);
+                        offSeqListView.setVisibility(View.VISIBLE);
+                        stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
+
+                    } else {
+                        onSeqListView.setVisibility(View.INVISIBLE);
+                        offSeqListView.setVisibility(View.INVISIBLE);
+                        stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
+                    }
+                }
+            });
 
 
-            //TODO
-            //TODO
-            //TODO
 
 
             String[] stopNames = buildStopsArray(locList);
@@ -195,7 +186,6 @@ public class OnOffMapActivity extends ActionBarActivity {
             StopSearchAdapter adapter = new StopSearchAdapter
                     (this,android.R.layout.simple_list_item_1,stopsList);
             stopName.setAdapter(adapter);
-
 
             stopName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -237,7 +227,17 @@ public class OnOffMapActivity extends ActionBarActivity {
                 public void onClick(View view) {
                     if (validSelection(board, alight)) {
                         //verify correct locations
-                        verifyAndSubmitLocationsPOST();
+                        if (validateStopSequence(board, alight)) {
+                            verifyAndSubmitLocationsPOST();
+                        }
+                        else {
+                            Utils.longToast(getApplicationContext(),
+                                    "Invalid stop sequence based on route direction");
+                        }
+                    }
+                    else {
+                        Utils.longToast(getApplicationContext(),
+                                "Both boarding and alighting locations must be set");
                     }
                 }
             });
@@ -250,16 +250,25 @@ public class OnOffMapActivity extends ActionBarActivity {
                         //verifyAndSubmitLocationsODK();
                         String onStop = board.getDescription();
                         String offStop = alight.getDescription();
-                        exitWithStopIDs(onStop, offStop);
+
+                        if (validateStopSequence(board, alight)) {
+                            exitWithStopIDs(onStop, offStop);
+                        }
+                        else {
+                            Utils.longToast(getApplicationContext(),
+                                    "Invalid stop sequence based on route direction");
+                        }
+                    }
+                    else {
+                        Utils.longToast(getApplicationContext(),
+                                "Both boarding and alighting locations must be set");
                     }
                 }
             });
         }
 
         if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            Utils.longToastCenter(getApplicationContext(), "Please enable network connections.");
         }
     }
 
@@ -274,78 +283,52 @@ public class OnOffMapActivity extends ActionBarActivity {
 
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
 
-
                 if (listView == onSeqListView) {
-                    Log.d(TAG, "on: " + stop.getDescription());
-
-                    if (board != null) {
-                        Log.d(TAG, "board not null");
-                    }
-
                     saveSequenceMarker(BOARD, stop);
-
                 }
                 else {
                     saveSequenceMarker(ALIGHT, stop);
                 }
-
-                Toast.makeText(getBaseContext(), stop.getDesc(), Toast.LENGTH_SHORT)
-                        .show();
             }
         });
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-                if (listView.getVisibility() == View.INVISIBLE) {
-                    listView.setVisibility(View.VISIBLE);
-                } else if (listView.getVisibility() == View.VISIBLE) {
-                    listView.setVisibility(View.INVISIBLE);
-                }
-
-            }
-        });
-
-
     }
 
 
-
-    protected ArrayList<Stop> prepareListData(final ArrayList<Marker> locList) {
-
+    protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
 
-        Log.d(TAG, "\n\nUnsorted\n");
         for(Marker marker: locList) {
-            //Stop stop = (Stop) marker;
             stops.add((Stop) marker);
-            Log.d(TAG, ((Stop) marker).getStopSeq().toString());
         }
-
         Collections.sort(stops);
-        Log.d(TAG, "\n\nSorted\n");
-
-        for(Stop stop: stops) {;
-            Log.d(TAG, stop.getStopSeq().toString());
-        }
 
         return stops;
     }
 
 
 
+    protected boolean validateStopSequence(Marker on, Marker off) {
+        Stop onStop = (Stop) on;
+        Stop offStop = (Stop) off;
 
 
+        Log.d(TAG, "ON");
+        Log.d(TAG, onStop.getStopSeq().toString());
+        Log.d(TAG, "OFF");
+        Log.d(TAG, offStop.getStopSeq().toString());
 
+        if ( onStop.compareSeq(offStop) < 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
 
+    }
 
-    protected boolean validSelection(Marker board, Marker alight) {
+        protected boolean validSelection(Marker board, Marker alight) {
         if(board == null || alight == null) {
-            Toast.makeText(getApplicationContext(),"Both boarding and alighting locations must be set",
-                    Toast.LENGTH_LONG).show();
+
             return false;
         }
         else {
@@ -394,14 +377,18 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected void resetMap() {
         clearCurrentMarker();
-        if (alight != null) {
-            alight.setMarker(stopIcon);
-            alight = null;
-        }
-        if (board != null) {
-            board.setMarker(stopIcon);
-            board = null;
-        }
+        //if (alight != null) {
+        //    alight.setMarker(stopIcon);
+        //    alight = null;
+        //}
+        //if (board != null) {
+        //    board.setMarker(stopIcon);
+        //    board = null;
+        //}
+
+        //onSeqListAdapter.clearSelected();
+        //offSeqListAdapter.clearSelected();
+
         mv.zoomToBoundingBox(bbox, true, false, true, true);
     }
 
@@ -498,7 +485,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     //saves selected marker and type if user selects 'OK' in AlertDialog for boarding and alighting location
-    protected void saveCurrentMarker() {
+    protected void saveCurrentMarker(Marker marker) {
+
         if (locType != null) {
 
             //if board or alight marker is already set switch it back to default icon
@@ -518,6 +506,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 board = current;
                 board.setMarker(onIcon);
                 Log.d(TAG, BOARD + ": " + board.getTitle());
+                onSeqListAdapter.setSelectedIndex(onSeqListAdapter.getItemIndex(board.getTitle()));
+                //TODO change stop sequence list to display this as 'on' selection
+
+
             }
             else {
                 if (alight != null) {
@@ -526,6 +518,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 alight = current;
                 alight.setMarker(offIcon);
                 Log.d(TAG, ALIGHT + ": " + alight.getTitle());
+                offSeqListAdapter.setSelectedIndex(offSeqListAdapter.getItemIndex(alight.getTitle()));
+
+
+                //TODO change stop sequence list to display this as 'off' selection
             }
             current = null;
             locType = null;
@@ -553,7 +549,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
-                        saveCurrentMarker();
+                        saveCurrentMarker(selectedMarker);
                         mv.zoomToBoundingBox(bbox, true, false, true, true);
                     }
                 })
@@ -570,10 +566,11 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected void verifyAndSubmitLocationsPOST() {
+
         if (Utils.isNetworkAvailable(getApplicationContext())) {
             String boardLoc = board.getTitle();
             String alightLoc = alight.getTitle();
-            String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
+            String message = BOARD + ": " + boardLoc + "\n\n" + ALIGHT + ": " + alightLoc;
             AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
             builder.setTitle("Are you sure you want to submit these locations?")
                     .setMessage(message)
@@ -600,9 +597,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
         else {
             Log.d(TAG, "No network connection");
-            Toast toast = Toast.makeText(getApplicationContext(), "Please enable network connections.", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            Utils.shortToastCenter(getApplicationContext(), "Please enable network connections.");
         }
     }
 

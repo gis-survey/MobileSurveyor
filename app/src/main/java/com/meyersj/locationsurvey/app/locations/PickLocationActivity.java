@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.locations;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,8 +29,10 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.locations.LocationResult;
 import com.meyersj.locationsurvey.app.locations.SolrAdapter;
+import com.meyersj.locationsurvey.app.mMapViewListener;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.io.File;
@@ -81,11 +83,9 @@ public class PickLocationActivity extends ActionBarActivity {
         prop = Utils.getProperties(getApplicationContext(), PROPERTIES);
 
         if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Toast toast = Toast.makeText(this, "No network connection, pick location from map", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            Utils.shortToastCenter(getApplicationContext(),
+                    "No network connection, pick location from map");
         }
-
 
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
         adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(SOLR_URL));

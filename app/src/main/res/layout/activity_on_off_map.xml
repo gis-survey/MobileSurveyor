@@ -59,7 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/top_layout"
             android:layout_above="@+id/bottom_layout"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical">
 
             <Button
@@ -122,15 +123,14 @@
 
         </LinearLayout>
 
+
         <LinearLayout
-            android:id="@id/bottom_layout"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="3dp" >
+            android:layout_above="@id/bottom_layout" >
 
             <TextView
+                android:id="@+id/osm_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -138,15 +138,39 @@
                 android:textSize="20px"
                 android:textColor="@color/black"
                 android:padding="5dp"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@id/bottom_layout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_grey_fade_round_all"
+                android:text="Count"
+                style="@style/ButtonText"
+                android:padding="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.1"/>
+
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect_grey_fade_round_all"
                 android:text="Submit"
                 style="@style/ButtonText"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:layout_weight="0.9"/>
 
 
         </LinearLayout>

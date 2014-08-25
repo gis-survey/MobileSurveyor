@@ -23,6 +23,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -93,6 +94,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private ListView offSeqListView;
     private Button stopSeqBtn;
     private Button submit;
+    private TextView osmText;
 
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
@@ -116,6 +118,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         stopSeqBtn = (Button) findViewById(R.id.stop_seq_btn);
         onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
         offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
+        osmText = (TextView) findViewById(R.id.osm_text);
 
         onIcon = getResources().getDrawable(R.drawable.transit_green_40);
         offIcon = getResources().getDrawable(R.drawable.transit_red_40);
@@ -163,14 +166,20 @@ public class OnOffMapActivity extends ActionBarActivity {
                 public void onClick(View view) {
 
                     if (onSeqListView.getVisibility() == View.INVISIBLE) {
+                        osmText.setVisibility(View.INVISIBLE);
+
                         onSeqListView.setVisibility(View.VISIBLE);
                         offSeqListView.setVisibility(View.VISIBLE);
                         stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
 
+
                     } else {
+                        osmText.setVisibility(View.VISIBLE);
+
                         onSeqListView.setVisibility(View.INVISIBLE);
                         offSeqListView.setVisibility(View.INVISIBLE);
                         stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
+
                     }
                 }
             });

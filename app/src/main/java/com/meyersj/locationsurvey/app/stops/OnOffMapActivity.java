@@ -17,12 +17,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -173,6 +175,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
         else if (action.equals(ODK_ACTION)) {
             setupODKSubmitAction();
+            countSpinner.setVisibility(View.GONE);
+            //submit.setLayoutWight
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT, 10.0f);
+            submit.setLayoutParams(params);
+
         }
 
         if (!Utils.isNetworkAvailable(getApplicationContext())) {

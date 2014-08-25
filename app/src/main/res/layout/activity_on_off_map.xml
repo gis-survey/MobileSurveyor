@@ -148,18 +148,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:weightSum="1">
+            android:weightSum="10">
 
-            <Button
-                android:id="@+id/count"
+            <Spinner
+                android:id="@+id/count_spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/shape_rect_grey_fade_round_all"
-                android:text="Count"
-                style="@style/ButtonText"
+                android:layout_gravity="center"
                 android:padding="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_weight="0.1"/>
+                android:layout_weight="1"/>
 
 
             <Button
@@ -170,7 +169,7 @@
                 android:text="Submit"
                 style="@style/ButtonText"
                 android:padding="5dp"
-                android:layout_weight="0.9"/>
+                android:layout_weight="9"/>
 
 
         </LinearLayout>

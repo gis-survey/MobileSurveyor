@@ -1,9 +1,11 @@
 package com.meyersj.locationsurvey.app.stops;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Utils;
@@ -20,6 +22,7 @@ public class SelectedStops {
     private Context context;
     private StopSequenceAdapter onAdapter;
     private StopSequenceAdapter offAdapter;
+    private ItemizedIconOverlay selOverlay;
     private Marker board = null;
     private Marker alight = null;
     private Marker current = null;
@@ -31,10 +34,12 @@ public class SelectedStops {
 
 
     public SelectedStops(
-            Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter) {
+            Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter,
+            ItemizedIconOverlay selOverlay) {
         this.context = context;
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
+        this.selOverlay = selOverlay;
 
         onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
         offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
@@ -48,6 +53,17 @@ public class SelectedStops {
         this.currentType = currentType;
     }
 
+
+    private void refreshOverlay() {
+        selOverlay.removeAllItems();
+
+        if (board != null) {
+            selOverlay.addItem(board);
+        }
+        if (alight != null) {
+            selOverlay.addItem(alight);
+        }
+    }
 
 
     protected void saveCurrentMarker(Marker marker) {
@@ -85,6 +101,7 @@ public class SelectedStops {
 
             }
             clearCurrentMarker();
+            refreshOverlay();
         }
     }
 
@@ -110,6 +127,8 @@ public class SelectedStops {
             alight = newMarker;
             alight.setMarker(offIcon);
         }
+
+        refreshOverlay();
     }
 
     public void clearCurrentMarker() {

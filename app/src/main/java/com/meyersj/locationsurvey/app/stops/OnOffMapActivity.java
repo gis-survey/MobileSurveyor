@@ -158,9 +158,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
-                    getApplicationContext(), onSeqListAdapter, offSeqListAdapter);
-
-
+                    getApplicationContext(), onSeqListAdapter, offSeqListAdapter, selOverlay);
 
         }
 

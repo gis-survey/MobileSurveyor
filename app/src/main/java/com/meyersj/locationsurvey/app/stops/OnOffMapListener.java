@@ -9,6 +9,7 @@ import com.mapbox.mapboxsdk.events.MapListener;
 import com.mapbox.mapboxsdk.events.ScrollEvent;
 import com.mapbox.mapboxsdk.events.ZoomEvent;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.InfoWindow;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -18,20 +19,23 @@ import java.util.ArrayList;
 /**
  * Created by meyersj on 6/27/2014.
  */
-public class MarkerPopUpListener implements MapListener {
+public class OnOffMapListener implements MapListener {
 
-    private static final String TAG = "MarkerPopUpMapListener";
+    private static final String TAG = "OnOffMapListener";
 
     MapView mv;
     ArrayList<Marker> markers;
+    ItemizedIconOverlay locOverlay;
 
-    public MarkerPopUpListener(MapView mapView) {
+
+    public OnOffMapListener(MapView mapView) {
         mv = mapView;
     }
 
-    public MarkerPopUpListener(MapView mapView, ArrayList<Marker> aMarkers) {
-        mv = mapView;
-        markers = aMarkers;
+    public OnOffMapListener(MapView mv, ArrayList<Marker> markers, ItemizedIconOverlay locOverlay) {
+        this.mv = mv;
+        this.markers = markers;
+        this.locOverlay = locOverlay;
     }
 
     @Override
@@ -61,6 +65,15 @@ public class MarkerPopUpListener implements MapListener {
                 for(Marker m: markers) {
                     m.getToolTip(mv).close();
                 }
+            }
+        }
+
+        if (locOverlay != null) {
+            if (zoomLevel < 14.0) {
+                mv.removeOverlay(locOverlay);
+            }
+            else {
+                mv.addOverlay(locOverlay);
             }
         }
     }

@@ -8,13 +8,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 //import android.support.v7.internal.widget.AdapterViewICS;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,7 +26,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
@@ -80,10 +79,10 @@ public class OnOffMapActivity extends ActionBarActivity {
     private String user_id;
 
     // Variables for stop selection
-    private Marker board;
-    private Marker alight;
-    private Marker current;
-    private String locType;
+    //private Marker board;
+    //private Marker alight;
+    //private Marker current;
+    //private String locType;
 
     // Stop Icons
     private Drawable onIcon;
@@ -100,6 +99,9 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Button submit;
     private TextView osmText;
     private Spinner countSpinner;
+
+    private SelectedStops selectedStops;
+
 
     private ArrayAdapter<Integer> countAdapter;
     private StopSequenceAdapter onSeqListAdapter;
@@ -131,15 +133,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         offIcon = getResources().getDrawable(R.drawable.transit_red_40);
         stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
 
-        /*
-        stopName.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                stopName.selectAll();
-                return false;
-            }
-        });
-        */
 
         setupCounter(5);
         getExtras();
@@ -158,13 +151,20 @@ public class OnOffMapActivity extends ActionBarActivity {
             }
 
             setItemizedOverlay(mv, locList, selList);
+            OnOffMapListener listener = new OnOffMapListener(mv, locList, locOverlay);
+            mv.addListener(listener);
+
             addRoute(line, dir);
             setupStopSequenceList();
             setupStopSearch();
+            selectedStops = new SelectedStops(
+                    getApplicationContext(), onSeqListAdapter, offSeqListAdapter);
+
+
+
         }
 
-        MarkerPopUpListener listener = new MarkerPopUpListener(mv, locList);
-        mv.addListener(listener);
+
 
         Intent i = this.getIntent();
         String action = i.getAction();
@@ -195,10 +195,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
 
                 if (listView == onSeqListView) {
-                    saveSequenceMarker(BOARD, stop);
+                    selectedStops.saveSequenceMarker(BOARD, stop);
                 }
                 else {
-                    saveSequenceMarker(ALIGHT, stop);
+                    selectedStops.saveSequenceMarker(ALIGHT, stop);
                 }
             }
         });
@@ -313,9 +313,9 @@ public class OnOffMapActivity extends ActionBarActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validSelection(board, alight)) {
+                if (selectedStops.validateSelection()) {
                     //verify correct locations
-                    if (validateStopSequence(board, alight)) {
+                    if (selectedStops.validateStopSequence()) {
                         verifyAndSubmitLocationsPOST(submitCount);
                     }
                     else {
@@ -335,12 +335,12 @@ public class OnOffMapActivity extends ActionBarActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validSelection(board, alight)) {
+                if (selectedStops.validateSelection()) {
                     //verifyAndSubmitLocationsODK();
-                    String onStop = board.getDescription();
-                    String offStop = alight.getDescription();
+                    String onStop = selectedStops.getBoard().getDescription();
+                    String offStop = selectedStops.getAlight().getDescription();
 
-                    if (validateStopSequence(board, alight)) {
+                    if (selectedStops.validateStopSequence()) {
                         exitWithStopIDs(onStop, offStop);
                     }
                     else {
@@ -368,30 +368,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         return stops;
     }
 
-
-
-    protected boolean validateStopSequence(Marker on, Marker off) {
-        Stop onStop = (Stop) on;
-        Stop offStop = (Stop) off;
-
-        if ( onStop.compareSeq(offStop) < 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }
-
-        protected boolean validSelection(Marker board, Marker alight) {
-        if(board == null || alight == null) {
-
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 
     protected String[] buildStopsArray(ArrayList<Marker> locList) {
 
@@ -433,19 +409,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected void resetMap() {
-        clearCurrentMarker();
-        //if (alight != null) {
-        //    alight.setMarker(stopIcon);
-        //    alight = null;
-        //}
-        //if (board != null) {
-        //    board.setMarker(stopIcon);
-        //    board = null;
-        //}
-
-        //onSeqListAdapter.clearSelected();
-        //offSeqListAdapter.clearSelected();
-
+        selectedStops.clearCurrentMarker();
         mv.zoomToBoundingBox(bbox, true, false, true, true);
     }
 
@@ -514,92 +478,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         mv.addItemizedOverlay(selOverlay);
     }
 
-    //Used to set current marker and type chosen in AlertDialog for boarding and alighting location
-    protected void setCurrentMarker(Marker currentMarker, String type) {
-        current = currentMarker;
-        locType = type;
-    }
-
-    //clears selected marker if user selects 'Cancel' in AlertDialog for boarding and alighting location
-    protected void clearCurrentMarker() {
-        current = null;
-        locType = null;
-    }
-
-    protected void saveSequenceMarker(String mode, Marker newMarker) {
-
-        if (mode.equals(BOARD)) {
-            if (board != null) {
-                board.setMarker(stopIcon);
-            }
-            if(newMarker == alight) {
-                alight.setMarker(stopIcon);
-            }
-            board = newMarker;
-            board.setMarker(onIcon);
-        }
-        else {
-            if (alight != null) {
-                alight.setMarker(stopIcon);
-            }
-            if(newMarker == board) {
-                board.setMarker(stopIcon);
-            }
-            alight = newMarker;
-            alight.setMarker(offIcon);
-        }
-
-    }
-
-    //saves selected marker and type if user selects 'OK' in AlertDialog for boarding and alighting location
-    protected void saveCurrentMarker(Marker marker) {
-
-
-
-
-        if (locType != null) {
-
-            //if board or alight marker is already set switch it back to default icon
-            if (alight != null && alight == current) {
-                alight.setMarker(stopIcon);
-                alight = null;
-            }
-            if (board != null && board == current) {
-                board.setMarker(stopIcon);
-                board = null;
-            }
-
-            if (locType.equals(BOARD)) {
-                if(board != null) {
-                    board.setMarker(stopIcon);
-                }
-                board = current;
-                board.setMarker(onIcon);
-                Log.d(TAG, BOARD + ": " + board.getTitle());
-                onSeqListAdapter.setSelectedIndex(onSeqListAdapter.getItemIndex(board.getTitle()));
-                //TODO change stop sequence list to display this as 'on' selection
-
-
-            }
-            else {
-                if (alight != null) {
-                    alight.setMarker(stopIcon);
-                }
-                alight = current;
-                alight.setMarker(offIcon);
-                Log.d(TAG, ALIGHT + ": " + alight.getTitle());
-                offSeqListAdapter.setSelectedIndex(offSeqListAdapter.getItemIndex(alight.getTitle()));
-
-
-                //TODO change stop sequence list to display this as 'off' selection
-            }
-            current = null;
-            locType = null;
-        }
-    }
-
-
-
     protected void selectLocType(final Marker selectedMarker) {
         String message = selectedMarker.getTitle();
 
@@ -612,7 +490,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String choice = items[i].toString();
                         Log.d(TAG, "Choice: " + choice);
-                        setCurrentMarker(selectedMarker, choice);
+                        selectedStops.setCurrentMarker(selectedMarker, choice);
 
                     }
                 })
@@ -620,17 +498,15 @@ public class OnOffMapActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
-                        saveCurrentMarker(selectedMarker);
-
-
-                        mv.zoomToBoundingBox(bbox, true, false, true, true);
+                        selectedStops.saveCurrentMarker(selectedMarker);
+                        //mv.zoomToBoundingBox(bbox, true, false, true, true);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked Cancel");
-                        clearCurrentMarker();
+                        selectedStops.clearCurrentMarker();
                     }
                 });
 
@@ -647,6 +523,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
     protected void verifyAndSubmitLocationsPOST(final int count) {
 
+        final Marker board = selectedStops.getBoard();
+        final Marker alight = selectedStops.getAlight();
 
         if (Utils.isNetworkAvailable(getApplicationContext())) {
             String boardLoc = board.getTitle();
@@ -687,36 +565,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
-    /*
-    protected void verifyAndSubmitLocationsODK() {
-        String boardLoc = board.getTitle();
-        String alightLoc = alight.getTitle();
-        String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
-        AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
-        builder.setTitle("Are you sure you want to submit these locations?")
-                .setMessage(message)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //get stop ids
-                        String onStop = board.getDescription();
-                        String offStop = alight.getDescription();
-                        exitWithStopIDs(onStop, offStop);
-
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //do nothing
-                    }
-                });
-
-        AlertDialog select = builder.create();
-        select.show();
-    }
-    */
-
     private boolean exitWithStopIDs(String onStop, String offStop) {
         Intent intent = new Intent();
         intent.putExtra(ODK_BOARD, onStop);
@@ -725,7 +573,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         finish();
         return true;
     }
-
 
     protected void getExtras() {
         Bundle extras = getIntent().getExtras();
@@ -750,19 +597,13 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
     }
 
-    /* open stops geojson for current route
-     * parse into ArrayList of markers
-     * each marker contains stop description, stop id, stop sequence and LatLng
-     */
+    // open stops geojson for current route
+    // parse into ArrayList of markers
+    // each marker contains stop description, stop id, stop sequence and LatLng
     protected ArrayList<Marker> getStops(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
-        //File stopsFile = new File(GEOJSONPATH, geoJSONName);
-
-        //if (stopsFile.exists()) {
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName);
         bbox = stops.getBoundingBox();
-        //Log.d(TAG, bbox.toString());
-        //zoom to extent of stops
         mv.zoomToBoundingBox(bbox, true, false, true, true);
         return stops.getStops();
 
@@ -770,13 +611,9 @@ public class OnOffMapActivity extends ActionBarActivity {
 
 
     //modify mView for each toolTip in each marker to prevent closing it when touched
-    protected void setToolTipListener(Marker marker) {
+    protected void setToolTipListener(final Marker marker) {
 
-        final Marker aMarker = marker;
-
-        View mView = aMarker.getToolTip(mv).getView();
-        //mView.setClickable(true);
-        //mView.setLongClickable(true);
+        View mView = marker.getToolTip(mv).getView();
 
         //from InfoWindow Constructor but commented out close
         mView.setOnTouchListener(new View.OnTouchListener() {
@@ -784,20 +621,8 @@ public class OnOffMapActivity extends ActionBarActivity {
             public boolean onTouch(View v, MotionEvent e) {
                 if (e.getAction() == MotionEvent.ACTION_UP) {
                     //do nothing (don't close)
-                    //close();
                 }
                 return false;
-            }
-        });
-
-        //prompt user to pick location type if LongClick
-
-        mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Log.d(TAG, "locOverlay toolTip tapPress");
-                //Log.d(TAG, aMarker.getTitle());
-                //selectLocType(aMarker);
             }
         });
 
@@ -805,12 +630,11 @@ public class OnOffMapActivity extends ActionBarActivity {
             @Override
             public boolean onLongClick(View v) {
                 Log.d(TAG, "locOverlay toolTip LongPress");
-                Log.d(TAG, aMarker.getTitle());
-                selectLocType(aMarker);
+                Log.d(TAG, marker.getTitle());
+                selectLocType(marker);
                 return true;
             }
         });
-
 
     }
 
@@ -819,11 +643,20 @@ public class OnOffMapActivity extends ActionBarActivity {
 
         ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
 
-        if (paths != null) {
-            for(PathOverlay path: paths)
-                mv.addOverlay(path);
-        }
+        Paint pathPaint = new Paint();
+        pathPaint.setColor(getResources().getColor(R.color.black_light_light));
+        pathPaint.setAntiAlias(true);
+        pathPaint.setStrokeWidth(6.0f);
+        pathPaint.setStyle(Paint.Style.STROKE);
 
+        if (paths != null) {
+            for(PathOverlay path: paths) {
+                path.setPaint(pathPaint);
+                mv.addOverlay(path);
+
+            }
+
+        }
     }
 
 }

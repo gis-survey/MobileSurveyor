@@ -52,6 +52,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private static final String LON = "lon";
     private static final String TYPE = "type";
     private static final String USER_ID = "user_id";
+    private static final String OFF_MODE = "off_mode";
 
     private ZXingScannerView mScannerView;
     private LinearLayout btnLayout;
@@ -70,12 +71,22 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         super.onCreate(state);
         mContext = getApplicationContext();
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
-        setButtonsLayout();
-        setButtonListeners();
-        setFormats();
         params = getIntent().getExtras();
+
+        if (params.containsKey(OFF_MODE) &&
+                params.get(OFF_MODE).toString().equals("false") ){
+            setButtonsLayout();
+            setButtonListeners();
+            params.putString(MODE, ON);
+        }
+        else {
+            Log.d(TAG, "off mode is true");
+            params.putString(MODE, OFF);
+        }
+
+        setFormats();
+
         Log.d(TAG, params.getString(USER_ID));
-        params.putString(MODE, ON);
         setContentView(mScannerView);                // Set the scanner view as the content view
     }
 
@@ -270,53 +281,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
-            //finish();
             Log.d(TAG, "stopping location service by keydown");
             stopService(new Intent(this, LocationService.class));
-            //Intent locationServiceIntent = new Intent(this, LocationService.class);
-            //stopService(new Intent(this, LocationService.class));
-
-
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-    /*
-    protected void verifyGPS() {
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            showGPSDisabledAlertToUser();
-        }
-            //Toast.makeText(this, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
-        //}else{
-        //    showGPSDisabledAlertToUser();
-        //}
-
-    }
-
-    private void showGPSDisabledAlertToUser(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-        alertDialogBuilder.setMessage("GPS is disabled in your device. Enable it before scanning")
-                .setCancelable(false)
-                .setPositiveButton("Goto Settings Page To Enable GPS",
-                        new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog, int id){
-                                Intent callGPSSettingIntent = new Intent(
-                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                startActivity(callGPSSettingIntent);
-                            }
-                        });
-        //alertDialogBuilder.setNegativeButton("Cancel",
-         //       new DialogInterface.OnClickListener(){
-         //           public void onClick(DialogInterface dialog, int id){
-         //               dialog.cancel();
-         //           }
-        //        });
-        AlertDialog alert = alertDialogBuilder.create();
-        alert.show();
-    }
-    */
 
 }

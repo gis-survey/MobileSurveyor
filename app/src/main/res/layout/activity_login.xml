@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_margin="4dp"
+            android:layout_marginTop="10dp"
             android:text="Sign In"
             style="@style/ButtonText"
             android:background="@drawable/grey_button"

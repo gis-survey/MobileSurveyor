@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.meyersj.locationsurvey.app.R;
 
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,27 +34,30 @@ public class SetLineActivity extends Activity {
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.locationsurvey.app.SCANNER";
     private final String ONOFFMAP = "com.meyersj.locationsurvey.app.ONOFFMAP";
-    private final String[] TRAINS = {"190", "193", "194", "200"};
+    private String[] TRAINS = {"190", "193", "194", "200"};
 
     private static final String URL = "url";
     private static final String LINE = "rte";
     private static final String DIR = "dir";
     private static final String USER_ID = "user_id";
+    private static final String OFF_MODE = "off_mode";
 
     private Properties prop;
     private Spinner line, dir;
     private String line_code;
     private String dir_code;
     private String user_id;
+    private Boolean offMode = false;
     private String url;
     private Button record;
     private Button logout;
+    private Switch modeSwitch;
+
     private Map<String, String> map = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         readIDs();
-        //prop = getProperties();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_line);
@@ -62,6 +67,8 @@ public class SetLineActivity extends Activity {
         line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
         record = (Button) findViewById(R.id.record);
         logout = (Button) findViewById(R.id.logout);
+        modeSwitch = (Switch) findViewById(R.id.offSwitch);
+
 
         getExtras();
 
@@ -74,6 +81,22 @@ public class SetLineActivity extends Activity {
                 Log.d(TAG, selected_line);
                 String modified_line = stripSelection(selected_line);
                 line_code = map.get(modified_line);
+
+                Boolean ifTrain = false;
+                for (String train: TRAINS) {
+                    if (train.equals(line_code)) {
+                        Log.d(TAG, "we have a train");
+                        ifTrain = true;
+                    }
+                }
+
+                if (ifTrain) {
+                    modeSwitch.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    modeSwitch.setVisibility(View.VISIBLE);
+                }
+
                 Log.d(TAG, "line_code: " + line_code);
                 int resId = SetLineActivity.this.getResources().getIdentifier(modified_line, "array", SetLineActivity.this.getPackageName());
                 dir.setAdapter(ArrayAdapter.createFromResource(SetLineActivity.this, resId, R.layout.spinner));
@@ -126,6 +149,7 @@ public class SetLineActivity extends Activity {
 
                 intent.putExtra(URL, url);
                 intent.putExtra(USER_ID, user_id);
+                intent.putExtra(OFF_MODE, offMode);
                 Log.d(TAG, "user: " + user_id);
                 intent.putExtra(LINE, line_code);
                 intent.putExtra(DIR, dir_code);
@@ -138,9 +162,6 @@ public class SetLineActivity extends Activity {
 
             public void onClick(View v) {
 
-                //String boardLoc = board.getTitle();
-                //String alightLoc = alight.getTitle();
-                //String message = "Boarding: " + boardLoc + "\n\nAlighting: " + alightLoc;
                 AlertDialog.Builder builder = new AlertDialog.Builder(SetLineActivity.this);
                 builder.setMessage("Are you sure you want to logout?")
                         //.setMessage(message)
@@ -148,11 +169,6 @@ public class SetLineActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 finish();
-                                //get stop ids
-                                //String onStop = board.getDescription();
-                                //String offStop = alight.getDescription();
-                                //exitWithStopIDs(onStop, offStop);
-
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -164,38 +180,24 @@ public class SetLineActivity extends Activity {
 
                 AlertDialog select = builder.create();
                 select.show();
-
-
-
-
-                //finish();
-
-
-
-
             }
         });
-
-
-
     }
 
-    /*
-    protected Properties getProperties() {
-        Properties properties = null;
+    public void onSwitchClicked(View view) {
 
-        try {
-            InputStream inputStream = this.getResources().getAssets().open("config.properties");
-            properties = new Properties();
-            properties.load(inputStream);
-            Log.d(TAG, "properties are now loaded");
-            //System.out.println("properties: " + properties);
-        } catch (IOException e) {
-            Log.e(TAG, "properties failed to load, " + e);
+        Boolean on = ((Switch) view).isChecked();
+
+        if (on) {
+            Log.d(TAG, "switched on");
+            offMode = true;
         }
-        return properties;
+        else {
+            Log.d(TAG, "switched off");
+            offMode = false;
+        }
     }
-    */
+
 
     protected Boolean ifTrain(String line) {
         Boolean ifTrain = false;
@@ -223,7 +225,6 @@ public class SetLineActivity extends Activity {
 
     protected String stripSelection(String in) {
         String newSelec = in.replaceAll("[^A-Za-z]", "");
-        //Log.d(TAG, "stripped: " + newSelec);
         return newSelec;
     }
 
@@ -240,11 +241,6 @@ public class SetLineActivity extends Activity {
                 user_id = extras.getString(USER_ID);
                 Log.d(TAG, extras.getString(USER_ID));
             }
-            //}
-            //if(extras.containsKey(URL)) {
-            //    Log.d(TAG, extras.getString(URL));
-            //    url = extras.getString(URL);
-            //}
         }
     }
 
@@ -261,8 +257,6 @@ public class SetLineActivity extends Activity {
                 String[] parts = line.split(" ");
                 //Log.d(TAG, line);
                 if(parts.length == 2) {
-                    //Log.d(TAG, parts[0]);
-                    //Log.d(TAG, parts[1]);
                     map.put(parts[0], parts[1]);
                 }
             }
@@ -270,8 +264,6 @@ public class SetLineActivity extends Activity {
             Log.d(TAG, "error opening lines_id.txt");
             e.printStackTrace();
         }
-
-
     }
 
 }

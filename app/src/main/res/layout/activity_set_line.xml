@@ -40,9 +40,10 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_margin="4dp"
+            android:layout_marginTop="8dp"
             android:text="Start Recording"
             style="@style/ButtonText"
-            android:background="@drawable/grey_button"
+            android:background="@drawable/shape_rect_grey_fade_round_all"
             />
         <Button
             android:id="@+id/logout"
@@ -52,8 +53,17 @@
             android:layout_margin="4dp"
             android:text="Logout"
             style="@style/ButtonText"
-            android:background="@drawable/grey_button"
+            android:background="@drawable/shape_rect_grey_fade_round_all"
             />
+
+            <Switch
+                android:id="@+id/offSwitch"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Off mode only"
+                android:textOff="On/Off mode"
+                android:onClick="onSwitchClicked"/>
     </LinearLayout>
 
     <!--LinearLayout

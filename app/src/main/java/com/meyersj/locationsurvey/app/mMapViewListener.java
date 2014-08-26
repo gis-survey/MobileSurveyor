@@ -39,11 +39,6 @@ public class mMapViewListener implements MapViewListener {
 
     @Override
     public void onTapMap(MapView mapView, ILatLng iLatLng) {
-
-    }
-
-    @Override
-    public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
         LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
         ArrayList<ItemizedIconOverlay> overlays = mapView.getItemizedOverlays();
         ItemizedIconOverlay locOverlay;
@@ -59,6 +54,27 @@ public class mMapViewListener implements MapViewListener {
         }
         //LocationType locationType = new LocationType(mapView, latLng);
         //locationType.setLocationType();
+    }
+
+    @Override
+    public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
+        /*
+        LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
+        ArrayList<ItemizedIconOverlay> overlays = mapView.getItemizedOverlays();
+        ItemizedIconOverlay locOverlay;
+
+        if (!overlays.isEmpty()) {
+            locOverlay = overlays.get(0);
+            locOverlay.removeAllItems();
+            Marker m = new Marker("test", null, latLng);
+            m.addTo(mapView);
+            locOverlay.addItem(m);
+            mapView.invalidate();
+            //mapView.setCenter(iLatLng);
+        }
+        //LocationType locationType = new LocationType(mapView, latLng);
+        //locationType.setLocationType();
+        */
 
     }
 

@@ -57,6 +57,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
     private ImageButton clear;
     private Button submit;
+    private Button cancel;
 
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
@@ -74,6 +75,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
         clear = (ImageButton) findViewById(R.id.clear_text);
         submit = (Button) findViewById(R.id.submit);
+        cancel = (Button) findViewById(R.id.cancel);
 
         mv = (MapView) findViewById(R.id.mapview);
         mv.setMapViewListener(new mMapViewListener());
@@ -91,16 +93,8 @@ public class PickLocationActivity extends ActionBarActivity {
         adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(SOLR_URL));
         solrSearch.setAdapter(adapter);
 
-        /*
-        solrSearch.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                solrSearch.selectAll();
-                return false;
-            }
-        });
-        */
 
+        // set up listeners for view objects
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -115,7 +109,6 @@ public class PickLocationActivity extends ActionBarActivity {
                 closeKeypad();
             }
         });
-
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,12 +116,16 @@ public class PickLocationActivity extends ActionBarActivity {
                 solrSearch.setText("");
             }
         });
-
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                exitWithLocation();
+                exitWithLocation(true);
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exitWithLocation(false);
             }
         });
     }
@@ -201,20 +198,30 @@ public class PickLocationActivity extends ActionBarActivity {
         mv.addItemizedOverlay(locOverlay);
     }
 
-    private boolean exitWithLocation() {
+    private boolean exitWithLocation(Boolean valid) {
+        int result;
         Intent intent = new Intent();
-        Map<String, Double> coordinates = getCoordinates();
 
-        if(coordinates != null) {
-            Log.d(TAG, "coordinates not null");
-            intent.putExtra(ODK_LAT, coordinates.get("lat"));
-            intent.putExtra(ODK_LNG, coordinates.get("lon"));
-            setResult(RESULT_OK, intent);
+        if (valid) {
+            Map<String, Double> coordinates = getCoordinates();
+            if(coordinates != null) {
+                Log.d(TAG, "coordinates not null");
+                intent.putExtra(ODK_LAT, coordinates.get("lat"));
+                intent.putExtra(ODK_LNG, coordinates.get("lon"));
+                result = RESULT_OK;
+            }
+            else {
+                Log.d(TAG, "cancelled: no coordinates");
+                result = RESULT_CANCELED;
+            }
         }
         else {
-            Log.d(TAG, "coordinates null");
-            setResult(RESULT_CANCELED, intent);
+            Log.d(TAG, "cancelled: invalid");
+            result = RESULT_CANCELED;
         }
+
+
+        setResult(result, intent);
         finish();
         return true;
     }
@@ -223,9 +230,7 @@ public class PickLocationActivity extends ActionBarActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                Intent intent = new Intent();
-                setResult(RESULT_CANCELED, intent);
-                finish();
+                exitWithLocation(false);
         }
         return super.onKeyDown(keyCode, event);
     }

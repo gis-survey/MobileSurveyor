@@ -1,10 +1,12 @@
 package com.meyersj.locationsurvey.app.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -55,4 +57,6 @@ public class Utils {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
+
 }

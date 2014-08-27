@@ -91,6 +91,7 @@ public class PickLocationActivity extends ActionBarActivity {
         adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(SOLR_URL));
         solrSearch.setAdapter(adapter);
 
+        /*
         solrSearch.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -98,6 +99,7 @@ public class PickLocationActivity extends ActionBarActivity {
                 return false;
             }
         });
+        */
 
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -108,19 +110,9 @@ public class PickLocationActivity extends ActionBarActivity {
                 LocationResult locationResult = adapter.getLocationResultItem(address);
 
                 if (locationResult != null) {
-                    Log.d(TAG, locationResult.getAddress());
-                    Log.d(TAG, locationResult.getLatLng().toString());
                     addMarker(locationResult.getLatLng());
                 }
-                else {
-                    Log.e(TAG, "Did not find record: " + address);
-                }
-
-                //close keypad
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
+                closeKeypad();
             }
         });
 
@@ -159,6 +151,14 @@ public class PickLocationActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void closeKeypad() {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
 
     protected void setTiles(MapView mv) {
         ILatLng startingPoint = new LatLng(45.52186, -122.679005);

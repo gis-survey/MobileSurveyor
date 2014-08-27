@@ -4,6 +4,7 @@ import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.meyersj.locationsurvey.app.util.PostService;
 import com.meyersj.locationsurvey.app.R;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -68,23 +69,17 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String TILES = "OSMTriMet.mbtiles";
     private final String BOARD = "On";
     private final String ALIGHT = "Off";
+    private final Integer COUNT_MAX = 5;
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Context context;
 
-    private Integer submitCount;
 
     // parameters for HTTP POST
     private String line;
     private String dir;
     private String url;
     private String user_id;
-
-    // Variables for stop selection
-    //private Marker board;
-    //private Marker alight;
-    //private Marker current;
-    //private String locType;
 
     // Stop Icons
     private Drawable onIcon;
@@ -95,6 +90,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private MapView mv;
     private AutoCompleteTextView stopName;
     private ImageButton clear;
+    private View seqView;
     private ListView onSeqListView;
     private ListView offSeqListView;
     private Button stopSeqBtn;
@@ -103,18 +99,14 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Spinner countSpinner;
 
     private SelectedStops selectedStops;
-
-
     private ArrayAdapter<Integer> countAdapter;
+    private Integer submitCount;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
-
     private ItemizedIconOverlay locOverlay;
     private ItemizedIconOverlay selOverlay;
-
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     private ArrayList<Marker> selList = new ArrayList<Marker>();
-
     private BoundingBox bbox;
     private HashMap<String, Marker> stopsMap;
 
@@ -131,12 +123,10 @@ public class OnOffMapActivity extends ActionBarActivity {
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
         onIcon = getResources().getDrawable(R.drawable.transit_green_40);
-        //onIcon = getResources().getDrawable(R.drawable.circle_red2);
         offIcon = getResources().getDrawable(R.drawable.transit_red_40);
         stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
 
-
-        setupCounter(5);
+        setupCounter(COUNT_MAX);
         getExtras();
         setTiles(mv);
 
@@ -176,8 +166,8 @@ public class OnOffMapActivity extends ActionBarActivity {
         else if (action.equals(ODK_ACTION)) {
             setupODKSubmitAction();
             countSpinner.setVisibility(View.GONE);
-            //submit.setLayoutWight
 
+            // change layout params of submit button so it fills parent after count spinner is removed
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT, 10.0f);
@@ -214,7 +204,8 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     private void setupStopSearch() {
         String[] stopNames = buildStopsArray(locList);
-        //String[] stopNames = {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512" };
+        //String[] stopNames =
+        //      {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512", ... };
         final ArrayList<String> stopsList = new ArrayList<String>();
         Collections.addAll(stopsList, stopNames);
 
@@ -228,13 +219,7 @@ public class OnOffMapActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 stopName.setText("");
-
-                //close keypad
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-
+                closeKeypad();
                 selectLocType(stopsMap.get(stopsList.get(position)));
             }
         });
@@ -246,6 +231,13 @@ public class OnOffMapActivity extends ActionBarActivity {
                 stopName.setText("");
             }
         });
+    }
+
+    public void closeKeypad() {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 
@@ -278,6 +270,9 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     private void setupStopSequenceList() {
+        seqView = (View) findViewById(R.id.seq_list);
+
+
         stopSeqBtn = (Button) findViewById(R.id.stop_seq_btn);
         onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
         offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
@@ -294,28 +289,26 @@ public class OnOffMapActivity extends ActionBarActivity {
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (onSeqListView.getVisibility() == View.INVISIBLE) {
-                    osmText.setVisibility(View.INVISIBLE);
-
-                    onSeqListView.setVisibility(View.VISIBLE);
-                    offSeqListView.setVisibility(View.VISIBLE);
-                    stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
-
-
-                } else {
-                    osmText.setVisibility(View.VISIBLE);
-
-                    onSeqListView.setVisibility(View.INVISIBLE);
-                    offSeqListView.setVisibility(View.INVISIBLE);
-                    stopSeqBtn.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
-
-                }
+                changeSeqListVisibility(seqView.getVisibility());
             }
         });
-
     }
 
+    //toggle visibility of sequence list depending on current visibility
+    private void changeSeqListVisibility(int currentVisibility) {
+        osmText.setVisibility(currentVisibility);
+
+        if (currentVisibility == View.INVISIBLE) {
+            seqView.setVisibility(View.VISIBLE);
+            stopSeqBtn.setBackground(
+                    context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
+        }
+        else {
+            seqView.setVisibility(View.INVISIBLE);
+            stopSeqBtn.setBackground(
+                    context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
+        }
+    }
 
     private void setupOnOffSubmitAction() {
         submit.setOnClickListener(new View.OnClickListener() {
@@ -499,7 +492,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                         String choice = items[i].toString();
                         Log.d(TAG, "Choice: " + choice);
                         selectedStops.setCurrentMarker(selectedMarker, choice);
-
                     }
                 })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -507,7 +499,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
                         selectedStops.saveCurrentMarker(selectedMarker);
-                        //mv.zoomToBoundingBox(bbox, true, false, true, true);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -552,7 +543,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                             for(int i_count = 0; i_count < count; i_count++ ) {
                                 postResults(onStop, offStop);
                             }
-
                             resetCount();
                             resetMap();
                         }
@@ -614,7 +604,6 @@ public class OnOffMapActivity extends ActionBarActivity {
         bbox = stops.getBoundingBox();
         mv.zoomToBoundingBox(bbox, true, false, true, true);
         return stops.getStops();
-
     }
 
 
@@ -633,7 +622,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                 return false;
             }
         });
-
         mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -643,7 +631,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                 return true;
             }
         });
-
     }
 
     protected void addRoute(String line, String dir) {
@@ -663,7 +650,6 @@ public class OnOffMapActivity extends ActionBarActivity {
                 mv.addOverlay(path);
 
             }
-
         }
     }
 

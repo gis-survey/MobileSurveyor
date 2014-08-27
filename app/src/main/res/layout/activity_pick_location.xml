@@ -5,15 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.test.test.app.MainActivity">
 
-
     <com.mapbox.mapboxsdk.views.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         mapid="Your MapBox mapid" />
-
-
-
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -43,8 +39,6 @@
 
     </RelativeLayout>
 
-
-
     <LinearLayout
         android:id="@+id/buttons"
         android:layout_width="fill_parent"
@@ -54,22 +48,16 @@
         android:weightSum="1"
         android:paddingLeft="0dp"
         android:paddingRight="0dp">
-    <!--Button
-        android:id="@+id/clear"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:layout_weight="0.5"
-        android:layout_margin="-5dp"/-->
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/grey_button"
-        style="@style/ButtonText"
-        android:text="Submit"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grey_button"
+            style="@style/ButtonText"
+            android:text="Submit"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
     </LinearLayout>
 
     <TextView

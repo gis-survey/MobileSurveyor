@@ -4,11 +4,14 @@
 
     <item>
         <shape>
-            <solid
-                android:color="#ff434343" />
+            <gradient
+                android:endColor="#ff8b8b8b"
+                android:startColor="#ff434343"
+                android:angle="270" />
             <stroke
                 android:width="0.5dp"
                 android:color="@color/black_light" />
+
         </shape>
     </item>
 

@@ -38,9 +38,12 @@ public class BuildStops {
         mv = inMv;
         stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
-        bboxBuilder = new BuildBoundingBox();
-        parseGeoJSON(geoJSON);
 
+
+        if (geoJSON != null) {
+            bboxBuilder = new BuildBoundingBox();
+            parseGeoJSON(geoJSON);
+        }
 
     }
 
@@ -86,6 +89,9 @@ public class BuildStops {
     }
 
     private FeatureCollection openGeoJSON(String assetsFile) {
+
+        Log.d(TAG, assetsFile);
+
         FeatureCollection parsed = null;
 
         try {

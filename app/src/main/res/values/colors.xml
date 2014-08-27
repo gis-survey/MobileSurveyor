@@ -6,7 +6,8 @@
     <color name="black_light">#ff333333</color>
     <color name="black_light_light">#ff676767</color>
     <color name="white">#ffffffff</color>
-    <color name="grey">#54ffffff</color>
+    <color name="grey">#ffededed</color>
+    <color name="light_grey">#ffbbbbbb</color>
     <color name="red">#ffd20000</color>
 
 </resources>

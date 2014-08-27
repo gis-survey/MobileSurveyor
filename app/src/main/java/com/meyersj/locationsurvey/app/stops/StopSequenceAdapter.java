@@ -58,7 +58,7 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
 
         if (stop != null) {
 
-            TextView label = (TextView) view.findViewById(R.id.text1);
+            TextView label = (TextView) view.findViewById(R.id.text);
 
             if (label != null) {
 
@@ -67,13 +67,14 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
                 if(position == selectedIndex)
                 {
                     label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_light_grey_nofade));
-                    label.setTextColor(context.getResources().getColor(R.color.black_light));
+                    label.setTextColor(context.getResources().getColor(R.color.black));
+
                 }
 
                 else
                 {
                     label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_nofade));
-                    label.setTextColor(context.getResources().getColor(R.color.grey));
+                    label.setTextColor(context.getResources().getColor(R.color.light_grey));
                 }
             }
         }

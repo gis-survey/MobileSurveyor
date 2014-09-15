@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app.util;
+package com.meyersj.locationsurvey.app.scans;
 
 import android.app.Service;
 import android.content.Context;
@@ -11,19 +11,26 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.meyersj.locationsurvey.app.util.Utils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class LocationService extends Service {
 	public static final String BROADCAST_ACTION = "com.example.LocationReceiver";
+    private static final int INTERVAL_TIME = 1000 * 5;
+    private static final float INTERVAL_DIST = 0;
 	private final String TAG = "LocationService";
-	private static final int INTERVAL = 1000 * 15;
-    private static final int TWO_MINUTES = 1000 * 60 * 2;
-	private static final int intervalTime = 1000 * 30;
-	private static final float intervalDist = 0;
+    //private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+
 	public LocationManager locationManager;
 	public MyLocationListener listener;
 	public Location previousBestLocation = null;
 	
 	Intent intent;
-	int counter = 0;
 	
 	
 	@Override
@@ -35,10 +42,14 @@ public class LocationService extends Service {
 	
 	@Override
 	public void onStart(Intent intent, int startId) {
-	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 	    listener = new MyLocationListener();        
-	    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, INTERVAL, intervalDist, listener);
-	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, INTERVAL, intervalDist, listener);
+	    //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, INTERVAL_TIME, INTERVAL_DIST, listener);
+	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, INTERVAL_TIME, INTERVAL_DIST, listener);
+
+        Date date = new Date();
+        String dateString = Utils.dateFormat.format(date);
+        Log.d(TAG, "Start Loc: " + dateString);
 	}
 	
 	@Override
@@ -54,8 +65,8 @@ public class LocationService extends Service {
 	
 	    // Check whether the new location fix is newer or older
 	    long timeDelta = location.getTime() - currentBestLocation.getTime();
-	    boolean isSignificantlyNewer = timeDelta > INTERVAL;
-	    boolean isSignificantlyOlder = timeDelta < INTERVAL;
+	    boolean isSignificantlyNewer = timeDelta > INTERVAL_TIME;
+	    boolean isSignificantlyOlder = timeDelta < INTERVAL_TIME;
 	    boolean isNewer = timeDelta > 0;
 	
 	    // If it's been more than two minutes since the current location, use the new location
@@ -124,20 +135,31 @@ public class LocationService extends Service {
 		
 		    public void onLocationChanged(final Location loc)
 		    {
-		        Log.i("**************************************", "Location changed");
+		        Log.d(TAG, "Location changed");
 		        if(isBetterLocation(loc, previousBestLocation)) {
-		            loc.getLatitude();
-		            loc.getLongitude();             
-		            
+
+		            String accuracy = Float.toString(loc.getAccuracy());
 		            String lat = Double.toString(loc.getLatitude());
 		            String lon = Double.toString(loc.getLongitude());
-		            
+                    String provider = loc.getProvider();
+                    Date date = new Date();
+                    String dateString = Utils.dateFormat.format(date);
+
+                    Log.d(TAG, "found better location");
+                    Log.d(TAG, "Provider: " + provider);
+                    Log.d(TAG, "GPS: " + lat + " " + lon);
+                    Log.d(TAG, "Accuracy: " + accuracy);
+                    Log.d(TAG, "Date: " + dateString + "\n");
+
+                    Utils.appendCSV(dateString + "," + accuracy + "," + lat + "," + lon);
 		            
 		            intent.putExtra("Latitude", lat);
-		            intent.putExtra("Longitude", lon);     
-		            intent.putExtra("Provider", loc.getProvider());
-		            Log.d(TAG, lat + ' ' + lon);
-		            Toast.makeText( getApplicationContext(), "GPS updated", Toast.LENGTH_SHORT ).show();
+		            intent.putExtra("Longitude", lon);
+                    intent.putExtra("Accuracy", accuracy);
+                    intent.putExtra("Date", dateString);
+
+                    String message = lat + " - " + lon + ": " + accuracy;
+		            Toast.makeText( getApplicationContext(), message, Toast.LENGTH_SHORT ).show();
 		            sendBroadcast(intent);          
 		        }                               
 		    }

@@ -16,20 +16,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.meyersj.locationsurvey.app.util.LocationService;
-import com.meyersj.locationsurvey.app.util.PostService;
+import com.meyersj.locationsurvey.app.util.Constants;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Utils;
 
@@ -58,21 +52,24 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private LinearLayout btnLayout;
     private Button onBtn;
     private Button offBtn;
-    private static Context mContext;
-    private Bundle params;
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private Context mContext;
+    //private Bundle params;
+
+
 
     BroadcastReceiver receiver;
-    private String lat = "0";
-    private String lon = "0";
+    private SaveScans saveScans;
+    //private String lat = "0";
+    //private String lon = "0";
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
         mContext = getApplicationContext();
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
-        params = getIntent().getExtras();
+        Bundle params = getIntent().getExtras();
 
+        //display on and off buttons only if 'off' mode is not selected
         if (params.containsKey(OFF_MODE) &&
                 params.get(OFF_MODE).toString().equals("false") ){
             setButtonsLayout();
@@ -83,6 +80,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             Log.d(TAG, "off mode is true");
             params.putString(MODE, OFF);
         }
+
+        saveScans = new SaveScans(getApplicationContext(), params);
 
         setFormats();
 
@@ -98,12 +97,23 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         startService(new Intent(this, LocationService.class));
 
+
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.d(TAG, "new location received");
-                lat = intent.getStringExtra("Latitude");
-                lon = intent.getStringExtra("Longitude");
+                String lat = intent.getStringExtra("Latitude");
+                String lon = intent.getStringExtra("Longitude");
+                String date = intent.getStringExtra("Date");
+                Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
+
+                Log.d(TAG, "new location received: " + lat + "-" + lon);
+                saveScans.setLocation(lat, lon, accuracy, date);
+                saveScans.flushBuffer();
+
+                //TODO flush buffer each time new location is recieved
+                //saveScans.flushBuffer();
+
+
             }
         };
         registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
@@ -141,9 +151,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         Log.d(TAG, rawResult.getText()); // Prints scan results
         Log.d(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
-        Intent post = new Intent(getApplicationContext(), PostService.class);
+        //Intent post = new Intent(getApplicationContext(), PostService.class);
 
-        postResults(rawResult);
+        saveScans.save(rawResult);
+
 
         // pause before restarting camera to prevent multiple scans
         Handler mHandler = new Handler();
@@ -194,7 +205,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             public void onClick(View v) {
                 onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
-                params.putString(MODE, ON);
+                saveScans.setMode(Constants.ON);
                 Log.d(TAG, ON);
             }
         });
@@ -204,13 +215,14 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             public void onClick(View v) {
                 offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 onBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
-                params.putString(MODE, OFF);
+                saveScans.setMode(Constants.OFF);
                 Log.d(TAG, OFF);
             }
 
         });
     }
 
+    /*
     private Boolean checkParams(Bundle check) {
 
         Boolean retVal = false;
@@ -244,6 +256,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         }
         return retVal;
     }
+    */
 
     private void setFormats() {
         List<BarcodeFormat> formats = new ArrayList<BarcodeFormat>();
@@ -251,10 +264,22 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView.setFormats(formats);
     }
 
-    private void postResults(Result rawResult) {
+    /*
+    private void saveScan(Result rawResult) {
         Date date = new Date();
+
+        currentLoc.timeDifference(date);
+        //TODO check time delta between date and currentLoc date
+
+        postResults(rawResult, date);
+    }
+    */
+
+    /*
+    private void postResults(Result rawResult, Date date) {
+
         params.putString(UUID, rawResult.toString());
-        params.putString(DATE, dateFormat.format(date));
+        params.putString(DATE, Utils.dateFormat.format(date));
         params.putString(LAT, lat);
         params.putString(LON, lon);
 
@@ -273,8 +298,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         else {
             Log.e(TAG, "params are not valid");
         }
-
     }
+    */
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

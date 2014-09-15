@@ -91,7 +91,7 @@
             android:name=".util.PostService"
             android:exported="false"/>
         <service
-            android:name=".util.LocationService"
+            android:name=".scans.LocationService"
             android:exported="false"/>
 
     </application>

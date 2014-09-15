@@ -9,14 +9,21 @@ import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 
 /**
  * Created by meyersj on 8/14/2014.
  */
 public class Utils {
+
+    public static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager =
@@ -56,6 +63,30 @@ public class Utils {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+    }
+
+    public static void appendCSV(String text) {
+        File logFile = new File("sdcard/gpslog.csv");
+        if (!logFile.exists()) {
+
+            try {
+                logFile.createNewFile();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        try {
+            BufferedWriter buf = new BufferedWriter(new FileWriter(logFile, true));
+            buf.append(text);
+            buf.newLine();
+            buf.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

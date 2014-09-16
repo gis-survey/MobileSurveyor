@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.zxing.Result;
-import com.meyersj.locationsurvey.app.util.Constants;
+import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.PostService;
 import com.meyersj.locationsurvey.app.util.Utils;
 
@@ -19,6 +19,9 @@ public class SaveScans {
 
 
     private final String TAG = "SaveScans";
+    private final Float OLD_THRESHOLD = Float.valueOf(1000 * 30);
+    private final Float CURRENT_THRESHOLD = Float.valueOf(1000 * 30);
+
 
     private class Scan {
         private Date date;
@@ -49,11 +52,11 @@ public class SaveScans {
 
 
     public SaveScans(Context context, Bundle params) {
-        this.url = params.getString(Constants.URL);
-        this.user_id = params.getString(Constants.USER_ID);
-        this.line = params.getString(Constants.LINE);
-        this.dir = params.getString(Constants.DIR);
-        this.mode = params.getString(Constants.MODE);
+        this.url = params.getString(Cons.URL);
+        this.user_id = params.getString(Cons.USER_ID);
+        this.line = params.getString(Cons.LINE);
+        this.dir = params.getString(Cons.DIR);
+        this.mode = params.getString(Cons.MODE);
         this.context = context;
         this.currentLoc = new CurrentLocation();
         this.scansBuffer = new ArrayList<Scan>();
@@ -70,14 +73,14 @@ public class SaveScans {
     //don't add lat and lon because we might be waiting for a more recent location
     private Bundle buildParams(String uuid, String date) {
         Bundle params = new Bundle();
-        params.putString(Constants.URL, url);
-        params.putString(Constants.USER_ID, user_id);
-        params.putString(Constants.LINE, line);
-        params.putString(Constants.DIR, dir);
-        params.putString(Constants.MODE, mode);
-        params.putString(Constants.UUID, uuid);
-        params.putString(Constants.DATE, date);
-        params.putString(Constants.TYPE, Constants.SCAN);
+        params.putString(Cons.URL, url);
+        params.putString(Cons.USER_ID, user_id);
+        params.putString(Cons.LINE, line);
+        params.putString(Cons.DIR, dir);
+        params.putString(Cons.MODE, mode);
+        params.putString(Cons.UUID, uuid);
+        params.putString(Cons.DATE, date);
+        params.putString(Cons.TYPE, Cons.SCAN);
         return params;
     }
 
@@ -98,9 +101,13 @@ public class SaveScans {
         Log.d(TAG, rawResult.toString());
 
         //check time delta between date and currentLoc date
-        if (currentLoc.timeDifference(date) <= 15) {
+        if (currentLoc.timeDifference(date) <= CURRENT_THRESHOLD) {
             Log.d(TAG, "posting scan");
             postScan(rawResult, date);
+            Utils.appendCSV("current," +
+                    Utils.dateFormat.format(date) + "," +
+                    currentLoc.getAccuracy() + "," +
+                    currentLoc.getLat() + "," + currentLoc.getLon());
         }
         else {
             Log.d(TAG, "adding scan to buffer");
@@ -110,19 +117,39 @@ public class SaveScans {
 
 
     public void flushBuffer() {
+        Integer total = 0;
+        Integer count = 0;
+
         Log.d(TAG, "flushing buffer");
         for(Scan scan: scansBuffer) {
-            Log.d(TAG, "blah");
-            //Bundle params = scan.getParams();
-            //TODO check for how old the scan is versus when the location was recieved
-            post(scan.getParams());
+            total += 1;
+            Float diff = currentLoc.timeDifference(scan.getDate());
+            if(diff <= OLD_THRESHOLD) {
+                count += 1;
+                post(scan.getParams());
+                Log.d(TAG, "using new location");
+                Utils.appendCSV("valid_buffer," +
+                        Utils.dateFormat.format(scan.getDate()) + "," +
+                        currentLoc.getAccuracy() + "," +
+                        currentLoc.getLat() + "," + currentLoc.getLon());
+            }
+            else {
+                Log.d(TAG, "too old, deleting");
+                Utils.appendCSV("old_buffer," +
+                        Utils.dateFormat.format(scan.getDate()) + "," +
+                        currentLoc.getAccuracy() + "," +
+                        currentLoc.getLat() + "," + currentLoc.getLon());
+            }
         }
+
+        String message = "Flush: count=" + String.valueOf(count) + " total=" + String.valueOf(total);
+        Utils.longToastCenter(context, message);
         scansBuffer.clear();
     }
 
     private void post(Bundle params) {
-        params.putString(Constants.LAT, currentLoc.getLat());
-        params.putString(Constants.LAT, currentLoc.getLon());
+        params.putString(Cons.LAT, currentLoc.getLat());
+        params.putString(Cons.LON, currentLoc.getLon());
         Intent post = new Intent(context, PostService.class);
         post.putExtras(params);
         context.startService(post);

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.meyersj.locationsurvey.app.R;
+import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import org.apache.http.HttpEntity;
@@ -56,15 +57,6 @@ public class LoginActivity extends Activity {
 
     private static final String TAG = "LoginActivity";
     private final String SETLINE = "com.meyersj.locationsurvey.app.SETLINE";
-    private final String PROPERTIES = "config.properties";
-    private static final String BASE_URL = "base_url";
-    private static final String URL = "url";
-    private static final String USER_NAME = "username";
-    private static final String PASSWORD = "password";
-    private static final String USER_ID = "user_id";
-    private static final String USER_MATCH = "user_match";
-    private static final String PASS_MATCH = "password_match";
-    private static final String CRED = "credentials";
 
     private EditText username;
     private EditText password;
@@ -82,8 +74,8 @@ public class LoginActivity extends Activity {
         login = (Button) findViewById(R.id.login);
         skip_login = (Button) findViewById(R.id.skip_login);
 
-        prop = Utils.getProperties(getApplicationContext(), PROPERTIES);
-        url = prop.getProperty(BASE_URL);
+        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
+        url = prop.getProperty(Cons.BASE_URL);
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -91,8 +83,8 @@ public class LoginActivity extends Activity {
                 String pass = password.getText().toString();
 
                 JSONObject json = new JSONObject();
-                json.put(USER_NAME, name);
-                json.put(PASSWORD, pass);
+                json.put(Cons.USER_NAME, name);
+                json.put(Cons.PASSWORD, pass);
 
                 String credentials = json.toJSONString();
                 Log.d(TAG, "login Credentials: " + credentials);
@@ -119,8 +111,8 @@ public class LoginActivity extends Activity {
         skip_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SETLINE);
-                intent.putExtra(URL, url);
-                intent.putExtra(USER_ID, "testuser");
+                intent.putExtra(Cons.URL, url);
+                intent.putExtra(Cons.USER_ID, "testuser");
                 startActivity(intent);
             }
         });
@@ -151,7 +143,7 @@ public class LoginActivity extends Activity {
         HttpPost post = new HttpPost(params[0]);
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(CRED, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.CRED, params[1]));
 
         try {
             post.setEntity(new UrlEncodedFormEntity(postParam));
@@ -182,9 +174,9 @@ public class LoginActivity extends Activity {
             JSONObject results = (JSONObject) obj;
             Log.d(TAG, results.toString());
 
-            String user_match = results.get(USER_MATCH).toString();
-            String password_match = results.get(PASS_MATCH).toString();
-            String user_id = results.get(USER_ID).toString();
+            String user_match = results.get(Cons.USER_MATCH).toString();
+            String password_match = results.get(Cons.PASS_MATCH).toString();
+            String user_id = results.get(Cons.USER_ID).toString();
 
             Log.d(TAG, "user_match: " + user_match);
             Log.d(TAG, "password_match: " + password_match);
@@ -206,8 +198,8 @@ public class LoginActivity extends Activity {
             //move user to SetLineActivity
             else {
                 Intent intent = new Intent(SETLINE);
-                intent.putExtra(URL, url);
-                intent.putExtra(USER_ID, user_id);
+                intent.putExtra(Cons.URL, url);
+                intent.putExtra(Cons.USER_ID, user_id);
                 Log.d(TAG, "user: " + user_id);
                 password.setText("");
                 startActivity(intent);

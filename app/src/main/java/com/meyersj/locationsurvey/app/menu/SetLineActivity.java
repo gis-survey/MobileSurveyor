@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.meyersj.locationsurvey.app.R;
+import com.meyersj.locationsurvey.app.util.Cons;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,13 +35,8 @@ public class SetLineActivity extends Activity {
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.locationsurvey.app.SCANNER";
     private final String ONOFFMAP = "com.meyersj.locationsurvey.app.ONOFFMAP";
-    private String[] TRAINS = {"190", "193", "194", "200"};
 
-    private static final String URL = "url";
-    private static final String LINE = "rte";
-    private static final String DIR = "dir";
-    private static final String USER_ID = "user_id";
-    private static final String OFF_MODE = "off_mode";
+    private String[] TRAINS = {"190", "193", "194", "200"};
 
     private Properties prop;
     private Spinner line, dir;
@@ -147,12 +143,12 @@ public class SetLineActivity extends Activity {
                     Log.d(TAG, "start barcode scanner");
                 }
 
-                intent.putExtra(URL, url);
-                intent.putExtra(USER_ID, user_id);
-                intent.putExtra(OFF_MODE, offMode);
+                intent.putExtra(Cons.URL, url);
+                intent.putExtra(Cons.USER_ID, user_id);
+                intent.putExtra(Cons.OFF_MODE, offMode);
                 Log.d(TAG, "user: " + user_id);
-                intent.putExtra(LINE, line_code);
-                intent.putExtra(DIR, dir_code);
+                intent.putExtra(Cons.LINE, line_code);
+                intent.putExtra(Cons.DIR, dir_code);
                 startActivity(intent);
             }
         });
@@ -233,13 +229,13 @@ public class SetLineActivity extends Activity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            if(extras.containsKey(URL)) {
-                url = extras.getString(URL);
+            if(extras.containsKey(Cons.URL)) {
+                url = extras.getString(Cons.URL);
                 Log.d(TAG, url);
             }
-            if(extras.containsKey(USER_ID)) {
-                user_id = extras.getString(USER_ID);
-                Log.d(TAG, extras.getString(USER_ID));
+            if(extras.containsKey(Cons.USER_ID)) {
+                user_id = extras.getString(Cons.USER_ID);
+                Log.d(TAG, extras.getString(Cons.USER_ID));
             }
         }
     }

@@ -18,20 +18,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LocationService extends Service {
-	public static final String BROADCAST_ACTION = "com.example.LocationReceiver";
+
+    public static final String BROADCAST_ACTION = "com.example.LocationReceiver";
     private static final int INTERVAL_TIME = 1000 * 5;
     private static final float INTERVAL_DIST = 0;
 	private final String TAG = "LocationService";
-    //private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-
 
 	public LocationManager locationManager;
 	public MyLocationListener listener;
 	public Location previousBestLocation = null;
 	
 	Intent intent;
-	
 	
 	@Override
 	public void onCreate() {
@@ -151,7 +148,7 @@ public class LocationService extends Service {
                     Log.d(TAG, "Accuracy: " + accuracy);
                     Log.d(TAG, "Date: " + dateString + "\n");
 
-                    Utils.appendCSV(dateString + "," + accuracy + "," + lat + "," + lon);
+                    Utils.appendCSV("gps," + dateString + "," + accuracy + "," + lat + "," + lon);
 		            
 		            intent.putExtra("Latitude", lat);
 		            intent.putExtra("Longitude", lon);
@@ -159,24 +156,21 @@ public class LocationService extends Service {
                     intent.putExtra("Date", dateString);
 
                     String message = lat + " - " + lon + ": " + accuracy;
-		            Toast.makeText( getApplicationContext(), message, Toast.LENGTH_SHORT ).show();
+		            Utils.longToast(getApplicationContext(), message);
 		            sendBroadcast(intent);          
 		        }                               
 		    }
 		
-		    public void onProviderDisabled(String provider)
-		    {
-		        //Toast.makeText( getApplicationContext(), "GPS Disabled", Toast.LENGTH_SHORT ).show();
-		    }
+		    public void onProviderDisabled(String provider) {
+
+            }
 		
-		    public void onProviderEnabled(String provider)
-		    {
-		        //Toast.makeText( getApplicationContext(), "GPS Enabled", Toast.LENGTH_SHORT).show();
-		    }
+		    public void onProviderEnabled(String provider) {
+
+            }
 		
 		    public void onStatusChanged(String provider, int status, Bundle extras) {
-		   
-		
+
 		    }
 		}
 }

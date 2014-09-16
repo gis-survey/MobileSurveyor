@@ -8,6 +8,7 @@ import android.util.Log;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.locationsurvey.app.R;
+import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 /**
@@ -16,8 +17,6 @@ import com.meyersj.locationsurvey.app.util.Utils;
 public class SelectedStops {
 
     private final String TAG = "SaveSelectedStops";
-    private final String BOARD = "On";
-    private final String ALIGHT = "Off";
 
     private Context context;
     private StopSequenceAdapter onAdapter;
@@ -80,13 +79,13 @@ public class SelectedStops {
                 board = null;
             }
 
-            if (currentType.equals(BOARD)) {
+            if (currentType.equals(Cons.BOARD)) {
                 if(board != null) {
                     board.setMarker(stopIcon);
                 }
                 board = current;
                 board.setMarker(onIcon);
-                Log.d(TAG, BOARD + ": " + board.getTitle());
+                Log.d(TAG, Cons.BOARD + ": " + board.getTitle());
                 onAdapter.setSelectedIndex(onAdapter.getItemIndex(board.getTitle()));
 
             }
@@ -96,7 +95,7 @@ public class SelectedStops {
                 }
                 alight = current;
                 alight.setMarker(offIcon);
-                Log.d(TAG, ALIGHT + ": " + alight.getTitle());
+                Log.d(TAG, Cons.ALIGHT + ": " + alight.getTitle());
                 offAdapter.setSelectedIndex(offAdapter.getItemIndex(alight.getTitle()));
 
             }
@@ -107,7 +106,7 @@ public class SelectedStops {
 
     public void saveSequenceMarker(String mode, Marker newMarker) {
 
-        if (mode.equals(BOARD)) {
+        if (mode.equals(Cons.BOARD)) {
             if (board != null) {
                 board.setMarker(stopIcon);
             }
@@ -163,11 +162,5 @@ public class SelectedStops {
     public Marker getAlight() {
         return alight;
     }
-
-
-
-
-
-
 
 }

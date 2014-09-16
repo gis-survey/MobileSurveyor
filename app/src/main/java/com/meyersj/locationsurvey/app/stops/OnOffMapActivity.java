@@ -1,6 +1,7 @@
 package com.meyersj.locationsurvey.app.stops;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
+import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.PostService;
 import com.meyersj.locationsurvey.app.R;
 
@@ -55,25 +56,11 @@ public class OnOffMapActivity extends ActionBarActivity {
     private final String TAG = "OnOffMapActivity";
     private final String ODK_ACTION = "com.meyersj.locationsurvey.app.ODK_ONOFFMAP";
     private final String ONOFF_ACTION = "com.meyersj.locationsurvey.app.ONOFFMAP";
-    private final String URL = "url";
-    private final String LINE = "rte";
-    private final String DIR = "dir";
-    private final String DATE = "date";
-    private final String ON_STOP = "on_stop";
-    private final String OFF_STOP = "off_stop";
-    private final String TYPE = "type";
-    private final String USER_ID = "user_id";
-    private final String ODK_BOARD = "board_id";
-    private final String ODK_ALIGHT = "alight_id";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final String TILES = "OSMTriMet.mbtiles";
-    private final String BOARD = "On";
-    private final String ALIGHT = "Off";
     private final Integer COUNT_MAX = 5;
 
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Context context;
-
 
     // parameters for HTTP POST
     private String line;
@@ -193,10 +180,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
 
                 if (listView == onSeqListView) {
-                    selectedStops.saveSequenceMarker(BOARD, stop);
+                    selectedStops.saveSequenceMarker(Cons.BOARD, stop);
                 }
                 else {
-                    selectedStops.saveSequenceMarker(ALIGHT, stop);
+                    selectedStops.saveSequenceMarker(Cons.ALIGHT, stop);
                 }
             }
         });
@@ -392,17 +379,19 @@ public class OnOffMapActivity extends ActionBarActivity {
 
 
     protected void postResults(String onStop, String offStop) {
+        Log.d(TAG, "posting results");
+
         Date date = new Date();
 
         Bundle extras = new Bundle();
-        extras.putString(URL, url);
-        extras.putString(LINE, line);
-        extras.putString(DIR, dir);
-        extras.putString(DATE, dateFormat.format(date));
-        extras.putString(ON_STOP, onStop);
-        extras.putString(OFF_STOP, offStop);
-        extras.putString(USER_ID, user_id);
-        extras.putString(TYPE, "pair");
+        extras.putString(Cons.URL, url);
+        extras.putString(Cons.LINE, line);
+        extras.putString(Cons.DIR, dir);
+        extras.putString(Cons.DATE, Utils.dateFormat.format(date));
+        extras.putString(Cons.ON_STOP, onStop);
+        extras.putString(Cons.OFF_STOP, offStop);
+        extras.putString(Cons.USER_ID, user_id);
+        extras.putString(Cons.TYPE, Cons.PAIR);
 
         Intent post = new Intent(getApplicationContext(), PostService.class);
         post.putExtras(extras);
@@ -482,7 +471,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     protected void selectLocType(final Marker selectedMarker) {
         String message = selectedMarker.getTitle();
 
-        final CharSequence[] items = {BOARD, ALIGHT};
+        final CharSequence[] items = {Cons.BOARD, Cons.ALIGHT};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
         builder.setTitle(message)
@@ -528,7 +517,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         if (Utils.isNetworkAvailable(getApplicationContext())) {
             String boardLoc = board.getTitle();
             String alightLoc = alight.getTitle();
-            String message = BOARD + ": " + boardLoc + "\n\n" + ALIGHT + ": " + alightLoc;
+            String message = Cons.BOARD + ": " + boardLoc + "\n\n" + Cons.ALIGHT + ": " + alightLoc;
             AlertDialog.Builder builder = new AlertDialog.Builder(OnOffMapActivity.this);
             builder.setTitle("Are you sure you want to submit these locations?")
                     .setMessage(message)
@@ -565,8 +554,8 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     private boolean exitWithStopIDs(String onStop, String offStop) {
         Intent intent = new Intent();
-        intent.putExtra(ODK_BOARD, onStop);
-        intent.putExtra(ODK_ALIGHT, offStop);
+        intent.putExtra(Cons.ODK_BOARD, onStop);
+        intent.putExtra(Cons.ODK_ALIGHT, offStop);
         setResult(RESULT_OK, intent);
         finish();
         return true;
@@ -576,21 +565,21 @@ public class OnOffMapActivity extends ActionBarActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            if(extras.containsKey(LINE)) {
-                Log.d(TAG, extras.getString(LINE));
-                line = extras.getString(LINE);
+            if(extras.containsKey(Cons.LINE)) {
+                Log.d(TAG, extras.getString(Cons.LINE));
+                line = extras.getString(Cons.LINE);
             }
-            if(extras.containsKey(DIR)) {
-                Log.d(TAG, extras.getString(DIR));
-                dir = extras.getString(DIR);
+            if(extras.containsKey(Cons.DIR)) {
+                Log.d(TAG, extras.getString(Cons.DIR));
+                dir = extras.getString(Cons.DIR);
             }
-            if(extras.containsKey(URL)) {
-                Log.d(TAG, extras.getString(URL));
-                url = extras.getString(URL);
+            if(extras.containsKey(Cons.URL)) {
+                Log.d(TAG, extras.getString(Cons.URL));
+                url = extras.getString(Cons.URL);
             }
-            if(extras.containsKey(USER_ID)) {
-                Log.d(TAG, extras.getString(USER_ID));
-                user_id = extras.getString(USER_ID);
+            if(extras.containsKey(Cons.USER_ID)) {
+                Log.d(TAG, extras.getString(Cons.USER_ID));
+                user_id = extras.getString(Cons.USER_ID);
             }
         }
     }

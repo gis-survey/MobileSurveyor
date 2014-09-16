@@ -1,4 +1,4 @@
-package com.meyersj.locationsurvey.app;
+package com.meyersj.locationsurvey.app.locations;
 
 import android.util.Log;
 
@@ -11,9 +11,7 @@ import com.mapbox.mapboxsdk.views.MapViewListener;
 
 import java.util.ArrayList;
 
-/**
- * Created by jeff on 05/05/14.
- */
+
 public class mMapViewListener implements MapViewListener {
     String TAG = "MyMapViewListener";
 
@@ -50,31 +48,11 @@ public class mMapViewListener implements MapViewListener {
             m.addTo(mapView);
             locOverlay.addItem(m);
             mapView.invalidate();
-            //mapView.setCenter(iLatLng);
         }
-        //LocationType locationType = new LocationType(mapView, latLng);
-        //locationType.setLocationType();
     }
 
     @Override
     public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
-        /*
-        LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
-        ArrayList<ItemizedIconOverlay> overlays = mapView.getItemizedOverlays();
-        ItemizedIconOverlay locOverlay;
-
-        if (!overlays.isEmpty()) {
-            locOverlay = overlays.get(0);
-            locOverlay.removeAllItems();
-            Marker m = new Marker("test", null, latLng);
-            m.addTo(mapView);
-            locOverlay.addItem(m);
-            mapView.invalidate();
-            //mapView.setCenter(iLatLng);
-        }
-        //LocationType locationType = new LocationType(mapView, latLng);
-        //locationType.setLocationType();
-        */
 
     }
 

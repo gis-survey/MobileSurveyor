@@ -31,21 +31,6 @@ public class PostService extends Service {
 
     private static final String TAG = "PostService";
 
-    //url params
-    private static final String USER_ID = "user_id";
-    private static final String DATA = "data";
-    private static final String MODE = "mode";
-    private static final String URL = "url";
-    private static final String LINE = "rte";
-    private static final String DIR = "dir";
-    private static final String UUID = "uuid";
-    private static final String DATE = "date";
-    private static final String LAT = "lat";
-    private static final String LON = "lon";
-    private static final String ON_STOP = "on_stop";
-    private static final String OFF_STOP = "off_stop";
-    private static final String TYPE = "type";
-
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
@@ -64,20 +49,17 @@ public class PostService extends Service {
         Bundle extras = intent.getExtras();
         String[] params = null;
         if (extras != null) {
-            String type = extras.getString(TYPE);
-            if (type.equals("scan")) {
+            String type = extras.getString(Cons.TYPE);
+            if (type.equals(Cons.SCAN)) {
                 params = getScanParams(extras);
             }
-            else if (type.equals("pair")){
+            else if (type.equals(Cons.PAIR)){
                 params = getPairParams(extras);
             }
             if (params != null) {
                 PostTask task = new PostTask();
                 task.execute(params);
             }
-        }
-        else {
-            Log.e(TAG, "extras are null");
         }
 	}
 
@@ -98,12 +80,12 @@ public class PostService extends Service {
 
     protected String post(String[] params) {
 
-        String retVal = null;
+        String retVal;
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(params[0]);
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(DATA, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
 
         try {
             post.setEntity(new UrlEncodedFormEntity(postParam));
@@ -133,15 +115,15 @@ public class PostService extends Service {
 	protected String[] getScanParams(Bundle bundle) {
         String[] params = new String[2];
         JSONObject json = new JSONObject();
-        json.put(UUID, bundle.getString(UUID));
-        json.put(DATE, bundle.getString(DATE));
-        json.put(USER_ID, bundle.getString(USER_ID));
-        json.put(LINE, bundle.getString(LINE));
-        json.put(DIR, bundle.getString(DIR));
-        json.put(MODE, bundle.getString(MODE));
-        json.put(LON, bundle.getString(LON));
-        json.put(LAT, bundle.getString(LAT));
-        params[0] = bundle.getString(URL) + "/insertScan";
+        json.put(Cons.UUID, bundle.getString(Cons.UUID));
+        json.put(Cons.DATE, bundle.getString(Cons.DATE));
+        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
+        json.put(Cons.LINE, bundle.getString(Cons.LINE));
+        json.put(Cons.DIR, bundle.getString(Cons.DIR));
+        json.put(Cons.MODE, bundle.getString(Cons.MODE));
+        json.put(Cons.LON, bundle.getString(Cons.LON));
+        json.put(Cons.LAT, bundle.getString(Cons.LAT));
+        params[0] = bundle.getString(Cons.URL) + "/insertScan";
         params[1] = json.toJSONString();
 		return params;
 	}
@@ -149,16 +131,13 @@ public class PostService extends Service {
     protected String[] getPairParams(Bundle bundle) {
         String[] params = new String[2];
         JSONObject json = new JSONObject();
-        json.put(USER_ID, bundle.getString(USER_ID));
-        json.put(DATE, bundle.getString(DATE));
-        json.put(LINE, bundle.getString(LINE));
-        json.put(DIR, bundle.getString(DIR));
-        json.put(ON_STOP, bundle.getString(ON_STOP));
-        json.put(OFF_STOP, bundle.getString(OFF_STOP));
-
-        Log.d(TAG, bundle.getString(URL));
-        params[0] = bundle.getString(URL) + "/insertPair";
-        Log.d(TAG, params[0]);
+        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
+        json.put(Cons.DATE, bundle.getString(Cons.DATE));
+        json.put(Cons.LINE, bundle.getString(Cons.LINE));
+        json.put(Cons.DIR, bundle.getString(Cons.DIR));
+        json.put(Cons.ON_STOP, bundle.getString(Cons.ON_STOP));
+        json.put(Cons.OFF_STOP, bundle.getString(Cons.OFF_STOP));
+        params[0] = bundle.getString(Cons.URL) + "/insertPair";
         params[1] = json.toJSONString();
         return params;
     }

@@ -2,14 +2,11 @@ package com.meyersj.locationsurvey.app.locations;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -30,14 +26,10 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.locationsurvey.app.R;
-import com.meyersj.locationsurvey.app.locations.LocationResult;
-import com.meyersj.locationsurvey.app.locations.SolrAdapter;
-import com.meyersj.locationsurvey.app.mMapViewListener;
+import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,10 +40,6 @@ import java.util.Properties;
 public class PickLocationActivity extends ActionBarActivity {
 
     private final String TAG = "PickLocationActivity";
-    private final String PROPERTIES = "config.properties";
-    private final String ODK_LAT = "lat";
-    private final String ODK_LNG = "lng";
-    private final String SOLR_URL = "solr_url";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final String TILESNAME = "OSMTriMet.mbtiles";
 
@@ -82,7 +70,7 @@ public class PickLocationActivity extends ActionBarActivity {
 
         setTiles(mv);
         setItemizedOverlay(mv);
-        prop = Utils.getProperties(getApplicationContext(), PROPERTIES);
+        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
 
         if (!Utils.isNetworkAvailable(getApplicationContext())) {
             Utils.shortToastCenter(getApplicationContext(),
@@ -90,7 +78,7 @@ public class PickLocationActivity extends ActionBarActivity {
         }
 
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
-        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(SOLR_URL));
+        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(Cons.SOLR_URL));
         solrSearch.setAdapter(adapter);
 
 
@@ -206,8 +194,8 @@ public class PickLocationActivity extends ActionBarActivity {
             Map<String, Double> coordinates = getCoordinates();
             if(coordinates != null) {
                 Log.d(TAG, "coordinates not null");
-                intent.putExtra(ODK_LAT, coordinates.get("lat"));
-                intent.putExtra(ODK_LNG, coordinates.get("lon"));
+                intent.putExtra(Cons.ODK_LAT, coordinates.get("lat"));
+                intent.putExtra(Cons.ODK_LNG, coordinates.get("lon"));
                 result = RESULT_OK;
             }
             else {

@@ -34,6 +34,8 @@ public class Cons {
     public static final String SOLR_URL = "solr_url";
     public static final String DATA = "data";
     public static final String PAIR = "pair";
+    public static final String GPS_INTERVAL = "gps_interval";
+    public static final String GPS_THRESHOLD = "gps_threshold";
 
 }
 

@@ -18,9 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
-/**
- * Created by meyersj on 8/14/2014.
- */
+
 public class Utils {
 
     public static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -12,15 +12,13 @@ import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.Properties;
 
 
 public class SaveScans {
 
-
     private final String TAG = "SaveScans";
-    private final Float OLD_THRESHOLD = Float.valueOf(1000 * 30);
-    private final Float CURRENT_THRESHOLD = Float.valueOf(1000 * 30);
+    private Float THRESHOLD = Float.valueOf(1000 * 20);
 
 
     private class Scan {
@@ -60,6 +58,14 @@ public class SaveScans {
         this.context = context;
         this.currentLoc = new CurrentLocation();
         this.scansBuffer = new ArrayList<Scan>();
+
+        Properties prop;
+        prop = Utils.getProperties(this.context, Cons.PROPERTIES);
+
+        if( prop.containsKey(Cons.GPS_THRESHOLD)) {
+            THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
+        }
+
     }
 
     public void setLocation(String lat, String lon, Float accuracy, String dateString) {
@@ -101,13 +107,16 @@ public class SaveScans {
         Log.d(TAG, rawResult.toString());
 
         //check time delta between date and currentLoc date
-        if (currentLoc.timeDifference(date) <= CURRENT_THRESHOLD) {
+        if (currentLoc.timeDifference(date) <= THRESHOLD) {
             Log.d(TAG, "posting scan");
             postScan(rawResult, date);
+            //For debugging to write to csv
+            /*
             Utils.appendCSV("current," +
                     Utils.dateFormat.format(date) + "," +
                     currentLoc.getAccuracy() + "," +
                     currentLoc.getLat() + "," + currentLoc.getLon());
+            */
         }
         else {
             Log.d(TAG, "adding scan to buffer");
@@ -124,26 +133,36 @@ public class SaveScans {
         for(Scan scan: scansBuffer) {
             total += 1;
             Float diff = currentLoc.timeDifference(scan.getDate());
-            if(diff <= OLD_THRESHOLD) {
+
+            if(diff <= THRESHOLD) {
                 count += 1;
                 post(scan.getParams());
                 Log.d(TAG, "using new location");
+                //For debugging to write to csv
+                /*
                 Utils.appendCSV("valid_buffer," +
                         Utils.dateFormat.format(scan.getDate()) + "," +
                         currentLoc.getAccuracy() + "," +
                         currentLoc.getLat() + "," + currentLoc.getLon());
+                */
             }
             else {
                 Log.d(TAG, "too old, deleting");
+                //For debugging to write to csv
+                /*
                 Utils.appendCSV("old_buffer," +
                         Utils.dateFormat.format(scan.getDate()) + "," +
                         currentLoc.getAccuracy() + "," +
                         currentLoc.getLat() + "," + currentLoc.getLon());
+                */
             }
+
         }
 
-        String message = "Flush: count=" + String.valueOf(count) + " total=" + String.valueOf(total);
-        Utils.longToastCenter(context, message);
+        //for debug - show how many flushed records were valid
+
+        //String message = "Flush: count=" + String.valueOf(count) + " total=" + String.valueOf(total);
+        //Utils.longToastCenter(context, message);
         scansBuffer.clear();
     }
 

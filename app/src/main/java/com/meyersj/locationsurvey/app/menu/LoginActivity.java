@@ -87,7 +87,6 @@ public class LoginActivity extends Activity {
                 json.put(Cons.PASSWORD, pass);
 
                 String credentials = json.toJSONString();
-                Log.d(TAG, "login Credentials: " + credentials);
 
                 String[] params = new String[2];
                 params[0] = url + "/verifyUser";
@@ -172,15 +171,10 @@ public class LoginActivity extends Activity {
         try{
             Object obj = parser.parse(jsonInput);
             JSONObject results = (JSONObject) obj;
-            Log.d(TAG, results.toString());
 
             String user_match = results.get(Cons.USER_MATCH).toString();
             String password_match = results.get(Cons.PASS_MATCH).toString();
             String user_id = results.get(Cons.USER_ID).toString();
-
-            Log.d(TAG, "user_match: " + user_match);
-            Log.d(TAG, "password_match: " + password_match);
-            Log.d(TAG, "user_id: " + user_id);
 
             if (user_match.equals("false")) {
                 Log.d(TAG, "username did not match");
@@ -200,7 +194,6 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent(SETLINE);
                 intent.putExtra(Cons.URL, url);
                 intent.putExtra(Cons.USER_ID, user_id);
-                Log.d(TAG, "user: " + user_id);
                 password.setText("");
                 startActivity(intent);
             }

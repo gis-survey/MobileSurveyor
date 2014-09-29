@@ -47,12 +47,7 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
         LocationResult locationResult = null;
         if (mResults.containsKey(name)) {
             locationResult = mResults.get(name);
-            Log.d(TAG, "Found key: " + name);
         }
-        else {
-            Log.e(TAG, "Current mResults does not contain key: " + name);
-        }
-
 
         return locationResult;
     }
@@ -64,16 +59,22 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pairs = (Map.Entry)it.next();
-            String name = mResults.get(pairs.getKey()).getScore().toString() + "|" + (String) pairs.getKey();
+            //build string with score and name
+            //0.992|NW 5th and Davis
+            String name = mResults.get(pairs.getKey()).getScore().toString() + "|" + pairs.getKey();
             names.add(name);
         }
 
         //sort names in descending order
         //higher scores will be first
+        //0.992|NW 6th & Davis
+        //0.123|NW 5th and Davis
         Collections.sort(names);
         Collections.reverse(names);
 
         //remove score from beginning of string
+        //NW 6th & Davis
+        //NW 5th and Davis
         for(int i = 0; i < names.size(); i++) {
             String n = names.get(i);
             names.set(i, n.substring(n.indexOf("|") + 1));

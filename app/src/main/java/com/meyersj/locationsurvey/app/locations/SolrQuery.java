@@ -44,8 +44,6 @@ public class SolrQuery {
 
     protected void solrLookup(String input) {
 
-        //String url = "http://maps10.trimet.org/solr/select?start=0&wt=json&qt=dismax&rows=5&q=" + input
-
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String url;
@@ -87,15 +85,8 @@ public class SolrQuery {
         JSONParser parser = new JSONParser();
         try {
             JSONObject responseJSON = (JSONObject) parser.parse(responseString);
-
-            //String responseHeader = responseJSON.get("responseHeader").toString();
-            //Log.d(TAG, responseHeader);
-            //String responseData = responseJSON.get("response").toString();
-            //Log.d(TAG, responseData);
-
             JSONObject responseData = (JSONObject) responseJSON.get("response");
             JSONArray responseDocs = (JSONArray) responseData.get("docs");
-            //Log.d(TAG, responseDocs.toString());
 
             //clear current results and populate with new results
             solrResults.clear();

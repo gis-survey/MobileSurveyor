@@ -3,6 +3,7 @@ package com.meyersj.locationsurvey.app.locations;
 import android.util.Log;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.events.MapListener;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
@@ -13,7 +14,12 @@ import java.util.ArrayList;
 
 
 public class mMapViewListener implements MapViewListener {
-    String TAG = "MyMapViewListener";
+    private final String TAG = "MyMapViewListener";
+    private ItemizedIconOverlay locOverlay;
+
+    public mMapViewListener(ItemizedIconOverlay locOverlay) {
+        this.locOverlay = locOverlay;
+    }
 
     @Override
     public void onShowMarker(MapView mapView, Marker marker) {
@@ -37,25 +43,18 @@ public class mMapViewListener implements MapViewListener {
 
     @Override
     public void onTapMap(MapView mapView, ILatLng iLatLng) {
-        LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
-        ArrayList<ItemizedIconOverlay> overlays = mapView.getItemizedOverlays();
-        ItemizedIconOverlay locOverlay;
 
-        if (!overlays.isEmpty()) {
-            locOverlay = overlays.get(0);
-            locOverlay.removeAllItems();
-            Marker m = new Marker("test", null, latLng);
-            m.addTo(mapView);
-            locOverlay.addItem(m);
-            mapView.invalidate();
-        }
     }
 
     @Override
     public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
-
+        LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
+        locOverlay.removeAllItems();
+        Marker m = new Marker("", null, latLng);
+        m.addTo(mapView);
+        locOverlay.addItem(m);
+        mapView.invalidate();
     }
-
 
 
 }

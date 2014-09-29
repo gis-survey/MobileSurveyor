@@ -66,10 +66,11 @@ public class PickLocationActivity extends ActionBarActivity {
         cancel = (Button) findViewById(R.id.cancel);
 
         mv = (MapView) findViewById(R.id.mapview);
-        mv.setMapViewListener(new mMapViewListener());
-
         setTiles(mv);
         setItemizedOverlay(mv);
+        mv.setMapViewListener(new mMapViewListener(locOverlay));
+
+
         prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
 
         if (!Utils.isNetworkAvailable(getApplicationContext())) {

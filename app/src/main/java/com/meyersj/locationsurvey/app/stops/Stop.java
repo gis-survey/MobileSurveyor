@@ -58,6 +58,7 @@ public class Stop extends Marker implements Comparable<Stop> {
     public Integer getStopSeq() {
         return stopSeq;
     }
+
     @Override
     public String toString() {
         return this.desc;

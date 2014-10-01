@@ -16,9 +16,7 @@ import com.mapbox.mapboxsdk.views.MapView;
 
 import java.util.ArrayList;
 
-/**
- * Created by meyersj on 6/27/2014.
- */
+
 public class OnOffMapListener implements MapListener {
 
     private static final String TAG = "OnOffMapListener";
@@ -28,9 +26,9 @@ public class OnOffMapListener implements MapListener {
     ItemizedIconOverlay locOverlay;
 
 
-    public OnOffMapListener(MapView mapView) {
-        mv = mapView;
-    }
+    //public OnOffMapListener(MapView mapView) {
+    //    mv = mapView;
+   // }
 
     public OnOffMapListener(MapView mv, ArrayList<Marker> markers, ItemizedIconOverlay locOverlay) {
         this.mv = mv;

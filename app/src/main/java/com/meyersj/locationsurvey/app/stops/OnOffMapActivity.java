@@ -69,9 +69,9 @@ public class OnOffMapActivity extends ActionBarActivity {
     private String user_id;
 
     // Stop Icons
-    private Drawable onIcon;
-    private Drawable offIcon;
-    private Drawable stopIcon;
+    //private Drawable onIcon;
+    //private Drawable offIcon;
+    //private Drawable stopIcon;
 
     // Views
     private MapView mv;
@@ -81,6 +81,11 @@ public class OnOffMapActivity extends ActionBarActivity {
     private ListView onSeqListView;
     private ListView offSeqListView;
     private Button stopSeqBtn;
+
+
+    private Button toggleOnBtn;
+    private Button toggleOffBtn;
+
     private Button submit;
     private TextView osmText;
     private Spinner countSpinner;
@@ -90,12 +95,37 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Integer submitCount;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
-    private ItemizedIconOverlay locOverlay;
-    private ItemizedIconOverlay selOverlay;
+
+    //list of markers generated from geojson for current stop and direction
     private ArrayList<Marker> locList = new ArrayList<Marker>();
-    private ArrayList<Marker> selList = new ArrayList<Marker>();
-    private BoundingBox bbox;
+    //overlay on map that displays each stop
+    private ItemizedIconOverlay locOverlay;
+    //used to lookup marker when the stop name is selected from the search bar or stop sequence list
     private HashMap<String, Marker> stopsMap;
+    private OnOffMapListener listener;
+
+    //same as three objects as above but generated from
+    //current route and opposite direction
+    //streetcar route is looped so some people board or get off before the beginning or end of line
+    ArrayList<PathOverlay> paths;
+    private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
+    private ItemizedIconOverlay locOverlayOpposite;
+    private HashMap<String, Marker> stopsMapOpposite;
+    private OnOffMapListener listenerOpposite;
+
+
+    //Only used to display selected on and off stops
+    //if user zooms out alot on and off stops will still continue to display
+    //instead of disappearing
+    ArrayList<PathOverlay> pathsOpposite;
+    private ItemizedIconOverlay selOverlay;
+    private ArrayList<Marker> selList = new ArrayList<Marker>();
+
+
+    private BoundingBox bbox;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,39 +139,57 @@ public class OnOffMapActivity extends ActionBarActivity {
         clear = (ImageButton) findViewById(R.id.clear_input_stop);
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
-        onIcon = getResources().getDrawable(R.drawable.transit_green_40);
-        offIcon = getResources().getDrawable(R.drawable.transit_red_40);
-        stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
+
+        //onIcon = getResources().getDrawable(R.drawable.transit_green_40);
+        //offIcon = getResources().getDrawable(R.drawable.transit_red_40);
+        //stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
 
         setupCounter(COUNT_MAX);
         getExtras();
         setTiles(mv);
 
+
         if (line != null && dir != null) {
-            locList = getStops(line, dir);
+            locList = getStops(line, dir, true);
             selList = new ArrayList<Marker>();
 
             // set listener for when marker tooltip is selected
-            for (Marker marker: locList)
+            for (Marker marker: locList) {
                 setToolTipListener(marker);
+            }
 
             if(bbox != null) {
                 mv.zoomToBoundingBox(bbox, true, false, true, true);
             }
 
             setItemizedOverlay(mv, locList, selList);
-            OnOffMapListener listener = new OnOffMapListener(mv, locList, locOverlay);
+            listener = new OnOffMapListener(mv, locList, locOverlay);
             mv.addListener(listener);
 
-            addRoute(line, dir);
+
+
+            addRoute(line, dir, paths);
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
                     getApplicationContext(), onSeqListAdapter, offSeqListAdapter, selOverlay);
 
+            toggleOnBtn = (Button) findViewById(R.id.toggle_on_stop_btn);
+            toggleOnBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createOppositeStops("on");
+                }
+            });
+            toggleOffBtn = (Button) findViewById(R.id.toggle_off_stop_btn);
+            toggleOffBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    createOppositeStops("off");
+                }
+            });
+
         }
-
-
 
         Intent i = this.getIntent();
         String action = i.getAction();
@@ -169,7 +217,81 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
 
-    protected void stopSequenceAdapterSetup(final ListView listView, final StopSequenceAdapter adapter, final Button button) {
+
+    protected void createOppositeStops(String mode) {
+        String dirOpposite = dir.equals("0") ? "1" : "0";
+        Log.d(TAG,dir);
+        Log.d(TAG,dirOpposite);
+
+
+
+        if (locOverlayOpposite == null) {
+            locListOpposite = getStops(line, dirOpposite, false);
+            for (Marker marker: locListOpposite) {
+                setToolTipListener(marker);
+            }
+
+            addRoute(line, dirOpposite, pathsOpposite);
+            locOverlayOpposite = new ItemizedIconOverlay(mv.getContext(), locListOpposite,
+
+                    new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+                        public boolean onItemSingleTapUp(final int index, final Marker item) {
+                            selectLocType(item);
+                            return true;
+                        }
+
+                        public boolean onItemLongPress(final int index, final Marker item) {
+                            return true;
+                        }
+                    }
+            );
+
+            mv.addItemizedOverlay(locOverlayOpposite);
+            listenerOpposite = new OnOffMapListener(mv, locListOpposite, locOverlayOpposite);
+            mv.addListener(listenerOpposite);
+
+            if(mode.equals("on")) {
+                changeAdapter(onSeqListView, onSeqListAdapter, locListOpposite);
+            }
+            else {
+                changeAdapter(offSeqListView, offSeqListAdapter, locListOpposite);
+            }
+
+        }
+        else {
+            for(Marker m: locListOpposite) {
+                m.getToolTip(mv).close();
+            }
+            mv.removeOverlay(locOverlayOpposite);
+            mv.removeListener(listenerOpposite);
+
+            if(mode.equals("on")) {
+                changeAdapter(onSeqListView, onSeqListAdapter, locList);
+            }
+            else {
+                changeAdapter(offSeqListView, offSeqListAdapter, locList);
+            }
+
+            locListOpposite = null;
+            listenerOpposite = null;
+            locOverlayOpposite = null;
+            removeRoute(pathsOpposite);
+        }
+    }
+
+    private void changeAdapter(ListView listView, StopSequenceAdapter adapter, ArrayList<Marker> locList)  {
+        ArrayList<Stop> stops = stopsSequenceSort(locList);
+        if (adapter == onSeqListAdapter) {
+            onSeqListAdapter = new StopSequenceAdapter(this, stops);
+            stopSequenceAdapterSetup(listView, onSeqListAdapter);
+        }
+        else {
+            offSeqListAdapter = new StopSequenceAdapter(this, stops);
+            stopSequenceAdapterSetup(listView, offSeqListAdapter);
+        }
+    }
+
+    protected void stopSequenceAdapterSetup(final ListView listView, final StopSequenceAdapter adapter) {
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -256,6 +378,9 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     }
 
+
+
+
     private void setupStopSequenceList() {
         seqView = (View) findViewById(R.id.seq_list);
 
@@ -265,13 +390,16 @@ public class OnOffMapActivity extends ActionBarActivity {
         offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
         osmText = (TextView) findViewById(R.id.osm_text);
 
+        /* if streetcar we need opposite direction stops in case
+        user toggles that on or off was before start of line */
+
         ArrayList<Stop> stops = stopsSequenceSort(locList);
 
         onSeqListAdapter = new StopSequenceAdapter(this, stops);
         offSeqListAdapter = new StopSequenceAdapter(this, stops);
 
-        stopSequenceAdapterSetup(onSeqListView, onSeqListAdapter, stopSeqBtn);
-        stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter, stopSeqBtn);
+        stopSequenceAdapterSetup(onSeqListView, onSeqListAdapter);
+        stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
 
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -587,11 +715,15 @@ public class OnOffMapActivity extends ActionBarActivity {
     // open stops geojson for current route
     // parse into ArrayList of markers
     // each marker contains stop description, stop id, stop sequence and LatLng
-    protected ArrayList<Marker> getStops(String line, String dir) {
+    protected ArrayList<Marker> getStops(String line, String dir, Boolean zoom) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName);
-        bbox = stops.getBoundingBox();
-        mv.zoomToBoundingBox(bbox, true, false, true, true);
+
+        if(zoom) {
+            bbox = stops.getBoundingBox();
+            mv.zoomToBoundingBox(bbox, true, false, true, true);
+        }
+
         return stops.getStops();
     }
 
@@ -622,10 +754,8 @@ public class OnOffMapActivity extends ActionBarActivity {
         });
     }
 
-    protected void addRoute(String line, String dir) {
+    protected void addRoute(String line, String dir, ArrayList<PathOverlay> path) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
-
-        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
 
         Paint pathPaint = new Paint();
         pathPaint.setColor(getResources().getColor(R.color.black_light_light));
@@ -633,13 +763,43 @@ public class OnOffMapActivity extends ActionBarActivity {
         pathPaint.setStrokeWidth(6.0f);
         pathPaint.setStyle(Paint.Style.STROKE);
 
-        if (paths != null) {
-            for(PathOverlay path: paths) {
-                path.setPaint(pathPaint);
-                mv.addOverlay(path);
 
+        if(path == paths) {
+            paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
+            if (paths != null) {
+                for(PathOverlay mPath: paths) {
+                    mPath.setPaint(pathPaint);
+                    mv.addOverlay(mPath);
+                }
+            }
+        }
+        else {
+            pathsOpposite = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
+            if (paths != null) {
+                for(PathOverlay mPath: pathsOpposite) {
+                    mPath.setPaint(pathPaint);
+                    mv.addOverlay(mPath);
+                }
             }
         }
     }
+
+    protected void removeRoute(ArrayList<PathOverlay> path) {
+        if(path == paths) {
+            if (paths != null) {
+                for(PathOverlay mPath: paths) {
+                    mv.removeOverlay(mPath);
+                }
+            }
+        }
+        else {
+            if (paths != null) {
+                for(PathOverlay mPath: pathsOpposite) {
+                    mv.removeOverlay(mPath);
+                }
+            }
+        }
+    }
+
 
 }

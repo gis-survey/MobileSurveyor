@@ -61,6 +61,22 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/toggle_on_stop_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toggle On"
+                style="@style/ButtonText"
+                android:background="@drawable/shape_rect_grey_fade_round_all" />
+
+            <Button
+                android:id="@+id/toggle_off_stop_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toggle Off"
+                style="@style/ButtonText"
+                android:background="@drawable/shape_rect_grey_fade_round_all" />
+
+            <Button
                 android:id="@+id/stop_seq_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -24,18 +24,8 @@ public class CurrentLocation {
 
     }
 
-    protected Date parseDate(String dateString) {
-        Date date = null;
-        try {
-            date = Utils.dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
-    }
-
     public void setLocation(String lat, String lon, Float accuracy, String dateString) {
-        this.date = parseDate(dateString);
+        this.date = Utils.parseDate(dateString);
         this.lat = lat;
         this.lon = lon;
         this.accuracy = accuracy;
@@ -49,17 +39,14 @@ public class CurrentLocation {
         return lon;
     }
 
+    public Date getDate() {
+        return this.date;
+    }
+
     public String getAccuracy() {
         return String.valueOf(accuracy);
     }
 
-    //returns difference in milliseconds
-    public Float timeDifference(Date compareDate) {
-        DateTime current = new DateTime(date);
-        DateTime compare = new DateTime(compareDate);
 
-        float diff = compare.getMillis() - current.getMillis();
-        return Math.abs(diff);
-    }
 
 }

@@ -152,14 +152,10 @@ public class LocationService extends Service {
                 intent.putExtra("Longitude", lon);
                 intent.putExtra("Accuracy", accuracy);
                 intent.putExtra("Date", dateString);
-
-                String message = lat + " " + lon;
-                //TODO query to get stop name and toast that instead of lat-lon
-
-                Utils.longToast(getApplicationContext(), message);
                 sendBroadcast(intent);
             }
         }
+
 
         public void onProviderDisabled(String provider) {
 

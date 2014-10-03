@@ -14,14 +14,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -43,6 +45,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private Context mContext;
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
+    private StopLookup stopLookup;
+    private TextView stopText;
+    private Date recentLoc;
+    private Float THRESHOLD = Float.valueOf(1000 * 20);
 
 
     @Override
@@ -52,11 +58,18 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         Bundle params = getIntent().getExtras();
 
+        Properties prop = Utils.getProperties(mContext, Cons.PROPERTIES);
+        if( prop.containsKey(Cons.GPS_THRESHOLD)) {
+            THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
+        }
+
+        setupStopTextLayout();
+
         //display on and off buttons only if 'off' mode is not selected
         if (params.containsKey(Cons.OFF_MODE) &&
                 params.get(Cons.OFF_MODE).toString().equals("false") ){
-            setButtonsLayout();
-            setButtonListeners();
+            setupButtonsLayout();
+            setupButtonListeners();
             params.putString(Cons.MODE, Cons.ON);
         }
         else {
@@ -65,11 +78,14 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         }
 
         saveScans = new SaveScans(getApplicationContext(), params);
+        stopLookup = new StopLookup(
+                getApplicationContext(), stopText, "https://216.25.208.109:8493/api/stopLookup",
+                params.getString(Cons.LINE), params.getString(Cons.DIR));
 
         setFormats();
 
         Log.d(TAG, params.getString(Cons.USER_ID));
-        setContentView(mScannerView);                // Set the scanner view as the content view
+        setContentView(mScannerView); // Set the scanner view as the content view
     }
 
     @Override
@@ -79,7 +95,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView.startCamera();// Start camera on resume
 
         startService(new Intent(this, LocationService.class));
-
+        if(Utils.timeDifference(recentLoc, new Date()) > THRESHOLD) {
+            stopText.setText(Cons.NEAR_STOP + "no current near stop");
+        }
 
         receiver = new BroadcastReceiver() {
             @Override
@@ -87,21 +105,19 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 String lat = intent.getStringExtra("Latitude");
                 String lon = intent.getStringExtra("Longitude");
                 String date = intent.getStringExtra("Date");
+                recentLoc = Utils.parseDate(date);
                 Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
 
-                Log.d(TAG, "new location received: " + lat + "-" + lon);
+                Utils.shortToast(mContext, "GPS updated");
                 saveScans.setLocation(lat, lon, accuracy, date);
+                stopLookup.findStop(lat, lon);
                 saveScans.flushBuffer();
-
-                //TODO flush buffer each time new location is recieved
-                //saveScans.flushBuffer();
-
-
             }
         };
+
         registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
 
-        if(!Utils.checkGPSIsEnabled(getApplicationContext())) {
+        if(!Utils.isGPSEnabled(getApplicationContext())) {
             alertMessageNoGps();
         }
 
@@ -110,10 +126,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     @Override
     public void onPause() {
         super.onPause();
-        mScannerView.stopCamera();           // Stop camera on pause
+        mScannerView.stopCamera();
         stopService(new Intent(this, LocationService.class));
         unregisterReceiver(receiver);
-        //unregisterReceiver(receiver);
     }
 
 
@@ -145,8 +160,30 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     }
 
-    private void setButtonsLayout() {
+    private void setupStopTextLayout() {
+        //LinearLayout layout = new LinearLayout(mContext, null, R.style.StopLayout);
+
+        //LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(
+        //        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+        //        android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        //ll.setMargins(3,3,3,3);
+
+        stopText = new TextView(mContext, null);
+        stopText.setGravity(Gravity.BOTTOM);
+        stopText.setTextAppearance(mContext, R.style.SeqListHeader);
+        stopText.setText(Cons.NEAR_STOP + "no current near stop");
+
+        //layout.addView(stopText, ll);
+        //layout.setBackground(getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none_nopress));
+        //layout.setGravity(Gravity.BOTTOM);
+        //mScannerView.addView(layout);
+
+        mScannerView.addView(stopText);
+    }
+
+    private void setupButtonsLayout() {
         btnLayout = new LinearLayout(mContext);
+
         //btnLayout.setBackgroundColor(Color.BLACK);
         onBtn = new Button(mContext, null, R.style.ButtonText);
         offBtn = new Button(mContext, null, R.style.ButtonText);
@@ -176,9 +213,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         btnLayout.addView(offBtn, ll);
 
         mScannerView.addView(btnLayout);
+
     }
 
-    private void setButtonListeners() {
+    private void setupButtonListeners() {
         onBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {

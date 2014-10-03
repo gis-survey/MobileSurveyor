@@ -107,7 +107,7 @@ public class SaveScans {
         Log.d(TAG, rawResult.toString());
 
         //check time delta between date and currentLoc date
-        if (currentLoc.timeDifference(date) <= THRESHOLD) {
+        if (Utils.timeDifference(currentLoc.getDate(), date) <= THRESHOLD) {
             Log.d(TAG, "posting scan");
             postScan(rawResult, date);
             //For debugging to write to csv
@@ -132,7 +132,8 @@ public class SaveScans {
         Log.d(TAG, "flushing buffer");
         for(Scan scan: scansBuffer) {
             total += 1;
-            Float diff = currentLoc.timeDifference(scan.getDate());
+            Float diff = Utils.timeDifference(currentLoc.getDate(), scan.getDate());
+            Log.d(TAG, String.valueOf(diff));
 
             if(diff <= THRESHOLD) {
                 count += 1;

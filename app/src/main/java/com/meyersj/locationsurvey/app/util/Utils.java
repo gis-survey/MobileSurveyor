@@ -13,13 +13,17 @@ import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import org.joda.time.DateTime;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 
@@ -93,7 +97,7 @@ public class Utils {
 
 
 
-    public static boolean checkGPSIsEnabled(Context context) {
+    public static boolean isGPSEnabled(Context context) {
         final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
@@ -101,6 +105,25 @@ public class Utils {
             return false;
         }
         return true;
+    }
+
+    public static Date parseDate(String dateString) {
+        Date date = null;
+        try {
+            date = Utils.dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    //returns difference in milliseconds
+    public static Float timeDifference(Date currentDate, Date compareDate) {
+        DateTime current = new DateTime(currentDate);
+        DateTime compare = new DateTime(compareDate);
+
+        float diff = compare.getMillis() - current.getMillis();
+        return Math.abs(diff);
     }
 
 }

@@ -117,8 +117,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     public void onStop() {
         super.onStart();
-        Log.d(TAG, "scanner activity stopped");
-
     }
 
     @Override
@@ -210,8 +208,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
-            Log.d(TAG, "stopping location service by keydown");
             stopService(new Intent(this, LocationService.class));
+            unregisterReceiver(receiver);
         }
         return super.onKeyDown(keyCode, event);
     }

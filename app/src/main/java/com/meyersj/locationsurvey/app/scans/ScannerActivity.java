@@ -1,8 +1,10 @@
 package com.meyersj.locationsurvey.app.scans;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -99,9 +101,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         };
         registerReceiver(receiver, new IntentFilter("com.example.LocationReceiver"));
 
-        //verifyGPS();
-        if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Utils.longToastCenter(getApplicationContext(), "Please enable network connections.");
+        if(!Utils.checkGPSIsEnabled(getApplicationContext())) {
+            alertMessageNoGps();
         }
 
     }
@@ -112,6 +113,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView.stopCamera();           // Stop camera on pause
         stopService(new Intent(this, LocationService.class));
         unregisterReceiver(receiver);
+        //unregisterReceiver(receiver);
     }
 
 
@@ -203,15 +205,36 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView.setFormats(formats);
     }
 
+    /*
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
-            stopService(new Intent(this, LocationService.class));
-            unregisterReceiver(receiver);
+            //stopService(new Intent(this, LocationService.class));
+            //unregisterReceiver(receiver);
         }
         return super.onKeyDown(keyCode, event);
+    }
+    */
+
+    private void alertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("GPS is disabled. Please enable it before scanning.")
+                .setCancelable(false)
+                .setPositiveButton("Go to settings", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
 }

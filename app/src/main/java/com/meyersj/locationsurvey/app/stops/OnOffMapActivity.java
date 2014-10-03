@@ -379,12 +379,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         osmText.setVisibility(currentVisibility);
 
         if (currentVisibility == View.INVISIBLE) {
+            stopSeqBtn.setText("Hide stop sequences");
             seqView.setVisibility(View.VISIBLE);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
         }
         else {
             seqView.setVisibility(View.INVISIBLE);
+            stopSeqBtn.setText("Show stop sequences");
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }

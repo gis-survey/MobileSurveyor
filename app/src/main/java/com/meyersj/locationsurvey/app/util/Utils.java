@@ -1,7 +1,11 @@
 package com.meyersj.locationsurvey.app.util;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -87,5 +91,16 @@ public class Utils {
         }
     }
 
+
+
+    public static boolean checkGPSIsEnabled(Context context) {
+        final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            //Utils.buildAlertMessageNoGps();
+            return false;
+        }
+        return true;
+    }
 
 }

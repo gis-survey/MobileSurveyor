@@ -64,7 +64,7 @@
                 android:id="@+id/stop_seq_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stop Sequence"
+                android:text="Show stop sequences"
                 style="@style/ButtonText"
                 android:background="@drawable/shape_rect_grey_fade_round_all" />
 

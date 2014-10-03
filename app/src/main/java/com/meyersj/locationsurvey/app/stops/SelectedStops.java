@@ -47,11 +47,25 @@ public class SelectedStops {
 
     }
 
+
+    public void setOnAdapter(StopSequenceAdapter onAdapter) {
+        this.onAdapter = onAdapter;
+    }
+
+    public void setOffAdapter(StopSequenceAdapter offAdapter) {
+        this.offAdapter = offAdapter;
+    }
+
+
+    public String getCurrentType() {
+        return this.currentType;
+    }
+
+
     public void setCurrentMarker(Marker current, String currentType) {
         this.current = current;
         this.currentType = currentType;
     }
-
 
     private void refreshOverlay() {
         selOverlay.removeAllItems();
@@ -86,6 +100,7 @@ public class SelectedStops {
                 board = current;
                 board.setMarker(onIcon);
                 Log.d(TAG, Cons.BOARD + ": " + board.getTitle());
+                Log.d(TAG, String.valueOf(onAdapter.getItemIndex(board.getTitle())));
                 onAdapter.setSelectedIndex(onAdapter.getItemIndex(board.getTitle()));
 
             }
@@ -102,6 +117,23 @@ public class SelectedStops {
             clearCurrentMarker();
             refreshOverlay();
         }
+    }
+
+
+    public void clearSequenceMarker(String mode) {
+        if (mode.equals(Cons.BOARD)) {
+            if(board != null) {
+                board.setMarker(stopIcon);
+                board = null;
+            }
+        }
+        else {
+            if(alight != null) {
+                alight.setMarker(stopIcon);
+                alight = null;
+            }
+        }
+        refreshOverlay();
     }
 
     public void saveSequenceMarker(String mode, Marker newMarker) {

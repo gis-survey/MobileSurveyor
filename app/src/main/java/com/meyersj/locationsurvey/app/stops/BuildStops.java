@@ -32,10 +32,12 @@ public class BuildStops {
     private String geoJSON;
     private ArrayList<Marker> stops;
     private BuildBoundingBox bboxBuilder;
+    private String dir;
 
-    public BuildStops(Context aContext, MapView inMv, String inRoute) {
-        context = aContext;
-        mv = inMv;
+    public BuildStops(Context context, MapView mv, String inRoute, String dir) {
+        this.context = context;
+        this.mv = mv;
+        this.dir = dir;
         stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
 
@@ -77,7 +79,7 @@ public class BuildStops {
 
 
                     Stop stop = new Stop(
-                            mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon));
+                            mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon), dir);
                     stop.setMarker(circleIcon);
                     stops.add(stop);
                 }

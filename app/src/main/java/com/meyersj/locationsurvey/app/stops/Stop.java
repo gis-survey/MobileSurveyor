@@ -16,23 +16,15 @@ public class Stop extends Marker implements Comparable<Stop> {
     private String desc;
     private String stopID;
     private Integer stopSeq;
+    private String dir;
 
-
-    public Stop(MapView mv, String desc, String stopID, Integer stopSeq, LatLng aLatLng) {
+    public Stop(MapView mv, String desc, String stopID, Integer stopSeq, LatLng aLatLng, String dir) {
         super(mv, desc, stopID, aLatLng);
         this.desc = desc;
         this.stopID = stopID;
         this.stopSeq = stopSeq;
+        this.dir = dir;
     }
-
-    public Stop(String desc, String stopID, Integer stopSeq, LatLng aLatLng) {
-        super(desc, stopID, aLatLng);
-        this.desc = desc;
-        this.stopID = stopID;
-        this.stopSeq = stopSeq;
-    }
-
-
 
     @Override
     protected InfoWindow createTooltip(MapView mv) {
@@ -44,6 +36,9 @@ public class Stop extends Marker implements Comparable<Stop> {
         return desc;
     }
 
+    public String getDir() {
+        return dir;
+    }
 
     public String getStopID() {
         return stopID;

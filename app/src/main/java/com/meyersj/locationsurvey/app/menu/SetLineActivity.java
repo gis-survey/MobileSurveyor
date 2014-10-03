@@ -36,9 +36,6 @@ public class SetLineActivity extends Activity {
     private final String SCANNER = "com.meyersj.locationsurvey.app.SCANNER";
     private final String ONOFFMAP = "com.meyersj.locationsurvey.app.ONOFFMAP";
 
-    private String[] TRAINS = {"190", "193", "194", "200"};
-
-    private Properties prop;
     private Spinner line, dir;
     private String line_code;
     private String dir_code;
@@ -79,7 +76,7 @@ public class SetLineActivity extends Activity {
                 line_code = map.get(modified_line);
 
                 Boolean ifTrain = false;
-                for (String train: TRAINS) {
+                for (String train: Cons.TRAINS) {
                     if (train.equals(line_code)) {
                         Log.d(TAG, "we have a train");
                         ifTrain = true;
@@ -198,7 +195,7 @@ public class SetLineActivity extends Activity {
     protected Boolean ifTrain(String line) {
         Boolean ifTrain = false;
 
-        for(String x : TRAINS ){
+        for(String x : Cons.TRAINS ){
             if(x.equals(line)) {
                 ifTrain = true;
                 break;

@@ -3,9 +3,10 @@ package com.meyersj.locationsurvey.app.stops;
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.PostService;
+import com.meyersj.locationsurvey.app.util.PathUtils;
+import com.meyersj.locationsurvey.app.util.Utils;
 import com.meyersj.locationsurvey.app.R;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,7 +16,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
-//import android.support.v7.internal.widget.AdapterViewICS;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,12 +40,8 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
-import com.meyersj.locationsurvey.app.util.PathUtils;
-import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -68,11 +64,6 @@ public class OnOffMapActivity extends ActionBarActivity {
     private String url;
     private String user_id;
 
-    // Stop Icons
-    //private Drawable onIcon;
-    //private Drawable offIcon;
-    //private Drawable stopIcon;
-
     // Views
     private MapView mv;
     private AutoCompleteTextView stopName;
@@ -81,11 +72,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     private ListView onSeqListView;
     private ListView offSeqListView;
     private Button stopSeqBtn;
-
-
     private Button toggleOnBtn;
     private Button toggleOffBtn;
-
     private Button submit;
     private TextView osmText;
     private Spinner countSpinner;
@@ -100,54 +88,31 @@ public class OnOffMapActivity extends ActionBarActivity {
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     //overlay on map that displays each stop
     private ItemizedIconOverlay locOverlay;
-    //used to lookup marker when the stop name is selected from the search bar or stop sequence list
+    //used to lookup marker when the stop name is selected from the search bar
     private HashMap<String, Marker> stopsMap;
-    private OnOffMapListener listener;
 
-    //same as three objects as above but generated from
-    //current route and opposite direction
-    //streetcar route is looped so some people board or get off before the beginning or end of line
-    ArrayList<PathOverlay> paths;
+    Boolean isOnReversed = false;
+    Boolean isOffReversed = false;
     private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
-    private ItemizedIconOverlay locOverlayOpposite;
-    private HashMap<String, Marker> stopsMapOpposite;
-    private OnOffMapListener listenerOpposite;
 
-
-    //Only used to display selected on and off stops
-    //if user zooms out alot on and off stops will still continue to display
-    //instead of disappearing
-    ArrayList<PathOverlay> pathsOpposite;
     private ItemizedIconOverlay selOverlay;
     private ArrayList<Marker> selList = new ArrayList<Marker>();
-
-
     private BoundingBox bbox;
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_off_map);
-
         context = getApplicationContext();
-
         submit = (Button) findViewById(R.id.submit);
         mv = (MapView) findViewById(R.id.mapview);
         clear = (ImageButton) findViewById(R.id.clear_input_stop);
         stopName = (AutoCompleteTextView) findViewById(R.id.input_stop);
 
-
-        //onIcon = getResources().getDrawable(R.drawable.transit_green_40);
-        //offIcon = getResources().getDrawable(R.drawable.transit_red_40);
-        //stopIcon = getResources().getDrawable(R.drawable.circle_filled_black_30);
-
         setupCounter(COUNT_MAX);
         getExtras();
         setTiles(mv);
-
 
         if (line != null && dir != null) {
             locList = getStops(line, dir, true);
@@ -163,31 +128,23 @@ public class OnOffMapActivity extends ActionBarActivity {
             }
 
             setItemizedOverlay(mv, locList, selList);
-            listener = new OnOffMapListener(mv, locList, locOverlay);
-            mv.addListener(listener);
+            mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
 
-
-
-            addRoute(line, dir, paths);
+            addRoute(line, dir);
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
-                    getApplicationContext(), onSeqListAdapter, offSeqListAdapter, selOverlay);
+                    context, onSeqListAdapter, offSeqListAdapter, selOverlay);
 
-            toggleOnBtn = (Button) findViewById(R.id.toggle_on_stop_btn);
-            toggleOnBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    createOppositeStops("on");
+            //if line is a streetcar
+            //enable on or off to be reversed because streetcar runs in a loop
+            for (String streetcar: Cons.STREETCARS) {
+                if (streetcar.equals(line)) {
+                    Log.d(TAG, "we have a streetcar");
+                    setupReverseStops();
+                    break;
                 }
-            });
-            toggleOffBtn = (Button) findViewById(R.id.toggle_off_stop_btn);
-            toggleOffBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    createOppositeStops("off");
-                }
-            });
+            }
 
         }
 
@@ -210,72 +167,76 @@ public class OnOffMapActivity extends ActionBarActivity {
 
         }
 
-        if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Utils.longToastCenter(getApplicationContext(),
+        if (!Utils.isNetworkAvailable(context)) {
+            Utils.longToastCenter(context,
                     "Please enable network connections.");
         }
     }
 
-
-
-    protected void createOppositeStops(String mode) {
+    protected void setupReverseStops() {
         String dirOpposite = dir.equals("0") ? "1" : "0";
-        Log.d(TAG,dir);
-        Log.d(TAG,dirOpposite);
+        locListOpposite = getStops(line, dirOpposite, false);
 
+        toggleOnBtn = (Button) findViewById(R.id.on_btn);
+        toggleOffBtn = (Button) findViewById(R.id.off_btn);
 
+        Drawable onDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
+        Drawable offDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
 
-        if (locOverlayOpposite == null) {
-            locListOpposite = getStops(line, dirOpposite, false);
-            for (Marker marker: locListOpposite) {
-                setToolTipListener(marker);
+        toggleOnBtn.setBackground(onDrawable);
+        toggleOffBtn.setBackground(offDrawable);
+
+        toggleOnBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if(isOffReversed) {
+                    Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
+                }
+                else {
+                    reverseDirection(Cons.ON, isOnReversed);
+                }
+                return true;
             }
+        });
+        toggleOffBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if(isOnReversed) {
+                    Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
+                }
+                else {
+                    reverseDirection(Cons.OFF, isOffReversed);
+                }
+                return true;
+            }
+        });
+    }
 
-            addRoute(line, dirOpposite, pathsOpposite);
-            locOverlayOpposite = new ItemizedIconOverlay(mv.getContext(), locListOpposite,
 
-                    new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
-                        public boolean onItemSingleTapUp(final int index, final Marker item) {
-                            selectLocType(item);
-                            return true;
-                        }
-
-                        public boolean onItemLongPress(final int index, final Marker item) {
-                            return true;
-                        }
-                    }
-            );
-
-            mv.addItemizedOverlay(locOverlayOpposite);
-            listenerOpposite = new OnOffMapListener(mv, locListOpposite, locOverlayOpposite);
-            mv.addListener(listenerOpposite);
-
-            if(mode.equals("on")) {
+    protected void reverseDirection(String mode, Boolean isReversed) {
+        if(mode.equals(Cons.ON)) {
+            if(isReversed == false) {
                 changeAdapter(onSeqListView, onSeqListAdapter, locListOpposite);
+                isOnReversed = true;
+                toggleOnBtn.setText("On Stop (Opposite Direction)");
             }
             else {
-                changeAdapter(offSeqListView, offSeqListAdapter, locListOpposite);
+                changeAdapter(onSeqListView, onSeqListAdapter, locList);
+                isOnReversed = false;
+                toggleOnBtn.setText("On Stop");
             }
-
         }
         else {
-            for(Marker m: locListOpposite) {
-                m.getToolTip(mv).close();
-            }
-            mv.removeOverlay(locOverlayOpposite);
-            mv.removeListener(listenerOpposite);
-
-            if(mode.equals("on")) {
-                changeAdapter(onSeqListView, onSeqListAdapter, locList);
+            if(isReversed == false) {
+                changeAdapter(offSeqListView, offSeqListAdapter, locListOpposite);
+                isOffReversed = true;
+                toggleOffBtn.setText("Off Stop (Opposite Direction)");
             }
             else {
                 changeAdapter(offSeqListView, offSeqListAdapter, locList);
+                isOffReversed = false;
+                toggleOffBtn.setText("Off Stop");
             }
-
-            locListOpposite = null;
-            listenerOpposite = null;
-            locOverlayOpposite = null;
-            removeRoute(pathsOpposite);
         }
     }
 
@@ -283,10 +244,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         ArrayList<Stop> stops = stopsSequenceSort(locList);
         if (adapter == onSeqListAdapter) {
             onSeqListAdapter = new StopSequenceAdapter(this, stops);
+            selectedStops.setOnAdapter(onSeqListAdapter);
+            selectedStops.clearSequenceMarker(Cons.BOARD);
             stopSequenceAdapterSetup(listView, onSeqListAdapter);
         }
         else {
             offSeqListAdapter = new StopSequenceAdapter(this, stops);
+            selectedStops.setOffAdapter(offSeqListAdapter);
+            selectedStops.clearSequenceMarker(Cons.ALIGHT);
             stopSequenceAdapterSetup(listView, offSeqListAdapter);
         }
     }
@@ -359,7 +324,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
 
         countAdapter = new ArrayAdapter<Integer>(
-                getApplicationContext(), R.layout.spinner_item_center, countList);
+                context, R.layout.spinner_item_center, countList);
         countAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         countSpinner.setAdapter(countAdapter);
@@ -431,16 +396,16 @@ public class OnOffMapActivity extends ActionBarActivity {
             public void onClick(View view) {
                 if (selectedStops.validateSelection()) {
                     //verify correct locations
-                    if (selectedStops.validateStopSequence()) {
+                    if (selectedStops.validateStopSequence() || (isOnReversed || isOffReversed) ) {
                         verifyAndSubmitLocationsPOST(submitCount);
                     }
                     else {
-                        Utils.longToast(getApplicationContext(),
+                        Utils.longToastCenter(context,
                                 "Invalid stop sequence based on route direction");
                     }
                 }
                 else {
-                    Utils.longToast(getApplicationContext(),
+                    Utils.longToastCenter(context,
                             "Both boarding and alighting locations must be set");
                 }
             }
@@ -456,16 +421,16 @@ public class OnOffMapActivity extends ActionBarActivity {
                     String onStop = selectedStops.getBoard().getDescription();
                     String offStop = selectedStops.getAlight().getDescription();
 
-                    if (selectedStops.validateStopSequence()) {
+                    if (selectedStops.validateStopSequence() || (isOnReversed || isOffReversed) ) {
                         exitWithStopIDs(onStop, offStop);
                     }
                     else {
-                        Utils.longToast(getApplicationContext(),
+                        Utils.longToastCenter(context,
                                 "Invalid stop sequence based on route direction");
                     }
                 }
                 else {
-                    Utils.longToast(getApplicationContext(),
+                    Utils.longToastCenter(context,
                             "Both boarding and alighting locations must be set");
                 }
             }
@@ -506,7 +471,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
 
-    protected void postResults(String onStop, String offStop) {
+    protected void postResults(String onStop, String offStop, Boolean isOnReversed, Boolean isOffReversed) {
         Log.d(TAG, "posting results");
 
         Date date = new Date();
@@ -520,10 +485,12 @@ public class OnOffMapActivity extends ActionBarActivity {
         extras.putString(Cons.OFF_STOP, offStop);
         extras.putString(Cons.USER_ID, user_id);
         extras.putString(Cons.TYPE, Cons.PAIR);
+        extras.putString(Cons.ON_REVERSED, String.valueOf(isOnReversed));
+        extras.putString(Cons.OFF_REVERSED, String.valueOf(isOffReversed));
 
-        Intent post = new Intent(getApplicationContext(), PostService.class);
+        Intent post = new Intent(context, PostService.class);
         post.putExtras(extras);
-        getApplicationContext().startService(post);
+        context.startService(post);
     }
 
     protected void resetMap() {
@@ -615,6 +582,19 @@ public class OnOffMapActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked OK");
+                        //check if choice (on-off) is being displayed in reverse
+                        //if so switch to regular direction
+                        //and highlight selected
+                        String choice = selectedStops.getCurrentType();
+                        Log.d(TAG, choice);
+
+                        if(choice.equals(Cons.BOARD) && isOnReversed) {
+                            reverseDirection(Cons.ON, isOnReversed);
+                        }
+                        if(choice.equals(Cons.ALIGHT) && isOffReversed) {
+                            reverseDirection(Cons.OFF, isOffReversed);
+                        }
+
                         selectedStops.saveCurrentMarker(selectedMarker);
                     }
                 })
@@ -639,10 +619,16 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
     protected void verifyAndSubmitLocationsPOST(final int count) {
 
-        final Marker board = selectedStops.getBoard();
-        final Marker alight = selectedStops.getAlight();
+        final Stop board = (Stop) selectedStops.getBoard();
+        final Stop alight = (Stop) selectedStops.getAlight();
 
-        if (Utils.isNetworkAvailable(getApplicationContext())) {
+
+        final Boolean isOnReversed = !board.getDir().equals(dir);
+        final Boolean isOffReversed = !alight.getDir().equals(dir);
+
+
+
+        if (Utils.isNetworkAvailable(context)) {
             String boardLoc = board.getTitle();
             String alightLoc = alight.getTitle();
             String message = Cons.BOARD + ": " + boardLoc + "\n\n" + Cons.ALIGHT + ": " + alightLoc;
@@ -658,7 +644,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                             //call function to post on off pair
 
                             for(int i_count = 0; i_count < count; i_count++ ) {
-                                postResults(onStop, offStop);
+                                postResults(onStop, offStop, isOnReversed, isOffReversed);
                             }
                             resetCount();
                             resetMap();
@@ -676,7 +662,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         }
         else {
             Log.d(TAG, "No network connection");
-            Utils.shortToastCenter(getApplicationContext(), "Please enable network connections.");
+            Utils.shortToastCenter(context, "Please enable network connections.");
         }
     }
 
@@ -717,7 +703,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     // each marker contains stop description, stop id, stop sequence and LatLng
     protected ArrayList<Marker> getStops(String line, String dir, Boolean zoom) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
-        BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName);
+        BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName, dir);
 
         if(zoom) {
             bbox = stops.getBoundingBox();
@@ -754,7 +740,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         });
     }
 
-    protected void addRoute(String line, String dir, ArrayList<PathOverlay> path) {
+    protected void addRoute(String line, String dir) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
 
         Paint pathPaint = new Paint();
@@ -763,43 +749,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         pathPaint.setStrokeWidth(6.0f);
         pathPaint.setStyle(Paint.Style.STROKE);
 
+        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
 
-        if(path == paths) {
-            paths = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
-            if (paths != null) {
-                for(PathOverlay mPath: paths) {
-                    mPath.setPaint(pathPaint);
-                    mv.addOverlay(mPath);
-                }
-            }
-        }
-        else {
-            pathsOpposite = PathUtils.getPathFromAssets(this, "geojson/" + geoJSONName);
-            if (paths != null) {
-                for(PathOverlay mPath: pathsOpposite) {
-                    mPath.setPaint(pathPaint);
-                    mv.addOverlay(mPath);
-                }
+        if (paths != null) {
+            for(PathOverlay mPath: paths) {
+                mPath.setPaint(pathPaint);
+                mv.addOverlay(mPath);
             }
         }
     }
-
-    protected void removeRoute(ArrayList<PathOverlay> path) {
-        if(path == paths) {
-            if (paths != null) {
-                for(PathOverlay mPath: paths) {
-                    mv.removeOverlay(mPath);
-                }
-            }
-        }
-        else {
-            if (paths != null) {
-                for(PathOverlay mPath: pathsOpposite) {
-                    mv.removeOverlay(mPath);
-                }
-            }
-        }
-    }
-
 
 }

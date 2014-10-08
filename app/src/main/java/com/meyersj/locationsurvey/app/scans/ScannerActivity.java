@@ -96,7 +96,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         startService(new Intent(this, LocationService.class));
         if(Utils.timeDifference(recentLoc, new Date()) > THRESHOLD) {
-            stopText.setText(Cons.NEAR_STOP + "no current near stop");
+            stopTextDefault();
         }
 
         receiver = new BroadcastReceiver() {
@@ -171,7 +171,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         stopText = new TextView(mContext, null);
         stopText.setGravity(Gravity.BOTTOM);
         stopText.setTextAppearance(mContext, R.style.SeqListHeader);
-        stopText.setText(Cons.NEAR_STOP + "no current near stop");
+        stopTextDefault();
 
         //layout.addView(stopText, ll);
         //layout.setBackground(getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none_nopress));
@@ -179,6 +179,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         //mScannerView.addView(layout);
 
         mScannerView.addView(stopText);
+    }
+
+    private void stopTextDefault() {
+        stopText.setText(Cons.NEAR_STOP + ": no current near stop");
     }
 
     private void setupButtonsLayout() {

@@ -80,7 +80,7 @@ public class PostService extends Service {
 
     protected String post(String[] params) {
 
-        String retVal;
+        String retVal = null;
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(params[0]);
 
@@ -95,19 +95,12 @@ public class PostService extends Service {
             retVal = response.toString();
 
         } catch (UnsupportedEncodingException e) {
-            Log.e(TAG, "UnsupportedEncodingException");
-            Log.e(TAG, e.toString());
-            retVal = "UnsupportedEncodingException";
+            Log.e(TAG, "UnsupportedEncodingException" + e.toString());
         } catch (ClientProtocolException e) {
             Log.e(TAG, "ClientProtocolException: " + e.toString());
-            Log.e(TAG, e.toString());
-            retVal = "ClientProtocolException";
         } catch (IOException e) {
             Log.e(TAG, "IOException: " + e.toString());
-            Log.e(TAG, e.toString());
-            retVal = "IOException";
         }
-
         return retVal;
     }
 

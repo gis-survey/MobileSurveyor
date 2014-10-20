@@ -31,14 +31,13 @@ import java.util.ArrayList;
 
 public class StopLookup {
 
-
-
     private final String TAG = "StopLookup";
     private Context context;
     private String url;
     private String line;
     private String dir;
     private TextView stopText;
+    private StopLookupTask currentTask;
 
     public StopLookup(Context context, TextView stopText, String url, String line, String dir) {
         this.context = context;
@@ -49,7 +48,13 @@ public class StopLookup {
     }
 
     public void findStop(String lat, String lon) {
+        if( (currentTask != null ) &&
+                (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
+            currentTask.cancel(true);
+        }
+
         StopLookupTask task = new StopLookupTask();
+        currentTask = task;
         task.execute(buildParams(lat, lon));
     }
 
@@ -60,10 +65,11 @@ public class StopLookup {
         HttpParams httpParams = client.getParams();
 
         //3 second timeout
-        HttpConnectionParams.setConnectionTimeout(httpParams, 3 * 1000);
-        HttpConnectionParams.setSoTimeout(httpParams, 3 * 1000);
+        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
 
         HttpPost post = new HttpPost(params[0]);
+        Log.d(TAG, params[0]);
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
         postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
 
@@ -105,7 +111,7 @@ public class StopLookup {
                 message = buildMessage("ClientProtocolException");
                 break;
             case 3:
-                message = buildMessage("IOException");
+                message = buildMessage("Locating..");
                 break;
             default:
                 message = buildMessage("Error");

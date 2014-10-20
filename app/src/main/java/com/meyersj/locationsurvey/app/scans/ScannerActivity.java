@@ -58,7 +58,15 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         Bundle params = getIntent().getExtras();
 
+
         Properties prop = Utils.getProperties(mContext, Cons.PROPERTIES);
+
+        String url = "";
+        if( prop.containsKey(Cons.BASE_URL)) {
+            url = prop.getProperty(Cons.BASE_URL) + "/stopLookup";
+            Log.d(TAG, url);
+        }
+
         if( prop.containsKey(Cons.GPS_THRESHOLD)) {
             THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
         }
@@ -79,7 +87,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         saveScans = new SaveScans(getApplicationContext(), params);
         stopLookup = new StopLookup(
-                getApplicationContext(), stopText, "https://216.25.208.109:8493/api/stopLookup",
+                getApplicationContext(), stopText, url,
                 params.getString(Cons.LINE), params.getString(Cons.DIR));
 
         setFormats();

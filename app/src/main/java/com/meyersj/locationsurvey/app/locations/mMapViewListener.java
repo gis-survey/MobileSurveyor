@@ -22,22 +22,23 @@ public class mMapViewListener implements MapViewListener {
     }
 
     @Override
-    public void onShowMarker(MapView mapView, Marker marker) {
+    public void onShowMarker(final MapView mapView, final Marker marker) {
 
     }
 
     @Override
-    public void onHidemarker(MapView mapView, Marker marker) {
+    public void onHidemarker(final MapView pMapView, final Marker pMarker) {
 
     }
 
+
     @Override
-    public void onTapMarker(MapView mapView, Marker marker) {
+    public void onTapMarker(final MapView mapView, final Marker marker) {
         Log.d(TAG, "marker was tapped");
     }
 
     @Override
-    public void onLongPressMarker(MapView mapView, Marker marker) {
+    public void onLongPressMarker(final MapView mapView, final Marker marker) {
 
     }
 

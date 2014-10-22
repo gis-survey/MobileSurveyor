@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="base_url"
+        android:title="API url"
+        android:summary="url endpoint for server to receive data" />
+    <EditTextPreference
+        android:key="solr_url"
+        android:title="SOLR url"
+        android:summary="url endpoint to access solr geocoder"/>
+</PreferenceScreen>

@@ -41,5 +41,6 @@ public class Cons {
     public static final String ON_REVERSED = "on_reversed";
     public static final String OFF_REVERSED = "off_reversed";
     public static final String NEAR_STOP = "Nearest Stop";
+    public static final String SET_PREFS = "set_prefs";
 }
 

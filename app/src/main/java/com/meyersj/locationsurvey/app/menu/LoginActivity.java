@@ -3,10 +3,14 @@ package com.meyersj.locationsurvey.app.menu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -14,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.jakewharton.disklrucache.Util;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Cons;
@@ -58,24 +63,31 @@ public class LoginActivity extends Activity {
     private static final String TAG = "LoginActivity";
     private final String SETLINE = "com.meyersj.locationsurvey.app.SETLINE";
 
+    private Context context;
     private EditText username;
     private EditText password;
     private Button login, skip_login;
-    private Properties prop;
+    //private Properties prop;
     String url;
+
+    private static final int RESULT_SETTINGS = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        context = getApplicationContext();
+
+        loadPreferences();
+
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.login);
         skip_login = (Button) findViewById(R.id.skip_login);
 
-        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
-        url = prop.getProperty(Cons.BASE_URL);
+        //prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
+        //url = prop.getProperty(Cons.BASE_URL);
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -89,7 +101,7 @@ public class LoginActivity extends Activity {
                 String credentials = json.toJSONString();
 
                 String[] params = new String[2];
-                params[0] = url + "/verifyUser";
+                params[0] = Utils.getUrlApi(context) + "/verifyUser";
                 params[1] = credentials;
 
                 //close keypad
@@ -110,7 +122,7 @@ public class LoginActivity extends Activity {
         skip_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SETLINE);
-                intent.putExtra(Cons.URL, url);
+                intent.putExtra(Cons.URL, Utils.getUrlApi(context));
                 intent.putExtra(Cons.USER_ID, "testuser");
                 startActivity(intent);
             }
@@ -178,12 +190,12 @@ public class LoginActivity extends Activity {
 
             if (user_match.equals("false")) {
                 Log.d(TAG, "username did not match");
-                Utils.shortToastCenter(getApplicationContext(),
+                Utils.shortToastCenter(context,
                         "No record of that user, please re-enter username.");
             }
             else if (password_match.equals("false")) {
                 Log.d(TAG, "password not correct");
-                Utils.shortToastCenter(getApplicationContext(),
+                Utils.shortToastCenter(context,
                         "Incorrect password, please re-enter.");
                 password.setText("");
             }
@@ -192,7 +204,8 @@ public class LoginActivity extends Activity {
             //move user to SetLineActivity
             else {
                 Intent intent = new Intent(SETLINE);
-                intent.putExtra(Cons.URL, url);
+                intent.putExtra(Cons.URL, Utils.getUrlApi(context));
+                Log.d(TAG, Utils.getUrlApi(context));
                 intent.putExtra(Cons.USER_ID, user_id);
                 password.setText("");
                 startActivity(intent);
@@ -203,5 +216,31 @@ public class LoginActivity extends Activity {
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent e) {
 
+        switch(keycode) {
+            //start settings activity
+            case KeyEvent.KEYCODE_MENU:
+                Intent i = new Intent(context, SettingsActivity.class);
+                startActivityForResult(i, RESULT_SETTINGS);
+                return true;
+        }
+
+        return super.onKeyDown(keycode, e);
+    }
+
+    private void loadPreferences() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        //this should only execute after program was installed for first time
+        //grab default urls from properties and update sharedprefs with those
+        if(!sharedPref.contains(Cons.SET_PREFS)) {
+            Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(Cons.SET_PREFS, true);
+            editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
+            editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
+            editor.commit();
+        }
+    }
 }

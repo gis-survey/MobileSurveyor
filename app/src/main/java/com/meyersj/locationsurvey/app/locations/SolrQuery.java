@@ -43,7 +43,7 @@ public class SolrQuery {
 
 
     protected void solrLookup(String input) {
-
+        Log.d(TAG, url);
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String url;

@@ -43,6 +43,7 @@ public class PickLocationActivity extends ActionBarActivity {
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     private final String TILESNAME = "OSMTriMet.mbtiles";
 
+    private Context context;
     private ImageButton clear;
     private Button submit;
     private Button cancel;
@@ -60,6 +61,7 @@ public class PickLocationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_location);
+        context = getApplicationContext();
 
         clear = (ImageButton) findViewById(R.id.clear_text);
         submit = (Button) findViewById(R.id.submit);
@@ -71,15 +73,15 @@ public class PickLocationActivity extends ActionBarActivity {
         mv.setMapViewListener(new mMapViewListener(locOverlay));
 
 
-        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
+        prop = Utils.getProperties(context, Cons.PROPERTIES);
 
-        if (!Utils.isNetworkAvailable(getApplicationContext())) {
-            Utils.shortToastCenter(getApplicationContext(),
+        if (!Utils.isNetworkAvailable(context)) {
+            Utils.shortToastCenter(context,
                     "No network connection, pick location from map");
         }
 
         solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
-        adapter = new SolrAdapter(this,android.R.layout.simple_list_item_1, prop.getProperty(Cons.SOLR_URL));
+        adapter = new SolrAdapter(context ,android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
         solrSearch.setAdapter(adapter);
 
 

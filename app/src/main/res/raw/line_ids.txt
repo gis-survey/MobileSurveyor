@@ -1,3 +1,4 @@
+DivisionFessenden 4
 PowellBlvd 9
 HolgateBroadway 17
 WoodstockGlisan 19
@@ -17,6 +18,8 @@ MAXYellowLine 190
 PortlandStreetcarNSLine 193
 PortlandStreetcarCLLine 194
 MAXGreenLine 200
+ToGreshamTransitCenter4 0
+ToStJohns4 1
 ToPowellthorGreshamTransitCenter9 0
 ToPortland9 1
 ToHolgateth17 0

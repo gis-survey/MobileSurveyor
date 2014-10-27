@@ -51,9 +51,11 @@ public class PostService extends Service {
         if (extras != null) {
             String type = extras.getString(Cons.TYPE);
             if (type.equals(Cons.SCAN)) {
+                Utils.appendCSV("scans", buildScanRow(extras));
                 params = getScanParams(extras);
             }
             else if (type.equals(Cons.PAIR)){
+                Utils.appendCSV("stops", buildPairRow(extras));
                 params = getPairParams(extras);
             }
             if (params != null) {
@@ -104,6 +106,32 @@ public class PostService extends Service {
         return retVal;
     }
 
+
+    protected String buildScanRow(Bundle bundle) {
+        String row = "";
+        row += bundle.getString(Cons.DATE) + ",";
+        row += bundle.getString(Cons.UUID) + ",";
+        row += bundle.getString(Cons.USER_ID) + ",";
+        row += bundle.getString(Cons.LINE) + ",";
+        row += bundle.getString(Cons.DIR) + ",";
+        row += bundle.getString(Cons.MODE) + ",";
+        row += bundle.getString(Cons.LAT) + ",";
+        row += bundle.getString(Cons.LON);
+        return row;
+    }
+
+    protected String buildPairRow(Bundle bundle) {
+        String row = "";
+        row += bundle.getString(Cons.DATE) + ",";
+        row += bundle.getString(Cons.USER_ID) + ",";
+        row += bundle.getString(Cons.LINE) + ",";
+        row += bundle.getString(Cons.DIR) + ",";
+        row += bundle.getString(Cons.ON_STOP) + ",";
+        row += bundle.getString(Cons.OFF_STOP) + ",";
+        row += bundle.getString(Cons.ON_REVERSED) + ",";
+        row += bundle.getString(Cons.OFF_REVERSED);
+        return row;
+    }
 
 	protected String[] getScanParams(Bundle bundle) {
         String[] params = new String[2];

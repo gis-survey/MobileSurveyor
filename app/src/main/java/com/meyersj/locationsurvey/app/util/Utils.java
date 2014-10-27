@@ -32,6 +32,7 @@ import java.util.Properties;
 public class Utils {
 
     public static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static final DateFormat csvDateFormat = new SimpleDateFormat("yyyyMMdd");
 
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager =
@@ -73,8 +74,15 @@ public class Utils {
         toast.show();
     }
 
-    public static void appendCSV(String text) {
-        File logFile = new File("sdcard/gpslog.csv");
+    public static void appendCSV(String type, String text) {
+        String date = Utils.csvDateFormat.format(new Date());
+        String path = "sdcard/LocationSurvey/" + type;
+        String filename = type + "_" + date + ".csv";
+
+        File folder = new File(path);
+        folder.mkdirs();
+        File logFile = new File(path + "/" + filename);
+
         if (!logFile.exists()) {
 
             try {
@@ -83,7 +91,6 @@ public class Utils {
             catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
 
         try {
@@ -102,8 +109,7 @@ public class Utils {
     public static boolean isGPSEnabled(Context context) {
         final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
-            //Utils.buildAlertMessageNoGps();
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             return false;
         }
         return true;

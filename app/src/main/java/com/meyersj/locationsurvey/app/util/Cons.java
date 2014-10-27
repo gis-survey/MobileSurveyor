@@ -42,5 +42,8 @@ public class Cons {
     public static final String OFF_REVERSED = "off_reversed";
     public static final String NEAR_STOP = "Nearest Stop";
     public static final String SET_PREFS = "set_prefs";
+    public static final String TEST_USER = "test_user";
+    public static final String ANON_NAME = "anon_name";
+    public static final String ANON_PASS = "anon_pass";
 }
 

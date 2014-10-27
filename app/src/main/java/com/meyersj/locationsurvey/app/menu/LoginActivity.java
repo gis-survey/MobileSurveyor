@@ -67,8 +67,8 @@ public class LoginActivity extends Activity {
     private EditText username;
     private EditText password;
     private Button login, skip_login;
-    //private Properties prop;
-    String url;
+    private Properties prop;
+    //String url;
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -86,8 +86,10 @@ public class LoginActivity extends Activity {
         login = (Button) findViewById(R.id.login);
         skip_login = (Button) findViewById(R.id.skip_login);
 
-        //prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
-        //url = prop.getProperty(Cons.BASE_URL);
+        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
+        final String test_user = prop.getProperty(Cons.TEST_USER);
+        final String anon_name = prop.getProperty(Cons.ANON_NAME);
+        final String anon_pass = prop.getProperty(Cons.ANON_PASS);
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -111,22 +113,32 @@ public class LoginActivity extends Activity {
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
 
-                //verify login credentials
-                //start SetLineActivity if credentials are valid
-                VerifyLoginTask task = new VerifyLoginTask();
-                task.execute(params);
-
+                if(name.equals(anon_name) && pass.equals(anon_pass)) {
+                    password.setText("");
+                    startCollection(anon_name);
+                }
+                else {
+                    //verify login credentials
+                    //start SetLineActivity if credentials are valid
+                    VerifyLoginTask task = new VerifyLoginTask();
+                    task.execute(params);
+                }
             }
         });
 
         skip_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(SETLINE);
-                intent.putExtra(Cons.URL, Utils.getUrlApi(context));
-                intent.putExtra(Cons.USER_ID, "testuser");
-                startActivity(intent);
+                startCollection(test_user);
             }
         });
+
+    }
+
+    protected void startCollection(String username) {
+        Intent intent = new Intent(SETLINE);
+        intent.putExtra(Cons.URL, Utils.getUrlApi(context));
+        intent.putExtra(Cons.USER_ID, username);
+        startActivity(intent);
 
     }
 
@@ -203,12 +215,8 @@ public class LoginActivity extends Activity {
             //user and password match
             //move user to SetLineActivity
             else {
-                Intent intent = new Intent(SETLINE);
-                intent.putExtra(Cons.URL, Utils.getUrlApi(context));
-                Log.d(TAG, Utils.getUrlApi(context));
-                intent.putExtra(Cons.USER_ID, user_id);
                 password.setText("");
-                startActivity(intent);
+                startCollection(user_id);
             }
 
         } catch(ParseException pe){

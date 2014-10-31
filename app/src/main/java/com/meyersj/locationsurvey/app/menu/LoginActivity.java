@@ -10,8 +10,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +54,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -79,7 +82,6 @@ public class LoginActivity extends Activity {
 
         context = getApplicationContext();
 
-        loadPreferences();
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -238,17 +240,13 @@ public class LoginActivity extends Activity {
         return super.onKeyDown(keycode, e);
     }
 
-    private void loadPreferences() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        //this should only execute after program was installed for first time
-        //grab default urls from properties and update sharedprefs with those
-        if(!sharedPref.contains(Cons.SET_PREFS)) {
-            Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(Cons.SET_PREFS, true);
-            editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
-            editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
-            editor.commit();
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.settings_action, menu);
+        return true;
     }
+
+
+
 }

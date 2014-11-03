@@ -207,7 +207,7 @@ public class SetLineActivity extends Activity {
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
-            //do nothing
+            logout.performClick();
             return true;
         }
 

@@ -227,16 +227,15 @@ public class LoginActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keycode, KeyEvent e) {
-
         switch(keycode) {
             //start settings activity
             case KeyEvent.KEYCODE_MENU:
                 Intent i = new Intent(context, SettingsActivity.class);
                 startActivityForResult(i, RESULT_SETTINGS);
                 return true;
+            default:
+                return super.onKeyDown(keycode, e);
         }
-
-        return super.onKeyDown(keycode, e);
     }
 
     @Override

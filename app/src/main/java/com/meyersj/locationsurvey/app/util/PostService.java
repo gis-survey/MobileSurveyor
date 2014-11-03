@@ -36,34 +36,31 @@ public class PostService extends Service {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	@Override
-	public void onCreate() {
-		Log.d(TAG, "PostService onCreate() called");
-	    super.onCreate();
-	}
 
-	@Override
-	public void onStart(Intent intent, int startId) {
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startID) {
 
-        Bundle extras = intent.getExtras();
-        String[] params = null;
-        if (extras != null) {
-            String type = extras.getString(Cons.TYPE);
-            if (type.equals(Cons.SCAN)) {
-                Utils.appendCSV("scans", buildScanRow(extras));
-                params = getScanParams(extras);
-            }
-            else if (type.equals(Cons.PAIR)){
-                Utils.appendCSV("stops", buildPairRow(extras));
-                params = getPairParams(extras);
-            }
-            if (params != null) {
-                PostTask task = new PostTask();
-                task.execute(params);
+        if(intent != null) {
+            Bundle extras = intent.getExtras();
+            String[] params = null;
+            if (extras != null) {
+                String type = extras.getString(Cons.TYPE);
+                if (type.equals(Cons.SCAN)) {
+                    Utils.appendCSV("scans", buildScanRow(extras));
+                    params = getScanParams(extras);
+                }
+                else if (type.equals(Cons.PAIR)){
+                    Utils.appendCSV("stops", buildPairRow(extras));
+                    params = getPairParams(extras);
+                }
+                if (params != null) {
+                    PostTask task = new PostTask();
+                    task.execute(params);
+                }
             }
         }
-	}
+        return START_NOT_STICKY;
+    }
 
     class PostTask extends AsyncTask<String[], Void, String> {
 

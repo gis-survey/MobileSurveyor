@@ -106,8 +106,16 @@ public class SaveScans {
         Date date = new Date();
         Log.d(TAG, rawResult.toString());
 
+        if((currentLoc.getLat() == null || currentLoc.getLon() == null) ||
+                (currentLoc.getLat().equals("0") || currentLoc.getLon().equals("0"))) {
+            Log.d(TAG, "adding scan to buffer");
+            bufferScan(rawResult, date);
+        }
         //check time delta between date and currentLoc date
-        if (Utils.timeDifference(currentLoc.getDate(), date) <= THRESHOLD) {
+       else if ((Utils.timeDifference(currentLoc.getDate(), date) <= THRESHOLD) &&
+                currentLoc.getLat() != null
+
+                ) {
             Log.d(TAG, "posting scan");
             postScan(rawResult, date);
             //For debugging to write to csv
@@ -124,19 +132,18 @@ public class SaveScans {
         }
     }
 
-
     public void flushBuffer() {
-        Integer total = 0;
-        Integer count = 0;
+        //Integer total = 0;
+        //Integer count = 0;
 
         Log.d(TAG, "flushing buffer");
         for(Scan scan: scansBuffer) {
-            total += 1;
+            //total += 1;
             Float diff = Utils.timeDifference(currentLoc.getDate(), scan.getDate());
             Log.d(TAG, String.valueOf(diff));
 
             if(diff <= THRESHOLD) {
-                count += 1;
+                //count += 1;
                 post(scan.getParams());
                 Log.d(TAG, "using new location");
                 //For debugging to write to csv
@@ -159,9 +166,7 @@ public class SaveScans {
             }
 
         }
-
         //for debug - show how many flushed records were valid
-
         //String message = "Flush: count=" + String.valueOf(count) + " total=" + String.valueOf(total);
         //Utils.longToastCenter(context, message);
         scansBuffer.clear();

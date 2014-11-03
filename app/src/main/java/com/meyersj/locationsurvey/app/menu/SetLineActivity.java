@@ -62,7 +62,6 @@ public class SetLineActivity extends Activity {
         logout = (Button) findViewById(R.id.logout);
         modeSwitch = (Switch) findViewById(R.id.offSwitch);
 
-
         getExtras();
 
         line.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -99,7 +98,6 @@ public class SetLineActivity extends Activity {
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
-
             }
         });
 

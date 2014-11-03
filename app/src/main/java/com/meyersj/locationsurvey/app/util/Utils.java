@@ -1,18 +1,13 @@
 package com.meyersj.locationsurvey.app.util;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import org.joda.time.DateTime;
@@ -136,12 +131,14 @@ public class Utils {
 
     public static String getUrlApi(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPref.getString(Cons.BASE_URL, "");
+        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.BASE_URL);
+        return sharedPref.getString(Cons.BASE_URL,defaultURL);
     }
 
     public static String getUrlSolr(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPref.getString(Cons.SOLR_URL, "");
+        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.SOLR_URL);
+        return sharedPref.getString(Cons.SOLR_URL, defaultURL);
     }
 
 

@@ -14,10 +14,10 @@ import java.util.Date;
 public class CurrentLocation {
 
     private final String TAG = "CurrentLocation";
-    String lat = null;
-    String lon = null;
-    Float accuracy = null;
-    Date date = null;
+    private String lat = null;
+    private String lon = null;
+    private Float accuracy = null;
+    private Date date = null;
 
 
     public CurrentLocation() {

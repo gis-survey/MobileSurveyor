@@ -71,7 +71,6 @@ public class LoginActivity extends Activity {
     private EditText password;
     private Button login, skip_login;
     private Properties prop;
-    //String url;
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -79,8 +78,8 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         context = getApplicationContext();
+        loadPreferences(context);
 
 
         username = (EditText) findViewById(R.id.username);
@@ -245,6 +244,34 @@ public class LoginActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.settings_action, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(context, SettingsActivity.class);
+                startActivityForResult(i, RESULT_SETTINGS);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    private void loadPreferences(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        //this should only execute after program was installed for first time
+        //grab default urls from properties and update sharedprefs with those
+        if(!sharedPref.contains(Cons.SET_PREFS)) {
+            Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(Cons.SET_PREFS, true);
+            editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
+            editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
+            editor.commit();
+        }
     }
 
 

@@ -10,6 +10,7 @@ import com.meyersj.locationsurvey.app.util.Utils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -17,6 +18,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
@@ -37,7 +39,8 @@ public class StopLookup {
     private String line;
     private String dir;
     private TextView stopText;
-    private StopLookupTask currentTask;
+    //private StopLookupTask currentTask;
+    HttpClient client;
 
     public StopLookup(Context context, TextView stopText, String url, String line, String dir) {
         this.context = context;
@@ -45,28 +48,39 @@ public class StopLookup {
         this.url = url;
         this.line = line;
         this.dir = dir;
+
+
+        this.client = new DefaultHttpClient();
+        HttpParams httpParams = client.getParams();
+
+        //10 second timeout
+        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
+        httpParams.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+
+
     }
 
     public void findStop(String lat, String lon) {
+        /*
         if( (currentTask != null ) &&
                 (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
             currentTask.cancel(true);
+            Log.d(TAG, "Cancel Current");
         }
+        */
 
         StopLookupTask task = new StopLookupTask();
-        currentTask = task;
+        //currentTask = task;
+        //Log.d(TAG, "Start");
         task.execute(buildParams(lat, lon));
+
+        //stopText.setText(lat + " " + lon);
     }
 
     private Response query(String[] params) {
         Integer code = 0;
         String responseString = null;
-        HttpClient client = new DefaultHttpClient();
-        HttpParams httpParams = client.getParams();
-
-        //3 second timeout
-        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
-        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
 
         HttpPost post = new HttpPost(params[0]);
         Log.d(TAG, params[0]);
@@ -74,12 +88,14 @@ public class StopLookup {
         postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
 
         try {
-            Log.d(TAG, "execute");
+            //Log.d(TAG, "execute");
             post.setEntity(new UrlEncodedFormEntity(postParam));
             HttpResponse response = client.execute(post);
+
             HttpEntity entityR = response.getEntity();
             responseString = EntityUtils.toString(entityR);
             Log.d(TAG, responseString);
+            //Log.d(TAG, "End");
 
         } catch (UnsupportedEncodingException e) {
             Log.e(TAG, "UnsupportedEncodingException: " + e.toString());
@@ -111,7 +127,7 @@ public class StopLookup {
                 message = buildMessage("ClientProtocolException");
                 break;
             case 3:
-                message = buildMessage("Locating..");
+                message = buildMessage("IOException");
                 break;
             default:
                 message = buildMessage("Error");
@@ -157,16 +173,6 @@ public class StopLookup {
             this.code = code;
             this.response = response;
         }
-
-        /*
-        public Integer getCode() {
-            return this.code;
-        }
-
-        public String getResponse() {
-            return this.response;
-        }
-        */
     }
 
     class StopLookupTask extends AsyncTask<String[], Void, Response> {

@@ -2,7 +2,6 @@ package com.meyersj.locationsurvey.app.stops;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.meyersj.locationsurvey.app.util.Cons;
-import com.meyersj.locationsurvey.app.util.PostService;
 import com.meyersj.locationsurvey.app.util.PathUtils;
 import com.meyersj.locationsurvey.app.util.Utils;
 import com.meyersj.locationsurvey.app.R;
@@ -13,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
@@ -41,7 +41,23 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -83,6 +99,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private Integer submitCount;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
+    private HttpClient client;
 
     //list of markers generated from geojson for current stop and direction
     private ArrayList<Marker> locList = new ArrayList<Marker>();
@@ -113,6 +130,15 @@ public class OnOffMapActivity extends ActionBarActivity {
         setupCounter(COUNT_MAX);
         getExtras();
         setTiles(mv);
+
+        //TODO move to seperate class for all other posts
+        client = new DefaultHttpClient();
+        HttpParams httpParams = client.getParams();
+
+        //10 second timeout
+        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
+
 
         if (line != null && dir != null) {
             locList = getStops(line, dir, true);
@@ -490,10 +516,89 @@ public class OnOffMapActivity extends ActionBarActivity {
         extras.putString(Cons.ON_REVERSED, String.valueOf(isOnReversed));
         extras.putString(Cons.OFF_REVERSED, String.valueOf(isOffReversed));
 
-        Intent post = new Intent(context, PostService.class);
-        post.putExtras(extras);
-        context.startService(post);
+        //Intent post = new Intent(context, PostService.class);
+        //post.putExtras(extras);
+        //context.startService(post);
+
+        Utils.appendCSV("stops", buildPairRow(extras));
+        String[] params = getPairParams(extras);
+        PostTask task = new PostTask();
+        task.execute(params);
     }
+
+    protected String buildPairRow(Bundle bundle) {
+        String row = "";
+        row += bundle.getString(Cons.DATE) + ",";
+        row += bundle.getString(Cons.USER_ID) + ",";
+        row += bundle.getString(Cons.LINE) + ",";
+        row += bundle.getString(Cons.DIR) + ",";
+        row += bundle.getString(Cons.ON_STOP) + ",";
+        row += bundle.getString(Cons.OFF_STOP) + ",";
+        row += bundle.getString(Cons.ON_REVERSED) + ",";
+        row += bundle.getString(Cons.OFF_REVERSED);
+        return row;
+    }
+
+    protected String[] getPairParams(Bundle bundle) {
+        String[] params = new String[2];
+        JSONObject json = new JSONObject();
+        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
+        json.put(Cons.DATE, bundle.getString(Cons.DATE));
+        json.put(Cons.LINE, bundle.getString(Cons.LINE));
+        json.put(Cons.DIR, bundle.getString(Cons.DIR));
+        json.put(Cons.ON_STOP, bundle.getString(Cons.ON_STOP));
+        json.put(Cons.OFF_STOP, bundle.getString(Cons.OFF_STOP));
+        json.put(Cons.ON_REVERSED, bundle.getString(Cons.ON_REVERSED));
+        json.put(Cons.OFF_REVERSED, bundle.getString(Cons.OFF_REVERSED));
+        params[0] = bundle.getString(Cons.URL) + "/insertPair";
+        params[1] = json.toJSONString();
+        return params;
+    }
+
+
+    class PostTask extends AsyncTask<String[], Void, String> {
+
+        @Override
+        protected String doInBackground(String[]... inParams) {
+            String[] params = inParams[0];
+            Log.d(TAG, "url:" + params[0]);
+            Log.d(TAG, "data:" + params[1]);
+            return post(params);
+        }
+        @Override
+        protected void onPostExecute(String response) {
+            Log.d(TAG, "onPostExecute(): " + response);
+        }
+    }
+
+    protected String post(String[] params) {
+
+        String retVal = null;
+
+
+
+        HttpPost post = new HttpPost(params[0]);
+
+        ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
+        postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
+
+        try {
+            post.setEntity(new UrlEncodedFormEntity(postParam));
+            HttpResponse response = client.execute(post);
+            HttpEntity entityR = response.getEntity();
+            Log.d(TAG, EntityUtils.toString(entityR));
+            retVal = response.toString();
+
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "UnsupportedEncodingException" + e.toString());
+        } catch (ClientProtocolException e) {
+            Log.e(TAG, "ClientProtocolException: " + e.toString());
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.toString());
+        }
+        return retVal;
+    }
+
 
     protected void resetMap() {
         selectedStops.clearCurrentMarker();

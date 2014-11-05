@@ -41,9 +41,11 @@ gradle/
 build/
 keys/
 
+
 config.properties
 gradle.properties
 geojson.1
 
 icons/
 
+signed_release/

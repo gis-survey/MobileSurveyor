@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -139,6 +140,13 @@ public class Utils {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.SOLR_URL);
         return sharedPref.getString(Cons.SOLR_URL, defaultURL);
+    }
+
+    public static void cancelCurrentTask(AsyncTask currentTask) {
+        if( (currentTask != null ) &&
+                (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
+            currentTask.cancel(true);
+        }
     }
 
 

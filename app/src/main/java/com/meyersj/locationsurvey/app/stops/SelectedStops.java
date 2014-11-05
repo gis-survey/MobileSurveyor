@@ -1,6 +1,5 @@
 package com.meyersj.locationsurvey.app.stops;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -9,11 +8,8 @@ import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Cons;
-import com.meyersj.locationsurvey.app.util.Utils;
 
-/**
- * Created by jeff on 8/25/14.
- */
+
 public class SelectedStops {
 
     private final String TAG = "SaveSelectedStops";
@@ -56,11 +52,9 @@ public class SelectedStops {
         this.offAdapter = offAdapter;
     }
 
-
     public String getCurrentType() {
         return this.currentType;
     }
-
 
     public void setCurrentMarker(Marker current, String currentType) {
         this.current = current;
@@ -77,7 +71,6 @@ public class SelectedStops {
             selOverlay.addItem(alight);
         }
     }
-
 
     protected void saveCurrentMarker(Marker marker) {
 
@@ -118,7 +111,6 @@ public class SelectedStops {
             refreshOverlay();
         }
     }
-
 
     public void clearSequenceMarker(String mode) {
         if (mode.equals(Cons.BOARD)) {

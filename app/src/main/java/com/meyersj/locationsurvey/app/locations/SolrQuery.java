@@ -1,8 +1,8 @@
 package com.meyersj.locationsurvey.app.locations;
 
+
 import android.util.Log;
 
-import com.meyersj.locationsurvey.app.locations.LocationResult;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -11,10 +11,13 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,29 +25,31 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-/**
- * Created by meyersj on 7/11/2014.
- */
+
 public class SolrQuery {
 
     private final String TAG = "SolrServer";
     private final String baseParams = "/select?start=0&wt=json&qt=dismax&rows=5&q=";
     private String url = null;
+    private HttpClient httpclient;
 
     private HashMap<String, LocationResult> solrResults = new HashMap<String, LocationResult>();
 
     public SolrQuery(String url) {
         this.url = url + baseParams;
+        this.httpclient = new DefaultHttpClient();
+        HttpParams httpParams = this.httpclient.getParams();
+
+        //10 second timeout
+        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
     }
 
     public HashMap<String, LocationResult> getSolrResults() {
         return solrResults;
     }
 
-
     protected void solrLookup(String input) {
-        Log.d(TAG, url);
-        HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String url;
 

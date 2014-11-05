@@ -8,59 +8,42 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
-import com.jakewharton.disklrucache.Util;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.util.Utils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Properties;
 
-/**
- * Created by meyersj on 6/12/2014.
- */
+
 public class LoginActivity extends Activity {
 
     private static final String TAG = "LoginActivity";
@@ -71,6 +54,7 @@ public class LoginActivity extends Activity {
     private EditText password;
     private Button login, skip_login;
     private Properties prop;
+    private HttpClient client;
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -80,6 +64,14 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         context = getApplicationContext();
         loadPreferences(context);
+
+        //TODO move to seperate class with all other POSTs
+        client = new DefaultHttpClient();
+        HttpParams httpParams = client.getParams();
+
+        //10 second timeout
+        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
 
 
         username = (EditText) findViewById(R.id.username);
@@ -161,9 +153,7 @@ public class LoginActivity extends Activity {
     }
 
     protected String post(String[] params) {
-
         String responseString = null;
-        HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(params[0]);
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();

@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -20,6 +21,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
@@ -30,6 +33,8 @@ import java.util.ArrayList;
 public class PostService extends Service {
 
     private static final String TAG = "PostService";
+    private AsyncTask currentTask;
+
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -37,9 +42,12 @@ public class PostService extends Service {
 		return null;
 	}
 
+
+
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
-
+        Log.d(TAG,  "onStartCommand");
         if(intent != null) {
             Bundle extras = intent.getExtras();
             String[] params = null;
@@ -54,7 +62,16 @@ public class PostService extends Service {
                     params = getPairParams(extras);
                 }
                 if (params != null) {
+                    if( (currentTask != null ) &&
+                            (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
+                        Log.d(TAG, "cancel current task");
+                        currentTask.cancel(true);
+                    }
+
+                    //Utils.cancelCurrentTask(currentTask);
+
                     PostTask task = new PostTask();
+                    currentTask = task;
                     task.execute(params);
                 }
             }
@@ -82,6 +99,13 @@ public class PostService extends Service {
         String retVal = null;
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(params[0]);
+        HttpParams httpParams = client.getParams();
+
+        //3 second timeout
+        HttpConnectionParams.setConnectionTimeout(httpParams, 4 * 1000);
+        HttpConnectionParams.setSoTimeout(httpParams, 4 * 1000);
+
+
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
         postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));

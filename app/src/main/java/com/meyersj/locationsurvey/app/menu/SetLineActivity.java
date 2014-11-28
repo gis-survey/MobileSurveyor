@@ -2,11 +2,14 @@ package com.meyersj.locationsurvey.app.menu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +19,7 @@ import android.widget.Switch;
 
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Cons;
+import com.meyersj.locationsurvey.app.util.Utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +39,9 @@ public class SetLineActivity extends Activity {
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.locationsurvey.app.SCANNER";
     private final String ONOFFMAP = "com.meyersj.locationsurvey.app.ONOFFMAP";
+    private static final int RESULT_SETTINGS = 1;
 
+    private Context context;
     private Spinner line, dir;
     private String line_code;
     private String dir_code;
@@ -50,6 +56,7 @@ public class SetLineActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = getApplicationContext();
         readIDs();
 
         super.onCreate(savedInstanceState);
@@ -138,7 +145,6 @@ public class SetLineActivity extends Activity {
                     Log.d(TAG, "start barcode scanner");
                 }
 
-                intent.putExtra(Cons.URL, url);
                 intent.putExtra(Cons.USER_ID, user_id);
                 intent.putExtra(Cons.OFF_MODE, offMode);
                 Log.d(TAG, "user: " + user_id);
@@ -203,6 +209,25 @@ public class SetLineActivity extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.settings_action, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(context, SettingsActivity.class);
+                startActivityForResult(i, RESULT_SETTINGS);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
@@ -224,10 +249,6 @@ public class SetLineActivity extends Activity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            if(extras.containsKey(Cons.URL)) {
-                url = extras.getString(Cons.URL);
-                Log.d(TAG, url);
-            }
             if(extras.containsKey(Cons.USER_ID)) {
                 user_id = extras.getString(Cons.USER_ID);
                 Log.d(TAG, extras.getString(Cons.USER_ID));

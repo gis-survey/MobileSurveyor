@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -132,8 +133,14 @@ public class Utils {
 
     public static String getUrlApi(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.BASE_URL);
-        return sharedPref.getString(Cons.BASE_URL,defaultURL);
+        String url = "";
+        //if "Testing" is selected as pa reference url will be "dev" instead of "prod"
+        String api = sharedPref.getString(Cons.DB, "prod");
+        String defaultUrl = getProperties(context, Cons.PROPERTIES).getProperty(Cons.BASE_URL);
+        url = sharedPref.getString(Cons.BASE_URL, defaultUrl);
+        url += "/" + api + "/api";
+        Log.d("Utilities", url);
+        return url;
     }
 
     public static String getUrlSolr(Context context) {

@@ -550,7 +550,7 @@ public class OnOffMapActivity extends ActionBarActivity {
         json.put(Cons.OFF_STOP, bundle.getString(Cons.OFF_STOP));
         json.put(Cons.ON_REVERSED, bundle.getString(Cons.ON_REVERSED));
         json.put(Cons.OFF_REVERSED, bundle.getString(Cons.OFF_REVERSED));
-        params[0] = bundle.getString(Cons.URL) + "/insertPair";
+        params[0] = Utils.getUrlApi(context) + "/insertPair";
         params[1] = json.toJSONString();
         return params;
     }

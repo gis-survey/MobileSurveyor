@@ -34,6 +34,13 @@
         <item name="android:padding">6dp</item>
     </style>
 
+    <style name="SeqListHeader.StopText">
+        <item name="android:shadowColor">@color/yellow</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+    </style>
+
 
     <style name="SeqListHeader">
         <item name="android:layout_width">fill_parent</item>

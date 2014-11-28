@@ -244,7 +244,7 @@ public class SaveScans {
         json.put(Cons.MODE, bundle.getString(Cons.MODE));
         json.put(Cons.LON, bundle.getString(Cons.LON));
         json.put(Cons.LAT, bundle.getString(Cons.LAT));
-        params[0] = bundle.getString(Cons.URL) + "/insertScan";
+        params[0] = Utils.getUrlApi(context) + "/insertScan";
         params[1] = json.toJSONString();
         return params;
     }

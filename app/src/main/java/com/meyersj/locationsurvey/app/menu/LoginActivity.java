@@ -129,10 +129,8 @@ public class LoginActivity extends Activity {
 
     protected void startCollection(String username) {
         Intent intent = new Intent(SETLINE);
-        intent.putExtra(Cons.URL, Utils.getUrlApi(context));
         intent.putExtra(Cons.USER_ID, username);
         startActivity(intent);
-
     }
 
     class VerifyLoginTask extends AsyncTask<String[], Void, String> {

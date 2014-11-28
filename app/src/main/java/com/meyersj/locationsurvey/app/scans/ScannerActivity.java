@@ -1,5 +1,10 @@
 package com.meyersj.locationsurvey.app.scans;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -19,11 +24,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -31,41 +32,35 @@ import com.meyersj.locationsurvey.app.util.Cons;
 import com.meyersj.locationsurvey.app.R;
 import com.meyersj.locationsurvey.app.util.Utils;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
 
 public class ScannerActivity extends Activity implements ZXingScannerView.ResultHandler {
 
     private String TAG = "ScannerActivity";
+    //Number of seconds before gps reading is too old
+    private Float THRESHOLD = Float.valueOf(1000 * 20);
 
     private ZXingScannerView mScannerView;
     private LinearLayout btnLayout;
     private Button onBtn;
     private Button offBtn;
-    private Context mContext;
+    private Context context;
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
     private StopLookup stopLookup;
     private TextView stopText;
     private Date recentLoc;
-    private Float THRESHOLD = Float.valueOf(1000 * 20);
 
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        mContext = getApplicationContext();
-        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
+        context = getApplicationContext();
+        mScannerView = new ZXingScannerView(this);
         Bundle params = getIntent().getExtras();
 
-
-        Properties prop = Utils.getProperties(mContext, Cons.PROPERTIES);
-
-        String url = "";
-        if( prop.containsKey(Cons.BASE_URL)) {
-            url = prop.getProperty(Cons.BASE_URL) + "/stopLookup";
-            Log.d(TAG, url);
-        }
+        Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
+        String url = Utils.getUrlApi(context) + "/stopLookup";
+        Log.d(TAG, url);
 
         if( prop.containsKey(Cons.GPS_THRESHOLD)) {
             THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
@@ -73,7 +68,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         setupStopTextLayout();
 
-        //display on and off buttons only if 'off' mode is not selected
+        //display on and off buttons only if 'back of bus' mode is not selected
         if (params.containsKey(Cons.OFF_MODE) &&
                 params.get(Cons.OFF_MODE).toString().equals("false") ){
             setupButtonsLayout();
@@ -81,7 +76,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             params.putString(Cons.MODE, Cons.ON);
         }
         else {
-            Log.d(TAG, "off mode is true");
             params.putString(Cons.MODE, Cons.OFF);
         }
 
@@ -116,7 +110,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 recentLoc = Utils.parseDate(date);
                 Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
 
-                Utils.shortToast(mContext, "GPS updated");
+                Utils.shortToast(ScannerActivity.this.context, "GPS updated");
                 saveScans.setLocation(lat, lon, accuracy, date);
                 stopLookup.findStop(lat, lon);
                 saveScans.flushBuffer();
@@ -128,7 +122,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         if(!Utils.isGPSEnabled(getApplicationContext())) {
             alertMessageNoGps();
         }
-
     }
 
     @Override
@@ -139,69 +132,54 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         unregisterReceiver(receiver);
     }
 
-
-    public void onStop() {
-        super.onStart();
-    }
-
     @Override
     public void handleResult(Result rawResult) {
-
+        // make a beep when scan is successful
         final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
         tg.startTone(ToneGenerator.TONE_PROP_BEEP2);
 
         Utils.shortToast(getApplicationContext(), "Scan successful");
 
-        Log.d(TAG, rawResult.getText()); // Prints scan results
-        Log.d(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        Log.d(TAG, rawResult.getText());
+        Log.d(TAG, rawResult.getBarcodeFormat().toString());
 
         saveScans.save(rawResult);
 
-
-        // pause before restarting camera to prevent multiple scans
+        // pause before restarting camera to prevent multiple scans at once
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
                 mScannerView.startCamera();
             }
         }, 500);
-
     }
 
     private void setupStopTextLayout() {
-        //LinearLayout layout = new LinearLayout(mContext, null, R.style.StopLayout);
+        stopText = new TextView(context, null);
+        stopText.setGravity(Gravity.TOP);
+        stopText.setTextAppearance(context, R.style.SeqListHeader);
 
-        //LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(
-        //        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-        //        android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
-        //ll.setMargins(3,3,3,3);
-
-        stopText = new TextView(mContext, null);
-        stopText.setGravity(Gravity.BOTTOM);
-        stopText.setTextAppearance(mContext, R.style.SeqListHeader);
         stopTextDefault();
-
-        //layout.addView(stopText, ll);
-        //layout.setBackground(getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none_nopress));
-        //layout.setGravity(Gravity.BOTTOM);
-        //mScannerView.addView(layout);
-
         mScannerView.addView(stopText);
     }
 
     private void stopTextDefault() {
-        stopText.setText(Cons.NEAR_STOP + ": no current near stop");
+        stopText.setText(Cons.NEAR_STOP + ": searching...");
     }
 
+    // create two side by side buttons
+    // 'ON' and 'OFF' modes
     private void setupButtonsLayout() {
-        btnLayout = new LinearLayout(mContext);
+        btnLayout = new LinearLayout(context);
 
-        //btnLayout.setBackgroundColor(Color.BLACK);
-        onBtn = new Button(mContext, null, R.style.ButtonText);
-        offBtn = new Button(mContext, null, R.style.ButtonText);
+        onBtn = new Button(context, null, R.style.ButtonText);
+        offBtn = new Button(context, null, R.style.ButtonText);
 
-        onBtn.setText("On");
-        offBtn.setText("Off");
+        onBtn.setText("ON MODE");
+        offBtn.setText("OFF");
+
+        onBtn.setHeight(250);
+        offBtn.setHeight(250);
 
         onBtn.setTextSize(20);
         offBtn.setTextSize(20);
@@ -218,14 +196,13 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(
                 android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
                 android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1.5f);
-
         ll.setMargins(3,3,3,3);
 
+        btnLayout.setGravity(Gravity.BOTTOM);
         btnLayout.addView(onBtn, ll);
         btnLayout.addView(offBtn, ll);
 
         mScannerView.addView(btnLayout);
-
     }
 
     private void setupButtonListeners() {
@@ -235,6 +212,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
                 saveScans.setMode(Cons.ON);
+                onBtn.setText("ON MODE");
+                offBtn.setText("OFF");
             }
         });
 
@@ -244,8 +223,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 onBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
                 saveScans.setMode(Cons.OFF);
+                offBtn.setText("OFF MODE");
+                onBtn.setText("ON");
             }
-
         });
     }
 
@@ -254,19 +234,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         formats.add(BarcodeFormat.QR_CODE);
         mScannerView.setFormats(formats);
     }
-
-    /*
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
-            //stopService(new Intent(this, LocationService.class));
-            //unregisterReceiver(receiver);
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-    */
 
     private void alertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

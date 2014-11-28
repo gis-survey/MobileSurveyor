@@ -85,11 +85,6 @@
             </intent-filter>
         </activity>
 
-
-
-        <!--service
-            android:name=".util.PostService"
-            android:exported="false"/-->
         <service
             android:name=".scans.LocationService"
             android:exported="false"/>

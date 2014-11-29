@@ -25,7 +25,7 @@ The text-based demographic questions for the long intercept survey will be colle
 
 This application will use a map created with the [Mapbox-Android-SDK](https://github.com/mapbox/mapbox-android-sdk). Offline tiles will be used to allow surveying even if a connection is lost, and to speed up tile loading. The tiles are created using [OpenStreetMap](http://www.openstreetmap.org/) data and styled using [Mapbox OSM Bright](https://github.com/mapbox/osm-bright) quickstart.
 
-The user can drop a pin manually to identify the location or search for a location using an address geocoded with [Metro's RLIS REST API](http://gis.oregonmetro.gov/rlisapi/default.htm). Once the location has been saved the user will submit and the coordinates are returned back to [ODK](www.opendatakit.org) and saved with the survey.
+The user can drop a pin manually to identify the location or search for a location using an address ~~geocoded with [Metro's RLIS REST API](http://gis.oregonmetro.gov/rlisapi/default.htm)~~. Once the location has been saved the user will submit and the coordinates are returned back to [ODK](www.opendatakit.org) and saved with the survey.
 
 
 

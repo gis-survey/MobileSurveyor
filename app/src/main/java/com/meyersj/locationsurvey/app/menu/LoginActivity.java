@@ -12,9 +12,11 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import com.meyersj.locationsurvey.app.R;
@@ -118,6 +120,19 @@ public class LoginActivity extends Activity {
                 }
             }
         });
+
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) ||
+                        (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.d(TAG,"Enter pressed");
+                    login.performClick();
+                }
+                return false;
+            }
+        });
+
+
 
         skip_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

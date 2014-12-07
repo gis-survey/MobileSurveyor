@@ -34,17 +34,19 @@ import java.util.ArrayList;
 public class StopLookup {
 
     private final String TAG = "StopLookup";
+    private final String EOL_MSG = "SWITCH DIRECTIONS AT END OF LINE";
     private Context context;
     private String url;
     private String line;
     private String dir;
     private TextView stopText;
-    //private StopLookupTask currentTask;
-    HttpClient client;
+    private TextView eol;
+    private HttpClient client;
 
-    public StopLookup(Context context, TextView stopText, String url, String line, String dir) {
+    public StopLookup(Context context, TextView stopText, TextView eol, String url, String line, String dir) {
         this.context = context;
         this.stopText = stopText;
+        this.eol = eol;
         this.url = url;
         this.line = line;
         this.dir = dir;
@@ -62,20 +64,8 @@ public class StopLookup {
     }
 
     public void findStop(String lat, String lon) {
-        /*
-        if( (currentTask != null ) &&
-                (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
-            currentTask.cancel(true);
-            Log.d(TAG, "Cancel Current");
-        }
-        */
-
         StopLookupTask task = new StopLookupTask();
-        //currentTask = task;
-        //Log.d(TAG, "Start");
         task.execute(buildParams(lat, lon));
-
-        //stopText.setText(lat + " " + lon);
     }
 
     private Response query(String[] params) {
@@ -118,7 +108,7 @@ public class StopLookup {
         String message;
         switch(response.code) {
             case 0:
-                message = buildMessage(parseResponse(response.response));
+                message = buildMessage(response.stopName);
                 break;
             case 1:
                 message = buildMessage("UnsupportedEncodingException");
@@ -133,6 +123,7 @@ public class StopLookup {
                 message = buildMessage("Error");
         }
         stopText.setText(message);
+        this.eol.setText(response.eol);
     }
 
     private String[] buildParams(String lat, String lon) {
@@ -147,31 +138,32 @@ public class StopLookup {
         return params;
     }
 
-    private String parseResponse(String response) {
-        String message = "error finding near stop";
-        JSONParser parser = new JSONParser();
-
-        try{
-            Object obj = parser.parse(response);
-            JSONObject results = (JSONObject) obj;
-            String error = results.get("error").toString();
-            String stopName = results.get("stop_name").toString();
-            message = error.equals("false") ? stopName : message;
-
-        } catch(ParseException pe){
-            Log.e(TAG, pe.toString());
-        }
-
-        return message;
-    }
-
     public class Response {
         public Integer code;
         public String response;
+        public String stopName;
+        public String eol = "";
 
         public Response(Integer code, String response) {
             this.code = code;
             this.response = response;
+            this.parseResponse(response);
+        }
+
+        private void parseResponse(String response) {
+            JSONParser parser = new JSONParser();
+
+            try{
+                Object obj = parser.parse(response);
+                JSONObject results = (JSONObject) obj;
+                String error = results.get("error").toString();
+                this.stopName = !error.equals("true") ? results.get("stop_name").toString(): "error finding near stop";
+                if(!error.equals("true") && Integer.valueOf(results.get("stop_seq_rem").toString()) <= 3) {
+                    this.eol = EOL_MSG;
+                }
+            } catch(ParseException pe){
+                Log.e(TAG, pe.toString());
+            }
         }
     }
 

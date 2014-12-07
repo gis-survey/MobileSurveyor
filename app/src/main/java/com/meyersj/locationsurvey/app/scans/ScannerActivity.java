@@ -20,8 +20,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -48,6 +50,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private SaveScans saveScans;
     private StopLookup stopLookup;
     private TextView stopText;
+    private TextView eol;
     private Date recentLoc;
 
 
@@ -81,7 +84,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         saveScans = new SaveScans(getApplicationContext(), params);
         stopLookup = new StopLookup(
-                getApplicationContext(), stopText, url,
+                getApplicationContext(), stopText, eol, url,
                 params.getString(Cons.LINE), params.getString(Cons.DIR));
 
         setFormats();
@@ -156,11 +159,38 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     private void setupStopTextLayout() {
         stopText = new TextView(context, null);
-        stopText.setGravity(Gravity.TOP);
+        stopText.setId(1);
         stopText.setTextAppearance(context, R.style.SeqListHeader);
 
+        eol = new TextView(context, null);
+        eol.setId(2);
+        eol.setTextAppearance(context, R.style.SeqListHeader);
+        eol.setText("");
+
+        RelativeLayout upperLayout = new RelativeLayout(context);
+        upperLayout.setGravity(Gravity.TOP);
+
+        RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        rl.setMargins(3,3,3,3);
+        stopText.setLayoutParams(rl);
+
+        rl = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        rl.setMargins(3,3,3,3);
+        rl.addRule(RelativeLayout.BELOW, stopText.getId());
+        eol.setLayoutParams(rl);
+
+
+
         stopTextDefault();
-        mScannerView.addView(stopText);
+        //mScannerView.addView(stopText);
+
+        upperLayout.addView(stopText);
+        upperLayout.addView(eol);
+        mScannerView.addView(upperLayout);
     }
 
     private void stopTextDefault() {

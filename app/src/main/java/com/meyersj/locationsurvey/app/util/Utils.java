@@ -65,6 +65,12 @@ public class Utils {
         toast.show();
     }
 
+    public static void shortToastUpper(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, -300);
+        toast.show();
+    }
+
     public static void longToastCenter(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);

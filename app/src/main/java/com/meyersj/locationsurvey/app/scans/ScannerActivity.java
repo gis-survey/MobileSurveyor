@@ -113,7 +113,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 recentLoc = Utils.parseDate(date);
                 Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
 
-                Utils.shortToast(ScannerActivity.this.context, "GPS updated");
+                //Utils.shortToast(ScannerActivity.this.context, "GPS updated");
                 saveScans.setLocation(lat, lon, accuracy, date);
                 stopLookup.findStop(lat, lon);
                 saveScans.flushBuffer();
@@ -138,10 +138,25 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     @Override
     public void handleResult(Result rawResult) {
         // make a beep when scan is successful
-        final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
-        tg.startTone(ToneGenerator.TONE_PROP_BEEP2);
 
-        Utils.shortToast(getApplicationContext(), "Scan successful");
+        final ToneGenerator tg_on = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+        //tg_on.startTone(ToneGenerator.TONE_PROP_BEEP);
+
+        final ToneGenerator tg_off = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+        //tg_off.startTone(ToneGenerator.TONE_PROP_BEEP2);
+
+
+        String message = "";
+        if(saveScans.getMode().equals(Cons.ON)) {
+            message = "ON - Scan successful";
+            tg_on.startTone(ToneGenerator.TONE_PROP_BEEP2);
+        }
+        else if(saveScans.getMode().equals(Cons.OFF)) {
+            message = "OFF - Scan successful";
+            tg_off.startTone(ToneGenerator.TONE_PROP_BEEP);
+        }
+
+        Utils.shortToastUpper(getApplicationContext(), message);
 
         Log.d(TAG, rawResult.getText());
         Log.d(TAG, rawResult.getBarcodeFormat().toString());

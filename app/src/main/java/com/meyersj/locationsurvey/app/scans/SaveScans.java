@@ -37,6 +37,17 @@ public class SaveScans {
     private final String TAG = "SaveScans";
     private Float THRESHOLD = Float.valueOf(1000 * 20);
 
+    private Context context;
+    private CurrentLocation currentLoc;
+    private ArrayList<Scan> scansBuffer;
+
+    private String url;
+    private String user_id;
+    private String line;
+    private String dir;
+    private String mode;
+    private HttpClient client;
+
 
     private class Scan {
         private Date date;
@@ -54,17 +65,6 @@ public class SaveScans {
             return this.params;
         }
     }
-
-    private Context context;
-    private CurrentLocation currentLoc;
-    private ArrayList<Scan> scansBuffer;
-
-    private String url;
-    private String user_id;
-    private String line;
-    private String dir;
-    private String mode;
-    private HttpClient client;
 
 
     public SaveScans(Context context, Bundle params) {
@@ -101,6 +101,10 @@ public class SaveScans {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+    public String getMode() {
+        return this.mode;
     }
 
     //don't add lat and lon because we might be waiting for a more recent location

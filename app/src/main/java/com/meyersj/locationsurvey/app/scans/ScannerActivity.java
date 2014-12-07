@@ -214,8 +214,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         onBtn.setTextSize(20);
         offBtn.setTextSize(20);
 
-        onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-        offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
+        onBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
+        offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
 
         onBtn.setGravity(Gravity.CENTER);
         offBtn.setGravity(Gravity.CENTER);
@@ -239,8 +239,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         onBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                offBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
+                onBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
+                offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 saveScans.setMode(Cons.ON);
                 onBtn.setText("ON MODE");
                 offBtn.setText("OFF");
@@ -250,8 +250,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         offBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                onBtn.setBackground(getResources().getDrawable(R.drawable.grey_button));
+                offBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
+                onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
                 saveScans.setMode(Cons.OFF);
                 offBtn.setText("OFF MODE");
                 onBtn.setText("ON");

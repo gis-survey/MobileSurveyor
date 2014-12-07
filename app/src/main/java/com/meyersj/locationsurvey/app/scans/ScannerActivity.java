@@ -160,11 +160,11 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private void setupStopTextLayout() {
         stopText = new TextView(context, null);
         stopText.setId(1);
-        stopText.setTextAppearance(context, R.style.SeqListHeader);
+        stopText.setTextAppearance(context, R.style.StopsText);
 
         eol = new TextView(context, null);
         eol.setId(2);
-        eol.setTextAppearance(context, R.style.SeqListHeader);
+        eol.setTextAppearance(context, R.style.EOLText);
         eol.setText("");
 
         RelativeLayout upperLayout = new RelativeLayout(context);

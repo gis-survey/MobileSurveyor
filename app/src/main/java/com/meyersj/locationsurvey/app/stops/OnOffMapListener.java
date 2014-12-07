@@ -53,7 +53,7 @@ public class OnOffMapListener implements MapListener {
 
         if (markers != null) {
 
-            if (zoomLevel >= 16.7) {
+            if (zoomLevel >= 15.5) {
                 for(Marker m: markers) {
                     InfoWindow toolTip = m.getToolTip(mv);
                     m.showBubble(toolTip, mv, false);

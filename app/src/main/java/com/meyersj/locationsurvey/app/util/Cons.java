@@ -36,7 +36,7 @@ public class Cons {
     public static final String PAIR = "pair";
     public static final String GPS_INTERVAL = "gps_interval";
     public static final String GPS_THRESHOLD = "gps_threshold";
-    public static final String[] TRAINS = {"190", "193", "194", "200"};
+    public static final String[] TRAINS = {"28", "29", "190", "193", "194", "200"};
     public static final String[] STREETCARS = {"193", "194"};
     public static final String ON_REVERSED = "on_reversed";
     public static final String OFF_REVERSED = "off_reversed";

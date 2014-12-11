@@ -101,7 +101,7 @@ public class StopLookup {
     }
 
     private String buildMessage(String message) {
-        return Cons.NEAR_STOP + ": " + message;
+        return Cons.NEAR_STOP + message;
     }
 
     private void updateDisplay(Response response) {

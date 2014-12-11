@@ -49,8 +49,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
     private StopLookup stopLookup;
+    private String mode;
+    private TextView modeText;
     private TextView stopText;
-    private TextView eol;
+    private TextView eolText;
     private Date recentLoc;
 
 
@@ -69,6 +71,8 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
         }
 
+
+        saveScans = new SaveScans(getApplicationContext(), params);
         setupStopTextLayout();
 
         //display on and off buttons only if 'back of bus' mode is not selected
@@ -76,18 +80,20 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 params.get(Cons.OFF_MODE).toString().equals("false") ){
             setupButtonsLayout();
             setupButtonListeners();
+            saveScans.setMode(Cons.ON);
             params.putString(Cons.MODE, Cons.ON);
         }
         else {
             params.putString(Cons.MODE, Cons.OFF);
+            saveScans.setMode(Cons.OFF);
         }
 
-        saveScans = new SaveScans(getApplicationContext(), params);
         stopLookup = new StopLookup(
-                getApplicationContext(), stopText, eol, url,
+                getApplicationContext(), stopText, eolText, url,
                 params.getString(Cons.LINE), params.getString(Cons.DIR));
 
         setFormats();
+        textDefault();
 
         Log.d(TAG, params.getString(Cons.USER_ID));
         setContentView(mScannerView); // Set the scanner view as the content view
@@ -101,7 +107,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
         startService(new Intent(this, LocationService.class));
         if(Utils.timeDifference(recentLoc, new Date()) > THRESHOLD) {
-            stopTextDefault();
+            stopText.setText(Cons.NEAR_STOP + "searching...");
         }
 
         receiver = new BroadcastReceiver() {
@@ -125,6 +131,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         if(!Utils.isGPSEnabled(getApplicationContext())) {
             alertMessageNoGps();
         }
+
     }
 
     @Override
@@ -172,44 +179,66 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         }, 500);
     }
 
+    private void buildLayoutParams(TextView current, TextView above) {
+        RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        rl.setMargins(8,3,3,3);
+        if(above != null) {
+            rl.addRule(RelativeLayout.BELOW, above.getId());
+        }
+        current.setLayoutParams(rl);
+    }
+
     private void setupStopTextLayout() {
+        modeText = new TextView(context, null);
+        modeText.setId(1);
+        modeText.setTextAppearance(context, R.style.ModeText);
+        //modeText.setText("Current mode: " + saveScans.getMode());
+
         stopText = new TextView(context, null);
-        stopText.setId(1);
+        stopText.setId(2);
         stopText.setTextAppearance(context, R.style.StopsText);
 
-        eol = new TextView(context, null);
-        eol.setId(2);
-        eol.setTextAppearance(context, R.style.EOLText);
-        eol.setText("");
+        eolText = new TextView(context, null);
+        eolText.setId(3);
+        eolText.setTextAppearance(context, R.style.EOLText);
+        //eolText.setText("");
 
         RelativeLayout upperLayout = new RelativeLayout(context);
         upperLayout.setGravity(Gravity.TOP);
 
+        buildLayoutParams(modeText, null);
+        buildLayoutParams(stopText, modeText);
+        buildLayoutParams(eolText, stopText);
+
+        /*
         RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        rl.setMargins(3,3,3,3);
+        rl.setMargins(3, 3, 3, 3);
         stopText.setLayoutParams(rl);
+        modeText.setLayoutParams(rl);
 
         rl = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        rl.setMargins(3,3,3,3);
+        rl.setMargins(3, 3, 3, 3);
         rl.addRule(RelativeLayout.BELOW, stopText.getId());
-        eol.setLayoutParams(rl);
+        eolText.setLayoutParams(rl);
+        */
 
 
-
-        stopTextDefault();
-        //mScannerView.addView(stopText);
-
+        upperLayout.addView(modeText);
         upperLayout.addView(stopText);
-        upperLayout.addView(eol);
+        upperLayout.addView(eolText);
         mScannerView.addView(upperLayout);
     }
 
-    private void stopTextDefault() {
-        stopText.setText(Cons.NEAR_STOP + ": searching...");
+    private void textDefault() {
+        modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
+        stopText.setText(Cons.NEAR_STOP + "searching...");
+        eolText.setText("");
     }
 
     // create two side by side buttons
@@ -259,6 +288,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 saveScans.setMode(Cons.ON);
                 onBtn.setText("ON MODE");
                 offBtn.setText("OFF");
+                modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
             }
         });
 
@@ -270,6 +300,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 saveScans.setMode(Cons.OFF);
                 offBtn.setText("OFF MODE");
                 onBtn.setText("ON");
+                modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
             }
         });
     }

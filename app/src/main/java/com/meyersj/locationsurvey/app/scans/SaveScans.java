@@ -103,6 +103,7 @@ public class SaveScans {
         this.mode = mode;
     }
 
+
     public String getMode() {
         return this.mode;
     }
@@ -161,6 +162,10 @@ public class SaveScans {
         else {
             Log.d(TAG, "adding scan to buffer - other reasons");
             bufferScan(rawResult, date);
+            Log.d(TAG, currentLoc.getLat());
+            Log.d(TAG, currentLoc.getLon());
+            Log.d(TAG, currentLoc.getDate().toString());
+            Log.d(TAG, String.valueOf(Utils.timeDifference(currentLoc.getDate(), date)));
         }
     }
 

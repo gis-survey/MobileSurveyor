@@ -53,6 +53,17 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <style name="ModeText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_rect_grey_fade_round_none_nopress</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">70dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
     <style name="EOLText">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -69,7 +80,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/shape_rect_grey_fade_round_none_nopress</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">19dp</item>
+        <item name="android:textSize">25dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">5dp</item>

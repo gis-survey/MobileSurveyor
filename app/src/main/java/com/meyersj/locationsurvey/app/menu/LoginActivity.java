@@ -272,6 +272,8 @@ public class LoginActivity extends Activity {
             editor.putBoolean(Cons.SET_PREFS, true);
             editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
             editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
+            Log.d(TAG, prop.getProperty(Cons.MAP_RTES));
+            editor.putString(Cons.MAP_RTES, prop.getProperty(Cons.MAP_RTES));
             editor.commit();
         }
     }

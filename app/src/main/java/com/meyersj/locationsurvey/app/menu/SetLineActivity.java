@@ -82,9 +82,9 @@ public class SetLineActivity extends Activity {
                 line_code = map.get(modified_line);
 
                 Boolean ifTrain = false;
-                for (String train: Cons.TRAINS) {
+                for (String train: Utils.getMapRoutes(context)) {
                     if (train.equals(line_code)) {
-                        Log.d(TAG, "we have a train");
+                        Log.d(TAG, "we have a train, launch map instead of scanner");
                         ifTrain = true;
                     }
                 }
@@ -199,7 +199,7 @@ public class SetLineActivity extends Activity {
     protected Boolean ifTrain(String line) {
         Boolean ifTrain = false;
 
-        for(String x : Cons.TRAINS ){
+        for(String x : Utils.getMapRoutes(context)){
             if(x.equals(line)) {
                 ifTrain = true;
                 break;

@@ -67,7 +67,7 @@
             android:text="Skip Sign In"
             style="@style/ButtonText"
             android:background="@drawable/shape_rect_grey_fade_round_all"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
     </LinearLayout>
 
 

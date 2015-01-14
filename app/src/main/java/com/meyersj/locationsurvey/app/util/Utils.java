@@ -155,6 +155,12 @@ public class Utils {
         return sharedPref.getString(Cons.SOLR_URL, defaultURL);
     }
 
+    public static String[] getMapRoutes(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        String routesStr = getProperties(context, Cons.PROPERTIES).getProperty(Cons.MAP_RTES);
+        return sharedPref.getString(Cons.MAP_RTES, routesStr).split(",");
+    }
+
     public static void cancelCurrentTask(AsyncTask currentTask) {
         if( (currentTask != null ) &&
                 (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {

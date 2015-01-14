@@ -275,5 +275,4 @@ public class PickLocationActivity extends ActionBarActivity {
             mv.invalidate();
         }
     }
-
 }

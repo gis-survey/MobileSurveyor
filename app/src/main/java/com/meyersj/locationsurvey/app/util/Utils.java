@@ -161,13 +161,5 @@ public class Utils {
         return sharedPref.getString(Cons.MAP_RTES, routesStr).split(",");
     }
 
-    public static void cancelCurrentTask(AsyncTask currentTask) {
-        if( (currentTask != null ) &&
-                (currentTask.getStatus() == AsyncTask.Status.RUNNING)) {
-            currentTask.cancel(true);
-        }
-    }
-
-
 
 }

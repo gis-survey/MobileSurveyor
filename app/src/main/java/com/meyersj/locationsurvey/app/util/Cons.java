@@ -45,6 +45,7 @@ public class Cons {
     public static final String ANON_NAME = "anon_name";
     public static final String ANON_PASS = "anon_pass";
     public static final String DB = "db";
+    public static final String SERVER = "server";
     public static final String CUR_MODE = "";
     public static final String MAP_RTES = "map_rtes";
 }

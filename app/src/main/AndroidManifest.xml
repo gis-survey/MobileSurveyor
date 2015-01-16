@@ -73,18 +73,6 @@
 
         </activity>
 
-        <activity
-            android:name=".locations.PickLocationActivity"
-            android:hardwareAccelerated="false"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/Theme.AppCompat"
-            android:screenOrientation="portrait">
-            <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.PICKLOCATION" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
         <service
             android:name=".scans.LocationService"
             android:exported="false"/>

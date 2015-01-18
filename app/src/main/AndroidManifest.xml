@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.meyersj.locationsurvey.app" >
+    package="com.meyersj.mobilesurveyor.app">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -13,7 +13,6 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
         <activity
@@ -22,7 +21,7 @@
             android:screenOrientation="portrait">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.meyersj.locationsurvey.app.LOGIN" />
+                <action android:name="com.meyersj.mobilesurveyor.app.LOGIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +29,7 @@
         <activity
             android:name=".menu.SettingsActivity">
             <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.SETTINGS" />
+                <action android:name="com.meyersj.mobilesurveyor.app.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -40,7 +39,7 @@
             android:name=".menu.SetLineActivity"
             android:screenOrientation="portrait">
             <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.SETLINE" />
+                <action android:name="com.meyersj.mobilesurveyor.app.SETLINE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -49,7 +48,7 @@
             android:name=".scans.ScannerActivity"
             android:screenOrientation="portrait">
             <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.SCANNER" />
+                <action android:name="com.meyersj.mobilesurveyor.app.SCANNER" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -62,12 +61,12 @@
             android:screenOrientation="portrait">
 
             <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.ONOFFMAP" />
+                <action android:name="com.meyersj.mobilesurveyor.app.ONOFFMAP" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
             <intent-filter >
-                <action android:name="com.meyersj.locationsurvey.app.ODK_ONOFFMAP" />
+                <action android:name="com.meyersj.mobilesurveyor.app.ODK_ONOFFMAP" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

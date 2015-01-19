@@ -365,8 +365,6 @@ public class OnOffMapActivity extends ActionBarActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {}
 
         });
-
-
     }
 
 
@@ -723,8 +721,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     private void resetCount() {
         submitCount = 1;
         countSpinner.setSelection(0);
-
     }
+
     protected void verifyAndSubmitLocationsPOST(final int count) {
 
         final Stop board = (Stop) selectedStops.getBoard();

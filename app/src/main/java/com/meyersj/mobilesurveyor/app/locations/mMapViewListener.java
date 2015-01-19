@@ -8,14 +8,23 @@ import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.mapbox.mapboxsdk.views.MapViewListener;
+import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 
 
 public class mMapViewListener implements MapViewListener {
     private final String TAG = "MyMapViewListener";
     private ItemizedIconOverlay locOverlay;
+    private SurveyManager manager;
+    private String mode;
 
     public mMapViewListener(ItemizedIconOverlay locOverlay) {
         this.locOverlay = locOverlay;
+    }
+
+    public mMapViewListener(ItemizedIconOverlay locOverlay, SurveyManager manager, String mode) {
+        this.locOverlay = locOverlay;
+        this.manager = manager;
+        this.mode = mode;
     }
 
     @Override
@@ -46,13 +55,17 @@ public class mMapViewListener implements MapViewListener {
 
     @Override
     public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
+        Log.d("LISTENER", "onlongpress");
         LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
-        locOverlay.removeAllItems();
-        Marker m = new Marker("", null, latLng);
+        Marker m = new Marker(mapView, "", null, latLng);
         m.addTo(mapView);
+        locOverlay.removeAllItems();
         locOverlay.addItem(m);
         mapView.invalidate();
+        if (manager != null) {
+            manager.setLocation(m, mode);
+        }
     }
 
-
 }
+        //Log.d("SurveyManager", "location was set: " + mode);

@@ -72,7 +72,7 @@ public class SelectedStops {
         }
     }
 
-    protected void saveCurrentMarker(Marker marker) {
+    public void saveCurrentMarker(Marker marker) {
 
         if (currentType != null) {
 

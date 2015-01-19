@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mapbox.mapboxsdk.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/transfers_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Transfers"
+                style="@style/ButtonText"
+                android:background="@drawable/shape_rect_grey_fade_round_all" />
+            <ListView
+                android:id="@+id/routes_lists"
+                android:divider="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="multipleChoice"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

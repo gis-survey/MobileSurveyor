@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="location_type_array">
+        <item>Home</item>
+        <item>Work</item>
+        <item>School</item>
+        <item>Recreation</item>
+        <item>Shopping</item>
+        <item>Personal business</item>
+        <item>Medical appointment/hospital visit</item>
+        <item>Visit family/friends</item>
+        <item>Other (specify)</item>
+    </string-array>
+</resources>

@@ -17,15 +17,11 @@ public class StopSearchAdapter extends ArrayAdapter<String> {
     private Filter stopsFilter;
     private List<String> origStopsList;
 
-
-
     public StopSearchAdapter(Context aContext, int resource, List<String> objects) {
         super(aContext, resource, objects);
         //super(aContext, resource, objects);
-
         stopsList = objects;
         origStopsList = new ArrayList<String>(objects);
-
         context = aContext;
     }
 

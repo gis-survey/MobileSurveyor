@@ -24,17 +24,26 @@
             <Button
                 android:id="@+id/transfers_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:text="Select Transfers"
                 style="@style/ButtonText"
                 android:background="@drawable/shape_rect_grey_fade_round_all" />
-            <ListView
-                android:id="@+id/routes_lists"
-                android:divider="@null"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:choiceMode="multipleChoice"/>
 
+            <LinearLayout
+                android:id="@+id/routes_list_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ListView
+                    android:id="@+id/routes_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:choiceMode="multipleChoice"
+                    android:layout_marginBottom="65dp" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

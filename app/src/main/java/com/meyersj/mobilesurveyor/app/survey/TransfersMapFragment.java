@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -20,6 +22,7 @@ import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class TransfersMapFragment extends MapFragment {
@@ -27,6 +30,10 @@ public class TransfersMapFragment extends MapFragment {
     protected SurveyManager manager;
     protected String line;
     protected String dir;
+
+    protected View routesLayout;
+    protected ListView listView;
+    protected Button transfersBtn;
 
     public TransfersMapFragment(SurveyManager manager, String line, String dir) {
         this.manager = manager;
@@ -44,9 +51,27 @@ public class TransfersMapFragment extends MapFragment {
         setTiles(mv);
         addRoute(context, line, dir);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
-                android.R.layout.simple_list_item_1, R.array.lines);
+        transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
+        listView = (ListView) view.findViewById(R.id.routes_list_view);
+        routesLayout = (View) view.findViewById(R.id.routes_list_layout);
 
+        String[] routes = activity.getResources().getStringArray(R.array.lines);
+        ArrayList<String> routesList = new ArrayList<String>();
+        for(String route: routes) {
+            routesList.add(route);
+        }
+        RoutesAdapter routesAdapter = new RoutesAdapter(context, routesList);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
+        //        R.layout.textview_route_transfers, routes);
+        listView.setAdapter(routesAdapter);
+        changeListVisibility(routesLayout.getVisibility());
+
+        transfersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeListVisibility(routesLayout.getVisibility());
+            }
+        });
 
         return view;
     }
@@ -66,4 +91,17 @@ public class TransfersMapFragment extends MapFragment {
         super.onDetach();
     }
 
+    //toggle visibility of list depending on current visibility
+    private void changeListVisibility(int currentVisibility) {
+        if (currentVisibility == View.INVISIBLE) {
+            routesLayout.setVisibility(View.VISIBLE);
+            transfersBtn.setBackground(
+                    context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
+        }
+        else {
+            routesLayout.setVisibility(View.INVISIBLE);
+            transfersBtn.setBackground(
+                    context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
+        }
+    }
 }

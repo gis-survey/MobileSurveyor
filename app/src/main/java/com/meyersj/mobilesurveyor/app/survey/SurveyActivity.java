@@ -20,8 +20,8 @@ import com.meyersj.mobilesurveyor.app.R;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
-    public static final int SURVEY_FRAGMENTS = 5;
-    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
+    public static final int SURVEY_FRAGMENTS = 4;
+    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Routes"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -59,11 +59,9 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments[1] = new PickLocationFragment(manager, "destination");
         fragments[2] = new OnOffFragment(manager, "9", "0");
         fragments[3] = new TransfersMapFragment(manager, "9", "0");
-        fragments[4] = new ConfirmMapFragment(manager, "9", "0");
 
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
-
         }
 
         previousBtn.setOnClickListener(new View.OnClickListener() {

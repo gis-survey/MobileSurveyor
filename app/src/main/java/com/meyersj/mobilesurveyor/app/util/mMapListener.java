@@ -3,6 +3,7 @@ package com.meyersj.mobilesurveyor.app.util;
 import android.content.Context;
 
 import com.mapbox.mapboxsdk.events.MapListener;
+import com.mapbox.mapboxsdk.events.RotateEvent;
 import com.mapbox.mapboxsdk.events.ScrollEvent;
 import com.mapbox.mapboxsdk.events.ZoomEvent;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -27,6 +28,11 @@ public class mMapListener implements MapListener {
 
     @Override
     public void onZoom(ZoomEvent zoomEvent) {
+
+    }
+
+    @Override
+    public void onRotate(RotateEvent rotateEvent) {
 
     }
 }

@@ -20,7 +20,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait">
             <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
+
                 <action android:name="com.meyersj.mobilesurveyor.app.LOGIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -81,6 +81,7 @@
             android:screenOrientation="portrait">
 
             <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.meyersj.mobilesurveyor.app.SURVEY" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
@@ -99,6 +100,7 @@
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait">
             <intent-filter >
+
                 <action android:name="com.meyersj.mobilesurveyor.app.PICKLOCATION" />
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

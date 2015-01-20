@@ -36,8 +36,10 @@ public class SelectedStops {
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
 
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        //onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
+        //offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        onIcon = context.getResources().getDrawable(R.drawable.on_bus_green_pitch_24_bus_24);
+        offIcon = context.getResources().getDrawable(R.drawable.off_bus_red_pitch_24_bus_24);
         stopIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
 
 

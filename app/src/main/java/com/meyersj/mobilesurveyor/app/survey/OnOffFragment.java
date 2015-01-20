@@ -47,8 +47,9 @@ import java.util.HashMap;
 public class OnOffFragment extends MapFragment {
 
     private final String TAG = "OnOffMapActivity";
-    private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_ONOFFMAP";
-    private final String ONOFF_ACTION = "com.meyersj.mobilesurveyor.app.ONOFFMAP";
+
+    //private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_ONOFFMAP";
+    //private final String ONOFF_ACTION = "com.meyersj.mobilesurveyor.app.ONOFFMAP";
 
     // parameters for HTTP POST
     private String line;
@@ -135,7 +136,8 @@ public class OnOffFragment extends MapFragment {
             setItemizedOverlay(mv, locList, selList);
             mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
 
-            addRoute(context, line, dir);
+            addRoute(context, line, dir, false);
+
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(

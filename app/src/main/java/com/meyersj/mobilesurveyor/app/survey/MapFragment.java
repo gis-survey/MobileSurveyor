@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
@@ -42,23 +44,26 @@ public abstract class MapFragment extends Fragment {
     protected MapView mv;
     protected ItemizedIconOverlay surveyOverlay;
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
+    protected ArrayList<PathOverlay> addedRoutes = new ArrayList<PathOverlay>();
+    protected Drawable circleIcon;
+    protected Drawable squareIcon;
+
     public MapFragment() {}
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_default_map, container, false);
-        //Log.d(TAG, "create view map fragment");
         activity = getActivity();
         context = activity.getApplicationContext();
-        //mv = (MapView) view.findViewById(R.id.mapview);
-        //setTiles(mv);
+        circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        squareIcon = context.getResources().getDrawable(R.drawable.square_24);
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         return true;
                     }
-
                     public boolean onItemLongPress(final int index, final Marker item) {
                         return true;
                     }
@@ -107,23 +112,48 @@ public abstract class MapFragment extends Fragment {
         mv.setZoom(14);
     }
 
-    protected void addRoute(Context context, String line, String dir) {
+    protected ArrayList<PathOverlay> addRoute(Context context, String line, String dir, Boolean store) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
-        Paint pathPaint = new Paint();
-        pathPaint.setColor(getResources().getColor(R.color.black_light_light));
-        pathPaint.setAntiAlias(true);
-        pathPaint.setStrokeWidth(6.0f);
-        pathPaint.setStyle(Paint.Style.STROKE);
+
+
+        Paint pathPaint1 = new Paint();
+        pathPaint1.setColor(getResources().getColor(R.color.black_light));
+        pathPaint1.setAntiAlias(true);
+        pathPaint1.setStrokeWidth(7.0f);
+        pathPaint1.setStyle(Paint.Style.STROKE);
+
+        Paint pathPaint2 = new Paint();
+        pathPaint2.setColor(getResources().getColor(R.color.black_light_light));
+        pathPaint2.setAntiAlias(true);
+        pathPaint2.setStrokeWidth(3.0f);
+        pathPaint2.setStyle(Paint.Style.STROKE);
+
+        Paint pathPaint = pathPaint1;
+        if(store)
+            pathPaint = pathPaint2;
+
         ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(context, "geojson/" + geoJSONName);
+
         if (paths != null) {
             for(PathOverlay mPath: paths) {
                 mPath.setPaint(pathPaint);
+                if(store)
+                    addedRoutes.add(mPath);
                 mv.addOverlay(mPath);
             }
         }
+        return paths;
+    }
+
+    protected void clearRoutes() {
+        for(PathOverlay path: addedRoutes) {
+            mv.removeOverlay(path);
+        }
+        addedRoutes.clear();
     }
 
     public void updateView(SurveyManager manager) {
+        BoundingBox boundingBox = null;
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
 
@@ -141,12 +171,20 @@ public abstract class MapFragment extends Fragment {
                 surveyOverlay.addItem(dest);
             }
         }
-        else {
+        else { //(this  instanceof PickLocationFragment)) {
             if(orig != null) {
                 surveyOverlay.addItem(orig);
             }
             if(dest != null) {
                 surveyOverlay.addItem(dest);
+            }
+            if(orig != null && dest != null) {
+                ArrayList<Marker> markers = new ArrayList<Marker>();
+                markers.add(orig);
+                markers.add(dest);
+                Log.d(TAG, String.valueOf(markers.size()));
+                boundingBox = getBoundingBox(null, markers, markers.size());
+                Log.d(TAG, boundingBox.toString());
             }
             if(onStop != null) {
                 surveyOverlay.addItem(onStop);
@@ -156,7 +194,51 @@ public abstract class MapFragment extends Fragment {
             }
         }
         mv.addItemizedOverlay(surveyOverlay);
+        if(boundingBox != null) {
+            mv.zoomToBoundingBox(boundingBox, true, true);
+        }
+
     }
 
+    public class Bounds {
+        double north = 0;
+        double east = 0;
+        double south = 0;
+        double west = 0;
+        double BUFFER = 0.01;
+
+        public Bounds() {}
+
+        public void addMarker(Marker marker) {
+            LatLng latLng = marker.getPoint();
+            if(north == 0 || latLng.getLatitude() > north) {
+                north = latLng.getLatitude();
+            }
+            if(south == 0 || latLng.getLatitude() < south) {
+                south = latLng.getLatitude();
+            }
+            if(west == 0 || latLng.getLongitude() < west) {
+                west = latLng.getLongitude();
+            }
+            if(east == 0 || latLng.getLongitude() > east) {
+                east = latLng.getLongitude();
+            }
+        }
+
+        public BoundingBox getBounds() {
+            return new BoundingBox(north + BUFFER, east + BUFFER, south - BUFFER, west - BUFFER);
+        }
+
+    }
+    protected BoundingBox getBoundingBox(Bounds bounds, ArrayList<Marker> markers, int count) {
+        if (count <= 0) {
+            return bounds.getBounds();
+        }
+        if (bounds == null) {
+            bounds = new Bounds();
+        }
+        bounds.addMarker(markers.get(count - 1));
+        return this.getBoundingBox(bounds, markers, count - 1);
+    }
 
 }

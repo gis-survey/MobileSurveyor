@@ -19,13 +19,23 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="58dp" >
+
+            <Button
+                android:id="@+id/submit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="Submit information"
+                style="@style/ButtonText"
+                android:background="@drawable/shape_rect_grey_fade_round_all" />
 
             <Button
                 android:id="@+id/transfers_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Select Transfers"
+                android:layout_marginTop="5dp"
+                android:text="Select Routes"
                 style="@style/ButtonText"
                 android:background="@drawable/shape_rect_grey_fade_round_all" />
 
@@ -34,16 +44,17 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
+                android:background="@color/black_light"
                 android:visibility="invisible">
 
                 <ListView
                     android:id="@+id/routes_list_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:choiceMode="multipleChoice"
-                    android:layout_marginBottom="65dp" />
+                    android:choiceMode="multipleChoice" />
 
             </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>

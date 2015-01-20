@@ -1,5 +1,6 @@
 package com.meyersj.mobilesurveyor.app.locations;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -16,15 +17,20 @@ public class mMapViewListener implements MapViewListener {
     private ItemizedIconOverlay locOverlay;
     private SurveyManager manager;
     private String mode;
+    private Drawable circle;
+    private Drawable square;
 
     public mMapViewListener(ItemizedIconOverlay locOverlay) {
         this.locOverlay = locOverlay;
     }
 
-    public mMapViewListener(ItemizedIconOverlay locOverlay, SurveyManager manager, String mode) {
+    public mMapViewListener(ItemizedIconOverlay locOverlay, SurveyManager manager, String mode,
+                            Drawable circle, Drawable square) {
         this.locOverlay = locOverlay;
         this.manager = manager;
         this.mode = mode;
+        this.circle = circle;
+        this.square = square;
     }
 
     @Override
@@ -33,9 +39,14 @@ public class mMapViewListener implements MapViewListener {
     }
 
     @Override
-    public void onHidemarker(final MapView pMapView, final Marker pMarker) {
+    public void onHideMarker(MapView mapView, Marker marker) {
 
     }
+
+    //@Override
+    //public void onHidemarker(final MapView pMapView, final Marker pMarker) {
+//
+  //  }
 
 
     @Override
@@ -64,7 +75,12 @@ public class mMapViewListener implements MapViewListener {
         mapView.invalidate();
         if (manager != null) {
             manager.setLocation(m, mode);
+            if(mode.equals("origin"))
+                m.setMarker(circle);
+            if(mode.equals("destination"))
+                m.setMarker(square);
         }
+
     }
 
 }

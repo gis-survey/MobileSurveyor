@@ -2,6 +2,7 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +43,8 @@ public class PickLocationFragment extends MapFragment {
     private AutoCompleteTextView solrSearch;
     private SolrAdapter adapter;
     private SurveyManager manager;
+    Drawable circleIcon;
+    Drawable squareIcon;
 
     public PickLocationFragment(SurveyManager manager, String mode) {
         this.manager = manager;
@@ -62,6 +65,9 @@ public class PickLocationFragment extends MapFragment {
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
+        circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        squareIcon = context.getResources().getDrawable(R.drawable.square_24);
+
         clear = (ImageButton) view.findViewById(R.id.clear_text);
         TextView modeSpinnerText = (TextView) view.findViewById(R.id.mode_spinner_text);
         Spinner locationSpinner = (Spinner) view.findViewById(R.id.location_type_spinner);
@@ -73,7 +79,7 @@ public class PickLocationFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         setItemizedOverlay(mv);
-        mv.setMapViewListener(new mMapViewListener(locOverlay, this.manager, mode));
+        mv.setMapViewListener(new mMapViewListener(locOverlay, this.manager, mode, circleIcon, squareIcon));
         prop = Utils.getProperties(context, Cons.PROPERTIES);
 
         if (mode.equals("origin")) {
@@ -159,6 +165,12 @@ public class PickLocationFragment extends MapFragment {
         if(latLng != null) {
             clearMarkers();
             Marker m = new Marker(null, null, latLng);
+
+            if(mode.equals("origin"))
+                m.setMarker(circleIcon);
+            if(mode.equals("destination"))
+                m.setMarker(squareIcon);
+
             m.addTo(mv);
             locOverlay.addItem(m);
             Log.d("SEQLOC", locOverlay.toString());

@@ -28,7 +28,6 @@ public class BuildStops {
 
     private Context context;
     private MapView mv;
-    private String geoJSON;
     private ArrayList<Marker> stops;
     private BuildBoundingBox bboxBuilder;
     private String dir;
@@ -39,75 +38,48 @@ public class BuildStops {
         this.dir = dir;
         stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
-
-
         if (geoJSON != null) {
             bboxBuilder = new BuildBoundingBox();
             parseGeoJSON(geoJSON);
         }
-
     }
 
-
     private void parseGeoJSON(FeatureCollection parsed) {
-        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
-
+        Drawable circleIcon = context.getResources().getDrawable(R.drawable.bus_18);
         try {
-
             for (Feature f : parsed.getFeatures()) {
-
                 if (f.getGeometry() instanceof Point) {
                     JSONArray coordinates = null;
                     coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
                     double lon = (Double) coordinates.get(0);
                     double lat = (Double) coordinates.get(1);
-
-                    Log.d(TAG, String.valueOf(lon));
-                    Log.d(TAG, String.valueOf(lat));
                     bboxBuilder.checkPoint(lon, lat);
-
                     JSONObject properties = f.getProperties();
                     String stopID = properties.get("stop_id").toString();
                     String stopName = properties.get("stop_name").toString();
                     String stopSeq = properties.get("stop_seq").toString();
-
-                    Log.d(TAG, stopID);
-                    Log.d(TAG, stopName);
-                    Log.d(TAG, stopSeq);
-
-
-
                     Stop stop = new Stop(
                             mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon), dir);
                     stop.setMarker(circleIcon);
                     stops.add(stop);
                 }
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     private FeatureCollection openGeoJSON(String assetsFile) {
-
-        Log.d(TAG, assetsFile);
-
         FeatureCollection parsed = null;
-
         try {
             parsed = DataLoadingUtils.loadGeoJSONFromAssets(context, assetsFile);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return parsed;
     }
-
 
     public ArrayList<Marker> getStops() {
         return stops;

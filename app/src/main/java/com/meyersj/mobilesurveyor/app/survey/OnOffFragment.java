@@ -48,14 +48,6 @@ public class OnOffFragment extends MapFragment {
 
     private final String TAG = "OnOffMapActivity";
 
-    //private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_ONOFFMAP";
-    //private final String ONOFF_ACTION = "com.meyersj.mobilesurveyor.app.ONOFFMAP";
-
-    // parameters for HTTP POST
-    private String line;
-    private String dir;
-
-    // Views
     private AutoCompleteTextView stopName;
     private ImageButton clear;
     private View seqView;
@@ -65,33 +57,23 @@ public class OnOffFragment extends MapFragment {
     private Button toggleOnBtn;
     private Button toggleOffBtn;
     private TextView osmText;
-
     private SelectedStops selectedStops;
-    private ArrayAdapter<Integer> countAdapter;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
     private HttpClient client;
-
-    //list of markers generated from geojson for current stop and direction
     private ArrayList<Marker> locList = new ArrayList<Marker>();
-    //overlay on map that displays each stop
     private ItemizedIconOverlay locOverlay;
-    //used to lookup marker when the stop name is selected from the search bar
     private HashMap<String, Marker> stopsMap;
-
     Boolean isOnReversed = false;
     Boolean isOffReversed = false;
     private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
-
     private ItemizedIconOverlay selOverlay;
     private ArrayList<Marker> selList = new ArrayList<Marker>();
     private BoundingBox bbox;
     protected SurveyManager manager;
 
-    public OnOffFragment(SurveyManager manager, String line, String dir) {
+    public OnOffFragment(SurveyManager manager) {
         this.manager = manager;
-        this.line = line;
-        this.dir = dir;
     }
 
     @Override
@@ -102,47 +84,35 @@ public class OnOffFragment extends MapFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        Log.d("ONOFFLIFE", "on create on off");
         view = inflater.inflate(R.layout.fragment_on_off_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
-
         clear = (ImageButton) view.findViewById(R.id.clear_input_stop);
         stopName = (AutoCompleteTextView) view.findViewById(R.id.input_stop);
-
-        //TODO move to seperate class for all other posts
+        // http client with 10 second timeout
         client = new DefaultHttpClient();
         HttpParams httpParams = client.getParams();
-
-        //10 second timeout
         HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
         HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
-
         if (line != null && dir != null) {
             locList = getStops(line, dir, true);
             selList = new ArrayList<Marker>();
-
             // set listener for when marker tooltip is selected
             for (Marker marker: locList) {
                 setToolTipListener(marker);
             }
-
             if(bbox != null) {
                 mv.zoomToBoundingBox(bbox, true, false, true, true);
             }
-
             setItemizedOverlay(mv, locList, selList);
             mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
-
             addRoute(context, line, dir, false);
-
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
                     context, onSeqListAdapter, offSeqListAdapter, selOverlay);
-
             //if line is a streetcar
             //enable on or off to be reversed because streetcar runs in a loop
             for (String streetcar: Cons.STREETCARS) {
@@ -153,18 +123,8 @@ public class OnOffFragment extends MapFragment {
                 }
             }
         }
-
-        //setupODKSubmitAction();
-
-        if (!Utils.isNetworkAvailable(context)) {
-            Utils.longToastCenter(context,
-                    "Please enable network connections.");
-        }
         return view;
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {}
 
     @Override
     public void onAttach(Activity activity) {
@@ -176,28 +136,22 @@ public class OnOffFragment extends MapFragment {
         super.onDetach();
     }
 
-
     // open stops geojson for current route
     // parse into ArrayList of markers
     // each marker contains stop description, stop id, stop sequence and LatLng
     protected ArrayList<Marker> getStops(String line, String dir, Boolean zoom) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName, dir);
-
         if(zoom) {
             bbox = stops.getBoundingBox();
             mv.zoomToBoundingBox(bbox, true, false, true, true);
         }
-
         return stops.getStops();
     }
 
     //modify mView for each toolTip in each marker to prevent closing it when touched
     protected void setToolTipListener(final Marker marker) {
-
         View mView = marker.getToolTip(mv).getView();
-
-        //from InfoWindow Constructor but commented out close
         mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent e) {
@@ -210,8 +164,6 @@ public class OnOffFragment extends MapFragment {
         mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.d(TAG, "locOverlay toolTip LongPress");
-                Log.d(TAG, marker.getTitle());
                 selectLocType(marker);
                 return true;
             }
@@ -221,15 +173,12 @@ public class OnOffFragment extends MapFragment {
 
     protected void setItemizedOverlay(
             final MapView mapView, ArrayList<Marker> locList, ArrayList<Marker> selList) {
-
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
-
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         selectLocType(item);
                         return true;
                     }
-
                     public boolean onItemLongPress(final int index, final Marker item) {
                         return true;
                     }
@@ -239,13 +188,11 @@ public class OnOffFragment extends MapFragment {
         selOverlay = new ItemizedIconOverlay(mv.getContext(), selList, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
             public boolean onItemSingleTapUp(int i, Marker marker) {
-                Log.d(TAG, "selOverlay single tap");
                 return false;
             }
 
             @Override
             public boolean onItemLongPress(int i, Marker marker) {
-                Log.d(TAG, "selOverlay long press");
                 return false;
             }
         });
@@ -253,28 +200,6 @@ public class OnOffFragment extends MapFragment {
         mv.addItemizedOverlay(locOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
-
-
-    /*
-    protected void addRoute(String line, String dir) {
-        String geoJSONName = line + "_" + dir + "_routes.geojson";
-
-        Paint pathPaint = new Paint();
-        pathPaint.setColor(getResources().getColor(R.color.black_light_light));
-        pathPaint.setAntiAlias(true);
-        pathPaint.setStrokeWidth(6.0f);
-        pathPaint.setStyle(Paint.Style.STROKE);
-
-        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(activity, "geojson/" + geoJSONName);
-
-        if (paths != null) {
-            for(PathOverlay mPath: paths) {
-                mPath.setPaint(pathPaint);
-                mv.addOverlay(mPath);
-            }
-        }
-    }
-    */
 
     private void setupStopSequenceList() {
         seqView = view.findViewById(R.id.seq_list);
@@ -287,13 +212,10 @@ public class OnOffFragment extends MapFragment {
         user toggles that on or off was before start of line */
 
         ArrayList<Stop> stops = stopsSequenceSort(locList);
-
         onSeqListAdapter = new StopSequenceAdapter(activity, stops);
         offSeqListAdapter = new StopSequenceAdapter(activity, stops);
-
         stopSequenceAdapterSetup(onSeqListView, onSeqListAdapter);
         stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
-
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -309,11 +231,9 @@ public class OnOffFragment extends MapFragment {
         //      {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512", ... };
         final ArrayList<String> stopsList = new ArrayList<String>();
         Collections.addAll(stopsList, stopNames);
-
         StopSearchAdapter adapter = new StopSearchAdapter
                 (activity,android.R.layout.simple_list_item_1,stopsList);
         stopName.setAdapter(adapter);
-
         stopName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -335,29 +255,23 @@ public class OnOffFragment extends MapFragment {
     }
 
     protected String[] buildStopsArray(ArrayList<Marker> locList) {
-
         stopsMap = new HashMap<String, Marker>();
-
         for(Marker m: locList) {
             stopsMap.put(m.getTitle(), m);
             stopsMap.put(m.getDescription(), m);
         }
-
         String[] stopNames = new String[stopsMap.size()];
-
         Integer i = 0;
         for (String key : stopsMap.keySet()) {
             stopNames[i] = key;
             i += 1;
         }
-
         return stopNames;
     }
 
     protected void selectLocType(final Marker selectedMarker) {
         Log.d(TAG, "select loc type");
         String message = selectedMarker.getTitle();
-
         final CharSequence[] items = {Cons.BOARD, Cons.ALIGHT};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);

@@ -2,7 +2,9 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.PathUtils;
 
 import java.io.File;
@@ -37,6 +40,7 @@ public abstract class MapFragment extends Fragment {
     protected final String TAG = "MapFragment";
     protected final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     protected final String TILESNAME = "OSMTriMet.mbtiles";
+    private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
 
     protected Activity activity;
     protected Context context;
@@ -47,6 +51,8 @@ public abstract class MapFragment extends Fragment {
     protected ArrayList<PathOverlay> addedRoutes = new ArrayList<PathOverlay>();
     protected Drawable circleIcon;
     protected Drawable squareIcon;
+    protected String line;
+    protected String dir;
 
     public MapFragment() {}
 
@@ -57,6 +63,7 @@ public abstract class MapFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_default_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
+        getODKExtras();
         circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
         squareIcon = context.getResources().getDrawable(R.drawable.square_24);
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
@@ -69,7 +76,6 @@ public abstract class MapFragment extends Fragment {
                     }
                 }
         );
-
         return view;
     }
 
@@ -112,28 +118,46 @@ public abstract class MapFragment extends Fragment {
         mv.setZoom(14);
     }
 
+    protected void getODKExtras() {
+        Intent intent = activity.getIntent();
+        String action = intent.getAction();
+        if (action.equals(ODK_ACTION)) {
+            Bundle extras = intent.getExtras();
+            if (extras != null) {
+                if (extras.containsKey(Cons.LINE)) {
+                    line = extras.getString(Cons.LINE);
+                }
+                if (extras.containsKey(Cons.DIR)) {
+                    dir = extras.getString(Cons.DIR);
+                }
+            }
+        }
+        else {
+            // for testing and demos
+            line = "9";
+            dir = "0";
+        }
+    }
+
     protected ArrayList<PathOverlay> addRoute(Context context, String line, String dir, Boolean store) {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
-
-
         Paint pathPaint1 = new Paint();
-        pathPaint1.setColor(getResources().getColor(R.color.black_light));
+        pathPaint1.setColor(getResources().getColor(R.color.blacker));
         pathPaint1.setAntiAlias(true);
-        pathPaint1.setStrokeWidth(7.0f);
+        pathPaint1.setStrokeWidth(5.0f);
+        pathPaint1.setPathEffect(new DashPathEffect(new float[] {5,5}, 0));
         pathPaint1.setStyle(Paint.Style.STROKE);
 
         Paint pathPaint2 = new Paint();
-        pathPaint2.setColor(getResources().getColor(R.color.black_light_light));
+        pathPaint2.setColor(getResources().getColor(R.color.bluer_lighter));
         pathPaint2.setAntiAlias(true);
-        pathPaint2.setStrokeWidth(3.0f);
+        pathPaint2.setStrokeWidth(4.0f);
         pathPaint2.setStyle(Paint.Style.STROKE);
 
         Paint pathPaint = pathPaint1;
         if(store)
             pathPaint = pathPaint2;
-
         ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(context, "geojson/" + geoJSONName);
-
         if (paths != null) {
             for(PathOverlay mPath: paths) {
                 mPath.setPaint(pathPaint);

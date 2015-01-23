@@ -2,6 +2,7 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -22,34 +23,30 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-public class TransfersMapFragment extends MapFragment {
+public class RoutesMapFragment extends MapFragment {
 
     protected SurveyManager manager;
-    protected String line;
-    protected String dir;
-
     protected View routesLayout;
     protected ListView listView;
     protected Button transfersBtn;
     protected Button submit;
-
     protected static ArrayAdapter<String> routesAdapter;
     protected HashMap<String, String> routeLookup;
     protected HashMap<String, String> routeLookupReverse;
     protected ArrayList<String> selectedRoutes;
     protected String[] routes;
 
-    public TransfersMapFragment(SurveyManager manager, String line, String dir) {
+    public RoutesMapFragment(SurveyManager manager) {
         this.manager = manager;
-        this.line = line;
-        this.dir = dir;
     }
 
     @Override
@@ -61,16 +58,11 @@ public class TransfersMapFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         addRoute(context, line, dir, false);
-
-        // set 'line' item to checked and disabled
-
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         listView = (ListView) view.findViewById(R.id.routes_list_view);
         routesLayout = (View) view.findViewById(R.id.routes_list_layout);
         submit = (Button) view.findViewById(R.id.submit_btn);
-
         buildRouteLookup();
-
         routes = activity.getResources().getStringArray(R.array.lines);
         ArrayList<String> routesList = new ArrayList<String>();
         for(String route: routes) {
@@ -83,22 +75,16 @@ public class TransfersMapFragment extends MapFragment {
                 }
             }
         }
-        //RoutesAdapter routesAdapter = new RoutesAdapter(context, routesList);
         routesAdapter = new ArrayAdapter<String>(view.getContext(),
                 android.R.layout.simple_list_item_multiple_choice, routes);
         listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
-
-        //listView.setSelection();
-
         transfersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changeListVisibility(routesLayout.getVisibility());
-
                 if(routesLayout.getVisibility() == View.INVISIBLE) {
                     SparseBooleanArray checked = listView.getCheckedItemPositions();
-
                     clearRoutes();
                     selectedRoutes = new ArrayList<String>();
                     for (int i = 0; i < checked.size(); i++) {
@@ -108,33 +94,16 @@ public class TransfersMapFragment extends MapFragment {
                         }
                     }
                     addRoutes();
-
-
                 }
             }
         });
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // check that all the data has been entered
-
-                //return data back to odk ad exit?
-
-
+                exitWithSurveyBundle(true);
 
             }
         });
-
-        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        //listView.setItemsCanFocus(false);
-        //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //    public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
-        //        String selectedFromList = (String) listView.getItemAtPosition(myItemInt);
-        //        Log.d(TAG, selectedFromList);
-        //    }
-        //});
-
         return view;
     }
 
@@ -152,6 +121,22 @@ public class TransfersMapFragment extends MapFragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
+    protected void exitWithSurveyBundle(Boolean valid) {
+        int result;
+        Intent intent = new Intent();
+        if (valid) {
+            intent = manager.constructExitIntent(intent);
+            result = activity.RESULT_OK;
+        }
+        else {
+            result = activity.RESULT_CANCELED;
+        }
+        activity.setResult(result, intent);
+        activity.finish();
+    }
+
 
     protected void addRoutes() {
         for(String s: selectedRoutes) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="location_type_array">
+        <item></item>
         <item>Home</item>
         <item>Work</item>
         <item>School</item>

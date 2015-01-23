@@ -26,8 +26,6 @@ public class SelectedStops {
     private Drawable offIcon;
     private Drawable stopIcon;
 
-
-
     public SelectedStops(
             Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter,
             ItemizedIconOverlay selOverlay) {
@@ -35,16 +33,10 @@ public class SelectedStops {
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
-
-        //onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
-        //offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
-        onIcon = context.getResources().getDrawable(R.drawable.on_bus_green_pitch_24_bus_24);
-        offIcon = context.getResources().getDrawable(R.drawable.off_bus_red_pitch_24_bus_24);
-        stopIcon = context.getResources().getDrawable(R.drawable.circle_filled_black_30);
-
-
+        onIcon = context.getResources().getDrawable(R.drawable.circle_stroked_24);
+        offIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        stopIcon = context.getResources().getDrawable(R.drawable.bus_18);
     }
-
 
     public void setOnAdapter(StopSequenceAdapter onAdapter) {
         this.onAdapter = onAdapter;
@@ -65,7 +57,6 @@ public class SelectedStops {
 
     private void refreshOverlay() {
         selOverlay.removeAllItems();
-
         if (board != null) {
             selOverlay.addItem(board);
         }
@@ -75,9 +66,7 @@ public class SelectedStops {
     }
 
     public void saveCurrentMarker(Marker marker) {
-
         if (currentType != null) {
-
             //if board or alight marker is already set switch it back to default icon
             if (alight != null && alight == current) {
                 alight.setMarker(stopIcon);
@@ -94,10 +83,7 @@ public class SelectedStops {
                 }
                 board = current;
                 board.setMarker(onIcon);
-                Log.d(TAG, Cons.BOARD + ": " + board.getTitle());
-                Log.d(TAG, String.valueOf(onAdapter.getItemIndex(board.getTitle())));
                 onAdapter.setSelectedIndex(onAdapter.getItemIndex(board.getTitle()));
-
             }
             else {
                 if (alight != null) {
@@ -105,9 +91,7 @@ public class SelectedStops {
                 }
                 alight = current;
                 alight.setMarker(offIcon);
-                Log.d(TAG, Cons.ALIGHT + ": " + alight.getTitle());
                 offAdapter.setSelectedIndex(offAdapter.getItemIndex(alight.getTitle()));
-
             }
             clearCurrentMarker();
             refreshOverlay();
@@ -131,7 +115,6 @@ public class SelectedStops {
     }
 
     public void saveSequenceMarker(String mode, Marker newMarker) {
-
         if (mode.equals(Cons.BOARD)) {
             if (board != null) {
                 board.setMarker(stopIcon);
@@ -152,7 +135,6 @@ public class SelectedStops {
             alight = newMarker;
             alight.setMarker(offIcon);
         }
-
         refreshOverlay();
     }
 
@@ -172,7 +154,6 @@ public class SelectedStops {
     public boolean validateStopSequence() {
         Stop onStop = (Stop) board;
         Stop offStop = (Stop) alight;
-
         if ( onStop.compareSeq(offStop) < 0) {
             return true;
         }

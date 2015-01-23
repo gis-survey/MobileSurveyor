@@ -2,7 +2,6 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,11 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
 
@@ -57,8 +53,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments = new Fragment[SURVEY_FRAGMENTS];
         fragments[0] = new PickLocationFragment(manager, "origin");
         fragments[1] = new PickLocationFragment(manager, "destination");
-        fragments[2] = new OnOffFragment(manager, "9", "0");
-        fragments[3] = new TransfersMapFragment(manager, "9", "0");
+        fragments[2] = new OnOffFragment(manager);
+        fragments[3] = new RoutesMapFragment(manager);
 
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));

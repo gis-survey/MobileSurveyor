@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
@@ -39,12 +40,14 @@ public class PickLocationFragment extends MapFragment {
     private ImageButton clear;
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
-    Properties prop;
+    protected Properties prop;
     private AutoCompleteTextView solrSearch;
     private SolrAdapter adapter;
     private SurveyManager manager;
-    Drawable circleIcon;
-    Drawable squareIcon;
+    protected Drawable circleIcon;
+    protected Drawable squareIcon;
+    protected Spinner modeSpinner;
+    protected Spinner locationSpinner;
 
     public PickLocationFragment(SurveyManager manager, String mode) {
         this.manager = manager;
@@ -65,15 +68,15 @@ public class PickLocationFragment extends MapFragment {
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        circleIcon = context.getResources().getDrawable(R.drawable.square_stroked_24);
         squareIcon = context.getResources().getDrawable(R.drawable.square_24);
 
         clear = (ImageButton) view.findViewById(R.id.clear_text);
         TextView modeSpinnerText = (TextView) view.findViewById(R.id.mode_spinner_text);
-        Spinner locationSpinner = (Spinner) view.findViewById(R.id.location_type_spinner);
-        Spinner modeSpinner = (Spinner) view.findViewById(R.id.mode_spinner);
+        locationSpinner = (Spinner) view.findViewById(R.id.location_type_spinner);
+        modeSpinner = (Spinner) view.findViewById(R.id.mode_spinner);
         ArrayAdapter<CharSequence> locTypeAdapter = ArrayAdapter.createFromResource(
-                view.getContext(),R.array.location_type_array, android.R.layout.simple_spinner_item);
+                view.getContext(), R.array.location_type_array, android.R.layout.simple_spinner_item);
         locTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locTypeAdapter);
         mv = (MapView) view.findViewById(R.id.mapview);
@@ -84,14 +87,13 @@ public class PickLocationFragment extends MapFragment {
 
         if (mode.equals("origin")) {
             ArrayAdapter<CharSequence> accessAdapter = ArrayAdapter.createFromResource(
-                    view.getContext(),R.array.access_mode_array, android.R.layout.simple_spinner_item);
+                    view.getContext(), R.array.access_mode_array, android.R.layout.simple_spinner_item);
             accessAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             modeSpinner.setAdapter(accessAdapter);
             modeSpinnerText.setText("Mode of access: ");
-        }
-        else if (mode.equals("destination")) {
+        } else if (mode.equals("destination")) {
             ArrayAdapter<CharSequence> egressAdapter = ArrayAdapter.createFromResource(
-                    view.getContext(),R.array.egress_mode_array, android.R.layout.simple_spinner_item);
+                    view.getContext(), R.array.egress_mode_array, android.R.layout.simple_spinner_item);
             egressAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             modeSpinner.setAdapter(egressAdapter);
             modeSpinnerText.setText("Mode of departure: ");
@@ -103,7 +105,7 @@ public class PickLocationFragment extends MapFragment {
         }
 
         solrSearch = (AutoCompleteTextView) view.findViewById(R.id.solr_input);
-        adapter = new SolrAdapter(context ,android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
+        adapter = new SolrAdapter(context, android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
         solrSearch.setAdapter(adapter);
 
         // set up listeners for view objects
@@ -129,25 +131,43 @@ public class PickLocationFragment extends MapFragment {
             }
         });
 
+
+        modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String selected = modeSpinner.getSelectedItem().toString();
+                if(!selected.isEmpty()) {
+                    manager.updateMode(mode, String.valueOf(position));
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String selected = locationSpinner.getSelectedItem().toString();
+                if(!selected.isEmpty()) {
+                    manager.updatePurpose(mode, String.valueOf(position));
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
         return view;
     }
-
-
-    @Override
+        @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        Log.d("SEQLOC", "attach");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.d("SEQLOC", "detach");
     }
-
-
     private void setItemizedOverlay(final MapView mv) {
-        Log.d("SEQLOC", "new pick location overlay");
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
@@ -165,15 +185,12 @@ public class PickLocationFragment extends MapFragment {
         if(latLng != null) {
             clearMarkers();
             Marker m = new Marker(null, null, latLng);
-
             if(mode.equals("origin"))
                 m.setMarker(circleIcon);
             if(mode.equals("destination"))
                 m.setMarker(squareIcon);
-
             m.addTo(mv);
             locOverlay.addItem(m);
-            Log.d("SEQLOC", locOverlay.toString());
             mv.invalidate();
             mv.setCenter(latLng);
             mv.setZoom(17);
@@ -188,45 +205,13 @@ public class PickLocationFragment extends MapFragment {
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-
-    /*
-    private boolean exitWithLocation(Boolean valid) {
-        //int result;
-        Intent intent = new Intent();
-
-        if (valid) {
-            Map<String, Double> coordinates = getCoordinates();
-            if(coordinates != null) {
-                Log.d(TAG, "valid coordinates");
-                intent.putExtra(Cons.ODK_LAT, coordinates.get("lat"));
-                intent.putExtra(Cons.ODK_LNG, coordinates.get("lon"));
-                //result = activity.RESULT_OK;
-            }
-            else {
-                Log.d(TAG, "cancelled: no coordinates");
-                //result = activity.RESULT_CANCELED;
-            }
-        }
-        else {
-            Log.d(TAG, "cancelled: invalid");
-            //result = activity.RESULT_CANCELED;
-        }
-
-        Utils.shortToastCenter(context, "location saved");
-        //activity.setResult(result, intent);
-        //activity.finish();
-        return true;
-    }
-    */
-
-
     private void clearMarkers() {
-        Log.d(TAG, "clear all markers");
         locOverlay.setFocus(null);
         locOverlay.removeAllItems();
         mv.invalidate();
     }
 
+    /*
     private Map<String, Double> getCoordinates() {
         Map<String, Double> coordinates = null;
         new HashMap();
@@ -240,6 +225,7 @@ public class PickLocationFragment extends MapFragment {
         }
         return coordinates;
     }
+    */
 
     public String getMode() {
         return this.mode;

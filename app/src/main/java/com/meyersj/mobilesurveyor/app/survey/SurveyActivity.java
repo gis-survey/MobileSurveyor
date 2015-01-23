@@ -1,7 +1,9 @@
 package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +20,7 @@ import com.meyersj.mobilesurveyor.app.R;
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
     public static final int SURVEY_FRAGMENTS = 4;
-    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Routes"};
+    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -31,7 +34,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         setContentView(R.layout.activity_survey);
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
-        manager = new SurveyManager(getApplicationContext(), "9", "1");
+        manager = new SurveyManager(getApplicationContext(), getParent(), "9", "1");
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(false);
@@ -54,25 +57,36 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments[0] = new PickLocationFragment(manager, "origin");
         fragments[1] = new PickLocationFragment(manager, "destination");
         fragments[2] = new OnOffFragment(manager);
-        fragments[3] = new RoutesMapFragment(manager);
+        fragments[3] = new TransfersMapFragment(manager, mViewPager);
 
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }
+        toggleNavButtons(mViewPager.getCurrentItem());
 
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
+                toggleNavButtons(mViewPager.getCurrentItem());
             }
         });
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
+                toggleNavButtons(mViewPager.getCurrentItem());
             }
         });
+    }
 
+    protected void toggleNavButtons(int item) {
+        previousBtn.setEnabled(true);
+        nextBtn.setEnabled(true);
+        if(item == 0)
+            previousBtn.setEnabled(false);
+        if(item == SURVEY_FRAGMENTS - 1)
+            nextBtn.setEnabled(false);
     }
 
     @Override
@@ -109,6 +123,16 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         public CharSequence getPageTitle(int position) {
             return "Section " + (position + 1);
         }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)){
+            manager.unfinishedExit(this);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

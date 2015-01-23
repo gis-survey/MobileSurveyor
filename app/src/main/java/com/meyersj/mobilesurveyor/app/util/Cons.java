@@ -51,26 +51,18 @@ public class Cons {
 
 
     // keys for survey valyes for ODK
-    public static final String ODK_ORIG_PURPOSE = "orig_purpose";
-    public static final String ODK_ORIG_ACCESS = "orig_access";
-    public static final String ODK_ORIG_BLOCKS = "orig_blocks";
-    public static final String ODK_ORIG_PARKING = "orig_parking";
-    public static final String ODK_ORIG_LAT = "orig_lat";
-    public static final String ODK_ORIG_LNG = "orig_lng";
-    public static final String ODK_ORIG_REGION = "orig_region";
-    public static final String ODK_DEST_PURPOSE = "dest_purpose";
-    public static final String ODK_DEST_EGRESS = "dest_egress";
-    public static final String ODK_DEST_BLOCKS = "dest_blocks";
-    public static final String ODK_DEST_PARKING = "dest_parking";
-    public static final String ODK_DEST_LAT = "dest_lat";
-    public static final String ODK_DEST_LNG = "dest_lng";
-    public static final String ODK_DEST_REGION = "dest_region";
-    public static final String ODK_BOARD_ID = "board_id";
-    public static final String ODK_ALIGHT_ID = "alight_id";
-    public static final String ODK_ROUTE1 = "route1";
-    public static final String ODK_ROUTE2 = "route2";
-    public static final String ODK_ROUTE3 = "route3";
-    public static final String ODK_ROUTE4 = "route4";
-    public static final String ODK_ROUTE5 = "route5";
+    public static final String PURPOSE_ODK = "purpose";
+    public static final String PURPOSE_OTHER_ODK = "purpose_other";
+    public static final String ACCESS_ODK = "access";
+    public static final String ACCESS_OTHER_ODK = "access_other";
+    public static final String EGRESS_ODK = "egress";
+    public static final String EGRESS_OTHER_ODK = "egress_other";
+    public static final String BLOCKS_ODK = "blocks";
+    public static final String PARKING_ODK = "parking";
+    public static final String LAT_ODK = "lat";
+    public static final String LNG_ODK = "lng";
+    public static final String BOARD_ID_ODK = "board_id";
+    public static final String ALIGHT_ID_ODK = "alight_id";
+    public static final String TRANSFER_ODK = "transfer";
 }
 

@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,21 +34,22 @@ import java.util.List;
 import java.util.Map;
 
 
-public class RoutesMapFragment extends MapFragment {
+public class TransfersMapFragment extends MapFragment {
 
     protected SurveyManager manager;
     protected View routesLayout;
     protected ListView listView;
     protected Button transfersBtn;
     protected Button submit;
-    protected static ArrayAdapter<String> routesAdapter;
+    protected static ArrayAdapter routesAdapter;
     protected HashMap<String, String> routeLookup;
-    protected HashMap<String, String> routeLookupReverse;
     protected ArrayList<String> selectedRoutes;
     protected String[] routes;
+    protected ViewPager pager;
 
-    public RoutesMapFragment(SurveyManager manager) {
+    public TransfersMapFragment(SurveyManager manager, ViewPager pager) {
         this.manager = manager;
+        this.pager = pager;
     }
 
     @Override
@@ -66,17 +69,13 @@ public class RoutesMapFragment extends MapFragment {
         routes = activity.getResources().getStringArray(R.array.lines);
         ArrayList<String> routesList = new ArrayList<String>();
         for(String route: routes) {
-            routesList.add(route);
-            if(routeLookup.get(route) == line) {
-                for(int i = 0; i < routes.length; i++) {
-                    if(routes[i].equals(route)) {
-                        //same route as default, save index to check its box then disable it
-                    }
-                }
+            // don't add current route to transfers list
+            if(!routeLookup.get(route).equals(line)) {
+                routesList.add(route);
             }
         }
         routesAdapter = new ArrayAdapter<String>(view.getContext(),
-                android.R.layout.simple_list_item_multiple_choice, routes);
+                android.R.layout.simple_list_item_multiple_choice, routesList);
         listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
         transfersBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,11 +85,12 @@ public class RoutesMapFragment extends MapFragment {
                 if(routesLayout.getVisibility() == View.INVISIBLE) {
                     SparseBooleanArray checked = listView.getCheckedItemPositions();
                     clearRoutes();
+                    manager.clearTransfers();
                     selectedRoutes = new ArrayList<String>();
                     for (int i = 0; i < checked.size(); i++) {
                         int position = checked.keyAt(i);
                         if (checked.valueAt(i)) {
-                            selectedRoutes.add(routesAdapter.getItem(position));
+                            selectedRoutes.add(routesAdapter.getItem(position).toString());
                         }
                     }
                     addRoutes();
@@ -123,11 +123,22 @@ public class RoutesMapFragment extends MapFragment {
     }
 
 
+
     protected void exitWithSurveyBundle(Boolean valid) {
+        Boolean[] validate = manager.validate();
+        Log.d(TAG, validate.toString());
+        for(int i = 0; i < validate.length; i++) {
+            Log.d(TAG, validate[i].toString());
+            if(!validate[i]) {
+                pager.setCurrentItem(i);
+                return;
+            }
+        }
+
         int result;
         Intent intent = new Intent();
         if (valid) {
-            intent = manager.constructExitIntent(intent);
+            intent = manager.addExtras(intent);
             result = activity.RESULT_OK;
         }
         else {
@@ -142,6 +153,7 @@ public class RoutesMapFragment extends MapFragment {
         for(String s: selectedRoutes) {
             String routeID = routeLookup.get(s);
             addRoute(context, routeID, dir, true);
+            manager.updateTransfer(routeID);
         }
     }
 
@@ -161,32 +173,32 @@ public class RoutesMapFragment extends MapFragment {
         routeLookup.put("35-Macadam/Greeley", "35");
         routeLookup.put("70-12th/NE 33rd Ave", "70");
         routeLookup.put("75-Cesar Chavez/Lombard", "75");
+        routeLookup.put("99-McLoughlin Express", "99");
         routeLookup.put("152-Milwaukie", "152");
         routeLookup.put("MAX Yellow Line", "190");
         routeLookup.put("MAX Green Line", "200");
         routeLookup.put("Portland Streetcar - NS Line", "193");
         routeLookup.put("Portland Streetcar - CL Line", "194");
-
-        routeLookupReverse = new HashMap<String, String>();
-        routeLookupReverse.put("4", "4-Division/Fessenden");
-        routeLookupReverse.put("9", "9-Powell Blvd");
-        routeLookupReverse.put("17", "17-Holgate/Broadway");
-        routeLookupReverse.put("19", "19-Woodstock/Glisan");
-        routeLookupReverse.put("28", "28-Linwood");
-        routeLookupReverse.put("29", "29-Lake/Webster Rd");
-        routeLookupReverse.put("30", "30-Estacada");
-        routeLookupReverse.put("31", "31-King Rd");
-        routeLookupReverse.put("32", "32-Oatfield");
-        routeLookupReverse.put("33", "33-McLoughlin");
-        routeLookupReverse.put("34", "34-River Rd");
-        routeLookupReverse.put("35", "35-Macadam/Greeley");
-        routeLookupReverse.put("70", "70-12th/NE 33rd Ave");
-        routeLookupReverse.put("75", "75-Cesar Chavez/Lombard");
-        routeLookupReverse.put("152", "152-Milwaukie");
-        routeLookupReverse.put("190", "MAX Yellow Line");
-        routeLookupReverse.put("200", "MAX Green Line");
-        routeLookupReverse.put("193", "Portland Streetcar - NS Line");
-        routeLookupReverse.put("194", "Portland Streetcar - CL Line");
+        routeLookup.put("4", "4-Division/Fessenden");
+        routeLookup.put("9", "9-Powell Blvd");
+        routeLookup.put("17", "17-Holgate/Broadway");
+        routeLookup.put("19", "19-Woodstock/Glisan");
+        routeLookup.put("28", "28-Linwood");
+        routeLookup.put("29", "29-Lake/Webster Rd");
+        routeLookup.put("30", "30-Estacada");
+        routeLookup.put("31", "31-King Rd");
+        routeLookup.put("32", "32-Oatfield");
+        routeLookup.put("33", "33-McLoughlin");
+        routeLookup.put("34", "34-River Rd");
+        routeLookup.put("35", "35-Macadam/Greeley");
+        routeLookup.put("70", "70-12th/NE 33rd Ave");
+        routeLookup.put("75", "75-Cesar Chavez/Lombard");
+        routeLookup.put("99", "99-McLoughlin Express");
+        routeLookup.put("152", "152-Milwaukie");
+        routeLookup.put("190", "MAX Yellow Line");
+        routeLookup.put("200", "MAX Green Line");
+        routeLookup.put("193", "Portland Streetcar - NS Line");
+        routeLookup.put("194", "Portland Streetcar - CL Line");
     }
 
     //toggle visibility of list depending on current visibility

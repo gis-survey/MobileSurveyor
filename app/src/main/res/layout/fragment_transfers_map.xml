@@ -26,7 +26,7 @@
                 android:id="@+id/submit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="Submit information"
+                android:text="Submit"
                 style="@style/ButtonText"
                 android:background="@drawable/shape_rect_grey_fade_round_all" />
 

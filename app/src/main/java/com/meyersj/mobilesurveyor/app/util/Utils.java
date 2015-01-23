@@ -1,6 +1,7 @@
 package com.meyersj.mobilesurveyor.app.util;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
@@ -9,6 +10,7 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import org.joda.time.DateTime;
@@ -158,6 +160,14 @@ public class Utils {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String routesStr = getProperties(context, Cons.PROPERTIES).getProperty(Cons.MAP_RTES);
         return sharedPref.getString(Cons.MAP_RTES, routesStr).split(",");
+    }
+
+
+    public static void closeKeypad(Activity activity) {
+        InputMethodManager inputManager = (InputMethodManager)
+                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 

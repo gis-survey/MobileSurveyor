@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -107,6 +108,7 @@ public class PickLocationFragment extends MapFragment {
         solrSearch = (AutoCompleteTextView) view.findViewById(R.id.solr_input);
         adapter = new SolrAdapter(context, android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
         solrSearch.setAdapter(adapter);
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // set up listeners for view objects
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -120,7 +122,7 @@ public class PickLocationFragment extends MapFragment {
                 if (locationResult != null) {
                     addMarker(locationResult.getLatLng());
                 }
-                closeKeypad();
+                Utils.closeKeypad(activity);
             }
         });
         clear.setOnClickListener(new View.OnClickListener() {
@@ -135,10 +137,21 @@ public class PickLocationFragment extends MapFragment {
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selected = modeSpinner.getSelectedItem().toString();
+                String selected = modeSpinner.getSelectedItem().toString().toLowerCase();
                 if(!selected.isEmpty()) {
                     manager.updateMode(mode, String.valueOf(position));
                 }
+                if(selected.contains("walk")) {
+                    manager.inputBlocks(activity, mode);
+                }
+                else if(selected.contains("parked") || selected.contains("drive") ||
+                        selected.contains("carpool") ) {
+                    manager.inputParking(activity, mode);
+                }
+                else if(selected.contains("other")) {
+                    manager.inputModeOther(activity, mode);
+                }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -147,9 +160,12 @@ public class PickLocationFragment extends MapFragment {
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selected = locationSpinner.getSelectedItem().toString();
+                String selected = locationSpinner.getSelectedItem().toString().toLowerCase();
                 if(!selected.isEmpty()) {
                     manager.updatePurpose(mode, String.valueOf(position));
+                }
+                if(selected.contains("other")) {
+                    manager.inputPurposeOther(activity, mode); // specify other location type
                 }
             }
             @Override
@@ -198,34 +214,11 @@ public class PickLocationFragment extends MapFragment {
         }
     }
 
-    public void closeKeypad() {
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
     private void clearMarkers() {
         locOverlay.setFocus(null);
         locOverlay.removeAllItems();
         mv.invalidate();
     }
-
-    /*
-    private Map<String, Double> getCoordinates() {
-        Map<String, Double> coordinates = null;
-        new HashMap();
-        int length = locList.size();
-        if (length > 0) {
-            Marker m = locList.get(0);
-            LatLng point = m.getPoint();
-            coordinates = new HashMap();
-            coordinates.put("lat", point.getLatitude());
-            coordinates.put("lon", point.getLongitude());
-        }
-        return coordinates;
-    }
-    */
 
     public String getMode() {
         return this.mode;

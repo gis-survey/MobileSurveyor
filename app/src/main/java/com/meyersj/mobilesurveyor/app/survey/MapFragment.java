@@ -1,7 +1,9 @@
 package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
@@ -11,9 +13,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
@@ -264,5 +268,4 @@ public abstract class MapFragment extends Fragment {
         bounds.addMarker(markers.get(count - 1));
         return this.getBoundingBox(bounds, markers, count - 1);
     }
-
 }

@@ -36,6 +36,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(false);
+        actionBar.setTitle("TransitSurveyor");
+        actionBar.setIcon(getApplicationContext().getResources().getDrawable(R.drawable.bus_icon50));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.survey_pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);

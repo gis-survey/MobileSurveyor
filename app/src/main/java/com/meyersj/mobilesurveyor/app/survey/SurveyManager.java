@@ -7,13 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.InputType;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.util.Cons;
-import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.util.ArrayList;
 
@@ -230,7 +228,7 @@ public class SurveyManager {
         else {
             intent.putExtra(Cons.ALIGHT_ID_ODK, "");
         }
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < Cons.MAX_TRANSFERS; i++) {
             String route = "";
             if(transfers.size() > i)
                 route = transfers.get(i);

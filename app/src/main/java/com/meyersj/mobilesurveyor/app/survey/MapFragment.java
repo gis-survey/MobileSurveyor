@@ -56,15 +56,10 @@ public abstract class MapFragment extends Fragment {
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
     protected HashMap<String,ArrayList<PathOverlay>> addedRoutes = new HashMap<String, ArrayList<PathOverlay>>();
     protected HashMap<String,ArrayList<PathOverlay>> routesCache = new HashMap<String, ArrayList<PathOverlay>>();
-
-    //protected ArrayList<PathOverlay> addedRoutes = new ArrayList<PathOverlay>();
-    protected Drawable circleIcon;
-    protected Drawable squareIcon;
     protected String line;
     protected String dir;
 
     public MapFragment() {}
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,8 +68,6 @@ public abstract class MapFragment extends Fragment {
         activity = getActivity();
         context = activity.getApplicationContext();
         getODKExtras();
-        circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
-        squareIcon = context.getResources().getDrawable(R.drawable.square_24);
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
@@ -116,8 +109,6 @@ public abstract class MapFragment extends Fragment {
         }
         catch(Exception e) {
             Log.e(TAG, "unable to open local mbtiles");
-            if(mv == null)
-                Log.d(TAG, "map view is null");
             mv.setTileSource(osmSource);
         }
 
@@ -200,18 +191,6 @@ public abstract class MapFragment extends Fragment {
         return paths;
     }
 
-    /*
-    protected void clearRoutes() {
-        for (String key : addedRoutes.keySet()) {
-            ArrayList<PathOverlay> paths = addedRoutes.get(key);
-            for (PathOverlay path : paths) {
-                mv.removeOverlay(path);
-            }
-        }
-        addedRoutes.clear();
-    }
-    */
-
     protected void clearRoute(String line, String dir) {
         String key = line + "_" + dir;
         if (addedRoutes.containsKey(key)) {
@@ -242,7 +221,7 @@ public abstract class MapFragment extends Fragment {
                 surveyOverlay.addItem(dest);
             }
         }
-        else { //(this  instanceof PickLocationFragment)) {
+        else {
             if(orig != null) {
                 surveyOverlay.addItem(orig);
             }
@@ -268,7 +247,6 @@ public abstract class MapFragment extends Fragment {
         if(boundingBox != null) {
             mv.zoomToBoundingBox(boundingBox, true, true);
         }
-
     }
 
     public class Bounds {

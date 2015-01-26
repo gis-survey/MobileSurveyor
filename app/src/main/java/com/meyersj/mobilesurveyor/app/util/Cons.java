@@ -64,5 +64,7 @@ public class Cons {
     public static final String BOARD_ID_ODK = "board_id";
     public static final String ALIGHT_ID_ODK = "alight_id";
     public static final String TRANSFER_ODK = "transfer";
+
+    public static final int MAX_TRANSFERS = 4;
 }
 

@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class TransfersMapFragment extends MapFragment {
 
-    protected final int MAX_TRANSFERS = 4;
+    //protected final int MAX_TRANSFERS = 4;
     protected SurveyManager manager;
     protected View routesLayout;
     protected ListView listView;
@@ -87,34 +87,28 @@ public class TransfersMapFragment extends MapFragment {
                 android.R.layout.simple_list_item_multiple_choice, routesList);
         listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Boolean unSelect = false;
                 String routeID = routeLookup.get(routesList.get(i));
                 CheckedTextView item = (CheckedTextView) view;
                 Log.d(TAG, "Transfer Count Before: " + String.valueOf(transfersCount));
-                if(transfersCount == MAX_TRANSFERS && item.isChecked()) {
-                    String msg = "Maximum of " + String.valueOf(MAX_TRANSFERS) + " allowed";
+                if(transfersCount == Cons.MAX_TRANSFERS && item.isChecked()) {
+                    String msg = "Maximum of " + String.valueOf(Cons.MAX_TRANSFERS) + " allowed";
                     Utils.shortToastCenter(context, msg);
-                    //item.setChecked(false);
                     listView.setItemChecked(i, false);
-                    //routesAdapter.notifyDataSetChanged();
                 }
                 else if(!item.isChecked()) {
-                    Log.d(TAG, "Unchecked");
                     clearRoute(routeID, dir);
                     manager.removeTransfer(routeID);
                     transfersCount -= 1;
                 }
                 else {
-                    Log.d(TAG, "add route");
                     addRoute(context, routeID, dir, true);
                     transfersCount += 1;
                     manager.updateTransfer(routeID);
                 }
-                //item.setChecked(checked);
-                Log.d(TAG, "Transfer Count After: " + String.valueOf(transfersCount));
             }
         });
 
@@ -122,27 +116,13 @@ public class TransfersMapFragment extends MapFragment {
             @Override
             public void onClick(View view) {
                 changeListVisibility(routesLayout.getVisibility());
-
-                //if(routesLayout.getVisibility() == View.INVISIBLE) {
-                //    SparseBooleanArray checked = listView.getCheckedItemPositions();
-                //    clearRoutes();
-                //    manager.clearTransfers();
-                //    selectedRoutes = new ArrayList<String>();
-                //    for (int i = 0; i < checked.size(); i++) {
-                //        int position = checked.keyAt(i);
-                //        if (checked.valueAt(i)) {
-                //            selectedRoutes.add(routesAdapter.getItem(position).toString());
-                //        }
-                //    }
-                //    addRoutes();
-                //}
             }
         });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 exitWithSurveyBundle(true);
-
             }
         });
         return view;
@@ -162,7 +142,6 @@ public class TransfersMapFragment extends MapFragment {
     public void onDetach() {
         super.onDetach();
     }
-
 
     protected void exitWithSurveyBundle(Boolean valid) {
         Boolean[] validate = manager.validate();
@@ -189,14 +168,7 @@ public class TransfersMapFragment extends MapFragment {
         activity.finish();
     }
 
-    //protected void addRoutes() {
-    //    for(String s: selectedRoutes) {
-    //        String routeID = routeLookup.get(s);
-    //        addRoute(context, routeID, dir, true);
-    //        manager.updateTransfer(routeID);
-    //    }
-    //}
-
+    //TODO remove this hardcoded building a hashtable to using an input file
     protected void buildRouteLookup() {
         routeLookup = new HashMap<String, String>();
         routeLookup.put("4-Division/Fessenden", "4");

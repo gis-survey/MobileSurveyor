@@ -67,11 +67,6 @@ public class TransfersMapFragment extends MapFragment {
         addRoute(context, line, dir, false);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         listView = (ListView) view.findViewById(R.id.routes_list_view);
-
-
-
-
-
         routesLayout = (View) view.findViewById(R.id.routes_list_layout);
         submit = (Button) view.findViewById(R.id.submit_btn);
         buildRouteLookup();
@@ -149,6 +144,19 @@ public class TransfersMapFragment extends MapFragment {
         for(int i = 0; i < validate.length; i++) {
             Log.d(TAG, validate[i].toString());
             if(!validate[i]) {
+                String msg = "";
+                switch(i) {
+                    case 0:
+                        msg = "missing information about origin location";
+                        break;
+                    case 1:
+                        msg = "missing information about destination location";
+                        break;
+                    case 2:
+                        msg = "on and off locations are incomplete";
+                        break;
+                }
+                Utils.shortToastCenter(context, msg);
                 pager.setCurrentItem(i);
                 //TODO change previous and next buttons being enabled/disabled
                 return;

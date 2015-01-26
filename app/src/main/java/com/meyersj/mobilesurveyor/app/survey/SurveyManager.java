@@ -171,10 +171,6 @@ public class SurveyManager {
         }
     }
 
-    public void clearTransfers() {
-        transfers.clear();
-    }
-
     public Marker getOnStop(){
         return this.onStop;
     }

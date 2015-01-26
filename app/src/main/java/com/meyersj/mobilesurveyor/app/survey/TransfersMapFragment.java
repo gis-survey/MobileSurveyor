@@ -72,8 +72,8 @@ public class TransfersMapFragment extends MapFragment {
         buildRouteLookup();
         routes = activity.getResources().getStringArray(R.array.lines);
         final ArrayList<String> routesList = new ArrayList<String>();
+        // don't add current route to transfers list
         for(String route: routes) {
-            // don't add current route to transfers list
             if(!routeLookup.get(route).equals(line)) {
                 routesList.add(route);
             }
@@ -88,7 +88,6 @@ public class TransfersMapFragment extends MapFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String routeID = routeLookup.get(routesList.get(i));
                 CheckedTextView item = (CheckedTextView) view;
-                Log.d(TAG, "Transfer Count Before: " + String.valueOf(transfersCount));
                 if(transfersCount == Cons.MAX_TRANSFERS && item.isChecked()) {
                     String msg = "Maximum of " + String.valueOf(Cons.MAX_TRANSFERS) + " allowed";
                     Utils.shortToastCenter(context, msg);

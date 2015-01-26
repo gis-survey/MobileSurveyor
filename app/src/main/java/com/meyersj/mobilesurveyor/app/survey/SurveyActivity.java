@@ -44,24 +44,21 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
-                Log.d("ACTIONBAR", "page change: " + String.valueOf(position));
                 MapFragment fragment = (MapFragment) fragments[position];
                 fragment.updateView(manager);
+                toggleNavButtons(mViewPager.getCurrentItem());
             }
         });
-
         // For each of the sections in the app, add a tab to the action bar.
         fragments = new Fragment[SURVEY_FRAGMENTS];
         fragments[0] = new PickLocationFragment(manager, "origin");
         fragments[1] = new PickLocationFragment(manager, "destination");
         fragments[2] = new OnOffFragment(manager);
         fragments[3] = new TransfersMapFragment(manager, mViewPager);
-
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }
         toggleNavButtons(mViewPager.getCurrentItem());
-
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

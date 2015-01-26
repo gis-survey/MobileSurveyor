@@ -55,17 +55,9 @@ public class PickLocationFragment extends MapFragment {
         this.mode = mode;
     }
 
-    // newInstance constructor for creating fragment with arguments
-    public static PickLocationFragment newInstance(int page, String title) {
-        Log.d("SEQLOC", "pick location new instance");
-        PickLocationFragment fragment = new PickLocationFragment(null, null);
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
@@ -83,7 +75,7 @@ public class PickLocationFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         setItemizedOverlay(mv);
-        mv.setMapViewListener(new mMapViewListener(locOverlay, this.manager, mode, circleIcon, squareIcon));
+        mv.setMapViewListener(new mMapViewListener(this, locOverlay, this.manager, mode, circleIcon, squareIcon));
         prop = Utils.getProperties(context, Cons.PROPERTIES);
 
         if (mode.equals("origin")) {

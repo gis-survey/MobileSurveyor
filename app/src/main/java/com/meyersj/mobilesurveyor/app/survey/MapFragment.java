@@ -1,31 +1,23 @@
 package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
-import com.mapbox.mapboxsdk.overlay.Overlay;
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
@@ -38,7 +30,6 @@ import com.meyersj.mobilesurveyor.app.util.PathUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public abstract class MapFragment extends Fragment {
@@ -111,7 +102,6 @@ public abstract class MapFragment extends Fragment {
             Log.e(TAG, "unable to open local mbtiles");
             mv.setTileSource(osmSource);
         }
-
         mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
         mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
@@ -200,6 +190,11 @@ public abstract class MapFragment extends Fragment {
             }
             addedRoutes.remove(key);
         }
+    }
+
+
+    public void removeLocation(Marker loc) {
+        surveyOverlay.removeItem(loc);
     }
 
     public void updateView(SurveyManager manager) {

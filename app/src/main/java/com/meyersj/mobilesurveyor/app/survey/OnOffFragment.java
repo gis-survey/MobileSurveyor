@@ -2,19 +2,15 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -117,7 +113,6 @@ public class OnOffFragment extends MapFragment {
             //enable on or off to be reversed because streetcar runs in a loop
             for (String streetcar: Cons.STREETCARS) {
                 if (streetcar.equals(line)) {
-                    Log.d(TAG, "we have a streetcar");
                     setupReverseStops();
                     break;
                 }
@@ -155,9 +150,7 @@ public class OnOffFragment extends MapFragment {
         mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent e) {
-                if (e.getAction() == MotionEvent.ACTION_UP) {
-                    //do nothing (don't close)
-                }
+                if (e.getAction() == MotionEvent.ACTION_UP) {}
                 return false;
             }
         });
@@ -240,7 +233,7 @@ public class OnOffFragment extends MapFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 stopName.setText("");
-                closeKeypad();
+                Utils.closeKeypad(activity);
                 selectLocType(stopsMap.get(stopsList.get(position)));
             }
         });
@@ -273,7 +266,6 @@ public class OnOffFragment extends MapFragment {
         Log.d(TAG, "select loc type");
         String message = selectedMarker.getTitle();
         final CharSequence[] items = {Cons.BOARD, Cons.ALIGHT};
-
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(message)
                 .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
@@ -300,7 +292,6 @@ public class OnOffFragment extends MapFragment {
                         if(choice.equals(Cons.ALIGHT) && isOffReversed) {
                             reverseDirection(Cons.OFF, isOffReversed);
                         }
-
                         manager.setStop(selectedMarker, choice);
                         selectedStops.saveCurrentMarker(selectedMarker);
                     }
@@ -317,21 +308,15 @@ public class OnOffFragment extends MapFragment {
         select.show();
     }
 
-
-
     protected void setupReverseStops() {
         String dirOpposite = dir.equals("0") ? "1" : "0";
         locListOpposite = getStops(line, dirOpposite, false);
-
         toggleOnBtn = (Button) view.findViewById(R.id.on_btn);
         toggleOffBtn = (Button) view.findViewById(R.id.off_btn);
-
         Drawable onDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
         Drawable offDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
-
         toggleOnBtn.setBackground(onDrawable);
         toggleOffBtn.setBackground(offDrawable);
-
         toggleOnBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -358,53 +343,22 @@ public class OnOffFragment extends MapFragment {
         });
     }
 
-    /*
-    private void setupODKSubmitAction() {
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (selectedStops.validateSelection()) {
-                    String onStop = selectedStops.getBoard().getDescription();
-                    String offStop = selectedStops.getAlight().getDescription();
-
-                    if (selectedStops.validateStopSequence() || (isOnReversed || isOffReversed) ) {
-                        exitWithStopIDs(onStop, offStop);
-                    }
-                    else {
-                        Utils.longToastCenter(context,
-                                "Invalid stop sequence based on route direction");
-                    }
-                }
-                else {
-                    Utils.longToastCenter(context,
-                            "Both boarding and alighting locations must be set");
-                }
-            }
-        });
-    }
-    */
-
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
-
         for(Marker marker: locList) {
             stops.add((Stop) marker);
         }
         Collections.sort(stops);
-
         return stops;
     }
 
     protected void stopSequenceAdapterSetup(final ListView listView, final StopSequenceAdapter adapter) {
         listView.setAdapter(adapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 adapter.setSelectedIndex(position);
-
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
-
                 if (listView == onSeqListView) {
                     selectedStops.saveSequenceMarker(Cons.BOARD, stop);
                     manager.setStop(stop, Cons.BOARD);
@@ -420,7 +374,6 @@ public class OnOffFragment extends MapFragment {
     //toggle visibility of sequence list depending on current visibility
     private void changeSeqListVisibility(int currentVisibility) {
         osmText.setVisibility(currentVisibility);
-
         if (currentVisibility == View.INVISIBLE) {
             stopSeqBtn.setText("Hide stop sequences");
             seqView.setVisibility(View.VISIBLE);
@@ -434,7 +387,6 @@ public class OnOffFragment extends MapFragment {
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }
     }
-
 
     protected void reverseDirection(String mode, Boolean isReversed) {
         if(mode.equals(Cons.ON)) {
@@ -478,117 +430,12 @@ public class OnOffFragment extends MapFragment {
             stopSequenceAdapterSetup(listView, offSeqListAdapter);
         }
     }
-    public void closeKeypad() {
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
-    }
 
-    /*
-    private boolean exitWithStopIDs(String onStop, String offStop) {
-        Log.d(TAG, "exit: " + onStop + " " + offStop);
-        //Intent intent = new Intent();
-        //intent.putExtra(Cons.ODK_BOARD, onStop);
-        //intent.putExtra(Cons.ODK_ALIGHT, offStop);
-        //activity.setResult(activity.RESULT_OK, intent);
-        //activity.finish();
-        return true;
-    }
-
-    protected void postResults(String onStop, String offStop, Boolean isOnReversed, Boolean isOffReversed) {
-        Log.d(TAG, "posting results");
-
-        Date date = new Date();
-
-        Bundle extras = new Bundle();
-        //extras.putString(Cons.URL, url);
-        extras.putString(Cons.LINE, line);
-        extras.putString(Cons.DIR, dir);
-        extras.putString(Cons.DATE, Utils.dateFormat.format(date));
-        extras.putString(Cons.ON_STOP, onStop);
-        extras.putString(Cons.OFF_STOP, offStop);
-
-        extras.putString(Cons.TYPE, Cons.PAIR);
-        extras.putString(Cons.ON_REVERSED, String.valueOf(isOnReversed));
-        extras.putString(Cons.OFF_REVERSED, String.valueOf(isOffReversed));
-
-        //Utils.appendCSV("stops", buildPairRow(extras));
-        //String[] params = getPairParams(extras);
-        //PostTask task = new PostTask();
-        //task.execute(params);
-    }
-
-
-    protected String buildPairRow(Bundle bundle) {
-        String row = "";
-        row += bundle.getString(Cons.DATE) + ",";
-        row += bundle.getString(Cons.USER_ID) + ",";
-        row += bundle.getString(Cons.LINE) + ",";
-        row += bundle.getString(Cons.DIR) + ",";
-        row += bundle.getString(Cons.ON_STOP) + ",";
-        row += bundle.getString(Cons.OFF_STOP) + ",";
-        row += bundle.getString(Cons.ON_REVERSED) + ",";
-        row += bundle.getString(Cons.OFF_REVERSED);
-        return row;
-    }
-
-    protected String[] getPairParams(Bundle bundle) {
-        String[] params = new String[2];
-        JSONObject json = new JSONObject();
-        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
-        json.put(Cons.DATE, bundle.getString(Cons.DATE));
-        json.put(Cons.LINE, bundle.getString(Cons.LINE));
-        json.put(Cons.DIR, bundle.getString(Cons.DIR));
-        json.put(Cons.ON_STOP, bundle.getString(Cons.ON_STOP));
-        json.put(Cons.OFF_STOP, bundle.getString(Cons.OFF_STOP));
-        json.put(Cons.ON_REVERSED, bundle.getString(Cons.ON_REVERSED));
-        json.put(Cons.OFF_REVERSED, bundle.getString(Cons.OFF_REVERSED));
-        params[0] = Utils.getUrlApi(context) + "/insertPair";
-        Log.d(TAG, Utils.getUrlApi(context));
-        params[1] = json.toJSONString();
-        return params;
-    }
-    class PostTask extends AsyncTask<String[], Void, String> {
-
-        @Override
-        protected String doInBackground(String[]... inParams) {
-            String[] params = inParams[0];
-            Log.d(TAG, "url:" + params[0]);
-            Log.d(TAG, "data:" + params[1]);
-            return post(params);
-        }
-        @Override
-        protected void onPostExecute(String response) {
-            Log.d(TAG, "onPostExecute(): " + response);
-        }
-    }
-
-
-    protected String post(String[] params) {
-
-        String retVal = null;
-        HttpPost post = new HttpPost(params[0]);
-
-        ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
-
-        try {
-            post.setEntity(new UrlEncodedFormEntity(postParam));
-            HttpResponse response = client.execute(post);
-            HttpEntity entityR = response.getEntity();
-            Log.d(TAG, EntityUtils.toString(entityR));
-            retVal = response.toString();
-
-        } catch (UnsupportedEncodingException e) {
-            Log.e(TAG, "UnsupportedEncodingException" + e.toString());
-        } catch (ClientProtocolException e) {
-            Log.e(TAG, "ClientProtocolException: " + e.toString());
-        } catch (IOException e) {
-            Log.e(TAG, "IOException: " + e.toString());
-        }
-        return retVal;
-    }
-    */
+    //public void closeKeypad() {
+    //    InputMethodManager inputManager = (InputMethodManager)
+    //            activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+    //    inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
+    //            InputMethodManager.HIDE_NOT_ALWAYS);
+    //}
 
 }

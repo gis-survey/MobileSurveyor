@@ -164,6 +164,15 @@ public class SurveyManager {
         transfers.add(routeID);
     }
 
+    public void removeTransfer(String routeID) {
+        for(String route: transfers) {
+            if(route.equals(routeID)) {
+                transfers.remove(route);
+                break;
+            }
+        }
+    }
+
     public void clearTransfers() {
         transfers.clear();
     }

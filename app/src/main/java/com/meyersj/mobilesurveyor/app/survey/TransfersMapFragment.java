@@ -16,6 +16,7 @@ import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -26,6 +27,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ import java.util.Map;
 
 public class TransfersMapFragment extends MapFragment {
 
+    protected final int MAX_TRANSFERS = 4;
     protected SurveyManager manager;
     protected View routesLayout;
     protected ListView listView;
@@ -46,6 +49,7 @@ public class TransfersMapFragment extends MapFragment {
     protected ArrayList<String> selectedRoutes;
     protected String[] routes;
     protected ViewPager pager;
+    protected int transfersCount = 0;
 
     public TransfersMapFragment(SurveyManager manager, ViewPager pager) {
         this.manager = manager;
@@ -63,11 +67,16 @@ public class TransfersMapFragment extends MapFragment {
         addRoute(context, line, dir, false);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         listView = (ListView) view.findViewById(R.id.routes_list_view);
+
+
+
+
+
         routesLayout = (View) view.findViewById(R.id.routes_list_layout);
         submit = (Button) view.findViewById(R.id.submit_btn);
         buildRouteLookup();
         routes = activity.getResources().getStringArray(R.array.lines);
-        ArrayList<String> routesList = new ArrayList<String>();
+        final ArrayList<String> routesList = new ArrayList<String>();
         for(String route: routes) {
             // don't add current route to transfers list
             if(!routeLookup.get(route).equals(line)) {
@@ -78,23 +87,55 @@ public class TransfersMapFragment extends MapFragment {
                 android.R.layout.simple_list_item_multiple_choice, routesList);
         listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Boolean unSelect = false;
+                String routeID = routeLookup.get(routesList.get(i));
+                CheckedTextView item = (CheckedTextView) view;
+                Log.d(TAG, "Transfer Count Before: " + String.valueOf(transfersCount));
+                if(transfersCount == MAX_TRANSFERS && item.isChecked()) {
+                    String msg = "Maximum of " + String.valueOf(MAX_TRANSFERS) + " allowed";
+                    Utils.shortToastCenter(context, msg);
+                    //item.setChecked(false);
+                    listView.setItemChecked(i, false);
+                    //routesAdapter.notifyDataSetChanged();
+                }
+                else if(!item.isChecked()) {
+                    Log.d(TAG, "Unchecked");
+                    clearRoute(routeID, dir);
+                    manager.removeTransfer(routeID);
+                    transfersCount -= 1;
+                }
+                else {
+                    Log.d(TAG, "add route");
+                    addRoute(context, routeID, dir, true);
+                    transfersCount += 1;
+                    manager.updateTransfer(routeID);
+                }
+                //item.setChecked(checked);
+                Log.d(TAG, "Transfer Count After: " + String.valueOf(transfersCount));
+            }
+        });
+
         transfersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changeListVisibility(routesLayout.getVisibility());
-                if(routesLayout.getVisibility() == View.INVISIBLE) {
-                    SparseBooleanArray checked = listView.getCheckedItemPositions();
-                    clearRoutes();
-                    manager.clearTransfers();
-                    selectedRoutes = new ArrayList<String>();
-                    for (int i = 0; i < checked.size(); i++) {
-                        int position = checked.keyAt(i);
-                        if (checked.valueAt(i)) {
-                            selectedRoutes.add(routesAdapter.getItem(position).toString());
-                        }
-                    }
-                    addRoutes();
-                }
+
+                //if(routesLayout.getVisibility() == View.INVISIBLE) {
+                //    SparseBooleanArray checked = listView.getCheckedItemPositions();
+                //    clearRoutes();
+                //    manager.clearTransfers();
+                //    selectedRoutes = new ArrayList<String>();
+                //    for (int i = 0; i < checked.size(); i++) {
+                //        int position = checked.keyAt(i);
+                //        if (checked.valueAt(i)) {
+                //            selectedRoutes.add(routesAdapter.getItem(position).toString());
+                //        }
+                //    }
+                //    addRoutes();
+                //}
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +164,6 @@ public class TransfersMapFragment extends MapFragment {
     }
 
 
-
     protected void exitWithSurveyBundle(Boolean valid) {
         Boolean[] validate = manager.validate();
         Log.d(TAG, validate.toString());
@@ -131,6 +171,7 @@ public class TransfersMapFragment extends MapFragment {
             Log.d(TAG, validate[i].toString());
             if(!validate[i]) {
                 pager.setCurrentItem(i);
+                //TODO change previous and next buttons being enabled/disabled
                 return;
             }
         }
@@ -148,14 +189,13 @@ public class TransfersMapFragment extends MapFragment {
         activity.finish();
     }
 
-
-    protected void addRoutes() {
-        for(String s: selectedRoutes) {
-            String routeID = routeLookup.get(s);
-            addRoute(context, routeID, dir, true);
-            manager.updateTransfer(routeID);
-        }
-    }
+    //protected void addRoutes() {
+    //    for(String s: selectedRoutes) {
+    //        String routeID = routeLookup.get(s);
+    //        addRoute(context, routeID, dir, true);
+    //        manager.updateTransfer(routeID);
+    //    }
+    //}
 
     protected void buildRouteLookup() {
         routeLookup = new HashMap<String, String>();

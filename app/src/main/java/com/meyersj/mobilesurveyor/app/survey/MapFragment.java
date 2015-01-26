@@ -17,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -36,6 +37,7 @@ import com.meyersj.mobilesurveyor.app.util.PathUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -52,7 +54,10 @@ public abstract class MapFragment extends Fragment {
     protected MapView mv;
     protected ItemizedIconOverlay surveyOverlay;
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
-    protected ArrayList<PathOverlay> addedRoutes = new ArrayList<PathOverlay>();
+    protected HashMap<String,ArrayList<PathOverlay>> addedRoutes = new HashMap<String, ArrayList<PathOverlay>>();
+    protected HashMap<String,ArrayList<PathOverlay>> routesCache = new HashMap<String, ArrayList<PathOverlay>>();
+
+    //protected ArrayList<PathOverlay> addedRoutes = new ArrayList<PathOverlay>();
     protected Drawable circleIcon;
     protected Drawable squareIcon;
     protected String line;
@@ -144,7 +149,25 @@ public abstract class MapFragment extends Fragment {
     }
 
     protected ArrayList<PathOverlay> addRoute(Context context, String line, String dir, Boolean store) {
-        String geoJSONName = line + "_" + dir + "_routes.geojson";
+        String key = line + "_" + dir;
+        String geoJSONName = key + "_routes.geojson";
+        if(store) {
+            if(addedRoutes.containsKey(key))
+                return addedRoutes.get(key);
+            else if(routesCache.containsKey(key)) {
+                ArrayList<PathOverlay> cachePaths = routesCache.get(key);
+                addedRoutes.put(key, new ArrayList<PathOverlay>());
+                ArrayList<PathOverlay> paths = addedRoutes.get(key);
+                for(PathOverlay mPath: cachePaths) {
+                    paths.add(mPath);
+                    mv.addOverlay(mPath);
+                }
+                return addedRoutes.get(key);
+            }
+            addedRoutes.put(key, new ArrayList<PathOverlay>());
+            routesCache.put(key, new ArrayList<PathOverlay>());
+        }
+
         Paint pathPaint1 = new Paint();
         pathPaint1.setColor(getResources().getColor(R.color.blacker));
         pathPaint1.setAntiAlias(true);
@@ -155,29 +178,49 @@ public abstract class MapFragment extends Fragment {
         Paint pathPaint2 = new Paint();
         pathPaint2.setColor(getResources().getColor(R.color.bluer_lighter));
         pathPaint2.setAntiAlias(true);
-        pathPaint2.setStrokeWidth(4.0f);
+        pathPaint2.setStrokeWidth(3.5f);
         pathPaint2.setStyle(Paint.Style.STROKE);
 
         Paint pathPaint = pathPaint1;
-        if(store)
-            pathPaint = pathPaint2;
+
         ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(context, "geojson/" + geoJSONName);
         if (paths != null) {
+            ArrayList<PathOverlay> pathOverlays = addedRoutes.get(key);
+            ArrayList<PathOverlay> cacheOverlays = routesCache.get(key);
             for(PathOverlay mPath: paths) {
+                if(store && pathOverlays != null) {
+                    pathPaint = pathPaint2;
+                    pathOverlays.add(mPath);
+                    cacheOverlays.add(mPath);
+                };
                 mPath.setPaint(pathPaint);
-                if(store)
-                    addedRoutes.add(mPath);
                 mv.addOverlay(mPath);
             }
         }
         return paths;
     }
 
+    /*
     protected void clearRoutes() {
-        for(PathOverlay path: addedRoutes) {
-            mv.removeOverlay(path);
+        for (String key : addedRoutes.keySet()) {
+            ArrayList<PathOverlay> paths = addedRoutes.get(key);
+            for (PathOverlay path : paths) {
+                mv.removeOverlay(path);
+            }
         }
         addedRoutes.clear();
+    }
+    */
+
+    protected void clearRoute(String line, String dir) {
+        String key = line + "_" + dir;
+        if (addedRoutes.containsKey(key)) {
+            ArrayList<PathOverlay> paths = addedRoutes.get(key);
+            for (PathOverlay path : paths) {
+                mv.removeOverlay(path);
+            }
+            addedRoutes.remove(key);
+        }
     }
 
     public void updateView(SurveyManager manager) {

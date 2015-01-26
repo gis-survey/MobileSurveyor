@@ -69,8 +69,8 @@ public class PickLocationFragment extends MapFragment {
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        circleIcon = context.getResources().getDrawable(R.drawable.square_stroked_24);
-        squareIcon = context.getResources().getDrawable(R.drawable.square_24);
+        circleIcon = context.getResources().getDrawable(R.drawable.marker_stroked_24);
+        squareIcon = context.getResources().getDrawable(R.drawable.marker_24);
 
         clear = (ImageButton) view.findViewById(R.id.clear_text);
         TextView modeSpinnerText = (TextView) view.findViewById(R.id.mode_spinner_text);

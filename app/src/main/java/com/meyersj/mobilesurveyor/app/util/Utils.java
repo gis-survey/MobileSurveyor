@@ -4,6 +4,8 @@ package com.meyersj.mobilesurveyor.app.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,6 +14,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
+import com.meyersj.mobilesurveyor.app.R;
 
 import org.joda.time.DateTime;
 
@@ -168,6 +172,25 @@ public class Utils {
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    public static Paint defaultRoutePaint(Context context) {
+        Paint paint = new Paint();
+        paint.setColor(context.getResources().getColor(R.color.blacker));
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(5.0f);
+        paint.setPathEffect(new DashPathEffect(new float[] {5,5}, 0));
+        paint.setStyle(Paint.Style.STROKE);
+        return paint;
+    }
+
+    public static Paint  transferRoutePaint(Context context) {
+        Paint paint = new Paint();
+        paint.setColor(context.getResources().getColor(R.color.bluer_lighter));
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(3.5f);
+        paint.setStyle(Paint.Style.STROKE);
+        return paint;
     }
 
 

@@ -104,7 +104,7 @@ public class OnOffFragment extends MapFragment {
             }
             setItemizedOverlay(mv, locList, selList);
             mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
-            addRoute(context, line, dir, false);
+            addDefaultRoute(context, line, dir);
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
@@ -117,6 +117,7 @@ public class OnOffFragment extends MapFragment {
                     break;
                 }
             }
+            zoomToRoute(mv);
         }
         return view;
     }
@@ -200,10 +201,9 @@ public class OnOffFragment extends MapFragment {
         onSeqListView = (ListView) view.findViewById(R.id.on_stops_seq);
         offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
         osmText = (TextView) view.findViewById(R.id.osm_text);
-
+        /* if streetcar we need opposite direction stops in case
         /* if streetcar we need opposite direction stops in case
         user toggles that on or off was before start of line */
-
         ArrayList<Stop> stops = stopsSequenceSort(locList);
         onSeqListAdapter = new StopSequenceAdapter(activity, stops);
         offSeqListAdapter = new StopSequenceAdapter(activity, stops);

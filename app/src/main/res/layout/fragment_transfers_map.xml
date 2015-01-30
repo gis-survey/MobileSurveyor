@@ -16,46 +16,29 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <LinearLayout
-            android:layout_height="match_parent"
+        <Button
+            android:id="@+id/transfers_btn"
             android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Select Routes"
+            style="@style/ButtonText"
+            android:background="@drawable/shape_rect_grey_fade_round_all" />
+
+        <LinearLayout
+            android:id="@+id/routes_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="65dp"
+            android:layout_below="@+id/transfers_btn"
             android:orientation="vertical"
-            android:layout_marginBottom="58dp" >
+            android:visibility="visible"
+            android:background="@drawable/shape_rect_grey_fade_round_all" >
 
-            <Button
-                android:id="@+id/submit_btn"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="Submit"
-                style="@style/ButtonText"
-                android:background="@drawable/shape_rect_grey_fade_round_all" />
-
-            <Button
-                android:id="@+id/transfers_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="5dp"
-                android:text="Select Routes"
-                style="@style/ButtonText"
-                android:background="@drawable/shape_rect_grey_fade_round_all" />
-
-            <LinearLayout
-                android:id="@+id/routes_list_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:background="@color/black_light"
-                android:visibility="invisible">
-
-                <ListView
-                    android:id="@+id/routes_list_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:choiceMode="multipleChoice" />
-
-            </LinearLayout>
 
         </LinearLayout>
+
+
 
     </RelativeLayout>
 

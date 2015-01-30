@@ -26,6 +26,8 @@ import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.PathUtils;
+import com.meyersj.mobilesurveyor.app.util.TransitRoute;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,8 +47,14 @@ public abstract class MapFragment extends Fragment {
     protected MapView mv;
     protected ItemizedIconOverlay surveyOverlay;
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
-    protected HashMap<String,ArrayList<PathOverlay>> addedRoutes = new HashMap<String, ArrayList<PathOverlay>>();
-    protected HashMap<String,ArrayList<PathOverlay>> routesCache = new HashMap<String, ArrayList<PathOverlay>>();
+    protected TransitRoute defaultRoute;
+
+    //protected ArrayList<String> addedRoutes = new ArrayList<String>();
+    protected HashMap<String, TransitRoute> transferRoutes = new HashMap<String, TransitRoute>();
+    protected HashMap<String, TransitRoute> cachedRoutes = new HashMap<String, TransitRoute>();
+
+    //protected HashMap<String,ArrayList<PathOverlay>> addedRoutes = new HashMap<String, ArrayList<PathOverlay>>();
+    //protected HashMap<String,ArrayList<PathOverlay>> routesCache = new HashMap<String, ArrayList<PathOverlay>>();
     protected String line;
     protected String dir;
 
@@ -129,66 +137,47 @@ public abstract class MapFragment extends Fragment {
         }
     }
 
-    protected ArrayList<PathOverlay> addRoute(Context context, String line, String dir, Boolean store) {
+    protected void addDefaultRoute(Context context, String line, String dir) {
+        Paint paint = Utils.defaultRoutePaint(context);
+        defaultRoute = new TransitRoute(context, line, dir, paint);
+        defaultRoute.addRoute(mv, false);
+    }
+
+    protected void zoomToRoute(MapView mapView) {
+        if(defaultRoute != null) {
+            defaultRoute.zoomTo(mapView);
+        }
+    }
+
+    protected void addTransferRoute(Context context, String line, String dir) {
         String key = line + "_" + dir;
-        String geoJSONName = key + "_routes.geojson";
-        if(store) {
-            if(addedRoutes.containsKey(key))
-                return addedRoutes.get(key);
-            else if(routesCache.containsKey(key)) {
-                ArrayList<PathOverlay> cachePaths = routesCache.get(key);
-                addedRoutes.put(key, new ArrayList<PathOverlay>());
-                ArrayList<PathOverlay> paths = addedRoutes.get(key);
-                for(PathOverlay mPath: cachePaths) {
-                    paths.add(mPath);
-                    mv.addOverlay(mPath);
-                }
-                return addedRoutes.get(key);
+        Paint paint = Utils.transferRoutePaint(context);
+        TransitRoute route;
+        if(transferRoutes.containsKey(key)) {
+            // route is already displayed
+            return;
+        }
+        else if(cachedRoutes.containsKey(key)) {
+            route = cachedRoutes.get(key);
+            if(route.isValid()) {
+                route.addRoute(mv, false);
+                transferRoutes.put(key, route);
             }
-            addedRoutes.put(key, new ArrayList<PathOverlay>());
-            routesCache.put(key, new ArrayList<PathOverlay>());
+            return;
         }
 
-        Paint pathPaint1 = new Paint();
-        pathPaint1.setColor(getResources().getColor(R.color.blacker));
-        pathPaint1.setAntiAlias(true);
-        pathPaint1.setStrokeWidth(5.0f);
-        pathPaint1.setPathEffect(new DashPathEffect(new float[] {5,5}, 0));
-        pathPaint1.setStyle(Paint.Style.STROKE);
-
-        Paint pathPaint2 = new Paint();
-        pathPaint2.setColor(getResources().getColor(R.color.bluer_lighter));
-        pathPaint2.setAntiAlias(true);
-        pathPaint2.setStrokeWidth(3.5f);
-        pathPaint2.setStyle(Paint.Style.STROKE);
-
-        Paint pathPaint = pathPaint1;
-
-        ArrayList<PathOverlay> paths = PathUtils.getPathFromAssets(context, "geojson/" + geoJSONName);
-        if (paths != null) {
-            ArrayList<PathOverlay> pathOverlays = addedRoutes.get(key);
-            ArrayList<PathOverlay> cacheOverlays = routesCache.get(key);
-            for(PathOverlay mPath: paths) {
-                if(store && pathOverlays != null) {
-                    pathPaint = pathPaint2;
-                    pathOverlays.add(mPath);
-                    cacheOverlays.add(mPath);
-                };
-                mPath.setPaint(pathPaint);
-                mv.addOverlay(mPath);
-            }
-        }
-        return paths;
+        route = new TransitRoute(context, line, dir, paint);
+        transferRoutes.put(key, route);
+        cachedRoutes.put(key, route);
+        route.addRoute(mv, false);
     }
 
     protected void clearRoute(String line, String dir) {
         String key = line + "_" + dir;
-        if (addedRoutes.containsKey(key)) {
-            ArrayList<PathOverlay> paths = addedRoutes.get(key);
-            for (PathOverlay path : paths) {
-                mv.removeOverlay(path);
-            }
-            addedRoutes.remove(key);
+        if(transferRoutes.containsKey(key)) {
+            TransitRoute route = transferRoutes.get(key);
+            route.clearRoute(mv);
+            transferRoutes.remove(key);
         }
     }
 
@@ -198,7 +187,7 @@ public abstract class MapFragment extends Fragment {
     }
 
     public void updateView(SurveyManager manager) {
-        BoundingBox boundingBox = null;
+        //BoundingBox boundingBox = null;
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
 
@@ -228,8 +217,8 @@ public abstract class MapFragment extends Fragment {
                 markers.add(orig);
                 markers.add(dest);
                 Log.d(TAG, String.valueOf(markers.size()));
-                boundingBox = getBoundingBox(null, markers, markers.size());
-                Log.d(TAG, boundingBox.toString());
+                //boundingBox = getBoundingBox(null, markers, markers.size());
+                //Log.d(TAG, boundingBox.toString());
             }
             if(onStop != null) {
                 surveyOverlay.addItem(onStop);
@@ -239,9 +228,9 @@ public abstract class MapFragment extends Fragment {
             }
         }
         mv.addItemizedOverlay(surveyOverlay);
-        if(boundingBox != null) {
-            mv.zoomToBoundingBox(boundingBox, true, true);
-        }
+        //if(boundingBox != null) {
+        //    mv.zoomToBoundingBox(boundingBox, true, true);
+        //}
     }
 
     public class Bounds {
@@ -253,19 +242,15 @@ public abstract class MapFragment extends Fragment {
 
         public Bounds() {}
 
-        public void addMarker(Marker marker) {
-            LatLng latLng = marker.getPoint();
-            if(north == 0 || latLng.getLatitude() > north) {
-                north = latLng.getLatitude();
-            }
-            if(south == 0 || latLng.getLatitude() < south) {
-                south = latLng.getLatitude();
-            }
-            if(west == 0 || latLng.getLongitude() < west) {
-                west = latLng.getLongitude();
-            }
-            if(east == 0 || latLng.getLongitude() > east) {
-                east = latLng.getLongitude();
+
+        protected void update(Marker marker) {
+            if(marker != null) {
+                Double lat = marker.getPoint().getLatitude();
+                Double lng = marker.getPoint().getLongitude();
+                if(north == 0 || lat > north) north = lng;
+                if(south == 0 || lat < south) south = lng;
+                if(west == 0 || lat < west) west = lng;
+                if(east == 0 || lat > east) east = lng;
             }
         }
 
@@ -274,6 +259,8 @@ public abstract class MapFragment extends Fragment {
         }
 
     }
+
+
     protected BoundingBox getBoundingBox(Bounds bounds, ArrayList<Marker> markers, int count) {
         if (count <= 0) {
             return bounds.getBounds();
@@ -281,7 +268,7 @@ public abstract class MapFragment extends Fragment {
         if (bounds == null) {
             bounds = new Bounds();
         }
-        bounds.addMarker(markers.get(count - 1));
+        bounds.update(markers.get(count - 1));
         return this.getBoundingBox(bounds, markers, count - 1);
     }
 }

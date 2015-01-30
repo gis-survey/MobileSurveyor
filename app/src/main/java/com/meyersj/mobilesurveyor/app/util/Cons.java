@@ -66,5 +66,6 @@ public class Cons {
     public static final String TRANSFER_ODK = "transfer";
 
     public static final int MAX_TRANSFERS = 4;
+    public static final Double PADDING = 0.01;
 }
 

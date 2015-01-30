@@ -17,7 +17,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -30,6 +34,7 @@ import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,23 +43,26 @@ import java.util.Map;
 
 public class TransfersMapFragment extends MapFragment {
 
-    //protected final int MAX_TRANSFERS = 4;
+    protected final int MAX_TRANSFERS = 5;
     protected SurveyManager manager;
-    protected View routesLayout;
-    protected ListView listView;
+    protected LinearLayout routesLayout;
+    //protected ListView listView;
     protected Button transfersBtn;
-    protected Button submit;
-    protected static ArrayAdapter routesAdapter;
+    //protected LinearLayout routesLayout;
+    protected ArrayList<Spinner> routeSpinners;
+    protected ArrayList<String> routeList;
     protected HashMap<String, String> routeLookup;
-    protected ArrayList<String> selectedRoutes;
+    //protected ArrayList<String> selectedRoutes;
     protected String[] routes;
     protected ViewPager pager;
-    protected int transfersCount = 0;
+    //protected int transfersCount = 0;
 
     public TransfersMapFragment(SurveyManager manager, ViewPager pager) {
         this.manager = manager;
         this.pager = pager;
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,13 +70,23 @@ public class TransfersMapFragment extends MapFragment {
         View view = inflater.inflate(R.layout.fragment_transfers_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
+        routesLayout = (LinearLayout) view.findViewById(R.id.routes_list_layout);
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
-        addRoute(context, line, dir, false);
+        addDefaultRoute(context, line, dir);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
-        listView = (ListView) view.findViewById(R.id.routes_list_view);
-        routesLayout = (View) view.findViewById(R.id.routes_list_layout);
-        submit = (Button) view.findViewById(R.id.submit_btn);
+
+
+        LinearLayout routePicker = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, container, false);
+
+
+        //LinearLayout routePicker = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, layout, false);
+
+        //listView = (ListView) view.findViewById(R.id.routes_list_view);
+        //routesLayout = (LinearLayout) view.findViewById(R.id.routes_list_layout);
+
+
+        //submit = (Button) view.findViewById(R.id.submit_btn);
         buildRouteLookup();
         routes = activity.getResources().getStringArray(R.array.lines);
         final ArrayList<String> routesList = new ArrayList<String>();
@@ -76,13 +94,92 @@ public class TransfersMapFragment extends MapFragment {
         for(String route: routes) {
             if(!routeLookup.get(route).equals(line)) {
                 routesList.add(route);
+                Log.d(TAG, route);
             }
         }
-        routesAdapter = new ArrayAdapter<String>(view.getContext(),
-                android.R.layout.simple_list_item_multiple_choice, routesList);
-        listView.setAdapter(routesAdapter);
+
+        //Spinner spinner = (Spinner) routePicker.findViewById(R.id.route_spinner);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
+        //       android.R.layout.simple_spinner_dropdown_item, routesList);
+        //spinner.setAdapter(adapter);
+
+        //attachRoutesAdapter(spinner, routeList);
+        //routePicker.addView(spinner);
+        routesLayout.addView(routePicker);
+        Spinner spinner = (Spinner) routePicker.findViewById(R.id.route_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
+               android.R.layout.simple_spinner_dropdown_item, routesList);
+        spinner.setAdapter(adapter);
+
+
+        LinearLayout routePicker2 = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, container, false);
+
+        routesLayout.addView(routePicker2);
+        Spinner spinner2 = (Spinner) routePicker2.findViewById(R.id.route_spinner);
+        ImageButton imageButton = (ImageButton) routePicker2.findViewById(R.id.remove_route);
+        imageButton.setVisibility(View.VISIBLE);
+        //routesList.add(0, "");
+        ArrayList<String> defaultRoutesList  = (ArrayList<String>) routesList.clone();
+        defaultRoutesList.add(0, "-- Add another route --");
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(view.getContext(),
+                android.R.layout.simple_spinner_dropdown_item, defaultRoutesList);
+        spinner2.setAdapter(adapter2);
+
+
+        //routesLayout.removeView(routePicker2);
+
+
+
+        /*
+
+        1)  Add one route and set it to the route currently being surveyed
+
+        2)  If a user opens the first spinner and selects a different route
+
+            inflate a new routePicker view and setup its spinner to None state
+
+        3)  If a user taps CROSS then that transfer is removed.
+
+        4) If a user selects a route from the route that was selected as default
+
+            remove the default message from the list and return to step 2
+
+        5) When user taps "next"|<changes tabs>|<closes routes list> validate that the default
+            is still selected if not add error message
+
+         */
+
+
+
+
+        //routesList.add(0, "REMOVE");
+        //Spinner newSpinner1 = routeSpinnerFactory(1, routesList, true);
+        //Spinner newSpinner2 = routeSpinnerFactory(2, routesList, false);
+        //Spinner newSpinner3 = routeSpinnerFactory(3, routesList, false);
+        //Spinner newSpinner4 = routeSpinnerFactory(4, routesList, false);
+        //Spinner newSpinner5 = routeSpinnerFactory(5, routesList, false);
+
+        //routesLayout.addView(newSpinner1);
+        //routesLayout.addView(newSpinner2);
+        //routesLayout.addView(newSpinner3);
+        //routesLayout.addView(newSpinner4);
+        //routesLayout.addView(newSpinner5);
+
+        //spinnerHolder.addView(newSpinner);
+
+        //routesLayout.addView(newSpinner);
+
+        //routesAdapter = new ArrayAdapter<String>(view.getContext(),
+        //        android.R.layout.simple_list_item_1, routesList);
+        //routesAdapter = new ArrayAdapter<String>(view.getContext(),
+        //        android.R.layout.simple_list_item_multiple_choice, routesList);
+        //listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
 
+
+
+
+        /*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -99,12 +196,13 @@ public class TransfersMapFragment extends MapFragment {
                     transfersCount -= 1;
                 }
                 else {
-                    addRoute(context, routeID, dir, true);
+                    addTransferRoute(context, routeID, dir);
                     transfersCount += 1;
                     manager.updateTransfer(routeID);
                 }
             }
         });
+        */
 
         transfersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +211,13 @@ public class TransfersMapFragment extends MapFragment {
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exitWithSurveyBundle(true);
-            }
-        });
+        //submit.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        exitWithSurveyBundle(true);
+        //    }
+        //});
+
         return view;
     }
 
@@ -135,6 +234,13 @@ public class TransfersMapFragment extends MapFragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    protected void attachRoutesAdapter(Spinner spinner, ArrayList<String> routesList) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
+                      android.R.layout.simple_spinner_dropdown_item, routesList);
+        spinner.setAdapter(adapter);
+        //return spinner;
     }
 
     protected void exitWithSurveyBundle(Boolean valid) {

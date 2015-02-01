@@ -30,7 +30,9 @@ import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -49,10 +51,12 @@ public class PickLocationFragment extends MapFragment {
     protected Drawable squareIcon;
     protected Spinner modeSpinner;
     protected Spinner locationSpinner;
+    protected Bundle extras;
 
-    public PickLocationFragment(SurveyManager manager, String mode) {
+    public PickLocationFragment(SurveyManager manager, String mode, Bundle extras) {
         this.manager = manager;
         this.mode = mode;
+        this.extras = extras;
     }
 
     @Override
@@ -79,11 +83,6 @@ public class PickLocationFragment extends MapFragment {
         mv.setMapViewListener(new mMapViewListener(this, locOverlay, this.manager, mode, circleIcon, squareIcon));
         prop = Utils.getProperties(context, Cons.PROPERTIES);
 
-
-        updateView(manager);
-
-
-
         if (mode.equals("origin")) {
             ArrayAdapter<CharSequence> accessAdapter = ArrayAdapter.createFromResource(
                     view.getContext(), R.array.access_mode_array, android.R.layout.simple_spinner_item);
@@ -107,6 +106,9 @@ public class PickLocationFragment extends MapFragment {
         adapter = new SolrAdapter(context, android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        refresh();
+        updateView(manager);
 
         // set up listeners for view objects
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -162,7 +164,7 @@ public class PickLocationFragment extends MapFragment {
                 if(!selected.isEmpty()) {
                     manager.updatePurpose(mode, String.valueOf(position));
                 }
-                if(selected.contains("other")) {
+                if(selected.contains("other (specify)")) {
                     manager.inputPurposeOther(activity, mode); // specify other location type
                 }
             }
@@ -220,6 +222,91 @@ public class PickLocationFragment extends MapFragment {
 
     public String getMode() {
         return this.mode;
+    }
+
+    public void refresh() {
+        if(extras == null)
+            return;
+
+        String purposeKey;
+        String purposeOtherKey;
+        String modeKey;
+        String modeOtherKey;
+        String blocksKey;
+        String parkingKey;
+        String latKey;
+        String lngKey;
+
+        String[] locTemp = getResources().getStringArray(R.array.location_type_array);
+        String[] modeTemp;
+        List<String> locTypes = Arrays.asList(locTemp);
+        List<String> modeTypes;
+
+
+        if(mode.equals("origin")) {
+            purposeKey = "orig_purpose";
+            purposeOtherKey = "orig_purpose_other";
+            modeKey = "orig_access";
+            modeOtherKey = "orig_access_other";
+            blocksKey = "orig_blocks";
+            parkingKey = "orig_parking";
+            latKey = "orig_lat";
+            lngKey = "orig_lng";
+            modeTemp = getResources().getStringArray(R.array.access_mode_array);
+        }
+        else {
+            purposeKey = "dest_purpose";
+            purposeOtherKey = "dest_purpose_other";
+            modeKey = "dest_egress";
+            modeOtherKey = "dest_access_other";
+            blocksKey = "dest_blocks";
+            parkingKey = "dest_parking";
+            latKey = "dest_lat";
+            lngKey = "dest_lng";
+            modeTemp = getResources().getStringArray(R.array.egress_mode_array);
+        }
+        modeTypes = Arrays.asList(modeTemp);
+
+        if(hasExtra(purposeKey)) {
+            Log.d(TAG, "has purpose");
+            String purpose = extras.getString(purposeKey);
+            int i = locTypes.indexOf(purpose);
+            Log.d(TAG, "purpose index: " + String.valueOf(i));
+            locationSpinner.setSelection(i);
+            Log.d(TAG, String.valueOf(i));
+            manager.updatePurpose(mode, String.valueOf(i));
+            if(hasExtra(purposeOtherKey)) {
+                String purposeOther = extras.getString(purposeOtherKey);
+                manager.updatePurposeOther(mode, purposeOther);
+            }
+        }
+        if(hasExtra(modeKey)) {
+            String mode = extras.getString(modeKey);
+            int i = modeTypes.indexOf(mode);
+            modeSpinner.setSelection(i);
+            manager.updateMode(mode, String.valueOf(i));
+            if(hasExtra(modeOtherKey)) {
+                String modeOther = extras.getString(modeOtherKey);
+                manager.updateModeOther(mode, modeOther);
+            }
+            if(hasExtra(blocksKey)) {
+                manager.updateBlocks(mode, extras.getString(blocksKey));
+            }
+            if(hasExtra(parkingKey)) {
+                manager.updateParking(mode, extras.getString(parkingKey));
+            }
+        }
+        if(hasExtra(latKey) && hasExtra(lngKey)) {
+            addMarker(new LatLng(extras.getDouble(latKey), extras.getDouble(lngKey)));
+        }
+
+    }
+
+    protected Boolean hasExtra(String key) {
+        if(extras.containsKey(key) && (extras.getString(key) != null)) {
+            return true;
+        }
+        return false;
     }
 
 }

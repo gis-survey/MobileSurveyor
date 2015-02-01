@@ -67,8 +67,6 @@ public class SurveyManager {
         this.orig = new Location();
         this.dest = new Location();
         this.transfers = new ArrayList<String>();
-        Log.d(TAG, "getting odk extras");
-        getODKExtras();
     }
 
     public String key(String prefix, String cons) {
@@ -330,48 +328,5 @@ public class SurveyManager {
         AlertDialog select = builder.create();
         select.show();
     }
-
-    protected void getODKExtras() {
-        Log.d(TAG, "inside getting odk extras");
-        if(activity == null) {
-            line = "9";
-            dir = "0";
-            return;
-        }
-        Log.d(TAG, "affter getting extras");
-        Intent intent = activity.getIntent();
-        String action = intent.getAction();
-        if (action.equals(ODK_ACTION)) {
-            Log.d(TAG, "action is odk extras");
-            Bundle extras = intent.getExtras();
-            if (extras != null) {
-                if (extras.containsKey(Cons.LINE)) {
-                    line = extras.getString(Cons.LINE);
-                }
-                if (extras.containsKey(Cons.DIR)) {
-                    dir = extras.getString(Cons.DIR);
-                }
-                if (extras.containsKey("orig_lat") && extras.containsKey("orig_lng")) {
-                    Log.d(TAG, "odk has lat and lng");
-                    Double lat =  (Double) extras.get("orig_lat");
-                    Double lng = (Double) extras.get("orig_lng");
-                    Drawable circleIcon = context.getResources().getDrawable(R.drawable.marker_stroked_24);
-                    //Drawable squareIcon = context.getResources().getDrawable(R.drawable.marker_24);
-                    Marker m = new Marker(null, null, new LatLng(lat, lng));
-                    m.setMarker(circleIcon);
-
-                    //        if(mode.equals("destination"))
-                    //m.setMarker(squareIcon);
-                    //        m.addTo(mv);
-                    //        locOverlay.addItem(m);
-                    //        mv.invalidate();
-                    //        mv.setCenter(latLng);
-                    //        mv.setZoom(17);
-                    setLocation(m, "origin");
-                }
-            }
-        }
-    }
-
 
 }

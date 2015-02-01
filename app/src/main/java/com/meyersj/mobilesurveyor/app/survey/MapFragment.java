@@ -271,4 +271,5 @@ public abstract class MapFragment extends Fragment {
         bounds.update(markers.get(count - 1));
         return this.getBoundingBox(bounds, markers, count - 1);
     }
+
 }

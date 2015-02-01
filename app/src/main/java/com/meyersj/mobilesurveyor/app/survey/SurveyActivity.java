@@ -2,6 +2,8 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,13 +15,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.ConfirmFragment;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
-    public static final int SURVEY_FRAGMENTS = 5;
-    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
+    protected static final int SURVEY_FRAGMENTS = 5;
+    protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
+    protected static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -55,9 +61,11 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             }
         });
         // For each of the sections in the app, add a tab to the action bar.
+
+        Bundle extras = getODKExtras();
         fragments = new Fragment[SURVEY_FRAGMENTS];
-        fragments[0] = new PickLocationFragment(manager, "origin");
-        fragments[1] = new PickLocationFragment(manager, "destination");
+        fragments[0] = new PickLocationFragment(manager, "origin", extras);
+        fragments[1] = new PickLocationFragment(manager, "destination", extras);
         fragments[2] = new OnOffFragment(manager);
         fragments[3] = new TransfersMapFragment(manager, mViewPager);
         fragments[4] = new ConfirmFragment(this, manager, mViewPager);
@@ -131,6 +139,16 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    protected Bundle getODKExtras() {
+        Intent intent = this.getIntent();
+        String action = intent.getAction();
+        if (action.equals(ODK_ACTION)) {
+            Bundle extras = intent.getExtras();
+            return intent.getExtras();
+        }
+        return null;
     }
 
 }

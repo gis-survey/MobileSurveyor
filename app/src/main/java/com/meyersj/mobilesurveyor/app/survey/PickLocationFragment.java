@@ -57,6 +57,7 @@ public class PickLocationFragment extends MapFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "on create view pick");
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
@@ -77,6 +78,11 @@ public class PickLocationFragment extends MapFragment {
         setItemizedOverlay(mv);
         mv.setMapViewListener(new mMapViewListener(this, locOverlay, this.manager, mode, circleIcon, squareIcon));
         prop = Utils.getProperties(context, Cons.PROPERTIES);
+
+
+        updateView(manager);
+
+
 
         if (mode.equals("origin")) {
             ArrayAdapter<CharSequence> accessAdapter = ArrayAdapter.createFromResource(

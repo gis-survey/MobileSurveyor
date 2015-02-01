@@ -66,7 +66,7 @@ public abstract class MapFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_default_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        getODKExtras();
+        //getODKExtras();
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {

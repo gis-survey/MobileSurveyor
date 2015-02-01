@@ -18,8 +18,8 @@ import com.meyersj.mobilesurveyor.app.util.ConfirmFragment;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
-    public static final int SURVEY_FRAGMENTS = 4;//5;
-    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers" };// "Confirm"};
+    public static final int SURVEY_FRAGMENTS = 5;
+    public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -33,9 +33,11 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         setContentView(R.layout.activity_survey);
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
-        manager = new SurveyManager(getApplicationContext(), getParent(), "9", "1");
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
+
+        manager = new SurveyManager(getApplicationContext(), this);
+
         actionBar.setHomeButtonEnabled(false);
         actionBar.setTitle("TransitSurveyor");
         //actionBar.setIcon(getApplicationContext().getResources().getDrawable(R.drawable.bus_icon50));
@@ -58,7 +60,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments[1] = new PickLocationFragment(manager, "destination");
         fragments[2] = new OnOffFragment(manager);
         fragments[3] = new TransfersMapFragment(manager, mViewPager);
-        //fragments[4] = new ConfirmFragment(this, manager, mViewPager);
+        fragments[4] = new ConfirmFragment(this, manager, mViewPager);
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }

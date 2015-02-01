@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 
 public class TransfersMapFragment extends MapFragment {
@@ -75,59 +76,29 @@ public class TransfersMapFragment extends MapFragment {
         setTiles(mv);
         addDefaultRoute(context, line, dir);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
-
-
-        LinearLayout routePicker = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, container, false);
-
-
-        //LinearLayout routePicker = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, layout, false);
-
-        //listView = (ListView) view.findViewById(R.id.routes_list_view);
-        //routesLayout = (LinearLayout) view.findViewById(R.id.routes_list_layout);
-
-
-        //submit = (Button) view.findViewById(R.id.submit_btn);
-        buildRouteLookup();
         routes = activity.getResources().getStringArray(R.array.lines);
         final ArrayList<String> routesList = new ArrayList<String>();
-        // don't add current route to transfers list
         for(String route: routes) {
-            if(!routeLookup.get(route).equals(line)) {
-                routesList.add(route);
-                Log.d(TAG, route);
-            }
+            routesList.add(route);
         }
+        Stack<RoutePicker> routePickersStack = new Stack<RoutePicker>();
 
-        //Spinner spinner = (Spinner) routePicker.findViewById(R.id.route_spinner);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
-        //       android.R.layout.simple_spinner_dropdown_item, routesList);
-        //spinner.setAdapter(adapter);
+        //ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
+        //defaultRoutesList.add(0, "Add route");
+        //RoutePicker rp1 = new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, line);
 
-        //attachRoutesAdapter(spinner, routeList);
-        //routePicker.addView(spinner);
-        routesLayout.addView(routePicker);
-        Spinner spinner = (Spinner) routePicker.findViewById(R.id.route_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
-               android.R.layout.simple_spinner_dropdown_item, routesList);
-        spinner.setAdapter(adapter);
+        routePickersStack.push(new RoutePicker(context, inflater, container,
+                routesLayout, routesList, line));
 
-
-        LinearLayout routePicker2 = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, container, false);
-
-        routesLayout.addView(routePicker2);
-        Spinner spinner2 = (Spinner) routePicker2.findViewById(R.id.route_spinner);
-        ImageButton imageButton = (ImageButton) routePicker2.findViewById(R.id.remove_route);
-        imageButton.setVisibility(View.VISIBLE);
-        //routesList.add(0, "");
-        ArrayList<String> defaultRoutesList  = (ArrayList<String>) routesList.clone();
-        defaultRoutesList.add(0, "-- Add another route --");
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(view.getContext(),
-                android.R.layout.simple_spinner_dropdown_item, defaultRoutesList);
-        spinner2.setAdapter(adapter2);
-
-
-        //routesLayout.removeView(routePicker2);
-
+        //RoutePicker rp2 = new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, null);
+        //RoutePicker rp3 = new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, null);
+        //RoutePicker rp4 = new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, null);
+        //RoutePicker rp5 = new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, null);
 
 
         /*
@@ -149,60 +120,7 @@ public class TransfersMapFragment extends MapFragment {
 
          */
 
-
-
-
-        //routesList.add(0, "REMOVE");
-        //Spinner newSpinner1 = routeSpinnerFactory(1, routesList, true);
-        //Spinner newSpinner2 = routeSpinnerFactory(2, routesList, false);
-        //Spinner newSpinner3 = routeSpinnerFactory(3, routesList, false);
-        //Spinner newSpinner4 = routeSpinnerFactory(4, routesList, false);
-        //Spinner newSpinner5 = routeSpinnerFactory(5, routesList, false);
-
-        //routesLayout.addView(newSpinner1);
-        //routesLayout.addView(newSpinner2);
-        //routesLayout.addView(newSpinner3);
-        //routesLayout.addView(newSpinner4);
-        //routesLayout.addView(newSpinner5);
-
-        //spinnerHolder.addView(newSpinner);
-
-        //routesLayout.addView(newSpinner);
-
-        //routesAdapter = new ArrayAdapter<String>(view.getContext(),
-        //        android.R.layout.simple_list_item_1, routesList);
-        //routesAdapter = new ArrayAdapter<String>(view.getContext(),
-        //        android.R.layout.simple_list_item_multiple_choice, routesList);
-        //listView.setAdapter(routesAdapter);
         changeListVisibility(routesLayout.getVisibility());
-
-
-
-
-        /*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String routeID = routeLookup.get(routesList.get(i));
-                CheckedTextView item = (CheckedTextView) view;
-                if(transfersCount == Cons.MAX_TRANSFERS && item.isChecked()) {
-                    String msg = "Maximum of " + String.valueOf(Cons.MAX_TRANSFERS) + " allowed";
-                    Utils.shortToastCenter(context, msg);
-                    listView.setItemChecked(i, false);
-                }
-                else if(!item.isChecked()) {
-                    clearRoute(routeID, dir);
-                    manager.removeTransfer(routeID);
-                    transfersCount -= 1;
-                }
-                else {
-                    addTransferRoute(context, routeID, dir);
-                    transfersCount += 1;
-                    manager.updateTransfer(routeID);
-                }
-            }
-        });
-        */
 
         transfersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,13 +128,6 @@ public class TransfersMapFragment extends MapFragment {
                 changeListVisibility(routesLayout.getVisibility());
             }
         });
-
-        //submit.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        exitWithSurveyBundle(true);
-        //    }
-        //});
 
         return view;
     }
@@ -236,13 +147,8 @@ public class TransfersMapFragment extends MapFragment {
         super.onDetach();
     }
 
-    protected void attachRoutesAdapter(Spinner spinner, ArrayList<String> routesList) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
-                      android.R.layout.simple_spinner_dropdown_item, routesList);
-        spinner.setAdapter(adapter);
-        //return spinner;
-    }
 
+    /*
     protected void exitWithSurveyBundle(Boolean valid) {
         Boolean[] validate = manager.validate();
         Log.d(TAG, validate.toString());
@@ -280,51 +186,7 @@ public class TransfersMapFragment extends MapFragment {
         activity.setResult(result, intent);
         activity.finish();
     }
-
-    //TODO remove this hardcoded building a hashtable to using an input file
-    protected void buildRouteLookup() {
-        routeLookup = new HashMap<String, String>();
-        routeLookup.put("4-Division/Fessenden", "4");
-        routeLookup.put("9-Powell Blvd", "9");
-        routeLookup.put("17-Holgate/Broadway", "17");
-        routeLookup.put("19-Woodstock/Glisan", "19");
-        routeLookup.put("28-Linwood", "28");
-        routeLookup.put("29-Lake/Webster Rd", "29");
-        routeLookup.put("30-Estacada", "30");
-        routeLookup.put("31-King Rd", "31");
-        routeLookup.put("32-Oatfield", "32");
-        routeLookup.put("33-McLoughlin", "33");
-        routeLookup.put("34-River Rd", "34");
-        routeLookup.put("35-Macadam/Greeley", "35");
-        routeLookup.put("70-12th/NE 33rd Ave", "70");
-        routeLookup.put("75-Cesar Chavez/Lombard", "75");
-        routeLookup.put("99-McLoughlin Express", "99");
-        routeLookup.put("152-Milwaukie", "152");
-        routeLookup.put("MAX Yellow Line", "190");
-        routeLookup.put("MAX Green Line", "200");
-        routeLookup.put("Portland Streetcar - NS Line", "193");
-        routeLookup.put("Portland Streetcar - CL Line", "194");
-        routeLookup.put("4", "4-Division/Fessenden");
-        routeLookup.put("9", "9-Powell Blvd");
-        routeLookup.put("17", "17-Holgate/Broadway");
-        routeLookup.put("19", "19-Woodstock/Glisan");
-        routeLookup.put("28", "28-Linwood");
-        routeLookup.put("29", "29-Lake/Webster Rd");
-        routeLookup.put("30", "30-Estacada");
-        routeLookup.put("31", "31-King Rd");
-        routeLookup.put("32", "32-Oatfield");
-        routeLookup.put("33", "33-McLoughlin");
-        routeLookup.put("34", "34-River Rd");
-        routeLookup.put("35", "35-Macadam/Greeley");
-        routeLookup.put("70", "70-12th/NE 33rd Ave");
-        routeLookup.put("75", "75-Cesar Chavez/Lombard");
-        routeLookup.put("99", "99-McLoughlin Express");
-        routeLookup.put("152", "152-Milwaukie");
-        routeLookup.put("190", "MAX Yellow Line");
-        routeLookup.put("200", "MAX Green Line");
-        routeLookup.put("193", "Portland Streetcar - NS Line");
-        routeLookup.put("194", "Portland Streetcar - CL Line");
-    }
+    */
 
     //toggle visibility of list depending on current visibility
     private void changeListVisibility(int currentVisibility) {

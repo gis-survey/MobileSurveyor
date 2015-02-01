@@ -5,12 +5,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
+import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 public class SurveyManager {
 
     protected static final String TAG = "SurveyManager";
+    private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
+
     protected Context context;
     protected Activity activity;
     protected String line;
@@ -55,14 +61,14 @@ public class SurveyManager {
         }
     }
 
-    public SurveyManager(Context context, Activity activity, String line, String dir) {
+    public SurveyManager(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
-        this.line = line;
-        this.dir = dir;
         this.orig = new Location();
         this.dest = new Location();
         this.transfers = new ArrayList<String>();
+        Log.d(TAG, "getting odk extras");
+        getODKExtras();
     }
 
     public String key(String prefix, String cons) {
@@ -304,10 +310,13 @@ public class SurveyManager {
 
     public void unfinishedExit(final Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage("Are you sure you want to exit? All progress will be lost.")
+        builder.setMessage("Are you sure you want to exit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent();
+                        intent = addExtras(intent);
+                        activity.setResult(activity.RESULT_OK, intent);
                         activity.finish();
                     }
                 })
@@ -320,6 +329,48 @@ public class SurveyManager {
 
         AlertDialog select = builder.create();
         select.show();
+    }
+
+    protected void getODKExtras() {
+        Log.d(TAG, "inside getting odk extras");
+        if(activity == null) {
+            line = "9";
+            dir = "0";
+            return;
+        }
+        Log.d(TAG, "affter getting extras");
+        Intent intent = activity.getIntent();
+        String action = intent.getAction();
+        if (action.equals(ODK_ACTION)) {
+            Log.d(TAG, "action is odk extras");
+            Bundle extras = intent.getExtras();
+            if (extras != null) {
+                if (extras.containsKey(Cons.LINE)) {
+                    line = extras.getString(Cons.LINE);
+                }
+                if (extras.containsKey(Cons.DIR)) {
+                    dir = extras.getString(Cons.DIR);
+                }
+                if (extras.containsKey("orig_lat") && extras.containsKey("orig_lng")) {
+                    Log.d(TAG, "odk has lat and lng");
+                    Double lat =  (Double) extras.get("orig_lat");
+                    Double lng = (Double) extras.get("orig_lng");
+                    Drawable circleIcon = context.getResources().getDrawable(R.drawable.marker_stroked_24);
+                    //Drawable squareIcon = context.getResources().getDrawable(R.drawable.marker_24);
+                    Marker m = new Marker(null, null, new LatLng(lat, lng));
+                    m.setMarker(circleIcon);
+
+                    //        if(mode.equals("destination"))
+                    //m.setMarker(squareIcon);
+                    //        m.addTo(mv);
+                    //        locOverlay.addItem(m);
+                    //        mv.invalidate();
+                    //        mv.setCenter(latLng);
+                    //        mv.setZoom(17);
+                    setLocation(m, "origin");
+                }
+            }
+        }
     }
 
 

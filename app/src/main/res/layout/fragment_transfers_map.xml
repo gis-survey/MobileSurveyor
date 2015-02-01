@@ -32,7 +32,7 @@
             android:layout_marginBottom="65dp"
             android:layout_below="@+id/transfers_btn"
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:background="@drawable/shape_rect_grey_fade_round_all" >
 
 

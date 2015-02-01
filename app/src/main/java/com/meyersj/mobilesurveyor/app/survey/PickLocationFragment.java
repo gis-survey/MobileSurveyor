@@ -52,6 +52,8 @@ public class PickLocationFragment extends MapFragment {
     protected Spinner modeSpinner;
     protected Spinner locationSpinner;
     protected Bundle extras;
+    protected Integer locCount = 0;
+    protected Integer modeCount = 0;
 
     public PickLocationFragment(SurveyManager manager, String mode, Bundle extras) {
         this.manager = manager;
@@ -63,6 +65,7 @@ public class PickLocationFragment extends MapFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "on create view pick");
         super.onCreateView(inflater, container, savedInstanceState);
+
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
@@ -107,7 +110,7 @@ public class PickLocationFragment extends MapFragment {
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        refresh();
+
         updateView(manager);
 
         // set up listeners for view objects
@@ -137,21 +140,21 @@ public class PickLocationFragment extends MapFragment {
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selected = modeSpinner.getSelectedItem().toString().toLowerCase();
-                if(!selected.isEmpty()) {
-                    manager.updateMode(mode, String.valueOf(position));
+                if(modeCount > 0) {
+                    String selected = modeSpinner.getSelectedItem().toString().toLowerCase();
+                    if (!selected.isEmpty()) {
+                        manager.updateMode(mode, String.valueOf(position));
+                    }
+                    if (selected.contains("walk")) {
+                        manager.inputBlocks(activity, mode);
+                    } else if (selected.contains("parked") || selected.contains("drive") ||
+                            selected.contains("carpool")) {
+                        manager.inputParking(activity, mode);
+                    } else if (selected.contains("other")) {
+                        manager.inputModeOther(activity, mode);
+                    }
                 }
-                if(selected.contains("walk")) {
-                    manager.inputBlocks(activity, mode);
-                }
-                else if(selected.contains("parked") || selected.contains("drive") ||
-                        selected.contains("carpool") ) {
-                    manager.inputParking(activity, mode);
-                }
-                else if(selected.contains("other")) {
-                    manager.inputModeOther(activity, mode);
-                }
-
+                modeCount++;
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -160,18 +163,22 @@ public class PickLocationFragment extends MapFragment {
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selected = locationSpinner.getSelectedItem().toString().toLowerCase();
-                if(!selected.isEmpty()) {
-                    manager.updatePurpose(mode, String.valueOf(position));
+                if(locCount > 0) {
+                    String selected = locationSpinner.getSelectedItem().toString().toLowerCase();
+                    if (!selected.isEmpty()) {
+                        manager.updatePurpose(mode, String.valueOf(position));
+                    }
+                    if (selected.contains("other (specify)")) {
+                        manager.inputPurposeOther(activity, mode); // specify other location type
+                    }
                 }
-                if(selected.contains("other (specify)")) {
-                    manager.inputPurposeOther(activity, mode); // specify other location type
-                }
+                locCount++;
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
+        refresh();
         return view;
     }
         @Override
@@ -225,6 +232,7 @@ public class PickLocationFragment extends MapFragment {
     }
 
     public void refresh() {
+        //isRestored = false;
         if(extras == null)
             return;
 
@@ -238,8 +246,8 @@ public class PickLocationFragment extends MapFragment {
         String lngKey;
 
         String[] locTemp = getResources().getStringArray(R.array.location_type_array);
-        String[] modeTemp;
         List<String> locTypes = Arrays.asList(locTemp);
+        String[] modeTemp;
         List<String> modeTypes;
 
 
@@ -268,42 +276,47 @@ public class PickLocationFragment extends MapFragment {
         modeTypes = Arrays.asList(modeTemp);
 
         if(hasExtra(purposeKey)) {
-            Log.d(TAG, "has purpose");
-            String purpose = extras.getString(purposeKey);
-            int i = locTypes.indexOf(purpose);
-            Log.d(TAG, "purpose index: " + String.valueOf(i));
-            locationSpinner.setSelection(i);
-            Log.d(TAG, String.valueOf(i));
-            manager.updatePurpose(mode, String.valueOf(i));
-            if(hasExtra(purposeOtherKey)) {
-                String purposeOther = extras.getString(purposeOtherKey);
-                manager.updatePurposeOther(mode, purposeOther);
+            Integer index = extras.getInt(purposeKey, -1);
+            Log.d(TAG,"purpose index: " + String.valueOf(index));
+            if(index > 0) {
+                locationSpinner.setSelection(index);
+                manager.updatePurpose(mode, String.valueOf(index));
+                if (hasExtra(purposeOtherKey)) {
+                    String purposeOther = extras.getString(purposeOtherKey);
+                    manager.updatePurposeOther(mode, purposeOther);
+                }
             }
         }
+
         if(hasExtra(modeKey)) {
-            String mode = extras.getString(modeKey);
-            int i = modeTypes.indexOf(mode);
-            modeSpinner.setSelection(i);
-            manager.updateMode(mode, String.valueOf(i));
-            if(hasExtra(modeOtherKey)) {
-                String modeOther = extras.getString(modeOtherKey);
-                manager.updateModeOther(mode, modeOther);
-            }
-            if(hasExtra(blocksKey)) {
-                manager.updateBlocks(mode, extras.getString(blocksKey));
-            }
-            if(hasExtra(parkingKey)) {
-                manager.updateParking(mode, extras.getString(parkingKey));
+            Integer index = extras.getInt(modeKey, -1);
+            if(index > 0) {
+                //int i = modeTypes.indexOf(mode);
+                modeSpinner.setSelection(index);
+                manager.updateMode(mode, String.valueOf(index));
+                if(hasExtra(modeOtherKey)) {
+                    //String modeOther = extras.getString(modeOtherKey);
+                    manager.updateModeOther(mode, extras.getString(modeOtherKey));
+                }
+                if(hasExtra(blocksKey)) {
+                    manager.updateBlocks(mode, String.valueOf(extras.getInt(blocksKey)));
+                }
+                if(hasExtra(parkingKey)) {
+                    manager.updateParking(mode, extras.getString(parkingKey));
+                }
             }
         }
+        /*
         if(hasExtra(latKey) && hasExtra(lngKey)) {
             addMarker(new LatLng(extras.getDouble(latKey), extras.getDouble(lngKey)));
         }
+        */
 
+        //isRestored = true;
     }
 
     protected Boolean hasExtra(String key) {
-        if(extras.containsKey(key) && (extras.getString(key) != null)) {
+        if(extras.containsKey(key) && (extras.get(key) != null)) {
             return true;
         }
         return false;

@@ -109,21 +109,14 @@ public class SurveyManager {
         }
     }
 
-    public void updateMode(String passage, String modeValue) {
-        if(passage.equals("origin")) {
-            this.orig.mode = modeValue;
-        }
-        else if(passage.equals("destination")) {
-            this.dest.mode = modeValue;
-        }
-    }
-
     public void updatePurpose(String passage, String purposeValue) {
         if(passage.equals("origin")) {
             this.orig.purpose = purposeValue;
+            this.orig.purposeOther = null;
         }
         else if(passage.equals("destination")) {
             this.dest.purpose = purposeValue;
+            this.dest.purposeOther = null;
         }
     }
     public void updatePurposeOther(String passage, String otherValue) {
@@ -132,6 +125,28 @@ public class SurveyManager {
         }
         else if(passage.equals("destination")) {
             this.dest.purposeOther = otherValue;
+        }
+    }
+
+    public void updateMode(String passage, String modeValue) {
+        if(passage.equals("origin")) {
+            this.orig.mode = modeValue;
+            this.orig.blocks = null;
+            this.orig.parking = null;
+        }
+        else if(passage.equals("destination")) {
+            this.dest.mode = modeValue;
+            this.dest.blocks = null;
+            this.dest.parking = null;
+        }
+    }
+
+    public void updateModeOther(String passage, String otherValue) {
+        if(passage.equals("origin")) {
+            this.orig.modeOther = otherValue;
+        }
+        else if(passage.equals("destination")) {
+            this.dest.modeOther = otherValue;
         }
     }
 
@@ -150,15 +165,6 @@ public class SurveyManager {
         }
         else if(passage.equals("destination")) {
             this.dest.parking = parkingValue;
-        }
-    }
-
-    public void updateModeOther(String passage, String otherValue) {
-        if(passage.equals("origin")) {
-            this.orig.modeOther = otherValue;
-        }
-        else if(passage.equals("destination")) {
-            this.dest.modeOther = otherValue;
         }
     }
 

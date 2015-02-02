@@ -33,7 +33,7 @@ public class SurveyManager {
     protected Location dest;
     protected Marker onStop;
     protected Marker offStop;
-    protected ArrayList<String> transfers;
+    protected String[] transfers;
 
     public class Location {
         public Marker loc;
@@ -66,7 +66,7 @@ public class SurveyManager {
         this.activity = activity;
         this.orig = new Location();
         this.dest = new Location();
-        this.transfers = new ArrayList<String>();
+        //this.transfers = new ArrayList<String>();
     }
 
     public String key(String prefix, String cons) {
@@ -168,18 +168,18 @@ public class SurveyManager {
         }
     }
 
-    public void updateTransfer(String routeID) {
-        transfers.add(routeID);
-    }
+    //public void updateTransfer(String routeID) {
+    //    transfers.add(routeID);
+    //}
 
-    public void removeTransfer(String routeID) {
-        for(String route: transfers) {
-            if(route.equals(routeID)) {
-                transfers.remove(route);
-                break;
-            }
-        }
-    }
+    //public void removeTransfer(String routeID) {
+    //    for(String route: transfers) {
+    //        if(route.equals(routeID)) {
+    //            transfers.remove(route);
+    //            break;
+    //        }
+    //    }
+    //}
 
     public Marker getOnStop(){
         return this.onStop;
@@ -234,11 +234,11 @@ public class SurveyManager {
         else {
             intent.putExtra(Cons.ALIGHT_ID_ODK, "");
         }
+        Integer count = 0;
         for(int i = 0; i < Cons.MAX_TRANSFERS; i++) {
-            String route = "";
-            if(transfers.size() > i)
-                route = transfers.get(i);
-            intent.putExtra(Cons.TRANSFER_ODK + String.valueOf(i + 1), route);
+            if(transfers[i] != null && !transfers[i].isEmpty()) {
+                intent.putExtra("route" + String.valueOf(++count), transfers[i]);
+            }
         }
         return intent;
     }
@@ -333,6 +333,18 @@ public class SurveyManager {
 
         AlertDialog select = builder.create();
         select.show();
+    }
+
+    public void setTransfers(String[] transfers) {
+        this.transfers = transfers;
+    }
+
+    public void printTransfers() {
+        for(String s: transfers) {
+            if(s != null) {
+                Log.d(TAG, s);
+            }
+        }
     }
 
 }

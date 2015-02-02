@@ -113,7 +113,7 @@ public abstract class MapFragment extends Fragment {
         mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
         mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
-        mv.setZoom(14);
+        mv.setZoom(13);
     }
 
     protected void getODKExtras() {
@@ -147,6 +147,9 @@ public abstract class MapFragment extends Fragment {
         if(defaultRoute != null) {
             defaultRoute.zoomTo(mapView);
         }
+        //else {
+        //    defaultRoute = new TransitRoute(context, line, dir, paint);
+        //}
     }
 
     protected void addTransferRoute(Context context, String line, String dir) {

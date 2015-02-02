@@ -63,11 +63,13 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         // For each of the sections in the app, add a tab to the action bar.
 
         Bundle extras = getODKExtras();
+
+
         fragments = new Fragment[SURVEY_FRAGMENTS];
         fragments[0] = new PickLocationFragment(manager, "origin", extras);
         fragments[1] = new PickLocationFragment(manager, "destination", extras);
-        fragments[2] = new OnOffFragment(manager);
-        fragments[3] = new TransfersMapFragment(manager, mViewPager);
+        fragments[2] = new OnOffFragment(manager, extras);
+        fragments[3] = new TransfersMapFragment(manager, mViewPager, extras);
         fragments[4] = new ConfirmFragment(this, manager, mViewPager);
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));

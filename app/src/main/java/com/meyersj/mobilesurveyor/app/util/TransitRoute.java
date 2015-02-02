@@ -74,7 +74,6 @@ public class TransitRoute {
             double lat = (Double) coordinates.get(1);
             LatLng latLng = new LatLng(lat, lon);
             path.addPoint(latLng);
-
         }
         path.setPaint(paint);
         paths.add(path);

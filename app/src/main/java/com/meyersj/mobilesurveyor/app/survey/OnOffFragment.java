@@ -17,7 +17,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -46,6 +48,7 @@ public class OnOffFragment extends MapFragment {
 
     private AutoCompleteTextView stopName;
     private ImageButton clear;
+    private ImageButton scope;
     private View seqView;
     private ListView onSeqListView;
     private ListView offSeqListView;
@@ -56,7 +59,7 @@ public class OnOffFragment extends MapFragment {
     private SelectedStops selectedStops;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
-    private HttpClient client;
+    //private HttpClient client;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     private ItemizedIconOverlay locOverlay;
     private HashMap<String, Marker> stopsMap;
@@ -67,9 +70,13 @@ public class OnOffFragment extends MapFragment {
     private ArrayList<Marker> selList = new ArrayList<Marker>();
     private BoundingBox bbox;
     protected SurveyManager manager;
+    protected Bundle extras;
+    protected String line;
+    protected String dir;
 
-    public OnOffFragment(SurveyManager manager) {
+    public OnOffFragment(SurveyManager manager, Bundle extras) {
         this.manager = manager;
+        this.extras = extras;
     }
 
     @Override
@@ -86,12 +93,32 @@ public class OnOffFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         clear = (ImageButton) view.findViewById(R.id.clear_input_stop);
+        scope = (ImageButton) view.findViewById(R.id.scope);
+
         stopName = (AutoCompleteTextView) view.findViewById(R.id.input_stop);
         // http client with 10 second timeout
-        client = new DefaultHttpClient();
-        HttpParams httpParams = client.getParams();
-        HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
-        HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
+        //client = new DefaultHttpClient();
+        //HttpParams httpParams = client.getParams();
+        //HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
+        //HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
+
+        if(extras != null) {
+            Log.d(TAG, "extras not null");
+            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
+                Log.d(TAG, "has line info");
+                line = extras.getString(Cons.LINE);
+                dir = extras.getString(Cons.DIR);
+                Log.d(TAG, "rte: " + line + "-" + dir);
+                //line = String.valueOf(extras.getInt(Cons.LINE));
+                //dir = String.valueOf(extras.getInt(Cons.DIR));
+                //Log.d(TAG, "rte: " + line + "-" + dir);
+            }
+        }
+        else {
+            line = "9";
+            dir = "1";
+        }
+
         if (line != null && dir != null) {
             locList = getStops(line, dir, true);
             selList = new ArrayList<Marker>();
@@ -104,6 +131,8 @@ public class OnOffFragment extends MapFragment {
             }
             setItemizedOverlay(mv, locList, selList);
             mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
+
+
             addDefaultRoute(context, line, dir);
             setupStopSequenceList();
             setupStopSearch();
@@ -119,6 +148,17 @@ public class OnOffFragment extends MapFragment {
             }
             zoomToRoute(mv);
         }
+
+        scope.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ILatLng startingPoint = new LatLng(45.52186, -122.679005);
+                mv.setCenter(startingPoint);
+                mv.setZoom(12);
+            }
+        });
+
+        restoreState();
         return view;
     }
 
@@ -361,6 +401,7 @@ public class OnOffFragment extends MapFragment {
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
                 if (listView == onSeqListView) {
                     selectedStops.saveSequenceMarker(Cons.BOARD, stop);
+                    Log.d(TAG, "set stop sequence");
                     manager.setStop(stop, Cons.BOARD);
                 }
                 else {
@@ -431,11 +472,86 @@ public class OnOffFragment extends MapFragment {
         }
     }
 
+
+    protected void restoreState() {
+        if(extras == null)
+            return;
+        Integer boardID = extras.getInt("board_id", 0);
+        Integer alightID = extras.getInt("alight_id", 0);
+        selectStops(boardID, alightID);
+        //Marker[] markers = findMarkers(boardID, alightID);
+        //if(markers != null) {
+        //    selectedStops.saveSequenceMarker(Cons.BOARD, markers[0]);
+        //    selectedStops.saveSequenceMarker(Cons.ALIGHT, markers[1]);
+        //}
+        //Log.d(TAG, "stops: " + String.valueOf(boardID) + "-" + String.valueOf(alightID));
+    }
+
+    protected void selectStops(Integer boardID, Integer alightID) {
+        Marker[] marker = new Marker[2];
+        Integer[] index = new Integer[2];
+        Log.d(TAG, "stop: " + String.valueOf(boardID) + "-" + String.valueOf(alightID));
+        ArrayList<Stop> sortedLocList = stopsSequenceSort(locList);
+
+        for(int i = 0; i < sortedLocList.size(); i++) {
+            Stop stop = sortedLocList.get(i);
+
+            Log.d(TAG, "index: " + String.valueOf(i));
+            Log.d(TAG, "id: " + stop.getDescription());
+
+            if(stop.getDescription().equals(String.valueOf(boardID))) {
+                Log.d(TAG, "board match");
+                //Log.d(TAG, locList.get(i).getDescription());
+                marker[0] = stop;
+                index[0] = i;
+            }
+            if(stop.getDescription().equals(String.valueOf(alightID))) {
+                Log.d(TAG, "alight match");
+                marker[1] = stop;
+                index[1] = i;
+            }
+        }
+        if(index[0] != null && index[1] != null) {
+            Log.d(TAG, "setting onoffs");
+            Log.d(TAG, "index: " + String.valueOf(index[0]) + "-" + String.valueOf(index[1]));
+
+            //onSeqListView.setSelection(index[0]);
+            //offSeqListAdapter.setSelectedIndex(index[1]);
+            onSeqListAdapter.setSelectedIndex(index[0]);
+            offSeqListAdapter.setSelectedIndex(index[1]);
+            selectedStops.saveSequenceMarker(Cons.BOARD, marker[0]);
+            selectedStops.saveSequenceMarker(Cons.ALIGHT, marker[1]);
+            manager.setStop(marker[0], Cons.BOARD);
+            manager.setStop(marker[1], Cons.ALIGHT);
+        }
+
+
+        //for(Marker m: locList) {
+        //    if(m.getDescription().equals(String.valueOf(boardID))) {
+        //        marker[0] = m;
+        //    }
+        //    else if(m.getDescription().equals(String.valueOf(alightID))) {
+        //        marker[1] = m;
+        //    }
+        //}
+        //if(index[0] != null && index[1] != null)
+        //    return marker;
+        //if(marker[0] != null && marker[1] != null)
+        //    return marker;
+        //return null;
+    }
+
+    //protected Boolean hasExtra(String key) {
+    //    if(extras.containsKey(key) && (extras.get(key) != null)) {
+    //        return true;
+    //    }
+    //    return false;
+    //}
+}
+
     //public void closeKeypad() {
     //    InputMethodManager inputManager = (InputMethodManager)
     //            activity.getSystemService(Context.INPUT_METHOD_SERVICE);
     //    inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
     //            InputMethodManager.HIDE_NOT_ALWAYS);
     //}
-
-}

@@ -80,7 +80,7 @@
                 <!-- On stops sequence ListView (left side of screen) -->
                 <LinearLayout
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical">
 
@@ -101,7 +101,7 @@
                 <!-- Off stops sequence ListView (right side of screen) -->
                 <LinearLayout
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical">
 
@@ -121,12 +121,39 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="105dp"
+            android:weightSum="10">
+
+            <ImageButton
+                android:id="@+id/scope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:src="@drawable/scope_40"
+                android:layout_gravity="start|center_vertical"
+                android:background="#00FFFFFF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9.5"
+                android:layout_gravity="start|center_vertical"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/osm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/bottom_layout" >
+            android:layout_above="@id/bottom_layout"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/osm_text"
@@ -145,7 +172,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:weightSum="10">
+            android:weightSum="10"
+            android:visibility="invisible">
 
             <Spinner
                 android:id="@+id/count_spinner"

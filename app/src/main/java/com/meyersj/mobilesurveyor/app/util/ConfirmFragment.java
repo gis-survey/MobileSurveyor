@@ -37,7 +37,7 @@ public class ConfirmFragment extends MapFragment {
         this.manager = manager;
         this.pager = pager;
 
-        Summarizer summarizer = new Summarizer(manager);
+        //Summarizer summarizer = new Summarizer(manager);
     }
 
     @Override
@@ -52,6 +52,8 @@ public class ConfirmFragment extends MapFragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //manager.printTransfers();
+                //Log.d(TAG, manager.printTransfers());
                 exitWithSurveyBundle(true);
             }
         });

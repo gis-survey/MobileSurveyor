@@ -38,6 +38,7 @@ public class OnOffMapListener implements MapListener {
 
     @Override
     public void onZoom(ZoomEvent zoomEvent) {
+
         Float zoomLevel = zoomEvent.getZoomLevel();
         Log.d(TAG, "zoom level: " + String.valueOf(zoomLevel));
 

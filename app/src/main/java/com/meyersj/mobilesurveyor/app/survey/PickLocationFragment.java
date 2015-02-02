@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
@@ -39,8 +40,9 @@ import java.util.Properties;
 
 public class PickLocationFragment extends MapFragment {
 
-    private String mode; // origin or destination
+    private String mode; // "origin" or "destination"
     private ImageButton clear;
+    private ImageButton scope;
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
     protected Properties prop;
@@ -59,20 +61,29 @@ public class PickLocationFragment extends MapFragment {
         this.manager = manager;
         this.mode = mode;
         this.extras = extras;
+
+        //if(extras != null) {
+        //    line = extras.getString(Cons.LINE);
+        //    dir = extras.getString(Cons.DIR);
+       // }
+        //else {
+        //    Log.w(TAG, "using default route 9-0");
+        //    line = "9";
+        //    dir = "0";
+        //}
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "on create view pick");
         super.onCreateView(inflater, container, savedInstanceState);
-
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
         circleIcon = context.getResources().getDrawable(R.drawable.marker_stroked_24);
         squareIcon = context.getResources().getDrawable(R.drawable.marker_24);
-
         clear = (ImageButton) view.findViewById(R.id.clear_text);
+        scope = (ImageButton) view.findViewById(R.id.scope);
+
         TextView modeSpinnerText = (TextView) view.findViewById(R.id.mode_spinner_text);
         locationSpinner = (Spinner) view.findViewById(R.id.location_type_spinner);
         modeSpinner = (Spinner) view.findViewById(R.id.mode_spinner);
@@ -85,7 +96,6 @@ public class PickLocationFragment extends MapFragment {
         setItemizedOverlay(mv);
         mv.setMapViewListener(new mMapViewListener(this, locOverlay, this.manager, mode, circleIcon, squareIcon));
         prop = Utils.getProperties(context, Cons.PROPERTIES);
-
         if (mode.equals("origin")) {
             ArrayAdapter<CharSequence> accessAdapter = ArrayAdapter.createFromResource(
                     view.getContext(), R.array.access_mode_array, android.R.layout.simple_spinner_item);
@@ -136,6 +146,15 @@ public class PickLocationFragment extends MapFragment {
             }
         });
 
+        scope.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ILatLng startingPoint = new LatLng(45.52186, -122.679005);
+                mv.setCenter(startingPoint);
+                mv.setZoom(12);
+            }
+        });
+
 
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -178,7 +197,7 @@ public class PickLocationFragment extends MapFragment {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-        refresh();
+        restoreState();
         return view;
     }
         @Override
@@ -231,8 +250,7 @@ public class PickLocationFragment extends MapFragment {
         return this.mode;
     }
 
-    public void refresh() {
-        //isRestored = false;
+    public void restoreState() {
         if(extras == null)
             return;
 
@@ -245,12 +263,6 @@ public class PickLocationFragment extends MapFragment {
         String latKey;
         String lngKey;
 
-        String[] locTemp = getResources().getStringArray(R.array.location_type_array);
-        List<String> locTypes = Arrays.asList(locTemp);
-        String[] modeTemp;
-        List<String> modeTypes;
-
-
         if(mode.equals("origin")) {
             purposeKey = "orig_purpose";
             purposeOtherKey = "orig_purpose_other";
@@ -260,7 +272,6 @@ public class PickLocationFragment extends MapFragment {
             parkingKey = "orig_parking";
             latKey = "orig_lat";
             lngKey = "orig_lng";
-            modeTemp = getResources().getStringArray(R.array.access_mode_array);
         }
         else {
             purposeKey = "dest_purpose";
@@ -271,13 +282,9 @@ public class PickLocationFragment extends MapFragment {
             parkingKey = "dest_parking";
             latKey = "dest_lat";
             lngKey = "dest_lng";
-            modeTemp = getResources().getStringArray(R.array.egress_mode_array);
         }
-        modeTypes = Arrays.asList(modeTemp);
-
         if(hasExtra(purposeKey)) {
             Integer index = extras.getInt(purposeKey, -1);
-            Log.d(TAG,"purpose index: " + String.valueOf(index));
             if(index > 0) {
                 locationSpinner.setSelection(index);
                 manager.updatePurpose(mode, String.valueOf(index));
@@ -287,15 +294,12 @@ public class PickLocationFragment extends MapFragment {
                 }
             }
         }
-
         if(hasExtra(modeKey)) {
             Integer index = extras.getInt(modeKey, -1);
             if(index > 0) {
-                //int i = modeTypes.indexOf(mode);
                 modeSpinner.setSelection(index);
                 manager.updateMode(mode, String.valueOf(index));
                 if(hasExtra(modeOtherKey)) {
-                    //String modeOther = extras.getString(modeOtherKey);
                     manager.updateModeOther(mode, extras.getString(modeOtherKey));
                 }
                 if(hasExtra(blocksKey)) {
@@ -306,13 +310,13 @@ public class PickLocationFragment extends MapFragment {
                 }
             }
         }
-        /*
         if(hasExtra(latKey) && hasExtra(lngKey)) {
-            addMarker(new LatLng(extras.getDouble(latKey), extras.getDouble(lngKey)));
+            Double lat = extras.getDouble(latKey);
+            Double lng = extras.getDouble(lngKey);
+            if(lat > 44 && lng < -122) {
+                addMarker(new LatLng(lat, lng));
+            }
         }
-        */
-
-        //isRestored = true;
     }
 
     protected Boolean hasExtra(String key) {

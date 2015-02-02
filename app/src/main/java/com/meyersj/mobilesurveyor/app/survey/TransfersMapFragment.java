@@ -56,17 +56,21 @@ public class TransfersMapFragment extends MapFragment {
     //protected ArrayList<String> selectedRoutes;
     protected String[] routes;
     protected ViewPager pager;
+    protected Bundle extras;
+    protected String[] selectedRoutes;
     //protected int transfersCount = 0;
 
-    public TransfersMapFragment(SurveyManager manager, ViewPager pager) {
+    public TransfersMapFragment(SurveyManager manager, ViewPager pager, Bundle extras) {
         this.manager = manager;
         this.pager = pager;
+        this.extras = extras;
+        this.selectedRoutes = new String[MAX_TRANSFERS];
     }
 
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_transfers_map, container, false);
         activity = getActivity();
@@ -81,15 +85,121 @@ public class TransfersMapFragment extends MapFragment {
         for(String route: routes) {
             routesList.add(route);
         }
-        Stack<RoutePicker> routePickersStack = new Stack<RoutePicker>();
+
+        if(extras != null) {
+            Log.d(TAG, "extras not null");
+            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
+                Log.d(TAG, "has line info");
+                line = extras.getString(Cons.LINE);
+                dir = extras.getString(Cons.DIR);
+                Log.d(TAG, "rte: " + line + "-" + dir);
+                //line = String.valueOf(extras.getInt(Cons.LINE));
+                //dir = String.valueOf(extras.getInt(Cons.DIR));
+                //Log.d(TAG, "rte: " + line + "-" + dir);
+            }
+        }
+        else {
+            line = "9";
+            dir = "1";
+        }
+
+        final Stack<RoutePicker> stack = new Stack<RoutePicker>();
 
         //ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         //defaultRoutesList.add(0, "Add route");
         //RoutePicker rp1 = new RoutePicker(context, inflater, container,
         //        routesLayout, routesList, line);
 
+        /*
+        final RoutePicker rp5 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 5);
+        //stack.push(rp5);
+        final RoutePicker rp4 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 4);
+        //stack.push(rp4);
+        final RoutePicker rp3 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 3);
+        //stack.push(rp3);
+        final RoutePicker rp2 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 2);
+        //stack.push(rp2);
+        final RoutePicker rp1 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, line, true, 1);
+        //stack.push(rp1);
+        */
+
+        manager.setTransfers(selectedRoutes);
+        final RoutePicker rp1 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, line, true, 1, selectedRoutes);
+        final RoutePicker rp2 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 2, selectedRoutes);
+        final RoutePicker rp3 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 3, selectedRoutes);
+        final RoutePicker rp4 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 4, selectedRoutes);
+        final RoutePicker rp5 = new RoutePicker(context, inflater, container,
+                routesLayout, routesList, null, false, 5, selectedRoutes);
+
+        rp1.setNext(rp2);
+        rp2.setNext(rp3);
+        rp3.setNext(rp4);
+        rp4.setNext(rp5);
+        rp5.setNext(null);
+
+
+        /*
+        rp1.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                rp2.show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        */
+
+        /*
         routePickersStack.push(new RoutePicker(context, inflater, container,
-                routesLayout, routesList, line));
+                routesLayout, routesList, line, routePickersStack));
+
+        final Spinner spinner = routePickersStack.peek().getSpinner();
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Log.d(TAG, "item selected");
+
+                if(routePickersStack.peek() == spinner) {
+
+                }
+                if(routePickersStack.size() < 5) {
+
+
+                    routePickersStack.push(new RoutePicker(context, inflater, container,
+                            routesLayout, routesList, null, routePickersStack));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.d(TAG, "nothing selected");
+            }
+        });
+        */
+
+
+
+
+        //routePickersStack.push(new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, line, routePickersStack));
+        //routePickersStack.push(new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, line, routePickersStack));
+        //routePickersStack.push(new RoutePicker(context, inflater, container,
+        //        routesLayout, routesList, line, routePickersStack));
 
         //RoutePicker rp2 = new RoutePicker(context, inflater, container,
         //        routesLayout, routesList, null);

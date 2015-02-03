@@ -113,7 +113,7 @@ public abstract class MapFragment extends Fragment {
         mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
         mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
         mv.setCenter(startingPoint);
-        mv.setZoom(13);
+        mv.setZoom(12);
     }
 
     protected void getODKExtras() {

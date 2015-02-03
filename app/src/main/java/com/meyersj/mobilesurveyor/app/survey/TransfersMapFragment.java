@@ -78,9 +78,9 @@ public class TransfersMapFragment extends MapFragment {
         routesLayout = (LinearLayout) view.findViewById(R.id.routes_list_layout);
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
-        addDefaultRoute(context, line, dir);
+
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
-        routes = activity.getResources().getStringArray(R.array.lines);
+        routes = activity.getResources().getStringArray(R.array.transfer_routes);
         final ArrayList<String> routesList = new ArrayList<String>();
         for(String route: routes) {
             routesList.add(route);
@@ -93,52 +93,26 @@ public class TransfersMapFragment extends MapFragment {
                 line = extras.getString(Cons.LINE);
                 dir = extras.getString(Cons.DIR);
                 Log.d(TAG, "rte: " + line + "-" + dir);
-                //line = String.valueOf(extras.getInt(Cons.LINE));
-                //dir = String.valueOf(extras.getInt(Cons.DIR));
-                //Log.d(TAG, "rte: " + line + "-" + dir);
             }
         }
         else {
             line = "9";
             dir = "1";
         }
-
-        final Stack<RoutePicker> stack = new Stack<RoutePicker>();
-
-        //ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
-        //defaultRoutesList.add(0, "Add route");
-        //RoutePicker rp1 = new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, line);
-
-        /*
-        final RoutePicker rp5 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 5);
-        //stack.push(rp5);
-        final RoutePicker rp4 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 4);
-        //stack.push(rp4);
-        final RoutePicker rp3 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 3);
-        //stack.push(rp3);
-        final RoutePicker rp2 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 2);
-        //stack.push(rp2);
-        final RoutePicker rp1 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, line, true, 1);
-        //stack.push(rp1);
-        */
+        addDefaultRoute(context, line, dir);
+        String[] rte = new String[] {line, dir};
 
         manager.setTransfers(selectedRoutes);
-        final RoutePicker rp1 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, line, true, 1, selectedRoutes);
-        final RoutePicker rp2 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 2, selectedRoutes);
-        final RoutePicker rp3 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 3, selectedRoutes);
-        final RoutePicker rp4 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 4, selectedRoutes);
-        final RoutePicker rp5 = new RoutePicker(context, inflater, container,
-                routesLayout, routesList, null, false, 5, selectedRoutes);
+        final RoutePicker rp1 = new RoutePicker(this, context, inflater, container,
+                routesLayout, routesList, line, true, 1, selectedRoutes, rte);
+        final RoutePicker rp2 = new RoutePicker(this, context, inflater, container,
+                routesLayout, routesList, line, false, 2, selectedRoutes, rte);
+        final RoutePicker rp3 = new RoutePicker(this, context, inflater, container,
+                routesLayout, routesList, line, false, 3, selectedRoutes, rte);
+        final RoutePicker rp4 = new RoutePicker(this, context, inflater, container,
+                routesLayout, routesList, line, false, 4, selectedRoutes, rte);
+        final RoutePicker rp5 = new RoutePicker(this, context, inflater, container,
+                routesLayout, routesList, line, false, 5, selectedRoutes, rte);
 
         rp1.setNext(rp2);
         rp2.setNext(rp3);
@@ -146,89 +120,12 @@ public class TransfersMapFragment extends MapFragment {
         rp4.setNext(rp5);
         rp5.setNext(null);
 
+        rp1.setPrevious(null);
+        rp2.setPrevious(rp1);
+        rp3.setPrevious(rp2);
+        rp4.setPrevious(rp3);
+        rp5.setPrevious(rp4);
 
-        /*
-        rp1.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                rp2.show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        */
-
-        /*
-        routePickersStack.push(new RoutePicker(context, inflater, container,
-                routesLayout, routesList, line, routePickersStack));
-
-        final Spinner spinner = routePickersStack.peek().getSpinner();
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Log.d(TAG, "item selected");
-
-                if(routePickersStack.peek() == spinner) {
-
-                }
-                if(routePickersStack.size() < 5) {
-
-
-                    routePickersStack.push(new RoutePicker(context, inflater, container,
-                            routesLayout, routesList, null, routePickersStack));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.d(TAG, "nothing selected");
-            }
-        });
-        */
-
-
-
-
-        //routePickersStack.push(new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, line, routePickersStack));
-        //routePickersStack.push(new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, line, routePickersStack));
-        //routePickersStack.push(new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, line, routePickersStack));
-
-        //RoutePicker rp2 = new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, null);
-        //RoutePicker rp3 = new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, null);
-        //RoutePicker rp4 = new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, null);
-        //RoutePicker rp5 = new RoutePicker(context, inflater, container,
-        //        routesLayout, routesList, null);
-
-
-        /*
-
-        1)  Add one route and set it to the route currently being surveyed
-
-        2)  If a user opens the first spinner and selects a different route
-
-            inflate a new routePicker view and setup its spinner to None state
-
-        3)  If a user taps CROSS then that transfer is removed.
-
-        4) If a user selects a route from the route that was selected as default
-
-            remove the default message from the list and return to step 2
-
-        5) When user taps "next"|<changes tabs>|<closes routes list> validate that the default
-            is still selected if not add error message
-
-         */
 
         changeListVisibility(routesLayout.getVisibility());
 
@@ -256,47 +153,6 @@ public class TransfersMapFragment extends MapFragment {
     public void onDetach() {
         super.onDetach();
     }
-
-
-    /*
-    protected void exitWithSurveyBundle(Boolean valid) {
-        Boolean[] validate = manager.validate();
-        Log.d(TAG, validate.toString());
-        for(int i = 0; i < validate.length; i++) {
-            Log.d(TAG, validate[i].toString());
-            if(!validate[i]) {
-                String msg = "";
-                switch(i) {
-                    case 0:
-                        msg = "missing information about origin location";
-                        break;
-                    case 1:
-                        msg = "missing information about destination location";
-                        break;
-                    case 2:
-                        msg = "on and off locations are incomplete";
-                        break;
-                }
-                Utils.shortToastCenter(context, msg);
-                pager.setCurrentItem(i);
-                //TODO change previous and next buttons being enabled/disabled
-                return;
-            }
-        }
-
-        int result;
-        Intent intent = new Intent();
-        if (valid) {
-            intent = manager.addExtras(intent);
-            result = activity.RESULT_OK;
-        }
-        else {
-            result = activity.RESULT_CANCELED;
-        }
-        activity.setResult(result, intent);
-        activity.finish();
-    }
-    */
 
     //toggle visibility of list depending on current visibility
     private void changeListVisibility(int currentVisibility) {

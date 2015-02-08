@@ -33,9 +33,9 @@ public class SelectedStops {
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
-        onIcon = context.getResources().getDrawable(R.drawable.circle_stroked_24);
-        offIcon = context.getResources().getDrawable(R.drawable.circle_24);
-        stopIcon = context.getResources().getDrawable(R.drawable.bus_18);
+        onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
+        offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
+        stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
     }
 
     public void setOnAdapter(StopSequenceAdapter onAdapter) {

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.meyersj.mobilesurveyor.app">
 
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -14,14 +15,15 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme"
-        android:label="Transit Surveyor">
+        android:label="Transit Surveyor"
+        android:name=".survey.SurveyApplication">
 
         <activity
             android:name=".menu.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait">
             <intent-filter >
-
+                <!--action android:name="android.intent.action.MAIN" /-->
                 <action android:name="com.meyersj.mobilesurveyor.app.LOGIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

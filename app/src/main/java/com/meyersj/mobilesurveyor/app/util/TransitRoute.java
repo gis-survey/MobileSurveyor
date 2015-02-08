@@ -2,6 +2,7 @@ package com.meyersj.mobilesurveyor.app.util;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.util.Log;
 
 import com.cocoahero.android.geojson.Feature;
 import com.cocoahero.android.geojson.FeatureCollection;
@@ -12,7 +13,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
-import com.mapbox.mapboxsdk.util.GeoUtils;
+//import com.mapbox.mapboxsdk.util.GeoUtils;
 import com.mapbox.mapboxsdk.views.MapView;
 
 import org.json.JSONArray;
@@ -55,12 +56,15 @@ public class TransitRoute {
                     }
                 }
             }
-            bbox = GeoUtils.findBoundingBoxForGivenLocations(allPoints, Cons.PADDING);
+            bbox =  null; //GeoUtils.findBoundingBoxForGivenLocations(allPoints, Cons.PADDING);
         } catch (IOException e) {
+            Log.d(TAG, e.toString());
             valid = false;
+            Log.d(TAG, e.toString());
             e.printStackTrace();
         } catch (JSONException e) {
             valid = false;
+            Log.d(TAG, e.toString());
             e.printStackTrace();
         }
     }

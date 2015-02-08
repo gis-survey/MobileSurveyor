@@ -20,14 +20,6 @@ public class PathUtils {
 
     private final static String PATHOVERLAY = "com.mapbox.mapboxsdk.overlay.PathOverlay";
 
-
-    //public static TransitRoute routeFactory(Context context, String line, String dir, ) {
-    //    TransitRoute transitRoute = new TransitRoute(context,line, dir);
-        //ArrayList<PathOverlay> paths = new ArrayList<PathOverlay>();
-
-    //    return transitRoute;
-    //}
-
     public static ArrayList<PathOverlay> getPathFromAssets(Context context, String assetsFile) {
 
         ArrayList<PathOverlay> paths = new ArrayList<PathOverlay>();

@@ -3,7 +3,6 @@ package com.meyersj.mobilesurveyor.app.survey;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,14 +17,14 @@ import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
-import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.BuildStops;
+import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
 import com.meyersj.mobilesurveyor.app.util.Cons;
-import com.meyersj.mobilesurveyor.app.util.PathUtils;
 import com.meyersj.mobilesurveyor.app.util.TransitRoute;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
@@ -49,16 +48,14 @@ public abstract class MapFragment extends Fragment {
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
     protected TransitRoute defaultRoute;
 
-    //protected ArrayList<String> addedRoutes = new ArrayList<String>();
     protected HashMap<String, TransitRoute> transferRoutes = new HashMap<String, TransitRoute>();
     protected HashMap<String, TransitRoute> cachedRoutes = new HashMap<String, TransitRoute>();
-
-    //protected HashMap<String,ArrayList<PathOverlay>> addedRoutes = new HashMap<String, ArrayList<PathOverlay>>();
-    //protected HashMap<String,ArrayList<PathOverlay>> routesCache = new HashMap<String, ArrayList<PathOverlay>>();
     protected String line;
     protected String dir;
 
-    public MapFragment() {}
+    //public MapFragment() {
+    //   //TODO move ODK extras fetching into this parent class instead of indiv. frags
+    //}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +63,6 @@ public abstract class MapFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_default_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        //getODKExtras();
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
@@ -96,10 +92,12 @@ public abstract class MapFragment extends Fragment {
     }
 
     protected void setTiles(MapView mv) {
-        ILatLng startingPoint = new LatLng(45.52186, -122.679005);
+        ILatLng startingPoint = new LatLng(45.49186, -122.679005);
         ITileLayer mbTilesSource;
+        String url = "http://a.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png";
+        url = "http://tilea.trimet.org/tilecache/tilecache.py/1.0.0/currentOSM/{z}/{x}/{y}";
         ITileLayer osmSource = new WebSourceTileLayer("openstreetmap",
-                "http://tile.openstreetmap.org/{z}/{x}/{y}.png").setName("OpenStreetMap")
+                url).setName("OpenStreetMap")
                 .setAttribution("© OpenStreetMap Contributors");
         try {
             File tiles = new File(TILESPATH, TILESNAME);
@@ -116,27 +114,6 @@ public abstract class MapFragment extends Fragment {
         mv.setZoom(12);
     }
 
-    protected void getODKExtras() {
-        Intent intent = activity.getIntent();
-        String action = intent.getAction();
-        if (action.equals(ODK_ACTION)) {
-            Bundle extras = intent.getExtras();
-            if (extras != null) {
-                if (extras.containsKey(Cons.LINE)) {
-                    line = extras.getString(Cons.LINE);
-                }
-                if (extras.containsKey(Cons.DIR)) {
-                    dir = extras.getString(Cons.DIR);
-                }
-            }
-        }
-        else {
-            // for testing and demos
-            line = "9";
-            dir = "0";
-        }
-    }
-
     protected void addDefaultRoute(Context context, String line, String dir) {
         Paint paint = Utils.defaultRoutePaint(context);
         defaultRoute = new TransitRoute(context, line, dir, paint);
@@ -147,12 +124,9 @@ public abstract class MapFragment extends Fragment {
         if(defaultRoute != null) {
             defaultRoute.zoomTo(mapView);
         }
-        //else {
-        //    defaultRoute = new TransitRoute(context, line, dir, paint);
-        //}
     }
 
-    protected void addTransferRoute(Context context, String line, String dir) {
+    public void addTransferRoute(Context context, String line, String dir) {
         String key = line + "_" + dir;
         Paint paint = Utils.transferRoutePaint(context);
         TransitRoute route;
@@ -175,7 +149,7 @@ public abstract class MapFragment extends Fragment {
         route.addRoute(mv, false);
     }
 
-    protected void clearRoute(String line, String dir) {
+    public void clearRoute(String line, String dir) {
         String key = line + "_" + dir;
         if(transferRoutes.containsKey(key)) {
             TransitRoute route = transferRoutes.get(key);
@@ -184,57 +158,32 @@ public abstract class MapFragment extends Fragment {
         }
     }
 
-
     public void removeLocation(Marker loc) {
         surveyOverlay.removeItem(loc);
     }
 
     public void updateView(SurveyManager manager) {
-        //BoundingBox boundingBox = null;
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
-
         Marker orig = manager.getOrig();
         Marker dest = manager.getDest();
         Marker onStop = manager.getOnStop();
         Marker offStop = manager.getOffStop();
-
-        if(this instanceof PickLocationFragment) {
-            PickLocationFragment fragment = (PickLocationFragment) this;
-            if(fragment.getMode().equals("origin") && orig != null) {
-                surveyOverlay.addItem(orig);
-            }
-            else if(fragment.getMode().equals("destination") && dest != null) {
-                surveyOverlay.addItem(dest);
-            }
+        if(orig != null) {
+            surveyOverlay.addItem(orig);
         }
-        else {
-            if(orig != null) {
-                surveyOverlay.addItem(orig);
-            }
-            if(dest != null) {
-                surveyOverlay.addItem(dest);
-            }
-            if(orig != null && dest != null) {
-                ArrayList<Marker> markers = new ArrayList<Marker>();
-                markers.add(orig);
-                markers.add(dest);
-                Log.d(TAG, String.valueOf(markers.size()));
-                //boundingBox = getBoundingBox(null, markers, markers.size());
-                //Log.d(TAG, boundingBox.toString());
-            }
-            if(onStop != null) {
-                surveyOverlay.addItem(onStop);
-            }
-            if(offStop != null) {
-                surveyOverlay.addItem(offStop);
-            }
+        if(dest != null) {
+            surveyOverlay.addItem(dest);
+        }
+        if(onStop != null) {
+            surveyOverlay.addItem(onStop);
+        }
+        if(offStop != null) {
+            surveyOverlay.addItem(offStop);
         }
         mv.addItemizedOverlay(surveyOverlay);
-        //if(boundingBox != null) {
-        //    mv.zoomToBoundingBox(boundingBox, true, true);
-        //}
     }
+
 
     public class Bounds {
         double north = 0;
@@ -244,7 +193,6 @@ public abstract class MapFragment extends Fragment {
         double BUFFER = 0.01;
 
         public Bounds() {}
-
 
         protected void update(Marker marker) {
             if(marker != null) {

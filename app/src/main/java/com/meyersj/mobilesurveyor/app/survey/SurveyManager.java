@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class SurveyManager {
 
     protected static final String TAG = "SurveyManager";
-    private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
 
     protected Context context;
     protected Activity activity;
@@ -34,9 +33,11 @@ public class SurveyManager {
     protected Marker onStop;
     protected Marker offStop;
     protected String[] transfers;
+    protected String validated = "2"; //validated, yes == 1, no == 2, ignore location
 
     public class Location {
         public Marker loc;
+        public String region; //outside of region, yes == 1, no == 2, ignore location
         public String purpose;
         public String purposeOther;
         public String mode;
@@ -46,6 +47,7 @@ public class SurveyManager {
 
         public Location() {
             loc = null;
+            region = "2";  //default not outside region
             purpose = "";
             purposeOther = "";
             mode = "";
@@ -55,18 +57,20 @@ public class SurveyManager {
         }
 
         public Boolean validate() {
-            if(loc == null || purpose.isEmpty() || mode.isEmpty())
+            if(loc == null && region.equals("1"))
+                return false;
+            if(purpose.isEmpty() || mode.isEmpty())
                 return false;
             return true;
         }
     }
 
-    public SurveyManager(Context context, Activity activity) {
+    public SurveyManager(Context context, Activity activity, String line) {
         this.context = context;
         this.activity = activity;
         this.orig = new Location();
         this.dest = new Location();
-        //this.transfers = new ArrayList<String>();
+        this.line = line;
     }
 
     public String key(String prefix, String cons) {
@@ -74,12 +78,21 @@ public class SurveyManager {
     }
 
     public Boolean[] validate() {
-        Boolean[] flags = new Boolean[3];
+        Boolean[] flags = new Boolean[4];
         flags[0] = this.orig.validate();
         flags[1] = this.dest.validate();
         flags[2] = false;
         if(onStop != null && offStop != null)
             flags[2] = true;
+        flags[3] = false;
+        printTransfers();
+        Log.d(TAG, line);
+        for(String route: transfers) {
+            if(route != null && !route.isEmpty() && route.equals(line)) {
+                flags[3] = true;
+                break;
+            }
+        }
         return flags;
     }
 
@@ -100,12 +113,25 @@ public class SurveyManager {
         return this.dest.loc;
     }
 
+    public void setValidated(String validated) {
+        this.validated = validated;
+    }
+
     public void setStop(Marker marker, String passage) {
         if(passage.equals(Cons.BOARD)) {
             this.onStop = marker;
         }
         else if(passage.equals(Cons.ALIGHT)) {
             this.offStop = marker;
+        }
+    }
+
+    public void setRegion(String region, String passage) {
+        if(passage.equals("origin")) {
+            this.orig.region = region;
+        }
+        else if(passage.equals("destination")) {
+            this.dest.region = region;
         }
     }
 
@@ -168,19 +194,6 @@ public class SurveyManager {
         }
     }
 
-    //public void updateTransfer(String routeID) {
-    //    transfers.add(routeID);
-    //}
-
-    //public void removeTransfer(String routeID) {
-    //    for(String route: transfers) {
-    //        if(route.equals(routeID)) {
-    //            transfers.remove(route);
-    //            break;
-    //        }
-    //    }
-    //}
-
     public Marker getOnStop(){
         return this.onStop;
     }
@@ -196,6 +209,7 @@ public class SurveyManager {
         intent.putExtra(key("orig", Cons.ACCESS_OTHER_ODK), orig.modeOther);
         intent.putExtra(key("orig", Cons.BLOCKS_ODK), orig.blocks);
         intent.putExtra(key("orig", Cons.PARKING_ODK), orig.parking);
+        intent.putExtra(key("orig", "region"), orig.region);
         if(orig.loc != null) {
             LatLng latLng = orig.loc.getPoint();
             intent.putExtra(key("orig", Cons.LAT_ODK), latLng.getLatitude());
@@ -211,6 +225,7 @@ public class SurveyManager {
         intent.putExtra(key("dest", Cons.EGRESS_OTHER_ODK), dest.modeOther);
         intent.putExtra(key("dest", Cons.BLOCKS_ODK), dest.blocks);
         intent.putExtra(key("dest", Cons.PARKING_ODK), dest.parking);
+        intent.putExtra(key("dest", "region"), dest.region);
         if(dest.loc != null) {
             LatLng latLng = dest.loc.getPoint();
             intent.putExtra(key("dest", Cons.LAT_ODK), latLng.getLatitude());
@@ -239,7 +254,11 @@ public class SurveyManager {
             if(transfers[i] != null && !transfers[i].isEmpty()) {
                 intent.putExtra("route" + String.valueOf(++count), transfers[i]);
             }
+            else {
+                intent.putExtra("route" + String.valueOf(++count), "");
+            }
         }
+        intent.putExtra("validated", validated);
         return intent;
     }
 
@@ -339,12 +358,17 @@ public class SurveyManager {
         this.transfers = transfers;
     }
 
-    public void printTransfers() {
-        for(String s: transfers) {
-            if(s != null) {
-                Log.d(TAG, s);
+
+    protected void printTransfers() {
+        String sel = "";
+        for (String s : transfers) {
+            if (s == null || s.isEmpty()) {
+                sel += "null, ";
+            } else {
+                sel += s + ", ";
             }
         }
+        Log.d(TAG, "Transfers: " + sel);
     }
 
 }

@@ -178,8 +178,8 @@ public class Utils {
         Paint paint = new Paint();
         paint.setColor(context.getResources().getColor(R.color.blacker));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(5.0f);
-        paint.setPathEffect(new DashPathEffect(new float[] {5,5}, 0));
+        paint.setStrokeWidth(5.5f);
+        paint.setPathEffect(new DashPathEffect(new float[] {5,6}, 0));
         paint.setStyle(Paint.Style.STROKE);
         return paint;
     }
@@ -188,7 +188,7 @@ public class Utils {
         Paint paint = new Paint();
         paint.setColor(context.getResources().getColor(R.color.bluer_lighter));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(3.5f);
+        paint.setStrokeWidth(5.5f);
         paint.setStyle(Paint.Style.STROKE);
         return paint;
     }

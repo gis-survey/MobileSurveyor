@@ -65,7 +65,7 @@ public class Cons {
     public static final String ALIGHT_ID_ODK = "alight_id";
     public static final String TRANSFER_ODK = "transfer";
 
-    public static final int MAX_TRANSFERS = 4;
+    public static final int MAX_TRANSFERS = 5;
     public static final Double PADDING = 0.01;
 }
 

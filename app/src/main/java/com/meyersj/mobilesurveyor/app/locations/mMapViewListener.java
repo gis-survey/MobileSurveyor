@@ -8,7 +8,7 @@ import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.mapbox.mapboxsdk.views.MapViewListener;
-import com.meyersj.mobilesurveyor.app.survey.PickLocationFragment;
+import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
 import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 
 
@@ -39,7 +39,7 @@ public class mMapViewListener implements MapViewListener {
     public void onShowMarker(final MapView mapView, final Marker marker) {}
 
     @Override
-    public void onHideMarker(MapView mapView, Marker marker) {}
+    public void onHidemarker(MapView mapView, Marker marker) {}
 
     @Override
     public void onTapMarker(final MapView mapView, final Marker marker) {}

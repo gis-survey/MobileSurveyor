@@ -15,39 +15,7 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <LinearLayout
-            android:id="@+id/top_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_rect_grey_fade_round_all"
-            android:padding="9dp"
-            android:gravity="top"
-            android:weightSum="1">
-
-            <!-- AutoCompleteTextView -->
-            <AutoCompleteTextView
-                android:id="@+id/solr_input"
-                android:inputType="textNoSuggestions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="5dp"
-                android:hint="Enter Address or Location"
-                android:textColor="@color/white"
-                android:layout_gravity="center_vertical"
-                android:background="#00FFFFFF"/>
-
-            <ImageButton
-                android:id="@+id/clear_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:src="@drawable/clear_text"
-                android:padding="5dp"
-                android:background="#00FFFFFF" />
-
-        </LinearLayout>
+        <include layout="@layout/solr_widget_layout"></include>
 
         <LinearLayout
             android:id="@+id/survey_questions_layout"
@@ -116,28 +84,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:weightSum="10">
+                android:layout_height="50dp">
 
                 <ImageButton
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:id="@+id/scope"
+                    android:paddingRight="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_height="fill_parent"
                     android:src="@drawable/scope_40"
                     android:layout_gravity="start|center_vertical"
                     android:background="#00FFFFFF" />
-                <TextView
+                <CheckBox
+                    android:id="@+id/region"
+                    android:padding="10dp"
+                    android:background="@drawable/shape_rect_grey_fade_round_all"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9.5"
-                    android:layout_gravity="start|center_vertical"/>
+                    android:layout_height="fill_parent"
+                    android:text="Outside of metro region" />
 
-            </LinearLayout>
+            </RelativeLayout>
+
 
         </LinearLayout>
 

@@ -39,13 +39,17 @@ public class BuildStops {
         stops = new ArrayList<Marker>();
         FeatureCollection geoJSON = openGeoJSON(inRoute);
         if (geoJSON != null) {
+            Log.d(TAG, "geojson not null");
             bboxBuilder = new BuildBoundingBox();
             parseGeoJSON(geoJSON);
+        }
+        else {
+            Log.d(TAG, "geojson IS null, no bbox");
         }
     }
 
     private void parseGeoJSON(FeatureCollection parsed) {
-        Drawable circleIcon = context.getResources().getDrawable(R.drawable.bus_18);
+        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
         try {
             for (Feature f : parsed.getFeatures()) {
                 if (f.getGeometry() instanceof Point) {

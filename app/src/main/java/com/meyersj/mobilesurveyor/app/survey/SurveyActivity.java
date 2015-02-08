@@ -3,7 +3,6 @@ package com.meyersj.mobilesurveyor.app.survey;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -15,14 +14,15 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.util.ConfirmFragment;
-import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.survey.Confirm.ConfirmFragment;
+import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
+import com.meyersj.mobilesurveyor.app.survey.OnOff.OnOffFragment;
+import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
+    private final String TAG = "SurveyActivity";
     protected static final int SURVEY_FRAGMENTS = 5;
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
     protected static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
@@ -41,12 +41,15 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
-
-        manager = new SurveyManager(getApplicationContext(), this);
-
+        Bundle extras = getODKExtras();
+        String line = "";
+        if(extras != null) {
+            line = extras.getString("rte", "");
+            Log.d(TAG, line);
+        }
+        manager = new SurveyManager(getApplicationContext(), this, line);
         actionBar.setHomeButtonEnabled(false);
         actionBar.setTitle("TransitSurveyor");
-        //actionBar.setIcon(getApplicationContext().getResources().getDrawable(R.drawable.bus_icon50));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.survey_pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
@@ -60,17 +63,18 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
                 toggleNavButtons(mViewPager.getCurrentItem());
             }
         });
-        // For each of the sections in the app, add a tab to the action bar.
-
-        Bundle extras = getODKExtras();
-
 
         fragments = new Fragment[SURVEY_FRAGMENTS];
-        fragments[0] = new PickLocationFragment(manager, "origin", extras);
-        fragments[1] = new PickLocationFragment(manager, "destination", extras);
-        fragments[2] = new OnOffFragment(manager, extras);
-        fragments[3] = new TransfersMapFragment(manager, mViewPager, extras);
-        fragments[4] = new ConfirmFragment(this, manager, mViewPager);
+        fragments[0] = new PickLocationFragment();
+        fragments[1] = new PickLocationFragment();
+        ((PickLocationFragment) fragments[0]).initialize(manager, "origin", extras);
+        ((PickLocationFragment) fragments[1]).initialize(manager, "destination", extras);
+        fragments[2] = new OnOffFragment();
+        ((OnOffFragment) fragments[2]).initialize(manager, extras);
+        fragments[3] = new TransfersMapFragment();
+        ((TransfersMapFragment) fragments[3]).initialize(manager, mViewPager, extras);
+        fragments[4] = new ConfirmFragment();
+        ((ConfirmFragment) fragments[4]).setParams(this, manager, mViewPager);
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }
@@ -147,7 +151,6 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         Intent intent = this.getIntent();
         String action = intent.getAction();
         if (action.equals(ODK_ACTION)) {
-            Bundle extras = intent.getExtras();
             return intent.getExtras();
         }
         return null;

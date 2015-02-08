@@ -4,9 +4,7 @@ import android.util.Log;
 
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 
-/**
- * Created by meyersj on 6/16/2014.
- */
+
 public class BuildBoundingBox {
 
     private static final String TAG = "BoundingBox";

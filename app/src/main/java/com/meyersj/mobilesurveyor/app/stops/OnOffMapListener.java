@@ -3,7 +3,6 @@ package com.meyersj.mobilesurveyor.app.stops;
 import android.util.Log;
 
 import com.mapbox.mapboxsdk.events.MapListener;
-//import com.mapbox.mapboxsdk.events.RotateEvent;
 import com.mapbox.mapboxsdk.events.ScrollEvent;
 import com.mapbox.mapboxsdk.events.ZoomEvent;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
@@ -71,7 +70,7 @@ public class OnOffMapListener implements MapListener {
 
     //@Override
     //public void onRotate(RotateEvent rotateEvent) {
-//
-  //  }
+    //
+    //}
 
 }

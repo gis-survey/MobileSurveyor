@@ -57,7 +57,7 @@ public class SurveyManager {
         }
 
         public Boolean validate() {
-            if(loc == null && region.equals("1"))
+            if(loc == null && region.equals("2"))
                 return false;
             if(purpose.isEmpty() || mode.isEmpty())
                 return false;

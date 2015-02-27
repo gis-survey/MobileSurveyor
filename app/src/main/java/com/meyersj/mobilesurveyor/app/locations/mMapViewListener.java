@@ -54,17 +54,18 @@ public class mMapViewListener implements MapViewListener {
     public void onLongPressMap(MapView mapView, ILatLng iLatLng) {
         LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
         Marker m = new Marker(mapView, "", null, latLng);
-        if(manager != null) {
-            if(mode.equals("origin")) {
-                if (manager.getOrig() != null) fragment.removeLocation(manager.getOrig());
-                m.setMarker(circle);
-            }
-            else if(mode.equals("destination")) {
-                if (manager.getDest() != null) fragment.removeLocation(manager.getDest());
-                m.setMarker(square);
-            }
-            manager.setLocation(m, mode);
-        }
+
+        //if(manager != null) {
+        //    if(mode.equals("origin")) {
+        //        if (manager.getOrig() != null) fragment.removeLocation(manager.getOrig());
+        //        m.setMarker(circle);
+        //    }
+        //    else if(mode.equals("destination")) {
+        //        if (manager.getDest() != null) fragment.removeLocation(manager.getDest());
+        //        m.setMarker(square);
+        //    }
+        //    manager.setLocation(m, mode);
+        //}
         locOverlay.removeAllItems();
         locOverlay.addItem(m);
         mapView.invalidate();

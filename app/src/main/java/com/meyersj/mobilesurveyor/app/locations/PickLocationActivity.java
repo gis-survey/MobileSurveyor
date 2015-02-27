@@ -70,6 +70,7 @@ public class PickLocationActivity extends ActionBarActivity {
         mv = (MapView) findViewById(R.id.mapview);
         setTiles(mv);
         setItemizedOverlay(mv);
+
         mv.setMapViewListener(new mMapViewListener(locOverlay));
 
 

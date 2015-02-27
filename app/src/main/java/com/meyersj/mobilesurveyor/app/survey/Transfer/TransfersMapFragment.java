@@ -34,25 +34,6 @@ public class TransfersMapFragment extends MapFragment {
     protected Bundle extras;
     protected String[] selectedRoutes;
 
-    /*
-    public TransfersMapFragment(SurveyManager manager, ViewPager pager, Bundle extras) {
-        this.manager = manager;
-        this.pager = pager;
-        this.extras = extras;
-        this.selectedRoutes = new String[Cons.MAX_TRANSFERS];
-
-        if(extras != null) {
-            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
-                line = extras.getString(Cons.LINE);
-                dir = extras.getString(Cons.DIR);
-            }
-        }
-        else {
-            line = "9";
-            dir = "1";
-        }
-    }
-    */
 
     public void initialize(SurveyManager manager, ViewPager pager, Bundle extras) {
         this.manager = manager;

@@ -24,7 +24,6 @@ import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.locations.LocationResult;
 import com.meyersj.mobilesurveyor.app.locations.SolrAdapter;
-import com.meyersj.mobilesurveyor.app.locations.mMapViewListener;
 import com.meyersj.mobilesurveyor.app.stops.BuildStops;
 import com.meyersj.mobilesurveyor.app.stops.OnOffMapListener;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
@@ -42,38 +41,22 @@ public class PickLocationFragment extends MapFragment {
     private ImageButton clear;
     private ImageButton scope;
     private CheckBox region;
+    private ItemizedIconOverlay stopsOverlay;
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
+    //private ArrayList<Marker> stopsList = new ArrayList<Marker>();
     protected Properties prop;
     private AutoCompleteTextView solrSearch;
     private SolrAdapter adapter;
     private SurveyManager manager;
-    protected Drawable circleIcon;
-    protected Drawable squareIcon;
+    protected Drawable originIcon;
+    protected Drawable destIcon;
     protected Spinner modeSpinner;
     protected Spinner locationSpinner;
     protected Bundle extras;
     protected Integer locCount = 0;
     protected Integer modeCount = 0;
 
-    /*
-    public PickLocationFragment(SurveyManager manager, String mode, Bundle extras) {
-        this.manager = manager;
-        this.mode = mode;
-        this.extras = extras;
-
-        if(extras != null) {
-            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
-                line = extras.getString(Cons.LINE);
-                dir = extras.getString(Cons.DIR);
-            }
-        }
-        else {
-            line = "9";
-            dir = "1";
-        }
-    }
-    */
 
     public void initialize(SurveyManager manager, String mode, Bundle extras) {
         this.manager = manager;
@@ -97,8 +80,8 @@ public class PickLocationFragment extends MapFragment {
         View view = inflater.inflate(R.layout.fragment_pick_location, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        circleIcon = context.getResources().getDrawable(R.drawable.start);
-        squareIcon = context.getResources().getDrawable(R.drawable.end);
+        originIcon = context.getResources().getDrawable(R.drawable.start);
+        destIcon = context.getResources().getDrawable(R.drawable.end);
 
         TextView desc = (TextView) view.findViewById(R.id.mode_desc);
         if(mode.equals("origin")) desc.setText("Starting Location");
@@ -119,8 +102,9 @@ public class PickLocationFragment extends MapFragment {
 
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
-        setItemizedOverlay(mv);
-        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, circleIcon, squareIcon));
+        locOverlay = newItemizedOverlay(locList);
+        mv.addOverlay(locOverlay);
+        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, originIcon, destIcon));
 
         prop = Utils.getProperties(context, Cons.PROPERTIES);
         if (mode.equals("origin")) {
@@ -148,10 +132,9 @@ public class PickLocationFragment extends MapFragment {
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         addDefaultRoute(context, line, dir);
-        ArrayList<Marker> locList = getStops(line, dir, true);
-        setItemizedOverlay(locList);
-        mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
-        updateView(manager);
+        ArrayList<Marker> stopsList = getStops(line, dir, true);
+        stopsOverlay = newItemizedOverlay(stopsList);
+        mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
 
         // set up listeners for view objects
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -254,11 +237,6 @@ public class PickLocationFragment extends MapFragment {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         Log.d(TAG, geoJSONName);
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName, dir);
-        //if(zoom) {
-            //Log.d(TAG, "getting bounding box");
-            //bbox = stops.getBoundingBox();
-            //mv.zoomToBoundingBox(bbox, true, false, true, true);
-        //}
         return stops.getStops();
     }
 
@@ -271,8 +249,10 @@ public class PickLocationFragment extends MapFragment {
     public void onDetach() {
         super.onDetach();
     }
-    private void setItemizedOverlay(final MapView mv) {
-        locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
+
+
+    private ItemizedIconOverlay newItemizedOverlay(ArrayList<Marker> markers) {
+        ItemizedIconOverlay overlay = new ItemizedIconOverlay(mv.getContext(), markers,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         return true;
@@ -282,7 +262,7 @@ public class PickLocationFragment extends MapFragment {
                     }
                 }
         );
-        mv.addItemizedOverlay(locOverlay);
+        return overlay;
     }
 
     private void addMarker(LatLng latLng) {
@@ -290,9 +270,10 @@ public class PickLocationFragment extends MapFragment {
             clearMarkers();
             Marker m = new Marker(null, null, latLng);
             if(mode.equals("origin"))
-                m.setMarker(circleIcon);
-            if(mode.equals("destination"))
-                m.setMarker(squareIcon);
+                m.setMarker(originIcon);
+            if(mode.equals("destination")) {
+                m.setMarker(destIcon);
+            }
             m.addTo(mv);
             locOverlay.addItem(m);
             mv.invalidate();
@@ -374,15 +355,12 @@ public class PickLocationFragment extends MapFragment {
         if(hasExtra(latKey) && hasExtra(lngKey)) {
             Double lat = extras.getDouble(latKey);
             Double lng = extras.getDouble(lngKey);
-            if(lat > 44 && lng < -122) {
-                addMarker(new LatLng(lat, lng));
-            }
+            addMarker(new LatLng(lat, lng));
         }
         if(hasExtra(regionKey)) {
-            Log.d(TAG, "has region key");
-            if(extras.getString(regionKey).equals("1")) {
-                region.setChecked(true);
-            }
+            String reg = extras.getString(regionKey);
+            manager.setRegion(reg, mode);
+            if(reg.equals("1")) region.setChecked(true);
         }
 
     }
@@ -394,17 +372,39 @@ public class PickLocationFragment extends MapFragment {
         return false;
     }
 
-    protected void setItemizedOverlay(ArrayList<Marker> locList) {
-        locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
-                new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
-                    public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        return true;
-                    }
-                    public boolean onItemLongPress(final int index, final Marker item) {
-                        return true;
-                    }
-                }
-        );
+    public void updateView(SurveyManager manager) {
+        mv.removeOverlay(surveyOverlay);
+        surveyOverlay.removeAllItems();
+        Marker orig = manager.getOrig();
+        Marker dest = manager.getDest();
+        Marker onStop = manager.getOnStop();
+        Marker offStop = manager.getOffStop();
+
+        if(orig != null) {
+            if(mode.equals("origin")) {
+                locOverlay.addItem(orig);
+                orig.addTo(mv);
+            }
+            else {
+                surveyOverlay.addItem(orig);
+            }
+        }
+        if(dest != null) {
+            if(mode.equals("destination")) {
+                locOverlay.addItem(dest);
+                dest.addTo(mv);
+            }
+            else {
+                surveyOverlay.addItem(dest);
+            }
+        }
+        if(onStop != null) {
+            surveyOverlay.addItem(onStop);
+        }
+        if(offStop != null) {
+            surveyOverlay.addItem(offStop);
+        }
+        mv.addItemizedOverlay(surveyOverlay);
     }
 
 }

@@ -24,30 +24,6 @@ public class ConfirmFragment extends MapFragment {
     protected Button submit;
     protected ViewPager pager;
 
-    //public ConfirmFragment() {}
-
-    //public ConfirmFragment(Context context, SurveyManager manager, ViewPager pager) {
-    //    this.context = context;
-    //    this.manager = manager;
-    //    this.pager = pager//;
-
-        //Summarizer summarizer = new Summarizer(manager);
-    //}
-
-    /*
-    public static final ConfirmFragment newInstance(Context context, SurveyManager manager, ViewPager pager)
-    {
-        ConfirmFragment fragment = new ConfirmFragment();
-        //fragment.setObjects(context, manager, pager);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("CONTEXT", context);
-        //bdl.putInt(EXTRA_TITLE, title);
-        //bdl.putString(EXTRA_MESSAGE, message);
-        fragment.setArguments(bdl);
-        return fragment;
-    }
-    */
-
     public void setParams(Context context, SurveyManager manager, ViewPager pager) {
         this.context = context;
         this.manager = manager;

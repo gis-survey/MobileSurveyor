@@ -3,7 +3,7 @@ MobileSurveyor
 
 ### Description
 
-This repo contains an android app for use in TriMet's **2015 Orange Line Before Origin Destination Survey**. This study is replacing traditional paper survey instruments with android tablets. It will be used for the initial *On and Off Survey* and for location-based questions for the long form *Intercept Survey*. 
+This repo contains an android app for use in TriMet's **Orange Line Before Survey**. This study is replacing traditional paper survey instruments with android tablets. It will be used for the initial *On and Off Survey* and for location-based questions for the long form *Intercept Survey*. 
 
 This app runs in two modes. When launching directly from the app icon you will enter **On and Off Survey Mode** which will allow surveyors to login and then select a route and direction to begin data collection. Entering **Intercept Survey Mode** happens indirectly through ODK Collect. ODK Collect is a seperate android app from the [Open Data Kit](https://opendatakit.org/) toolkit. ODK Collect is used with a custom form using a special *question* that contains the intent required to launch this android application. It then expects back a bundle of data which is recorded into the survey and handled through the ODK tools. The long form Intercept Survey contains many general and demographic type questions that ODK tool kit handles very well. This application provides a customized interface for answering location-based questions.
 

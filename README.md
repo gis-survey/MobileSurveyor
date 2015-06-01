@@ -3,12 +3,13 @@ MobileSurveyor
 
 ### Description
 
-This repo contains an android app for use in TriMet's 2015 Orange Line Before - Origin-Destination survey. This study is replacing traditional paper survey instruments with android tablets. This app will be used for the initial On and Off Survey and for location-based questions for the Long Intercept Survey.
+This repo contains an android app for use in TriMet's 2015 Orange Line Before - Origin-Destination survey. This study is replacing traditional paper survey instruments with android tablets. It will be used for the initial On and Off Survey and for location-based questions for the long form Intercept Survey. 
 
+This app runs in two modes. When launching directly from the app icon you will enter **On and Off Survey Mode** which will allow surveyors to login and then select a route and direction to begin data collection. Entering **Intercept Survey Mode** happens indirectly through ODK Collect. This is a seperate android app from the [Open Data Kit](https://opendatakit.org/) toolkit. ODK Collect is used with a custom designed form with a special *question* that contains the intent required to launch this application and then expects back a bundle of data. That data is then recorded into the survey and handled through ODK tools. The long form Intercept Survey contains many general and demographic type questions that ODK tool kit handles very well. This application provides a customized interface for answering location-based questions.
 
-####On and Off Survey
+### On and Off Survey Mode
 
-This survey consists of capturing the boarding and alighting locations of riders. TriMet currently has a passenger census which only provides counts of boardings. This survey will provide details about which frequency of trips between station pairs. This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the QR Code Scanner method is used, while on MAX, Portland Streetcar and low ridership routes a Map-Based method is used.
+This survey consists of capturing the boarding and alighting locations of riders. TriMet currently has a passenger census which only provides counts of boardings. This survey will provide details about which frequency of trips between station pairs. This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the **QR Code Scanner** method is used, while on MAX, Portland Streetcar and low ridership routes a **Map-Based** method is used.
 
 ##### QR Code Scanner
 
@@ -27,7 +28,29 @@ This method uses a map-based interface to input a passengers boarding and alight
 - Select the stop from the map.
 - Search for the stop based on stop name or stop ID.
 
-#### Details
+### Intercept Survey Mode
+
+This mode provides an interface to collect data about a riders trip. The interface is seperated into 4 sections as described below. As you navigate through each section and fill out responses am underlying map is constructed.
+When complete this will include markers for origin, destination, boarding and alighting locations. As well as the current route and any additional routes selected in the transfers section.
+
+1. Origin
+    - geographic location where current trip started
+    - starting location type (work, school, doctors, gym, ...)
+    - mode used to access transit (walk, bike, dropped off, ...)
+
+2. Destination
+    - geographic location where current trip will end
+    - ending location type (work, school, doctors, gym, ...)
+    - egress mode from transit (walk, bike, picked up, ...)
+
+3. On and Off
+    - boarding stop for current vehicle
+    - alighting stop for current vehicle
+
+4. Transfers
+    - sequence of each transit route used
+
+### Details
 
 This application requires the [TransitSurveyor API](https://github.com/TransitSurveyor/API) be running and configured correctly. That API enables surveyor logins, data uploads and reference data queries. 
 

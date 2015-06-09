@@ -9,6 +9,8 @@ This app runs in two modes. When launching directly from the app icon you should
 
 ### On and Off Survey Mode
 
+[Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots/on_off)
+
 This survey consists of capturing the boarding and alighting locations of riders. TriMet currently has a passenger census which only provides counts of boardings. This survey will then provide details about the frequency of trips between different station pairs (on-off instead of only on). This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the **QR Code Scanner** method is used, while on MAX, Portland Streetcar and low ridership routes a **Map-Based** method is used.
 
 ##### QR Code Scanner
@@ -29,6 +31,8 @@ This method uses a map-based interface to input a passengers boarding and alight
 - Search for the stop based on stop name or stop ID.
 
 ### Intercept Survey Mode
+
+[Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots/intercept)
 
 This mode provides an interface to collect data about a riders trip. The interface is seperated into 4 sections as described below. As you navigate through each section and fill out responses am underlying map is constructed.
 When complete this will include markers for origin, destination, boarding and alighting locations. As well as the current route and any additional routes selected in the transfers section.

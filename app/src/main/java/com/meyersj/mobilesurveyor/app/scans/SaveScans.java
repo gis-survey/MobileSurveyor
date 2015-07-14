@@ -151,13 +151,6 @@ public class SaveScans {
                 currentLoc.getLat() != null) {
             Log.d(TAG, "posting scan");
             postScan(rawResult, date);
-            //For debugging to write to csv
-            /*
-            Utils.appendCSV("current," +
-                    Utils.dateFormat.format(date) + "," +
-                    currentLoc.getAccuracy() + "," +
-                    currentLoc.getLat() + "," + currentLoc.getLon());
-            */
         }
         else {
             Log.d(TAG, "adding scan to buffer - other reasons");
@@ -170,59 +163,28 @@ public class SaveScans {
     }
 
     public void flushBuffer() {
-        //Integer total = 0;
-        //Integer count = 0;
-
-        Log.d(TAG, "flushing buffer");
         for(Scan scan: scansBuffer) {
-            //total += 1;
             Float diff = Utils.timeDifference(currentLoc.getDate(), scan.getDate());
             Log.d(TAG, String.valueOf(diff));
 
             if(diff <= THRESHOLD) {
-                //count += 1;
                 post(scan.getParams());
-                Log.d(TAG, "using new location");
-                //For debugging to write to csv
-                /*
-                Utils.appendCSV("valid_buffer," +
-                        Utils.dateFormat.format(scan.getDate()) + "," +
-                        currentLoc.getAccuracy() + "," +
-                        currentLoc.getLat() + "," + currentLoc.getLon());
-                */
             }
-            else {
-                Log.d(TAG, "too old, deleting");
-                //For debugging to write to csv
-                /*
-                Utils.appendCSV("old_buffer," +
-                        Utils.dateFormat.format(scan.getDate()) + "," +
-                        currentLoc.getAccuracy() + "," +
-                        currentLoc.getLat() + "," + currentLoc.getLon());
-                */
-            }
-
         }
-        //for debug - show how many flushed records were valid
-        //String message = "Flush: count=" + String.valueOf(count) + " total=" + String.valueOf(total);
-        //Utils.longToastCenter(context, message);
         scansBuffer.clear();
     }
 
     private void post(Bundle params) {
         params.putString(Cons.LAT, currentLoc.getLat());
         params.putString(Cons.LON, currentLoc.getLon());
-        //Intent post = new Intent(context, PostService.class);
-        //post.putExtras(params);
-        //context.startService(post);
 
         Utils.appendCSV("scans", buildScanRow(params));
         String[] paramsArray = getScanParams(params);
-        PostTask task = new PostTask();
-        //currentTask = task;
-        task.execute(paramsArray);
 
-
+        if (Utils.getProperties(context, Cons.PROPERTIES).getProperty("mode").equals("api")) {
+            PostTask task = new PostTask();
+            task.execute(paramsArray);
+        }
 
     }
 

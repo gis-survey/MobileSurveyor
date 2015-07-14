@@ -1,7 +1,14 @@
 package com.meyersj.mobilesurveyor.app.util;
 
 
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import java.util.Properties;
+
 public class Cons {
+
+    public static final String DEFAULT_USER = "default_user";
     public static final String MODE = "mode";
     public static final String URL = "url";
     public static final String LINE = "rte";

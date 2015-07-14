@@ -53,7 +53,7 @@
             android:padding="10dp"
             android:layout_margin="4dp"
             android:layout_marginTop="10dp"
-            android:text="Sign In"
+            android:text="Start"
             style="@style/ButtonText"
             android:background="@drawable/shape_rect_grey_fade_round_all"
             />
@@ -61,13 +61,17 @@
         <Button
             android:id="@+id/skip_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:padding="10dp"
             android:layout_margin="4dp"
             android:text="Skip Sign In"
             style="@style/ButtonText"
             android:background="@drawable/shape_rect_grey_fade_round_all"
             android:visibility="invisible"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If login is required you must enter username/password to be authenticated. Otherwise enter temporary username and and press Start" />
     </LinearLayout>
 
 

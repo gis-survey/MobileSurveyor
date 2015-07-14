@@ -57,6 +57,7 @@ public class LoginActivity extends Activity {
     private Button login, skip_login;
     private Properties prop;
     private HttpClient client;
+    private SharedPreferences sharedPref;
 
     private static final int RESULT_SETTINGS = 1;
 
@@ -75,50 +76,104 @@ public class LoginActivity extends Activity {
         HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
         HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
 
-
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.login);
         skip_login = (Button) findViewById(R.id.skip_login);
 
         prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
-        final String test_user = prop.getProperty(Cons.TEST_USER);
-        final String anon_name = prop.getProperty(Cons.ANON_NAME);
-        final String anon_pass = prop.getProperty(Cons.ANON_PASS);
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String name = username.getText().toString();
                 String pass = password.getText().toString();
+                String  mode = prop.getProperty("mode", "local");
+                Boolean authenticate = Boolean.valueOf(prop.getProperty("authenticate", "false"));
 
-                JSONObject json = new JSONObject();
-                json.put(Cons.USER_NAME, name);
-                json.put(Cons.PASSWORD, pass);
-
-                String credentials = json.toJSONString();
-
-                String[] params = new String[2];
-                params[0] = Utils.getUrlApi(context) + "/verifyUser";
-                params[1] = credentials;
-
-                //close keypad
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-
-                if(name.equals(anon_name) && pass.equals(anon_pass)) {
-                    password.setText("");
-                    startCollection(anon_name);
+                // skip login using default user
+                if (mode.equals("local")) {
+                    if(name.equals("")) {
+                        Utils.shortToast(context, "Please enter a temporary username");
+                    }
+                    else {
+                        startCollection(name);
+                    }
                 }
+                else if (mode.equals("api")) {
+                    if(!authenticate) {
+                        if(name.equals("")) {
+                            Utils.shortToast(context, "Please enter a username");
+                        }
+                        else {
+                            startCollection(name);
+                        }
+                    }
+                    else {
+                        JSONObject json = new JSONObject();
+                        json.put(Cons.USER_NAME, name);
+                        json.put(Cons.PASSWORD, pass);
+
+                        String credentials = json.toJSONString();
+
+                        String[] params = new String[2];
+                        params[0] = Utils.getUrlApi(context) + "/verifyUser";
+                        params[1] = credentials;
+
+                        //close keypad
+                        InputMethodManager inputManager = (InputMethodManager)
+                                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        VerifyLoginTask task = new VerifyLoginTask();
+                        task.execute(params);
+
+                    }
+                }
+                // mode
+                else {}
+
+
+                /*
+                if(name.equals("")) {
+                    if(!sharedPref.getBoolean("require_login", false)) {
+                        startCollection(prop.getProperty(Cons.DEFAULT_USER));
+                    }
+                    else {
+                        Utils.shortToast(context, "Username required");
+                    }
+                }
+                // otherwise authenticate user with api
                 else {
-                    //verify login credentials
-                    //start SetLineActivity if credentials are valid
-                    VerifyLoginTask task = new VerifyLoginTask();
-                    task.execute(params);
+                    JSONObject json = new JSONObject();
+                    json.put(Cons.USER_NAME, name);
+                    json.put(Cons.PASSWORD, pass);
+
+                    String credentials = json.toJSONString();
+
+                    String[] params = new String[2];
+                    params[0] = Utils.getUrlApi(context) + "/verifyUser";
+                    params[1] = credentials;
+
+                    //close keypad
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    if(sharedPref.getString("app_mode", "").equals("api")) {
+                        VerifyLoginTask task = new VerifyLoginTask();
+                        task.execute(params);
+                    }
+                    else {
+                        startCollection(prop.getProperty(name));
+                    }
                 }
+            */
             }
+
         });
 
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -132,17 +187,15 @@ public class LoginActivity extends Activity {
             }
         });
 
-
-
         skip_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startCollection(test_user);
+                startCollection(prop.getProperty(Cons.TEST_USER));
             }
         });
-
     }
 
     protected void startCollection(String username) {
+        Log.d(TAG, "USERNAME: " + username);
         Intent intent = new Intent(SETLINE);
         intent.putExtra(Cons.USER_ID, username);
         startActivity(intent);
@@ -153,8 +206,6 @@ public class LoginActivity extends Activity {
         @Override
         protected String doInBackground(String[]... inParams) {
             String[] params = inParams[0];
-            Log.d(TAG, "url:" + params[0]);
-            Log.d(TAG, "data:" + params[1]);
             return post(params);
         }
         @Override
@@ -261,18 +312,19 @@ public class LoginActivity extends Activity {
     }
 
 
+    // grab config.properties from assets
+    // this will only happen the first time application is started and
+    // then a flag will be set so it does not need to happen again
     private void loadPreferences(Context context) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        //this should only execute after program was installed for first time
-        //grab default urls from properties and update sharedprefs with those
         if(!sharedPref.contains(Cons.SET_PREFS)) {
             Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(Cons.SET_PREFS, true);
             editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
+            editor.putString(Cons.DEFAULT_USER, prop.getProperty(Cons.DEFAULT_USER));
             editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
-            Log.d(TAG, prop.getProperty(Cons.MAP_RTES));
             editor.putString(Cons.MAP_RTES, prop.getProperty(Cons.MAP_RTES));
             editor.commit();
         }

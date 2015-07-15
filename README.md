@@ -9,6 +9,27 @@ This app is an Android client used for surveying that runs in stand-alone mode t
 
 ### Building the App
 
+1. clone this repo
+2. [setup Android SDK and Android Studio](https://developer.android.com/sdk/index.html)
+3. from Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
+4. build and run the app by pressing `Run` button in Android Studio using an emulator or android device
+
+The app is preloaded with [TriMet](www.trimet.org) data and contains a default config file to run locally and save output to your sdcard.
+
+#####  Config File
+
+Config file can be found at `MobileSurveyor/app/src/main/assets/config.properties`
+
++ **mode** this can be set to either *local* or *api*
+    + *local* means that submitted on-off data is saved locally in a csv file and users cannot be authenticated
+    + *api* means that a [server API](https://github.com/TransitSurveyor/API) is running at the endpoint specified by **base_url**
++ **authenticate** (should only be changed if **mode**=*api*)
+    + *true* users must provide username and password that will be authenticated against the [server API](https://github.com/TransitSurveyor/API)
+    + *false* users enter a temporary username
++ **base_url** endpoint that is running the [server API](https://github.com/TransitSurveyor/API) [configurable inside app]
++ **solr_url** endpoint that is running a [SOLR geocoder](https://github.com/OpenTransitTools/geocoder), this is only required for searching for origin and destination addresses in long survey [configurable inside app]
++ **map_rtes** this is a comma-seperated list of route IDs for routes which should use the map-based on-off collection method instead of the scanning method [configurable inside app]
+
 ### Detailed Description
 
 This repo contains an Android application for use in TriMet's **2015 Orange Line Before Survey**. This study will be conducted using android tablets instead of a traditional paper survey instrument.

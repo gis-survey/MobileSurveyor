@@ -1,11 +1,5 @@
 package com.meyersj.mobilesurveyor.app.util;
 
-
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import java.util.Properties;
-
 public class Cons {
 
     public static final String DEFAULT_USER = "default_user";
@@ -47,9 +41,6 @@ public class Cons {
     public static final String NEAR_STOP = "";
     public static final String SET_PREFS = "set_prefs";
     public static final String TEST_USER = "test_user";
-    public static final String ANON_NAME = "anon_name";
-    public static final String ANON_PASS = "anon_pass";
-    public static final String DB = "db";
     public static final String SERVER = "server";
     public static final String CUR_MODE = "";
     public static final String MAP_RTES = "map_rtes";
@@ -70,9 +61,7 @@ public class Cons {
     public static final String LNG_ODK = "lng";
     public static final String BOARD_ID_ODK = "board_id";
     public static final String ALIGHT_ID_ODK = "alight_id";
-    public static final String TRANSFER_ODK = "transfer";
 
     public static final int MAX_TRANSFERS = 5;
-    public static final Double PADDING = 0.01;
 }
 

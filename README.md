@@ -29,6 +29,7 @@ Config file can be found at `MobileSurveyor/app/src/main/assets/config.propertie
 + **base_url** endpoint that is running the [server API](https://github.com/TransitSurveyor/API) [configurable inside app]
 + **solr_url** endpoint that is running a [SOLR geocoder](https://github.com/OpenTransitTools/geocoder), this is only required for searching for origin and destination addresses in long survey [configurable inside app]
 + **map_rtes** this is a comma-seperated list of route IDs for routes which should use the map-based on-off collection method instead of the scanning method [configurable inside app]
++ **gps_threshold** time in ms until data should be thrown out because a gps signal was not found quick enough when using on-off scanning method
 
 ### Detailed Description
 

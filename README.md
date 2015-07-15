@@ -1,6 +1,11 @@
 MobileSurveyor
 ==============
 
+Copyright © 2015 Jeffrey Meyers
+This program is released under the "MIT License".
+Please see the file COPYING in this distribution for
+license terms.
+
 ### High-level Description
 
 This app is an Android client used for surveying that runs in stand-alone mode to allow collection on-off data from passengers using public transit, or integrating with [ODK Collect](https://opendatakit.org/use/collect/) to provide a map-based interface to capture origin, destination, on and off stop and routes data as part of a longer Origin-Destination survey. ODK Collect allows you to launch custom external applications which return data back to ODK Collect as simple String/Float fields in the survey. This allows a map-based interface be used for the questions that involve location, while using the ODK toolkit to handle the bulk of the survey process.

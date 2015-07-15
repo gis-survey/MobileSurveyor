@@ -1,10 +1,11 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+// Copyright © 2015 Jeffrey Meyers
+// This program is released under the "MIT License".
+// Please see the file COPYING in this distribution for
+// license terms.
 
 buildscript {
     repositories {
         mavenCentral()
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.1'

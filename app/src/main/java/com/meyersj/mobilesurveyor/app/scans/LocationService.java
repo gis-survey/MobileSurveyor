@@ -34,12 +34,6 @@ public class LocationService extends Service {
         Log.d(TAG, "LocationService started");
         super.onCreate();
         intent = new Intent(BROADCAST_ACTION);
-        Properties prop;
-        prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
-
-        if( prop.containsKey(Cons.GPS_INTERVAL)) {
-            INTERVAL_TIME = Integer.valueOf(prop.getProperty(Cons.GPS_INTERVAL));
-        }
     }
 
     @Override

@@ -468,12 +468,10 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
-
         for(Marker marker: locList) {
             stops.add((Stop) marker);
         }
         Collections.sort(stops);
-
         return stops;
     }
 
@@ -481,7 +479,6 @@ public class OnOffMapActivity extends ActionBarActivity {
     protected String[] buildStopsArray(ArrayList<Marker> locList) {
 
         stopsMap = new HashMap<String, Marker>();
-
         for(Marker m: locList) {
             stopsMap.put(m.getTitle(), m);
             stopsMap.put(m.getDescription(), m);
@@ -516,14 +513,12 @@ public class OnOffMapActivity extends ActionBarActivity {
         extras.putString(Cons.ON_REVERSED, String.valueOf(isOnReversed));
         extras.putString(Cons.OFF_REVERSED, String.valueOf(isOffReversed));
 
-        //Intent post = new Intent(context, PostService.class);
-        //post.putExtras(extras);
-        //context.startService(post);
-
         Utils.appendCSV("stops", buildPairRow(extras));
-        String[] params = getPairParams(extras);
-        PostTask task = new PostTask();
-        task.execute(params);
+        if (Utils.getProperties(context, Cons.PROPERTIES).getProperty("mode").equals("api")) {
+            String[] params = getPairParams(extras);
+            PostTask task = new PostTask();
+            task.execute(params);
+        }
     }
 
     protected String buildPairRow(Bundle bundle) {

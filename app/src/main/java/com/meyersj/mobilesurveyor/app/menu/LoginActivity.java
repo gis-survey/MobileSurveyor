@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Endpoints;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import org.apache.http.HttpEntity;
@@ -109,15 +110,16 @@ public class LoginActivity extends Activity {
                         }
                     }
                     else {
-                        JSONObject json = new JSONObject();
-                        json.put(Cons.USER_NAME, name);
-                        json.put(Cons.PASSWORD, pass);
 
-                        String credentials = json.toJSONString();
+                        //JSONObject json = new JSONObject();
+                        //json.put(Cons.USER_NAME, name);
+                        //json.put(Cons.PASSWORD, pass);
+                        //String credentials = json.toJSONString();
 
-                        String[] params = new String[2];
-                        params[0] = Utils.getUrlApi(context) + "/verifyUser";
-                        params[1] = credentials;
+                        String[] params = new String[3];
+                        params[0] = Utils.getUrlApi(context) + Endpoints.VERIFY_USER;
+                        params[1] = name;
+                        params[2] = pass;
 
                         //close keypad
                         InputMethodManager inputManager = (InputMethodManager)
@@ -134,44 +136,6 @@ public class LoginActivity extends Activity {
                 // mode
                 else {}
 
-
-                /*
-                if(name.equals("")) {
-                    if(!sharedPref.getBoolean("require_login", false)) {
-                        startCollection(prop.getProperty(Cons.DEFAULT_USER));
-                    }
-                    else {
-                        Utils.shortToast(context, "Username required");
-                    }
-                }
-                // otherwise authenticate user with api
-                else {
-                    JSONObject json = new JSONObject();
-                    json.put(Cons.USER_NAME, name);
-                    json.put(Cons.PASSWORD, pass);
-
-                    String credentials = json.toJSONString();
-
-                    String[] params = new String[2];
-                    params[0] = Utils.getUrlApi(context) + "/verifyUser";
-                    params[1] = credentials;
-
-                    //close keypad
-                    InputMethodManager inputManager = (InputMethodManager)
-                            getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                            InputMethodManager.HIDE_NOT_ALWAYS);
-
-                    if(sharedPref.getString("app_mode", "").equals("api")) {
-                        VerifyLoginTask task = new VerifyLoginTask();
-                        task.execute(params);
-                    }
-                    else {
-                        startCollection(prop.getProperty(name));
-                    }
-                }
-            */
             }
 
         });
@@ -221,7 +185,8 @@ public class LoginActivity extends Activity {
         HttpPost post = new HttpPost(params[0]);
 
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(Cons.CRED, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.USER_NAME, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.PASSWORD, params[2]));
 
         try {
             post.setEntity(new UrlEncodedFormEntity(postParam));
@@ -251,22 +216,15 @@ public class LoginActivity extends Activity {
             Object obj = parser.parse(jsonInput);
             JSONObject results = (JSONObject) obj;
 
-            String user_match = results.get(Cons.USER_MATCH).toString();
-            String password_match = results.get(Cons.PASS_MATCH).toString();
+            String match = results.get(Cons.MATCH).toString();
             String user_id = results.get(Cons.USER_ID).toString();
 
-            if (user_match.equals("false")) {
-                Log.d(TAG, "username did not match");
+            if (match.equals("false")) {
+                Log.d(TAG, "username/password did not match");
                 Utils.shortToastCenter(context,
-                        "No record of that user, please re-enter username.");
-            }
-            else if (password_match.equals("false")) {
-                Log.d(TAG, "password not correct");
-                Utils.shortToastCenter(context,
-                        "Incorrect password, please re-enter.");
+                        "username/password did not match records");
                 password.setText("");
             }
-
             //user and password match
             //move user to SetLineActivity
             else {

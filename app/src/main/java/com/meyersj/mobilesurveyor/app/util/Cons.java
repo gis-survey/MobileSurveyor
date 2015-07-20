@@ -26,14 +26,18 @@ public class Cons {
     public static final String BASE_URL = "base_url";
     public static final String USER_NAME = "username";
     public static final String PASSWORD = "password";
-    public static final String USER_MATCH = "user_match";
-    public static final String PASS_MATCH = "password_match";
-    public static final String CRED = "credentials";
+
+    public static final String MATCH = "match";
+    // /public static final String USER_MATCH = "user_match";
+    //public static final String PASS_MATCH = "password_match";
+
+
+
     public static final String PROPERTIES = "config.properties";
     public static final String SOLR_URL = "solr_url";
     public static final String DATA = "data";
     public static final String PAIR = "pair";
-    public static final String GPS_INTERVAL = "gps_interval";
+
     public static final String GPS_THRESHOLD = "gps_threshold";
     public static final String[] STREETCARS = {"193", "194"};
     public static final String ON_REVERSED = "on_reversed";

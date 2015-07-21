@@ -2,6 +2,7 @@ package com.meyersj.mobilesurveyor.app.stops;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Endpoints;
 import com.meyersj.mobilesurveyor.app.util.PathUtils;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 import com.meyersj.mobilesurveyor.app.R;
@@ -498,7 +499,6 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     protected void postResults(String onStop, String offStop, Boolean isOnReversed, Boolean isOffReversed) {
         Log.d(TAG, "posting results");
-
         Date date = new Date();
 
         Bundle extras = new Bundle();
@@ -512,6 +512,19 @@ public class OnOffMapActivity extends ActionBarActivity {
         extras.putString(Cons.TYPE, Cons.PAIR);
         extras.putString(Cons.ON_REVERSED, String.valueOf(isOnReversed));
         extras.putString(Cons.OFF_REVERSED, String.valueOf(isOffReversed));
+
+        /*
+        String[] params = new String[9];
+        params[0] = Utils.getUrlApi(context) + Endpoints.INSERT_PAIR;
+        params[1] = user_id;
+        params[2] = Utils.dateFormat.format(date);
+        params[3] = line;
+        params[4] = dir;
+        params[5] = onStop;
+        params[6] = offStop;
+        params[7] = String.valueOf(isOnReversed);
+        params[8] = String.valueOf(isOffReversed);
+        */
 
         Utils.appendCSV("stops", buildPairRow(extras));
         if (Utils.getProperties(context, Cons.PROPERTIES).getProperty("mode").equals("api")) {
@@ -535,19 +548,17 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected String[] getPairParams(Bundle bundle) {
-        String[] params = new String[2];
-        JSONObject json = new JSONObject();
-        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
-        json.put(Cons.DATE, bundle.getString(Cons.DATE));
-        json.put(Cons.LINE, bundle.getString(Cons.LINE));
-        json.put(Cons.DIR, bundle.getString(Cons.DIR));
-        json.put(Cons.ON_STOP, bundle.getString(Cons.ON_STOP));
-        json.put(Cons.OFF_STOP, bundle.getString(Cons.OFF_STOP));
-        json.put(Cons.ON_REVERSED, bundle.getString(Cons.ON_REVERSED));
-        json.put(Cons.OFF_REVERSED, bundle.getString(Cons.OFF_REVERSED));
-        params[0] = Utils.getUrlApi(context) + "/insertPair";
-        Log.d(TAG, Utils.getUrlApi(context));
-        params[1] = json.toJSONString();
+        String[] params = new String[9];
+        params[0] = Utils.getUrlApi(context) + Endpoints.INSERT_PAIR;
+        Log.d(TAG, params[0]);
+        params[1] = bundle.getString(Cons.USER_ID);
+        params[2] = bundle.getString(Cons.DATE);
+        params[3] = bundle.getString(Cons.LINE);
+        params[4] = bundle.getString(Cons.DIR);
+        params[5] = bundle.getString(Cons.ON_STOP);
+        params[6] = bundle.getString(Cons.OFF_STOP);
+        params[7] = bundle.getString(Cons.ON_REVERSED);
+        params[8] = bundle.getString(Cons.OFF_REVERSED);
         return params;
     }
 
@@ -568,15 +579,17 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
     protected String post(String[] params) {
-
         String retVal = null;
-
-
-
         HttpPost post = new HttpPost(params[0]);
-
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.USER_ID, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.DATE, params[2]));
+        postParam.add(new BasicNameValuePair(Cons.LINE, params[3]));
+        postParam.add(new BasicNameValuePair(Cons.DIR, params[4]));
+        postParam.add(new BasicNameValuePair(Cons.ON_STOP, params[5]));
+        postParam.add(new BasicNameValuePair(Cons.OFF_STOP, params[6]));
+        postParam.add(new BasicNameValuePair(Cons.ON_REVERSED, params[7]));
+        postParam.add(new BasicNameValuePair(Cons.OFF_REVERSED, params[8]));
 
         try {
             post.setEntity(new UrlEncodedFormEntity(postParam));

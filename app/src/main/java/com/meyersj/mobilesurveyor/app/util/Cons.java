@@ -28,10 +28,6 @@ public class Cons {
     public static final String PASSWORD = "password";
 
     public static final String MATCH = "match";
-    // /public static final String USER_MATCH = "user_match";
-    //public static final String PASS_MATCH = "password_match";
-
-
 
     public static final String PROPERTIES = "config.properties";
     public static final String SOLR_URL = "solr_url";

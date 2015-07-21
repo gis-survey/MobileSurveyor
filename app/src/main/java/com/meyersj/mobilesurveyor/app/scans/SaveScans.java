@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.google.zxing.Result;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Endpoints;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import org.apache.http.HttpEntity;
@@ -205,7 +206,7 @@ public class SaveScans {
 
 
     protected String[] getScanParams(Bundle bundle) {
-        String[] params = new String[2];
+        /*
         JSONObject json = new JSONObject();
         json.put(Cons.UUID, bundle.getString(Cons.UUID));
         json.put(Cons.DATE, bundle.getString(Cons.DATE));
@@ -215,8 +216,19 @@ public class SaveScans {
         json.put(Cons.MODE, bundle.getString(Cons.MODE));
         json.put(Cons.LON, bundle.getString(Cons.LON));
         json.put(Cons.LAT, bundle.getString(Cons.LAT));
-        params[0] = Utils.getUrlApi(context) + "/insertScan";
-        params[1] = json.toJSONString();
+        */
+
+        String[] params = new String[9];
+        params[0] = Utils.getUrlApi(context) + Endpoints.INSERT_SCAN;
+        params[1] = bundle.getString(Cons.UUID);
+        params[2] = bundle.getString(Cons.DATE);
+        params[3] = bundle.getString(Cons.USER_ID);
+        params[4] = bundle.getString(Cons.LINE);
+        params[5] = bundle.getString(Cons.DIR);
+        params[6] = bundle.getString(Cons.MODE);
+        params[7] = bundle.getString(Cons.LON);
+        params[8] = bundle.getString(Cons.LAT);
+
         return params;
     }
 
@@ -228,7 +240,14 @@ public class SaveScans {
 
         HttpPost post = new HttpPost(params[0]);
         ArrayList<NameValuePair> postParam = new ArrayList<NameValuePair>();
-        postParam.add(new BasicNameValuePair(Cons.DATA, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.UUID, params[1]));
+        postParam.add(new BasicNameValuePair(Cons.DATE, params[2]));
+        postParam.add(new BasicNameValuePair(Cons.USER_ID, params[3]));
+        postParam.add(new BasicNameValuePair(Cons.LINE, params[4]));
+        postParam.add(new BasicNameValuePair(Cons.DIR, params[5]));
+        postParam.add(new BasicNameValuePair(Cons.MODE, params[6]));
+        postParam.add(new BasicNameValuePair(Cons.LON, params[7]));
+        postParam.add(new BasicNameValuePair(Cons.LAT, params[8]));
 
         try {
             post.setEntity(new UrlEncodedFormEntity(postParam));

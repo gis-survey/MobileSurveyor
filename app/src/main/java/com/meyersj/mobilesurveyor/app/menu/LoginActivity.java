@@ -100,7 +100,8 @@ public class LoginActivity extends Activity {
                         startCollection(name);
                     }
                 }
-                else if (mode.equals("api")) {
+                // mode.equals("api")
+                else {
                     if(!authenticate) {
                         if(name.equals("")) {
                             Utils.shortToast(context, "Please enter a username");
@@ -110,12 +111,6 @@ public class LoginActivity extends Activity {
                         }
                     }
                     else {
-
-                        //JSONObject json = new JSONObject();
-                        //json.put(Cons.USER_NAME, name);
-                        //json.put(Cons.PASSWORD, pass);
-                        //String credentials = json.toJSONString();
-
                         String[] params = new String[3];
                         params[0] = Utils.getUrlApi(context) + Endpoints.VERIFY_USER;
                         params[1] = name;
@@ -124,18 +119,14 @@ public class LoginActivity extends Activity {
                         //close keypad
                         InputMethodManager inputManager = (InputMethodManager)
                                 getSystemService(Context.INPUT_METHOD_SERVICE);
-
                         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                                 InputMethodManager.HIDE_NOT_ALWAYS);
 
+                        // validate credentials
                         VerifyLoginTask task = new VerifyLoginTask();
                         task.execute(params);
-
                     }
                 }
-                // mode
-                else {}
-
             }
 
         });
@@ -209,13 +200,11 @@ public class LoginActivity extends Activity {
     }
 
     private void validateResponse(String jsonInput) {
-
         JSONParser parser = new JSONParser();
 
         try{
             Object obj = parser.parse(jsonInput);
             JSONObject results = (JSONObject) obj;
-
             String match = results.get(Cons.MATCH).toString();
             String user_id = results.get(Cons.USER_ID).toString();
 
@@ -269,7 +258,6 @@ public class LoginActivity extends Activity {
         }
     }
 
-
     // grab config.properties from assets
     // this will only happen the first time application is started and
     // then a flag will be set so it does not need to happen again
@@ -287,7 +275,4 @@ public class LoginActivity extends Activity {
             editor.commit();
         }
     }
-
-
-
 }

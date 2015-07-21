@@ -32,6 +32,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.util.Endpoints;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 
@@ -50,7 +51,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
     private StopLookup stopLookup;
-    private String mode;
     private TextView modeText;
     private TextView stopText;
     private TextView eolText;
@@ -65,7 +65,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         Bundle params = getIntent().getExtras();
 
         Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
-        String url = Utils.getUrlApi(context) + "/stopLookup";
+        String url = Utils.getUrlApi(context) + Endpoints.STOP_LOOKUP;
         Log.d(TAG, url);
 
         if( prop.containsKey(Cons.GPS_THRESHOLD)) {

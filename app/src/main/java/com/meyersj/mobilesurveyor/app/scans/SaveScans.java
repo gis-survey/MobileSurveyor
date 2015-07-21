@@ -37,18 +37,15 @@ public class SaveScans {
 
     private final String TAG = "SaveScans";
     private Float THRESHOLD = Float.valueOf(1000 * 20);
-
     private Context context;
     private CurrentLocation currentLoc;
     private ArrayList<Scan> scansBuffer;
-
     private String url;
     private String user_id;
     private String line;
     private String dir;
     private String mode;
     private HttpClient client;
-
 
     private class Scan {
         private Date date;
@@ -67,7 +64,6 @@ public class SaveScans {
         }
     }
 
-
     public SaveScans(Context context, Bundle params) {
         this.url = params.getString(Cons.URL);
         this.user_id = params.getString(Cons.USER_ID);
@@ -77,7 +73,6 @@ public class SaveScans {
         this.context = context;
         this.currentLoc = new CurrentLocation();
         this.scansBuffer = new ArrayList<Scan>();
-
 
         Properties prop;
         prop = Utils.getProperties(this.context, Cons.PROPERTIES);
@@ -93,7 +88,6 @@ public class SaveScans {
         HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
         HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
         httpParams.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-
     }
 
     public void setLocation(String lat, String lon, Float accuracy, String dateString) {
@@ -103,7 +97,6 @@ public class SaveScans {
     public void setMode(String mode) {
         this.mode = mode;
     }
-
 
     public String getMode() {
         return this.mode;
@@ -139,15 +132,17 @@ public class SaveScans {
         Date date = new Date();
         Log.d(TAG, rawResult.toString());
 
+        // lat-lon is empty so buffer data until gps location is updated
         if(currentLoc.getLat() == null || currentLoc.getLon() == null) {
             Log.d(TAG, "current loc null - add buffer");
             bufferScan(rawResult, date);
         }
+        // lat-lon is 0 so buffer data until gps location is updated
         else if(currentLoc.getLat().equals("0") || currentLoc.getLon().equals("0")) {
-            Log.d(TAG, "acurret loc 0 - add buffer");
             bufferScan(rawResult, date);
         }
-        //check time delta between date and currentLoc date
+        // check time delta between current timestamp and timestamp from last gps location
+        // if it exceeds THRESHOLD then buffer data until new location is recieved
         else if ((Utils.timeDifference(currentLoc.getDate(), date) <= THRESHOLD) &&
                 currentLoc.getLat() != null) {
             Log.d(TAG, "posting scan");
@@ -156,10 +151,6 @@ public class SaveScans {
         else {
             Log.d(TAG, "adding scan to buffer - other reasons");
             bufferScan(rawResult, date);
-            Log.d(TAG, currentLoc.getLat());
-            Log.d(TAG, currentLoc.getLon());
-            Log.d(TAG, currentLoc.getDate().toString());
-            Log.d(TAG, String.valueOf(Utils.timeDifference(currentLoc.getDate(), date)));
         }
     }
 
@@ -189,7 +180,6 @@ public class SaveScans {
 
     }
 
-
     protected String buildScanRow(Bundle bundle) {
         String row = "";
         row += bundle.getString(Cons.DATE) + ",";
@@ -203,21 +193,7 @@ public class SaveScans {
         return row;
     }
 
-
-
     protected String[] getScanParams(Bundle bundle) {
-        /*
-        JSONObject json = new JSONObject();
-        json.put(Cons.UUID, bundle.getString(Cons.UUID));
-        json.put(Cons.DATE, bundle.getString(Cons.DATE));
-        json.put(Cons.USER_ID, bundle.getString(Cons.USER_ID));
-        json.put(Cons.LINE, bundle.getString(Cons.LINE));
-        json.put(Cons.DIR, bundle.getString(Cons.DIR));
-        json.put(Cons.MODE, bundle.getString(Cons.MODE));
-        json.put(Cons.LON, bundle.getString(Cons.LON));
-        json.put(Cons.LAT, bundle.getString(Cons.LAT));
-        */
-
         String[] params = new String[9];
         params[0] = Utils.getUrlApi(context) + Endpoints.INSERT_SCAN;
         params[1] = bundle.getString(Cons.UUID);
@@ -228,7 +204,6 @@ public class SaveScans {
         params[6] = bundle.getString(Cons.MODE);
         params[7] = bundle.getString(Cons.LON);
         params[8] = bundle.getString(Cons.LAT);
-
         return params;
     }
 

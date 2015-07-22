@@ -27,8 +27,6 @@ cd MobileSurveyor
 2. open up Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
 3. build and run the app by pressing `Run` button in Android Studio using an emulator or android device
 
-
-
 ##### apk
 
 You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can install on a supported android device.
@@ -50,7 +48,7 @@ The app contains a default config file that can be found at `MobileSurveyor/app/
 
 ### Detailed Description
 
-[Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots/on_off)
+[Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots)
 
 This app was used from a survey that consisted of capturing the boarding and alighting locations of riders. TriMet currently has automatic passenger counters which record ons and offs per stop but not on-off pairs (a person's trip). The collected data will provide details about the frequency of trips between different station pairs. This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the **QR Code Scanner** method is used, while on MAX, Portland Streetcar and low ridership routes a **Map-Based** method is used.
 

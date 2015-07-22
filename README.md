@@ -16,6 +16,7 @@ You will need JDK and Android SDK installed. If you want to use an IDE you shoul
 export ANDROID_HOME=/path/to/Android/Sdk
 git clone https://github.com/TransitSurveyor/MobileSurveyor
 cd MobileSurveyor
+./gradlew clean
 ./gradlew assembleDebug
 ```
 You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can install on an android device.

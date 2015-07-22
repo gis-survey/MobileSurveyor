@@ -70,7 +70,5 @@ This method uses a map-based interface to input a passengers boarding and alight
 
 This application requires the [TransitSurveyor API](https://github.com/TransitSurveyor/API) be running and configured correctly. That API enables surveyor logins, data uploads and reference data queries. 
 
-This application will use a map created with the [Mapbox-Android-SDK](https://github.com/mapbox/mapbox-android-sdk). Offline tiles will be used to allow surveying even if a connection is lost, and to speed up tile loading. The tiles are created using [OpenStreetMap](http://www.openstreetmap.org/) data and styled with [Mapbox OSM Bright](https://github.com/mapbox/osm-bright).
-
 
 

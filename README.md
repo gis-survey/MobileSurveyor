@@ -12,6 +12,7 @@ This repo can be built into an Android app used for collecting on-off data from 
 You will need JDK and Android SDK installed. If you want to use an IDE you should download Android Studio. Read more about setting up [Android SDK and Android Studio](https://developer.android.com/sdk/index.html).
 
 ##### command line
+
 ```shell
 export ANDROID_HOME=/path/to/Android/Sdk
 git clone https://github.com/TransitSurveyor/MobileSurveyor
@@ -19,19 +20,22 @@ cd MobileSurveyor
 ./gradlew clean
 ./gradlew assembleDebug
 ```
-You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can install on an android device.
 
 ##### Android Studio
 
 1. clone this repo
-3. open up Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
-4. build and run the app by pressing `Run` button in Android Studio using an emulator or android device
+2. open up Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
+3. build and run the app by pressing `Run` button in Android Studio using an emulator or android device
 
-The app is preloaded with data from [TriMet](www.trimet.org) and contains a default config file to run locally and save output to your sdcard.
+
+
+##### apk
+
+You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can install on a supported android device.
 
 #####  Config File
 
-Config file can be found at `MobileSurveyor/app/src/main/assets/config.properties`
+The app contains a default config file that can be found at `MobileSurveyor/app/src/main/assets/config.properties`
 
 + **mode** this can be set to either *local* or *api*
     + *local* means that submitted on-off data is saved locally in a csv file and users cannot be authenticated

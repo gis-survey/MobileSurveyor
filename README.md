@@ -1,29 +1,32 @@
 MobileSurveyor
 ==============
 
-Copyright © 2015 Jeffrey Meyers
-
-
-This program is released under the "MIT License".
-
-
-Please see the file COPYING in this distribution for
-license terms.
+Copyright © 2015 Jeffrey Meyers. This program is released under the "MIT License". Please see the file COPYING in this distribution for license terms.
 
 ### High-level Description
 
-This app is an Android client used for surveying that runs in stand-alone mode to allow collection on-off data from passengers using public transit, or integrating with [ODK Collect](https://opendatakit.org/use/collect/) to provide a map-based interface to capture origin, destination, on and off stop and routes data as part of a longer Origin-Destination survey. ODK Collect allows you to launch custom external applications which return data back to ODK Collect as simple String/Float fields in the survey. This allows a map-based interface be used for the questions that involve location, while using the ODK toolkit to handle the bulk of the survey process.
+This repo can be built into an Android app used for collecting on-off data from passengers using public transit. In this repo you will find an `mobilesurveyor.apk` that you can copy onto an android device and install, if you do not want to build your own. You will not be able to change some config parameters without building yourself though.
 
-*see detailed description below*
+### Build
 
-### Building the App
+You will need JDK and Android SDK installed. If you want to use an IDE you should download Android Studio also. Read more about setting up [Android SDK and Android Studio](https://developer.android.com/sdk/index.html).
+
+##### command line
+```shell
+export ANDROID_HOME=/path/to/Android/Sdk
+git clone https://github.com/TransitSurveyor/MobileSurveyor
+cd MobileSurveyor
+./gradlew assembleDebug
+```
+You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can copy onto an android device and install.
+
+##### Android Studio
 
 1. clone this repo
-2. [setup Android SDK and Android Studio](https://developer.android.com/sdk/index.html)
-3. from Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
+3. open up Android Studio go to *File* -> *Import Project* and select `MobileSurveyor/build.gradle` from your cloned repo
 4. build and run the app by pressing `Run` button in Android Studio using an emulator or android device
 
-The app is preloaded with [TriMet](www.trimet.org) data and contains a default config file to run locally and save output to your sdcard.
+The app is preloaded with data from [TriMet](www.trimet.org) and contains a default config file to run locally and save output to your sdcard.
 
 #####  Config File
 
@@ -42,17 +45,9 @@ Config file can be found at `MobileSurveyor/app/src/main/assets/config.propertie
 
 ### Detailed Description
 
-This repo contains an Android application for use in TriMet's **2015 Orange Line Before Survey**. This study will be conducted using android tablets instead of a traditional paper survey instrument.
-
-It will be used for both the initial *On and Off Survey* and for the location-based questions for the long form *Intercept Survey*. Description of these surveys can be found below.
-
-This app runs in two modes. When launching directly from the app icon you should enter **On and Off Survey Mode** which will allow surveyors to login (this needs requires a backend database to be setup) and then select a route and direction to begin data collection. Entering **Intercept Survey Mode** happens indirectly through ODK Collect. ODK Collect is a seperate android app from the [Open Data Kit](https://opendatakit.org/) toolkit. ODK Collect is used with a custom form using a special *question* that contains the intent required to launch this android application. It then expects back a bundle of data which is stored into the survey and handled through the ODK tools. The long form Intercept Survey contains many general and demographic type questions that ODK tool kit handles very well. This application simply provides a customized interface for answering the location-based questions.
-
-### On and Off Survey Mode
-
 [Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots/on_off)
 
-This survey consists of capturing the boarding and alighting locations of riders. TriMet currently gets automatic passenger census data which counts ons and offs per stop but not individual on-off pairs. The collected data will provide details about the frequency of trips between different station pairs (on-off instead of only ons). This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the **QR Code Scanner** method is used, while on MAX, Portland Streetcar and low ridership routes a **Map-Based** method is used.
+This app was used from a survey that consisted of capturing the boarding and alighting locations of riders. TriMet currently has automatic passenger counters which record ons and offs per stop but not on-off pairs (a person's trip). The collected data will provide details about the frequency of trips between different station pairs. This survey is conducted using two different methods depending on type of vehicle and ridership levels. On most bus routes the **QR Code Scanner** method is used, while on MAX, Portland Streetcar and low ridership routes a **Map-Based** method is used.
 
 ##### QR Code Scanner
 
@@ -70,30 +65,6 @@ This method uses a map-based interface to input a passengers boarding and alight
 - A dropdown that shows two lists of each stop servered for that route and direction. The surveyor can then select the ON stop from the left list and the OFF stop from the right list.
 - Select the stop from the map.
 - Search for the stop based on stop name or stop ID.
-
-### Intercept Survey Mode
-
-[Screenshots](https://github.com/TransitSurveyor/MobileSurveyor/tree/master/screenshots/intercept)
-
-This mode provides an interface to collect data about a riders trip. The interface is seperated into 4 sections as described below. As you navigate through each section and fill out responses am underlying map is constructed.
-When complete this will include markers for origin, destination, boarding and alighting locations. As well as the current route and any additional routes selected in the transfers section.
-
-1. Origin
-    - geographic location where current trip started
-    - starting location type (work, school, doctors, gym, ...)
-    - mode used to access transit (walk, bike, dropped off, ...)
-
-2. Destination
-    - geographic location where current trip will end
-    - ending location type (work, school, doctors, gym, ...)
-    - egress mode from transit (walk, bike, picked up, ...)
-
-3. On and Off
-    - boarding stop for current vehicle
-    - alighting stop for current vehicle
-
-4. Transfers
-    - sequence of each transit route used
 
 ### Details
 

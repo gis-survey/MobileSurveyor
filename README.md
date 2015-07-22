@@ -5,11 +5,11 @@ Copyright © 2015 Jeffrey Meyers. This program is released under the "MIT Licens
 
 ### High-level Description
 
-This repo can be built into an Android app used for collecting on-off data from passengers using public transit. In this repo you will find an `mobilesurveyor.apk` that you can copy onto an android device and install, if you do not want to build your own. You will not be able to change some config parameters without building yourself though.
+This repo can be built into an Android app used for collecting on-off data from passengers using public transit. In this repo you will find `mobilesurveyor.apk` that you can copy onto an android device and install. If you do not build it yourself you will not be able to change some config parameters though.
 
 ### Build
 
-You will need JDK and Android SDK installed. If you want to use an IDE you should download Android Studio also. Read more about setting up [Android SDK and Android Studio](https://developer.android.com/sdk/index.html).
+You will need JDK and Android SDK installed. If you want to use an IDE you should download Android Studio. Read more about setting up [Android SDK and Android Studio](https://developer.android.com/sdk/index.html).
 
 ##### command line
 ```shell
@@ -18,7 +18,7 @@ git clone https://github.com/TransitSurveyor/MobileSurveyor
 cd MobileSurveyor
 ./gradlew assembleDebug
 ```
-You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can copy onto an android device and install.
+You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` that you can install on an android device.
 
 ##### Android Studio
 

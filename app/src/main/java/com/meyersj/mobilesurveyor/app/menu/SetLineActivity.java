@@ -262,7 +262,7 @@ public class SetLineActivity extends Activity {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
-                //Log.d(TAG, line);
+                Log.d(TAG, line);
                 if(parts.length == 2) {
                     map.put(parts[0], parts[1]);
                 }

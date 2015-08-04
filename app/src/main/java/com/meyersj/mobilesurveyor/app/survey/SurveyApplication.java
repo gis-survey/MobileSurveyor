@@ -7,15 +7,15 @@
 
 package com.meyersj.mobilesurveyor.app.survey;
 
-import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
+//import org.acra.ACRA;
+//import org.acra.annotation.ReportsCrashes;
 
 import android.app.Application;
 
-@ReportsCrashes(
-    formKey = "",
-    formUri = "http://api.meyersj.com/crash"
-)
+//@ReportsCrashes(
+//    formKey = "",
+//    formUri = "http://url"
+//)
 
 public class SurveyApplication extends Application {
 
@@ -24,5 +24,4 @@ public class SurveyApplication extends Application {
         super.onCreate();
         //ACRA.init(this);
     }
-
 }

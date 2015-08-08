@@ -38,14 +38,14 @@
         <Button
             android:id="@+id/on_mode_button"
             style="@style/ScannerModeButton"
-            android:background="@drawable/active_mode_button"
+            android:background="@drawable/button_mode_active"
             android:text="ON"
             android:layout_marginRight="8dp">
         </Button>
         <Button
             android:id="@+id/off_mode_button"
             style="@style/ScannerModeButton"
-            android:background="@drawable/inactive_mode_button"
+            android:background="@drawable/button_mode_inactive"
             android:text="OFF"
             android:layout_marginLeft="8dp">
         </Button>

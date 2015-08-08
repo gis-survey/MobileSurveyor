@@ -2,7 +2,6 @@ package com.meyersj.mobilesurveyor.app.stops;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
@@ -33,9 +32,9 @@ public class SelectedStops {
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
-        stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        onIcon = context.getResources().getDrawable(R.drawable.icon_green_bus);
+        offIcon = context.getResources().getDrawable(R.drawable.icon_red_bus);
+        stopIcon = context.getResources().getDrawable(R.drawable.icon_bus_stop);
     }
 
     public void setOnAdapter(StopSequenceAdapter onAdapter) {

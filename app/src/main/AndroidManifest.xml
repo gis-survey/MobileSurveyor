@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
 Copyright © 2015 Jeffrey Meyers
 
@@ -7,8 +6,6 @@ This program is released under the "MIT License".
 Please see the file COPYING in this distribution for
 license terms.
 -->
-
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.meyersj.mobilesurveyor.app">
 
@@ -25,19 +22,7 @@ license terms.
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme"
-        android:label="Transit Surveyor"
-        android:name=".survey.SurveyApplication">
-
-        <!--activity
-            android:name=".menu.LoginActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:screenOrientation="portrait">
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.meyersj.mobilesurveyor.app.LOGIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-->
+        android:label="TransitSurveyor" >
 
         <activity
             android:name=".menu.StartingActivity"
@@ -83,41 +68,6 @@ license terms.
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
-        </activity>
-
-
-        <activity
-            android:name=".survey.SurveyActivity"
-            android:hardwareAccelerated="false"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/Theme.AppCompat"
-            android:screenOrientation="portrait">
-
-            <intent-filter >
-                <!--action android:name="android.intent.action.MAIN" /-->
-                <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="com.meyersj.mobilesurveyor.app.SURVEY" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-            <intent-filter >
-                <action android:name="com.meyersj.mobilesurveyor.app.ODK_SURVEY" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name=".locations.PickLocationActivity"
-            android:hardwareAccelerated="false"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/Theme.AppCompat"
-            android:screenOrientation="portrait">
-            <intent-filter >
-
-                <action android:name="com.meyersj.mobilesurveyor.app.PICKLOCATION" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <service

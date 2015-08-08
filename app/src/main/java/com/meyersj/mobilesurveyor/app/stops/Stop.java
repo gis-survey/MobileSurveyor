@@ -26,7 +26,7 @@ public class Stop extends Marker implements Comparable<Stop> {
 
     @Override
     protected InfoWindow createTooltip(MapView mv) {
-        return new InfoWindow(R.layout.title_tooltip, mv);
+        return new InfoWindow(R.layout.stop_tooltip, mv);
     }
 
 

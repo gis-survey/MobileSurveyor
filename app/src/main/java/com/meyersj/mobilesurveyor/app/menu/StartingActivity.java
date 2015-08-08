@@ -54,7 +54,7 @@ public class StartingActivity extends Activity {
         readIDs();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_line);
+        setContentView(R.layout.activity_starting);
 
         line = (Spinner)findViewById(R.id.line_spinner);
         dir = (Spinner)findViewById(R.id.dir_spinner);

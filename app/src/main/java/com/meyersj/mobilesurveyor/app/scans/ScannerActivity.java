@@ -12,18 +12,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -40,24 +33,15 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     private String TAG = "ScannerActivity";
     private static final String LOCATION_BROADCAST = "com.meyersj.mobilesurveyor.LocationReceiver";
-    //Number of seconds before gps reading is too old
-    private Float THRESHOLD = Float.valueOf(1000 * 20);
+    private Float THRESHOLD = Float.valueOf(1000 * 20); // seconds before gps is stale
 
     private ZXingScannerView mScannerView;
-    //private LinearLayout btnLayout;
-
-    //private Button onBtn;
-    //private Button offBtn;
-
 
     private Context context;
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
     private StopLookup stopLookup;
-
     private ModeSelector mode;
-
-    //private TextView modeText;
     private TextView stopText;
     private TextView eolText;
     private Date recentLoc;
@@ -107,7 +91,6 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 String date = intent.getStringExtra("Date");
                 recentLoc = Utils.parseDate(date);
                 Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
-
                 //Utils.shortToast(ScannerActivity.this.context, "GPS updated");
                 saveScans.setLocation(lat, lon, accuracy, date);
                 stopLookup.findStop(lat, lon);
@@ -133,32 +116,21 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result rawResult) {
-        // make a beep when scan is successful
-
-        final ToneGenerator tg_on = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
-        //tg_on.startTone(ToneGenerator.TONE_PROP_BEEP);
-
-        final ToneGenerator tg_off = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
-        //tg_off.startTone(ToneGenerator.TONE_PROP_BEEP2);
-
         String message = "";
-
         if(mode.getMode().equals(Cons.ON)) {
             message = "ON - Scan successful";
+            final ToneGenerator tg_on = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
             tg_on.startTone(ToneGenerator.TONE_PROP_BEEP2);
         }
         else if(mode.getMode().equals(Cons.OFF)) {
             message = "OFF - Scan successful";
+            final ToneGenerator tg_off = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
             tg_off.startTone(ToneGenerator.TONE_PROP_BEEP);
         }
-
         Utils.shortToastUpper(getApplicationContext(), message);
-
         Log.d(TAG, rawResult.getText());
         Log.d(TAG, rawResult.getBarcodeFormat().toString());
-
         saveScans.save(rawResult, mode.getMode());
-
         // pause before restarting camera to prevent multiple scans at once
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {

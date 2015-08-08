@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:src="@drawable/clear_text"
+                android:src="@drawable/icon_grey_cross"
                 android:padding="5dp"
                 android:background="#00FFFFFF" />
 

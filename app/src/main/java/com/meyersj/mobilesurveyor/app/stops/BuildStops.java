@@ -49,7 +49,7 @@ public class BuildStops {
     }
 
     private void parseGeoJSON(FeatureCollection parsed) {
-        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        Drawable circleIcon = context.getResources().getDrawable(R.drawable.icon_bus_stop);
         try {
             for (Feature f : parsed.getFeatures()) {
                 if (f.getGeometry() instanceof Point) {

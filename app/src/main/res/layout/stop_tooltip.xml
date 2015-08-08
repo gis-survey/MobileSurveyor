@@ -45,8 +45,5 @@
                 android:visibility="gone"/>
     </LinearLayout>
 
-    <!--com.mapbox.mapboxsdk.views.TipView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"/-->
 
 </LinearLayout>

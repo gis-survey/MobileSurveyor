@@ -1,9 +1,7 @@
 package com.meyersj.mobilesurveyor.app.menu;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SetLineActivity extends Activity {
+public class StartingActivity extends Activity {
 
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.mobilesurveyor.app.SCANNER";
@@ -40,7 +38,8 @@ public class SetLineActivity extends Activity {
     private Spinner line, dir;
     private String line_code;
     private String dir_code;
-    private String user_id;
+    //private String user_id;
+    private UserName user;
     private Boolean offMode = false;
     private String url;
     private Button record;
@@ -61,10 +60,14 @@ public class SetLineActivity extends Activity {
         dir = (Spinner)findViewById(R.id.dir_spinner);
         line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
         record = (Button) findViewById(R.id.record);
-        logout = (Button) findViewById(R.id.logout);
+
+        //logout = (Button) findViewById(R.id.logout);
+
         modeSwitch = (Switch) findViewById(R.id.offSwitch);
 
-        getExtras();
+        user = new UserName(this, R.id.username);
+
+        //getExtras();
 
         line.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -92,8 +95,8 @@ public class SetLineActivity extends Activity {
                 }
 
                 Log.d(TAG, "line_code: " + line_code);
-                int resId = SetLineActivity.this.getResources().getIdentifier(modified_line, "array", SetLineActivity.this.getPackageName());
-                dir.setAdapter(ArrayAdapter.createFromResource(SetLineActivity.this, resId, R.layout.spinner));
+                int resId = StartingActivity.this.getResources().getIdentifier(modified_line, "array", StartingActivity.this.getPackageName());
+                dir.setAdapter(ArrayAdapter.createFromResource(StartingActivity.this, resId, R.layout.spinner));
 
             }
 
@@ -140,15 +143,16 @@ public class SetLineActivity extends Activity {
                     Log.d(TAG, "start barcode scanner");
                 }
 
-                intent.putExtra(Cons.USER_ID, user_id);
+                intent.putExtra(Cons.USER_ID, user.getUser());
                 intent.putExtra(Cons.OFF_MODE, offMode);
-                Log.d(TAG, "user: " + user_id);
+                Log.d(TAG, "user: " + user.getUser());
                 intent.putExtra(Cons.LINE, line_code);
                 intent.putExtra(Cons.DIR, dir_code);
                 startActivity(intent);
             }
         });
 
+        /*
         logout.setOnClickListener(new Button.OnClickListener() {
             @Override
 
@@ -174,6 +178,7 @@ public class SetLineActivity extends Activity {
                 select.show();
             }
         });
+        */
     }
 
     public void onSwitchClicked(View view) {
@@ -235,21 +240,20 @@ public class SetLineActivity extends Activity {
     }
 
     protected String stripSelection(String in) {
-        String newSelec = in.replaceAll("[^A-Za-z]", "");
-        return newSelec;
+        return in.replaceAll("[^A-Za-z]", "");
     }
 
 
-    protected void getExtras() {
-        Bundle extras = getIntent().getExtras();
+    //protected void getExtras() {
+    //    Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
-            if(extras.containsKey(Cons.USER_ID)) {
-                user_id = extras.getString(Cons.USER_ID);
-                Log.d(TAG, extras.getString(Cons.USER_ID));
-            }
-        }
-    }
+    //    if (extras != null) {
+    //        if(extras.containsKey(Cons.USER_ID)) {
+                //user_id = extras.getString(Cons.USER_ID);
+               // Log.d(TAG, extras.getString(Cons.USER_ID));
+    //        }
+    //    }
+    //}
 
     //read Line IDs and route description from text file
     //used to build spinner for selecting route and direction

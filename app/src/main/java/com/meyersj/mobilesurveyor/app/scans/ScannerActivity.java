@@ -44,14 +44,20 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     private Float THRESHOLD = Float.valueOf(1000 * 20);
 
     private ZXingScannerView mScannerView;
-    private LinearLayout btnLayout;
-    private Button onBtn;
-    private Button offBtn;
+    //private LinearLayout btnLayout;
+
+    //private Button onBtn;
+    //private Button offBtn;
+
+
     private Context context;
     private BroadcastReceiver receiver;
     private SaveScans saveScans;
     private StopLookup stopLookup;
-    private TextView modeText;
+
+    private ModeSelector mode;
+
+    //private TextView modeText;
     private TextView stopText;
     private TextView eolText;
     private Date recentLoc;
@@ -61,9 +67,10 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
     public void onCreate(Bundle state) {
         super.onCreate(state);
         context = getApplicationContext();
-        mScannerView = new ZXingScannerView(this);
+        setContentView(R.layout.activity_scanner);
+        setupTexts();
+        mScannerView = (ZXingScannerView) findViewById(R.id.scanner);
         Bundle params = getIntent().getExtras();
-
         Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
         String url = Utils.getUrlApi(context) + Endpoints.STOP_LOOKUP;
         Log.d(TAG, url);
@@ -72,32 +79,13 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
             THRESHOLD = Float.valueOf(prop.getProperty(Cons.GPS_THRESHOLD));
         }
 
-
+        Boolean isOffMode = (Boolean) params.get(Cons.OFF_MODE);
         saveScans = new SaveScans(getApplicationContext(), params);
-        setupStopTextLayout();
-
-        //display on and off buttons only if 'back of bus' mode is not selected
-        if (params.containsKey(Cons.OFF_MODE) &&
-                params.get(Cons.OFF_MODE).toString().equals("false") ){
-            setupButtonsLayout();
-            setupButtonListeners();
-            saveScans.setMode(Cons.ON);
-            params.putString(Cons.MODE, Cons.ON);
-        }
-        else {
-            params.putString(Cons.MODE, Cons.OFF);
-            saveScans.setMode(Cons.OFF);
-        }
-
-        stopLookup = new StopLookup(
-                getApplicationContext(), stopText, eolText, url,
+        mode = new ModeSelector(this, R.id.on_mode_button, R.id.off_mode_button, isOffMode);
+        stopLookup = new StopLookup(context, stopText, eolText, url,
                 params.getString(Cons.LINE), params.getString(Cons.DIR));
-
         setFormats();
-        textDefault();
-
         Log.d(TAG, params.getString(Cons.USER_ID));
-        setContentView(mScannerView); // Set the scanner view as the content view
     }
 
     @Override
@@ -153,13 +141,13 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         final ToneGenerator tg_off = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
         //tg_off.startTone(ToneGenerator.TONE_PROP_BEEP2);
 
-
         String message = "";
-        if(saveScans.getMode().equals(Cons.ON)) {
+
+        if(mode.getMode().equals(Cons.ON)) {
             message = "ON - Scan successful";
             tg_on.startTone(ToneGenerator.TONE_PROP_BEEP2);
         }
-        else if(saveScans.getMode().equals(Cons.OFF)) {
+        else if(mode.getMode().equals(Cons.OFF)) {
             message = "OFF - Scan successful";
             tg_off.startTone(ToneGenerator.TONE_PROP_BEEP);
         }
@@ -169,7 +157,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         Log.d(TAG, rawResult.getText());
         Log.d(TAG, rawResult.getBarcodeFormat().toString());
 
-        saveScans.save(rawResult);
+        saveScans.save(rawResult, mode.getMode());
 
         // pause before restarting camera to prevent multiple scans at once
         Handler mHandler = new Handler();
@@ -180,130 +168,11 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         }, 500);
     }
 
-    private void buildLayoutParams(TextView current, TextView above) {
-        RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        rl.setMargins(8,3,3,3);
-        if(above != null) {
-            rl.addRule(RelativeLayout.BELOW, above.getId());
-        }
-        current.setLayoutParams(rl);
-    }
-
-    private void setupStopTextLayout() {
-        modeText = new TextView(context, null);
-        modeText.setId(1);
-        modeText.setTextAppearance(context, R.style.ModeText);
-        //modeText.setText("Current mode: " + saveScans.getMode());
-
-        stopText = new TextView(context, null);
-        stopText.setId(2);
-        stopText.setTextAppearance(context, R.style.StopsText);
-
-        eolText = new TextView(context, null);
-        eolText.setId(3);
-        eolText.setTextAppearance(context, R.style.EOLText);
-        //eolText.setText("");
-
-        RelativeLayout upperLayout = new RelativeLayout(context);
-        upperLayout.setGravity(Gravity.TOP);
-
-        buildLayoutParams(modeText, null);
-        buildLayoutParams(stopText, modeText);
-        buildLayoutParams(eolText, stopText);
-
-        /*
-        RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        rl.setMargins(3, 3, 3, 3);
-        stopText.setLayoutParams(rl);
-        modeText.setLayoutParams(rl);
-
-        rl = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        rl.setMargins(3, 3, 3, 3);
-        rl.addRule(RelativeLayout.BELOW, stopText.getId());
-        eolText.setLayoutParams(rl);
-        */
-
-
-        upperLayout.addView(modeText);
-        upperLayout.addView(stopText);
-        upperLayout.addView(eolText);
-        mScannerView.addView(upperLayout);
-    }
-
-    private void textDefault() {
-        modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
+    private void setupTexts() {
+        stopText = (TextView) findViewById(R.id.stop_text);
+        eolText = (TextView) findViewById(R.id.eol_text);
         stopText.setText(Cons.NEAR_STOP + "searching...");
         eolText.setText("");
-    }
-
-    // create two side by side buttons
-    // 'ON' and 'OFF' modes
-    private void setupButtonsLayout() {
-        btnLayout = new LinearLayout(context);
-
-        onBtn = new Button(context, null, R.style.ButtonText);
-        offBtn = new Button(context, null, R.style.ButtonText);
-
-        onBtn.setText("ON MODE");
-        offBtn.setText("OFF");
-
-        onBtn.setHeight(250);
-        offBtn.setHeight(250);
-
-        onBtn.setTextSize(20);
-        offBtn.setTextSize(20);
-
-        onBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
-        offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-
-        onBtn.setGravity(Gravity.CENTER);
-        offBtn.setGravity(Gravity.CENTER);
-
-        onBtn.setShadowLayer(2, 1, 1, Color.BLACK);
-        offBtn.setShadowLayer(2, 1, 1, Color.BLACK);
-
-        LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(
-                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-                android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1.5f);
-        ll.setMargins(3,3,3,3);
-
-        btnLayout.setGravity(Gravity.BOTTOM);
-        btnLayout.addView(onBtn, ll);
-        btnLayout.addView(offBtn, ll);
-
-        mScannerView.addView(btnLayout);
-    }
-
-    private void setupButtonListeners() {
-        onBtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
-                offBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                saveScans.setMode(Cons.ON);
-                onBtn.setText("ON MODE");
-                offBtn.setText("OFF");
-                modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
-            }
-        });
-
-        offBtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                offBtn.setBackground(getResources().getDrawable(R.drawable.green_button));
-                onBtn.setBackground(getResources().getDrawable(R.drawable.red_button));
-                saveScans.setMode(Cons.OFF);
-                offBtn.setText("OFF MODE");
-                onBtn.setText("ON");
-                modeText.setText(Cons.CUR_MODE + saveScans.getMode().toUpperCase());
-            }
-        });
     }
 
     private void setFormats() {

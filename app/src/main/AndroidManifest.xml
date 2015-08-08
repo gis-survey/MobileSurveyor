@@ -28,7 +28,7 @@ license terms.
         android:label="Transit Surveyor"
         android:name=".survey.SurveyApplication">
 
-        <activity
+        <!--activity
             android:name=".menu.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait">
@@ -37,22 +37,22 @@ license terms.
                 <action android:name="com.meyersj.mobilesurveyor.app.LOGIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity-->
+
+        <activity
+            android:name=".menu.StartingActivity"
+            android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.meyersj.mobilesurveyor.app.SETLINE" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".menu.SettingsActivity">
             <intent-filter >
                 <action android:name="com.meyersj.mobilesurveyor.app.SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-            android:name=".menu.SetLineActivity"
-            android:screenOrientation="portrait">
-            <intent-filter >
-                <action android:name="com.meyersj.mobilesurveyor.app.SETLINE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

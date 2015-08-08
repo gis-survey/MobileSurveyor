@@ -44,7 +44,7 @@ public class SaveScans {
     private String user_id;
     private String line;
     private String dir;
-    private String mode;
+    //private String mode;
     private HttpClient client;
 
     private class Scan {
@@ -69,7 +69,7 @@ public class SaveScans {
         this.user_id = params.getString(Cons.USER_ID);
         this.line = params.getString(Cons.LINE);
         this.dir = params.getString(Cons.DIR);
-        this.mode = params.getString(Cons.MODE);
+        //this.mode = params.getString(Cons.MODE);
         this.context = context;
         this.currentLoc = new CurrentLocation();
         this.scansBuffer = new ArrayList<Scan>();
@@ -94,16 +94,16 @@ public class SaveScans {
         currentLoc.setLocation(lat, lon, accuracy, dateString);
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
+    //public void setMode(String mode) {
+    //    this.mode = mode;
+    //}
 
-    public String getMode() {
-        return this.mode;
-    }
+    //public String getMode() {
+    //    return this.mode;
+    //}
 
     //don't add lat and lon because we might be waiting for a more recent location
-    private Bundle buildParams(String uuid, String date) {
+    private Bundle buildParams(String uuid, String date, String mode) {
         Bundle params = new Bundle();
         params.putString(Cons.URL, url);
         params.putString(Cons.USER_ID, user_id);
@@ -117,40 +117,40 @@ public class SaveScans {
     }
 
     //add scan to scans array list without location params
-    private void bufferScan(Result rawResult, Date date) {
-        Bundle params = buildParams(rawResult.toString(), Utils.dateFormat.format(date));
+    private void bufferScan(Result rawResult, Date date, String mode) {
+        Bundle params = buildParams(rawResult.toString(), Utils.dateFormat.format(date), mode);
         Scan scan = new Scan(date, params);
         scansBuffer.add(scan);
     }
 
-    private void postScan(Result rawResult, Date date) {
-        Bundle params = buildParams(rawResult.toString(), Utils.dateFormat.format(date));
+    private void postScan(Result rawResult, Date date, String mode) {
+        Bundle params = buildParams(rawResult.toString(), Utils.dateFormat.format(date), mode);
         post(params);
     }
 
-    public void save(Result rawResult) {
+    public void save(Result rawResult, String mode) {
         Date date = new Date();
         Log.d(TAG, rawResult.toString());
 
         // lat-lon is empty so buffer data until gps location is updated
         if(currentLoc.getLat() == null || currentLoc.getLon() == null) {
             Log.d(TAG, "current loc null - add buffer");
-            bufferScan(rawResult, date);
+            bufferScan(rawResult, date, mode);
         }
         // lat-lon is 0 so buffer data until gps location is updated
         else if(currentLoc.getLat().equals("0") || currentLoc.getLon().equals("0")) {
-            bufferScan(rawResult, date);
+            bufferScan(rawResult, date, mode);
         }
         // check time delta between current timestamp and timestamp from last gps location
         // if it exceeds THRESHOLD then buffer data until new location is recieved
         else if ((Utils.timeDifference(currentLoc.getDate(), date) <= THRESHOLD) &&
                 currentLoc.getLat() != null) {
             Log.d(TAG, "posting scan");
-            postScan(rawResult, date);
+            postScan(rawResult, date, mode);
         }
         else {
             Log.d(TAG, "adding scan to buffer - other reasons");
-            bufferScan(rawResult, date);
+            bufferScan(rawResult, date, mode);
         }
     }
 

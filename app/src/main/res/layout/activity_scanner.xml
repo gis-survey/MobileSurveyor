@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.dm7.barcodescanner.zxing.ZXingScannerView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scanner">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--TextView
+            android:id="@+id/mode_text"
+            style="@style/ScannerText"
+            android:text="MODE"
+            android:layout_marginLeft="12dp"
+            android:textSize="70dp" /-->
+
+        <TextView
+            android:id="@+id/stop_text"
+            style="@style/ScannerText"
+            android:text="STOP" />
+
+        <TextView
+            android:id="@+id/eol_text"
+            style="@style/ScannerText"
+            android:text="EOL" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mode_buttons"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+        android:visibility="visible"
+        android:layout_margin="16dp" >
+        <Button
+            android:id="@+id/on_mode_button"
+            style="@style/ScannerModeButton"
+            android:background="@drawable/active_mode_button"
+            android:text="ON"
+            android:layout_marginRight="8dp">
+        </Button>
+        <Button
+            android:id="@+id/off_mode_button"
+            style="@style/ScannerModeButton"
+            android:background="@drawable/inactive_mode_button"
+            android:text="OFF"
+            android:layout_marginLeft="8dp">
+        </Button>
+    </LinearLayout>
+
+</me.dm7.barcodescanner.zxing.ZXingScannerView>

@@ -53,26 +53,25 @@
         <item name="android:padding">5dp</item>
     </style>
 
-    <style name="ModeText">
+
+    <style name="ScannerText">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/shape_rect_grey_fade_round_none_nopress</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">70dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
         <item name="android:padding">5dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">40dp</item>
     </style>
 
-    <style name="EOLText">
-        <item name="android:layout_width">fill_parent</item>
+    <style name="ScannerModeButton">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/shape_rect_grey_fade_round_none_nopress</item>
-        <item name="android:textColor">@color/yellow</item>
-        <item name="android:textSize">25dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">60dp</item>
+        <item name="android:textSize">40dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:padding">5dp</item>
     </style>
 
     <style name="StopsText">
@@ -85,13 +84,6 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">5dp</item>
     </style>
-
-    <style name="StopText">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16dp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
 
 
 </resources>

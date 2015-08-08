@@ -84,6 +84,12 @@ public class LoginActivity extends Activity {
 
         prop = Utils.getProperties(getApplicationContext(), Cons.PROPERTIES);
 
+        String  mode = prop.getProperty("mode", "local");
+        Boolean authenticate = Boolean.valueOf(prop.getProperty("authenticate", "false"));
+        if (mode.equals("local") || !authenticate) {
+            password.setVisibility(EditText.GONE);
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String name = username.getText().toString();

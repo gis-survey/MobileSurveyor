@@ -37,15 +37,15 @@
         android:layout_margin="16dp" >
         <Button
             android:id="@+id/on_mode_button"
-            style="@style/ScannerModeButton"
-            android:background="@drawable/button_mode_active"
+            style="@style/LargeButton"
+            android:background="@drawable/shape_green_round"
             android:text="ON"
             android:layout_marginRight="8dp">
         </Button>
         <Button
             android:id="@+id/off_mode_button"
-            style="@style/ScannerModeButton"
-            android:background="@drawable/button_mode_inactive"
+            style="@style/LargeButton"
+            android:background="@drawable/shape_grey_round"
             android:text="OFF"
             android:layout_marginLeft="8dp">
         </Button>

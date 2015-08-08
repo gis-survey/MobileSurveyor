@@ -2,13 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-    </style>
 
-    <!--style name="StopLayout">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style-->
+
+    </style>
 
 
     <style name="ButtonText">
@@ -34,14 +30,6 @@
         <item name="android:padding">6dp</item>
     </style>
 
-    <!--style name="SeqListHeader.StopText">
-        <item name="android:shadowColor">@color/yellow</item>
-        <item name="android:shadowRadius">5</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">0</item>
-    </style-->
-
-
     <style name="SeqListHeader">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -64,7 +52,7 @@
         <item name="android:textSize">40dp</item>
     </style>
 
-    <style name="ScannerModeButton">
+    <style name="LargeButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
@@ -74,16 +62,6 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <!--style name="StopsText">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/shape_rect_grey_fade_round_none_nopress</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">25dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
-        <item name="android:padding">5dp</item>
-    </style-->
 
 
 </resources>

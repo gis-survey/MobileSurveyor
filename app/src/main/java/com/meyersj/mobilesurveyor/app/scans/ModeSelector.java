@@ -38,8 +38,8 @@ public class ModeSelector {
            @Override
            public void onClick(View view) {
                mode = Cons.ON;
-               onButton.setBackground(resources.getDrawable(R.drawable.button_mode_active));
-               offButton.setBackground(resources.getDrawable(R.drawable.button_mode_inactive));
+               onButton.setBackground(resources.getDrawable(R.drawable.shape_green_round));
+               offButton.setBackground(resources.getDrawable(R.drawable.shape_grey_round));
            }
        });
 
@@ -47,8 +47,8 @@ public class ModeSelector {
             @Override
             public void onClick(View view) {
                 mode = Cons.OFF;
-                offButton.setBackground(resources.getDrawable(R.drawable.button_mode_active));
-                onButton.setBackground(resources.getDrawable(R.drawable.button_mode_inactive));
+                offButton.setBackground(resources.getDrawable(R.drawable.shape_green_round));
+                onButton.setBackground(resources.getDrawable(R.drawable.shape_grey_round));
             }
         });
 

@@ -14,6 +14,7 @@ public class UserName {
 
     public UserName (Activity activity, int id) {
         usernameEdit = (EditText) activity.findViewById(id);
+        usernameEdit.clearFocus();
     }
 
     public String getUser() {

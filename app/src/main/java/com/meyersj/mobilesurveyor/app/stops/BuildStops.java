@@ -53,8 +53,7 @@ public class BuildStops {
         try {
             for (Feature f : parsed.getFeatures()) {
                 if (f.getGeometry() instanceof Point) {
-                    JSONArray coordinates = null;
-                    coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
+                    JSONArray coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
                     double lon = (Double) coordinates.get(0);
                     double lat = (Double) coordinates.get(1);
                     bboxBuilder.checkPoint(lon, lat);

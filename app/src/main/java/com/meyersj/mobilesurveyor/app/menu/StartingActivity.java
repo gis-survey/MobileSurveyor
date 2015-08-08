@@ -52,22 +52,14 @@ public class StartingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         context = getApplicationContext();
         readIDs();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
-
         line = (Spinner)findViewById(R.id.line_spinner);
         dir = (Spinner)findViewById(R.id.dir_spinner);
         line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
         record = (Button) findViewById(R.id.record);
-
-        //logout = (Button) findViewById(R.id.logout);
-
         modeSwitch = (Switch) findViewById(R.id.offSwitch);
-
         user = new UserName(this, R.id.username);
-
-        //getExtras();
 
         line.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -151,34 +143,6 @@ public class StartingActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        /*
-        logout.setOnClickListener(new Button.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(SetLineActivity.this);
-                builder.setMessage("Are you sure you want to logout?")
-                        //.setMessage(message)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //do nothing
-                            }
-                        });
-
-                AlertDialog select = builder.create();
-                select.show();
-            }
-        });
-        */
     }
 
     public void onSwitchClicked(View view) {
@@ -230,30 +194,15 @@ public class StartingActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
-            logout.performClick();
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             return true;
         }
-
         return super.onKeyDown(keyCode, event);
     }
 
     protected String stripSelection(String in) {
         return in.replaceAll("[^A-Za-z]", "");
     }
-
-
-    //protected void getExtras() {
-    //    Bundle extras = getIntent().getExtras();
-
-    //    if (extras != null) {
-    //        if(extras.containsKey(Cons.USER_ID)) {
-                //user_id = extras.getString(Cons.USER_ID);
-               // Log.d(TAG, extras.getString(Cons.USER_ID));
-    //        }
-    //    }
-    //}
 
     //read Line IDs and route description from text file
     //used to build spinner for selecting route and direction

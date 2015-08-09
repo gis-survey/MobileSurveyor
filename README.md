@@ -37,18 +37,14 @@ The app contains a default config file that can be found at `MobileSurveyor/app/
 
 + **mode** this can be set to either *local* or *api*
     + *local* means that submitted on-off data is saved locally in a csv file and users cannot be authenticated
-    + *api* means that a [server API](https://github.com/TransitSurveyor/API) is running at the endpoint specified by **base_url**
-+ **authenticate** (should only be changed if **mode**=*api*)
-    + *true* users must provide username and password that will be authenticated against the [server API](https://github.com/TransitSurveyor/API)
-    + *false* users enter a temporary username
+    + *api* means that a [server API](https://github.com/TransitSurveyor/API) is running at the endpoint specified by 
 + **base_url** endpoint that is running the [server API](https://github.com/TransitSurveyor/API) [configurable inside app]
-+ **solr_url** endpoint that is running a [SOLR geocoder](https://github.com/OpenTransitTools/geocoder), this is only required for searching for origin and destination addresses in long survey [configurable inside app]
 + **map_rtes** this is a comma-seperated list of route IDs for routes which should use the map-based on-off collection method instead of the scanning method [configurable inside app]
 + **gps_threshold** time in ms until data should be thrown out because a gps signal was not found quick enough when using on-off scanning method
 
 #####  Generate input data
 
-This app requires some input data to function. This includes the geometry of the specific routes, along with data about each stop that is served on a route. In directory `MobileSurveyor/input_data` you will find a python script that will construct this data for you from shapefiles. In the `data` directory you will find two shapefiles. If you create your own following that format you can run `build.py` which will populate `output` directory with some **geojson** files that need to be copied into `MobileSurveyor/app/src/main/assets/geojson` in order to be built with the app.
+This app requires some input data to function. This includes the geometry of the specific routes, along with data about each stop that is served on a route. In directory `MobileSurveyor/data` you will find a python script that will construct this data for you from shapefiles. In the `source_data` directory you will find two shapefiles. If you create your own following that format you can run `build.py` which will populate `output` directory with some **geojson** files that need to be copied into `MobileSurveyor/app/src/main/assets/geojson` in order to be built with the app.
 
 You can generate your own geojson files directly if you follow the naming convention and format of the files produced by `build.py`.
 

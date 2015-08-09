@@ -34,3 +34,29 @@ dependencies {
         transitive=true
     }
 }
+
+task copyProperties(type: Copy) {
+    from '../config.properties'
+    into 'src/main/assets'
+}
+
+task copyGeojson(type: Copy) {
+    from '../data/output'
+    into 'src/main/assets/geojson'
+}
+
+assemble.dependsOn copyProperties
+assemble.mustRunAfter copyProperties
+assembleDebug.dependsOn copyProperties
+assembleDebug.mustRunAfter copyProperties
+assembleRelease.dependsOn copyProperties
+assembleRelease.mustRunAfter copyProperties
+
+assemble.dependsOn copyGeojson
+assemble.mustRunAfter copyGeojson
+assembleDebug.dependsOn copyGeojson
+assembleDebug.mustRunAfter copyGeojson
+assembleRelease.dependsOn copyGeojson
+assembleRelease.mustRunAfter copyGeojson
+
+

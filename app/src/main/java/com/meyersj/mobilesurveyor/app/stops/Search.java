@@ -4,17 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.helpers.SearchAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
-import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,16 +21,16 @@ import java.util.HashMap;
 /**
  * Created by jeff on 8/8/15.
  */
-public class StopsSearch {
+public class Search {
 
     private Activity activity;
-    private StopsManager manager;
+    private Manager manager;
     private AutoCompleteTextView inputStopName;
     private HashMap<String, Marker> stopsMap;
     ArrayList<String> stopNames;
 
 
-    public StopsSearch (final Activity activity, ArrayList<Marker> stopsList, StopsManager manager) {
+    public Search(final Activity activity, ArrayList<Marker> stopsList, Manager manager) {
         this.activity = activity;
         this.manager = manager;
         inputStopName = (AutoCompleteTextView) activity.findViewById(R.id.search_stop);
@@ -69,7 +67,7 @@ public class StopsSearch {
 
 
     private void setupListeners() {
-        StopSearchAdapter adapter = new StopSearchAdapter(activity, android.R.layout.simple_list_item_1, stopNames);
+        SearchAdapter adapter = new SearchAdapter(activity, android.R.layout.simple_list_item_1, stopNames);
         inputStopName.setAdapter(adapter);
         inputStopName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

@@ -53,7 +53,7 @@ license terms.
         </activity>
 
         <activity
-            android:name=".stops.OnOffMapActivity2"
+            android:name=".stops.MapActivity"
             android:hardwareAccelerated="false"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat"
@@ -67,7 +67,7 @@ license terms.
         </activity>
 
         <activity
-            android:name=".stops.OnOffMapActivity"
+            android:name=".stops.MapActivity"
             android:hardwareAccelerated="false"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/Theme.AppCompat"

@@ -6,16 +6,17 @@ import android.graphics.drawable.Drawable;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.helpers.SequenceAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 
-public class StopsManager {
+public class Manager {
 
     private final String TAG = "SaveSelectedStops";
 
     private Context context;
-    private StopSequenceAdapter onAdapter;
-    private StopSequenceAdapter offAdapter;
+    private SequenceAdapter onAdapter;
+    private SequenceAdapter offAdapter;
     private ItemizedIconOverlay selOverlay;
     private Marker board = null;
     private Marker alight = null;
@@ -25,7 +26,7 @@ public class StopsManager {
     private Drawable offIcon;
     private Drawable stopIcon;
 
-    public StopsManager(Context context, ItemizedIconOverlay selOverlay) {
+    public Manager(Context context, ItemizedIconOverlay selOverlay) {
         this.context = context;
         this.selOverlay = selOverlay;
         onIcon = context.getResources().getDrawable(R.drawable.icon_green_bus);
@@ -33,11 +34,11 @@ public class StopsManager {
         stopIcon = context.getResources().getDrawable(R.drawable.icon_bus_stop);
     }
 
-    public void setOnAdapter(StopSequenceAdapter onAdapter) {
+    public void setOnAdapter(SequenceAdapter onAdapter) {
         this.onAdapter = onAdapter;
     }
 
-    public void setOffAdapter(StopSequenceAdapter offAdapter) {
+    public void setOffAdapter(SequenceAdapter offAdapter) {
         this.offAdapter = offAdapter;
     }
 

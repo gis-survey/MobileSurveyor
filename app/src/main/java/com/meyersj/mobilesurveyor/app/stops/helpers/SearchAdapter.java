@@ -1,4 +1,4 @@
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.stops.helpers;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,7 +8,7 @@ import android.widget.Filter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StopSearchAdapter extends ArrayAdapter<String> {
+public class SearchAdapter extends ArrayAdapter<String> {
 
     private static final String TAG = "MarkerAdapter";
 
@@ -17,7 +17,7 @@ public class StopSearchAdapter extends ArrayAdapter<String> {
     private Filter stopsFilter;
     private List<String> origStopsList;
 
-    public StopSearchAdapter(Context aContext, int resource, List<String> objects) {
+    public SearchAdapter(Context aContext, int resource, List<String> objects) {
         super(aContext, resource, objects);
         //super(aContext, resource, objects);
         stopsList = objects;

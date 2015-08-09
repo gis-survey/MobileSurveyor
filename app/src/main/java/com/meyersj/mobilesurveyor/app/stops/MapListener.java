@@ -13,7 +13,7 @@ import com.mapbox.mapboxsdk.views.MapView;
 import java.util.ArrayList;
 
 
-public class OnOffMapListener implements MapListener {
+public class MapListener implements com.mapbox.mapboxsdk.events.MapListener {
 
     private static final String TAG = "OnOffMapListener";
 
@@ -22,7 +22,7 @@ public class OnOffMapListener implements MapListener {
     ItemizedIconOverlay locOverlay;
 
 
-    public OnOffMapListener(MapView mv, ArrayList<Marker> markers, ItemizedIconOverlay locOverlay) {
+    public MapListener(MapView mv, ArrayList<Marker> markers, ItemizedIconOverlay locOverlay) {
         this.mv = mv;
         this.markers = markers;
         this.locOverlay = locOverlay;

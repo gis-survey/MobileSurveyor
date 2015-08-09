@@ -9,13 +9,16 @@ import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.Stop;
+import com.meyersj.mobilesurveyor.app.stops.Manager;
+import com.meyersj.mobilesurveyor.app.stops.helpers.SequenceAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class StopsSequences {
+public class Sequences {
 
     private Activity activity;
     private Button showSequences;
@@ -24,11 +27,11 @@ public class StopsSequences {
     private ArrayList<Marker> stopsList = new ArrayList<Marker>();
     private ListView onList;
     private ListView offList;
-    private StopsManager manager;
-    private StopSequenceAdapter onSeqListAdapter;
-    private StopSequenceAdapter offSeqListAdapter;
+    private Manager manager;
+    private SequenceAdapter onSeqListAdapter;
+    private SequenceAdapter offSeqListAdapter;
 
-    public StopsSequences(Activity activity, ArrayList<Marker> stopsList, StopsManager manager) {
+    public Sequences(Activity activity, ArrayList<Marker> stopsList, Manager manager) {
         this.activity = activity;
         this.manager = manager;
         showSequences = (Button) activity.findViewById(R.id.show_sequences);
@@ -67,8 +70,8 @@ public class StopsSequences {
 
         ArrayList<Stop> stops = stopsSequenceSort(stopsList);
 
-        onSeqListAdapter = new StopSequenceAdapter(activity, stops);
-        offSeqListAdapter = new StopSequenceAdapter(activity, stops);
+        onSeqListAdapter = new SequenceAdapter(activity, stops);
+        offSeqListAdapter = new SequenceAdapter(activity, stops);
 
         stopSequenceAdapterSetup(onList, onSeqListAdapter);
         stopSequenceAdapterSetup(offList, offSeqListAdapter);
@@ -84,7 +87,7 @@ public class StopsSequences {
         return stops;
     }
 
-    protected void stopSequenceAdapterSetup(final ListView listView, final StopSequenceAdapter adapter) {
+    protected void stopSequenceAdapterSetup(final ListView listView, final SequenceAdapter adapter) {
 
         listView.setAdapter(adapter);
 
@@ -105,11 +108,11 @@ public class StopsSequences {
         });
     }
 
-    public StopSequenceAdapter getOnAdapter() {
+    public SequenceAdapter getOnAdapter() {
         return onSeqListAdapter;
     }
 
-    public StopSequenceAdapter getOffAdapter() {
+    public SequenceAdapter getOffAdapter() {
         return offSeqListAdapter;
     }
 

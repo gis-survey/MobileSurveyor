@@ -37,18 +37,18 @@ import java.util.Date;
 /**
  * Created by jeff on 8/8/15.
  */
-public class SaveStops {
+public class Save {
 
     private final String TAG = "SaveStops";
     private Activity activity;
     private Bundle args;
     private Button submit;
-    private StopsManager manager;
+    private Manager manager;
     private MapView mv;
     private BoundingBox bbox;
     private HttpClient client;
 
-    public SaveStops (final Activity activity, final StopsManager manager, MapView mv, BoundingBox bbox, Bundle args) {
+    public Save(final Activity activity, final Manager manager, MapView mv, BoundingBox bbox, Bundle args) {
         this.activity = activity;
         this.args = args;
         this.mv = mv;

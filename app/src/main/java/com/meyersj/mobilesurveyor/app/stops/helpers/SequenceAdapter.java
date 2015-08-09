@@ -1,4 +1,4 @@
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.stops.helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.Stop;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 /**
  * Created by jeff on 8/23/14.
  */
-public class StopSequenceAdapter extends ArrayAdapter<Stop> {
+public class SequenceAdapter extends ArrayAdapter<Stop> {
 
     private Context context;
     private ArrayList<Stop> stopsList;
@@ -26,7 +27,7 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
 
 
 
-    public StopSequenceAdapter(Context context, ArrayList<Stop> stopsList) {
+    public SequenceAdapter(Context context, ArrayList<Stop> stopsList) {
         super(context, R.layout.listview_stop_sequence_item, stopsList);
         this.context = context;
         this.stopsList = stopsList;

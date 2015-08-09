@@ -22,15 +22,15 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.helpers.BuildStops;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.PathUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 
 
-public class OnOffMapActivity2 extends ActionBarActivity {
+public class MapActivity extends ActionBarActivity {
 
     private final String TAG = "OnOffMapActivity";
     private final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
@@ -38,13 +38,13 @@ public class OnOffMapActivity2 extends ActionBarActivity {
 
     private Context context;
     private MapView mv;
-    private StopsSequences stopsSequences;
+    private Sequences sequences;
     private String line;
     private String dir;
     private BoundingBox bbox;
 
 
-    private StopsManager stopsManager;
+    private Manager manager;
     private ArrayList<Marker> stopsList = new ArrayList<Marker>();
     private ArrayList<Marker> selectedList = new ArrayList<Marker>();
     private ItemizedIconOverlay stopsOverlay;
@@ -76,15 +76,15 @@ public class OnOffMapActivity2 extends ActionBarActivity {
             }
 
             setItemizedOverlay(mv, stopsList, selectedList);
-            mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
+            mv.addListener(new MapListener(mv, stopsList, stopsOverlay));
 
-            stopsManager = new StopsManager(context, selectedOverlay);
-            stopsSequences = new StopsSequences(this, stopsList, stopsManager);
-            stopsManager.setOnAdapter(stopsSequences.getOnAdapter());
-            stopsManager.setOffAdapter(stopsSequences.getOffAdapter());
+            manager = new Manager(context, selectedOverlay);
+            sequences = new Sequences(this, stopsList, manager);
+            manager.setOnAdapter(sequences.getOnAdapter());
+            manager.setOffAdapter(sequences.getOffAdapter());
 
-            SaveStops save = new SaveStops(this, stopsManager, mv, bbox, getIntent().getExtras());
-            StopsSearch search = new StopsSearch(this, stopsList, stopsManager);
+            Save save = new Save(this, manager, mv, bbox, getIntent().getExtras());
+            Search search = new Search(this, stopsList, manager);
         }
     }
 
@@ -179,19 +179,19 @@ public class OnOffMapActivity2 extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String choice = items[i].toString();
-                        stopsManager.setCurrentMarker(selectedMarker, choice);
+                        manager.setCurrentMarker(selectedMarker, choice);
                     }
                 })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        stopsManager.saveCurrentMarker(selectedMarker);
+                        manager.saveCurrentMarker(selectedMarker);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        stopsManager.clearCurrentMarker();
+                        manager.clearCurrentMarker();
                     }
                 });
 

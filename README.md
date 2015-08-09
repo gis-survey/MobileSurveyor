@@ -44,9 +44,8 @@ The app contains a default config file that can be found at `MobileSurveyor/app/
 
 #####  Generate input data
 
-This app requires some input data to function. This includes the geometry of the specific routes, along with data about each stop that is served on a route. In directory `MobileSurveyor/data` you will find a python script that will construct this data for you from shapefiles. In the `source_data` directory you will find two shapefiles. If you create your own following that format you can run `build.py` which will populate `output` directory with some **geojson** files that need to be copied into `MobileSurveyor/app/src/main/assets/geojson` in order to be built with the app.
-
-You can generate your own geojson files directly if you follow the naming convention and format of the files produced by `build.py`.
+See [Data](https://github.com/TransitSurveyor/Data) repository for instructions on constructing data dependencies for
+`MobileSurveyor/data_inputs`
 
 ### Detailed Description
 

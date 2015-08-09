@@ -36,5 +36,7 @@ public class Cons {
     public static final String OFF_REVERSED = "off_reversed";
     public static final String NEAR_STOP = "";
     public static final String MAP_RTES = "map_rtes";
+    public static final String SET_PREFS = "set_prefs";
+
 }
 

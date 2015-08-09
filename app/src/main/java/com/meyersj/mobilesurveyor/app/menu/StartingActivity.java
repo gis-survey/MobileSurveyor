@@ -10,7 +10,9 @@ package com.meyersj.mobilesurveyor.app.menu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -32,6 +34,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 
 public class StartingActivity extends Activity {
@@ -55,6 +58,7 @@ public class StartingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = getApplicationContext();
+        loadPreferences(context);
         readIDs();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
@@ -226,6 +230,21 @@ public class StartingActivity extends Activity {
         } catch (IOException e) {
             Log.d(TAG, "error opening lines_id.txt");
             e.printStackTrace();
+        }
+    }
+
+    private void loadPreferences(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        //this should only execute after program was installed for first time
+        //grab default urls from properties and update sharedprefs with those
+        if(!sharedPref.contains(Cons.SET_PREFS)) {
+            Properties prop = Utils.getProperties(context, Cons.PROPERTIES);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(Cons.SET_PREFS, true);
+            editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
+            editor.putString(Cons.MAP_RTES, prop.getProperty(Cons.MAP_RTES));
+            editor.commit();
         }
     }
 

@@ -56,13 +56,6 @@ public class Utils {
         return properties;
     }
 
-    public static void shortToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-    }
-
-    public static void longToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-    }
 
     public static void shortToastCenter(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
@@ -112,8 +105,6 @@ public class Utils {
         }
     }
 
-
-
     public static boolean isGPSEnabled(Context context) {
         final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
@@ -145,52 +136,15 @@ public class Utils {
     public static String getUrlApi(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String url = "";
-        //if "Testing" is selected as pa reference url will be "dev" instead of "prod"
-        //String api = sharedPref.getString(Cons.SERVER, "prod");
         String defaultUrl = getProperties(context, Cons.PROPERTIES).getProperty(Cons.BASE_URL);
         url = sharedPref.getString(Cons.BASE_URL, defaultUrl);
-        //url += "/" + api + "/api";
-        //Log.d("Utilities", url);
         return url;
-    }
-
-    public static String getUrlSolr(Context context) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.SOLR_URL);
-        return sharedPref.getString(Cons.SOLR_URL, defaultURL);
     }
 
     public static String[] getMapRoutes(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String routesStr = getProperties(context, Cons.PROPERTIES).getProperty(Cons.MAP_RTES);
         return sharedPref.getString(Cons.MAP_RTES, routesStr).split(",");
-    }
-
-
-    public static void closeKeypad(Activity activity) {
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-    public static Paint defaultRoutePaint(Context context) {
-        Paint paint = new Paint();
-        paint.setColor(context.getResources().getColor(R.color.blacker));
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(5.5f);
-        paint.setPathEffect(new DashPathEffect(new float[] {5,6}, 0));
-        paint.setStyle(Paint.Style.STROKE);
-        return paint;
-    }
-
-    public static Paint  transferRoutePaint(Context context) {
-        Paint paint = new Paint();
-        paint.setColor(context.getResources().getColor(R.color.bluer_lighter));
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(5.5f);
-        paint.setStyle(Paint.Style.STROKE);
-        return paint;
     }
 
 

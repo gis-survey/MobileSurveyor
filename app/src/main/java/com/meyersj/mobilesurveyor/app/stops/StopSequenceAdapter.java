@@ -27,7 +27,7 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
 
 
     public StopSequenceAdapter(Context context, ArrayList<Stop> stopsList) {
-        super(context, R.layout.stop_seq_list_item, stopsList);
+        super(context, R.layout.listview_stop_sequence_item, stopsList);
         this.context = context;
         this.stopsList = stopsList;
 
@@ -49,7 +49,7 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
         // to inflate it basically means to render, or show, the view.
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.stop_seq_list_item, null);
+            view = inflater.inflate(R.layout.listview_stop_sequence_item, null);
 
         }
 
@@ -65,14 +65,14 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
 
                 if(position == selectedIndex)
                 {
-                    label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_light_grey_nofade));
+                    label.setBackground(context.getResources().getDrawable(R.drawable.shape_grey_squared));
                     label.setTextColor(context.getResources().getColor(R.color.black));
 
                 }
 
                 else
                 {
-                    label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_nofade));
+                    label.setBackground(context.getResources().getDrawable(R.drawable.shape_dark_grey_squared));
                     label.setTextColor(context.getResources().getColor(R.color.light_grey));
                 }
             }

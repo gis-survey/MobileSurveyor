@@ -208,7 +208,6 @@ public class StartingActivity extends Activity {
         InputStream fileStream = getResources().openRawResource(R.raw.line_ids);
 
         try {
-            //readIDs();
             BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
             String line;
             while ((line = reader.readLine()) != null) {

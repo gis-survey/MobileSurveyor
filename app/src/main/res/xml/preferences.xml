@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © 2015 Jeffrey Meyers
+
+This program is released under the "MIT License".
+Please see the file COPYING in this distribution for
+license terms.
+-->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:key="base_url"
-        android:title="API base url" />
+        android:title="API url" />
     <EditTextPreference
         android:key="map_rtes"
         android:hint="must be comma separated route ids"

@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © 2015 Jeffrey Meyers
+
+This program is released under the "MIT License".
+Please see the file COPYING in this distribution for
+license terms.
+-->
 <resources>
-
     <color name="black">#ff000000</color>
-
-    <color name="black_light">#ff333333</color>
-    <color name="blacker">#ff434241</color>
-    <color name="black_light_light">#ff979797</color>
-    <color name="bluer_lighter">#ff21549a</color>
     <color name="white">#ffffffff</color>
-
-
-
     <color name="lighter_grey_opacity">#3ccfcfcf</color>
     <color name="lighter_grey">#ffcfcfcf</color>
     <color name="light_grey">#ffbbbbbb</color>
     <color name="grey">#ff878787</color>
     <color name="dark_grey">#ff696969</color>
     <color name="darker_grey">#ff4b4b4b</color>
-
     <color name="lighter_green">#ff48bc4f</color>
     <color name="light_green">#ff45a24c</color>
-
-
-
 </resources>

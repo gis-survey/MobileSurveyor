@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.stops;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -6,9 +14,7 @@ import com.mapbox.mapboxsdk.views.InfoWindow;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 
-/**
- * Created by meyersj on 7/2/2014.
- */
+
 public class Stop extends Marker implements Comparable<Stop> {
 
     private String desc;

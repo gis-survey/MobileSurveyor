@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.stops;
 
 import android.app.AlertDialog;
@@ -55,7 +63,7 @@ public class MapActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_off_map2);
+        setContentView(R.layout.activity_on_off_map);
 
         context = getApplicationContext();
         mv = (MapView) findViewById(R.id.mapview);
@@ -76,7 +84,7 @@ public class MapActivity extends ActionBarActivity {
             }
 
             setItemizedOverlay(mv, stopsList, selectedList);
-            mv.addListener(new MapListener(mv, stopsList, stopsOverlay));
+            mv.addListener(new StopsMapListener(mv, stopsList, stopsOverlay));
 
             manager = new Manager(context, selectedOverlay);
             sequences = new Sequences(this, stopsList, manager);
@@ -242,7 +250,7 @@ public class MapActivity extends ActionBarActivity {
         String geoJSONName = line + "_" + dir + "_routes.geojson";
 
         Paint pathPaint = new Paint();
-        pathPaint.setColor(getResources().getColor(R.color.black_light_light));
+        pathPaint.setColor(getResources().getColor(R.color.grey));
         pathPaint.setAntiAlias(true);
         pathPaint.setStrokeWidth(6.0f);
         pathPaint.setStyle(Paint.Style.STROKE);

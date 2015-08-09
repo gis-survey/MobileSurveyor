@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.scans;
 
 import java.util.ArrayList;
@@ -39,7 +47,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
 
     private Context context;
     private BroadcastReceiver receiver;
-    private SaveScans saveScans;
+    private Save save;
     private StopLookup stopLookup;
     private ModeSelector mode;
     private TextView stopText;
@@ -64,7 +72,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         }
 
         Boolean isOffMode = (Boolean) params.get(Cons.OFF_MODE);
-        saveScans = new SaveScans(getApplicationContext(), params);
+        save = new Save(getApplicationContext(), params);
         mode = new ModeSelector(this, R.id.on_mode_button, R.id.off_mode_button, isOffMode);
         stopLookup = new StopLookup(context, stopText, eolText, url,
                 params.getString(Cons.LINE), params.getString(Cons.DIR));
@@ -92,9 +100,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
                 recentLoc = Utils.parseDate(date);
                 Float accuracy = Float.valueOf(intent.getStringExtra("Accuracy"));
                 //Utils.shortToast(ScannerActivity.this.context, "GPS updated");
-                saveScans.setLocation(lat, lon, accuracy, date);
+                save.setLocation(lat, lon, accuracy, date);
                 stopLookup.findStop(lat, lon);
-                saveScans.flushBuffer();
+                save.flushBuffer();
             }
         };
 
@@ -130,7 +138,7 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         Utils.shortToastUpper(getApplicationContext(), message);
         Log.d(TAG, rawResult.getText());
         Log.d(TAG, rawResult.getBarcodeFormat().toString());
-        saveScans.save(rawResult, mode.getMode());
+        save.save(rawResult, mode.getMode());
         // pause before restarting camera to prevent multiple scans at once
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {

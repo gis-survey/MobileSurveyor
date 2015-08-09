@@ -1,5 +1,13 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
 package com.meyersj.mobilesurveyor.app.scans;
-import com.meyersj.mobilesurveyor.app.util.Cons;
+
+
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import android.app.Service;
@@ -13,7 +21,6 @@ import android.os.IBinder;
 import android.util.Log;
 
 import java.util.Date;
-import java.util.Properties;
 
 public class LocationService extends Service {
 

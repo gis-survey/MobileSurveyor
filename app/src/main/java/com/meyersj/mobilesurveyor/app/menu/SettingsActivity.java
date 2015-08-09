@@ -1,3 +1,10 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
 package com.meyersj.mobilesurveyor.app.menu;
 
 import android.app.Activity;

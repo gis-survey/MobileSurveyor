@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.scans;
 
 import android.content.Context;
@@ -24,7 +32,6 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -33,7 +40,7 @@ import java.util.Date;
 import java.util.Properties;
 
 
-public class SaveScans {
+public class Save {
 
     private final String TAG = "SaveScans";
     private Float THRESHOLD = Float.valueOf(1000 * 20);
@@ -64,7 +71,7 @@ public class SaveScans {
         }
     }
 
-    public SaveScans(Context context, Bundle params) {
+    public Save(Context context, Bundle params) {
         this.url = params.getString(Cons.URL);
         this.user_id = params.getString(Cons.USER_ID);
         this.line = params.getString(Cons.LINE);

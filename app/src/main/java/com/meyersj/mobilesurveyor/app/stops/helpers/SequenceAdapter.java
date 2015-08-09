@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.stops.helpers;
 
 import android.content.Context;
@@ -13,9 +21,6 @@ import com.meyersj.mobilesurveyor.app.stops.Stop;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by jeff on 8/23/14.
- */
 public class SequenceAdapter extends ArrayAdapter<Stop> {
 
     private Context context;

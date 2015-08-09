@@ -66,27 +66,6 @@ license terms.
 
         </activity>
 
-        <activity
-            android:name=".stops.MapActivity"
-            android:hardwareAccelerated="false"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/Theme.AppCompat"
-            android:screenOrientation="portrait">
-
-            <!--intent-filter >
-                <action android:name="com.meyersj.mobilesurveyor.app.ONOFFMAP" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter-->
-
-            <intent-filter >
-                <action android:name="com.meyersj.mobilesurveyor.app.ODK_ONOFFMAP" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-
-
-        </activity>
-
         <service
             android:name=".scans.LocationService"
             android:exported="false"/>

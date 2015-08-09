@@ -1,21 +1,23 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.util;
 
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
-import com.meyersj.mobilesurveyor.app.R;
 
 import org.joda.time.DateTime;
 

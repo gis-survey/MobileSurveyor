@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.stops;
 
 import android.app.Activity;
@@ -18,9 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-/**
- * Created by jeff on 8/8/15.
- */
+
 public class Search {
 
     private Activity activity;

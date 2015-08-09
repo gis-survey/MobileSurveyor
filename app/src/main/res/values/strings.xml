@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © 2015 Jeffrey Meyers
+
+This program is released under the "MIT License".
+Please see the file COPYING in this distribution for
+license terms.
+-->
 <resources>
     <string name="app_name">TransitSurveyor</string>
     <string name="action_settings">Settings</string>

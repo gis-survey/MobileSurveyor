@@ -5,7 +5,6 @@
         <!--item name="android:dropDownListViewStyle">@style/SpinnerStyle</item-->
     </style>
 
-
     <style name="SeqListItem">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -35,15 +34,5 @@
         <item name="android:textSize">40dp</item>
         <item name="android:gravity">center</item>
     </style>
-
-
-    <!--style name="SpinnerStyle" parent="android:Widget.Holo.Light.ListView.DropDown">
-        <item name="android:divider">@color/lighter_grey</item>
-        <item name="android:dividerHeight">1dp</item>
-    </style-->
-
-
-
-
 
 </resources>

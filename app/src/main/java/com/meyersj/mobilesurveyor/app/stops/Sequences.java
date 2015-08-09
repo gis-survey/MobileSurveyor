@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.stops;
 
 import android.app.Activity;
@@ -9,8 +17,6 @@ import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.stops.Stop;
-import com.meyersj.mobilesurveyor.app.stops.Manager;
 import com.meyersj.mobilesurveyor.app.stops.helpers.SequenceAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 

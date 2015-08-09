@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.scans;
 
 import android.app.Activity;
@@ -8,9 +16,7 @@ import android.widget.Button;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
-/**
- * Created by jeff on 8/8/15.
- */
+
 public class ModeSelector {
 
     private Button onButton;

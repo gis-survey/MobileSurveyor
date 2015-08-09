@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2015 Jeffrey Meyers.
+ *
+ * This program is released under the "MIT License".
+ * Please see the file COPYING in this distribution for license terms.
+ */
+
+
 package com.meyersj.mobilesurveyor.app.util;
 
 import android.content.Context;
@@ -13,9 +21,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by meyersj on 6/26/2014.
- */
+
 public class PathUtils {
 
     private final static String PATHOVERLAY = "com.mapbox.mapboxsdk.overlay.PathOverlay";
@@ -25,7 +31,7 @@ public class PathUtils {
         ArrayList<PathOverlay> paths = new ArrayList<PathOverlay>();
 
         Paint mPaint = new Paint();
-        mPaint.setColor(context.getResources().getColor(R.color.black_light));
+        mPaint.setColor(context.getResources().getColor(R.color.darker_grey));
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(10.0f);
         mPaint.setStyle(Paint.Style.STROKE);

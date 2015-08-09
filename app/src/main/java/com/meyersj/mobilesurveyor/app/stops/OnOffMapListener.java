@@ -30,7 +30,6 @@ public class OnOffMapListener implements MapListener {
 
     @Override
     public void onScroll(ScrollEvent scrollEvent) {
-        //Log.d(TAG, scrollEvent.toString());
     }
 
     //TODO only show tooltips inside current view?
@@ -40,8 +39,6 @@ public class OnOffMapListener implements MapListener {
 
         Float zoomLevel = zoomEvent.getZoomLevel();
         Log.d(TAG, "zoom level: " + String.valueOf(zoomLevel));
-
-        //Log.d(TAG, mv.getBoundingBox().toString());
 
         if (markers != null) {
 
@@ -67,10 +64,5 @@ public class OnOffMapListener implements MapListener {
             }
         }
     }
-
-    //@Override
-    //public void onRotate(RotateEvent rotateEvent) {
-    //
-    //}
 
 }

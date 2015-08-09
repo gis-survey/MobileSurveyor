@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mapbox.mapboxsdk.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp" >
+
+        <LinearLayout
+            android:id="@+id/stop_search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_dark_grey_rounded"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <AutoCompleteTextView
+                android:id="@+id/search_stop"
+                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lighter_grey"
+                android:hint="Enter Stop Name or Stop ID" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stops_button_layout"
+        android:orientation="vertical"
+        android:layout_below="@id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+    <Button
+        android:id="@+id/show_sequences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List Stop Sequences"
+        android:padding="8dp"
+        android:textColor="@color/lighter_grey"
+        android:background="@drawable/shape_dark_grey_rounded" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sequences_layout"
+        android:layout_below="@id/stops_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:background="@drawable/shape_dark_grey_rounded" >
+
+        <!-- On stops sequence ListView (left side of screen) -->
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/on_stops_list"
+                android:divider="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"/>
+
+        </LinearLayout>
+
+        <!-- Off stops sequence ListView (right side of screen) -->
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/off_stops_list"
+                android:divider="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:text="Submit"
+        android:textColor="@color/lighter_grey"
+        android:background="@drawable/shape_dark_grey_rounded" />
+
+</RelativeLayout>

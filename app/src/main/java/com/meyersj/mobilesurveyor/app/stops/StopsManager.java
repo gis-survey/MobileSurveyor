@@ -9,7 +9,7 @@ import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 
-public class SelectedStops {
+public class StopsManager {
 
     private final String TAG = "SaveSelectedStops";
 
@@ -25,12 +25,8 @@ public class SelectedStops {
     private Drawable offIcon;
     private Drawable stopIcon;
 
-    public SelectedStops(
-            Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter,
-            ItemizedIconOverlay selOverlay) {
+    public StopsManager(Context context, ItemizedIconOverlay selOverlay) {
         this.context = context;
-        this.onAdapter = onAdapter;
-        this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
         onIcon = context.getResources().getDrawable(R.drawable.icon_green_bus);
         offIcon = context.getResources().getDrawable(R.drawable.icon_red_bus);

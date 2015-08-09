@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,12 +39,9 @@ public class StartingActivity extends Activity {
     private Spinner line, dir;
     private String line_code;
     private String dir_code;
-    //private String user_id;
     private UserName user;
     private Boolean offMode = false;
-    private String url;
     private Button record;
-    private Button logout;
     private Switch modeSwitch;
 
     private Map<String, String> map = new HashMap<String, String>();
@@ -80,7 +78,7 @@ public class StartingActivity extends Activity {
                 }
 
                 if (ifTrain) {
-                    modeSwitch.setVisibility(View.INVISIBLE);
+                    modeSwitch.setVisibility(View.GONE);
                 }
                 else {
                     modeSwitch.setVisibility(View.VISIBLE);

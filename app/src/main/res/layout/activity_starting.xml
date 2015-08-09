@@ -4,11 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#ff4e4e4e">
+    android:padding="8dp"
+    android:background="@color/light_grey">
 
 
     <LinearLayout
@@ -17,50 +14,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/shape_grey_round" >
+        android:background="@drawable/shape_dark_grey_rounded" >
 
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="8dp"
             android:hint="Username"
+            android:textSize="18sp"
+            android:textColor="@color/lighter_grey"
             android:inputType="textPersonName"
-            android:textColorHint="#cccccc"/>
+            android:textColorHint="@color/light_grey"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/route_direction_layout"
         android:layout_below="@id/user_layout"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/shape_grey_round" >
-
+        android:padding="4dp"
+        android:background="@drawable/shape_dark_grey_rounded" >
 
     <Spinner
             android:id="@+id/line_spinner"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:padding="20dp"
+            android:padding="8dp"
             android:layout_height="wrap_content"
             android:prompt="@string/line_prompt"
-            android:spinnerMode="dialog"/>
+            android:spinnerMode="dialog" />
         <Spinner
             android:id="@+id/dir_spinner"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:padding="20dp"
+            android:padding="8dp"
             android:layout_height="wrap_content"
             android:prompt="@string/dir_prompt"
             android:spinnerMode="dialog"/>
 
         <Switch
             android:id="@+id/offSwitch"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOn="Back of Bus"
@@ -75,14 +73,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" >
+        android:layout_marginTop="8dp" >
 
         <Button
             android:id="@+id/record"
             style="@style/LargeButton"
+            android:textColor="@color/lighter_grey"
             android:text="Start"
             android:layout_width="match_parent"
-            android:background="@drawable/shape_grey_round" />
+            android:background="@drawable/shape_dark_grey_rounded" />
     </LinearLayout>
 
 </RelativeLayout>

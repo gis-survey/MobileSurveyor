@@ -34,20 +34,20 @@
         android:layout_width="fill_parent"
         android:layout_gravity="bottom"
         android:visibility="visible"
-        android:layout_margin="16dp" >
+        android:layout_margin="8dp" >
         <Button
             android:id="@+id/on_mode_button"
             style="@style/LargeButton"
-            android:background="@drawable/shape_green_round"
+            android:background="@drawable/shape_green_rounded"
             android:text="ON"
-            android:layout_marginRight="8dp">
+            android:layout_marginRight="4dp">
         </Button>
         <Button
             android:id="@+id/off_mode_button"
             style="@style/LargeButton"
-            android:background="@drawable/shape_grey_round"
+            android:background="@drawable/shape_grey_rounded"
             android:text="OFF"
-            android:layout_marginLeft="8dp">
+            android:layout_marginLeft="4dp">
         </Button>
     </LinearLayout>
 

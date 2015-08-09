@@ -8,4 +8,7 @@
         android:id="@+id/text"
         style="@style/SeqListItem">
     </TextView>
+
+
+
 </LinearLayout>

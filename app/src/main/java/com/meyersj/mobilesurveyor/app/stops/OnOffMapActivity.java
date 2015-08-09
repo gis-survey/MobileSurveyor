@@ -54,7 +54,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -83,6 +82,7 @@ public class OnOffMapActivity extends ActionBarActivity {
 
     // Views
     private MapView mv;
+
     private AutoCompleteTextView stopName;
     private ImageButton clear;
     private View seqView;
@@ -95,7 +95,7 @@ public class OnOffMapActivity extends ActionBarActivity {
     private TextView osmText;
     private Spinner countSpinner;
 
-    private SelectedStops selectedStops;
+    private StopsManager stopsManager;
     private ArrayAdapter<Integer> countAdapter;
     private Integer submitCount;
     private StopSequenceAdapter onSeqListAdapter;
@@ -160,8 +160,8 @@ public class OnOffMapActivity extends ActionBarActivity {
             addRoute(line, dir);
             setupStopSequenceList();
             setupStopSearch();
-            selectedStops = new SelectedStops(
-                    context, onSeqListAdapter, offSeqListAdapter, selOverlay);
+            stopsManager = new StopsManager(
+                    context, selOverlay);
 
             //if line is a streetcar
             //enable on or off to be reversed because streetcar runs in a loop
@@ -271,14 +271,14 @@ public class OnOffMapActivity extends ActionBarActivity {
         ArrayList<Stop> stops = stopsSequenceSort(locList);
         if (adapter == onSeqListAdapter) {
             onSeqListAdapter = new StopSequenceAdapter(this, stops);
-            selectedStops.setOnAdapter(onSeqListAdapter);
-            selectedStops.clearSequenceMarker(Cons.BOARD);
+            stopsManager.setOnAdapter(onSeqListAdapter);
+            stopsManager.clearSequenceMarker(Cons.BOARD);
             stopSequenceAdapterSetup(listView, onSeqListAdapter);
         }
         else {
             offSeqListAdapter = new StopSequenceAdapter(this, stops);
-            selectedStops.setOffAdapter(offSeqListAdapter);
-            selectedStops.clearSequenceMarker(Cons.ALIGHT);
+            stopsManager.setOffAdapter(offSeqListAdapter);
+            stopsManager.clearSequenceMarker(Cons.ALIGHT);
             stopSequenceAdapterSetup(listView, offSeqListAdapter);
         }
     }
@@ -294,10 +294,10 @@ public class OnOffMapActivity extends ActionBarActivity {
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
 
                 if (listView == onSeqListView) {
-                    selectedStops.saveSequenceMarker(Cons.BOARD, stop);
+                    stopsManager.saveSequenceMarker(Cons.BOARD, stop);
                 }
                 else {
-                    selectedStops.saveSequenceMarker(Cons.ALIGHT, stop);
+                    stopsManager.saveSequenceMarker(Cons.ALIGHT, stop);
                 }
             }
         });
@@ -380,7 +380,8 @@ public class OnOffMapActivity extends ActionBarActivity {
         stopSeqBtn = (Button) findViewById(R.id.stop_seq_btn);
         onSeqListView = (ListView) findViewById(R.id.on_stops_seq);
         offSeqListView = (ListView) findViewById(R.id.off_stops_seq);
-        osmText = (TextView) findViewById(R.id.osm_text);
+
+        //osmText = (TextView) findViewById(R.id.osm_text);
 
         /* if streetcar we need opposite direction stops in case
         user toggles that on or off was before start of line */
@@ -423,9 +424,9 @@ public class OnOffMapActivity extends ActionBarActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedStops.validateSelection()) {
+                if (stopsManager.validateSelection()) {
                     //verify correct locations
-                    if (selectedStops.validateStopSequence() || (isOnReversed || isOffReversed) ) {
+                    if (stopsManager.validateStopSequence() || (isOnReversed || isOffReversed) ) {
                         verifyAndSubmitLocationsPOST(submitCount);
                     }
                     else {
@@ -445,12 +446,12 @@ public class OnOffMapActivity extends ActionBarActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedStops.validateSelection()) {
+                if (stopsManager.validateSelection()) {
                     //verifyAndSubmitLocationsODK();
-                    String onStop = selectedStops.getBoard().getDescription();
-                    String offStop = selectedStops.getAlight().getDescription();
+                    String onStop = stopsManager.getBoard().getDescription();
+                    String offStop = stopsManager.getAlight().getDescription();
 
-                    if (selectedStops.validateStopSequence() || (isOnReversed || isOffReversed) ) {
+                    if (stopsManager.validateStopSequence() || (isOnReversed || isOffReversed) ) {
                         exitWithStopIDs(onStop, offStop);
                     }
                     else {
@@ -610,7 +611,7 @@ public class OnOffMapActivity extends ActionBarActivity {
 
 
     protected void resetMap() {
-        selectedStops.clearCurrentMarker();
+        stopsManager.clearCurrentMarker();
         mv.zoomToBoundingBox(bbox, true, false, true, true);
     }
 
@@ -691,7 +692,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String choice = items[i].toString();
                         Log.d(TAG, "Choice: " + choice);
-                        selectedStops.setCurrentMarker(selectedMarker, choice);
+                        stopsManager.setCurrentMarker(selectedMarker, choice);
                     }
                 })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -701,7 +702,7 @@ public class OnOffMapActivity extends ActionBarActivity {
                         //check if choice (on-off) is being displayed in reverse
                         //if so switch to regular direction
                         //and highlight selected
-                        String choice = selectedStops.getCurrentType();
+                        String choice = stopsManager.getCurrentType();
                         Log.d(TAG, choice);
 
                         if(choice.equals(Cons.BOARD) && isOnReversed) {
@@ -711,14 +712,14 @@ public class OnOffMapActivity extends ActionBarActivity {
                             reverseDirection(Cons.OFF, isOffReversed);
                         }
 
-                        selectedStops.saveCurrentMarker(selectedMarker);
+                        stopsManager.saveCurrentMarker(selectedMarker);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.d(TAG, "Clicked Cancel");
-                        selectedStops.clearCurrentMarker();
+                        stopsManager.clearCurrentMarker();
                     }
                 });
 
@@ -735,8 +736,8 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
     protected void verifyAndSubmitLocationsPOST(final int count) {
 
-        final Stop board = (Stop) selectedStops.getBoard();
-        final Stop alight = (Stop) selectedStops.getAlight();
+        final Stop board = (Stop) stopsManager.getBoard();
+        final Stop alight = (Stop) stopsManager.getAlight();
 
 
         final Boolean isOnReversed = !board.getDir().equals(dir);
@@ -876,3 +877,5 @@ public class OnOffMapActivity extends ActionBarActivity {
     }
 
 }
+
+

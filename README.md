@@ -36,14 +36,22 @@ You will find an apk at `MobileSurveyor/app/build/outputs/apk/app-debug.apk` tha
 
 #####  Config File
 
-The app contains a default config file that can be found at `MobileSurveyor/app/src/main/assets/config.properties`
+The app contains a default config file that can be found at `MobileSurveyor/config.properties`
 
 + **mode** this can be set to either *local* or *api*
     + *local* means that submitted on-off data is saved locally in a csv file and users cannot be authenticated, can only be used with the map interface, stop lookup does not work when scanning in *local* mode
-    + *api* means that a [server API](https://github.com/TransitSurveyor/API) is running at the endpoint specified by 
+    + *api* means that a [server API](https://github.com/TransitSurveyor/API) is running at the endpoint specified by **base_url** 
 + **base_url** endpoint that is running the [server API](https://github.com/TransitSurveyor/API) [configurable inside app]
 + **map_rtes** this is a comma-separated list of route IDs for routes which should use the map-based on-off collection method instead of the scanning method [configurable inside app]
 + **gps_threshold** time in ms until data should be thrown out because a gps signal was not found quick enough when using on-off scanning method
+
+After modifying the config file you will need to rebuild app
+
+```shell
+./gradlew clean
+./gradlew assembleDebug
+```
+
 
 #####  Generate input data
 

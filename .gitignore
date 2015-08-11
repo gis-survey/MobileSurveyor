@@ -40,6 +40,7 @@ Thumbs.db
 build/
 keys/
 
+app/src/main/assets/config.properties
 config.properties
 gradle.properties
 

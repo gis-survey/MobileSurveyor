@@ -1,6 +1,8 @@
 MobileSurveyor
 ==============
 
+author: Jeffrey Meyers (jeffrey.alan.meyers@gmail.com)
+
 Copyright © 2015 Jeffrey Meyers. This program is released under the "MIT License". Please see the file COPYING in this distribution for license terms.
 
 ### High-level Description

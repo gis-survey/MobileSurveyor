@@ -62,7 +62,7 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:background">@drawable/shape_dark_grey_rounded</item>
+        <item name="android:background">@drawable/shape_darker_grey_rounded</item>
     </style>
 
 </resources>

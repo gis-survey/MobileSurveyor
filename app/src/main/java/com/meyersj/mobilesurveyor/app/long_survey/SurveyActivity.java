@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.meyersj.mobilesurveyor.app.R;
 
@@ -24,6 +25,10 @@ public class SurveyActivity extends ActionBarActivity implements ActionBar.TabLi
     public static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers"};
 
     @Bind(R.id.survey_pager) NonSwipeableViewPager viewPager;
+    @Bind(R.id.previous_fragment) Button previousBtn;
+    @Bind(R.id.next_fragment) Button nextBtn;
+
+
     MapPagerAdapter pagerAdapter;
     MapFragment[] fragments;
 
@@ -57,6 +62,8 @@ public class SurveyActivity extends ActionBarActivity implements ActionBar.TabLi
                     .setText(pagerAdapter.getPageTitle(i))
                     .setTabListener(this));
         }
+
+        setupNavButtons();
     }
 
 
@@ -95,6 +102,34 @@ public class SurveyActivity extends ActionBarActivity implements ActionBar.TabLi
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+    private void setupNavButtons() {
+        toggleNavButtons(viewPager.getCurrentItem());
+        previousBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(viewPager.getCurrentItem() - 1, true);
+                toggleNavButtons(viewPager.getCurrentItem());
+            }
+        });
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
+                toggleNavButtons(viewPager.getCurrentItem());
+            }
+        });
+    }
+
+    private void toggleNavButtons(int item) {
+        previousBtn.setEnabled(true);
+        nextBtn.setEnabled(true);
+        if(item == 0)
+            previousBtn.setEnabled(false);
+        if(item == HEADERS.length - 1)
+            nextBtn.setEnabled(false);
     }
 
     public class MapPagerAdapter extends FragmentPagerAdapter {

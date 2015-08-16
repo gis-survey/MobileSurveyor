@@ -15,6 +15,7 @@ license terms.
     <color name="grey">#ff878787</color>
     <color name="dark_grey">#ff696969</color>
     <color name="darker_grey">#ff4b4b4b</color>
+    <color name="darker_grey_opacity">#a04b4b4b</color>
     <color name="lighter_green">#ff48bc4f</color>
     <color name="light_green">#ff45a24c</color>
 </resources>

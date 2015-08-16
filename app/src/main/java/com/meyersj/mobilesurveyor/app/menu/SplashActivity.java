@@ -21,10 +21,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.Switch;
+import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.long_survey.SurveyActivity;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
@@ -36,8 +39,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-public class StartingActivity extends Activity {
+
+public class SplashActivity extends Activity {
 
     private final String TAG = "SetLineActivity";
     private final String SCANNER = "com.meyersj.mobilesurveyor.app.SCANNER";
@@ -45,58 +51,55 @@ public class StartingActivity extends Activity {
     private static final int RESULT_SETTINGS = 1;
 
     private Context context;
-    private Spinner line, dir;
+
+    @Bind(R.id.username) TextView userText;
+    @Bind(R.id.route_spinner) Spinner routeSpinner;
+    @Bind(R.id.direction_spinner) Spinner directionSpinner;
+    @Bind(R.id.start_collection) Button startButton;
+    @Bind(R.id.radio_mode_group) LinearLayout radioGroup;
+
     private String line_code;
     private String dir_code;
-    private UserName user;
     private Boolean offMode = false;
-    private Button record;
-    private Switch modeSwitch;
-
     private Map<String, String> map = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_starting);
+        ButterKnife.bind(this);
+
         context = getApplicationContext();
         loadPreferences(context);
         readIDs();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting);
-        line = (Spinner)findViewById(R.id.line_spinner);
-        dir = (Spinner)findViewById(R.id.dir_spinner);
-        line.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, R.layout.spinner));
-        record = (Button) findViewById(R.id.record);
-        modeSwitch = (Switch) findViewById(R.id.offSwitch);
-        user = new UserName(this, R.id.username);
 
-        line.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        final int listStyle = android.R.layout.simple_dropdown_item_1line;
+
+        routeSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.lines, listStyle));
+        routeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent,
                                        View view, int pos, long id) {
-                String selected_line = line.getItemAtPosition(pos).toString();
+                String selected_line = routeSpinner.getItemAtPosition(pos).toString();
                 Log.d(TAG, selected_line);
                 String modified_line = stripSelection(selected_line);
                 line_code = map.get(modified_line);
 
                 Boolean ifTrain = false;
-                for (String train: Utils.getMapRoutes(context)) {
+                for (String train : Utils.getMapRoutes(context)) {
                     if (train.equals(line_code)) {
-                        Log.d(TAG, "we have a train, launch map instead of scanner");
                         ifTrain = true;
+                        radioGroup.setVisibility(View.GONE);
                     }
                 }
 
-                if (ifTrain) {
-                    modeSwitch.setVisibility(View.GONE);
-                }
-                else {
-                    modeSwitch.setVisibility(View.VISIBLE);
+                if (!ifTrain) {
+                    radioGroup.setVisibility(View.VISIBLE);
                 }
 
-                Log.d(TAG, "line_code: " + line_code);
-                int resId = StartingActivity.this.getResources().getIdentifier(modified_line, "array", StartingActivity.this.getPackageName());
-                dir.setAdapter(ArrayAdapter.createFromResource(StartingActivity.this, resId, R.layout.spinner));
+                int resId = context.getResources().getIdentifier(modified_line, "array", context.getPackageName());
+                directionSpinner.setAdapter(ArrayAdapter.createFromResource(SplashActivity.this, resId, listStyle));
 
             }
 
@@ -106,12 +109,12 @@ public class StartingActivity extends Activity {
             }
         });
 
-        dir.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        directionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent,
                                        View view, int pos, long id) {
-                String selected_dir = dir.getItemAtPosition(pos).toString();
+                String selected_dir = directionSpinner.getItemAtPosition(pos).toString();
 
                 Log.d(TAG, selected_dir);
                 String modified_dir = stripSelection(selected_dir);
@@ -126,26 +129,22 @@ public class StartingActivity extends Activity {
             }
         });
 
-        record.setOnClickListener(new Button.OnClickListener() {
+        startButton.setOnClickListener(new Button.OnClickListener() {
             @Override
 
             public void onClick(View v) {
                 Intent intent;
 
-                Log.d(TAG, "line_code for intent:" + line_code + ":end");
-
                 if (ifTrain(line_code)) {
+                    // start map
                     intent = new Intent(ONOFFMAP);
-                    Log.d(TAG, "start map for selection");
-                }
-                else {
+                } else {
+                    // start scanner
                     intent = new Intent(SCANNER);
-                    Log.d(TAG, "start barcode scanner");
                 }
 
-                intent.putExtra(Cons.USER_ID, user.getUser());
+                intent.putExtra(Cons.USER_ID, userText.getText().toString());
                 intent.putExtra(Cons.OFF_MODE, offMode);
-                Log.d(TAG, "user: " + user.getUser());
                 intent.putExtra(Cons.LINE, line_code);
                 intent.putExtra(Cons.DIR, dir_code);
                 startActivity(intent);
@@ -153,20 +152,22 @@ public class StartingActivity extends Activity {
         });
     }
 
-    public void onSwitchClicked(View view) {
+    public void onScanModeClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
 
-        Boolean on = ((Switch) view).isChecked();
-
-        if (on) {
-            Log.d(TAG, "switched on");
-            offMode = true;
-        }
-        else {
-            Log.d(TAG, "switched off");
-            offMode = false;
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_mode_front:
+                if (checked)
+                    offMode = false;
+                    break;
+            case R.id.radio_mode_back:
+                if (checked)
+                    offMode = true;
+                    break;
         }
     }
-
 
     protected Boolean ifTrain(String line) {
         Boolean ifTrain = false;
@@ -182,17 +183,22 @@ public class StartingActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // add settings to action bar
         getMenuInflater().inflate(R.menu.settings_action, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch(item.getItemId()) {
             case R.id.action_settings:
-                Intent i = new Intent(context, SettingsActivity.class);
-                startActivityForResult(i, RESULT_SETTINGS);
+                intent = new Intent(context, SettingsActivity.class);
+                startActivityForResult(intent, RESULT_SETTINGS);
+                return true;
+            case R.id.survey_activity:
+                intent = new Intent(context, SurveyActivity.class);
+                startActivityForResult(intent, RESULT_SETTINGS);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -247,5 +253,6 @@ public class StartingActivity extends Activity {
             editor.commit();
         }
     }
+
 
 }

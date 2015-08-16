@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.short_survey.stops;
 
 import android.app.Activity;
 import android.view.View;
@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.stops.helpers.SequenceAdapter;
+import com.meyersj.mobilesurveyor.app.short_survey.stops.helpers.SequenceAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;

@@ -5,7 +5,7 @@
  * Please see the file COPYING in this distribution for license terms.
  */
 
-package com.meyersj.mobilesurveyor.app.scans;
+package com.meyersj.mobilesurveyor.app.short_survey.scans;
 
 
 import com.meyersj.mobilesurveyor.app.util.Utils;

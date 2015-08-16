@@ -6,91 +6,143 @@ This program is released under the "MIT License".
 Please see the file COPYING in this distribution for
 license terms.
 -->
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    android:background="@color/light_grey">
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" >
 
 
     <LinearLayout
-        android:id="@+id/user_layout"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/shape_dark_grey_rounded" >
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        style="@style/SplashFieldLayout"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/user_prompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/username" />
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:hint="Username"
-            android:textSize="18sp"
-            android:textColor="@color/lighter_grey"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/light_grey"/>
+            android:layout_weight="4"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/route_direction_layout"
-        android:layout_below="@id/user_layout"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:background="@drawable/shape_dark_grey_rounded" >
+        style="@style/SplashFieldLayout" >
 
-    <Spinner
-            android:id="@+id/line_spinner"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/route" />
+
+        <Spinner
+            android:id="@+id/route_spinner"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:prompt="@string/line_prompt"
             android:spinnerMode="dialog" />
-        <Spinner
-            android:id="@+id/dir_spinner"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:layout_height="wrap_content"
-            android:prompt="@string/dir_prompt"
-            android:spinnerMode="dialog"/>
-
-        <Switch
-            android:id="@+id/offSwitch"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="Back of Bus"
-            android:textOff="Front of Bus"
-            android:onClick="onSwitchClicked"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/start_layout"
-        android:layout_below="@id/route_direction_layout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" >
+        style="@style/SplashFieldLayout" >
 
-        <Button
-            android:id="@+id/record"
-            style="@style/LargeButton"
-            android:textColor="@color/lighter_grey"
-            android:text="Start"
-            android:layout_width="match_parent"
-            android:background="@drawable/shape_dark_grey_rounded" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/direction" />
+
+        <Spinner
+            android:id="@+id/direction_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:prompt="@string/dir_prompt"
+            android:spinnerMode="dialog" />
+
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        style="@style/SplashFieldLayout"
+        android:id="@+id/radio_mode_group">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="@string/scan_mode" />
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/radio_mode_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_front"
+                android:onClick="onScanModeClicked"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/radio_mode_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_back"
+                android:onClick="onScanModeClicked"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/SplashFieldLayout"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/start_collection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/start_recording"
+            android:layout_weight="4" />
+    </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
 
 
 

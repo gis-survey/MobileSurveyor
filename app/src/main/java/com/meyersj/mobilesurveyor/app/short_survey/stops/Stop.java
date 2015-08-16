@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.short_survey.stops;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;

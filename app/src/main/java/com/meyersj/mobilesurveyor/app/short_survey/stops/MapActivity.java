@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.short_survey.stops;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -30,7 +30,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.stops.helpers.BuildStops;
+import com.meyersj.mobilesurveyor.app.short_survey.stops.helpers.BuildStops;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.PathUtils;
 

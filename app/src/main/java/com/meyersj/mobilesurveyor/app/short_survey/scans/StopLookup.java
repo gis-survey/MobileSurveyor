@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.scans;
+package com.meyersj.mobilesurveyor.app.short_survey.scans;
 
 import android.content.Context;
 import android.os.AsyncTask;

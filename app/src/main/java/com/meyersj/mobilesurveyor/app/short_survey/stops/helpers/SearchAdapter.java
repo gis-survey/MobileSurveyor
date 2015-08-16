@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops.helpers;
+package com.meyersj.mobilesurveyor.app.short_survey.stops.helpers;
 
 import android.content.Context;
 import android.util.Log;

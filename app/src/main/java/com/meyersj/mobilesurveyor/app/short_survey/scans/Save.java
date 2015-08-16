@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.scans;
+package com.meyersj.mobilesurveyor.app.short_survey.scans;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.zxing.Result;
+import com.meyersj.mobilesurveyor.app.short_survey.scans.CurrentLocation;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Endpoints;
 import com.meyersj.mobilesurveyor.app.util.Utils;

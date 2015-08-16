@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops;
+package com.meyersj.mobilesurveyor.app.short_survey.stops;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,7 +19,7 @@ import android.widget.AutoCompleteTextView;
 
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.stops.helpers.SearchAdapter;
+import com.meyersj.mobilesurveyor.app.short_survey.stops.helpers.SearchAdapter;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;

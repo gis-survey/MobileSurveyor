@@ -6,7 +6,7 @@
  */
 
 
-package com.meyersj.mobilesurveyor.app.stops.helpers;
+package com.meyersj.mobilesurveyor.app.short_survey.stops.helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.stops.Stop;
+import com.meyersj.mobilesurveyor.app.short_survey.stops.Stop;
 
 import java.util.ArrayList;
 import java.util.HashMap;

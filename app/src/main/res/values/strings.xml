@@ -7,7 +7,7 @@ Please see the file COPYING in this distribution for
 license terms.
 -->
 <resources>
-    <string name="app_name">TransitSurveyor</string>
+    <string name="app_name">OnOff Surveyor</string>
     <string name="action_settings">Settings</string>
     <string name="line_prompt">Select Line</string>
     <string name="dir_prompt">Select Direction</string>

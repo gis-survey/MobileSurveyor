@@ -7,7 +7,7 @@ Please see the file COPYING in this distribution for
 license terms.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.meyersj.mobilesurveyor.app" >
+    package="com.meyersj.onoffsurveyor.app" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -20,10 +20,10 @@ license terms.
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="Transit Surveyor"
+        android:label="OnOff Surveyor"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".menu.SplashActivity"
+            android:name="com.meyersj.onoffsurveyor.app.menu.SplashActivity"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@ license terms.
             </intent-filter>
         </activity>
         <activity
-            android:name=".short_survey.scans.ScannerActivity"
+            android:name="com.meyersj.onoffsurveyor.app.short_survey.scans.ScannerActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.meyersj.mobilesurveyor.app.SCANNER" />
@@ -39,7 +39,7 @@ license terms.
             </intent-filter>
         </activity>
         <activity
-            android:name=".short_survey.stops.MapActivity"
+            android:name="com.meyersj.onoffsurveyor.app.short_survey.stops.MapActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat"
@@ -49,7 +49,7 @@ license terms.
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".menu.SettingsActivity" >
+        <activity android:name="com.meyersj.onoffsurveyor.app.menu.SettingsActivity" >
             <intent-filter>
                 <action android:name="com.meyersj.mobilesurveyor.app.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -57,11 +57,11 @@ license terms.
         </activity>
 
         <service
-            android:name=".short_survey.scans.LocationService"
+            android:name="com.meyersj.onoffsurveyor.app.short_survey.scans.LocationService"
             android:exported="false" />
 
         <activity
-            android:name=".long_survey.SurveyActivity"
+            android:name="com.meyersj.onoffsurveyor.app.long_survey.SurveyActivity"
             android:label="@string/app_name" >
 
             <intent-filter >

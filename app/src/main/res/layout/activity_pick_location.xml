@@ -26,7 +26,7 @@
 
             <!-- AutoCompleteTextView -->
             <AutoCompleteTextView
-                android:id="@+id/solr_input"
+                android:id="@+id/geocode_input"
                 android:inputType="textNoSuggestions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

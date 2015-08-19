@@ -154,10 +154,10 @@ public class Utils {
         return url;
     }
 
-    public static String getUrlSolr(Context context) {
+    public static String getGeocodeUrl(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.SOLR_URL);
-        return sharedPref.getString(Cons.SOLR_URL, defaultURL);
+        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.GEOCODE_URL);
+        return sharedPref.getString(Cons.GEOCODE_URL, defaultURL);
     }
 
     public static String[] getMapRoutes(Context context) {
@@ -165,7 +165,6 @@ public class Utils {
         String routesStr = getProperties(context, Cons.PROPERTIES).getProperty(Cons.MAP_RTES);
         return sharedPref.getString(Cons.MAP_RTES, routesStr).split(",");
     }
-
 
     public static void closeKeypad(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager)

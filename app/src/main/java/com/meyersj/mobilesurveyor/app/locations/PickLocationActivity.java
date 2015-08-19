@@ -54,7 +54,7 @@ public class PickLocationActivity extends ActionBarActivity {
     Properties prop;
 
     private AutoCompleteTextView solrSearch;
-    private SolrAdapter adapter;
+    private GeocodeAdapter adapter;
 
 
     @Override
@@ -81,8 +81,8 @@ public class PickLocationActivity extends ActionBarActivity {
                     "No network connection, pick location from map");
         }
 
-        solrSearch = (AutoCompleteTextView) findViewById(R.id.solr_input);
-        adapter = new SolrAdapter(context ,android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
+        solrSearch = (AutoCompleteTextView) findViewById(R.id.geocode_input);
+        adapter = new GeocodeAdapter(context ,android.R.layout.simple_list_item_1, Utils.getGeocodeUrl(context));
         solrSearch.setAdapter(adapter);
 
 

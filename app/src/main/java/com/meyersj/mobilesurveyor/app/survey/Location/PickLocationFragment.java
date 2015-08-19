@@ -23,7 +23,7 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.locations.LocationResult;
-import com.meyersj.mobilesurveyor.app.locations.SolrAdapter;
+import com.meyersj.mobilesurveyor.app.locations.GeocodeAdapter;
 import com.meyersj.mobilesurveyor.app.stops.BuildStops;
 import com.meyersj.mobilesurveyor.app.stops.OnOffMapListener;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
@@ -39,7 +39,6 @@ public class PickLocationFragment extends MapFragment {
 
     private String mode; // "origin" or "destination"
     private ImageButton clear;
-    private ImageButton scope;
     private CheckBox region;
     private ItemizedIconOverlay stopsOverlay;
     private ItemizedIconOverlay locOverlay;
@@ -47,7 +46,7 @@ public class PickLocationFragment extends MapFragment {
     //private ArrayList<Marker> stopsList = new ArrayList<Marker>();
     protected Properties prop;
     private AutoCompleteTextView solrSearch;
-    private SolrAdapter adapter;
+    private GeocodeAdapter adapter;
     private SurveyManager manager;
     protected Drawable originIcon;
     protected Drawable destIcon;
@@ -89,8 +88,8 @@ public class PickLocationFragment extends MapFragment {
         else desc.setText("Location");
 
         clear = (ImageButton) view.findViewById(R.id.clear_text);
-        scope = (ImageButton) view.findViewById(R.id.scope);
         region = (CheckBox) view.findViewById(R.id.region);
+
         TextView modeSpinnerText = (TextView) view.findViewById(R.id.mode_spinner_text);
         locationSpinner = (Spinner) view.findViewById(R.id.location_type_spinner);
         modeSpinner = (Spinner) view.findViewById(R.id.mode_spinner);
@@ -126,8 +125,8 @@ public class PickLocationFragment extends MapFragment {
                     "No network connection, pick location from map");
         }
 
-        solrSearch = (AutoCompleteTextView) view.findViewById(R.id.solr_input);
-        adapter = new SolrAdapter(context, android.R.layout.simple_list_item_1, Utils.getUrlSolr(context));
+        solrSearch = (AutoCompleteTextView) view.findViewById(R.id.geocode_input);
+        adapter = new GeocodeAdapter(context, android.R.layout.simple_list_item_1, Utils.getGeocodeUrl(context));
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -144,27 +143,19 @@ public class PickLocationFragment extends MapFragment {
                                     long id) {
                 String address = parent.getItemAtPosition(position).toString();
                 LocationResult locationResult = adapter.getLocationResultItem(address);
-
                 if (locationResult != null) {
+                    adapter.clearResults();
                     addMarker(locationResult.getLatLng());
                 }
                 Utils.closeKeypad(activity);
             }
         });
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 solrSearch.clearListSelection();
                 solrSearch.setText("");
-            }
-        });
-
-        scope.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-                mv.setCenter(startingPoint);
-                mv.setZoom(12);
             }
         });
 

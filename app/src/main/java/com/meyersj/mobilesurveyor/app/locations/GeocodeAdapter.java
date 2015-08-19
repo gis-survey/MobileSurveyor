@@ -6,6 +6,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.meyersj.mobilesurveyor.app.util.Utils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,19 +16,19 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
+public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
 
     private final String TAG = "SolrAdapter";
 
     private Context mContext;
     private List<String> mData = new ArrayList<String>();
-    private SolrQuery mSolrQuery;
+    private Geocoder geocoder;
     private HashMap<String, LocationResult> mResults;
 
-    public SolrAdapter(Context context, int resource, String url) {
+    public GeocodeAdapter(Context context, int resource, String url) {
         super(context, resource);
         mContext = context;
-        mSolrQuery = new SolrQuery(url);
+        geocoder = new Geocoder(url);
     }
 
     @Override
@@ -52,35 +54,8 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
         return locationResult;
     }
 
-    public List<String> getNames(Map mp) {
-        List<String> names = new ArrayList<String>();
-
-        //add score to beginning of string and add to list
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pairs = (Map.Entry)it.next();
-            //build string with score and name
-            //0.992|NW 5th and Davis
-            String name = mResults.get(pairs.getKey()).getScore().toString() + "|" + pairs.getKey();
-            names.add(name);
-        }
-
-        //sort names in descending order
-        //higher scores will be first
-        //0.992|NW 6th & Davis
-        //0.123|NW 5th and Davis
-        Collections.sort(names);
-        Collections.reverse(names);
-
-        //remove score from beginning of string
-        //NW 6th & Davis
-        //NW 5th and Davis
-        for(int i = 0; i < names.size(); i++) {
-            String n = names.get(i);
-            names.set(i, n.substring(n.indexOf("|") + 1));
-        }
-
-        return names;
+    public void clearResults() {
+        geocoder.clearResults();
     }
 
     @Override
@@ -88,32 +63,20 @@ public class SolrAdapter extends ArrayAdapter<String> implements Filterable {
         Filter myFilter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-
-                List<String> results;
                 // This method is called in a worker thread
                 FilterResults filterResults = new FilterResults();
                 if(constraint != null) {
-                    try {
-                        //fetch data from Solr Server
-                        mSolrQuery.solrLookup(constraint.toString());
-                        mResults = mSolrQuery.getSolrResults();
-
-                        //extract names to be displayed in UI
-                        results = getNames(mResults);
-                        filterResults.values = results;
-                        filterResults.count = results.size();
-
-                    } catch (Exception e) {
-                        Log.e(TAG, "Filter failed");
-                    }
+                    geocoder.lookup(constraint.toString());
+                    mResults = geocoder.getResultsHash();
+                    ArrayList<String> resultsInOrder = geocoder.getResultsInOrder();
+                    filterResults.values = resultsInOrder;
+                    filterResults.count = resultsInOrder.size();
                 }
-
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence contraint, FilterResults results) {
-
                 if(results != null && results.count > 0) {
                     mData = (List<String>) results.values;
                     notifyDataSetChanged();

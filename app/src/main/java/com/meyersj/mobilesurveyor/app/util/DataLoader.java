@@ -1,7 +1,6 @@
 package com.meyersj.mobilesurveyor.app.util;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.io.IOException;

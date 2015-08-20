@@ -31,6 +31,7 @@ dependencies {
     //    transitive=true
     //}
 
+    compile 'net.sf.opencsv:opencsv:2.3'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:0.7.3@aar'){

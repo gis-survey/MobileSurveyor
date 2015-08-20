@@ -90,7 +90,8 @@ public class BuildStops {
     }
 
     public BoundingBox getBoundingBox() {
-        return bboxBuilder.getBoundingBox();
+        if(bboxBuilder != null) return bboxBuilder.getBoundingBox();
+        return null;
     }
 
 }

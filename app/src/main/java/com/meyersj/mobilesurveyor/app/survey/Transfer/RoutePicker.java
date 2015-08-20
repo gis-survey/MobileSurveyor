@@ -14,9 +14,18 @@ import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 
 public class RoutePicker {
@@ -165,6 +174,19 @@ public class RoutePicker {
 
     //TODO replace with reading input file
     protected void buildRouteLookup() {
+        try {
+            InputStreamReader csv = new InputStreamReader(context.getAssets().open(Cons.ROUTE_DIRECTIONS_CSV));
+            CSVReader reader = new CSVReader(csv);
+            List<String[]> rows = reader.readAll();
+            for(String[] row: rows) {
+                Log.d(TAG, row.toString());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         routeLookup = new HashMap<String, String>();
         routeLookup.put(ADDROUTE, null);
         routeLookup.put("", "");

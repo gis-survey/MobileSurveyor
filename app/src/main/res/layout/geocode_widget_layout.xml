@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:hint="Enter Address or Location"
         android:textColor="@color/white"
-        android:layout_centerVertical="true"
         android:background="#00FFFFFF"/>
 
     <RelativeLayout
@@ -46,8 +45,5 @@
             android:visibility="visible"/>
 
     </RelativeLayout>
-
-
-
 
 </LinearLayout>

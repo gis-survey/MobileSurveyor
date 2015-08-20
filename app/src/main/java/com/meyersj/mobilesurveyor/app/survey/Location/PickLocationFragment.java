@@ -228,7 +228,8 @@ public class PickLocationFragment extends MapFragment {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         Log.d(TAG, geoJSONName);
         BuildStops stops = new BuildStops(context, mv, "geojson/" + geoJSONName, dir);
-        return stops.getStops();
+        if (stops != null) return stops.getStops();
+        return new ArrayList<Marker>();
     }
 
     @Override

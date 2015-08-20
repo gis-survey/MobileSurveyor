@@ -166,7 +166,8 @@ public class OnOffFragment extends MapFragment {
         if(zoom) {
             Log.d(TAG, "getting bounding box");
             bbox = stops.getBoundingBox();
-            mv.zoomToBoundingBox(bbox, true, false, true, true);
+            if(bbox != null)
+                mv.zoomToBoundingBox(bbox, true, false, true, true);
         }
         return stops.getStops();
     }

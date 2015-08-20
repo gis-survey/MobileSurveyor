@@ -68,5 +68,7 @@ public class Cons {
     public static final int MAX_TRANSFERS = 5;
     public static final Double PADDING = 0.01;
 
+    public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";
+
 }
 

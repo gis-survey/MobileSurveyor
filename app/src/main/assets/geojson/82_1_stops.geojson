@@ -1,0 +1,239 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0351463,
+                    44.0098123
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "02303",
+                "STOP_NAME": "LCC Station Bay C",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07484539999999,
+                    44.0242826
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01092",
+                "STOP_NAME": "N/S of 30th E of University",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0809241,
+                    44.0242545
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01089",
+                "STOP_NAME": "N/S of 30th W of Alder",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0844887,
+                    44.0266608
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01409",
+                "STOP_NAME": "Amazon Station, Bay A",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08876319999999,
+                    44.0339371
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01222",
+                "STOP_NAME": "E/S of Amazon Prkwy N of 24th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0896553,
+                    44.0380147
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01548",
+                "STOP_NAME": "E/S of Amazon Pkwy S of 19th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09101259999998,
+                    44.0390207
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01410",
+                "STOP_NAME": "N/S of 19th E of Oak",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09127,
+                    44.0405456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01320",
+                "STOP_NAME": "E/S of Oak S of 17th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.091147,
+                    44.0420342
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01305",
+                "STOP_NAME": "E/S of Oak S of 16th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.091169,
+                    44.0442953
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01306",
+                "STOP_NAME": "E/S of Oak S of 14th",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0911462,
+                    44.0462409
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "01307",
+                "STOP_NAME": "E/S of Oak S of 12th",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934126,
+                    44.0481181
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "82",
+                "RTE_DESC": "82-LCC/Pearl",
+                "STOP_ID": "escenter",
+                "STOP_NAME": "Eugene Sta central arrival zone",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

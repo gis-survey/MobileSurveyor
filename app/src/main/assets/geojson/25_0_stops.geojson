@@ -1,0 +1,448 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0933991,
+                    44.0481377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "02112",
+                "STOP_NAME": "Eugene Station, Bay L",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928191,
+                    44.0443526
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00481",
+                "STOP_NAME": "W/S of Willamette S of 14th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928214,
+                    44.0420201
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00483",
+                "STOP_NAME": "W/S of Willamette S of 16th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928922,
+                    44.0395465
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00484",
+                "STOP_NAME": "W/S of Willamette S of 18th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0916835,
+                    44.0355665
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00487",
+                "STOP_NAME": "W/S of Willamette N of 22nd",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0908486,
+                    44.033265
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00490",
+                "STOP_NAME": "W/S of Willamette S of 24th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09078669999998,
+                    44.0310515
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00492",
+                "STOP_NAME": "W/S of Willamette S of 25th",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907768,
+                    44.0286486
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00494",
+                "STOP_NAME": "W/S of Willamette S of 27th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09078089999998,
+                    44.0272671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00495",
+                "STOP_NAME": "W/S of Willamette N of 29th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08988929999998,
+                    44.0261371
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "01088",
+                "STOP_NAME": "S/S of 29th E of Willamette",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08719539999998,
+                    44.0261648
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "01086",
+                "STOP_NAME": "S/S of 29th W of Mill",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0817483,
+                    44.0236862
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00355",
+                "STOP_NAME": "W/S of Hilyard S of 30th",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0817057,
+                    44.0211923
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "01099",
+                "STOP_NAME": "W/S of Hilyard N of 33rd",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08163469999998,
+                    44.0186537
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00356",
+                "STOP_NAME": "W/S of Hilyard S of 34th",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0820029,
+                    44.0166014
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00357",
+                "STOP_NAME": "W/S of Hilyard S of 36th",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07890029999999,
+                    44.0157236
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00358",
+                "STOP_NAME": "W/S of W. Amazon S of 37th",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0774805,
+                    44.0124568
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00359",
+                "STOP_NAME": "W/S of W. Amazon S of 39th Pl",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0768646,
+                    44.0107869
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00360",
+                "STOP_NAME": "W/S of W. Amazon N of Fox Hollow",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0760324,
+                    44.0081483
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00361",
+                "STOP_NAME": "W/S of W. Amazon N of 44th",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0756034,
+                    44.0048219
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00363",
+                "STOP_NAME": "W/S of W. Amazon N of Larch",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.075733,
+                    44.0031448
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00364",
+                "STOP_NAME": "W/S of W. Amazon S of Snell",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0762716,
+                    44.0014288
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00365",
+                "STOP_NAME": "W/S of W. Amazon S of Sprague",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0779836,
+                    43.9984255
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "25",
+                "RTE_DESC": "25-Amazon",
+                "STOP_ID": "00366",
+                "STOP_NAME": "W/S of W. Amazon N of Martin",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

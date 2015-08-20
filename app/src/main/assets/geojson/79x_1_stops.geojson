@@ -1,0 +1,125 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0524651,
+                    44.0568311
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "02152",
+                "STOP_NAME": "E/S of Garden Way N of MLK Blvd",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05192479999998,
+                    44.058146
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "02153",
+                "STOP_NAME": "E/S of Garden Way S of Commons",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0539651,
+                    44.0607873
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "02087",
+                "STOP_NAME": "N/S of Commons W of Garden Way",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0562269,
+                    44.0601987
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "02090",
+                "STOP_NAME": "W/S of Commons N of Kinsrow",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.057479,
+                    44.0583432
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "02091",
+                "STOP_NAME": "N/S of Kinsrow W of McKenna",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0624116,
+                    44.0585768
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow",
+                "STOP_ID": "00542",
+                "STOP_NAME": "N/S of MLK Blvd W of Kinsrow",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

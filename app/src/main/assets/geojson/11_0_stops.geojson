@@ -1,0 +1,828 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0214568,
+                    44.0450138
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "02505",
+                "STOP_NAME": "Springfield Station, Bay E",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0161103,
+                    44.0452418
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01489",
+                "STOP_NAME": "S/S of South A E of 7th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0124664,
+                    44.0448603
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01490",
+                "STOP_NAME": "S/S of South A E of 10th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0081616,
+                    44.0444705
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01491",
+                "STOP_NAME": "S/S of South A E of 11th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0050856,
+                    44.0444158
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00059",
+                "STOP_NAME": "S/S of South A E of 14th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0005683,
+                    44.0444013
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00249",
+                "STOP_NAME": "S/S of South A W of 18th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.99384279999998,
+                    44.0457601
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00050",
+                "STOP_NAME": "S/S of Main E of 21st",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9903127,
+                    44.0457543
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00047",
+                "STOP_NAME": "S/S of Main E of 23rd",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9860549,
+                    44.0457763
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00045",
+                "STOP_NAME": "S/S of Main E of 28th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.98013219999999,
+                    44.0457591
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00043",
+                "STOP_NAME": "S/S of Main E of 32nd",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.97510040000002,
+                    44.0457491
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00042",
+                "STOP_NAME": "S/S of Main W of 35th",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9714628,
+                    44.0457023
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00039",
+                "STOP_NAME": "S/S of Main E of 38th",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9668634,
+                    44.0456787
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00037",
+                "STOP_NAME": "S/S of Main W of 41st",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.96166560000002,
+                    44.0457041
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00035",
+                "STOP_NAME": "S/S of Main E of 42nd",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9570773,
+                    44.0456996
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00033",
+                "STOP_NAME": "S/S of Main E of 44th",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9512138,
+                    44.0456646
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00029",
+                "STOP_NAME": "S/S of Main W of 48th",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9489475,
+                    44.0456462
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01445",
+                "STOP_NAME": "S/S of Main E of 48th",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9447755,
+                    44.0456526
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00027",
+                "STOP_NAME": "S/S of Main E of 49th Pl",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9428291,
+                    44.0456531
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00025",
+                "STOP_NAME": "S/S of Main E of 51st",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.93916509999998,
+                    44.0456434
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00023",
+                "STOP_NAME": "S/S of Main E of 52nd Pl",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9363354,
+                    44.0455831
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00022",
+                "STOP_NAME": "S/S of Main E of 53rd",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9342833,
+                    44.0455706
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00020",
+                "STOP_NAME": "S/S of Main E of 54th",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9296522,
+                    44.0455562
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01776",
+                "STOP_NAME": "Thurston Sta, Bay B (outb.)",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9267256,
+                    44.0463351
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00001",
+                "STOP_NAME": "E/S of 58th N of Main",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92622,
+                    44.0494556
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00002",
+                "STOP_NAME": "E/S of 58th S of D",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9262434,
+                    44.0522474
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00004",
+                "STOP_NAME": "E/S of 58th S of Thurston Rd",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92027469999998,
+                    44.0531415
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00241",
+                "STOP_NAME": "S/S of Thurston E of 61st",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9166283,
+                    44.0529491
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00006",
+                "STOP_NAME": "S/S of Thurston W of 64th",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9132272,
+                    44.0526747
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00007",
+                "STOP_NAME": "S/S of Thurston E of 65th",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9113113,
+                    44.053242
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00008",
+                "STOP_NAME": "S/S of Thurston W of 66th",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9079867,
+                    44.0536346
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00009",
+                "STOP_NAME": "S/S of Thurston W of 67th",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9058075,
+                    44.0536166
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00010",
+                "STOP_NAME": "S/S of Thurston E of 68th",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.90423770000001,
+                    44.0526497
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00011",
+                "STOP_NAME": "W/S of 69th S of G",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9042049,
+                    44.0495259
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00012",
+                "STOP_NAME": "W/S of 69th N of D",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.90394249999999,
+                    44.0462416
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00014",
+                "STOP_NAME": "W/S of 69th N of Main St",
+                "STOP_SEQ": 35.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9073483,
+                    44.0456964
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00015",
+                "STOP_NAME": "N/S of Main W of 68th",
+                "STOP_SEQ": 36.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9116356,
+                    44.045698
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00016",
+                "STOP_NAME": "N/S of Main W of 66th",
+                "STOP_SEQ": 37.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9154372,
+                    44.0457363
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01328",
+                "STOP_NAME": "N/S of Main E of 63rd",
+                "STOP_SEQ": 38.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9182198,
+                    44.0457293
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00017",
+                "STOP_NAME": "N/S of Main E of 62nd Pl",
+                "STOP_SEQ": 39.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92142,
+                    44.0457426
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00018",
+                "STOP_NAME": "N/S of Main W of 60th Pl",
+                "STOP_SEQ": 40.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9246686,
+                    44.0457466
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01227",
+                "STOP_NAME": "N/S of Main W of 59th",
+                "STOP_SEQ": 41.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9275848,
+                    44.0458353
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00019",
+                "STOP_NAME": "N/S of Main W of 58th",
+                "STOP_SEQ": 42.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.930139,
+                    44.0447721
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01777",
+                "STOP_NAME": "Thurston Sta, Bay A (inb.)",
+                "STOP_SEQ": 43.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

@@ -1,0 +1,41 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -123.07863209999998,
+                        44.0469514
+                    ],
+                    [
+                        -123.0623298,
+                        44.0577581
+                    ],
+                    [
+                        -123.05843739999999,
+                        44.0554471
+                    ],
+                    [
+                        -123.0524651,
+                        44.0568311
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "79x",
+                "RTE_DESC": "79x-UO/Kinsrow"
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

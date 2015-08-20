@@ -1,0 +1,619 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06775010000001,
+                    44.0981035
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09601",
+                "STOP_NAME": "W/S of CoburgIndustrialWy NofMonaco",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0578016,
+                    44.1372176
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09015",
+                "STOP_NAME": "N/S of Pearl W of S. Stuart Way",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06259209999999,
+                    44.1371671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09187",
+                "STOP_NAME": "N/S of E. Pearl E of Coleman",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06536879999999,
+                    44.1371608
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09188",
+                "STOP_NAME": "N/S of E. Pearl E of N. Harrison",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0479778,
+                    44.1149783
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09144",
+                "STOP_NAME": "W/S of Coburg N of McKenzie View Dr",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.052912,
+                    44.1080388
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09609",
+                "STOP_NAME": "W/S of Coburg Rd S of Armitage Pk",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05608049999998,
+                    44.1062911
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09010",
+                "STOP_NAME": "W/S of Coburg Rd N of Game Farm Rd",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06194079999999,
+                    44.1055501
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01945",
+                "STOP_NAME": "N/S of County Farm Rd W of Fox Meadow Rd",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.067825,
+                    44.0985672
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01942",
+                "STOP_NAME": "W/S of County Farm Rd S of Lakeview",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06781760000001,
+                    44.0972004
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01948",
+                "STOP_NAME": "W/S of County Farm Rd S of Parkview",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06874350000001,
+                    44.0929749
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00306",
+                "STOP_NAME": "N/S of Crescent W of Coburg Rd",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0722293,
+                    44.0929801
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00307",
+                "STOP_NAME": "N/S of Crescent E of Chuckanut",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07556,
+                    44.0929841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00309",
+                "STOP_NAME": "N/S of Crescent E of Sarah",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777618,
+                    44.0929836
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00311",
+                "STOP_NAME": "N/S of Crescent E of Coach",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0812946,
+                    44.0916588
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01941",
+                "STOP_NAME": "W/S of Gilham S of Holly",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08134789999998,
+                    44.0898144
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00334",
+                "STOP_NAME": "W/S of Gilham S of Terresa",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0813411,
+                    44.0861298
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00318",
+                "STOP_NAME": "W/S of Gilham S of Brewer",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0813324,
+                    44.08360359999999
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01627",
+                "STOP_NAME": "W/S of Gilham N of Jeppesen Ac",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0810551,
+                    44.0817221
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00627",
+                "STOP_NAME": "W/S of Gilham N of Myers",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0810763,
+                    44.0798541
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00630",
+                "STOP_NAME": "W/S of Gilham S of Carmel",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0799855,
+                    44.0775188
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00631",
+                "STOP_NAME": "S/S of Cal Young E of Gilham",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785828,
+                    44.0765368
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00273",
+                "STOP_NAME": "W/S of Oakway S of Roland",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785995,
+                    44.0748814
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00272",
+                "STOP_NAME": "W/S of Oakway N of Law",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07860229999999,
+                    44.0732028
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00270",
+                "STOP_NAME": "W/S of Oakway S of Lariat",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786166,
+                    44.0709493
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00267",
+                "STOP_NAME": "W/S of Oakway S of St Andrews",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786498,
+                    44.0689096
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00266",
+                "STOP_NAME": "W/S of Oakway S of Bedford",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786613,
+                    44.067197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01245",
+                "STOP_NAME": "W/S of Oakway N of Fairway",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785136,
+                    44.0643981
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01246",
+                "STOP_NAME": "W/S of Oakway S of Eastwood",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08260910000001,
+                    44.0597461
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01075",
+                "STOP_NAME": "W/S of Coburg S of Club Rd",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0885396,
+                    44.051013
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01049",
+                "STOP_NAME": "N/S of 8th W of High",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0918968,
+                    44.0510496
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01050",
+                "STOP_NAME": "N/S of 8th W of Oak",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934126,
+                    44.0481181
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "escenter",
+                "STOP_NAME": "Eugene Sta central arrival zone",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

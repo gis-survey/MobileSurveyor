@@ -1,0 +1,581 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09374429999998,
+                    44.0486531
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "02119",
+                "STOP_NAME": "Eugene Station, Bay S",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0911048,
+                    44.0496936
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01213",
+                "STOP_NAME": "E/S of Oak S of Broadway",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09112659999998,
+                    44.0514346
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01185",
+                "STOP_NAME": "E/S of Oak S of 7th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08218159999998,
+                    44.0597966
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00550",
+                "STOP_NAME": "E/S of Coburg S of MLK Blvd",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0746401,
+                    44.0653325
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01447",
+                "STOP_NAME": "E/S of Coburg S of Oakmont",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07205829999998,
+                    44.067284
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00553",
+                "STOP_NAME": "E/S of Coburg N of Rustic",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0706165,
+                    44.0687841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00555",
+                "STOP_NAME": "E/S of Coburg N of Pioneer Pike",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0674709,
+                    44.0694304
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00259",
+                "STOP_NAME": "S/S of Harlow E of Lydick",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06414329999998,
+                    44.0694644
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00257",
+                "STOP_NAME": "S/S of Harlow W of Palomino",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0597933,
+                    44.069545
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00255",
+                "STOP_NAME": "S/S of Harlow E of Randall",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0557739,
+                    44.0696672
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00252",
+                "STOP_NAME": "S/S of Harlow E of Honeysuckle",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0514791,
+                    44.06973
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00251",
+                "STOP_NAME": "S/S of Harlow E of Garden Way",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.04477089999999,
+                    44.0698343
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00084",
+                "STOP_NAME": "S/S of Harlow Rd W of Beverly",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0428229,
+                    44.0732384
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01509",
+                "STOP_NAME": "Gateway Sta.-Bay A (to Spfd)",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0421026,
+                    44.0766746
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01504",
+                "STOP_NAME": "E/S of Gateway S of North Access",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0419715,
+                    44.0770687
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01590",
+                "STOP_NAME": "E/S Gateway Street S of Postal Way",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.04144429999998,
+                    44.080462
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00091",
+                "STOP_NAME": "E/S of Gateway N of Gateway Lp",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0414685,
+                    44.0832638
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00094",
+                "STOP_NAME": "E/S of Gateway N of Kruse",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0428703,
+                    44.0863707
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01733",
+                "STOP_NAME": "E/S of Gateway N of Game Farm Rd E",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0589286,
+                    44.0886811
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "02081",
+                "STOP_NAME": "N/S of Chad W of Old Coburg Rd",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0608395,
+                    44.09025
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "02043",
+                "STOP_NAME": "E/S of Shadowview N of Chad",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0600067,
+                    44.0917398
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01910",
+                "STOP_NAME": "E/S of Shadowview S of Crescent",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0563735,
+                    44.0930312
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01911",
+                "STOP_NAME": "S/S of Crescent E of Grand Cayman",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05248549999999,
+                    44.0943378
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01912",
+                "STOP_NAME": "S/S of Crescent E of Martinique",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.04305210000001,
+                    44.0863258
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01740",
+                "STOP_NAME": "W/S of Gateway N of Game Farm Rd E",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0417299,
+                    44.0825574
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00093",
+                "STOP_NAME": "W/S of Gateway S of Beltline",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.04176019999998,
+                    44.0805772
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "00092",
+                "STOP_NAME": "W/S of Gateway N of Gateway Lp",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0420743,
+                    44.0781208
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01591",
+                "STOP_NAME": "W/S Gateway Street S of Postal",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0423554,
+                    44.0758449
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01507",
+                "STOP_NAME": "W/S of Gateway S of North Access",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0426852,
+                    44.0731391
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "12",
+                "RTE_DESC": "12-Gateway",
+                "STOP_ID": "01508",
+                "STOP_NAME": "Gateway Sta.-Bay B (to ES)",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

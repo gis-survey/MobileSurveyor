@@ -1,0 +1,600 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0933991,
+                    44.0481377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "02112",
+                "STOP_NAME": "Eugene Station, Bay L",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0918141,
+                    44.0454853
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01498",
+                "STOP_NAME": "S/S of 13th W of Oak",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0896933,
+                    44.045194
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01077",
+                "STOP_NAME": "W/S of Pearl S of 13th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.089701,
+                    44.0430616
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01078",
+                "STOP_NAME": "W/S of Pearl S of 15th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08972939999998,
+                    44.040818
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01079",
+                "STOP_NAME": "W/S of Pearl S of 17th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08910979999999,
+                    44.038902
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01130",
+                "STOP_NAME": "S/S of 19th E of Amazon Pkwy",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0858412,
+                    44.0389175
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01132",
+                "STOP_NAME": "S/S of 19th E of Mill",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0837262,
+                    44.0384364
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00351",
+                "STOP_NAME": "W/S of Patterson S of 19th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0837242,
+                    44.0356661
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00352",
+                "STOP_NAME": "W/S of Patterson N of 22nd",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08267609999999,
+                    44.0333793
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01129",
+                "STOP_NAME": "S/S of 24th W of Hilyard",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08011320000001,
+                    44.033375
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01650",
+                "STOP_NAME": "S/S of 24th E of Alder",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07729969999998,
+                    44.0334285
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01651",
+                "STOP_NAME": "S/S of 24th E of Harris",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0741037,
+                    44.0333907
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01652",
+                "STOP_NAME": "S/S of 24th E of University",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0708465,
+                    44.0333768
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01653",
+                "STOP_NAME": "S/S of 24th W of Nixon",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.069642,
+                    44.0364311
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01654",
+                "STOP_NAME": "E/S of Agate S of 21st",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06959559999999,
+                    44.0377957
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01141",
+                "STOP_NAME": "E/S of Agate S of 20th",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06568,
+                    44.0389142
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01144",
+                "STOP_NAME": "S/S of 19th E of Moss",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0635985,
+                    44.0388875
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01146",
+                "STOP_NAME": "S/S of 19th W of Orchard",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0615263,
+                    44.0410429
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01655",
+                "STOP_NAME": "E/S of Walnut S of 17th",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06149609999999,
+                    44.0439949
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01656",
+                "STOP_NAME": "E/S of Walnut N of 15th",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0518358,
+                    44.0419174
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00341",
+                "STOP_NAME": "W/S of Riverview N of 16th",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05187489999999,
+                    44.0393059
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00342",
+                "STOP_NAME": "W/S of Riverview N of 18th",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05193409999998,
+                    44.0372552
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00343",
+                "STOP_NAME": "W/S of Riverview 3rd stop N of 26th",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05191309999998,
+                    44.0346511
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00344",
+                "STOP_NAME": "W/S of Riverview 2nd stop N of 26th",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05196109999999,
+                    44.0313577
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00345",
+                "STOP_NAME": "W/S of Riverview 1st stop N of 26th",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0505139,
+                    44.0317548
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00346",
+                "STOP_NAME": "E/S of Augusta 1st stop N of 26th",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0505139,
+                    44.0317548
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00346",
+                "STOP_NAME": "E/S of Augusta 1st stop N of 26th",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05046249999998,
+                    44.03468
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00347",
+                "STOP_NAME": "E/S of Augusta 2nd stop N of 26th",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05042069999999,
+                    44.037859
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00348",
+                "STOP_NAME": "E/S of Augusta S of Laurel Hill",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05141779999998,
+                    44.0416513
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "00350",
+                "STOP_NAME": "N/S of 16th E of Riverview",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0632025,
+                    44.0447551
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "27",
+                "RTE_DESC": "27-Fairmount",
+                "STOP_ID": "01074",
+                "STOP_NAME": "W/S of Orchard S of Franklin",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

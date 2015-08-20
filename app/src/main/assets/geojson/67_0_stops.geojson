@@ -1,0 +1,657 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0932443,
+                    44.0481403
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "02116",
+                "STOP_NAME": "Eugene Station, Bay P",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0902378,
+                    44.0487489
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01184",
+                "STOP_NAME": "S/S of 10th W of Pearl",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.088049,
+                    44.0506178
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01179",
+                "STOP_NAME": "E/S of High S of 8th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0880745,
+                    44.0526283
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01180",
+                "STOP_NAME": "E/S of High N of 7th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0880808,
+                    44.0556226
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01244",
+                "STOP_NAME": "E/S of High N of 4th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.087285,
+                    44.0576011
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01060",
+                "STOP_NAME": "S/S of 2nd W of Mill",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0879533,
+                    44.0564794
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01061",
+                "STOP_NAME": "N/S of 3rd E of High",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08967349999999,
+                    44.0558746
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01062",
+                "STOP_NAME": "W/S of Pearl N of 4th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08218159999998,
+                    44.0597966
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00550",
+                "STOP_NAME": "E/S of Coburg S of MLK Blvd",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0746401,
+                    44.0653325
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01447",
+                "STOP_NAME": "E/S of Coburg S of Oakmont",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07205829999998,
+                    44.067284
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00553",
+                "STOP_NAME": "E/S of Coburg N of Rustic",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0706165,
+                    44.0687841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00555",
+                "STOP_NAME": "E/S of Coburg N of Pioneer Pike",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0694094,
+                    44.0716577
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00557",
+                "STOP_NAME": "E/S of Coburg N of Tomahawk",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06938,
+                    44.0736631
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00560",
+                "STOP_NAME": "E/S of Coburg N of Tandy Turn",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06934659999999,
+                    44.0753193
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00561",
+                "STOP_NAME": "E/S of Coburg S of Bailey",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0687683,
+                    44.0782849
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00563",
+                "STOP_NAME": "E/S of Coburg N of Cal Young",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0679743,
+                    44.0795855
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00565",
+                "STOP_NAME": "E/S of Coburg S of Willakenzie",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0673727,
+                    44.0813751
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00566",
+                "STOP_NAME": "E/S of Coburg N of Willakenzie",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0674704,
+                    44.0837387
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00568",
+                "STOP_NAME": "E/S of Coburg S of Adkins",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0675424,
+                    44.0860826
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00570",
+                "STOP_NAME": "E/S of Coburg S of Beltline",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06527550000001,
+                    44.0900803
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "02042",
+                "STOP_NAME": "S/S of Chad E of Coburg Rd",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0608395,
+                    44.09025
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "02043",
+                "STOP_NAME": "E/S of Shadowview N of Chad",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0600067,
+                    44.0917398
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01910",
+                "STOP_NAME": "E/S of Shadowview S of Crescent",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.063822,
+                    44.0929357
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "02051",
+                "STOP_NAME": "N/S of Crescent E of Suzanne Way",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0659109,
+                    44.0929513
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "02062",
+                "STOP_NAME": "N/S of Crescent E of Driveway",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06874350000001,
+                    44.0929749
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00306",
+                "STOP_NAME": "N/S of Crescent W of Coburg Rd",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0722293,
+                    44.0929801
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00307",
+                "STOP_NAME": "N/S of Crescent E of Chuckanut",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07556,
+                    44.0929841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00309",
+                "STOP_NAME": "N/S of Crescent E of Sarah",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777618,
+                    44.0929836
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00311",
+                "STOP_NAME": "N/S of Crescent E of Coach",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0804617,
+                    44.0929975
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00313",
+                "STOP_NAME": "N/S of Crescent E of Gilham",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0853384,
+                    44.0932946
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00315",
+                "STOP_NAME": "N/S of Crescent E of Tulip",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0879231,
+                    44.0928941
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00579",
+                "STOP_NAME": "N/S of Green Acres W of Norkenzie",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0923505,
+                    44.0932941
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "00576",
+                "STOP_NAME": "N/S of Green Acres E of Applewood",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0961641,
+                    44.0937007
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "67",
+                "RTE_DESC": "67-Coburg Road/VRC",
+                "STOP_ID": "01211",
+                "STOP_NAME": "N/S of Green Acres E of Delta",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

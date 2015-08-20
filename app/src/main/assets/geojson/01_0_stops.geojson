@@ -1,0 +1,125 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0936448,
+                    44.0481651
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "02111",
+                "STOP_NAME": "Eugene Station, Bay K",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0941993,
+                    44.0513061
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "02122",
+                "STOP_NAME": "E/S of Olive N of 8th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934528,
+                    44.054329
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "02123",
+                "STOP_NAME": "S/S of 5th E of Olive",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09000749999998,
+                    44.0542442
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "02124",
+                "STOP_NAME": "S/S of 5th W of Pearl",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0880808,
+                    44.0556226
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "01244",
+                "STOP_NAME": "E/S of High N of 4th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.087285,
+                    44.0576011
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center",
+                "STOP_ID": "01060",
+                "STOP_NAME": "S/S of 2nd W of Mill",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

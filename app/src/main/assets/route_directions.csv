@@ -1,0 +1,73 @@
+rte,rte_desc,dir,dir_desc
+01,01-Campbell Center,0,Outbound
+01,01-Campbell Center,1,Inbound
+101,EmX-101,0,Outbound
+101,EmX-101,1,Inbound
+102,EmX-102,0,Outbound
+102,EmX-102,1,Inbound
+11,11-Thurston,0,Outbound
+11,11-Thurston,1,Inbound
+12,12-Gateway,0,Outbound
+12,12-Gateway,1,Inbound
+13,13-Centennial,0,Outbound
+13,13-Centennial,1,Inbound
+17,17-5th Street/Hayden Bridge,0,Outbound
+17,17-5th Street/Hayden Bridge,1,Inbound
+18,18-Mohawk,0,Outbound
+18,18-Mohawk,1,Inbound
+24,24-Donald,0,Outbound
+24,24-Donald,1,Inbound
+25,25-Amazon,0,Outbound
+25,25-Amazon,1,Inbound
+27,27-Fairmount,0,Outbound
+27,27-Fairmount,1,Inbound
+28,28-Hilyard,0,Outbound
+28,28-Hilyard,1,Inbound
+32,32-West 1st Ave,0,Outbound
+32,32-West 1st Ave,1,Inbound
+33,33-Jefferson,0,Outbound
+33,33-Jefferson,1,Inbound
+36,36-West 18th Ave.,0,Outbound
+36,36-West 18th Ave.,1,Inbound
+40,40-Echo Hollow,0,Outbound
+40,40-Echo Hollow,1,Inbound
+41,41-Barger/West 11th Ave.,0,Outbound
+41,41-Barger/West 11th Ave.,1,Inbound
+43,43-West 11th Ave./Barger,0,Outbound
+43,43-West 11th Ave./Barger,1,Inbound
+51,51-River Road,0,Outbound
+51,51-River Road,1,Inbound
+52,52-Irving,0,Outbound
+52,52-Irving,1,Inbound
+55,55-North Park,0,Outbound
+55,55-North Park,1,Inbound
+66,66-VRC/Coburg Road,0,Outbound
+66,66-VRC/Coburg Road,1,Inbound
+67,67-Coburg Road/VRC,0,Outbound
+67,67-Coburg Road/VRC,1,Inbound
+73,73-UO/ Willamette,0,Outbound
+73,73-UO/ Willamette,1,Inbound
+76,76-UO/Warren,0,Outbound
+76,76-UO/Warren,1,Inbound
+78,78-UO/Seneca Station,0,Outbound
+78,78-UO/Seneca Station,1,Inbound
+79x,79x-UO/Kinsrow,0,Outbound
+79x,79x-UO/Kinsrow,1,Inbound
+81,81-LCC/Harris,0,Outbound
+81,81-LCC/Harris,1,Inbound
+82,82-LCC/Pearl,0,Outbound
+82,82-LCC/Pearl,1,Inbound
+85,85-LCC/Springfield,0,Outbound
+85,85-LCC/Springfield,1,Inbound
+91,91-McKenzie Bridge,0,Outbound
+91,91-McKenzie Bridge,1,Inbound
+92,92-Lowell,0,Outbound
+92,92-Lowell,1,Inbound
+93,93-Veneta,0,Outbound
+93,93-Veneta,1,Inbound
+95,95-Junction City,0,Outbound
+95,95-Junction City,1,Inbound
+96,96-Coburg,0,Outbound
+96,96-Coburg,1,Inbound
+98,98-Cottage Grove,0,Outbound
+98,98-Cottage Grove,1,Inbound

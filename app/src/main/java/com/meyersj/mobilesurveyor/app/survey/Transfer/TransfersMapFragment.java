@@ -29,7 +29,6 @@ public class TransfersMapFragment extends MapFragment {
     protected SurveyManager manager;
     protected LinearLayout routesLayout;
     protected Button transfersBtn;
-    private ImageButton scope;
     protected ArrayList<String> routesList;
     protected ViewPager pager;
     protected Bundle extras;
@@ -55,20 +54,7 @@ public class TransfersMapFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
-        scope = (ImageButton) view.findViewById(R.id.scope);
-
-
-
         routesList = DataLoader.getRoutes(context);
-
-        //routes = activity.getResources().getStringArray(R.array.transfer_routes);
-
-
-
-        //final ArrayList<String> routesList = new ArrayList<String>();
-        //for(String route: routes) {
-        //    routesList.add(route);
-        //}
 
         addDefaultRoute(context, line, dir);
         String[] rte = new String[] {line, dir};
@@ -124,15 +110,6 @@ public class TransfersMapFragment extends MapFragment {
             }
         });
 
-        //scope.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-        //        mv.setCenter(startingPoint);
-        //        mv.setZoom(12);
-        //    }
-        //});
-
         return view;
     }
 
@@ -154,13 +131,11 @@ public class TransfersMapFragment extends MapFragment {
     //toggle visibility of list depending on current visibility
     private void changeListVisibility(int currentVisibility) {
         if (currentVisibility == View.INVISIBLE) {
-            scope.setVisibility(View.INVISIBLE);
             routesLayout.setVisibility(View.VISIBLE);
             transfersBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
         }
         else {
-            scope.setVisibility(View.VISIBLE);
             routesLayout.setVisibility(View.INVISIBLE);
             transfersBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));

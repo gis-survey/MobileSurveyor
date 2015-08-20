@@ -45,7 +45,6 @@ public class OnOffFragment extends MapFragment {
 
     private AutoCompleteTextView stopName;
     private ImageButton clear;
-    private ImageButton scope;
     private View seqView;
     private ListView onSeqListView;
     private ListView offSeqListView;
@@ -92,7 +91,6 @@ public class OnOffFragment extends MapFragment {
         mv = (MapView) view.findViewById(R.id.mapview);
         setTiles(mv);
         clear = (ImageButton) view.findViewById(R.id.clear_input_stop);
-        scope = (ImageButton) view.findViewById(R.id.scope);
         stopName = (AutoCompleteTextView) view.findViewById(R.id.input_stop);
 
         if (line != null && dir != null) {
@@ -123,15 +121,6 @@ public class OnOffFragment extends MapFragment {
             }
             zoomToRoute(mv);
         }
-
-        scope.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-                mv.setCenter(startingPoint);
-                mv.setZoom(12);
-            }
-        });
 
         restoreState();
         return view;
@@ -396,13 +385,11 @@ public class OnOffFragment extends MapFragment {
         if (currentVisibility == View.INVISIBLE) {
             stopSeqBtn.setText("Hide stop sequences");
             seqView.setVisibility(View.VISIBLE);
-            scope.setVisibility(View.INVISIBLE);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
         }
         else {
             seqView.setVisibility(View.INVISIBLE);
-            scope.setVisibility(View.VISIBLE);
             stopSeqBtn.setText("Show stop sequences");
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));

@@ -19,6 +19,7 @@ import com.meyersj.mobilesurveyor.app.survey.Confirm.ConfirmFragment;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
 import com.meyersj.mobilesurveyor.app.survey.OnOff.OnOffFragment;
 import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -42,11 +43,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
         Bundle extras = getODKExtras();
-        String line = "";
-        if(extras != null) {
-            line = extras.getString("rte", "");
-            Log.d(TAG, line);
-        }
+        String line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
+
         manager = new SurveyManager(getApplicationContext(), this, line);
         actionBar.setHomeButtonEnabled(false);
         actionBar.setTitle("TransitSurveyor");

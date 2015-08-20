@@ -19,6 +19,7 @@ import com.meyersj.mobilesurveyor.app.survey.MapFragment;
 import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 import com.meyersj.mobilesurveyor.app.survey.Transfer.RoutePicker;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.DataLoader;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class TransfersMapFragment extends MapFragment {
     protected LinearLayout routesLayout;
     protected Button transfersBtn;
     private ImageButton scope;
-    protected String[] routes;
+    protected ArrayList<String> routesList;
     protected ViewPager pager;
     protected Bundle extras;
     protected String[] selectedRoutes;
@@ -40,17 +41,8 @@ public class TransfersMapFragment extends MapFragment {
         this.pager = pager;
         this.extras = extras;
         this.selectedRoutes = new String[Cons.MAX_TRANSFERS];
-
-        if(extras != null) {
-            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
-                line = extras.getString(Cons.LINE);
-                dir = extras.getString(Cons.DIR);
-            }
-        }
-        else {
-            line = "9";
-            dir = "1";
-        }
+        line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
+        dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
     }
 
     @Override
@@ -64,14 +56,23 @@ public class TransfersMapFragment extends MapFragment {
         setTiles(mv);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         scope = (ImageButton) view.findViewById(R.id.scope);
-        routes = activity.getResources().getStringArray(R.array.transfer_routes);
-        final ArrayList<String> routesList = new ArrayList<String>();
-        for(String route: routes) {
-            routesList.add(route);
-        }
+
+
+
+        routesList = DataLoader.getRoutes(context);
+
+        //routes = activity.getResources().getStringArray(R.array.transfer_routes);
+
+
+
+        //final ArrayList<String> routesList = new ArrayList<String>();
+        //for(String route: routes) {
+        //    routesList.add(route);
+        //}
 
         addDefaultRoute(context, line, dir);
         String[] rte = new String[] {line, dir};
+
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
 
@@ -123,14 +124,14 @@ public class TransfersMapFragment extends MapFragment {
             }
         });
 
-        scope.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ILatLng startingPoint = new LatLng(45.52186, -122.679005);
-                mv.setCenter(startingPoint);
-                mv.setZoom(12);
-            }
-        });
+        //scope.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        ILatLng startingPoint = new LatLng(45.52186, -122.679005);
+        //        mv.setCenter(startingPoint);
+        //        mv.setZoom(12);
+        //    }
+        //});
 
         return view;
     }

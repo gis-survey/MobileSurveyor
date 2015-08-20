@@ -1,0 +1,619 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09398489999998,
+                    44.0481382
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "02106",
+                "STOP_NAME": "Eugene Station, Bay F",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0947076,
+                    44.0510688
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "01051",
+                "STOP_NAME": "N/S of 8th W of Olive",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09769049999998,
+                    44.0509771
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "01052",
+                "STOP_NAME": "N/S of 8th W of Lincoln",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1001884,
+                    44.0509197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "01053",
+                "STOP_NAME": "N/S of 8th E of Washington",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1022468,
+                    44.0509176
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00986",
+                "STOP_NAME": "N/S of 8th W of Jefferson",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1053898,
+                    44.0508997
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00983",
+                "STOP_NAME": "N/S of 8th W of Monroe",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1092727,
+                    44.0509444
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00981",
+                "STOP_NAME": "N/S of 8th E of Van Buren",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1129218,
+                    44.0509307
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00978",
+                "STOP_NAME": "N/S of 8th W of Polk",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1161362,
+                    44.0509455
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00977",
+                "STOP_NAME": "N/S of 8th W of Almaden",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1184356,
+                    44.0509232
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00975",
+                "STOP_NAME": "N/S of 8th W of Chambers",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1220733,
+                    44.0509509
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00973",
+                "STOP_NAME": "N/S of 8th E of Garfield",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1247333,
+                    44.0537246
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00971",
+                "STOP_NAME": "N/S of 6th W of Garfield",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.128724,
+                    44.0554999
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00969",
+                "STOP_NAME": "E/S of Hwy 99 N of 5th",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.13721309999998,
+                    44.0642566
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00967",
+                "STOP_NAME": "E/S of Hwy 99 N of Roosevelt",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1398053,
+                    44.0669902
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00965",
+                "STOP_NAME": "E/S of Hwy 99 N of Side",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1444999,
+                    44.0701332
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00802",
+                "STOP_NAME": "N/S of Royal W of Bon Vue",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1469111,
+                    44.0701539
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00804",
+                "STOP_NAME": "N/S of Royal W of Jerry",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.14867879999998,
+                    44.0706396
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00931",
+                "STOP_NAME": "E/S of Fairfield N of Royal",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1486168,
+                    44.0728949
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00932",
+                "STOP_NAME": "E/S of Fairfield N of Hawthorne",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1477068,
+                    44.0742349
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00934",
+                "STOP_NAME": "S/S of Fairfield W of Hwy 99",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1474175,
+                    44.0751551
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00961",
+                "STOP_NAME": "E/S of Hwy 99 N of Fairfield",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.14986269999999,
+                    44.078167
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00960",
+                "STOP_NAME": "E/S of Hwy 99 S of Bethel",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.15172660000002,
+                    44.0808273
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00958",
+                "STOP_NAME": "E/S of Hwy 99 N of Bethel",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1577468,
+                    44.0845636
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00746",
+                "STOP_NAME": "N/S of Barger W of Century",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.16134540000002,
+                    44.0845793
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00748",
+                "STOP_NAME": "N/S of Barger W of Clarey",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1636642,
+                    44.0846029
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00750",
+                "STOP_NAME": "N/S of Barger E of Altimont",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.16883619999999,
+                    44.0847351
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00752",
+                "STOP_NAME": "N/S of Barger W of Echo Hollow",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.17385769999999,
+                    44.0846543
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00754",
+                "STOP_NAME": "N/S of Barger E of Laurelhurst",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1778069,
+                    44.0846569
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00756",
+                "STOP_NAME": "N/S of Barger W of Golden Gardens",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1815887,
+                    44.0846502
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00758",
+                "STOP_NAME": "N/S of Barger E of E Irwin Way",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1856933,
+                    44.0846602
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "00762",
+                "STOP_NAME": "N/S of Barger W of West Irwin",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1882829,
+                    44.0839284
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "41",
+                "RTE_DESC": "41-Barger/West 11th Ave.",
+                "STOP_ID": "02135",
+                "STOP_NAME": "W/S of Terry S of Barger",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

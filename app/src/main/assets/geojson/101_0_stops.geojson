@@ -1,0 +1,448 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09336179999998,
+                    44.0487466
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "02120",
+                "STOP_NAME": "Eugene Station, Bay T",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08779950000002,
+                    44.0487713
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09901",
+                "STOP_NAME": "EmX High Street Station outbound",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0823123,
+                    44.0476105
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09902",
+                "STOP_NAME": "EmX Hilyard Station",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07772,
+                    44.0477651
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09903",
+                "STOP_NAME": "EmX Dads' Gates Station",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06928149999999,
+                    44.0463653
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09904",
+                "STOP_NAME": "EmX Agate Station",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.061326,
+                    44.0448276
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09905",
+                "STOP_NAME": "EmX Walnut Station",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.040896,
+                    44.0452951
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09907",
+                "STOP_NAME": "EmX Glenwood Station outbound",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0349406,
+                    44.0445823
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09909",
+                "STOP_NAME": "EmX Lexington Station outbound",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.03091610000001,
+                    44.0441366
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09910",
+                "STOP_NAME": "EmX McVay Station",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.02165139999998,
+                    44.045235
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "02506",
+                "STOP_NAME": "Springfield Station, Bay F",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0220686,
+                    44.0508591
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09911",
+                "STOP_NAME": "E Street Station",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0240481,
+                    44.0569146
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09913",
+                "STOP_NAME": "Centennial Station",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0262729,
+                    44.0632991
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09914",
+                "STOP_NAME": "Q Street Station outbound",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.02865579999998,
+                    44.0701306
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09915",
+                "STOP_NAME": "Hayden Bridge Station",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0309701,
+                    44.0775806
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09916",
+                "STOP_NAME": "RiverBend Station_counter-clockwise",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0287768,
+                    44.080504
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09919",
+                "STOP_NAME": "Sacred Heart Station_counter-clockwise",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0279998,
+                    44.0829178
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09936",
+                "STOP_NAME": "Pavilion Station",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0302441,
+                    44.0883678
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09920",
+                "STOP_NAME": "International Way East Station",
+                "STOP_SEQ": 36.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0364648,
+                    44.0885443
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09921",
+                "STOP_NAME": "International Center Station",
+                "STOP_SEQ": 38.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0423055,
+                    44.0884519
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09922",
+                "STOP_NAME": "International Way Station West",
+                "STOP_SEQ": 40.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.041756,
+                    44.0816899
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09923",
+                "STOP_NAME": "Kruse Way Station_counter-clockwise",
+                "STOP_SEQ": 42.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.04207859999998,
+                    44.0779016
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09925",
+                "STOP_NAME": "Postal Way Station_counter-clockwise",
+                "STOP_SEQ": 44.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0426841,
+                    44.0734891
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "101",
+                "RTE_DESC": "EmX-101",
+                "STOP_ID": "09927",
+                "STOP_NAME": "Gateway Sta.-Bay C (EmX to SS)",
+                "STOP_SEQ": 46.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

@@ -1,42 +1,334 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1160, "stop_id": 3099, "stop_name": "NE Kane & 18th Ct", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.400119334739287, 45.510342361259404 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1280, "stop_id": 3101, "stop_name": "SE Kane & 2nd", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398930439057281, 45.496160563525365 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1140, "stop_id": 3104, "stop_name": "NE Kane & 23rd", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.399916427533896, 45.512721686105706 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1240, "stop_id": 3106, "stop_name": "Kane & 8th", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.400082621502094, 45.503154964656602 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1380, "stop_id": 4518, "stop_name": "E Powell & SE Burnside", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.407530164839358, 45.494177275415261 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1500, "stop_id": 4521, "stop_name": "E Powell & NE Cleveland", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.421776551843166, 45.498150599032513 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1440, "stop_id": 4528, "stop_name": "E Powell & NE Hogan", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.413778388487017, 45.497950708943378 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1400, "stop_id": 4546, "stop_name": "E Powell & SE Rene", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.409819154945467, 45.494567402277333 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1420, "stop_id": 4638, "stop_name": "E Powell & SE 3rd", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.411966378259805, 45.496112652761525 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1340, "stop_id": 4720, "stop_name": "SE Powell Valley & Robin", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.401776016762255, 45.492898297069303 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1000, "stop_id": 8595, "stop_name": "SW 257th & Hensley Rd", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398633968177791, 45.525834981773741 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1320, "stop_id": 8776, "stop_name": "SE Kane & Powell Valley", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398974900584463, 45.492194959519523 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1600, "stop_id": 10654, "stop_name": "NE Hood & 5th", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.427922394059294, 45.500912591520049 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1550, "stop_id": 10657, "stop_name": "NE Hood & 2nd", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.427624966383149, 45.498868162961564 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1650, "stop_id": 10859, "stop_name": "Gresham Transit Center", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.426840152819679, 45.503008446872215 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 200, "stop_id": 9101, "stop_name": "SW 257th & Sturges", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.399451161887058, 45.533704761086291 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1360, "stop_id": 4714, "stop_name": "2800 Block SE Powell Valley", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.403489387397329, 45.49329047344235 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 160, "stop_id": 9428, "stop_name": "SW 257th & Jennings Way", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.396726420322025, 45.536049013056711 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 155, "stop_id": 10171, "stop_name": "400 Block SW 257th", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.392798919494425, 45.53839847671194 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1480, "stop_id": 8461, "stop_name": "E Powell & NE Liberty", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.418265687384405, 45.498119344648231 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 300, "stop_id": 9103, "stop_name": "SW 257th & Cherry Park", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.399466518239194, 45.530113513981746 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1220, "stop_id": 3093, "stop_name": "NE Kane & Division", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.400136423608501, 45.505029291292047 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1075, "stop_id": 8597, "stop_name": "SW 257th & 28th", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398589422215792, 45.52130415370241 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1025, "stop_id": 10646, "stop_name": "SW 257th & 24th", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398608494617406, 45.524138726796124 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1120, "stop_id": 10878, "stop_name": "NE Kane & 29th (MHCC)", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398608250023671, 45.515937674949789 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1100, "stop_id": 13031, "stop_name": "NE Kane & SE Stark", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398609359940508, 45.518485997989671 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1200, "stop_id": 12952, "stop_name": "NE Kane & 15th", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.400133212869747, 45.507865931860209 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1260, "stop_id": 13468, "stop_name": "NE Kane & SE 1st", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398946139199893, 45.497777535261463 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1300, "stop_id": 13469, "stop_name": "SE Kane & 5th St", "jurisdic": "Gresham", "zipcode": "97080", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.398963428856518, 45.49377644577747 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 25, "stop_id": 13314, "stop_name": "Glenn Otto Park", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.378244865826716, 45.537292700058245 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 100, "stop_id": 13315, "stop_name": "E Columbia River Hwy & SE Kibling", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.38511658363656, 45.540827216940194 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 125, "stop_id": 13316, "stop_name": "W Columbia River Hwy & SW Kendall", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.388991499180165, 45.540833169292391 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1525, "stop_id": 13473, "stop_name": "E Powell & NE Elliott", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.42448236169092, 45.498171806087903 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 50, "stop_id": 13332, "stop_name": "E Columbia River Hwy & SE Jackson Park", "jurisdic": "Troutdale", "zipcode": "97060", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.380856019183398, 45.537256643331453 ] } },
-{ "type": "Feature", "properties": { "rte": 81, "dir": 1, "rte_desc": "81-Kane\/257th", "dir_desc": "To Gresham TC", "type": "BUS", "stop_seq": 1633, "stop_id": 13506, "stop_name": "Gresham Transit Center", "jurisdic": "Gresham", "zipcode": "97030", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.42772042672506, 45.502842852335498 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0350288,
+                    44.0094681
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "02302",
+                "STOP_NAME": "LCC Station Bay B",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0597764,
+                    44.0230538
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01214",
+                "STOP_NAME": "N/S of 30th E of Spring",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07484539999999,
+                    44.0242826
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01092",
+                "STOP_NAME": "N/S of 30th E of University",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777522,
+                    44.0245198
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01101",
+                "STOP_NAME": "E/S of Harris N of 30th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777624,
+                    44.0268928
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01102",
+                "STOP_NAME": "E/S of Harris S of 28th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.077773,
+                    44.0306775
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01105",
+                "STOP_NAME": "E/S of Harris N of 26th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777153,
+                    44.0337972
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01107",
+                "STOP_NAME": "E/S of Harris N of 24th",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07774389999999,
+                    44.0354433
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01108",
+                "STOP_NAME": "E/S of Harris S of 22nd",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07771,
+                    44.0381122
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01111",
+                "STOP_NAME": "E/S of Harris N of 20th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07844809999999,
+                    44.0389801
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01137",
+                "STOP_NAME": "N/S of 19th W of Harris",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08058519999999,
+                    44.0389727
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01135",
+                "STOP_NAME": "N/S of 19th W of Alder",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0821218,
+                    44.040585
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "00382",
+                "STOP_NAME": "E/S of Hilyard S of 17th",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0821076,
+                    44.0436443
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01169",
+                "STOP_NAME": "E/S of Hilyard N of 15th",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0814866,
+                    44.0454836
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01039",
+                "STOP_NAME": "S/S of 13th E of Hilyard",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07857530000001,
+                    44.0461573
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "02156",
+                "STOP_NAME": "University of Oregon Station - Bay C",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0891843,
+                    44.0477628
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "01047",
+                "STOP_NAME": "N/S of 11th W of High",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934126,
+                    44.0481181
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "81",
+                "RTE_DESC": "81-LCC/Harris",
+                "STOP_ID": "escenter",
+                "STOP_NAME": "Eugene Sta central arrival zone",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

@@ -1,39 +1,619 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 150, "stop_id": 521, "stop_name": "SW Boones Ferry Rd & Day", "jurisdic": "Wilsonville", "zipcode": "97070", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.773371516116484, 45.340198529115057 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 400, "stop_id": 531, "stop_name": "SW Boones Ferry Rd & Ibach", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.774472032483885, 45.360549082426004 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 250, "stop_id": 534, "stop_name": "SW Boones Ferry Rd & Greenhill Ln", "jurisdic": "Washington Co.", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.775098079706225, 45.346892151758681 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1150, "stop_id": 537, "stop_name": "18000 Block SW Lower Boones Ferry", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.751097878862709, 45.391403076268269 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 300, "stop_id": 543, "stop_name": "SW Boones Ferry Rd & Norwood", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.774578561147294, 45.35332096430286 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 550, "stop_id": 562, "stop_name": "SW Boones Ferry Rd & Siletz", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.772527746669752, 45.369005427139648 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1050, "stop_id": 570, "stop_name": "SW Lower Boones Ferry & Boones Ferry", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.755057449792588, 45.389241189467533 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1650, "stop_id": 3039, "stop_name": "SW Jefferson & Broadway", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.681592512030178, 45.515365868427999 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1700, "stop_id": 3049, "stop_name": "SW Jefferson & 10th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.683763507242972, 45.515944445951916 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1000, "stop_id": 496, "stop_name": "18400 Block SW Boones Ferry Rd", "jurisdic": "Durham", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.756953733954319, 45.387038712026722 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 650, "stop_id": 502, "stop_name": "SW Boones Ferry Rd & Apache", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.769707815245965, 45.372758647249846 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 500, "stop_id": 503, "stop_name": "SW Boones Ferry Rd & Arapaho", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.772977667359356, 45.366674698643784 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1100, "stop_id": 513, "stop_name": "SW Lower Boones Ferry & Childs Rd", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.753062717965193, 45.390042441941404 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 200, "stop_id": 8892, "stop_name": "24300 Block SW Boones Ferry Rd", "jurisdic": "Washington Co.", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.774216775923236, 45.343828131147582 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1500, "stop_id": 11002, "stop_name": "SW Harbor & Montgomery", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.675709614779038, 45.509752324901925 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 850, "stop_id": 8249, "stop_name": "SW Martinazzi & Martinazzi Square", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.758870098187472, 45.380048782478632 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1250, "stop_id": 11944, "stop_name": "16800 Block SW 72nd", "jurisdic": "Tigard", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.749002087386415, 45.397670005098554 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1200, "stop_id": 7879, "stop_name": "Tualatin Park & Ride", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.748820768416266, 45.394696549867142 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1300, "stop_id": 7893, "stop_name": "SW 72nd & Upper Boones Ferry", "jurisdic": "Tigard", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.749421841673566, 45.403898715294446 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1450, "stop_id": 10713, "stop_name": "SW Harbor & River Pkwy", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.675980007589118, 45.508087174988603 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 700, "stop_id": 5004, "stop_name": "SW Sagert & 86th", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.765776017114035, 45.375238962833059 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 800, "stop_id": 8285, "stop_name": "SW Martinazzi & Mohawk", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.760435282534488, 45.376148538194109 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 600, "stop_id": 9353, "stop_name": "SW Boones Ferry Rd & Avery", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.770317149535686, 45.371963772418582 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 100, "stop_id": 8389, "stop_name": "SW 95th & Commerce Circle", "jurisdic": "Wilsonville", "zipcode": "97070", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.773264169587534, 45.337166122581124 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1550, "stop_id": 12789, "stop_name": "SW Jefferson & 1st", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.675599760742017, 45.513746096543358 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 350, "stop_id": 9511, "stop_name": "SW Boones Ferry Rd & Iowa Dr", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.774651843287543, 45.355776227753076 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 950, "stop_id": 3778, "stop_name": "SW Martinazzi & Boones Ferry", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.758789374174413, 45.384125743789646 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 900, "stop_id": 8250, "stop_name": "SW Martinazzi & Tualatin-Sherwood", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.758559634660571, 45.382097779760976 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 50, "stop_id": 13493, "stop_name": "10100 Block SW Commerce Circle", "jurisdic": "Wilsonville", "zipcode": "97070", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.775493297352071, 45.335190046406488 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 750, "stop_id": 8278, "stop_name": "SW Sagert & Tillamook", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.763407546226858, 45.375288731572553 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 1600, "stop_id": 12790, "stop_name": "SW Jefferson between 4th & 5th", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.679166605987305, 45.514703702666282 ] } },
-{ "type": "Feature", "properties": { "rte": 96, "dir": 1, "rte_desc": "96-Tualatin\/I-5", "dir_desc": "To Portland City Center", "type": "BUS", "stop_seq": 450, "stop_id": 510, "stop_name": "SW Boones Ferry Rd & Blake", "jurisdic": "Tualatin", "zipcode": "97062", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.773004439263445, 45.3648464568397 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06775010000001,
+                    44.0981035
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09601",
+                "STOP_NAME": "W/S of CoburgIndustrialWy NofMonaco",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0578016,
+                    44.1372176
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09015",
+                "STOP_NAME": "N/S of Pearl W of S. Stuart Way",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06259209999999,
+                    44.1371671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09187",
+                "STOP_NAME": "N/S of E. Pearl E of Coleman",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06536879999999,
+                    44.1371608
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09188",
+                "STOP_NAME": "N/S of E. Pearl E of N. Harrison",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0479778,
+                    44.1149783
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09144",
+                "STOP_NAME": "W/S of Coburg N of McKenzie View Dr",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.052912,
+                    44.1080388
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09609",
+                "STOP_NAME": "W/S of Coburg Rd S of Armitage Pk",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.05608049999998,
+                    44.1062911
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "09010",
+                "STOP_NAME": "W/S of Coburg Rd N of Game Farm Rd",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06194079999999,
+                    44.1055501
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01945",
+                "STOP_NAME": "N/S of County Farm Rd W of Fox Meadow Rd",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.067825,
+                    44.0985672
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01942",
+                "STOP_NAME": "W/S of County Farm Rd S of Lakeview",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06781760000001,
+                    44.0972004
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01948",
+                "STOP_NAME": "W/S of County Farm Rd S of Parkview",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.06874350000001,
+                    44.0929749
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00306",
+                "STOP_NAME": "N/S of Crescent W of Coburg Rd",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0722293,
+                    44.0929801
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00307",
+                "STOP_NAME": "N/S of Crescent E of Chuckanut",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07556,
+                    44.0929841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00309",
+                "STOP_NAME": "N/S of Crescent E of Sarah",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0777618,
+                    44.0929836
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00311",
+                "STOP_NAME": "N/S of Crescent E of Coach",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0812946,
+                    44.0916588
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01941",
+                "STOP_NAME": "W/S of Gilham S of Holly",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08134789999998,
+                    44.0898144
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00334",
+                "STOP_NAME": "W/S of Gilham S of Terresa",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0813411,
+                    44.0861298
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00318",
+                "STOP_NAME": "W/S of Gilham S of Brewer",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0813324,
+                    44.08360359999999
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01627",
+                "STOP_NAME": "W/S of Gilham N of Jeppesen Ac",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0810551,
+                    44.0817221
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00627",
+                "STOP_NAME": "W/S of Gilham N of Myers",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0810763,
+                    44.0798541
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00630",
+                "STOP_NAME": "W/S of Gilham S of Carmel",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0799855,
+                    44.0775188
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00631",
+                "STOP_NAME": "S/S of Cal Young E of Gilham",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785828,
+                    44.0765368
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00273",
+                "STOP_NAME": "W/S of Oakway S of Roland",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785995,
+                    44.0748814
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00272",
+                "STOP_NAME": "W/S of Oakway N of Law",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.07860229999999,
+                    44.0732028
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00270",
+                "STOP_NAME": "W/S of Oakway S of Lariat",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786166,
+                    44.0709493
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00267",
+                "STOP_NAME": "W/S of Oakway S of St Andrews",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786498,
+                    44.0689096
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "00266",
+                "STOP_NAME": "W/S of Oakway S of Bedford",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0786613,
+                    44.067197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01245",
+                "STOP_NAME": "W/S of Oakway N of Fairway",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0785136,
+                    44.0643981
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01246",
+                "STOP_NAME": "W/S of Oakway S of Eastwood",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08260910000001,
+                    44.0597461
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01075",
+                "STOP_NAME": "W/S of Coburg S of Club Rd",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0885396,
+                    44.051013
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01049",
+                "STOP_NAME": "N/S of 8th W of High",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0918968,
+                    44.0510496
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "01050",
+                "STOP_NAME": "N/S of 8th W of Oak",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934126,
+                    44.0481181
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "96",
+                "RTE_DESC": "96-Coburg",
+                "STOP_ID": "escenter",
+                "STOP_NAME": "Eugene Sta central arrival zone",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

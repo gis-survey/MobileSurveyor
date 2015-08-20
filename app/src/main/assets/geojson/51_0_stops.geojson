@@ -1,56 +1,657 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 40, "stop_id": 6158, "stop_name": "SW Washington & 3rd", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.674599341348852, 45.519590161269782 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 50, "stop_id": 6160, "stop_name": "SW Washington & 5th", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.676586031500889, 45.520125550804586 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2750, "stop_id": 1207, "stop_name": "4100 Block SW Council Crest", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.700073836765597, 45.493293805662347 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2550, "stop_id": 1212, "stop_name": "SW Council Crest & Chehalem", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.703391468810068, 45.496663919257365 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2650, "stop_id": 1217, "stop_name": "SW Council Crest & Tualatin", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.702331997322588, 45.494626419604003 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2850, "stop_id": 1218, "stop_name": "SW Council Crest & Tualatin", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.700539119293609, 45.493398994414882 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1900, "stop_id": 1510, "stop_name": "3100 Block SW Dosch", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712296458999887, 45.499959105401267 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1950, "stop_id": 1511, "stop_name": "SW Dosch & Doschview", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712876492480007, 45.498617689499206 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2150, "stop_id": 1515, "stop_name": "SW Dosch & Bridlemile", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.711337651667534, 45.493209404867009 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2100, "stop_id": 1520, "stop_name": "SW Dosch & Martins", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712099934633827, 45.494410015549498 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2200, "stop_id": 1522, "stop_name": "SW Dosch & Newby", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.710815336749334, 45.492093413572505 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2800, "stop_id": 4410, "stop_name": "SW Patrick & Council Crest", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.699155823244908, 45.493408824704851 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1750, "stop_id": 4413, "stop_name": "3400 Block SW Patton", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712581977864843, 45.503322835658906 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1550, "stop_id": 4417, "stop_name": "SW Patton & Montgomery", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.705621956270917, 45.505192048128464 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2450, "stop_id": 5681, "stop_name": "SW Talbot Terrace & Greenway", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.707690661164776, 45.50071102841649 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2250, "stop_id": 4801, "stop_name": "SW Redondo & Santa Monica", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.709401757700348, 45.491285938415956 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 550, "stop_id": 5018, "stop_name": "SW Salmon & 20th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.693947684841973, 45.520736527792344 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 10, "stop_id": 5020, "stop_name": "SW Salmon & 5th", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678854098849143, 45.51679365250741 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 750, "stop_id": 6082, "stop_name": "SW Vista & Madison", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.698276270492414, 45.519926234432852 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 800, "stop_id": 6085, "stop_name": "SW Vista & Market Street", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.697456986577947, 45.51842674927574 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1100, "stop_id": 6088, "stop_name": "SW Vista & Myrtle", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.69803455697496, 45.511379424152985 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 700, "stop_id": 6090, "stop_name": "SW Vista & Park Pl", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.698287469334247, 45.521064328331711 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 100, "stop_id": 6137, "stop_name": "SW Washington & Broadway", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678656507931805, 45.520694636553515 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 360, "stop_id": 6911, "stop_name": "SW 18th & Morrison", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.690433111585136, 45.521901477853099 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1200, "stop_id": 6074, "stop_name": "SW Vista & Elm St", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.698763759254518, 45.510062212695729 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2425, "stop_id": 8672, "stop_name": "SW Talbot & Talbot Terrace", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.710997586244432, 45.501122021541711 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 255, "stop_id": 9708, "stop_name": "SW Morrison & 14th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.685888087366294, 45.521081881950593 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1450, "stop_id": 6077, "stop_name": "SW Vista & Isabella", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.704209438574679, 45.507233454074367 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1000, "stop_id": 6078, "stop_name": "SW Vista & Jackson", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.697390747745303, 45.512575415688424 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 200, "stop_id": 9600, "stop_name": "SW 11th & Alder", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.682818909914474, 45.521093965465674 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2400, "stop_id": 5679, "stop_name": "SW Talbot & Patton", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712934865858685, 45.501976775352247 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1500, "stop_id": 6068, "stop_name": "SW Vista & Broadway", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.703902798163028, 45.505532690446188 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2600, "stop_id": 1214, "stop_name": "SW Council Crest & Chehalem (south leg)", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.701988137323653, 45.496127376920256 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 850, "stop_id": 6086, "stop_name": "SW Vista & Montgomery", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.696620004944577, 45.515993524887861 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1850, "stop_id": 10310, "stop_name": "SW Patton & Humphrey", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.713180913785351, 45.502311207356435 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1700, "stop_id": 4423, "stop_name": "SW Patton & Patton Ln", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.710563233990158, 45.503525563288342 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 150, "stop_id": 6169, "stop_name": "SW Washington & 9th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.680270072754325, 45.521111664704968 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 20, "stop_id": 7098, "stop_name": "SW 2nd & Taylor", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.675240268904204, 45.516533981239206 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2500, "stop_id": 1215, "stop_name": "SW Council Crest & Greenway", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.705076631185094, 45.497518660831808 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 400, "stop_id": 9553, "stop_name": "SW 18th & Salmon", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.691398762799196, 45.520380923811345 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2000, "stop_id": 1513, "stop_name": "3500 Block SW Dosch", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712916852397655, 45.497697668493949 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1880, "stop_id": 10445, "stop_name": "SW Dosch & Patton", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.713154134177756, 45.501624202722013 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 250, "stop_id": 9598, "stop_name": "SW Morrison & 12th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.683932966194092, 45.520549609911974 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 260, "stop_id": 9613, "stop_name": "SW Morrison & 16th", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.687932090206345, 45.521640598243941 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1300, "stop_id": 13573, "stop_name": "2500 Block SW Vista", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.701323087304104, 45.508679951029812 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2300, "stop_id": 2467, "stop_name": "SW Hamilton & Dosch", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.709815912264659, 45.490625222072829 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 650, "stop_id": 4340, "stop_name": "SW Park Pl & St Clair", "jurisdic": "Portland", "zipcode": "97205", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.696639635460841, 45.521351540350913 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 2050, "stop_id": 1517, "stop_name": "SW Dosch & Dosch Ct", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.711721195531624, 45.496220709789647 ] } },
-{ "type": "Feature", "properties": { "rte": 51, "dir": 0, "rte_desc": "51-Vista", "dir_desc": "To Council Crest or Dosch & Hamilton", "type": "BUS", "stop_seq": 1600, "stop_id": 4419, "stop_name": "SW Patton & Old Orchard", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.70698275249994, 45.504226946101269 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0937955,
+                    44.0480671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "02105",
+                "STOP_NAME": "Eugene Station, Bay E",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0947076,
+                    44.0510688
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01051",
+                "STOP_NAME": "N/S of 8th W of Olive",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09769049999998,
+                    44.0509771
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01052",
+                "STOP_NAME": "N/S of 8th W of Lincoln",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1001884,
+                    44.0509197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01053",
+                "STOP_NAME": "N/S of 8th E of Washington",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10031509999999,
+                    44.0530581
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01435",
+                "STOP_NAME": "E/S of Washington S of 6th Ave",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1002837,
+                    44.0548834
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00880",
+                "STOP_NAME": "E/S of Washington N of 5th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10028230000002,
+                    44.0567869
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00881",
+                "STOP_NAME": "E/S of Washington N of 3rd",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1022618,
+                    44.0588064
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00876",
+                "STOP_NAME": "N/S of 1st W of Jefferson",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10575969999998,
+                    44.058797
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00874",
+                "STOP_NAME": "N/S of 1st E of Adams",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1083117,
+                    44.0587353
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00873",
+                "STOP_NAME": "N/S of 1st E of Jackson",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1130165,
+                    44.0601183
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00870",
+                "STOP_NAME": "E/S of Railroad N of Polk",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1160501,
+                    44.0620088
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00868",
+                "STOP_NAME": "E/S of Railroad N of Cross",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11739090000002,
+                    44.0663367
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00865",
+                "STOP_NAME": "E/S of River Rd S of Briarcliff",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1179467,
+                    44.0692607
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00862",
+                "STOP_NAME": "E/S of River Rd N of Hansen",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11846809999999,
+                    44.0719858
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00860",
+                "STOP_NAME": "E/S of River Rd N of Knoop",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1191555,
+                    44.0748096
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00858",
+                "STOP_NAME": "E/S of River Rd N of Park",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12012579999998,
+                    44.0770713
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00856",
+                "STOP_NAME": "E/S of River Rd N of McClure",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1211933,
+                    44.0795917
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00855",
+                "STOP_NAME": "E/S of River Rd N of Hilliard",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1221949,
+                    44.0820436
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00852",
+                "STOP_NAME": "E/S of River Rd N of Arbor",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1233157,
+                    44.0845991
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00850",
+                "STOP_NAME": "E/S of River Rd S of Merry",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1244096,
+                    44.087319
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01248",
+                "STOP_NAME": "E/S of River Rd N of Maynard",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12534849999999,
+                    44.0895866
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00848",
+                "STOP_NAME": "E/S of River Rd S of E Rosewood",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1260772,
+                    44.0912521
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00700",
+                "STOP_NAME": "E/S of River Rd S of Hamilton",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12666119999999,
+                    44.0928644
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00702",
+                "STOP_NAME": "E/S of River Rd S of Corliss",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.128015,
+                    44.0960377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00704",
+                "STOP_NAME": "(RRS) E/S River Rd N of River Ave (on-street)",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1289034,
+                    44.0981115
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01547",
+                "STOP_NAME": "E/S of River Rd S of Division",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1301118,
+                    44.1007325
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "01325",
+                "STOP_NAME": "E/S of River Rd N of Santa Clara",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.130712,
+                    44.1023784
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00679",
+                "STOP_NAME": "E/S of River Rd N of Green",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1319904,
+                    44.1052783
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00658",
+                "STOP_NAME": "E/S of River Rd N of Azalea",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1326093,
+                    44.1066656
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00656",
+                "STOP_NAME": "E/S of River Rd S of Banton",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.13381190000001,
+                    44.1094205
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00655",
+                "STOP_NAME": "E/S of River Rd N of River Lp1",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1347503,
+                    44.1113939
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00653",
+                "STOP_NAME": "E/S of River Rd N of Wedgewood",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1357238,
+                    44.1135663
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00651",
+                "STOP_NAME": "E/S of River Rd S of Anchor",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1359576,
+                    44.1155961
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "51",
+                "RTE_DESC": "51-River Road",
+                "STOP_ID": "00638",
+                "STOP_NAME": "S/S of Wilkes E of River Rd",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

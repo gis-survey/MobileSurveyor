@@ -1,61 +1,695 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 400, "stop_id": 1666, "stop_name": "SW Farmington & 139th", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.819951916680949, 45.486765812672189 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 650, "stop_id": 1673, "stop_name": "SW Farmington & 153rd", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.834770943692533, 45.484860800983014 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 750, "stop_id": 1674, "stop_name": "SW Farmington & 160th", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.842681427613471, 45.483983830010288 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 850, "stop_id": 1678, "stop_name": "SW Farmington & 165th", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.847473337834771, 45.483227289215868 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 950, "stop_id": 1682, "stop_name": "SW Farmington & 170th", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.852169048963233, 45.481778072876594 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1000, "stop_id": 1651, "stop_name": "SW Farmington & Kinnaman", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.85597195277704, 45.480599317801484 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 350, "stop_id": 1655, "stop_name": "SW Farmington & Menlo", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.81706907233081, 45.487154154582321 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1050, "stop_id": 1657, "stop_name": "17500 Block SW Farmington", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.85818581191954, 45.479575047830373 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 550, "stop_id": 1660, "stop_name": "SW Farmington & Murray", "jurisdic": "Beaverton", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.826848815192804, 45.48587893778668 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2710, "stop_id": 8884, "stop_name": "NW 185th & Tanasbourne Rd", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867265035609577, 45.536824405372705 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1900, "stop_id": 6945, "stop_name": "2800 Block SW 185th", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867031344683809, 45.49848188894849 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3000, "stop_id": 6953, "stop_name": "NW 185th & Adrian", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867433133005079, 45.553173889600608 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2250, "stop_id": 6955, "stop_name": "SW 185th & Aloha Park Apts", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867289328357799, 45.513305218384247 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1750, "stop_id": 6960, "stop_name": "SW 185th & Blanton", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867020916127686, 45.492339253919255 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2700, "stop_id": 6961, "stop_name": "NW 185th & Cornell", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867269522979754, 45.53463421284345 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2050, "stop_id": 6968, "stop_name": "SW 185th & Ewen", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867215572784815, 45.504693228052844 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2400, "stop_id": 6972, "stop_name": "NW 185th & Heritage Pkwy", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867263033208332, 45.52106328062839 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1950, "stop_id": 6978, "stop_name": "SW 185th & Johnson", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867166579327701, 45.50054142372057 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2200, "stop_id": 6982, "stop_name": "SW 185th & Longacre", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867340751167433, 45.511464570962971 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1400, "stop_id": 6984, "stop_name": "SW 185th & Madeline", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867277219525761, 45.481257049204665 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2450, "stop_id": 6990, "stop_name": "NW 185th & Holly", "jurisdic": "Beaverton", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867299448427673, 45.523610421616802 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2900, "stop_id": 6992, "stop_name": "NW 185th & Parkview", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867358230895093, 45.545699717731019 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2100, "stop_id": 6993, "stop_name": "SW 185th & Pheasant", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867216114201938, 45.507704125114486 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2950, "stop_id": 7000, "stop_name": "NW 185th & Westview HS", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867369868166207, 45.549367692600548 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1300, "stop_id": 7002, "stop_name": "SW 185th & Rosa", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867307188894671, 45.479013191731205 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2350, "stop_id": 7007, "stop_name": "SW 185th & Salix Terrace", "jurisdic": "Beaverton", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867266007264305, 45.518063214460611 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2000, "stop_id": 7010, "stop_name": "SW 185th & Sandra", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867239553421939, 45.502769083031986 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1800, "stop_id": 7012, "stop_name": "SW 185th & Tualatin Valley Hwy", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867035922769688, 45.493954756968151 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3050, "stop_id": 7014, "stop_name": "NW 185th & Tamarack", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867468371945662, 45.555098967760117 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2500, "stop_id": 7020, "stop_name": "700 Block NW 185th", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867310481514693, 45.525148646552701 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2550, "stop_id": 7024, "stop_name": "NW 185th & Walker", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867261457745073, 45.528000896779588 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3100, "stop_id": 7026, "stop_name": "NW 185th & West Union", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867387734058056, 45.558515076864339 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3160, "stop_id": 8850, "stop_name": "NW Springville & 181st", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.863998740687208, 45.562953230188306 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 700, "stop_id": 1641, "stop_name": "SW Farmington & 157th Pl", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.838023657609, 45.484430525274462 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1250, "stop_id": 6970, "stop_name": "SW 185th & Farmington", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867424452916467, 45.475879877181406 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1500, "stop_id": 6980, "stop_name": "SW 185th & Kinnaman", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867050005048227, 45.485206431983954 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3150, "stop_id": 7011, "stop_name": "NW 185th & Springville", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867407694617938, 45.561697612398802 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 450, "stop_id": 1668, "stop_name": "SW Farmington & 142nd", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.822826653420549, 45.486355736343945 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 200, "stop_id": 12451, "stop_name": "SW Farmington & Erickson", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.811788597915339, 45.487527998269151 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 600, "stop_id": 1670, "stop_name": "SW Farmington & St Marys Dr", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.830448798056722, 45.485461203376111 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1700, "stop_id": 6995, "stop_name": "SW 185th & Pike", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867104537405709, 45.489638513939028 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2730, "stop_id": 9467, "stop_name": "NW 185th & Bronson", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867358587948985, 45.543660996851571 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 100, "stop_id": 9539, "stop_name": "SW Farmington & Watson", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.805879843760295, 45.48721934772324 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3250, "stop_id": 4429, "stop_name": "PCC Rock Creek Main Stop", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.859458190248318, 45.565560551875642 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1850, "stop_id": 6957, "stop_name": "SW 185th & Alexander", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.866986858995119, 45.495498970348997 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2150, "stop_id": 6977, "stop_name": "SW 185th & Jay", "jurisdic": "Washington Co.", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.86721079368607, 45.50979971649226 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2600, "stop_id": 6986, "stop_name": "NW 185th & McKinley School", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.867288121715191, 45.529546804911391 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 2300, "stop_id": 9610, "stop_name": "Willow Creek Transit Center", "jurisdic": "Hillsboro", "zipcode": "97006", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.870017637580276, 45.517308600170885 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 3175, "stop_id": 8839, "stop_name": "NW Springville & 178th", "jurisdic": "Washington Co.", "zipcode": "97229", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.860486092871639, 45.562916377370875 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 25, "stop_id": 9985, "stop_name": "Beaverton Transit Center", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.801308159552249, 45.491389835939934 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 50, "stop_id": 12945, "stop_name": "SW Lombard & Broadway", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.80126358745737, 45.488210952756113 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 75, "stop_id": 1648, "stop_name": "SW Farmington & Hall", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.803821637934291, 45.48699781532779 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 300, "stop_id": 1649, "stop_name": "SW Farmington & Hocken", "jurisdic": "Beaverton", "zipcode": "97005", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.814612275054913, 45.487493580613986 ] } },
-{ "type": "Feature", "properties": { "rte": 52, "dir": 0, "rte_desc": "52-Farmington\/185th", "dir_desc": "To PCC Rock Creek", "type": "BUS", "stop_seq": 1150, "stop_id": 13579, "stop_name": "SW Farmington & Rosa Rd", "jurisdic": "Washington Co.", "zipcode": "97007", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.859895672757489, 45.478792224875157 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0937955,
+                    44.0480671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "02105",
+                "STOP_NAME": "Eugene Station, Bay E",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0947076,
+                    44.0510688
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01051",
+                "STOP_NAME": "N/S of 8th W of Olive",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09769049999998,
+                    44.0509771
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01052",
+                "STOP_NAME": "N/S of 8th W of Lincoln",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1001884,
+                    44.0509197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01053",
+                "STOP_NAME": "N/S of 8th E of Washington",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10031509999999,
+                    44.0530581
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01435",
+                "STOP_NAME": "E/S of Washington S of 6th Ave",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1021538,
+                    44.0544126
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00882",
+                "STOP_NAME": "N/S of 5th W of Jefferson",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1052862,
+                    44.0543733
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00884",
+                "STOP_NAME": "N/S of 5th W of Monroe",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1092657,
+                    44.055649
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01481",
+                "STOP_NAME": "E/S of Blair N of 4th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11180339999999,
+                    44.0575083
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01479",
+                "STOP_NAME": "N/S of 2nd W of Blair",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11460889999998,
+                    44.0575499
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00533",
+                "STOP_NAME": "N/S of 2nd W of Taylor",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11724759999998,
+                    44.0579571
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01510",
+                "STOP_NAME": "E/S of Chambers N of 2nd",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11739090000002,
+                    44.0663367
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00865",
+                "STOP_NAME": "E/S of River Rd S of Briarcliff",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1179467,
+                    44.0692607
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00862",
+                "STOP_NAME": "E/S of River Rd N of Hansen",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11846809999999,
+                    44.0719858
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00860",
+                "STOP_NAME": "E/S of River Rd N of Knoop",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1191555,
+                    44.0748096
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00858",
+                "STOP_NAME": "E/S of River Rd N of Park",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12012579999998,
+                    44.0770713
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00856",
+                "STOP_NAME": "E/S of River Rd N of McClure",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1211933,
+                    44.0795917
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00855",
+                "STOP_NAME": "E/S of River Rd N of Hilliard",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1221949,
+                    44.0820436
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00852",
+                "STOP_NAME": "E/S of River Rd N of Arbor",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1233157,
+                    44.0845991
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00850",
+                "STOP_NAME": "E/S of River Rd S of Merry",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1244096,
+                    44.087319
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01248",
+                "STOP_NAME": "E/S of River Rd N of Maynard",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12534849999999,
+                    44.0895866
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00848",
+                "STOP_NAME": "E/S of River Rd S of E Rosewood",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1260772,
+                    44.0912521
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00700",
+                "STOP_NAME": "E/S of River Rd S of Hamilton",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12666119999999,
+                    44.0928644
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00702",
+                "STOP_NAME": "E/S of River Rd S of Corliss",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.128015,
+                    44.0960377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00704",
+                "STOP_NAME": "(RRS) E/S River Rd N of River Ave (on-street)",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1289034,
+                    44.0981115
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01547",
+                "STOP_NAME": "E/S of River Rd S of Division",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1301118,
+                    44.1007325
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01325",
+                "STOP_NAME": "E/S of River Rd N of Santa Clara",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.130712,
+                    44.1023784
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00679",
+                "STOP_NAME": "E/S of River Rd N of Green",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1319904,
+                    44.1052783
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00658",
+                "STOP_NAME": "E/S of River Rd N of Azalea",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1326093,
+                    44.1066656
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00656",
+                "STOP_NAME": "E/S of River Rd S of Banton",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.13381190000001,
+                    44.1094205
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00655",
+                "STOP_NAME": "E/S of River Rd N of River Lp1",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1347503,
+                    44.1113939
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00653",
+                "STOP_NAME": "E/S of River Rd N of Wedgewood",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1357238,
+                    44.1135663
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "00651",
+                "STOP_NAME": "E/S of River Rd S of Anchor",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.13780439999998,
+                    44.1158574
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "09500",
+                "STOP_NAME": "N/S of Irvington Dr. W of River Road",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.14413030000001,
+                    44.1158261
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "09501",
+                "STOP_NAME": "N/S of Irvington Dr. W of Revell",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1505443,
+                    44.1158351
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "09502",
+                "STOP_NAME": "N/S of Irvington Dr. W of Hyacinth",
+                "STOP_SEQ": 35.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1536596,
+                    44.1158464
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "52",
+                "RTE_DESC": "52-Irving",
+                "STOP_ID": "01836",
+                "STOP_NAME": "N/S of Irvington Rd W of Willowbrook",
+                "STOP_SEQ": 36.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

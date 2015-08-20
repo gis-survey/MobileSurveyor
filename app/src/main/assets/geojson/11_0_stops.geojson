@@ -1,54 +1,828 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 550, "stop_id": 1699, "stop_name": "N Fessenden & Allegheny", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.743864231030386, 45.595446203136341 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 650, "stop_id": 1703, "stop_name": "N Fessenden & Burr", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.738438544989648, 45.594162356755184 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 500, "stop_id": 1714, "stop_name": "N Fessenden & Richmond", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.746717074225003, 45.596121873190064 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 200, "stop_id": 3008, "stop_name": "N Ivanhoe & Baltimore", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.756520547435414, 45.590694436474863 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 400, "stop_id": 5373, "stop_name": "N St Louis & New York", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.751900898047879, 45.595615748689276 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 350, "stop_id": 5376, "stop_name": "N St Louis & Smith", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.753549331257275, 45.594816230388027 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 100, "stop_id": 4817, "stop_name": "N Richmond & Syracuse", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.751861774364997, 45.58759200162185 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 50, "stop_id": 4818, "stop_name": "N Richmond & Syracuse", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.751883842378035, 45.587888752718243 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1350, "stop_id": 3540, "stop_name": "13200 Block N Lombard", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.771344064299001, 45.619385809975483 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 450, "stop_id": 11007, "stop_name": "N Fessenden & Seneca", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.749858212518092, 45.596547618298658 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1100, "stop_id": 9192, "stop_name": "N Rivergate Blvd & Lombard St", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.771308705838464, 45.617591562684908 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1150, "stop_id": 9193, "stop_name": "13300 Block N Rivergate", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.779959142379298, 45.619611149532766 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1200, "stop_id": 9194, "stop_name": "N Rivergate Blvd & Ramsey", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.779976667121517, 45.623562370058977 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1300, "stop_id": 9196, "stop_name": "13300 Block N Rivergate Blvd", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.780289061341946, 45.619640100065531 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1550, "stop_id": 9197, "stop_name": "N Lombard & Simmons", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.766248050464881, 45.637386991596244 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1600, "stop_id": 9198, "stop_name": "7100 Block N Marine", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.749931254260161, 45.632758006032105 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1800, "stop_id": 9199, "stop_name": "5900 Block N Marine", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.731849064061393, 45.622836494264831 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 150, "stop_id": 10177, "stop_name": "N Ivanhoe & Leavitt", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.754787622863503, 45.589484995779941 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1400, "stop_id": 9308, "stop_name": "N Lombard & Ramsey", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.771501905710366, 45.623616434672009 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 700, "stop_id": 1712, "stop_name": "N Fessenden & Midway", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.735121891516542, 45.593373734406931 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 750, "stop_id": 11824, "stop_name": "N Macrum & Powers", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.730243930378876, 45.593998795278146 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 900, "stop_id": 11827, "stop_name": "N Columbia Blvd & Upland Dr", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.742327340859319, 45.600826971600554 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 950, "stop_id": 11828, "stop_name": "N Columbia Blvd & Swift", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.749143778960757, 45.603602608830194 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2050, "stop_id": 11829, "stop_name": "N Marine & Pier 99 St", "jurisdic": "Portland", "zipcode": "97217", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.684997805854294, 45.606515982054439 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2300, "stop_id": 11830, "stop_name": "NE Walker & N Vancouver Way", "jurisdic": "Portland", "zipcode": "97211", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.665338475962287, 45.593755806806982 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1000, "stop_id": 11850, "stop_name": "9500 Block N Columbia Blvd", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.758927236980256, 45.608509587827271 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 250, "stop_id": 11934, "stop_name": "N Ivanhoe & New York", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.75793331885815, 45.592168772047103 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1500, "stop_id": 10163, "stop_name": "N Lombard & Terminal 5 Access Rd", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.769803154754797, 45.635030456010263 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1450, "stop_id": 9434, "stop_name": "14500 Block N Lombard", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.771740316969755, 45.630387827263284 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2150, "stop_id": 9444, "stop_name": "N Marine & Gantenbein", "jurisdic": "Portland", "zipcode": "97217", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.66948997268544, 45.601749269057287 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2200, "stop_id": 9446, "stop_name": "NE 6th Drive & Faloma", "jurisdic": "Portland", "zipcode": "97211", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.659775430049393, 45.598910009654723 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2250, "stop_id": 9447, "stop_name": "NE 6th Drive & South Shore", "jurisdic": "Portland", "zipcode": "97211", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.660812844505585, 45.597687939788955 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1050, "stop_id": 13526, "stop_name": "N Columbia Blvd & Burgard", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.762611288333318, 45.612462767625857 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2100, "stop_id": 9478, "stop_name": "1000 Block N Marine", "jurisdic": "Portland", "zipcode": "97217", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.677186079023258, 45.603000620559193 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 850, "stop_id": 11826, "stop_name": "N Columbia Blvd & Bank", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.735759091575929, 45.596711958566722 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 300, "stop_id": 11936, "stop_name": "N St Louis & Central", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.755471640319413, 45.593881814787515 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1950, "stop_id": 10477, "stop_name": "2600 Block N Marine", "jurisdic": "Portland", "zipcode": "97217", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.6943804231434, 45.609981558485437 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1900, "stop_id": 12465, "stop_name": "N Marine & Portland Rd", "jurisdic": "Portland", "zipcode": "97217", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.70359129491456, 45.613330332259132 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 600, "stop_id": 10614, "stop_name": "N Fessenden & Tioga", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.741381275417552, 45.594855579315208 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1650, "stop_id": 9334, "stop_name": "N Marine & Leadbetter", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.744663171779649, 45.629844025552423 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1700, "stop_id": 9440, "stop_name": "N Marine & Bybee Lake Road", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.74069260965048, 45.627644701303716 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 2350, "stop_id": 9477, "stop_name": "NE Middlefield Rd & N Vancouver Way", "jurisdic": "Portland", "zipcode": "97211", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.667541057269261, 45.59585028272636 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 800, "stop_id": 11825, "stop_name": "N Columbia Blvd & Oregonian", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.732284606226202, 45.595417035921436 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1850, "stop_id": 9200, "stop_name": "5700 Block N Marine", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.727698348791534, 45.620583335517331 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1750, "stop_id": 9441, "stop_name": "6100 Block N Marine", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.735680755635656, 45.624874462855104 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1575, "stop_id": 9439, "stop_name": "N Marine & Leadbetter", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.756287127753708, 45.636239538271731 ] } },
-{ "type": "Feature", "properties": { "rte": 11, "dir": 0, "rte_desc": "11-Rivergate\/Marine Dr", "dir_desc": "To Vancouver Way & Middlefield", "type": "BUS", "stop_seq": 1250, "stop_id": 12942, "stop_name": "9600 N Ramsey Blvd", "jurisdic": "Portland", "zipcode": "97203", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.77632778057982, 45.623903400064606 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0214568,
+                    44.0450138
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "02505",
+                "STOP_NAME": "Springfield Station, Bay E",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0161103,
+                    44.0452418
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01489",
+                "STOP_NAME": "S/S of South A E of 7th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0124664,
+                    44.0448603
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01490",
+                "STOP_NAME": "S/S of South A E of 10th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0081616,
+                    44.0444705
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01491",
+                "STOP_NAME": "S/S of South A E of 11th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0050856,
+                    44.0444158
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00059",
+                "STOP_NAME": "S/S of South A E of 14th",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0005683,
+                    44.0444013
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00249",
+                "STOP_NAME": "S/S of South A W of 18th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.99384279999998,
+                    44.0457601
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00050",
+                "STOP_NAME": "S/S of Main E of 21st",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9903127,
+                    44.0457543
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00047",
+                "STOP_NAME": "S/S of Main E of 23rd",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9860549,
+                    44.0457763
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00045",
+                "STOP_NAME": "S/S of Main E of 28th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.98013219999999,
+                    44.0457591
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00043",
+                "STOP_NAME": "S/S of Main E of 32nd",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.97510040000002,
+                    44.0457491
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00042",
+                "STOP_NAME": "S/S of Main W of 35th",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9714628,
+                    44.0457023
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00039",
+                "STOP_NAME": "S/S of Main E of 38th",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9668634,
+                    44.0456787
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00037",
+                "STOP_NAME": "S/S of Main W of 41st",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.96166560000002,
+                    44.0457041
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00035",
+                "STOP_NAME": "S/S of Main E of 42nd",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9570773,
+                    44.0456996
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00033",
+                "STOP_NAME": "S/S of Main E of 44th",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9512138,
+                    44.0456646
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00029",
+                "STOP_NAME": "S/S of Main W of 48th",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9489475,
+                    44.0456462
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01445",
+                "STOP_NAME": "S/S of Main E of 48th",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9447755,
+                    44.0456526
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00027",
+                "STOP_NAME": "S/S of Main E of 49th Pl",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9428291,
+                    44.0456531
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00025",
+                "STOP_NAME": "S/S of Main E of 51st",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.93916509999998,
+                    44.0456434
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00023",
+                "STOP_NAME": "S/S of Main E of 52nd Pl",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9363354,
+                    44.0455831
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00022",
+                "STOP_NAME": "S/S of Main E of 53rd",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9342833,
+                    44.0455706
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00020",
+                "STOP_NAME": "S/S of Main E of 54th",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9296522,
+                    44.0455562
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01776",
+                "STOP_NAME": "Thurston Sta, Bay B (outb.)",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9267256,
+                    44.0463351
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00001",
+                "STOP_NAME": "E/S of 58th N of Main",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92622,
+                    44.0494556
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00002",
+                "STOP_NAME": "E/S of 58th S of D",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9262434,
+                    44.0522474
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00004",
+                "STOP_NAME": "E/S of 58th S of Thurston Rd",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92027469999998,
+                    44.0531415
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00241",
+                "STOP_NAME": "S/S of Thurston E of 61st",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9166283,
+                    44.0529491
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00006",
+                "STOP_NAME": "S/S of Thurston W of 64th",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9132272,
+                    44.0526747
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00007",
+                "STOP_NAME": "S/S of Thurston E of 65th",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9113113,
+                    44.053242
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00008",
+                "STOP_NAME": "S/S of Thurston W of 66th",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9079867,
+                    44.0536346
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00009",
+                "STOP_NAME": "S/S of Thurston W of 67th",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9058075,
+                    44.0536166
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00010",
+                "STOP_NAME": "S/S of Thurston E of 68th",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.90423770000001,
+                    44.0526497
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00011",
+                "STOP_NAME": "W/S of 69th S of G",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9042049,
+                    44.0495259
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00012",
+                "STOP_NAME": "W/S of 69th N of D",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.90394249999999,
+                    44.0462416
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00014",
+                "STOP_NAME": "W/S of 69th N of Main St",
+                "STOP_SEQ": 35.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9073483,
+                    44.0456964
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00015",
+                "STOP_NAME": "N/S of Main W of 68th",
+                "STOP_SEQ": 36.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9116356,
+                    44.045698
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00016",
+                "STOP_NAME": "N/S of Main W of 66th",
+                "STOP_SEQ": 37.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9154372,
+                    44.0457363
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01328",
+                "STOP_NAME": "N/S of Main E of 63rd",
+                "STOP_SEQ": 38.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9182198,
+                    44.0457293
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00017",
+                "STOP_NAME": "N/S of Main E of 62nd Pl",
+                "STOP_SEQ": 39.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.92142,
+                    44.0457426
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00018",
+                "STOP_NAME": "N/S of Main W of 60th Pl",
+                "STOP_SEQ": 40.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9246686,
+                    44.0457466
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01227",
+                "STOP_NAME": "N/S of Main W of 59th",
+                "STOP_SEQ": 41.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.9275848,
+                    44.0458353
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "00019",
+                "STOP_NAME": "N/S of Main W of 58th",
+                "STOP_SEQ": 42.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -122.930139,
+                    44.0447721
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "11",
+                "RTE_DESC": "11-Thurston",
+                "STOP_ID": "01777",
+                "STOP_NAME": "Thurston Sta, Bay A (inb.)",
+                "STOP_SEQ": 43.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

@@ -1,82 +1,657 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1000, "stop_id": 663, "stop_name": "Bryant & Black Forest Ct", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723022157049087, 45.399471572428581 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1050, "stop_id": 664, "stop_name": "Bryant & Chapman Way", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723041969771003, 45.401607230392464 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1100, "stop_id": 665, "stop_name": "Bryant & Lakeview", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723054897118885, 45.403939147082433 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 950, "stop_id": 668, "stop_name": "Bryant & Lords Ln", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723024736215379, 45.39827515864382 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 900, "stop_id": 3030, "stop_name": "Jean Rd & Bryant", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723886813465427, 45.396913793648032 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 850, "stop_id": 3032, "stop_name": "Jean Rd & Schalit", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.727248571178649, 45.396945613055458 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 800, "stop_id": 3038, "stop_name": "SW Jean Rd & Tualata", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.730710808875159, 45.397005427221842 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 500, "stop_id": 1065, "stop_name": "SW Childs & Marlin", "jurisdic": "Rivergrove", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733929799174504, 45.386133118319499 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3050, "stop_id": 3603, "stop_name": "SW Macadam & Boundary", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.674872882110307, 45.484858943964561 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3000, "stop_id": 3610, "stop_name": "SW Macadam & Flower", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.673726121991876, 45.482517443969911 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3250, "stop_id": 3611, "stop_name": "SW Macadam & Gaines", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.672803504917781, 45.496381748324602 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3150, "stop_id": 3613, "stop_name": "SW Macadam & Hamilton Ct", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.673595729808738, 45.489820401057166 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2800, "stop_id": 3622, "stop_name": "SW Macadam & Nevada", "jurisdic": "Portland", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.671349127742232, 45.472876966089622 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1200, "stop_id": 5291, "stop_name": "4100 Block South Shore", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.718488838055563, 45.404341673224799 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1400, "stop_id": 5294, "stop_name": "South Shore & Canyon", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.70225268894977, 45.404645499483586 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1550, "stop_id": 5302, "stop_name": "South Shore & Greentree", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.683750418213791, 45.406755969491996 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1300, "stop_id": 5303, "stop_name": "South Shore & Kelok", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.714061991341282, 45.402713325650247 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1700, "stop_id": 5307, "stop_name": "McVey & Parrish", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.676504597398406, 45.406931216850708 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2400, "stop_id": 5508, "stop_name": "N State & E Ave", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.661223531237212, 45.42343350056408 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2050, "stop_id": 5512, "stop_name": "S State & North Shore", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.663643358253637, 45.415481084761538 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 650, "stop_id": 4445, "stop_name": "SW Pilkington & Fernbrook", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733307799987458, 45.392298491598162 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 600, "stop_id": 4449, "stop_name": "18700 Block SW Pilkington", "jurisdic": "Clackamas Co.", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733254529694094, 45.390704889129474 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3350, "stop_id": 143, "stop_name": "SW Arthur & 1st", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678421387269282, 45.50382030828424 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2150, "stop_id": 147, "stop_name": "B Ave & Second St", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.665113126422938, 45.420844502521462 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1950, "stop_id": 3811, "stop_name": "600 Block McVey", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.665852515399152, 45.410710369301583 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1850, "stop_id": 3815, "stop_name": "McVey & Maple", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.669291836578921, 45.40953814945081 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1750, "stop_id": 3818, "stop_name": "McVey & Oak", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.673627705501673, 45.408255463558916 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2500, "stop_id": 4896, "stop_name": "SW Riverside & Elk Rock", "jurisdic": "Clackamas Co.", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.655404753855393, 45.431455550756048 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2550, "stop_id": 4897, "stop_name": "SW Riverside & Greenwood", "jurisdic": "Multnomah Co.", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.653339167028307, 45.435942065971481 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2600, "stop_id": 4901, "stop_name": "SW Riverside & Military", "jurisdic": "Multnomah Co.", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.654607320619547, 45.441516371477071 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2650, "stop_id": 4904, "stop_name": "SW Riverside & Palatine Hill", "jurisdic": "Multnomah Co.", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.656693790141745, 45.446027928568917 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2700, "stop_id": 4908, "stop_name": "SW Riverside & Riverdale", "jurisdic": "Multnomah Co.", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.658963212204725, 45.450781839725877 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 150, "stop_id": 3822, "stop_name": "7100 Block SW McEwan", "jurisdic": "Tualatin", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.747339180880161, 45.391392913514046 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 200, "stop_id": 3823, "stop_name": "SW McEwan & 65th", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.744027638180114, 45.389934292450285 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1320, "stop_id": 10175, "stop_name": "South Shore & Cedar Rd", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.71059625864666, 45.402243536694257 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2200, "stop_id": 8207, "stop_name": "Lake Oswego Transit Center", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.667983270713179, 45.420177939623414 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2250, "stop_id": 8208, "stop_name": "Lake Oswego Transit Center", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.667879746108525, 45.420631062684841 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3550, "stop_id": 11486, "stop_name": "SW 6th & Columbia", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.681094643035436, 45.514266728169559 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3450, "stop_id": 2567, "stop_name": "200 Block SW Harrison", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678929970791458, 45.510139952524312 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3600, "stop_id": 7789, "stop_name": "SW 6th & Salmon", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.679687201789534, 45.516933733662114 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3650, "stop_id": 7803, "stop_name": "SW 6th & Washington", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.67785941932199, 45.520244003919593 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 50, "stop_id": 7879, "stop_name": "Tualatin Park & Ride", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.748820768416266, 45.394696549867142 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2925, "stop_id": 11812, "stop_name": "SW Macadam & Carolina", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.672395654440649, 45.478577138343397 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 60, "stop_id": 9045, "stop_name": "SW Lower Boones Ferry & McEwan Rd", "jurisdic": "Tualatin", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.744352342492945, 45.396299931378991 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3700, "stop_id": 7751, "stop_name": "SW 6th & W Burnside", "jurisdic": "Portland", "zipcode": "97204", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.676415011005574, 45.522880235484507 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 250, "stop_id": 7842, "stop_name": "SW 65th & Dawn", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.743973219368428, 45.388467025147513 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1350, "stop_id": 5293, "stop_name": "South Shore & Blue Heron", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.709005285624599, 45.401944251999254 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1500, "stop_id": 5304, "stop_name": "South Shore & Lakeridge", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.695817597192544, 45.404851211282555 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2900, "stop_id": 3619, "stop_name": "SW Macadam & Nebraska", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.67190248900765, 45.477128369296267 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 300, "stop_id": 7840, "stop_name": "SW 65th & Childs", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.743940572729713, 45.386930755287253 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3100, "stop_id": 3616, "stop_name": "SW Macadam & Julia", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.675046882917229, 45.488049349440708 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 550, "stop_id": 4442, "stop_name": "19000 Block SW Pilkington", "jurisdic": "Clackamas Co.", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733334326334699, 45.388620019406318 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3400, "stop_id": 6472, "stop_name": "2200 Block SW 1st", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678536781364713, 45.506687104294414 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 450, "stop_id": 1062, "stop_name": "SW Childs & Benfield", "jurisdic": "Rivergrove", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.73644337342742, 45.386150790364532 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2100, "stop_id": 5509, "stop_name": "N State & Foothills", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.663033598772458, 45.41804623667403 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 700, "stop_id": 4448, "stop_name": "SW Pilkington & Kenny", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733367500083247, 45.393274997045125 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1675, "stop_id": 11805, "stop_name": "South Shore & Patton", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678215433935861, 45.406741710317412 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2850, "stop_id": 3608, "stop_name": "SW Macadam & Florida", "jurisdic": "Portland", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.671576896074413, 45.475178391497437 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2675, "stop_id": 4910, "stop_name": "SW Riverside & Riverwood", "jurisdic": "Multnomah Co.", "zipcode": "97219", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.656971284468057, 45.446976562539383 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2300, "stop_id": 3, "stop_name": "A Ave & Second St", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.665341496903679, 45.419385766189784 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1650, "stop_id": 5287, "stop_name": "1800 Block South Shore (Park & Ride)", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.68039148844521, 45.406766146864825 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1450, "stop_id": 5299, "stop_name": "South Shore & Fernwood", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.698614281882783, 45.404847319622476 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1150, "stop_id": 5305, "stop_name": "Lakeview & South Shore", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.718170158996699, 45.406335611963534 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1250, "stop_id": 5311, "stop_name": "South Shore & Canal Circle", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.717331215340806, 45.403244098385784 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2350, "stop_id": 5505, "stop_name": "N State & B Ave", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.662401780558426, 45.420964812233159 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2001, "stop_id": 5514, "stop_name": "S State & Wilbur", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.664191911902691, 45.412934254725819 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 750, "stop_id": 13565, "stop_name": "SW Pilkington & Jean", "jurisdic": "Lake Oswego", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.733296780310496, 45.396951726708465 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 400, "stop_id": 1067, "stop_name": "SW Childs & Terry", "jurisdic": "Rivergrove", "zipcode": "97035", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.739441401508486, 45.386186740805641 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 100, "stop_id": 3819, "stop_name": "17900 Block SW McEwan", "jurisdic": "Tualatin", "zipcode": "97224", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.746894276948225, 45.394160465058754 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2950, "stop_id": 3623, "stop_name": "SW Macadam & Pendleton", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.673171029386609, 45.480911150189378 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3500, "stop_id": 13305, "stop_name": "SW Harrison & 6th", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.682648183796346, 45.511058254648034 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 2450, "stop_id": 4895, "stop_name": "SW Riverside & Briarwood", "jurisdic": "Clackamas Co.", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.658198544294478, 45.428090535042422 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3200, "stop_id": 13184, "stop_name": "SW Macadam & Lowell", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.672863213949697, 45.493472188861695 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 3300, "stop_id": 13185, "stop_name": "SW Macadam & Tram Tower", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.672725740253526, 45.499184477637527 ] } },
-{ "type": "Feature", "properties": { "rte": 36, "dir": 1, "rte_desc": "36-South Shore", "dir_desc": "To Lake Oswego TC or Portland", "type": "BUS", "stop_seq": 1800, "stop_id": 3814, "stop_name": "McVey & Cornell", "jurisdic": "Lake Oswego", "zipcode": "97034", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.67197298293955, 45.408703541914143 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.18836119999999,
+                    44.050879
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01870",
+                "STOP_NAME": "W/S Terry S of Arrowsmith",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.18772809999999,
+                    44.0482331
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01557",
+                "STOP_NAME": "S/S of 11th E of Terry",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1772363,
+                    44.048085
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "02070",
+                "STOP_NAME": "S/S of 11th E of Willow Crk",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1703147,
+                    44.0479867
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01897",
+                "STOP_NAME": "S/S of 11th W of Commerce (Wal Mart)",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.16675159999998,
+                    44.0479762
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01542",
+                "STOP_NAME": "S/S of 11th E of Commerce",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1625119,
+                    44.047375
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01396",
+                "STOP_NAME": "W/S of Bertelsen S of 11th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1625805,
+                    44.0449429
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01438",
+                "STOP_NAME": "W/S of Bertelsen S of 13th",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1625445,
+                    44.0432116
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01022",
+                "STOP_NAME": "W/S of Bertelsen S of 13th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.16254679999999,
+                    44.0407119
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01024",
+                "STOP_NAME": "W/S of Bertelsen N of Aldron Ct",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.16253770000002,
+                    44.0391156
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01025",
+                "STOP_NAME": "W/S of Bertelsen N of 18th",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1618998,
+                    44.0382788
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00383",
+                "STOP_NAME": "S/S of 18th W of Four Oaks Grg",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1590451,
+                    44.0390465
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00385",
+                "STOP_NAME": "E/S of 18th N of Churchill",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1545003,
+                    44.0407394
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00388",
+                "STOP_NAME": "S/S of 18th W of Peppertree",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1490727,
+                    44.0406726
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00392",
+                "STOP_NAME": "S/S of 18th 1st stop W of Bailey Hill",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1458276,
+                    44.0406622
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00394",
+                "STOP_NAME": "S/S of 18th W of Mistletoe",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1429204,
+                    44.0406252
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00396",
+                "STOP_NAME": "S/S of 18th E of Quaker",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1405591,
+                    44.0406581
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00398",
+                "STOP_NAME": "S/S of 18th W of Buck",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1380313,
+                    44.0405773
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00400",
+                "STOP_NAME": "S/S of 18th E of Greiner",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1304991,
+                    44.0405094
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00404",
+                "STOP_NAME": "S/S of 18th W of McKinley",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12654439999999,
+                    44.0404748
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00407",
+                "STOP_NAME": "S/S of 18th E of City View",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1236192,
+                    44.0404386
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00409",
+                "STOP_NAME": "S/S of 18th E of Arthur",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1205639,
+                    44.0404508
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00412",
+                "STOP_NAME": "S/S of 18th W of Grant",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1169237,
+                    44.0403113
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00413",
+                "STOP_NAME": "S/S of 18th E of Chambers",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1115827,
+                    44.0402948
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00416",
+                "STOP_NAME": "S/S of 18th E of Polk",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1083897,
+                    44.040238
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00418",
+                "STOP_NAME": "S/S of 18th W of Jackson",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10621,
+                    44.0402138
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00419",
+                "STOP_NAME": "S/S of 18th W of Friendly",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1031245,
+                    44.0402442
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00422",
+                "STOP_NAME": "S/S of 18th W of Madison",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1006069,
+                    44.0401986
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00423",
+                "STOP_NAME": "S/S of 18th E of Jefferson",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09813920000002,
+                    44.0400268
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00425",
+                "STOP_NAME": "S/S of 18th E of Lawrence",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.095845,
+                    44.0400211
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "00427",
+                "STOP_NAME": "S/S of 18th W of Charnelton",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.094201,
+                    44.0419551
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01164",
+                "STOP_NAME": "E/S of Olive, S of 16th",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0942338,
+                    44.0436433
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01165",
+                "STOP_NAME": "E/S of Olive N of 15th",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0942418,
+                    44.0463733
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "01540",
+                "STOP_NAME": "E/S of Olive S of 12th",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0934126,
+                    44.0481181
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "36",
+                "RTE_DESC": "36-West 18th Ave.",
+                "STOP_ID": "escenter",
+                "STOP_NAME": "Eugene Sta central arrival zone",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

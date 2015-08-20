@@ -1,29 +1,467 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 150, "stop_id": 868, "stop_name": "SW Campus Dr & OHSU Garage F", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.684302586911969, 45.498186562258532 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 100, "stop_id": 871, "stop_name": "SW Campus Dr & Loading Dock 5", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.685140799067938, 45.498877205177884 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 250, "stop_id": 142, "stop_name": "SW Arthur & 1st", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678996716807504, 45.50363023050339 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 300, "stop_id": 4537, "stop_name": "SE Powell & Milwaukie", "jurisdic": "Portland", "zipcode": "97202", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.654469262008817, 45.501090418507196 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 350, "stop_id": 4627, "stop_name": "SE Powell & 26th", "jurisdic": "Portland", "zipcode": "97202", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.63977952183798, 45.497846582905211 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 25, "stop_id": 5975, "stop_name": "US Veterans Hospital", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.683270680560838, 45.497058333643132 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 75, "stop_id": 5027, "stop_name": "SW Sam Jackson Pk & Campus Dr", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.684265451057172, 45.500298423399727 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 65, "stop_id": 5028, "stop_name": "SW Sam Jackson Pk & OHSU", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.685535452629395, 45.499336025348434 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 55, "stop_id": 5032, "stop_name": "SW Sam Jackson Pk & US Veterans", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.687161151997074, 45.49904224530831 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 125, "stop_id": 10176, "stop_name": "700 SW Campus Dr at Doernbecher", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.685901020573965, 45.497876895369593 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 450, "stop_id": 7445, "stop_name": "SE Cesar Chavez Blvd & Division", "jurisdic": "Portland", "zipcode": "97214", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622459167393416, 45.505028310776197 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 650, "stop_id": 7451, "stop_name": "NE Cesar Chavez Blvd & Glisan", "jurisdic": "Portland", "zipcode": "97232", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622450521170947, 45.526469814961736 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 400, "stop_id": 7477, "stop_name": "SE Cesar Chavez Blvd & Powell", "jurisdic": "Portland", "zipcode": "97202", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622486897698892, 45.497871072317565 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 700, "stop_id": 10871, "stop_name": "Hollywood Transit Center", "jurisdic": "Portland", "zipcode": "97232", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.62057449929631, 45.533336490693721 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 340, "stop_id": 4622, "stop_name": "SE Powell & 21st", "jurisdic": "Portland", "zipcode": "97202", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.644224957555593, 45.499143500971655 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 15, "stop_id": 8455, "stop_name": "SW US Veterans Rd & Bldg #16", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.682219978027689, 45.49642214627815 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 45, "stop_id": 9488, "stop_name": "3505 SW US Veterans Rd", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.688156139540936, 45.497355205030104 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 200, "stop_id": 870, "stop_name": "SW Campus Dr & Terwilliger", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.682572023043434, 45.499108334121381 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 600, "stop_id": 7440, "stop_name": "SE Cesar Chavez Blvd & E Burnside", "jurisdic": "Portland", "zipcode": "97214", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622915277246975, 45.523397684034805 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 500, "stop_id": 7459, "stop_name": "SE Cesar Chavez Blvd & Hawthorne", "jurisdic": "Portland", "zipcode": "97214", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622672160833005, 45.511762739724517 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 35, "stop_id": 10612, "stop_name": "3515 SW US Veterans Rd", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.685616596610785, 45.496853603023744 ] } },
-{ "type": "Feature", "properties": { "rte": 66, "dir": 0, "rte_desc": "66-Marquam Hill\/Hollywood", "dir_desc": "To Hollywood Transit Center", "type": "BUS", "stop_seq": 550, "stop_id": 7437, "stop_name": "SE Cesar Chavez Blvd & Belmont", "jurisdic": "Portland", "zipcode": "97214", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.622817240174513, 45.516331263985045 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09366359999999,
+                    44.0483917
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "02118",
+                "STOP_NAME": "Eugene Station, Bay R",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0911048,
+                    44.0496936
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01213",
+                "STOP_NAME": "E/S of Oak S of Broadway",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09112659999998,
+                    44.0514346
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01185",
+                "STOP_NAME": "E/S of Oak S of 7th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08095029999998,
+                    44.0594379
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "02133",
+                "STOP_NAME": "S/S of MLK Blvd W of Centennial Lp",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.084437,
+                    44.0601571
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "02134",
+                "STOP_NAME": "E/S of Club Rd S of Country Club Rd",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0850407,
+                    44.0620919
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01300",
+                "STOP_NAME": "N/S of Country Club W of Southwood",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0885151,
+                    44.0634185
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01298",
+                "STOP_NAME": "N/S of Country Club W of Eugene CC",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.091514,
+                    44.0641654
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01546",
+                "STOP_NAME": "E/S of Country Club S of Womenscare Clinic",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09396,
+                    44.064364
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01296",
+                "STOP_NAME": "N/S of Country Club W of First American Title",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0976492,
+                    44.0653818
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01294",
+                "STOP_NAME": "N/S of Willagillespie W of Country Club (OML)",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.100269,
+                    44.068664
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01292",
+                "STOP_NAME": "E/S of Willagillespie S of VR Dr",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1032174,
+                    44.0683667
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00605",
+                "STOP_NAME": "W/S of VR Way S of VR Dr",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10306689999999,
+                    44.0657293
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00606",
+                "STOP_NAME": "W/S of VR Way S of VR Inn",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1065073,
+                    44.067104
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00607",
+                "STOP_NAME": "VRC Sta, Bay B--outbound",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1080916,
+                    44.0702622
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01230",
+                "STOP_NAME": "E/S of Goodpstre Is S of VR Dr",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1079516,
+                    44.0714262
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00603",
+                "STOP_NAME": "E/S of Goodpstre Isl (1st stop N of VRDr)",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10795439999998,
+                    44.0736926
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00602",
+                "STOP_NAME": "E/S of Goodpstre Is Sof DeltaVillage",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.107949,
+                    44.076365
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00668",
+                "STOP_NAME": "E/S of Goodpasture Island Rd S of Delta Ponds Xing",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1099902,
+                    44.0797475
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01420",
+                "STOP_NAME": "E/S of Goodpstre Is N of Alexander",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1117391,
+                    44.0818296
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01645",
+                "STOP_NAME": "E/S of Goodpasture Is N of Wimbledon",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1110282,
+                    44.0843931
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00598",
+                "STOP_NAME": "E/S of Goodpstre Is N of Kingsley",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1063973,
+                    44.0867324
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00595",
+                "STOP_NAME": "S/S of Goodpstre Is E of Goodpstre Lp",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0962391,
+                    44.0935648
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "01212",
+                "STOP_NAME": "S/S of Green Acres E of Delta Hwy",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09347339999998,
+                    44.0932348
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "66",
+                "RTE_DESC": "66-VRC/Coburg Road",
+                "STOP_ID": "00575",
+                "STOP_NAME": "S/S of Green Acres W of Applewood",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

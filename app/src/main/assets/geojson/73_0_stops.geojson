@@ -1,0 +1,543 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0787245,
+                    44.0445733
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01550",
+                "STOP_NAME": "W/S of Kincaid N of 14th",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08023869999998,
+                    44.0413005
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01333",
+                "STOP_NAME": "W/S of Alder N of 17th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0812783,
+                    44.040029
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00328",
+                "STOP_NAME": "N/S of 18th W of Alder",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0837262,
+                    44.0384364
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00351",
+                "STOP_NAME": "W/S of Patterson S of 19th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0837242,
+                    44.0356661
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00352",
+                "STOP_NAME": "W/S of Patterson N of 22nd",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08267609999999,
+                    44.0333793
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01129",
+                "STOP_NAME": "S/S of 24th W of Hilyard",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0816253,
+                    44.0307316
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00353",
+                "STOP_NAME": "W/S of Hilyard N of 26th",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0815628,
+                    44.0280686
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00354",
+                "STOP_NAME": "W/S of Hilyard N of 28th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0817237,
+                    44.0246176
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01404",
+                "STOP_NAME": "W/S of Hilyard N of 30th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0842338,
+                    44.0264635
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01407",
+                "STOP_NAME": "Amazon Station, Bay D",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0871397,
+                    44.0262518
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01085",
+                "STOP_NAME": "N/S of 29th W of Mill",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0894824,
+                    44.0262517
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01087",
+                "STOP_NAME": "N/S of 29th E of Oak",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907988,
+                    44.0257031
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00497",
+                "STOP_NAME": "W/S of Willamette S of 29th",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907804,
+                    44.0242507
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00499",
+                "STOP_NAME": "W/S of Willamette N of 30th",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0922142,
+                    44.0197347
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01274",
+                "STOP_NAME": "W/S of Willamette N of 34th",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0925502,
+                    44.0161187
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01273",
+                "STOP_NAME": "W/S of Willamette S of 36th",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0926262,
+                    44.0138551
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01272",
+                "STOP_NAME": "W/S of Willamette N of 39th",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09200959999998,
+                    44.0114292
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01271",
+                "STOP_NAME": "S/S of 40th E of Willamette",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08998829999999,
+                    44.0113957
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "01269",
+                "STOP_NAME": "S/S of 40th W of Pearl",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0872836,
+                    44.0110377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00506",
+                "STOP_NAME": "W/S of Donald S of 40th",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08728059999999,
+                    44.0085471
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00507",
+                "STOP_NAME": "W/S of Donald N of 43rd",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08870529999999,
+                    44.0063065
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00508",
+                "STOP_NAME": "W/S of Donald N of 46th",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0828109,
+                    44.0041929
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00510",
+                "STOP_NAME": "S/S of 46th W of Fox Hollow",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0838346,
+                    44.0017121
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00511",
+                "STOP_NAME": "W/S of Fox Hollow N of Princess",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0844129,
+                    43.9992992
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00512",
+                "STOP_NAME": "W/S of Fox Hollow S of Princess",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0855489,
+                    43.9979928
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00513",
+                "STOP_NAME": "W/S of Fox Hollow S of Saint Clair",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0873373,
+                    43.9965945
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00514",
+                "STOP_NAME": "W/S of Fox Hollow N of Saratoga",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0894413,
+                    43.995521
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "73",
+                "RTE_DESC": "73-UO/ Willamette",
+                "STOP_ID": "00515",
+                "STOP_NAME": "N/S of Donald W of Fox Hollow",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

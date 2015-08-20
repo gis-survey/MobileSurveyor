@@ -1,0 +1,53 @@
+{
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -123.087285,
+                        44.0576011
+                    ],
+                    [
+                        -123.0879533,
+                        44.0564794
+                    ],
+                    [
+                        -123.08967349999999,
+                        44.0558746
+                    ],
+                    [
+                        -123.0896964,
+                        44.0546338
+                    ],
+                    [
+                        -123.09200959999998,
+                        44.0543966
+                    ],
+                    [
+                        -123.09432480000001,
+                        44.0517283
+                    ],
+                    [
+                        -123.0934126,
+                        44.0481181
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "DIR": 1.0,
+                "DIR_DESC": "Inbound",
+                "RTE": "01",
+                "RTE_DESC": "01-Campbell Center"
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}

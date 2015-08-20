@@ -1,60 +1,657 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2700, "stop_id": 5172, "stop_name": "SW Scholls Ferry & Dogwood Lane", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.748746079223537, 45.486377567197543 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1950, "stop_id": 2479, "stop_name": "SW Hamilton & 41st", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.719436275712141, 45.490737684985291 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2000, "stop_id": 2481, "stop_name": "SW Hamilton & 45th", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.723355790312851, 45.490754627612958 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2050, "stop_id": 2483, "stop_name": "SW Hamilton & 47th Dr", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.725760916969506, 45.490776704538931 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2250, "stop_id": 2487, "stop_name": "SW Hamilton & 54th Pl", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.732841783365586, 45.490801817623272 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 700, "stop_id": 1927, "stop_name": "SW Naito Parkway & Harrison", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.67695576613643, 45.509707544515308 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2550, "stop_id": 5195, "stop_name": "SW Scholls Ferry & Seymour", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.745545675805673, 45.48971215862133 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2750, "stop_id": 332, "stop_name": "7400 Block SW Beaverton-Hillsdale", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.753440456022517, 45.486162635206654 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1700, "stop_id": 1519, "stop_name": "SW Dosch & Hamilton", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.71028096253977, 45.490476529911795 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1100, "stop_id": 5552, "stop_name": "1500 Block SW Sunset Blvd", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.694176294061151, 45.479613352136546 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1250, "stop_id": 5553, "stop_name": "SW Sunset Blvd & Boundary", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.697769041656031, 45.484599220703721 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1650, "stop_id": 5556, "stop_name": "SW Sunset Blvd & Dosch", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.710233879925539, 45.4887928424412 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1350, "stop_id": 5564, "stop_name": "SW Sunset Blvd & Richardson", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.700749747799961, 45.486775122216208 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1150, "stop_id": 5567, "stop_name": "SW Sunset Blvd & 18th Dr", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.69643309539093, 45.481935243081068 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1400, "stop_id": 5568, "stop_name": "SW Sunset Blvd & 19th", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.702822290880036, 45.488439596152929 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1450, "stop_id": 5571, "stop_name": "SW Sunset Blvd & 26th Dr", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.703710626606806, 45.488778328996219 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1500, "stop_id": 5572, "stop_name": "SW Sunset Blvd & 27th", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.705267212183514, 45.488745414910198 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1550, "stop_id": 5574, "stop_name": "SW Sunset Blvd & 29th", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.706353561415455, 45.488753911987054 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2175, "stop_id": 13587, "stop_name": "SW Hamilton & 52nd", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.730633887544442, 45.490797359499247 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 950, "stop_id": 155, "stop_name": "4900 Block SW Barbur", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.682756766798278, 45.487059214323075 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 900, "stop_id": 173, "stop_name": "SW Barbur & Hamilton", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.678565727132423, 45.491037216311163 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2300, "stop_id": 2461, "stop_name": "SW Hamilton & 55th Pl", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.73443539007188, 45.490812027665427 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2450, "stop_id": 2463, "stop_name": "SW Hamilton & Semler Way", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.740589199202986, 45.490869714594879 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1800, "stop_id": 2469, "stop_name": "SW Hamilton & Hamilton Ct", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.71346031153351, 45.490670815063069 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2100, "stop_id": 2471, "stop_name": "SW Hamilton & Shattuck", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.728751701897338, 45.490828955765664 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1750, "stop_id": 2473, "stop_name": "SW Hamilton & 34th", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.712124967129128, 45.4906522863416 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1000, "stop_id": 957, "stop_name": "SW Capitol & Terwilliger", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.687336599271632, 45.480276157838638 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 800, "stop_id": 8770, "stop_name": "SW Naito Parkway & Sheridan", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.677673217475729, 45.5060967819458 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 300, "stop_id": 9044, "stop_name": "SW Columbia & 10th", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.684818118841747, 45.515326262005885 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3300, "stop_id": 9760, "stop_name": "SW Apple Way & Laurelwood", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.761133569769669, 45.485202179397724 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2850, "stop_id": 9761, "stop_name": "SW 78th & Westmoor", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.756657884041587, 45.488423028643844 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2900, "stop_id": 9762, "stop_name": "SW 78th & Brentwood", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.757477047020089, 45.490899169270321 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3150, "stop_id": 9765, "stop_name": "8500 Block SW Apple Way", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.764844283815734, 45.485120975384206 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 200, "stop_id": 1111, "stop_name": "SW Columbia & 12th", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.686847741841504, 45.51587110348251 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1300, "stop_id": 5562, "stop_name": "SW Sunset Blvd & Mitchell", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.699360875160266, 45.485906340025153 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3050, "stop_id": 9544, "stop_name": "SW Laurelwood & Laurel", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.760907522588283, 45.489080920106055 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2600, "stop_id": 5198, "stop_name": "6800 Block SW Scholls Ferry", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.746316193695094, 45.488483486846093 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1850, "stop_id": 2475, "stop_name": "SW Hamilton & 36th Pl", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.714486621725996, 45.490700512360831 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1900, "stop_id": 2478, "stop_name": "SW Hamilton & 39th Dr", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.716686870549893, 45.490701029180713 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2500, "stop_id": 2470, "stop_name": "SW Hamilton & Scholls Ferry", "jurisdic": "Portland", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.744454793315853, 45.49090672705573 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1600, "stop_id": 5575, "stop_name": "SW Sunset Blvd & 31st Dr", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.708401409794078, 45.488762359861816 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2330, "stop_id": 12466, "stop_name": "5700 Block SW Hamilton", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.735652395544221, 45.490820763045356 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2650, "stop_id": 5199, "stop_name": "4400 Block SW Scholls Ferry", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.746984465852364, 45.487558363385823 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3200, "stop_id": 10448, "stop_name": "8300 Block SW Apple Way", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.762978134614642, 45.48434572341155 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 1050, "stop_id": 955, "stop_name": "SW Capitol & Sunset", "jurisdic": "Portland", "zipcode": "97239", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.693219302072464, 45.478896111218745 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 400, "stop_id": 1108, "stop_name": "SW Columbia & Park Ave", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.683247522889332, 45.514918924833509 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3100, "stop_id": 9764, "stop_name": "SW Laurelwood & Beaverton-Hillsdale Hwy", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.760987401787688, 45.486438751618174 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2360, "stop_id": 9634, "stop_name": "SW Hamilton & 58th", "jurisdic": "Portland", "zipcode": "97221", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.737068386606424, 45.49083495565791 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 3000, "stop_id": 9763, "stop_name": "SW Brentwood & Laurelwood", "jurisdic": "Beaverton", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.760709933565437, 45.491109216698149 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 2800, "stop_id": 385, "stop_name": "SW Beaverton-Hillsdale & 78th", "jurisdic": "Washington Co.", "zipcode": "97225", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.756776862578477, 45.486260060377433 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 100, "stop_id": 12792, "stop_name": "SW Columbia & 16th", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.690692289013555, 45.516922761632728 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 500, "stop_id": 12793, "stop_name": "SW Columbia between 6th & 5th", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.680654562710444, 45.514213567944957 ] } },
-{ "type": "Feature", "properties": { "rte": 55, "dir": 0, "rte_desc": "55-Hamilton", "dir_desc": "To Raleigh Hills", "type": "BUS", "stop_seq": 600, "stop_id": 12795, "stop_name": "SW Columbia & 1st", "jurisdic": "Portland", "zipcode": "97201", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.676402363354583, 45.513088397849138 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0940871,
+                    44.0483031
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "02107",
+                "STOP_NAME": "Eugene Station, Bay G",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0947076,
+                    44.0510688
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01051",
+                "STOP_NAME": "N/S of 8th W of Olive",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09769049999998,
+                    44.0509771
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01052",
+                "STOP_NAME": "N/S of 8th W of Lincoln",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1001884,
+                    44.0509197
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01053",
+                "STOP_NAME": "N/S of 8th E of Washington",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10031509999999,
+                    44.0530581
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01435",
+                "STOP_NAME": "E/S of Washington S of 6th Ave",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1002837,
+                    44.0548834
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00880",
+                "STOP_NAME": "E/S of Washington N of 5th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10028230000002,
+                    44.0567869
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00881",
+                "STOP_NAME": "E/S of Washington N of 3rd",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1022618,
+                    44.0588064
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00876",
+                "STOP_NAME": "N/S of 1st W of Jefferson",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.10575969999998,
+                    44.058797
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00874",
+                "STOP_NAME": "N/S of 1st E of Adams",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1083117,
+                    44.0587353
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00873",
+                "STOP_NAME": "N/S of 1st E of Jackson",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1130165,
+                    44.0601183
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00870",
+                "STOP_NAME": "E/S of Railroad N of Polk",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1160501,
+                    44.0620088
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00868",
+                "STOP_NAME": "E/S of Railroad N of Cross",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11739090000002,
+                    44.0663367
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00865",
+                "STOP_NAME": "E/S of River Rd S of Briarcliff",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1179467,
+                    44.0692607
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00862",
+                "STOP_NAME": "E/S of River Rd N of Hansen",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.11846809999999,
+                    44.0719858
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00860",
+                "STOP_NAME": "E/S of River Rd N of Knoop",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1200301,
+                    44.0745251
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00745",
+                "STOP_NAME": "N/S of Park W of River Rd",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1246961,
+                    44.0743547
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00744",
+                "STOP_NAME": "N/S of Park E of Mayfair",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.12669359999998,
+                    44.0743747
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00742",
+                "STOP_NAME": "N/S of Park E of Meriau",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1294471,
+                    44.0742841
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00740",
+                "STOP_NAME": "N/S of Park W of Park Terrace",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1331647,
+                    44.0742167
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00738",
+                "STOP_NAME": "N/S of Park W of Filbert",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1378745,
+                    44.077766
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00736",
+                "STOP_NAME": "E/S of Park S of Beebe",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1378633,
+                    44.0796444
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01920",
+                "STOP_NAME": "E/s of N. Park s/s of Maclay",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1404718,
+                    44.079858
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01900",
+                "STOP_NAME": "N/S of N Park W/S of Rossmore",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1441642,
+                    44.0807573
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01901",
+                "STOP_NAME": "E/S of N Park S/S of Cornwall",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1441353,
+                    44.0832839
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01902",
+                "STOP_NAME": "E/S of N Park S of Kelly",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1440798,
+                    44.0862991
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01904",
+                "STOP_NAME": "E/S of N. Park Av. N of Hatton",
+                "STOP_SEQ": 26.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.14360419999998,
+                    44.0880068
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00713",
+                "STOP_NAME": "S/S of Howard E of Park",
+                "STOP_SEQ": 27.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1405406,
+                    44.0879789
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00715",
+                "STOP_NAME": "S/S of Howard W of Maywood",
+                "STOP_SEQ": 28.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1388006,
+                    44.0880011
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00717",
+                "STOP_NAME": "S/S of Howard W of Grove",
+                "STOP_SEQ": 29.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1382678,
+                    44.0900688
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00695",
+                "STOP_NAME": "E/S of Grove S of Maxwell",
+                "STOP_SEQ": 30.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1382831,
+                    44.0935048
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01903",
+                "STOP_NAME": "E/S of Grove N of Armstrong",
+                "STOP_SEQ": 31.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.13722889999998,
+                    44.0955454
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00689",
+                "STOP_NAME": "S/S of Silver E of Sterling West",
+                "STOP_SEQ": 32.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1315816,
+                    44.0956065
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "01800",
+                "STOP_NAME": "S/S of Silver E of Sterling East",
+                "STOP_SEQ": 33.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.1269675,
+                    44.0960723
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "55",
+                "RTE_DESC": "55-North Park",
+                "STOP_ID": "00706",
+                "STOP_NAME": "(RRS) E/S River Rd N of River Ave (SE)",
+                "STOP_SEQ": 34.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

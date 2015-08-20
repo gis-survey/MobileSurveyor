@@ -1,56 +1,486 @@
 {
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2200, "stop_id": 1845, "stop_name": "NE Fremont & Mallory", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.663520219177926, 45.548312350650569 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2150, "stop_id": 1847, "stop_name": "NE Fremont & M L King", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.661255081293064, 45.548324572243615 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2250, "stop_id": 1848, "stop_name": "NE Fremont & N Williams", "jurisdic": "Portland", "zipcode": "97227", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.66654119024308, 45.548326395838004 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2050, "stop_id": 1850, "stop_name": "NE Fremont & 9th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.656191271702681, 45.54831296214487 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2000, "stop_id": 1852, "stop_name": "NE Fremont & 11th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.654596795187885, 45.548302505105319 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1950, "stop_id": 1857, "stop_name": "NE Fremont & 15th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.650208378289861, 45.548294651868538 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1900, "stop_id": 1859, "stop_name": "NE Fremont & 18th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.647776347187701, 45.548289353461968 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1850, "stop_id": 1861, "stop_name": "NE Fremont & 21st", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.644538367221074, 45.548283058708883 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1800, "stop_id": 1862, "stop_name": "NE Fremont & 24th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.641457472764202, 45.548273324102276 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1750, "stop_id": 1864, "stop_name": "NE Fremont & 27th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.637902868180944, 45.548295327697659 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1700, "stop_id": 1869, "stop_name": "NE Fremont & Edgehill Place", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.634511059942341, 45.548292020696181 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1650, "stop_id": 1870, "stop_name": "NE Fremont & 33rd Place", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.630060084677922, 45.54830602319533 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1500, "stop_id": 1875, "stop_name": "NE Fremont & Cesar Chavez Blvd", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.623069222371512, 45.548341527551486 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1450, "stop_id": 1877, "stop_name": "NE Fremont & 42nd", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.621129562208111, 45.548353177380669 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1250, "stop_id": 1889, "stop_name": "NE Fremont & 54th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.607563415672686, 45.548311187284909 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1150, "stop_id": 1893, "stop_name": "NE Fremont & 61st", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.600816728638009, 45.548265798452597 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2100, "stop_id": 1899, "stop_name": "NE Fremont & 7th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.658414567630857, 45.548316513349889 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1000, "stop_id": 1902, "stop_name": "NE Fremont & 69th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.592171804090825, 45.54827945349831 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 950, "stop_id": 1903, "stop_name": "NE Fremont & 71st", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.590113265406515, 45.548267531111215 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 900, "stop_id": 1905, "stop_name": "NE Fremont & 74th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.586751896072286, 45.548255893477673 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 800, "stop_id": 1909, "stop_name": "NE Fremont & 80th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.58067691045521, 45.548223478611796 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 750, "stop_id": 1910, "stop_name": "NE Fremont & 82nd", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.579087022441726, 45.548224164352966 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 700, "stop_id": 1913, "stop_name": "NE Fremont & 85th", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.576553922661489, 45.548199936541124 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 650, "stop_id": 1916, "stop_name": "NE Fremont & 88th", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.57143715868331, 45.548181077519736 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 500, "stop_id": 20, "stop_name": "2800 Block NE 92nd", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.56977402781088, 45.542669509179625 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2300, "stop_id": 6000, "stop_name": "N Vancouver & Ivy", "jurisdic": "Portland", "zipcode": "97227", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.668049241877966, 45.547595595409149 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2400, "stop_id": 6006, "stop_name": "N Vancouver & Stanton", "jurisdic": "Portland", "zipcode": "97227", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.668246234518492, 45.543883348125135 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 100, "stop_id": 4287, "stop_name": "10000 Block NE Pacific St", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.560866197918358, 45.529407073026306 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 450, "stop_id": 8115, "stop_name": "NE 92nd & Russell", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.568609240372936, 45.540905371958367 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 300, "stop_id": 8119, "stop_name": "NE 92nd & Schuyler", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.568430095996121, 45.535475861442329 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 350, "stop_id": 8125, "stop_name": "NE 92nd & Tillamook", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.568357576911083, 45.537177633181948 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 50, "stop_id": 8190, "stop_name": "Gateway Transit Center", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.563256517742317, 45.530320520173831 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 150, "stop_id": 6522, "stop_name": "1200 Block NE 102nd", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.557940395948577, 45.531611954068232 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1100, "stop_id": 1896, "stop_name": "NE Fremont & 64th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.597683413095027, 45.548255382761944 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1300, "stop_id": 1887, "stop_name": "NE Fremont & 51st", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.610448199372371, 45.548327035048551 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 2350, "stop_id": 5984, "stop_name": "N Vancouver & Fargo", "jurisdic": "Portland", "zipcode": "97227", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.668041796595602, 45.545975176405662 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 600, "stop_id": 25, "stop_name": "3400 Block NE 92nd", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.568987419825604, 45.548151371898484 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1550, "stop_id": 1835, "stop_name": "NE Fremont & Alameda", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.625313523940804, 45.548329229944542 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1400, "stop_id": 10594, "stop_name": "NE Fremont & 45th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.617428468076213, 45.548366075277549 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 250, "stop_id": 2343, "stop_name": "NE Halsey & 100th", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.561263255355271, 45.533650167521039 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1600, "stop_id": 1873, "stop_name": "NE Fremont & 35th", "jurisdic": "Portland", "zipcode": "97212", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.628199665208456, 45.548316047020428 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1350, "stop_id": 1883, "stop_name": "NE Fremont & 48th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.613904615848227, 45.548340694035538 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1050, "stop_id": 1898, "stop_name": "NE Fremont & 67th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.594179492816096, 45.548250019643945 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 1200, "stop_id": 1891, "stop_name": "NE Fremont & 57th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.605207366981489, 45.548312422149024 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 850, "stop_id": 1907, "stop_name": "NE Fremont & 77th", "jurisdic": "Portland", "zipcode": "97213", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.583721419553214, 45.548236973037177 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 25, "stop_id": 8194, "stop_name": "Gateway Transit Center", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.563773464516075, 45.530571493870696 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 550, "stop_id": 10505, "stop_name": "NE 92nd & Hill", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.569880950951358, 45.545633133371474 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 200, "stop_id": 6531, "stop_name": "NE 102nd & Weidler", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.557919253382451, 45.534023456659035 ] } },
-{ "type": "Feature", "properties": { "rte": 24, "dir": 0, "rte_desc": "24-Fremont", "dir_desc": "To Emanuel Hospital", "type": "BUS", "stop_seq": 400, "stop_id": 8116, "stop_name": "NE 92nd & Sacramento", "jurisdic": "Portland", "zipcode": "97220", "frequent": "False" }, "geometry": { "type": "Point", "coordinates": [ -122.568334617998289, 45.539608694542835 ] } }
-]
+    "crs": {
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0933991,
+                    44.0481377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "02112",
+                "STOP_NAME": "Eugene Station, Bay L",
+                "STOP_SEQ": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928191,
+                    44.0443526
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00481",
+                "STOP_NAME": "W/S of Willamette S of 14th",
+                "STOP_SEQ": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928214,
+                    44.0420201
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00483",
+                "STOP_NAME": "W/S of Willamette S of 16th",
+                "STOP_SEQ": 3.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0928922,
+                    44.0395465
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00484",
+                "STOP_NAME": "W/S of Willamette S of 18th",
+                "STOP_SEQ": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0916835,
+                    44.0355665
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00487",
+                "STOP_NAME": "W/S of Willamette N of 22nd",
+                "STOP_SEQ": 5.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0908486,
+                    44.033265
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00490",
+                "STOP_NAME": "W/S of Willamette S of 24th",
+                "STOP_SEQ": 6.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09078669999998,
+                    44.0310515
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00492",
+                "STOP_NAME": "W/S of Willamette S of 25th",
+                "STOP_SEQ": 7.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907768,
+                    44.0286486
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00494",
+                "STOP_NAME": "W/S of Willamette S of 27th",
+                "STOP_SEQ": 8.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.09078089999998,
+                    44.0272671
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00495",
+                "STOP_NAME": "W/S of Willamette N of 29th",
+                "STOP_SEQ": 9.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907988,
+                    44.0257031
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00497",
+                "STOP_NAME": "W/S of Willamette S of 29th",
+                "STOP_SEQ": 10.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0907804,
+                    44.0242507
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00499",
+                "STOP_NAME": "W/S of Willamette N of 30th",
+                "STOP_SEQ": 11.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0903626,
+                    44.0214484
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00501",
+                "STOP_NAME": "W/S of Donald N of 33rd",
+                "STOP_SEQ": 12.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0897416,
+                    44.0193809
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00502",
+                "STOP_NAME": "W/S of Donald N of 34th",
+                "STOP_SEQ": 13.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08880490000001,
+                    44.0170309
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00503",
+                "STOP_NAME": "W/S of Donald S of Pearl",
+                "STOP_SEQ": 14.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0878073,
+                    44.0150196
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00504",
+                "STOP_NAME": "W/S of Donald S of 37th",
+                "STOP_SEQ": 15.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.087663,
+                    44.0130534
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00505",
+                "STOP_NAME": "W/S of Donald N of Mill",
+                "STOP_SEQ": 16.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0872836,
+                    44.0110377
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00506",
+                "STOP_NAME": "W/S of Donald S of 40th",
+                "STOP_SEQ": 17.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08728059999999,
+                    44.0085471
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00507",
+                "STOP_NAME": "W/S of Donald N of 43rd",
+                "STOP_SEQ": 18.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.08870529999999,
+                    44.0063065
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00508",
+                "STOP_NAME": "W/S of Donald N of 46th",
+                "STOP_SEQ": 19.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0828109,
+                    44.0041929
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00510",
+                "STOP_NAME": "S/S of 46th W of Fox Hollow",
+                "STOP_SEQ": 20.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0838346,
+                    44.0017121
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00511",
+                "STOP_NAME": "W/S of Fox Hollow N of Princess",
+                "STOP_SEQ": 21.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0844129,
+                    43.9992992
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00512",
+                "STOP_NAME": "W/S of Fox Hollow S of Princess",
+                "STOP_SEQ": 22.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0855489,
+                    43.9979928
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00513",
+                "STOP_NAME": "W/S of Fox Hollow S of Saint Clair",
+                "STOP_SEQ": 23.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0873373,
+                    43.9965945
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00514",
+                "STOP_NAME": "W/S of Fox Hollow N of Saratoga",
+                "STOP_SEQ": 24.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -123.0894413,
+                    43.995521
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "DIR": 0.0,
+                "DIR_DESC": "Outbound",
+                "RTE": "24",
+                "RTE_DESC": "24-Donald",
+                "STOP_ID": "00515",
+                "STOP_NAME": "N/S of Donald W of Fox Hollow",
+                "STOP_SEQ": 25.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
 }

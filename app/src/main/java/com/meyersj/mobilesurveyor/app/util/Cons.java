@@ -1,6 +1,9 @@
 package com.meyersj.mobilesurveyor.app.util;
 
 
+import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+
 public class Cons {
     public static final String MODE = "mode";
     public static final String URL = "url";
@@ -68,7 +71,13 @@ public class Cons {
     public static final int MAX_TRANSFERS = 5;
     public static final Double PADDING = 0.01;
 
+
     public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";
+    public static final String DEFAULT_RTE = "91";
+    public static final String DEFAULT_DIR = "0";
+
+    public static final LatLng CENTROID = new LatLng(44.051944, -123.086667); // Eugene
+    //public static final LatLng CENTROID = new LatLng(45.49186, -122.679005); // Portland
 
 }
 

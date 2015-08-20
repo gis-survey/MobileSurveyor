@@ -74,17 +74,8 @@ public class OnOffFragment extends MapFragment {
     public void initialize(SurveyManager manager, Bundle extras) {
         this.manager = manager;
         this.extras = extras;
-
-        if(extras != null) {
-            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
-                line = extras.getString(Cons.LINE);
-                dir = extras.getString(Cons.DIR);
-            }
-        }
-        else {
-            line = "9";
-            dir = "1";
-        }
+        line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
+        dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
     }
 
     @Override

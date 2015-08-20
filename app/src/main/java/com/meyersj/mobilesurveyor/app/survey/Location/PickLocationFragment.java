@@ -43,7 +43,6 @@ public class PickLocationFragment extends MapFragment {
     private ItemizedIconOverlay stopsOverlay;
     private ItemizedIconOverlay locOverlay;
     private ArrayList<Marker> locList = new ArrayList<Marker>();
-    //private ArrayList<Marker> stopsList = new ArrayList<Marker>();
     protected Properties prop;
     private AutoCompleteTextView solrSearch;
     private GeocodeAdapter adapter;
@@ -61,16 +60,8 @@ public class PickLocationFragment extends MapFragment {
         this.manager = manager;
         this.mode = mode;
         this.extras = extras;
-        if(extras != null) {
-            if (extras.containsKey(Cons.LINE) && extras.containsKey(Cons.DIR)) {
-                line = extras.getString(Cons.LINE);
-                dir = extras.getString(Cons.DIR);
-            }
-        }
-        else {
-            line = "9";
-            dir = "1";
-        }
+        line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
+        dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
     }
 
     @Override

@@ -92,9 +92,9 @@ public abstract class MapFragment extends Fragment {
     }
 
     protected void setTiles(MapView mv) {
-        ILatLng startingPoint = new LatLng(45.49186, -122.679005);
-        ITileLayer mbTilesSource;
-        String url = "http://a.tile.osm.org/{z}/{x}/{y}.png";
+        //ITileLayer mbTilesSource;
+
+        String url = "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png";
         //url = "http://tilea.trimet.org/tilecache/tilecache.py/1.0.0/currentOSM/{z}/{x}/{y}";
         ITileLayer osmSource = new WebSourceTileLayer("openstreetmap",
                 url).setName("OpenStreetMap")
@@ -110,7 +110,7 @@ public abstract class MapFragment extends Fragment {
        // }
         mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
         mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
-        mv.setCenter(startingPoint);
+        mv.setCenter(Cons.CENTROID);
         mv.setZoom(12);
     }
 

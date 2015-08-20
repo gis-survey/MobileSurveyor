@@ -113,10 +113,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial"
             },
             "type": "Feature"
         }

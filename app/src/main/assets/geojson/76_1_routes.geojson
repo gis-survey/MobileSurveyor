@@ -157,10 +157,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "76",
-                "RTE_DESC": "76-UO/Warren"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "76",
+                "rte_desc": "76-UO/Warren"
             },
             "type": "Feature"
         }

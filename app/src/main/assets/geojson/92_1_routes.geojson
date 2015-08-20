@@ -85,10 +85,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "92",
-                "RTE_DESC": "92-Lowell"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "92",
+                "rte_desc": "92-Lowell"
             },
             "type": "Feature"
         }

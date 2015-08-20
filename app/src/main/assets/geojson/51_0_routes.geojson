@@ -149,10 +149,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "51",
+                "rte_desc": "51-River Road"
             },
             "type": "Feature"
         }

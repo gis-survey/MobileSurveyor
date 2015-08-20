@@ -117,10 +117,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "24",
+                "rte_desc": "24-Donald"
             },
             "type": "Feature"
         }

@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01508",
-                "STOP_NAME": "Gateway Sta.-Bay B (to ES)",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01508",
+                "stop_name": "Gateway Sta.-Bay B (to ES)",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00083",
-                "STOP_NAME": "N/S of Harlow Road W of Beverly",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00083",
+                "stop_name": "N/S of Harlow Road W of Beverly",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00250",
-                "STOP_NAME": "N/S of Harlow W of Garden Way",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00250",
+                "stop_name": "N/S of Harlow W of Garden Way",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00253",
-                "STOP_NAME": "N/S of Harlow W of Honeysuckle",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00253",
+                "stop_name": "N/S of Harlow W of Honeysuckle",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00254",
-                "STOP_NAME": "N/S of Harlow W of Van Duyn",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00254",
+                "stop_name": "N/S of Harlow W of Van Duyn",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00256",
-                "STOP_NAME": "N/S of Harlow W of Vincent",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00256",
+                "stop_name": "N/S of Harlow W of Vincent",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00258",
-                "STOP_NAME": "N/S of Harlow E of Tomahawk",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00258",
+                "stop_name": "N/S of Harlow E of Tomahawk",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00260",
-                "STOP_NAME": "N/S of Harlow W of Lydick",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00260",
+                "stop_name": "N/S of Harlow W of Lydick",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00556",
-                "STOP_NAME": "W/S of Coburg S of Pioneer Pike",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00556",
+                "stop_name": "W/S of Coburg S of Pioneer Pike",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00554",
-                "STOP_NAME": "W/S of Coburg S of Frontier",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00554",
+                "stop_name": "W/S of Coburg S of Frontier",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00552",
-                "STOP_NAME": "W/S of Coburg S of Oakmont",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00552",
+                "stop_name": "W/S of Coburg S of Oakmont",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "00551",
-                "STOP_NAME": "W/S of Coburg N of Oakway",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "00551",
+                "stop_name": "W/S of Coburg N of Oakway",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01075",
-                "STOP_NAME": "W/S of Coburg S of Club Rd",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01075",
+                "stop_name": "W/S of Coburg S of Club Rd",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01061",
-                "STOP_NAME": "N/S of 3rd E of High",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01061",
+                "stop_name": "N/S of 3rd E of High",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01062",
-                "STOP_NAME": "W/S of Pearl N of 4th",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01062",
+                "stop_name": "W/S of Pearl N of 4th",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01063",
-                "STOP_NAME": "W/S of Pearl N of 5th",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01063",
+                "stop_name": "W/S of Pearl N of 5th",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01064",
-                "STOP_NAME": "W/S of Pearl N of 8th",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01064",
+                "stop_name": "W/S of Pearl N of 8th",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "01050",
-                "STOP_NAME": "N/S of 8th W of Oak",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "01050",
+                "stop_name": "N/S of 8th W of Oak",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "19"
             },
             "type": "Feature"
         }

@@ -209,10 +209,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "93",
-                "RTE_DESC": "93-Veneta"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "93",
+                "rte_desc": "93-Veneta"
             },
             "type": "Feature"
         }

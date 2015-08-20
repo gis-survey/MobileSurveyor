@@ -109,10 +109,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "67",
-                "RTE_DESC": "67-Coburg Road/VRC"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "67",
+                "rte_desc": "67-Coburg Road/VRC"
             },
             "type": "Feature"
         }

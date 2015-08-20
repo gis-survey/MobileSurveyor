@@ -201,10 +201,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "93",
-                "RTE_DESC": "93-Veneta"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "93",
+                "rte_desc": "93-Veneta"
             },
             "type": "Feature"
         }

@@ -61,10 +61,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge"
             },
             "type": "Feature"
         }

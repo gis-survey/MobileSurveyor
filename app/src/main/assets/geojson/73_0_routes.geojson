@@ -125,10 +125,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette"
             },
             "type": "Feature"
         }

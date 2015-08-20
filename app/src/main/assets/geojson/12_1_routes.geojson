@@ -89,10 +89,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway"
             },
             "type": "Feature"
         }

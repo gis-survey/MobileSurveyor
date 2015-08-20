@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "02095",
-                "STOP_NAME": "S/S of Wagner E of Cubit",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "02095",
+                "stop_name": "S/S of Wagner E of Cubit",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "02094",
-                "STOP_NAME": "S/S of Aerial W of N Clarey",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "02094",
+                "stop_name": "S/S of Aerial W of N Clarey",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00748",
-                "STOP_NAME": "N/S of Barger W of Clarey",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00748",
+                "stop_name": "N/S of Barger W of Clarey",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00750",
-                "STOP_NAME": "N/S of Barger E of Altimont",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00750",
+                "stop_name": "N/S of Barger E of Altimont",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00779",
-                "STOP_NAME": "W/S of Echo Hollow S of Barger",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00779",
+                "stop_name": "W/S of Echo Hollow S of Barger",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00781",
-                "STOP_NAME": "W/S of Echo Hollow N of Murnane",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00781",
+                "stop_name": "W/S of Echo Hollow N of Murnane",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00783",
-                "STOP_NAME": "W/S of Echo Hollow S of Willhi",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00783",
+                "stop_name": "W/S of Echo Hollow S of Willhi",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00787",
-                "STOP_NAME": "W/S of Echo Hollow S of Sean",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00787",
+                "stop_name": "W/S of Echo Hollow S of Sean",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "02037",
-                "STOP_NAME": "W/S of Echo Hollow N of Knoop",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "02037",
+                "stop_name": "W/S of Echo Hollow N of Knoop",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00816",
-                "STOP_NAME": "S/S of Royal W of Ruskin",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00816",
+                "stop_name": "S/S of Royal W of Ruskin",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00814",
-                "STOP_NAME": "W/S of Bertelsen N of Bell",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00814",
+                "stop_name": "W/S of Bertelsen N of Bell",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "02039",
-                "STOP_NAME": "S/S of Elmira E of Hope",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "02039",
+                "stop_name": "S/S of Elmira E of Hope",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01555",
-                "STOP_NAME": "S/S of Elmira W of Berntzen",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01555",
+                "stop_name": "S/S of Elmira W of Berntzen",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01625",
-                "STOP_NAME": "S/S of Elmira W of Archie",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01625",
+                "stop_name": "S/S of Elmira W of Archie",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00921",
-                "STOP_NAME": "S/S of Elmira E of Baxter",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00921",
+                "stop_name": "S/S of Elmira E of Baxter",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00919",
-                "STOP_NAME": "S/S of Elmira E of Anton",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00919",
+                "stop_name": "S/S of Elmira E of Anton",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00915",
-                "STOP_NAME": "S/S of Elmira W of Gilbert",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00915",
+                "stop_name": "S/S of Elmira W of Gilbert",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00913",
-                "STOP_NAME": "S/S of Elmira W of Hwy 99",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00913",
+                "stop_name": "S/S of Elmira W of Hwy 99",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00907",
-                "STOP_NAME": "S/S of Roosevelt E of Hwy 99",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00907",
+                "stop_name": "S/S of Roosevelt E of Hwy 99",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00904",
-                "STOP_NAME": "S/S of Roosevelt E of Foch",
-                "STOP_SEQ": 20.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00904",
+                "stop_name": "S/S of Roosevelt E of Foch",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00900",
-                "STOP_NAME": "S/S of Roosevelt E of Bethel",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00900",
+                "stop_name": "S/S of Roosevelt E of Bethel",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00898",
-                "STOP_NAME": "S/S of Roosevelt W of Garfield",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00898",
+                "stop_name": "S/S of Roosevelt W of Garfield",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01622",
-                "STOP_NAME": "S/S of Roosevelt W of Chambers",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01622",
+                "stop_name": "S/S of Roosevelt W of Chambers",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01475",
-                "STOP_NAME": "S/S of 2nd E of Chambers",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01475",
+                "stop_name": "S/S of 2nd E of Chambers",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00532",
-                "STOP_NAME": "S/S of 2nd E of Taylor",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00532",
+                "stop_name": "S/S of 2nd E of Taylor",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01480",
-                "STOP_NAME": "W/S of Blair S of 2nd",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01480",
+                "stop_name": "W/S of Blair S of 2nd",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01482",
-                "STOP_NAME": "W/S of Blair N of 4th",
-                "STOP_SEQ": 27.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01482",
+                "stop_name": "W/S of Blair N of 4th",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00885",
-                "STOP_NAME": "S/S of 5th E of Adams",
-                "STOP_SEQ": 28.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00885",
+                "stop_name": "S/S of 5th E of Adams",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "00883",
-                "STOP_NAME": "S/S of 5th W of Madison",
-                "STOP_SEQ": 29.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "00883",
+                "stop_name": "S/S of 5th W of Madison",
+                "stop_seq": "29"
             },
             "type": "Feature"
         },
@@ -566,13 +566,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01054",
-                "STOP_NAME": "S/S of 5th E of Washington",
-                "STOP_SEQ": 30.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01054",
+                "stop_name": "S/S of 5th E of Washington",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -585,13 +585,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01313",
-                "STOP_NAME": "W/S of Charnelton N of 6th",
-                "STOP_SEQ": 31.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01313",
+                "stop_name": "W/S of Charnelton N of 6th",
+                "stop_seq": "31"
             },
             "type": "Feature"
         },
@@ -604,13 +604,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "01181",
-                "STOP_NAME": "W/S of Charnelton S of 8th",
-                "STOP_SEQ": 32.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "01181",
+                "stop_name": "W/S of Charnelton S of 8th",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -623,13 +623,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 33.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "33"
             },
             "type": "Feature"
         }

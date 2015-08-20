@@ -81,10 +81,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "81",
-                "RTE_DESC": "81-LCC/Harris"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "81",
+                "rte_desc": "81-LCC/Harris"
             },
             "type": "Feature"
         }

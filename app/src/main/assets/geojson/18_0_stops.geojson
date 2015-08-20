@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "02503",
-                "STOP_NAME": "Springfield Station, Bay C",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "02503",
+                "stop_name": "Springfield Station, Bay C",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "01199",
-                "STOP_NAME": "E/S of 5th S of B",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "01199",
+                "stop_name": "E/S of 5th S of B",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00223",
-                "STOP_NAME": "E/S of 5th S of E",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00223",
+                "stop_name": "E/S of 5th S of E",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00198",
-                "STOP_NAME": "S/S of G W of 7th",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00198",
+                "stop_name": "S/S of G W of 7th",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00322",
-                "STOP_NAME": "S/S of G E of 10th",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00322",
+                "stop_name": "S/S of G E of 10th",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00195",
-                "STOP_NAME": "S/S of G E of 12th",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00195",
+                "stop_name": "S/S of G E of 12th",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00189",
-                "STOP_NAME": "E/S of Mohawk N of G",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00189",
+                "stop_name": "E/S of Mohawk N of G",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00190",
-                "STOP_NAME": "E/S of Mohawk N of Modoc",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00190",
+                "stop_name": "E/S of Mohawk N of Modoc",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00191",
-                "STOP_NAME": "E/S of Mohawk N of Centennial",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00191",
+                "stop_name": "E/S of Mohawk N of Centennial",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00192",
-                "STOP_NAME": "E/S of Mohawk N of M",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00192",
+                "stop_name": "E/S of Mohawk N of M",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00060",
-                "STOP_NAME": "S/S of Olympic E of Mohawk",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00060",
+                "stop_name": "S/S of Olympic E of Mohawk",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00062",
-                "STOP_NAME": "S/S of Olympic E of 18th",
-                "STOP_SEQ": 12.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00062",
+                "stop_name": "S/S of Olympic E of 18th",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00069",
-                "STOP_NAME": "S/S of Olympic E of 21st",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00069",
+                "stop_name": "S/S of Olympic E of 21st",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00066",
-                "STOP_NAME": "S/S of Olympic W of 28th",
-                "STOP_SEQ": 14.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00066",
+                "stop_name": "S/S of Olympic W of 28th",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00068",
-                "STOP_NAME": "E/S of 28th N of R",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00068",
+                "stop_name": "E/S of 28th N of R",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "01712",
-                "STOP_NAME": "N/S of Marcola E of 22nd",
-                "STOP_SEQ": 16.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "01712",
+                "stop_name": "N/S of Marcola E of 22nd",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "01710",
-                "STOP_NAME": "N/S of Marcola Rd E of 19th",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "01710",
+                "stop_name": "N/S of Marcola Rd E of 19th",
+                "stop_seq": "17"
             },
             "type": "Feature"
         }

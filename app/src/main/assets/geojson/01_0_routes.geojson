@@ -37,10 +37,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center"
             },
             "type": "Feature"
         }

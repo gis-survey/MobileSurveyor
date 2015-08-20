@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09083",
-                "STOP_NAME": "S/S of Hwy 126 (MP 52.8) E of McKenzieRngrSta",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09083",
+                "stop_name": "S/S of Hwy 126 (MP 52.8) E of McKenzieRngrSta",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09082",
-                "STOP_NAME": "N/S of Hwy 126 (MP 50.8) W of driveway 56629",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09082",
+                "stop_name": "N/S of Hwy 126 (MP 50.8) W of driveway 56629",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09080",
-                "STOP_NAME": "N/S of Hwy 126 (MP 50.6) E of Horse Creek Rd",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09080",
+                "stop_name": "N/S of Hwy 126 (MP 50.6) E of Horse Creek Rd",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09078",
-                "STOP_NAME": "N/S of Hwy126 (MP 50.3) E of McKenzie Bridge Store",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09078",
+                "stop_name": "N/S of Hwy126 (MP 50.3) E of McKenzie Bridge Store",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09076",
-                "STOP_NAME": "N/S of Hwy 126 (MP 50.2) W of driveway 56311",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09076",
+                "stop_name": "N/S of Hwy 126 (MP 50.2) W of driveway 56311",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09074",
-                "STOP_NAME": "N/S of Hwy 126 (MP 49.9) E of Taylor Rd",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09074",
+                "stop_name": "N/S of Hwy 126 (MP 49.9) E of Taylor Rd",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09087",
-                "STOP_NAME": "N/S of McKenzie Highway (MP 49) W of Gravel Road",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09087",
+                "stop_name": "N/S of McKenzie Highway (MP 49) W of Gravel Road",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09072",
-                "STOP_NAME": "N/S of Hwy 126 (MP 47.5) E of Mill Creek Rd",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09072",
+                "stop_name": "N/S of Hwy 126 (MP 47.5) E of Mill Creek Rd",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09160",
-                "STOP_NAME": "N/S of McKenzieRvrDr (MP 1.2) W of Mill CrkRd",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09160",
+                "stop_name": "N/S of McKenzieRvrDr (MP 1.2) W of Mill CrkRd",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09170",
-                "STOP_NAME": "N/S of McKenzieRvrDr (MP 0.7) W of KingRdBr",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09170",
+                "stop_name": "N/S of McKenzieRvrDr (MP 0.7) W of KingRdBr",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09070",
-                "STOP_NAME": "N/S of Hwy126 (MP 46.3) W of McKenzie Rvr Dr",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09070",
+                "stop_name": "N/S of Hwy126 (MP 46.3) W of McKenzie Rvr Dr",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09068",
-                "STOP_NAME": "N/S of Hwy 126 (MP 45.5) W of Aufderheide",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09068",
+                "stop_name": "N/S of Hwy 126 (MP 45.5) W of Aufderheide",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09182",
-                "STOP_NAME": "N/S of Hwy 126 (MP 42.4) E of LazyDaysRV Pk",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09182",
+                "stop_name": "N/S of Hwy 126 (MP 42.4) E of LazyDaysRV Pk",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09066",
-                "STOP_NAME": "N/S of Blue River Dr W of Dexter St",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09066",
+                "stop_name": "N/S of Blue River Dr W of Dexter St",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09064",
-                "STOP_NAME": "N/S of Blue Riv Dr E of Blue Riv Sch",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09064",
+                "stop_name": "N/S of Blue Riv Dr E of Blue Riv Sch",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09184",
-                "STOP_NAME": "N/S of Hwy 126 (MP 39.6) W of BlueRvrDr",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09184",
+                "stop_name": "N/S of Hwy 126 (MP 39.6) W of BlueRvrDr",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09062",
-                "STOP_NAME": "N/S of Hwy 126 (MP 38.2) E of Finn Rock Store",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09062",
+                "stop_name": "N/S of Hwy 126 (MP 38.2) E of Finn Rock Store",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09058",
-                "STOP_NAME": "N/S of Hwy 126 (MP 35.8) E of Village Cafe",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09058",
+                "stop_name": "N/S of Hwy 126 (MP 35.8) E of Village Cafe",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09056",
-                "STOP_NAME": "N/S of Hwy 126 (MP 34.6) E of Nimrod",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09056",
+                "stop_name": "N/S of Hwy 126 (MP 34.6) E of Nimrod",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09054",
-                "STOP_NAME": "N/S of Hwy 126 (MP 32.7) W of Driveway 48511",
-                "STOP_SEQ": 20.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09054",
+                "stop_name": "N/S of Hwy 126 (MP 32.7) W of Driveway 48511",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09178",
-                "STOP_NAME": "N/S of Hwy 126 (MP 31.6) W of DW 47955",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09178",
+                "stop_name": "N/S of Hwy 126 (MP 31.6) W of DW 47955",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09050",
-                "STOP_NAME": "N/S of Hwy 126 (MP 28.4) E of Mailbox 46451",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09050",
+                "stop_name": "N/S of Hwy 126 (MP 28.4) E of Mailbox 46451",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09048",
-                "STOP_NAME": "N/S of Hwy 126 (MP 26.4) E of Gate Creek Rd",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09048",
+                "stop_name": "N/S of Hwy 126 (MP 26.4) E of Gate Creek Rd",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09046",
-                "STOP_NAME": "N/S of Hwy 126 (MP 32.7) E of McKenzie Baptist",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09046",
+                "stop_name": "N/S of Hwy 126 (MP 32.7) E of McKenzie Baptist",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09043",
-                "STOP_NAME": "N/S of Hwy 126 (MP 24.5) E of Hatchery Crk Rd",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09043",
+                "stop_name": "N/S of Hwy 126 (MP 24.5) E of Hatchery Crk Rd",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09041",
-                "STOP_NAME": "(^) N/S of Hwy 126 (MP 23.8) W of Leaburg Dam",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09041",
+                "stop_name": "(^) N/S of Hwy 126 (MP 23.8) W of Leaburg Dam",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09257",
-                "STOP_NAME": "N/S of Hwy 126 (MP 22.62) E of Canal Lane",
-                "STOP_SEQ": 27.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09257",
+                "stop_name": "N/S of Hwy 126 (MP 22.62) E of Canal Lane",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09036",
-                "STOP_NAME": "N/S of Hwy 126 (MP 20.0) E of Johnson Crk",
-                "STOP_SEQ": 28.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09036",
+                "stop_name": "N/S of Hwy 126 (MP 20.0) E of Johnson Crk",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09255",
-                "STOP_NAME": "N/S of Hwy 126 (MP 17.19) E of DW 41567",
-                "STOP_SEQ": 29.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09255",
+                "stop_name": "N/S of Hwy 126 (MP 17.19) E of DW 41567",
+                "stop_seq": "29"
             },
             "type": "Feature"
         },
@@ -566,13 +566,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09030",
-                "STOP_NAME": "N/S of Hwy 126 (MP 15.3) E of Twin Firs Rd",
-                "STOP_SEQ": 30.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09030",
+                "stop_name": "N/S of Hwy 126 (MP 15.3) E of Twin Firs Rd",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -585,13 +585,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09028",
-                "STOP_NAME": "N/S of Hwy 126 (MP 13.3) W of Fallin",
-                "STOP_SEQ": 31.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09028",
+                "stop_name": "N/S of Hwy 126 (MP 13.3) W of Fallin",
+                "stop_seq": "31"
             },
             "type": "Feature"
         },
@@ -604,13 +604,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09001",
-                "STOP_NAME": "N/S of Hwy 126 (MP 12.7) E of Thriftway",
-                "STOP_SEQ": 32.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09001",
+                "stop_name": "N/S of Hwy 126 (MP 12.7) E of Thriftway",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -623,13 +623,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09025",
-                "STOP_NAME": "N/S of Hwy 126 (MP 11.7) W of Flowerdale Dr",
-                "STOP_SEQ": 33.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09025",
+                "stop_name": "N/S of Hwy 126 (MP 11.7) W of Flowerdale Dr",
+                "stop_seq": "33"
             },
             "type": "Feature"
         },
@@ -642,13 +642,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09023",
-                "STOP_NAME": "N/S of Hwy 126 (MP 10.7) W of Mathers Mkt",
-                "STOP_SEQ": 34.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09023",
+                "stop_name": "N/S of Hwy 126 (MP 10.7) W of Mathers Mkt",
+                "stop_seq": "34"
             },
             "type": "Feature"
         },
@@ -661,13 +661,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "09021",
-                "STOP_NAME": "N/S of Hwy 126 (MP 9.7) E of Thurston Rd",
-                "STOP_SEQ": 35.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "09021",
+                "stop_name": "N/S of Hwy 126 (MP 9.7) E of Thurston Rd",
+                "stop_seq": "35"
             },
             "type": "Feature"
         },
@@ -680,13 +680,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00015",
-                "STOP_NAME": "N/S of Main W of 68th",
-                "STOP_SEQ": 36.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00015",
+                "stop_name": "N/S of Main W of 68th",
+                "stop_seq": "36"
             },
             "type": "Feature"
         },
@@ -699,13 +699,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00016",
-                "STOP_NAME": "N/S of Main W of 66th",
-                "STOP_SEQ": 37.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00016",
+                "stop_name": "N/S of Main W of 66th",
+                "stop_seq": "37"
             },
             "type": "Feature"
         },
@@ -718,13 +718,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01328",
-                "STOP_NAME": "N/S of Main E of 63rd",
-                "STOP_SEQ": 38.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01328",
+                "stop_name": "N/S of Main E of 63rd",
+                "stop_seq": "38"
             },
             "type": "Feature"
         },
@@ -737,13 +737,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00017",
-                "STOP_NAME": "N/S of Main E of 62nd Pl",
-                "STOP_SEQ": 39.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00017",
+                "stop_name": "N/S of Main E of 62nd Pl",
+                "stop_seq": "39"
             },
             "type": "Feature"
         },
@@ -756,13 +756,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00018",
-                "STOP_NAME": "N/S of Main W of 60th Pl",
-                "STOP_SEQ": 40.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00018",
+                "stop_name": "N/S of Main W of 60th Pl",
+                "stop_seq": "40"
             },
             "type": "Feature"
         },
@@ -775,13 +775,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01227",
-                "STOP_NAME": "N/S of Main W of 59th",
-                "STOP_SEQ": 41.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01227",
+                "stop_name": "N/S of Main W of 59th",
+                "stop_seq": "41"
             },
             "type": "Feature"
         },
@@ -794,13 +794,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00019",
-                "STOP_NAME": "N/S of Main W of 58th",
-                "STOP_SEQ": 42.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00019",
+                "stop_name": "N/S of Main W of 58th",
+                "stop_seq": "42"
             },
             "type": "Feature"
         },
@@ -813,13 +813,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00021",
-                "STOP_NAME": "N/S of Main W of 54th",
-                "STOP_SEQ": 43.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00021",
+                "stop_name": "N/S of Main W of 54th",
+                "stop_seq": "43"
             },
             "type": "Feature"
         },
@@ -832,13 +832,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "02509",
-                "STOP_NAME": "Springfield Station, Special Event A",
-                "STOP_SEQ": 44.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "02509",
+                "stop_name": "Springfield Station, Special Event A",
+                "stop_seq": "44"
             },
             "type": "Feature"
         },
@@ -851,13 +851,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "00057",
-                "STOP_NAME": "N/S of Main W of Mill",
-                "STOP_SEQ": 45.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "00057",
+                "stop_name": "N/S of Main W of Mill",
+                "stop_seq": "45"
             },
             "type": "Feature"
         },
@@ -870,13 +870,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01072",
-                "STOP_NAME": "N/S of Franklin Blvd W of Walnut",
-                "STOP_SEQ": 46.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01072",
+                "stop_name": "N/S of Franklin Blvd W of Walnut",
+                "stop_seq": "46"
             },
             "type": "Feature"
         },
@@ -889,13 +889,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01068",
-                "STOP_NAME": "N/S of Franklin Blvd W of Agate",
-                "STOP_SEQ": 47.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01068",
+                "stop_name": "N/S of Franklin Blvd W of Agate",
+                "stop_seq": "47"
             },
             "type": "Feature"
         },
@@ -908,13 +908,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01043",
-                "STOP_NAME": "N/S of 11th W of Alder",
-                "STOP_SEQ": 48.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01043",
+                "stop_name": "N/S of 11th W of Alder",
+                "stop_seq": "48"
             },
             "type": "Feature"
         },
@@ -927,13 +927,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01075",
-                "STOP_NAME": "W/S of Coburg S of Club Rd",
-                "STOP_SEQ": 49.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01075",
+                "stop_name": "W/S of Coburg S of Club Rd",
+                "stop_seq": "49"
             },
             "type": "Feature"
         },
@@ -946,13 +946,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01049",
-                "STOP_NAME": "N/S of 8th W of High",
-                "STOP_SEQ": 50.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01049",
+                "stop_name": "N/S of 8th W of High",
+                "stop_seq": "50"
             },
             "type": "Feature"
         },
@@ -965,13 +965,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "01050",
-                "STOP_NAME": "N/S of 8th W of Oak",
-                "STOP_SEQ": 51.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "01050",
+                "stop_name": "N/S of 8th W of Oak",
+                "stop_seq": "51"
             },
             "type": "Feature"
         },
@@ -984,13 +984,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 52.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "52"
             },
             "type": "Feature"
         }

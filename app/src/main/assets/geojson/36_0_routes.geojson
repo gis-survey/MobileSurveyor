@@ -157,10 +157,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "36",
-                "RTE_DESC": "36-West 18th Ave."
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "36",
+                "rte_desc": "36-West 18th Ave."
             },
             "type": "Feature"
         }

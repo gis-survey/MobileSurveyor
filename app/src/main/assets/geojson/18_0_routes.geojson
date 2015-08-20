@@ -81,10 +81,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk"
             },
             "type": "Feature"
         }

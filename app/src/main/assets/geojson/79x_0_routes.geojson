@@ -29,10 +29,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow"
             },
             "type": "Feature"
         }

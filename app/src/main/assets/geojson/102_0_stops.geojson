@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "02120",
-                "STOP_NAME": "Eugene Station, Bay T",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "02120",
+                "stop_name": "Eugene Station, Bay T",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09901",
-                "STOP_NAME": "EmX High Street Station outbound",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09901",
+                "stop_name": "EmX High Street Station outbound",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09902",
-                "STOP_NAME": "EmX Hilyard Station",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09902",
+                "stop_name": "EmX Hilyard Station",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09903",
-                "STOP_NAME": "EmX Dads' Gates Station",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09903",
+                "stop_name": "EmX Dads' Gates Station",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09904",
-                "STOP_NAME": "EmX Agate Station",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09904",
+                "stop_name": "EmX Agate Station",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09905",
-                "STOP_NAME": "EmX Walnut Station",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09905",
+                "stop_name": "EmX Walnut Station",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09907",
-                "STOP_NAME": "EmX Glenwood Station outbound",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09907",
+                "stop_name": "EmX Glenwood Station outbound",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09909",
-                "STOP_NAME": "EmX Lexington Station outbound",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09909",
+                "stop_name": "EmX Lexington Station outbound",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09910",
-                "STOP_NAME": "EmX McVay Station",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09910",
+                "stop_name": "EmX McVay Station",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "02506",
-                "STOP_NAME": "Springfield Station, Bay F",
-                "STOP_SEQ": 20.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "02506",
+                "stop_name": "Springfield Station, Bay F",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09911",
-                "STOP_NAME": "E Street Station",
-                "STOP_SEQ": 22.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09911",
+                "stop_name": "E Street Station",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09913",
-                "STOP_NAME": "Centennial Station",
-                "STOP_SEQ": 24.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09913",
+                "stop_name": "Centennial Station",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09914",
-                "STOP_NAME": "Q Street Station outbound",
-                "STOP_SEQ": 26.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09914",
+                "stop_name": "Q Street Station outbound",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09915",
-                "STOP_NAME": "Hayden Bridge Station",
-                "STOP_SEQ": 28.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09915",
+                "stop_name": "Hayden Bridge Station",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09931",
-                "STOP_NAME": "Pheasant Station_clockwise",
-                "STOP_SEQ": 30.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09931",
+                "stop_name": "Pheasant Station_clockwise",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09929",
-                "STOP_NAME": "Guy Lee Station_clockwise",
-                "STOP_SEQ": 32.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09929",
+                "stop_name": "Guy Lee Station_clockwise",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "102",
-                "RTE_DESC": "EmX-102",
-                "STOP_ID": "09928",
-                "STOP_NAME": "Gateway Sta.-Bay D (EmX to RB)",
-                "STOP_SEQ": 34.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "102",
+                "rte_desc": "EmX-102",
+                "stop_id": "09928",
+                "stop_name": "Gateway Sta.-Bay D (EmX to RB)",
+                "stop_seq": "34"
             },
             "type": "Feature"
         }

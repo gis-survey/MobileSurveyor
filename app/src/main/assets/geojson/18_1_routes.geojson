@@ -49,10 +49,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk"
             },
             "type": "Feature"
         }

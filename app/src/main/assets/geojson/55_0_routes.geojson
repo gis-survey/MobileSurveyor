@@ -149,10 +149,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park"
             },
             "type": "Feature"
         }

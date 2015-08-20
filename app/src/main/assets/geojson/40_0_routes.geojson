@@ -157,10 +157,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "40",
-                "RTE_DESC": "40-Echo Hollow"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "40",
+                "rte_desc": "40-Echo Hollow"
             },
             "type": "Feature"
         }

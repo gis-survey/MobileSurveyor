@@ -133,10 +133,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "12",
-                "RTE_DESC": "12-Gateway"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "12",
+                "rte_desc": "12-Gateway"
             },
             "type": "Feature"
         }

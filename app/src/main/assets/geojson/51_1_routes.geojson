@@ -181,10 +181,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road"
             },
             "type": "Feature"
         }

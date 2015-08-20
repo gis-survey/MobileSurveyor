@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "02112",
-                "STOP_NAME": "Eugene Station, Bay L",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "02112",
+                "stop_name": "Eugene Station, Bay L",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00481",
-                "STOP_NAME": "W/S of Willamette S of 14th",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00481",
+                "stop_name": "W/S of Willamette S of 14th",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00483",
-                "STOP_NAME": "W/S of Willamette S of 16th",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00483",
+                "stop_name": "W/S of Willamette S of 16th",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00484",
-                "STOP_NAME": "W/S of Willamette S of 18th",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00484",
+                "stop_name": "W/S of Willamette S of 18th",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00487",
-                "STOP_NAME": "W/S of Willamette N of 22nd",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00487",
+                "stop_name": "W/S of Willamette N of 22nd",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00490",
-                "STOP_NAME": "W/S of Willamette S of 24th",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00490",
+                "stop_name": "W/S of Willamette S of 24th",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00492",
-                "STOP_NAME": "W/S of Willamette S of 25th",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00492",
+                "stop_name": "W/S of Willamette S of 25th",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00494",
-                "STOP_NAME": "W/S of Willamette S of 27th",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00494",
+                "stop_name": "W/S of Willamette S of 27th",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00495",
-                "STOP_NAME": "W/S of Willamette N of 29th",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00495",
+                "stop_name": "W/S of Willamette N of 29th",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00497",
-                "STOP_NAME": "W/S of Willamette S of 29th",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00497",
+                "stop_name": "W/S of Willamette S of 29th",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00499",
-                "STOP_NAME": "W/S of Willamette N of 30th",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00499",
+                "stop_name": "W/S of Willamette N of 30th",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00501",
-                "STOP_NAME": "W/S of Donald N of 33rd",
-                "STOP_SEQ": 12.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00501",
+                "stop_name": "W/S of Donald N of 33rd",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00502",
-                "STOP_NAME": "W/S of Donald N of 34th",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00502",
+                "stop_name": "W/S of Donald N of 34th",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00503",
-                "STOP_NAME": "W/S of Donald S of Pearl",
-                "STOP_SEQ": 14.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00503",
+                "stop_name": "W/S of Donald S of Pearl",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00504",
-                "STOP_NAME": "W/S of Donald S of 37th",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00504",
+                "stop_name": "W/S of Donald S of 37th",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00505",
-                "STOP_NAME": "W/S of Donald N of Mill",
-                "STOP_SEQ": 16.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00505",
+                "stop_name": "W/S of Donald N of Mill",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00506",
-                "STOP_NAME": "W/S of Donald S of 40th",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00506",
+                "stop_name": "W/S of Donald S of 40th",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00507",
-                "STOP_NAME": "W/S of Donald N of 43rd",
-                "STOP_SEQ": 18.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00507",
+                "stop_name": "W/S of Donald N of 43rd",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00508",
-                "STOP_NAME": "W/S of Donald N of 46th",
-                "STOP_SEQ": 19.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00508",
+                "stop_name": "W/S of Donald N of 46th",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00510",
-                "STOP_NAME": "S/S of 46th W of Fox Hollow",
-                "STOP_SEQ": 20.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00510",
+                "stop_name": "S/S of 46th W of Fox Hollow",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00511",
-                "STOP_NAME": "W/S of Fox Hollow N of Princess",
-                "STOP_SEQ": 21.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00511",
+                "stop_name": "W/S of Fox Hollow N of Princess",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00512",
-                "STOP_NAME": "W/S of Fox Hollow S of Princess",
-                "STOP_SEQ": 22.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00512",
+                "stop_name": "W/S of Fox Hollow S of Princess",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00513",
-                "STOP_NAME": "W/S of Fox Hollow S of Saint Clair",
-                "STOP_SEQ": 23.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00513",
+                "stop_name": "W/S of Fox Hollow S of Saint Clair",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00514",
-                "STOP_NAME": "W/S of Fox Hollow N of Saratoga",
-                "STOP_SEQ": 24.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00514",
+                "stop_name": "W/S of Fox Hollow N of Saratoga",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "24",
-                "RTE_DESC": "24-Donald",
-                "STOP_ID": "00515",
-                "STOP_NAME": "N/S of Donald W of Fox Hollow",
-                "STOP_SEQ": 25.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "24",
+                "rte_desc": "24-Donald",
+                "stop_id": "00515",
+                "stop_name": "N/S of Donald W of Fox Hollow",
+                "stop_seq": "25"
             },
             "type": "Feature"
         }

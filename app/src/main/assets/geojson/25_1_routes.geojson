@@ -121,10 +121,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon"
             },
             "type": "Feature"
         }

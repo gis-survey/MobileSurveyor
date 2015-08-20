@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00515",
-                "STOP_NAME": "N/S of Donald W of Fox Hollow",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00515",
+                "stop_name": "N/S of Donald W of Fox Hollow",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00516",
-                "STOP_NAME": "E/S of Donald S/O Cul deSac 5315-35",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00516",
+                "stop_name": "E/S of Donald S/O Cul deSac 5315-35",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00517",
-                "STOP_NAME": "E/S of Donald N of Cul deSac 5235-85",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00517",
+                "stop_name": "E/S of Donald N of Cul deSac 5235-85",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00518",
-                "STOP_NAME": "E/S of Donald N of 50th",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00518",
+                "stop_name": "E/S of Donald N of 50th",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00519",
-                "STOP_NAME": "E/S of Donald N of 49th",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00519",
+                "stop_name": "E/S of Donald N of 49th",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00521",
-                "STOP_NAME": "N/S of 46th E of High",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00521",
+                "stop_name": "N/S of 46th E of High",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00522",
-                "STOP_NAME": "E/S of Willamette N of 46th",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00522",
+                "stop_name": "E/S of Willamette N of 46th",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00523",
-                "STOP_NAME": "E/S of Willamette N of Oak",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00523",
+                "stop_name": "E/S of Willamette N of Oak",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00524",
-                "STOP_NAME": "E/S of Willamette N of 40th",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00524",
+                "stop_name": "E/S of Willamette N of 40th",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00525",
-                "STOP_NAME": "E/S of Willamette N of 39th",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00525",
+                "stop_name": "E/S of Willamette N of 39th",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00526",
-                "STOP_NAME": "E/S of Willamette N of 37th",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00526",
+                "stop_name": "E/S of Willamette N of 37th",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00527",
-                "STOP_NAME": "E/S of Willamette S of 35th",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00527",
+                "stop_name": "E/S of Willamette S of 35th",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00528",
-                "STOP_NAME": "E/S of Willamette S of 33rd",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00528",
+                "stop_name": "E/S of Willamette S of 33rd",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00498",
-                "STOP_NAME": "E/S of Willamette N of 30th",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00498",
+                "stop_name": "E/S of Willamette N of 30th",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01088",
-                "STOP_NAME": "S/S of 29th E of Willamette",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01088",
+                "stop_name": "S/S of 29th E of Willamette",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01086",
-                "STOP_NAME": "S/S of 29th W of Mill",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01086",
+                "stop_name": "S/S of 29th W of Mill",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01408",
-                "STOP_NAME": "Amazon Station, Bay B",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01408",
+                "stop_name": "Amazon Station, Bay B",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01403",
-                "STOP_NAME": "E/S of Hilyard N of 30th",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01403",
+                "stop_name": "E/S of Hilyard N of 30th",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00378",
-                "STOP_NAME": "E/S of Hilyard N of 28th",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00378",
+                "stop_name": "E/S of Hilyard N of 28th",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01191",
-                "STOP_NAME": "E/S of Hilyard N of 26th",
-                "STOP_SEQ": 20.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01191",
+                "stop_name": "E/S of Hilyard N of 26th",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00339",
-                "STOP_NAME": "E/S of Hilyard S of 24th",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00339",
+                "stop_name": "E/S of Hilyard S of 24th",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00324",
-                "STOP_NAME": "E/S of Hilyard S of 22nd",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00324",
+                "stop_name": "E/S of Hilyard S of 22nd",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00381",
-                "STOP_NAME": "E/S of Hilyard N of 19th",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00381",
+                "stop_name": "E/S of Hilyard N of 19th",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "00382",
-                "STOP_NAME": "E/S of Hilyard S of 17th",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "00382",
+                "stop_name": "E/S of Hilyard S of 17th",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01169",
-                "STOP_NAME": "E/S of Hilyard N of 15th",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01169",
+                "stop_name": "E/S of Hilyard N of 15th",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "73",
-                "RTE_DESC": "73-UO/ Willamette",
-                "STOP_ID": "01039",
-                "STOP_NAME": "S/S of 13th E of Hilyard",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "73",
+                "rte_desc": "73-UO/ Willamette",
+                "stop_id": "01039",
+                "stop_name": "S/S of 13th E of Hilyard",
+                "stop_seq": "26"
             },
             "type": "Feature"
         }

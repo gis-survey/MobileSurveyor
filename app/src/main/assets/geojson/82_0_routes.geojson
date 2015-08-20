@@ -61,10 +61,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "82",
-                "RTE_DESC": "82-LCC/Pearl"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "82",
+                "rte_desc": "82-LCC/Pearl"
             },
             "type": "Feature"
         }

@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "02107",
-                "STOP_NAME": "Eugene Station, Bay G",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "02107",
+                "stop_name": "Eugene Station, Bay G",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01051",
-                "STOP_NAME": "N/S of 8th W of Olive",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01051",
+                "stop_name": "N/S of 8th W of Olive",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01052",
-                "STOP_NAME": "N/S of 8th W of Lincoln",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01052",
+                "stop_name": "N/S of 8th W of Lincoln",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01053",
-                "STOP_NAME": "N/S of 8th E of Washington",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01053",
+                "stop_name": "N/S of 8th E of Washington",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01435",
-                "STOP_NAME": "E/S of Washington S of 6th Ave",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01435",
+                "stop_name": "E/S of Washington S of 6th Ave",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00880",
-                "STOP_NAME": "E/S of Washington N of 5th",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00880",
+                "stop_name": "E/S of Washington N of 5th",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00881",
-                "STOP_NAME": "E/S of Washington N of 3rd",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00881",
+                "stop_name": "E/S of Washington N of 3rd",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00876",
-                "STOP_NAME": "N/S of 1st W of Jefferson",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00876",
+                "stop_name": "N/S of 1st W of Jefferson",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00874",
-                "STOP_NAME": "N/S of 1st E of Adams",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00874",
+                "stop_name": "N/S of 1st E of Adams",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00873",
-                "STOP_NAME": "N/S of 1st E of Jackson",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00873",
+                "stop_name": "N/S of 1st E of Jackson",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00870",
-                "STOP_NAME": "E/S of Railroad N of Polk",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00870",
+                "stop_name": "E/S of Railroad N of Polk",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00868",
-                "STOP_NAME": "E/S of Railroad N of Cross",
-                "STOP_SEQ": 12.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00868",
+                "stop_name": "E/S of Railroad N of Cross",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00865",
-                "STOP_NAME": "E/S of River Rd S of Briarcliff",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00865",
+                "stop_name": "E/S of River Rd S of Briarcliff",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00862",
-                "STOP_NAME": "E/S of River Rd N of Hansen",
-                "STOP_SEQ": 14.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00862",
+                "stop_name": "E/S of River Rd N of Hansen",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00860",
-                "STOP_NAME": "E/S of River Rd N of Knoop",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00860",
+                "stop_name": "E/S of River Rd N of Knoop",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00745",
-                "STOP_NAME": "N/S of Park W of River Rd",
-                "STOP_SEQ": 16.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00745",
+                "stop_name": "N/S of Park W of River Rd",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00744",
-                "STOP_NAME": "N/S of Park E of Mayfair",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00744",
+                "stop_name": "N/S of Park E of Mayfair",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00742",
-                "STOP_NAME": "N/S of Park E of Meriau",
-                "STOP_SEQ": 18.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00742",
+                "stop_name": "N/S of Park E of Meriau",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00740",
-                "STOP_NAME": "N/S of Park W of Park Terrace",
-                "STOP_SEQ": 19.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00740",
+                "stop_name": "N/S of Park W of Park Terrace",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00738",
-                "STOP_NAME": "N/S of Park W of Filbert",
-                "STOP_SEQ": 20.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00738",
+                "stop_name": "N/S of Park W of Filbert",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00736",
-                "STOP_NAME": "E/S of Park S of Beebe",
-                "STOP_SEQ": 21.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00736",
+                "stop_name": "E/S of Park S of Beebe",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01920",
-                "STOP_NAME": "E/s of N. Park s/s of Maclay",
-                "STOP_SEQ": 22.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01920",
+                "stop_name": "E/s of N. Park s/s of Maclay",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01900",
-                "STOP_NAME": "N/S of N Park W/S of Rossmore",
-                "STOP_SEQ": 23.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01900",
+                "stop_name": "N/S of N Park W/S of Rossmore",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01901",
-                "STOP_NAME": "E/S of N Park S/S of Cornwall",
-                "STOP_SEQ": 24.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01901",
+                "stop_name": "E/S of N Park S/S of Cornwall",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01902",
-                "STOP_NAME": "E/S of N Park S of Kelly",
-                "STOP_SEQ": 25.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01902",
+                "stop_name": "E/S of N Park S of Kelly",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01904",
-                "STOP_NAME": "E/S of N. Park Av. N of Hatton",
-                "STOP_SEQ": 26.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01904",
+                "stop_name": "E/S of N. Park Av. N of Hatton",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00713",
-                "STOP_NAME": "S/S of Howard E of Park",
-                "STOP_SEQ": 27.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00713",
+                "stop_name": "S/S of Howard E of Park",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00715",
-                "STOP_NAME": "S/S of Howard W of Maywood",
-                "STOP_SEQ": 28.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00715",
+                "stop_name": "S/S of Howard W of Maywood",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00717",
-                "STOP_NAME": "S/S of Howard W of Grove",
-                "STOP_SEQ": 29.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00717",
+                "stop_name": "S/S of Howard W of Grove",
+                "stop_seq": "29"
             },
             "type": "Feature"
         },
@@ -566,13 +566,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00695",
-                "STOP_NAME": "E/S of Grove S of Maxwell",
-                "STOP_SEQ": 30.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00695",
+                "stop_name": "E/S of Grove S of Maxwell",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -585,13 +585,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01903",
-                "STOP_NAME": "E/S of Grove N of Armstrong",
-                "STOP_SEQ": 31.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01903",
+                "stop_name": "E/S of Grove N of Armstrong",
+                "stop_seq": "31"
             },
             "type": "Feature"
         },
@@ -604,13 +604,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00689",
-                "STOP_NAME": "S/S of Silver E of Sterling West",
-                "STOP_SEQ": 32.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00689",
+                "stop_name": "S/S of Silver E of Sterling West",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -623,13 +623,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "01800",
-                "STOP_NAME": "S/S of Silver E of Sterling East",
-                "STOP_SEQ": 33.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "01800",
+                "stop_name": "S/S of Silver E of Sterling East",
+                "stop_seq": "33"
             },
             "type": "Feature"
         },
@@ -642,13 +642,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "55",
-                "RTE_DESC": "55-North Park",
-                "STOP_ID": "00706",
-                "STOP_NAME": "(RRS) E/S River Rd N of River Ave (SE)",
-                "STOP_SEQ": 34.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "55",
+                "rte_desc": "55-North Park",
+                "stop_id": "00706",
+                "stop_name": "(RRS) E/S River Rd N of River Ave (SE)",
+                "stop_seq": "34"
             },
             "type": "Feature"
         }

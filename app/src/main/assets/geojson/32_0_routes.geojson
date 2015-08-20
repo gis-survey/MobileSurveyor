@@ -125,10 +125,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "32",
-                "RTE_DESC": "32-West 1st Ave"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "32",
+                "rte_desc": "32-West 1st Ave"
             },
             "type": "Feature"
         }

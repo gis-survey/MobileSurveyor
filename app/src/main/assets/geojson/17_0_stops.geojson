@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "02502",
-                "STOP_NAME": "Springfield Station, Bay B",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "02502",
+                "stop_name": "Springfield Station, Bay B",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "01199",
-                "STOP_NAME": "E/S of 5th S of B",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "01199",
+                "stop_name": "E/S of 5th S of B",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00223",
-                "STOP_NAME": "E/S of 5th S of E",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00223",
+                "stop_name": "E/S of 5th S of E",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00221",
-                "STOP_NAME": "E/S of 5th N of G",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00221",
+                "stop_name": "E/S of 5th N of G",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00219",
-                "STOP_NAME": "E/S of 5th S of Broadway",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00219",
+                "stop_name": "E/S of 5th S of Broadway",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00216",
-                "STOP_NAME": "E/S of 5th N of L",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00216",
+                "stop_name": "E/S of 5th N of L",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00215",
-                "STOP_NAME": "E/S of 5th N of Moffitt",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00215",
+                "stop_name": "E/S of 5th N of Moffitt",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00127",
-                "STOP_NAME": "E/S of 5th N of Q",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00127",
+                "stop_name": "E/S of 5th N of Q",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00129",
-                "STOP_NAME": "E/S of 5th S of T",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00129",
+                "stop_name": "E/S of 5th S of T",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00131",
-                "STOP_NAME": "E/S of 5th S of V",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00131",
+                "stop_name": "E/S of 5th S of V",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00133",
-                "STOP_NAME": "S/S of Hayden Bridge Rd E of Mintmeadow Way",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00133",
+                "stop_name": "S/S of Hayden Bridge Rd E of Mintmeadow Way",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00134",
-                "STOP_NAME": "S/S of Hayden Bridge Rd E of 10th",
-                "STOP_SEQ": 12.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00134",
+                "stop_name": "S/S of Hayden Bridge Rd E of 10th",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00136",
-                "STOP_NAME": "S/S of Hayden Bridge Rd E of Harvest Lane",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00136",
+                "stop_name": "S/S of Hayden Bridge Rd E of Harvest Lane",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00137",
-                "STOP_NAME": "S/S of Hayden Bridge Rd E of 15th",
-                "STOP_SEQ": 14.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00137",
+                "stop_name": "S/S of Hayden Bridge Rd E of 15th",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00135",
-                "STOP_NAME": "S/S of Hayden Bridge Rd E of 17th Place N",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00135",
+                "stop_name": "S/S of Hayden Bridge Rd E of 17th Place N",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00138",
-                "STOP_NAME": "W/S of 19th S of Otto",
-                "STOP_SEQ": 16.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00138",
+                "stop_name": "W/S of 19th S of Otto",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00139",
-                "STOP_NAME": "W/S of 19th S of Rambling Drive",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00139",
+                "stop_name": "W/S of 19th S of Rambling Drive",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "17",
-                "RTE_DESC": "17-5th Street/Hayden Bridge",
-                "STOP_ID": "00140",
-                "STOP_NAME": "W/S of 19th N of Marcola",
-                "STOP_SEQ": 18.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "17",
+                "rte_desc": "17-5th Street/Hayden Bridge",
+                "stop_id": "00140",
+                "stop_name": "W/S of 19th N of Marcola",
+                "stop_seq": "18"
             },
             "type": "Feature"
         }

@@ -129,10 +129,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial"
             },
             "type": "Feature"
         }

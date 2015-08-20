@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02152",
-                "STOP_NAME": "E/S of Garden Way N of MLK Blvd",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02152",
+                "stop_name": "E/S of Garden Way N of MLK Blvd",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02153",
-                "STOP_NAME": "E/S of Garden Way S of Commons",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02153",
+                "stop_name": "E/S of Garden Way S of Commons",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02087",
-                "STOP_NAME": "N/S of Commons W of Garden Way",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02087",
+                "stop_name": "N/S of Commons W of Garden Way",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02090",
-                "STOP_NAME": "W/S of Commons N of Kinsrow",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02090",
+                "stop_name": "W/S of Commons N of Kinsrow",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02091",
-                "STOP_NAME": "N/S of Kinsrow W of McKenna",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02091",
+                "stop_name": "N/S of Kinsrow W of McKenna",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "00542",
-                "STOP_NAME": "N/S of MLK Blvd W of Kinsrow",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "00542",
+                "stop_name": "N/S of MLK Blvd W of Kinsrow",
+                "stop_seq": "6"
             },
             "type": "Feature"
         }

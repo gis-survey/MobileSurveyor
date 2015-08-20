@@ -105,10 +105,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "11",
-                "RTE_DESC": "11-Thurston"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "11",
+                "rte_desc": "11-Thurston"
             },
             "type": "Feature"
         }

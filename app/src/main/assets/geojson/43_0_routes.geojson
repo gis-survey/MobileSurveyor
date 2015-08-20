@@ -193,10 +193,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "43",
-                "RTE_DESC": "43-West 11th Ave./Barger"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "43",
+                "rte_desc": "43-West 11th Ave./Barger"
             },
             "type": "Feature"
         }

@@ -93,10 +93,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "27",
-                "RTE_DESC": "27-Fairmount"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "27",
+                "rte_desc": "27-Fairmount"
             },
             "type": "Feature"
         }

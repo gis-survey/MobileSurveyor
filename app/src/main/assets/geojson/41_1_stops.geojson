@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "02135",
-                "STOP_NAME": "W/S of Terry S of Barger",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "02135",
+                "stop_name": "W/S of Terry S of Barger",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01874",
-                "STOP_NAME": "W/S of Terry S of Summerfield Estates",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01874",
+                "stop_name": "W/S of Terry S of Summerfield Estates",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01875",
-                "STOP_NAME": "W/S of Terry S of Woodland Park Estates",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01875",
+                "stop_name": "W/S of Terry S of Woodland Park Estates",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01876",
-                "STOP_NAME": "W/S of Terry S of Avalon",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01876",
+                "stop_name": "W/S of Terry S of Avalon",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01877",
-                "STOP_NAME": "W/S of Terry S of Donohoe (Kalapuya HS)",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01877",
+                "stop_name": "W/S of Terry S of Donohoe (Kalapuya HS)",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "00830",
-                "STOP_NAME": "S/S of Royal W of Driftwood",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "00830",
+                "stop_name": "S/S of Royal W of Driftwood",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "00828",
-                "STOP_NAME": "S/S of Royal E of Royal Oak Dr",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "00828",
+                "stop_name": "S/S of Royal E of Royal Oak Dr",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "00826",
-                "STOP_NAME": "S/S of Royal W of Danebo",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "00826",
+                "stop_name": "S/S of Royal W of Danebo",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01925",
-                "STOP_NAME": "W/S of Danebo S of Royal",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01925",
+                "stop_name": "W/S of Danebo S of Royal",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01862",
-                "STOP_NAME": "W/s of Danebo N of Roosevelt",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01862",
+                "stop_name": "W/s of Danebo N of Roosevelt",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01879",
-                "STOP_NAME": "W/S of Danebo S of Pacific St",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01879",
+                "stop_name": "W/S of Danebo S of Pacific St",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01880",
-                "STOP_NAME": "W/S of Danebo N of Isabelle",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01880",
+                "stop_name": "W/S of Danebo N of Isabelle",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "02070",
-                "STOP_NAME": "S/S of 11th E of Willow Crk",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "02070",
+                "stop_name": "S/S of 11th E of Willow Crk",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01897",
-                "STOP_NAME": "S/S of 11th W of Commerce (Wal Mart)",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01897",
+                "stop_name": "S/S of 11th W of Commerce (Wal Mart)",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01542",
-                "STOP_NAME": "S/S of 11th E of Commerce",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01542",
+                "stop_name": "S/S of 11th E of Commerce",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01016",
-                "STOP_NAME": "S/S of 11th E of Sam Reynolds Street",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01016",
+                "stop_name": "S/S of 11th E of Sam Reynolds Street",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01014",
-                "STOP_NAME": "S/S of 11th W of Wallis",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01014",
+                "stop_name": "S/S of 11th W of Wallis",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01012",
-                "STOP_NAME": "S/S of 11th E of Wallis",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01012",
+                "stop_name": "S/S of 11th E of Wallis",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01011",
-                "STOP_NAME": "S/S of 11th E of Obie",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01011",
+                "stop_name": "S/S of 11th E of Obie",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01009",
-                "STOP_NAME": "S/S of 11th E of Bailey Hill",
-                "STOP_SEQ": 20.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01009",
+                "stop_name": "S/S of 11th E of Bailey Hill",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01215",
-                "STOP_NAME": "Seneca Sta. (Fred Meyer)",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01215",
+                "stop_name": "Seneca Sta. (Fred Meyer)",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01005",
-                "STOP_NAME": "S/S of 11th W of Tyinn",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01005",
+                "stop_name": "S/S of 11th W of Tyinn",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01003",
-                "STOP_NAME": "S/S of 11th E of Oak Patch",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01003",
+                "stop_name": "S/S of 11th E of Oak Patch",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01001",
-                "STOP_NAME": "S/S of 11th E of Wilson",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01001",
+                "stop_name": "S/S of 11th E of Wilson",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "00999",
-                "STOP_NAME": "S/S of 11th W of City View",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "00999",
+                "stop_name": "S/S of 11th W of City View",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "00997",
-                "STOP_NAME": "S/S of 11th W of Arthur",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "00997",
+                "stop_name": "S/S of 11th W of Arthur",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01027",
-                "STOP_NAME": "W/S of Garfield S of 12th",
-                "STOP_SEQ": 27.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01027",
+                "stop_name": "W/S of Garfield S of 12th",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01028",
-                "STOP_NAME": "S/S of 13th E of Hayes",
-                "STOP_SEQ": 28.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01028",
+                "stop_name": "S/S of 13th E of Hayes",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01029",
-                "STOP_NAME": "S/S of 13th E of Chambers",
-                "STOP_SEQ": 29.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01029",
+                "stop_name": "S/S of 13th E of Chambers",
+                "stop_seq": "29"
             },
             "type": "Feature"
         },
@@ -566,13 +566,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01031",
-                "STOP_NAME": "S/S of 13th E of Polk",
-                "STOP_SEQ": 30.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01031",
+                "stop_name": "S/S of 13th E of Polk",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -585,13 +585,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01032",
-                "STOP_NAME": "S/S of 13th W of Jackson",
-                "STOP_SEQ": 31.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01032",
+                "stop_name": "S/S of 13th W of Jackson",
+                "stop_seq": "31"
             },
             "type": "Feature"
         },
@@ -604,13 +604,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01034",
-                "STOP_NAME": "S/S of 13th E of Monroe",
-                "STOP_SEQ": 32.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01034",
+                "stop_name": "S/S of 13th E of Monroe",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -623,13 +623,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01035",
-                "STOP_NAME": "S/S of 13th W of Washington",
-                "STOP_SEQ": 33.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01035",
+                "stop_name": "S/S of 13th W of Washington",
+                "stop_seq": "33"
             },
             "type": "Feature"
         },
@@ -642,13 +642,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01036",
-                "STOP_NAME": "S/S of 13th E of Lincoln",
-                "STOP_SEQ": 34.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01036",
+                "stop_name": "S/S of 13th E of Lincoln",
+                "stop_seq": "34"
             },
             "type": "Feature"
         },
@@ -661,13 +661,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "01540",
-                "STOP_NAME": "E/S of Olive S of 12th",
-                "STOP_SEQ": 35.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "01540",
+                "stop_name": "E/S of Olive S of 12th",
+                "stop_seq": "35"
             },
             "type": "Feature"
         },
@@ -680,13 +680,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "41",
-                "RTE_DESC": "41-Barger/West 11th Ave.",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 36.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "41",
+                "rte_desc": "41-Barger/West 11th Ave.",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "36"
             },
             "type": "Feature"
         }

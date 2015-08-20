@@ -105,10 +105,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "101",
-                "RTE_DESC": "EmX-101"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "101",
+                "rte_desc": "EmX-101"
             },
             "type": "Feature"
         }

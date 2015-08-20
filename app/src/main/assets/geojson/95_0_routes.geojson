@@ -113,10 +113,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "95",
-                "RTE_DESC": "95-Junction City"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "95",
+                "rte_desc": "95-Junction City"
             },
             "type": "Feature"
         }

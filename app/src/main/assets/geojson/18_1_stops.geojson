@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "01710",
-                "STOP_NAME": "N/S of Marcola Rd E of 19th",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "01710",
+                "stop_name": "N/S of Marcola Rd E of 19th",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00186",
-                "STOP_NAME": "W/S of Mohawk S of Olympic",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00186",
+                "stop_name": "W/S of Mohawk S of Olympic",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00187",
-                "STOP_NAME": "W/S of Mohawk S of M",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00187",
+                "stop_name": "W/S of Mohawk S of M",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00058",
-                "STOP_NAME": "W/S of Mohawk N of G",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00058",
+                "stop_name": "W/S of Mohawk N of G",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00194",
-                "STOP_NAME": "N/S of G E of 12th",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00194",
+                "stop_name": "N/S of G E of 12th",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00196",
-                "STOP_NAME": "N/S of G E of 10th",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00196",
+                "stop_name": "N/S of G E of 10th",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00197",
-                "STOP_NAME": "N/S of G W of 7th",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00197",
+                "stop_name": "N/S of G W of 7th",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "00220",
-                "STOP_NAME": "W/S of 5th S of G",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "00220",
+                "stop_name": "W/S of 5th S of G",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "18",
-                "RTE_DESC": "18-Mohawk",
-                "STOP_ID": "01497",
-                "STOP_NAME": "W/S of 5th S of B",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "18",
+                "rte_desc": "18-Mohawk",
+                "stop_id": "01497",
+                "stop_name": "W/S of 5th S of B",
+                "stop_seq": "9"
             },
             "type": "Feature"
         }

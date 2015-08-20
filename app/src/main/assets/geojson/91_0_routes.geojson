@@ -241,10 +241,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "91",
-                "RTE_DESC": "91-McKenzie Bridge"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "91",
+                "rte_desc": "91-McKenzie Bridge"
             },
             "type": "Feature"
         }

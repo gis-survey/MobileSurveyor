@@ -73,10 +73,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "98",
-                "RTE_DESC": "98-Cottage Grove"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "98",
+                "rte_desc": "98-Cottage Grove"
             },
             "type": "Feature"
         }

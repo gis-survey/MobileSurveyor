@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "02504",
-                "STOP_NAME": "Springfield Station, Bay D",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "02504",
+                "stop_name": "Springfield Station, Bay D",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "00057",
-                "STOP_NAME": "N/S of Main W of Mill",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "00057",
+                "stop_name": "N/S of Main W of Mill",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01156",
-                "STOP_NAME": "W/S of Old Franklin N of 19th",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01156",
+                "stop_name": "W/S of Old Franklin N of 19th",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01224",
-                "STOP_NAME": "W/S of Old Franklin S of 19th",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01224",
+                "stop_name": "W/S of Old Franklin S of 19th",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01158",
-                "STOP_NAME": "W/S of Old Franklin S of 20th",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01158",
+                "stop_name": "W/S of Old Franklin S of 20th",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01161",
-                "STOP_NAME": "W/S of Old Franklin S of Nugget",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01161",
+                "stop_name": "W/S of Old Franklin S of Nugget",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01855",
-                "STOP_NAME": "W/S of Old Franklin N of Dw 512",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01855",
+                "stop_name": "W/S of Old Franklin N of Dw 512",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01423",
-                "STOP_NAME": "W/S of Old Franklin S of Nugget Way",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01423",
+                "stop_name": "W/S of Old Franklin S of Nugget Way",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01162",
-                "STOP_NAME": "W/S of McVay Hwy N of Bloomberg",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01162",
+                "stop_name": "W/S of McVay Hwy N of Bloomberg",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield",
-                "STOP_ID": "01096",
-                "STOP_NAME": "N/S of 30th E of Eldon Schafer",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield",
+                "stop_id": "01096",
+                "stop_name": "N/S of 30th E of Eldon Schafer",
+                "stop_seq": "10"
             },
             "type": "Feature"
         }

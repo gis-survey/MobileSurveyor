@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "02111",
-                "STOP_NAME": "Eugene Station, Bay K",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "02111",
+                "stop_name": "Eugene Station, Bay K",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "02122",
-                "STOP_NAME": "E/S of Olive N of 8th",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "02122",
+                "stop_name": "E/S of Olive N of 8th",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "02123",
-                "STOP_NAME": "S/S of 5th E of Olive",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "02123",
+                "stop_name": "S/S of 5th E of Olive",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "02124",
-                "STOP_NAME": "S/S of 5th W of Pearl",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "02124",
+                "stop_name": "S/S of 5th W of Pearl",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "01244",
-                "STOP_NAME": "E/S of High N of 4th",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "01244",
+                "stop_name": "E/S of High N of 4th",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "01",
-                "RTE_DESC": "01-Campbell Center",
-                "STOP_ID": "01060",
-                "STOP_NAME": "S/S of 2nd W of Mill",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "01",
+                "rte_desc": "01-Campbell Center",
+                "stop_id": "01060",
+                "stop_name": "S/S of 2nd W of Mill",
+                "stop_seq": "6"
             },
             "type": "Feature"
         }

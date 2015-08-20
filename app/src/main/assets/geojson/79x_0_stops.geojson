@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "01560",
-                "STOP_NAME": "University of Oregon - Bay F",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "01560",
+                "stop_name": "University of Oregon - Bay F",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "00543",
-                "STOP_NAME": "W/S of MLK Blvd S of Kinsrow",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "00543",
+                "stop_name": "W/S of MLK Blvd S of Kinsrow",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "00541",
-                "STOP_NAME": "S/S of MLK Blvd E of Chevy Chase",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "00541",
+                "stop_name": "S/S of MLK Blvd E of Chevy Chase",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "79x",
-                "RTE_DESC": "79x-UO/Kinsrow",
-                "STOP_ID": "02152",
-                "STOP_NAME": "E/S of Garden Way N of MLK Blvd",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "79x",
+                "rte_desc": "79x-UO/Kinsrow",
+                "stop_id": "02152",
+                "stop_name": "E/S of Garden Way N of MLK Blvd",
+                "stop_seq": "4"
             },
             "type": "Feature"
         }

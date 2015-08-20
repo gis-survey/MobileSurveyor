@@ -85,10 +85,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "101",
-                "RTE_DESC": "EmX-101"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "101",
+                "rte_desc": "EmX-101"
             },
             "type": "Feature"
         }

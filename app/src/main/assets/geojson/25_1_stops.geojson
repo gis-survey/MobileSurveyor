@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00366",
-                "STOP_NAME": "W/S of W. Amazon N of Martin",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00366",
+                "stop_name": "W/S of W. Amazon N of Martin",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00367",
-                "STOP_NAME": "S/S of Martin W of Center",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00367",
+                "stop_name": "S/S of Martin W of Center",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00368",
-                "STOP_NAME": "E/S of Center N of Alpine",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00368",
+                "stop_name": "E/S of Center N of Alpine",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00369",
-                "STOP_NAME": "E/S of Center S of E. Amazon",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00369",
+                "stop_name": "E/S of Center S of E. Amazon",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00370",
-                "STOP_NAME": "E/S of E. Amazon N of Snell",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00370",
+                "stop_name": "E/S of E. Amazon N of Snell",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00371",
-                "STOP_NAME": "E/S of E. Amazon N of Dillard",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00371",
+                "stop_name": "E/S of E. Amazon N of Dillard",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00372",
-                "STOP_NAME": "E/S of E. Amazon N of Kincaid",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00372",
+                "stop_name": "E/S of E. Amazon N of Kincaid",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00373",
-                "STOP_NAME": "E/S of E. Amazon S of Potter",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00373",
+                "stop_name": "E/S of E. Amazon S of Potter",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00374",
-                "STOP_NAME": "E/S of E. Amazon S of 39th",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00374",
+                "stop_name": "E/S of E. Amazon S of 39th",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00375",
-                "STOP_NAME": "E/S of E. Amazon N of 37th",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00375",
+                "stop_name": "E/S of E. Amazon N of 37th",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00376",
-                "STOP_NAME": "E/S of E. Amazon N of 35th",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00376",
+                "stop_name": "E/S of E. Amazon N of 35th",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00377",
-                "STOP_NAME": "E/S of E. Amazon S of Hilyard",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00377",
+                "stop_name": "E/S of E. Amazon S of Hilyard",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01405",
-                "STOP_NAME": "E/S of Hilyard N of 32nd",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01405",
+                "stop_name": "E/S of Hilyard N of 32nd",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01409",
-                "STOP_NAME": "Amazon Station, Bay A",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01409",
+                "stop_name": "Amazon Station, Bay A",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01409",
-                "STOP_NAME": "Amazon Station, Bay A",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01409",
+                "stop_name": "Amazon Station, Bay A",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01085",
-                "STOP_NAME": "N/S of 29th W of Mill",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01085",
+                "stop_name": "N/S of 29th W of Mill",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01087",
-                "STOP_NAME": "N/S of 29th E of Oak",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01087",
+                "stop_name": "N/S of 29th E of Oak",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00496",
-                "STOP_NAME": "E/S of Willamette N of 29th",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00496",
+                "stop_name": "E/S of Willamette N of 29th",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00493",
-                "STOP_NAME": "E/S of Willamette N of 27th",
-                "STOP_SEQ": 20.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00493",
+                "stop_name": "E/S of Willamette N of 27th",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00491",
-                "STOP_NAME": "E/S of Willamette N of 25th",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00491",
+                "stop_name": "E/S of Willamette N of 25th",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00488",
-                "STOP_NAME": "E/S of Willamette N of 23rd",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00488",
+                "stop_name": "E/S of Willamette N of 23rd",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "00486",
-                "STOP_NAME": "E/S of Willamette S of 20th",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "00486",
+                "stop_name": "E/S of Willamette S of 20th",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01320",
-                "STOP_NAME": "E/S of Oak S of 17th",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01320",
+                "stop_name": "E/S of Oak S of 17th",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01305",
-                "STOP_NAME": "E/S of Oak S of 16th",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01305",
+                "stop_name": "E/S of Oak S of 16th",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01306",
-                "STOP_NAME": "E/S of Oak S of 14th",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01306",
+                "stop_name": "E/S of Oak S of 14th",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "01307",
-                "STOP_NAME": "E/S of Oak S of 12th",
-                "STOP_SEQ": 27.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "01307",
+                "stop_name": "E/S of Oak S of 12th",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "25",
-                "RTE_DESC": "25-Amazon",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 28.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "25",
+                "rte_desc": "25-Amazon",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "28"
             },
             "type": "Feature"
         }

@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "02115",
-                "STOP_NAME": "Eugene Station, Bay O",
-                "STOP_SEQ": 1.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "02115",
+                "stop_name": "Eugene Station, Bay O",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "01184",
-                "STOP_NAME": "S/S of 10th W of Pearl",
-                "STOP_SEQ": 2.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "01184",
+                "stop_name": "S/S of 10th W of Pearl",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "01179",
-                "STOP_NAME": "E/S of High S of 8th",
-                "STOP_SEQ": 3.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "01179",
+                "stop_name": "E/S of High S of 8th",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "02133",
-                "STOP_NAME": "S/S of MLK Blvd W of Centennial Lp",
-                "STOP_SEQ": 4.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "02133",
+                "stop_name": "S/S of MLK Blvd W of Centennial Lp",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "01330",
-                "STOP_NAME": "S/S of MLK Blvd E of Centennial Lp",
-                "STOP_SEQ": 5.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "01330",
+                "stop_name": "S/S of MLK Blvd E of Centennial Lp",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00549",
-                "STOP_NAME": "S/S of MLK Blvd E of Centennial Lp",
-                "STOP_SEQ": 6.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00549",
+                "stop_name": "S/S of MLK Blvd E of Centennial Lp",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00546",
-                "STOP_NAME": "S/S of MLK Blvd Eof Scout Access",
-                "STOP_SEQ": 7.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00546",
+                "stop_name": "S/S of MLK Blvd Eof Scout Access",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00545",
-                "STOP_NAME": "S/S of MLK Blvd at Serbu Center",
-                "STOP_SEQ": 8.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00545",
+                "stop_name": "S/S of MLK Blvd at Serbu Center",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00543",
-                "STOP_NAME": "W/S of MLK Blvd S of Kinsrow",
-                "STOP_SEQ": 9.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00543",
+                "stop_name": "W/S of MLK Blvd S of Kinsrow",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00541",
-                "STOP_NAME": "S/S of MLK Blvd E of Chevy Chase",
-                "STOP_SEQ": 10.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00541",
+                "stop_name": "S/S of MLK Blvd E of Chevy Chase",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00539",
-                "STOP_NAME": "S/S of MLK Blvd W of Lindley",
-                "STOP_SEQ": 11.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00539",
+                "stop_name": "S/S of MLK Blvd W of Lindley",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00184",
-                "STOP_NAME": "S/S of Centennial E of Anderson",
-                "STOP_SEQ": 12.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00184",
+                "stop_name": "S/S of Centennial E of Anderson",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00182",
-                "STOP_NAME": "S/S of Centennial E of Aspen",
-                "STOP_SEQ": 13.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00182",
+                "stop_name": "S/S of Centennial E of Aspen",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00181",
-                "STOP_NAME": "S/S of Centennial W of Rainbow Dr",
-                "STOP_SEQ": 14.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00181",
+                "stop_name": "S/S of Centennial W of Rainbow Dr",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00179",
-                "STOP_NAME": "S/S of Centennial E of Prescott",
-                "STOP_SEQ": 15.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00179",
+                "stop_name": "S/S of Centennial E of Prescott",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00245",
-                "STOP_NAME": "S/S of Centennial W of Laura",
-                "STOP_SEQ": 16.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00245",
+                "stop_name": "S/S of Centennial W of Laura",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00243",
-                "STOP_NAME": "S/S of Centennial W of Mill",
-                "STOP_SEQ": 17.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00243",
+                "stop_name": "S/S of Centennial W of Mill",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00177",
-                "STOP_NAME": "S/S of Centennial W of Pioneer Pkwy W",
-                "STOP_SEQ": 18.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00177",
+                "stop_name": "S/S of Centennial W of Pioneer Pkwy W",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00175",
-                "STOP_NAME": "S/S of Centennial E of Custom",
-                "STOP_SEQ": 19.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00175",
+                "stop_name": "S/S of Centennial E of Custom",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00239",
-                "STOP_NAME": "S/S of Centennial W of 6th",
-                "STOP_SEQ": 20.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00239",
+                "stop_name": "S/S of Centennial W of 6th",
+                "stop_seq": "20"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00172",
-                "STOP_NAME": "S/S of Centennial E of 7th",
-                "STOP_SEQ": 21.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00172",
+                "stop_name": "S/S of Centennial E of 7th",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00170",
-                "STOP_NAME": "S/S of Centennial E of 10th",
-                "STOP_SEQ": 22.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00170",
+                "stop_name": "S/S of Centennial E of 10th",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00168",
-                "STOP_NAME": "S/S of Centennial E of 12th",
-                "STOP_SEQ": 23.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00168",
+                "stop_name": "S/S of Centennial E of 12th",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00166",
-                "STOP_NAME": "S/S of Centennial W of Market",
-                "STOP_SEQ": 24.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00166",
+                "stop_name": "S/S of Centennial W of Market",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00164",
-                "STOP_NAME": "S/S of Centennial E of 16th",
-                "STOP_SEQ": 25.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00164",
+                "stop_name": "S/S of Centennial E of 16th",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00162",
-                "STOP_NAME": "S/S of Centennial E of 18th",
-                "STOP_SEQ": 26.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00162",
+                "stop_name": "S/S of Centennial E of 18th",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00160",
-                "STOP_NAME": "S/S of Centennial W of 21st",
-                "STOP_SEQ": 27.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00160",
+                "stop_name": "S/S of Centennial W of 21st",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00147",
-                "STOP_NAME": "E/S of 21st N of L",
-                "STOP_SEQ": 28.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00147",
+                "stop_name": "E/S of 21st N of L",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "13",
-                "RTE_DESC": "13-Centennial",
-                "STOP_ID": "00061",
-                "STOP_NAME": "N/S of Olympic E of 18th",
-                "STOP_SEQ": 29.0
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "13",
+                "rte_desc": "13-Centennial",
+                "stop_id": "00061",
+                "stop_name": "N/S of Olympic E of 18th",
+                "stop_seq": "29"
             },
             "type": "Feature"
         }

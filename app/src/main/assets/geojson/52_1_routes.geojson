@@ -165,10 +165,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "52",
-                "RTE_DESC": "52-Irving"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "52",
+                "rte_desc": "52-Irving"
             },
             "type": "Feature"
         }

@@ -121,10 +121,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "76",
-                "RTE_DESC": "76-UO/Warren"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "76",
+                "rte_desc": "76-UO/Warren"
             },
             "type": "Feature"
         }

@@ -141,10 +141,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "96",
-                "RTE_DESC": "96-Coburg"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "96",
+                "rte_desc": "96-Coburg"
             },
             "type": "Feature"
         }

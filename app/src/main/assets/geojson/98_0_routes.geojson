@@ -193,10 +193,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "98",
-                "RTE_DESC": "98-Cottage Grove"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "98",
+                "rte_desc": "98-Cottage Grove"
             },
             "type": "Feature"
         }

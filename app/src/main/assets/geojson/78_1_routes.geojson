@@ -125,10 +125,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "78",
-                "RTE_DESC": "78-UO/Seneca Station"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "78",
+                "rte_desc": "78-UO/Seneca Station"
             },
             "type": "Feature"
         }

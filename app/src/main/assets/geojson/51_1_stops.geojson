@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00638",
-                "STOP_NAME": "S/S of Wilkes E of River Rd",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00638",
+                "stop_name": "S/S of Wilkes E of River Rd",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00639",
-                "STOP_NAME": "S/S of Wilkes W of Tempa",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00639",
+                "stop_name": "S/S of Wilkes W of Tempa",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00640",
-                "STOP_NAME": "E/S of Scenic S of Dean",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00640",
+                "stop_name": "E/S of Scenic S of Dean",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "01201",
-                "STOP_NAME": "E/S of Scenic N of Cinderella",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "01201",
+                "stop_name": "E/S of Scenic N of Cinderella",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00641",
-                "STOP_NAME": "E/S of Scenic N of River Lp",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00641",
+                "stop_name": "E/S of Scenic N of River Lp",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00643",
-                "STOP_NAME": "E/S of Scenic N of Warrington",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00643",
+                "stop_name": "E/S of Scenic N of Warrington",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00644",
-                "STOP_NAME": "N/S of Spring Crk E of Shannon",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00644",
+                "stop_name": "N/S of Spring Crk E of Shannon",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00645",
-                "STOP_NAME": "N/S of Spring Crk W of Scottdale",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00645",
+                "stop_name": "N/S of Spring Crk W of Scottdale",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "02006",
-                "STOP_NAME": "N/S of Spring Crk W of Spring Meadows",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "02006",
+                "stop_name": "N/S of Spring Crk W of Spring Meadows",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00646",
-                "STOP_NAME": "W/S of River Rd S of Spring Creek",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00646",
+                "stop_name": "W/S of River Rd S of Spring Creek",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00647",
-                "STOP_NAME": "W/S of River Rd S of Lynnbrook",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00647",
+                "stop_name": "W/S of River Rd S of Lynnbrook",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00648",
-                "STOP_NAME": "W/S of River Rd N of Dean",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00648",
+                "stop_name": "W/S of River Rd N of Dean",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00649",
-                "STOP_NAME": "W/S of River Rd S of Irvington",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00649",
+                "stop_name": "W/S of River Rd S of Irvington",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00650",
-                "STOP_NAME": "W/S of River Rd N of Blackfoot",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00650",
+                "stop_name": "W/S of River Rd N of Blackfoot",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00652",
-                "STOP_NAME": "W/S of River Rd S of Blazer",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00652",
+                "stop_name": "W/S of River Rd S of Blazer",
+                "stop_seq": "15"
             },
             "type": "Feature"
         },
@@ -300,13 +300,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00654",
-                "STOP_NAME": "W/S of River Rd S of Ferndale",
-                "STOP_SEQ": 16.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00654",
+                "stop_name": "W/S of River Rd S of Ferndale",
+                "stop_seq": "16"
             },
             "type": "Feature"
         },
@@ -319,13 +319,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00657",
-                "STOP_NAME": "W/S of River Rd S of Myoak",
-                "STOP_SEQ": 17.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00657",
+                "stop_name": "W/S of River Rd S of Myoak",
+                "stop_seq": "17"
             },
             "type": "Feature"
         },
@@ -338,13 +338,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00659",
-                "STOP_NAME": "W/S of River Rd N of Irving",
-                "STOP_SEQ": 18.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00659",
+                "stop_name": "W/S of River Rd N of Irving",
+                "stop_seq": "18"
             },
             "type": "Feature"
         },
@@ -357,13 +357,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00681",
-                "STOP_NAME": "W/S of River Rd N of Santa Clara",
-                "STOP_SEQ": 19.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00681",
+                "stop_name": "W/S of River Rd N of Santa Clara",
+                "stop_seq": "19"
             },
             "type": "Feature"
         },
@@ -376,13 +376,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00707",
-                "STOP_NAME": "(RRS) E/S River Rd N of River Ave (NE)",
-                "STOP_SEQ": 21.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00707",
+                "stop_name": "(RRS) E/S River Rd N of River Ave (NE)",
+                "stop_seq": "21"
             },
             "type": "Feature"
         },
@@ -395,13 +395,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00705",
-                "STOP_NAME": "W/S of River Rd S of Silver",
-                "STOP_SEQ": 22.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00705",
+                "stop_name": "W/S of River Rd S of Silver",
+                "stop_seq": "22"
             },
             "type": "Feature"
         },
@@ -414,13 +414,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00703",
-                "STOP_NAME": "W/S of River Rd S of Kourt",
-                "STOP_SEQ": 23.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00703",
+                "stop_name": "W/S of River Rd S of Kourt",
+                "stop_seq": "23"
             },
             "type": "Feature"
         },
@@ -433,13 +433,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00701",
-                "STOP_NAME": "W/S of River Rd S of Maxwell",
-                "STOP_SEQ": 24.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00701",
+                "stop_name": "W/S of River Rd S of Maxwell",
+                "stop_seq": "24"
             },
             "type": "Feature"
         },
@@ -452,13 +452,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00849",
-                "STOP_NAME": "W/S of River Rd S of Howard",
-                "STOP_SEQ": 25.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00849",
+                "stop_name": "W/S of River Rd S of Howard",
+                "stop_seq": "25"
             },
             "type": "Feature"
         },
@@ -471,13 +471,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00851",
-                "STOP_NAME": "W/S of River Rd N of Lindner",
-                "STOP_SEQ": 26.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00851",
+                "stop_name": "W/S of River Rd N of Lindner",
+                "stop_seq": "26"
             },
             "type": "Feature"
         },
@@ -490,13 +490,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00853",
-                "STOP_NAME": "W/S of River Rd S of Horn",
-                "STOP_SEQ": 27.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00853",
+                "stop_name": "W/S of River Rd S of Horn",
+                "stop_seq": "27"
             },
             "type": "Feature"
         },
@@ -509,13 +509,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00854",
-                "STOP_NAME": "W/S of River Rd S of Hilliard",
-                "STOP_SEQ": 28.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00854",
+                "stop_name": "W/S of River Rd S of Hilliard",
+                "stop_seq": "28"
             },
             "type": "Feature"
         },
@@ -528,13 +528,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00857",
-                "STOP_NAME": "W/S of River Rd S of Elkay",
-                "STOP_SEQ": 29.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00857",
+                "stop_name": "W/S of River Rd S of Elkay",
+                "stop_seq": "29"
             },
             "type": "Feature"
         },
@@ -547,13 +547,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00859",
-                "STOP_NAME": "W/S of River Rd S of Park",
-                "STOP_SEQ": 30.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00859",
+                "stop_name": "W/S of River Rd S of Park",
+                "stop_seq": "30"
             },
             "type": "Feature"
         },
@@ -566,13 +566,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00861",
-                "STOP_NAME": "W/S of River Rd S of Knoop",
-                "STOP_SEQ": 31.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00861",
+                "stop_name": "W/S of River Rd S of Knoop",
+                "stop_seq": "31"
             },
             "type": "Feature"
         },
@@ -585,13 +585,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00863",
-                "STOP_NAME": "W/S of River Rd S of Hansen",
-                "STOP_SEQ": 32.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00863",
+                "stop_name": "W/S of River Rd S of Hansen",
+                "stop_seq": "32"
             },
             "type": "Feature"
         },
@@ -604,13 +604,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00864",
-                "STOP_NAME": "W/S of River Rd S of Briarcliff",
-                "STOP_SEQ": 33.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00864",
+                "stop_name": "W/S of River Rd S of Briarcliff",
+                "stop_seq": "33"
             },
             "type": "Feature"
         },
@@ -623,13 +623,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00869",
-                "STOP_NAME": "W/S of Railroad S of Cross",
-                "STOP_SEQ": 34.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00869",
+                "stop_name": "W/S of Railroad S of Cross",
+                "stop_seq": "34"
             },
             "type": "Feature"
         },
@@ -642,13 +642,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00871",
-                "STOP_NAME": "W/S of Railroad E of Polk",
-                "STOP_SEQ": 35.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00871",
+                "stop_name": "W/S of Railroad E of Polk",
+                "stop_seq": "35"
             },
             "type": "Feature"
         },
@@ -661,13 +661,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00872",
-                "STOP_NAME": "S/S of 1st E of Van Buren",
-                "STOP_SEQ": 36.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00872",
+                "stop_name": "S/S of 1st E of Van Buren",
+                "stop_seq": "36"
             },
             "type": "Feature"
         },
@@ -680,13 +680,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00875",
-                "STOP_NAME": "S/S of 1st E of Monroe",
-                "STOP_SEQ": 37.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00875",
+                "stop_name": "S/S of 1st E of Monroe",
+                "stop_seq": "37"
             },
             "type": "Feature"
         },
@@ -699,13 +699,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00877",
-                "STOP_NAME": "W/S of Jefferson S of 1st",
-                "STOP_SEQ": 38.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00877",
+                "stop_name": "W/S of Jefferson S of 1st",
+                "stop_seq": "38"
             },
             "type": "Feature"
         },
@@ -718,13 +718,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "00878",
-                "STOP_NAME": "W/S of Jefferson S of 4th",
-                "STOP_SEQ": 39.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "00878",
+                "stop_name": "W/S of Jefferson S of 4th",
+                "stop_seq": "39"
             },
             "type": "Feature"
         },
@@ -737,13 +737,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "01054",
-                "STOP_NAME": "S/S of 5th E of Washington",
-                "STOP_SEQ": 40.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "01054",
+                "stop_name": "S/S of 5th E of Washington",
+                "stop_seq": "40"
             },
             "type": "Feature"
         },
@@ -756,13 +756,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "01313",
-                "STOP_NAME": "W/S of Charnelton N of 6th",
-                "STOP_SEQ": 41.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "01313",
+                "stop_name": "W/S of Charnelton N of 6th",
+                "stop_seq": "41"
             },
             "type": "Feature"
         },
@@ -775,13 +775,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "01181",
-                "STOP_NAME": "W/S of Charnelton S of 8th",
-                "STOP_SEQ": 42.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "01181",
+                "stop_name": "W/S of Charnelton S of 8th",
+                "stop_seq": "42"
             },
             "type": "Feature"
         },
@@ -794,13 +794,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "51",
-                "RTE_DESC": "51-River Road",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 43.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "51",
+                "rte_desc": "51-River Road",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "43"
             },
             "type": "Feature"
         }

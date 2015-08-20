@@ -73,10 +73,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson"
             },
             "type": "Feature"
         }

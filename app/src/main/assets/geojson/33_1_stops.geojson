@@ -15,13 +15,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00478",
-                "STOP_NAME": "E/S of Chambers S of 25th",
-                "STOP_SEQ": 1.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00478",
+                "stop_name": "E/S of Chambers S of 25th",
+                "stop_seq": "1"
             },
             "type": "Feature"
         },
@@ -34,13 +34,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00477",
-                "STOP_NAME": "S/S of 24th E of Chambers",
-                "STOP_SEQ": 2.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00477",
+                "stop_name": "S/S of 24th E of Chambers",
+                "stop_seq": "2"
             },
             "type": "Feature"
         },
@@ -53,13 +53,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "01425",
-                "STOP_NAME": "S/S of 24th W of Taylor",
-                "STOP_SEQ": 3.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "01425",
+                "stop_name": "S/S of 24th W of Taylor",
+                "stop_seq": "3"
             },
             "type": "Feature"
         },
@@ -72,13 +72,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00951",
-                "STOP_NAME": "S/S of 24th E of Polk",
-                "STOP_SEQ": 4.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00951",
+                "stop_name": "S/S of 24th E of Polk",
+                "stop_seq": "4"
             },
             "type": "Feature"
         },
@@ -91,13 +91,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00952",
-                "STOP_NAME": "S/S of 24th E of Van Buren",
-                "STOP_SEQ": 5.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00952",
+                "stop_name": "S/S of 24th E of Van Buren",
+                "stop_seq": "5"
             },
             "type": "Feature"
         },
@@ -110,13 +110,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00953",
-                "STOP_NAME": "S/S of 24th E of Adams",
-                "STOP_SEQ": 6.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00953",
+                "stop_name": "S/S of 24th E of Adams",
+                "stop_seq": "6"
             },
             "type": "Feature"
         },
@@ -129,13 +129,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00954",
-                "STOP_NAME": "S/S of 24th W of Madison",
-                "STOP_SEQ": 7.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00954",
+                "stop_name": "S/S of 24th W of Madison",
+                "stop_seq": "7"
             },
             "type": "Feature"
         },
@@ -148,13 +148,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00940",
-                "STOP_NAME": "E/S of Jefferson N of 22nd",
-                "STOP_SEQ": 8.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00940",
+                "stop_name": "E/S of Jefferson N of 22nd",
+                "stop_seq": "8"
             },
             "type": "Feature"
         },
@@ -167,13 +167,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00936",
-                "STOP_NAME": "E/S of Jefferson N of 19th",
-                "STOP_SEQ": 9.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00936",
+                "stop_name": "E/S of Jefferson N of 19th",
+                "stop_seq": "9"
             },
             "type": "Feature"
         },
@@ -186,13 +186,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00955",
-                "STOP_NAME": "E/S of Jefferson N of 18th",
-                "STOP_SEQ": 10.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00955",
+                "stop_name": "E/S of Jefferson N of 18th",
+                "stop_seq": "10"
             },
             "type": "Feature"
         },
@@ -205,13 +205,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "00956",
-                "STOP_NAME": "E/S of Jefferson S of 15th",
-                "STOP_SEQ": 11.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "00956",
+                "stop_name": "E/S of Jefferson S of 15th",
+                "stop_seq": "11"
             },
             "type": "Feature"
         },
@@ -224,13 +224,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "01035",
-                "STOP_NAME": "S/S of 13th W of Washington",
-                "STOP_SEQ": 12.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "01035",
+                "stop_name": "S/S of 13th W of Washington",
+                "stop_seq": "12"
             },
             "type": "Feature"
         },
@@ -243,13 +243,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "01036",
-                "STOP_NAME": "S/S of 13th E of Lincoln",
-                "STOP_SEQ": 13.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "01036",
+                "stop_name": "S/S of 13th E of Lincoln",
+                "stop_seq": "13"
             },
             "type": "Feature"
         },
@@ -262,13 +262,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "01540",
-                "STOP_NAME": "E/S of Olive S of 12th",
-                "STOP_SEQ": 14.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "01540",
+                "stop_name": "E/S of Olive S of 12th",
+                "stop_seq": "14"
             },
             "type": "Feature"
         },
@@ -281,13 +281,13 @@
                 "type": "Point"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "33",
-                "RTE_DESC": "33-Jefferson",
-                "STOP_ID": "escenter",
-                "STOP_NAME": "Eugene Sta central arrival zone",
-                "STOP_SEQ": 15.0
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "33",
+                "rte_desc": "33-Jefferson",
+                "stop_id": "escenter",
+                "stop_name": "Eugene Sta central arrival zone",
+                "stop_seq": "15"
             },
             "type": "Feature"
         }

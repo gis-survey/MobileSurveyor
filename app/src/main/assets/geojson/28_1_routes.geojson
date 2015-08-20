@@ -117,10 +117,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 1.0,
-                "DIR_DESC": "Inbound",
-                "RTE": "28",
-                "RTE_DESC": "28-Hilyard"
+                "dir": "1",
+                "dir_desc": "Inbound",
+                "rte": "28",
+                "rte_desc": "28-Hilyard"
             },
             "type": "Feature"
         }

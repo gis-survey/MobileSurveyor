@@ -53,10 +53,10 @@
                 "type": "LineString"
             },
             "properties": {
-                "DIR": 0.0,
-                "DIR_DESC": "Outbound",
-                "RTE": "85",
-                "RTE_DESC": "85-LCC/Springfield"
+                "dir": "0",
+                "dir_desc": "Outbound",
+                "rte": "85",
+                "rte_desc": "85-LCC/Springfield"
             },
             "type": "Feature"
         }

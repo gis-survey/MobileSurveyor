@@ -1,19 +1,13 @@
-package com.meyersj.mobilesurveyor.app.locations;
+package com.meyersj.mobilesurveyor.app.geocode;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
-import com.meyersj.mobilesurveyor.app.util.Utils;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 
 public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {

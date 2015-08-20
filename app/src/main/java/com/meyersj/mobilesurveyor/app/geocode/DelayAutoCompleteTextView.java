@@ -1,4 +1,4 @@
-package com.meyersj.mobilesurveyor.app.locations;
+package com.meyersj.mobilesurveyor.app.geocode;
 
 
 //
@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.AutoCompleteTextView;
-import android.widget.ProgressBar;
 
 public class DelayAutoCompleteTextView extends AutoCompleteTextView {
 

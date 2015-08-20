@@ -16,14 +16,13 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
-import com.meyersj.mobilesurveyor.app.locations.LocationResult;
-import com.meyersj.mobilesurveyor.app.locations.GeocodeAdapter;
+import com.meyersj.mobilesurveyor.app.geocode.LocationResult;
+import com.meyersj.mobilesurveyor.app.geocode.GeocodeAdapter;
 import com.meyersj.mobilesurveyor.app.stops.BuildStops;
 import com.meyersj.mobilesurveyor.app.stops.OnOffMapListener;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;

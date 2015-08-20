@@ -1,8 +1,9 @@
-package com.meyersj.mobilesurveyor.app.locations;
+package com.meyersj.mobilesurveyor.app.geocode;
 
 
 import android.util.Log;
 
+import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -57,8 +58,8 @@ public class Geocoder {
     }
 
     private String buildParams(String input) {
-        String lat = "45.52";
-        String lon = "-122.681944";
+        String lat = String.valueOf(Cons.CENTROID.getLatitude());
+        String lon = String.valueOf(Cons.CENTROID.getLongitude());
 
         String params = addParam("input", input);
         params += addParam("lat", lat);

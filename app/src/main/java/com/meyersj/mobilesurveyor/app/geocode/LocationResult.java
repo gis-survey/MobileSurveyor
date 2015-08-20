@@ -1,4 +1,4 @@
-package com.meyersj.mobilesurveyor.app.locations;
+package com.meyersj.mobilesurveyor.app.geocode;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 

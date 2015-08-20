@@ -19,7 +19,7 @@
         android:layout_height="wrap_content" />
 
 
-    <com.meyersj.mobilesurveyor.app.locations.DelayAutoCompleteTextView
+    <com.meyersj.mobilesurveyor.app.geocode.DelayAutoCompleteTextView
         android:id="@+id/geocode_input"
         android:inputType="textNoSuggestions"
         android:layout_width="0dp"

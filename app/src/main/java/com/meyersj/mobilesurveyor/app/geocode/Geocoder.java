@@ -5,8 +5,8 @@ import android.util.Log;
 
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+//import com.squareup.okhttp.Request;
+//import com.squareup.okhttp.Response;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -71,6 +71,7 @@ public class Geocoder {
     }
 
     protected void lookup(String input) {
+        /*
         Request request = new Request.Builder()
                 .url(url + "?" + buildParams(input))
                 .build();
@@ -84,6 +85,7 @@ public class Geocoder {
         catch (IOException e) {
             Log.d(TAG, e.toString());
         }
+        */
 
     }
 

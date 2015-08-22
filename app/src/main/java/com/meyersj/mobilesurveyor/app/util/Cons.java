@@ -75,6 +75,7 @@ public class Cons {
     public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";
     public static final String DEFAULT_RTE = "91";
     public static final String DEFAULT_DIR = "0";
+    public static final String MAPBOX_TOKEN = "mapbox_token";
 
     public static final LatLng CENTROID = new LatLng(44.051944, -123.086667); // Eugene
     //public static final LatLng CENTROID = new LatLng(45.49186, -122.679005); // Portland

@@ -34,13 +34,8 @@ public class PickLocationMapViewListener implements MapViewListener {
     @Override
     public void onShowMarker(final MapView mapView, final Marker marker) {}
 
-    //@Override
-    //public void onHidemarker(MapView mapView, Marker marker) {
-//
-  //  }
-
     @Override
-    public void onHideMarker(MapView mapView, Marker marker) {
+    public void onHidemarker(MapView mapView, Marker marker) {
 
     }
 

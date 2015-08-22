@@ -19,8 +19,10 @@ import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
+import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.mobilesurveyor.app.ODKApplication;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.stops.BuildStops;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
@@ -39,7 +41,9 @@ public abstract class MapFragment extends Fragment {
     protected final File TILESPATH = new File(Environment.getExternalStorageDirectory(), "maps/mbtiles");
     protected final String TILESNAME = "OSMTriMet.mbtiles";
     private final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
+    private final String MAPBOX_BASE_URL_V4 = "https://api.mapbox.com/v4";
 
+    protected ODKApplication app;
     protected Activity activity;
     protected Context context;
     protected View view;
@@ -62,6 +66,7 @@ public abstract class MapFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_default_map, container, false);
         activity = getActivity();
+        app = (ODKApplication) activity.getApplication();
         context = activity.getApplicationContext();
         surveyOverlay = new ItemizedIconOverlay(context, surveyList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
@@ -91,25 +96,33 @@ public abstract class MapFragment extends Fragment {
         super.onDetach();
     }
 
-    protected void setTiles(MapView mv) {
-        //ITileLayer mbTilesSource;
+    protected ITileLayer buildMapBoxTiles(MapView mv) {
+        String tileID = "mapbox.streets";
+        String token = app.getProperties().getProperty(Cons.MAPBOX_TOKEN);
+        String url = MAPBOX_BASE_URL_V4 + "/" + tileID + "/{z}/{x}/{y}{2x}.png?access_token=" + token;
+        return new MapboxTileLayerV4("mapbox.streets", url, token);
+    }
 
+    protected ITileLayer buildOSMTiles(MapView mv) {
         String url = "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png";
-        //url = "http://tilea.trimet.org/tilecache/tilecache.py/1.0.0/currentOSM/{z}/{x}/{y}";
-        ITileLayer osmSource = new WebSourceTileLayer("openstreetmap",
+        return new WebSourceTileLayer("openstreetmap",
                 url).setName("OpenStreetMap")
                 .setAttribution("© OpenStreetMap Contributors");
-       // try {
-       //     File tiles = new File(TILESPATH, TILESNAME);
-       //     mbTilesSource = new MBTilesLayer(tiles);
-       //     mv.setTileSource(mbTilesSource);
-       // }
-       // catch(Exception e) {
-       //     Log.e(TAG, "unable to open local mbtiles");
-            mv.setTileSource(osmSource);
-       // }
-        mv.setMinZoomLevel(mv.getTileProvider().getMinimumZoomLevel());
-        mv.setMaxZoomLevel(mv.getTileProvider().getMaximumZoomLevel());
+    }
+
+    protected ITileLayer buildMBTiles(MapView mv) {
+        File tiles = new File(TILESPATH, TILESNAME);
+        return new MBTilesLayer(tiles);
+    }
+
+    protected void setTiles(MapView mv) {
+
+        //mv.setAccessToken(app.getProperties().getProperty(Cons.MAPBOX_TOKEN));
+        ITileLayer tileLayer = buildMapBoxTiles(mv);
+
+        mv.setTileSource(tileLayer);
+        mv.setMinZoomLevel(6);
+        mv.setMaxZoomLevel(20);
         mv.setCenter(Cons.CENTROID);
         mv.setZoom(12);
     }

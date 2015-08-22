@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme"
         android:label="Transit Surveyor"
-        android:name=".survey.SurveyApplication">
+        android:name=".ODKApplication">
 
         <activity
             android:name=".menu.LoginActivity"

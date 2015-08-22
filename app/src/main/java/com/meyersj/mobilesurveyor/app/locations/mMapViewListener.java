@@ -39,7 +39,7 @@ public class mMapViewListener implements MapViewListener {
     public void onShowMarker(final MapView mapView, final Marker marker) {}
 
     @Override
-    public void onHideMarker(MapView mapView, Marker marker) {}
+    public void onHidemarker(MapView mapView, Marker marker) {}
 
     @Override
     public void onTapMarker(final MapView mapView, final Marker marker) {}

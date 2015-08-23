@@ -116,10 +116,7 @@ public abstract class MapFragment extends Fragment {
     }
 
     protected void setTiles(MapView mv) {
-
-        //mv.setAccessToken(app.getProperties().getProperty(Cons.MAPBOX_TOKEN));
         ITileLayer tileLayer = buildMapBoxTiles(mv);
-
         mv.setTileSource(tileLayer);
         mv.setMinZoomLevel(6);
         mv.setMaxZoomLevel(20);

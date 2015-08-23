@@ -3,11 +3,16 @@ package com.meyersj.mobilesurveyor.app.geocode;
 
 import android.util.Log;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.squareup.okhttp.OkHttpClient;
 //import com.squareup.okhttp.Request;
 //import com.squareup.okhttp.Response;
 
+import org.apache.http.Header;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -26,12 +31,13 @@ public class Geocoder {
 
     private String url = null;
     private OkHttpClient httpClient;
+    private final String solrParams = "wt=json&rows=5&qt=dismax";
 
     private HashMap<String, LocationResult> resultsHash = new HashMap<String, LocationResult>();
     private ArrayList<String> resultsInOrder = new ArrayList<String>();
 
     public Geocoder(String url) {
-        this.url = url;
+        this.url = url + "?" + solrParams;
         this.httpClient = new OkHttpClient();
     }
 
@@ -43,13 +49,11 @@ public class Geocoder {
         return resultsInOrder;
     }
 
-    public void clearResults() {
-        resultsHash.clear();
-        resultsInOrder.clear();
-    }
+
 
     private String addParam(String key, String value) {
         try {
+            Log.d(TAG, value + " " + URLEncoder.encode(value, "UTF-8"));
             return "&" + key + "=" + URLEncoder.encode(value, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             Log.d(TAG, e.toString());
@@ -64,50 +68,112 @@ public class Geocoder {
         String params = addParam("input", input);
         params += addParam("lat", lat);
         params += addParam("lon", lon);
-        params += addParam("size", "5");
-        params += addParam("layers", "address,poi");
+        params += addParam("size", "8");
+        params += addParam("layers", "poi");
         params += addParam("details", "false");
         return params;
     }
 
     protected void lookup(String input) {
-        /*
-        Request request = new Request.Builder()
-                .url(url + "?" + buildParams(input))
-                .build();
-
-        try {
-            Response response = httpClient.newCall(request).execute();
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-            clearResults();
-            parseResponse(response.body().string());
-        }
-        catch (IOException e) {
-            Log.d(TAG, e.toString());
-        }
-        */
-
+        lookupSolr(input);
     }
 
-    protected void parseResponse(String responseString) {
+    protected void lookupPelias(String input) {
+        Log.d(TAG, "lookup: " + input);
+        String urlParams = url + "?" + buildParams(input);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlParams, new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.d(TAG, responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+                //clearResults();
+                //parseResponse(responseString);
+            }
+        });
+    }
+
+    protected void lookupSolr(String input) {
+        Log.d(TAG, "lookup: " + input);
+        String urlParams = url + addParam("q", input.replace(" & ", " and "));
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlParams, new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.d(TAG, responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+                parseSolrResponse(responseString);
+            }
+        });
+    }
+
+    public void clearResults() {
+        resultsHash.clear();
+        resultsInOrder.clear();
+    }
+
+    protected void addRecord(LocationResult record) {
+        //int size = resultsInOrder.size();
+        //if(size > 5) {
+        //    resultsInOrder.remove(size - 1);
+        //}
+        resultsInOrder.add(0, record.toString());
+        resultsHash.put(record.toString(), record);
+    }
+
+    protected void parseSolrResponse(String responseString) {
+
         JSONParser parser = new JSONParser();
         try {
             JSONObject responseJSON = (JSONObject) parser.parse(responseString);
-            JSONArray features = (JSONArray) responseJSON.get("features");
-            for (Object obj : features) {
-                JSONObject feature = (JSONObject) obj;
-                LocationResult record = parseRecord(feature);
-                resultsHash.put(record.toString(), record);
-                resultsInOrder.add(0, record.toString());
+            JSONObject responseData = (JSONObject) responseJSON.get("response");
+            JSONArray responseDocs = (JSONArray) responseData.get("docs");
+            clearResults();
+            for(Object j: responseDocs) {
+                JSONObject record = (JSONObject) j;
+                addRecord(parseSolrRecord(record));
             }
 
         } catch (ParseException e) {
-            Log.d(TAG, e.toString());
+            e.printStackTrace();
         }
 
     }
 
-    protected LocationResult parseRecord(JSONObject record) {
+    protected void parsePeliasResponse(String responseString) {
+        JSONParser parser = new JSONParser();
+        try {
+            JSONObject responseJSON = (JSONObject) parser.parse(responseString);
+
+            if(responseJSON.containsKey("features")) {
+                JSONArray features = (JSONArray) responseJSON.get("features");
+                for (Object obj : features) {
+                    JSONObject feature = (JSONObject) obj;
+                    Log.d(TAG, "loop: " + feature.toString());
+                    addRecord(parsePeliasRecord(feature));
+                }
+            }
+            else {
+                Log.d(TAG, "loop: " + responseJSON.toString());
+                addRecord(parsePeliasRecord(responseJSON));
+            }
+        } catch (ParseException e) {
+            Log.d(TAG, e.toString());
+        }
+    }
+
+    protected LocationResult parsePeliasRecord(JSONObject record) {
         Log.d(TAG, record.toString());
         JSONObject geometry = (JSONObject) record.get("geometry");
         JSONObject properties = (JSONObject) record.get("properties");
@@ -116,6 +182,22 @@ public class Geocoder {
         String lon = coordinates.get(0).toString();
         String lat = coordinates.get(1).toString();
         return new LocationResult(text, lat, lon);
+    }
+
+    protected LocationResult parseSolrRecord(JSONObject record) {
+        Log.d(TAG, record.toString());
+        String street = record.get("street").toString();
+        String city = record.get("city").toString();
+        String zip = record.get("zip").toString();
+        String county = record.get("county").toString();
+        String text = street + appendString(city) + appendString(zip) + appendString(county);
+        String lat = record.get("lat").toString();
+        String lon = record.get("lon").toString();
+        return new LocationResult(text, lat, lon);
+    }
+
+    protected String appendString(String input) {
+        return !input.isEmpty() ? ", " + input : "";
     }
 
 

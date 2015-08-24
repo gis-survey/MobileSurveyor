@@ -5,45 +5,6 @@
         },
         "type": "name"
     },
-    "features": [
-        {
-            "geometry": {
-                "coordinates": [
-                    [
-                        -123.0524651,
-                        44.0568311
-                    ],
-                    [
-                        -123.05192479999998,
-                        44.058146
-                    ],
-                    [
-                        -123.0539651,
-                        44.0607873
-                    ],
-                    [
-                        -123.0562269,
-                        44.0601987
-                    ],
-                    [
-                        -123.057479,
-                        44.0583432
-                    ],
-                    [
-                        -123.0624116,
-                        44.0585768
-                    ]
-                ],
-                "type": "LineString"
-            },
-            "properties": {
-                "dir": "1",
-                "dir_desc": "Inbound",
-                "rte": "79x",
-                "rte_desc": "79x-UO/Kinsrow"
-            },
-            "type": "Feature"
-        }
-    ],
+    "features": [],
     "type": "FeatureCollection"
 }

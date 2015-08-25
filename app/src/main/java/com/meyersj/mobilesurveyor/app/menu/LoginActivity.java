@@ -271,7 +271,8 @@ public class LoginActivity extends Activity {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(Cons.SET_PREFS, true);
             editor.putString(Cons.BASE_URL, prop.getProperty(Cons.BASE_URL));
-            editor.putString(Cons.GEOCODE_URL, prop.getProperty(Cons.GEOCODE_URL));
+            editor.putString(Cons.SOLR_URL, prop.getProperty(Cons.SOLR_URL));
+            editor.putString(Cons.PELIAS_URL, prop.getProperty(Cons.PELIAS_URL));
             Log.d(TAG, prop.getProperty(Cons.MAP_RTES));
             editor.putString(Cons.MAP_RTES, prop.getProperty(Cons.MAP_RTES));
             editor.commit();

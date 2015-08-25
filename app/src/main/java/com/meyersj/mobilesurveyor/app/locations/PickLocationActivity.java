@@ -25,6 +25,7 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MBTilesLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.WebSourceTileLayer;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.mobilesurveyor.app.ODKApplication;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.geocode.GeocodeAdapter;
 import com.meyersj.mobilesurveyor.app.geocode.LocationResult;
@@ -84,7 +85,8 @@ public class PickLocationActivity extends ActionBarActivity {
         }
 
         solrSearch = (AutoCompleteTextView) findViewById(R.id.geocode_input);
-        adapter = new GeocodeAdapter(context ,android.R.layout.simple_list_item_1, Utils.getGeocodeUrl(context));
+        adapter = new GeocodeAdapter(context ,android.R.layout.simple_list_item_1,
+                (ODKApplication) getApplication());
         solrSearch.setAdapter(adapter);
 
 

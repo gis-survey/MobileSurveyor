@@ -154,11 +154,11 @@ public class Utils {
         return url;
     }
 
-    public static String getGeocodeUrl(Context context) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.GEOCODE_URL);
-        return sharedPref.getString(Cons.GEOCODE_URL, defaultURL);
-    }
+    //public static String getGeocodeUrl(Context context) {
+    //    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+    //    String defaultURL = getProperties(context, Cons.PROPERTIES).getProperty(Cons.GEOCODE_URL);
+    //    return sharedPref.getString(Cons.GEOCODE_URL, defaultURL);
+    //}
 
     public static String[] getMapRoutes(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);

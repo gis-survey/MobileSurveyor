@@ -3,14 +3,9 @@ package com.meyersj.mobilesurveyor.app.geocode;
 
 import android.util.Log;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.SyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.meyersj.mobilesurveyor.app.util.Cons;
-import com.squareup.okhttp.OkHttpClient;
-//import com.squareup.okhttp.Request;
-//import com.squareup.okhttp.Response;
 
 import org.apache.http.Header;
 import org.json.simple.JSONArray;
@@ -18,27 +13,29 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
+
 public class Geocoder {
 
     private final String TAG = getClass().getCanonicalName();
 
-    private String url = null;
-    private OkHttpClient httpClient;
-    private final String solrParams = "wt=json&rows=5&qt=dismax";
+    private String solrUrl = null;
+    private String peliasUrl = null;
+    private SyncHttpClient client;
+    private final String solrParams = "wt=json&rows=4&qt=dismax";
 
     private HashMap<String, LocationResult> resultsHash = new HashMap<String, LocationResult>();
     private ArrayList<String> resultsInOrder = new ArrayList<String>();
 
-    public Geocoder(String url) {
-        this.url = url + "?" + solrParams;
-        this.httpClient = new OkHttpClient();
+    public Geocoder(String solrUrl, String peliasUrl) {
+        this.solrUrl = solrUrl + "?" + solrParams;
+        this.peliasUrl = peliasUrl;
+        this.client = new SyncHttpClient();
     }
 
     public HashMap<String, LocationResult> getResultsHash() {
@@ -68,7 +65,7 @@ public class Geocoder {
         String params = addParam("input", input);
         params += addParam("lat", lat);
         params += addParam("lon", lon);
-        params += addParam("size", "8");
+        params += addParam("size", "4");
         params += addParam("layers", "poi");
         params += addParam("details", "false");
         return params;
@@ -76,33 +73,33 @@ public class Geocoder {
 
     protected void lookup(String input) {
         lookupSolr(input);
+        lookupPelias(input);
     }
 
     protected void lookupPelias(String input) {
         Log.d(TAG, "lookup: " + input);
-        String urlParams = url + "?" + buildParams(input);
-
-        AsyncHttpClient client = new AsyncHttpClient();
+        String urlParams = peliasUrl + "?" + buildParams(input);
+        this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Log.d(TAG, responseString);
+                Log.d(TAG, String.valueOf(statusCode));
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Log.d(TAG, responseString);
                 //clearResults();
-                //parseResponse(responseString);
+                parsePeliasResponse(responseString);
             }
         });
     }
 
     protected void lookupSolr(String input) {
         Log.d(TAG, "lookup: " + input);
-        String urlParams = url + addParam("q", input.replace(" & ", " and "));
-        AsyncHttpClient client = new AsyncHttpClient();
+        String urlParams = solrUrl + addParam("q", input.replace(" & ", " and "));
+        this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
 
             @Override
@@ -116,6 +113,7 @@ public class Geocoder {
                 parseSolrResponse(responseString);
             }
         });
+        Log.d(TAG, "after");
     }
 
     public void clearResults() {
@@ -128,7 +126,8 @@ public class Geocoder {
         //if(size > 5) {
         //    resultsInOrder.remove(size - 1);
         //}
-        resultsInOrder.add(0, record.toString());
+        //resultsInOrder.add(0, record.toString());
+        resultsInOrder.add(record.toString());
         resultsHash.put(record.toString(), record);
     }
 
@@ -186,11 +185,12 @@ public class Geocoder {
 
     protected LocationResult parseSolrRecord(JSONObject record) {
         Log.d(TAG, record.toString());
-        String street = record.get("street").toString();
-        String city = record.get("city").toString();
-        String zip = record.get("zip").toString();
-        String county = record.get("county").toString();
-        String text = street + appendString(city) + appendString(zip) + appendString(county);
+        String street1 = record.get("street_1").toString();
+        String street2 = record.get("street_2").toString();
+        String text = street1 + " & " + street2;
+        if(record.containsKey("city")) text += appendString(record.get("city").toString());
+        if(record.containsKey("zip")) text += appendString(record.get("zip").toString());
+        if(record.containsKey("county")) text += appendString(record.get("county").toString());
         String lat = record.get("lat").toString();
         String lon = record.get("lon").toString();
         return new LocationResult(text, lat, lon);

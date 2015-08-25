@@ -20,6 +20,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.mobilesurveyor.app.ODKApplication;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.geocode.LocationResult;
 import com.meyersj.mobilesurveyor.app.geocode.GeocodeAdapter;
@@ -116,7 +117,8 @@ public class PickLocationFragment extends MapFragment {
         }
 
         solrSearch = (AutoCompleteTextView) view.findViewById(R.id.geocode_input);
-        adapter = new GeocodeAdapter(context, android.R.layout.simple_list_item_1, Utils.getGeocodeUrl(context));
+        adapter = new GeocodeAdapter(context, android.R.layout.simple_list_item_1,
+                (ODKApplication) getActivity().getApplication());
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 

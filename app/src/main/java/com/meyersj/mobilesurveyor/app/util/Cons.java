@@ -32,7 +32,7 @@ public class Cons {
     public static final String PASS_MATCH = "password_match";
     public static final String CRED = "credentials";
     public static final String PROPERTIES = "config.properties";
-    public static final String GEOCODE_URL = "geocode_url";
+
     public static final String DATA = "data";
     public static final String PAIR = "pair";
     public static final String GPS_INTERVAL = "gps_interval";
@@ -73,9 +73,11 @@ public class Cons {
 
 
     public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";
-    public static final String DEFAULT_RTE = "98";
+    public static final String DEFAULT_RTE = "91";
     public static final String DEFAULT_DIR = "0";
     public static final String MAPBOX_TOKEN = "mapbox_token";
+    public static final String PELIAS_URL = "pelias_url";
+    public static final String SOLR_URL = "solr_url";
 
     public static final LatLng CENTROID = new LatLng(44.051944, -123.086667); // Eugene
     //public static final LatLng CENTROID = new LatLng(45.49186, -122.679005); // Portland

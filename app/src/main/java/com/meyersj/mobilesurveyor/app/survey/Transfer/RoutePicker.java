@@ -1,5 +1,6 @@
 package com.meyersj.mobilesurveyor.app.survey.Transfer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
+import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.DataLoader;
 
@@ -33,6 +35,8 @@ public class RoutePicker {
 
     private final String TAG = "RoutePicker";
     private final String ADDROUTE = "Add another route";
+
+    protected SurveyManager manager;
     protected MapFragment frag;
     protected Context context;
     protected LinearLayout routeLayout;
@@ -54,7 +58,8 @@ public class RoutePicker {
     public RoutePicker(MapFragment frag, Context context, LayoutInflater inflater,
                        ViewGroup parent, LinearLayout routeLayout, ArrayList<String> routes,
                        String line, Boolean first, Integer number,
-                       String[] selectedRoutes, String[] rte) {
+                       String[] selectedRoutes, String[] rte, SurveyManager manager) {
+        this.manager = manager;
         this.frag = frag;
         this.context = context;
         this.number = number;
@@ -95,6 +100,10 @@ public class RoutePicker {
                         }
                         selectedRoutes[number - 1] = routeID;
                         if(!routeID.equals(rte[0])) {
+
+                            manager.inputTransferDirection((Activity) context, routeID);
+                            // get direction
+
                             frag.addTransferRoute(context, routeID, rte[1]);
                         }
                     }

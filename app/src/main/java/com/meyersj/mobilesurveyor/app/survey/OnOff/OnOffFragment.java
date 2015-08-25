@@ -158,7 +158,8 @@ public class OnOffFragment extends MapFragment {
         mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent e) {
-                if (e.getAction() == MotionEvent.ACTION_UP) {}
+                if (e.getAction() == MotionEvent.ACTION_UP) {
+                }
                 return false;
             }
         });
@@ -327,10 +328,9 @@ public class OnOffFragment extends MapFragment {
         toggleOnBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(isOffReversed) {
+                if (isOffReversed) {
                     Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
-                }
-                else {
+                } else {
                     reverseDirection(Cons.ON, isOnReversed);
                 }
                 return true;
@@ -339,10 +339,9 @@ public class OnOffFragment extends MapFragment {
         toggleOffBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(isOnReversed) {
+                if (isOnReversed) {
                     Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
-                }
-                else {
+                } else {
                     reverseDirection(Cons.OFF, isOffReversed);
                 }
                 return true;
@@ -370,8 +369,7 @@ public class OnOffFragment extends MapFragment {
                     selectedStops.saveSequenceMarker(Cons.BOARD, stop);
                     Log.d(TAG, "set stop sequence");
                     manager.setStop(stop, Cons.BOARD);
-                }
-                else {
+                } else {
                     selectedStops.saveSequenceMarker(Cons.ALIGHT, stop);
                     manager.setStop(stop, Cons.ALIGHT);
                 }
@@ -474,6 +472,34 @@ public class OnOffFragment extends MapFragment {
             manager.setStop(marker[1], Cons.ALIGHT);
         }
     }
+
+    public void updateView(SurveyManager manager) {
+        Log.d(TAG, manager.toString());
+
+        /*
+        mv.removeOverlay(surveyOverlay);
+        surveyOverlay.removeAllItems();
+        Marker orig = manager.getOrig();
+        Marker dest = manager.getDest();
+        Marker onStop = manager.getOnStop();
+        Marker offStop = manager.getOffStop();
+        if(orig != null) {
+            surveyOverlay.addItem(orig);
+        }
+        if(dest != null) {
+            surveyOverlay.addItem(dest);
+        }
+        if(onStop != null) {
+            surveyOverlay.addItem(onStop);
+        }
+        if(offStop != null) {
+            surveyOverlay.addItem(offStop);
+        }
+        mv.addItemizedOverlay(surveyOverlay);
+        */
+    }
+
+
 
 }
 

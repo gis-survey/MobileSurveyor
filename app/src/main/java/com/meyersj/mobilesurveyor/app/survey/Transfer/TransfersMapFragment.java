@@ -78,16 +78,16 @@ public class TransfersMapFragment extends MapFragment {
         manager.setTransfers(selectedRoutes);
 
         //TODO create a factory to make RoutePicker objects and set Next/Previous
-        final RoutePicker rp1 = new RoutePicker(this, context, inflater, container,
-                routesLayout, routesList, savedRoutes[0], true, 1, selectedRoutes, rte);
-        final RoutePicker rp2 = new RoutePicker(this, context, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[1], false, 2, selectedRoutes, rte);
-        final RoutePicker rp3 = new RoutePicker(this, context, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[2], false, 3, selectedRoutes, rte);
-        final RoutePicker rp4 = new RoutePicker(this, context, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[3], false, 4, selectedRoutes, rte);
-        final RoutePicker rp5 = new RoutePicker(this, context, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[4], false, 5, selectedRoutes, rte);
+        final RoutePicker rp1 = new RoutePicker(this, activity, inflater, container,
+                routesLayout, routesList, savedRoutes[0], true, 1, selectedRoutes, rte, manager);
+        final RoutePicker rp2 = new RoutePicker(this, activity, inflater, container,
+                routesLayout, defaultRoutesList, savedRoutes[1], false, 2, selectedRoutes, rte, manager);
+        final RoutePicker rp3 = new RoutePicker(this, activity, inflater, container,
+                routesLayout, defaultRoutesList, savedRoutes[2], false, 3, selectedRoutes, rte, manager);
+        final RoutePicker rp4 = new RoutePicker(this, activity, inflater, container,
+                routesLayout, defaultRoutesList, savedRoutes[3], false, 4, selectedRoutes, rte, manager);
+        final RoutePicker rp5 = new RoutePicker(this, activity, inflater, container,
+                routesLayout, defaultRoutesList, savedRoutes[4], false, 5, selectedRoutes, rte, manager);
 
         rp1.setNext(rp2);
         rp2.setNext(rp3);

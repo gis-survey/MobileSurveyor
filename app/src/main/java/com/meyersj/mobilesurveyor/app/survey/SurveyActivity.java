@@ -26,7 +26,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     private final String TAG = "SurveyActivity";
     protected static final int SURVEY_FRAGMENTS = 5;
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
-    protected static final String[] HEADERS = {"Origin", "Destination", "On-Off", "Transfers", "Confirm"};
+    protected static final String[] HEADERS = {"Origin", "Transfers", "On-Off", "Destination", "Confirm"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -56,7 +56,13 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
-                MapFragment fragment = (MapFragment) fragments[position];
+                MapFragment fragment;
+                if(HEADERS[position].equals("On-Off")) {
+                    fragment = (OnOffFragment) fragments[position];
+                }
+                else {
+                    fragment = (MapFragment) fragments[position];
+                }
                 fragment.updateView(manager);
                 toggleNavButtons(mViewPager.getCurrentItem());
             }
@@ -64,15 +70,16 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
 
         fragments = new Fragment[SURVEY_FRAGMENTS];
         fragments[0] = new PickLocationFragment();
-        fragments[1] = new PickLocationFragment();
         ((PickLocationFragment) fragments[0]).initialize(manager, "origin", extras);
-        ((PickLocationFragment) fragments[1]).initialize(manager, "destination", extras);
+        fragments[1] = new TransfersMapFragment();
+        ((TransfersMapFragment) fragments[1]).initialize(manager, mViewPager, extras);
         fragments[2] = new OnOffFragment();
         ((OnOffFragment) fragments[2]).initialize(manager, extras);
-        fragments[3] = new TransfersMapFragment();
-        ((TransfersMapFragment) fragments[3]).initialize(manager, mViewPager, extras);
+        fragments[3] = new PickLocationFragment();
+        ((PickLocationFragment) fragments[3]).initialize(manager, "destination", extras);
         fragments[4] = new ConfirmFragment();
         ((ConfirmFragment) fragments[4]).setParams(this, manager, mViewPager);
+
         for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }

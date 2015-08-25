@@ -54,4 +54,19 @@ public class DataLoader {
         return lookup;
     }
 
+    public static HashMap<String, String[]> getDirLookup(Context context) {
+        List<String[]> rows = DataLoader.openCSV(context);
+        HashMap<String, String[]> lookup = new HashMap<String, String[]>();
+        if(rows != null) {
+            for(String[] row: rows) {
+                if(!lookup.containsKey(row[0])) {
+                    String[] directions = new String[2];
+                    lookup.put(row[0], directions);
+                }
+                lookup.get(row[0])[Integer.valueOf(row[2])] = row[3];
+            }
+        }
+        return lookup;
+    }
+
 }

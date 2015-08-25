@@ -16,8 +16,11 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.DataLoader;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class SurveyManager {
@@ -34,6 +37,8 @@ public class SurveyManager {
     protected Marker offStop;
     protected String[] transfers;
     protected String validated = "2"; //validated, yes == 1, no == 2, ignore location
+    protected HashMap<String, String> routeLookup;
+    protected HashMap<String, String[]> dirLookup;
 
     public class Location {
         public Marker loc;
@@ -71,6 +76,8 @@ public class SurveyManager {
         this.orig = new Location();
         this.dest = new Location();
         this.line = line;
+        routeLookup = DataLoader.getRoutesLookup(context);
+        dirLookup = DataLoader.getDirLookup(context);
     }
 
     public String key(String prefix, String cons) {
@@ -288,6 +295,39 @@ public class SurveyManager {
             }
         });
         alert.show();
+    }
+
+    public void inputTransferDirection(final Activity activity, final String rte) {
+        /*
+        String title = "Direction";
+        String prompt = "Specify other";
+        final EditText input = new EditText(context);
+        AlertDialog.Builder alert = buildAlert(activity, title, prompt, input);
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable value = input.getText();
+                //updateModeOther(mode, value.toString());
+            }
+        });
+        alert.show();
+        */
+
+        final String[] directions = dirLookup.get(rte);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Select direction");
+        builder.setItems(directions, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Log.d(TAG, directions[item]);
+                //Log.d(TAG, noFareOptions[item]);
+                //callback.noFareOption(item + 1);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
+
     }
 
     public void inputBlocks(final Activity activity, final String mode) {

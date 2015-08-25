@@ -13,7 +13,7 @@ public class MapboxTileLayerV4 extends TileJsonTileLayer {
     private String mId;
 
     public MapboxTileLayerV4(String mapId, String url, String token) {
-        super(mapId, url, true);
+        super(mapId, url, false);
         mapboxToken = token;
     }
 

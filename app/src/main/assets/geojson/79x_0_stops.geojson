@@ -1,87 +1,11 @@
 {
-    "crs": {
-        "properties": {
-            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-        },
-        "type": "name"
-    },
-    "features": [
-        {
-            "geometry": {
-                "coordinates": [
-                    -123.07863209999998,
-                    44.0469514
-                ],
-                "type": "Point"
-            },
-            "properties": {
-                "dir": "0",
-                "dir_desc": "Outbound",
-                "rte": "79x",
-                "rte_desc": "79x-UO/Kinsrow",
-                "stop_id": "01560",
-                "stop_name": "University of Oregon - Bay F",
-                "stop_seq": "1"
-            },
-            "type": "Feature"
-        },
-        {
-            "geometry": {
-                "coordinates": [
-                    -123.0623298,
-                    44.0577581
-                ],
-                "type": "Point"
-            },
-            "properties": {
-                "dir": "0",
-                "dir_desc": "Outbound",
-                "rte": "79x",
-                "rte_desc": "79x-UO/Kinsrow",
-                "stop_id": "00543",
-                "stop_name": "W/S of MLK Blvd S of Kinsrow",
-                "stop_seq": "2"
-            },
-            "type": "Feature"
-        },
-        {
-            "geometry": {
-                "coordinates": [
-                    -123.05843739999999,
-                    44.0554471
-                ],
-                "type": "Point"
-            },
-            "properties": {
-                "dir": "0",
-                "dir_desc": "Outbound",
-                "rte": "79x",
-                "rte_desc": "79x-UO/Kinsrow",
-                "stop_id": "00541",
-                "stop_name": "S/S of MLK Blvd E of Chevy Chase",
-                "stop_seq": "3"
-            },
-            "type": "Feature"
-        },
-        {
-            "geometry": {
-                "coordinates": [
-                    -123.0524651,
-                    44.0568311
-                ],
-                "type": "Point"
-            },
-            "properties": {
-                "dir": "0",
-                "dir_desc": "Outbound",
-                "rte": "79x",
-                "rte_desc": "79x-UO/Kinsrow",
-                "stop_id": "02152",
-                "stop_name": "E/S of Garden Way N of MLK Blvd",
-                "stop_seq": "4"
-            },
-            "type": "Feature"
-        }
-    ],
-    "type": "FeatureCollection"
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "rte": "79x", "rte_desc": "79x-UO\/Kinsrow", "dir": "0", "dir_desc": "Outbound", "stop_id": "01560", "stop_name": "University of Oregon - Bay F", "stop_seq": "1" }, "geometry": { "type": "Point", "coordinates": [ -123.078632099999979, 44.0469514 ] } },
+{ "type": "Feature", "properties": { "rte": "79x", "rte_desc": "79x-UO\/Kinsrow", "dir": "0", "dir_desc": "Outbound", "stop_id": "00543", "stop_name": "W\/S of MLK Blvd S of Kinsrow", "stop_seq": "2" }, "geometry": { "type": "Point", "coordinates": [ -123.0623298, 44.0577581 ] } },
+{ "type": "Feature", "properties": { "rte": "79x", "rte_desc": "79x-UO\/Kinsrow", "dir": "0", "dir_desc": "Outbound", "stop_id": "00541", "stop_name": "S\/S of MLK Blvd E of Chevy Chase", "stop_seq": "3" }, "geometry": { "type": "Point", "coordinates": [ -123.058437399999988, 44.0554471 ] } },
+{ "type": "Feature", "properties": { "rte": "79x", "rte_desc": "79x-UO\/Kinsrow", "dir": "0", "dir_desc": "Outbound", "stop_id": "02152", "stop_name": "E\/S of Garden Way N of MLK Blvd", "stop_seq": "4" }, "geometry": { "type": "Point", "coordinates": [ -123.0524651, 44.0568311 ] } }
+]
 }

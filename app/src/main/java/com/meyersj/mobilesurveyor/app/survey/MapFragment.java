@@ -34,6 +34,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import butterknife.Bind;
+
 
 public abstract class MapFragment extends Fragment {
 
@@ -47,7 +49,9 @@ public abstract class MapFragment extends Fragment {
     protected Activity activity;
     protected Context context;
     protected View view;
-    protected MapView mv;
+    //protected MapView mv;
+    @Bind(R.id.mapview) public MapView mv;
+
     protected ItemizedIconOverlay surveyOverlay;
     protected ArrayList<Marker> surveyList = new ArrayList<Marker>();
     protected TransitRoute defaultRoute;
@@ -96,28 +100,28 @@ public abstract class MapFragment extends Fragment {
         super.onDetach();
     }
 
-    protected ITileLayer buildMapBoxTiles(MapView mv) {
+    protected ITileLayer buildMapBoxTiles() {
         String tileID = "mapbox.streets";
         String token = app.getProperties().getProperty(Cons.MAPBOX_TOKEN);
         String url = MAPBOX_BASE_URL_V4 + "/" + tileID + "/{z}/{x}/{y}{2x}.png?access_token=" + token;
         return new MapboxTileLayerV4("mapbox.streets", url, token);
     }
 
-    protected ITileLayer buildOSMTiles(MapView mv) {
+    protected ITileLayer buildOSMTiles() {
         String url = "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png";
         return new WebSourceTileLayer("openstreetmap",
                 url).setName("OpenStreetMap")
                 .setAttribution("© OpenStreetMap Contributors");
     }
 
-    protected ITileLayer buildMBTiles(MapView mv) {
+    protected ITileLayer buildMBTiles() {
         File tiles = new File(TILESPATH, TILESNAME);
         return new MBTilesLayer(tiles);
     }
 
     protected void setTiles(MapView mv) {
-        //ITileLayer tileLayer = buildOSMTiles(mv);
-        ITileLayer tileLayer = buildMapBoxTiles(mv);
+        //ITileLayer tileLayer = buildOSMTiles();
+        ITileLayer tileLayer = buildMapBoxTiles();
         mv.setTileSource(tileLayer);
         mv.setMinZoomLevel(6);
         mv.setMaxZoomLevel(20);

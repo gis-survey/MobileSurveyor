@@ -3,7 +3,6 @@ package com.meyersj.mobilesurveyor.app.survey.OnOff;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,9 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -39,19 +36,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class OnOffFragment extends MapFragment {
 
-    private final String TAG = "OnOffFragment";
+    private final String TAG = getClass().getCanonicalName();
 
-    private AutoCompleteTextView stopName;
-    private ImageButton clear;
-    private View seqView;
-    private ListView onSeqListView;
-    private ListView offSeqListView;
-    private Button stopSeqBtn;
-    private Button toggleOnBtn;
-    private Button toggleOffBtn;
-    private TextView osmText;
+
+    @Bind(R.id.mapview) MapView mv;
+    @Bind(R.id.seq_list) View seqView;
+    @Bind(R.id.input_stop) AutoCompleteTextView stopName;
+    @Bind(R.id.clear_input_stop) ImageButton clear;
+    @Bind(R.id.on_stops_seq) ListView onSeqListView;
+    @Bind(R.id.off_stops_seq) ListView offSeqListView;
+    @Bind(R.id.stop_seq_btn) Button stopSeqBtn;
+
+
+    //private Button toggleOnBtn;
+    //private Button toggleOffBtn;
+    //private TextView osmText;
+
     private SelectedStops selectedStops;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
@@ -60,13 +65,10 @@ public class OnOffFragment extends MapFragment {
     private ArrayList<Marker> boardStopsList = new ArrayList<Marker>();
     private ArrayList<Marker> alightStopsList = new ArrayList<Marker>();
 
-    private ItemizedIconOverlay locOverlay;
+
     private ItemizedIconOverlay boardOverlay;
     private ItemizedIconOverlay alightOverlay;
-
     private ItemizedIconOverlay selOverlay;
-    //private ItemizedIconOverlay boardSelOverlay;
-    //private ItemizedIconOverlay alightSelOverlay;
 
     private ArrayList<Marker> selList = new ArrayList<Marker>();
 
@@ -103,11 +105,8 @@ public class OnOffFragment extends MapFragment {
         view = inflater.inflate(R.layout.fragment_on_off_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
-        mv = (MapView) view.findViewById(R.id.mapview);
+        ButterKnife.bind(this, view);
         setTiles(mv);
-        clear = (ImageButton) view.findViewById(R.id.clear_input_stop);
-        stopName = (AutoCompleteTextView) view.findViewById(R.id.input_stop);
-
 
         // get first and last route from manager
         // if view was first created it would be default route/direction
@@ -219,6 +218,11 @@ public class OnOffFragment extends MapFragment {
         setItemizedOverlay();
         mv.addListener(new OnOffMapListener(mv, boardStopsList, boardOverlay));
         mv.addListener(new OnOffMapListener(mv, alightStopsList, alightOverlay));
+
+        setupStopSequenceList();
+        //setupStopSearch();
+        selectedStops = new SelectedStops(
+                context, onSeqListAdapter, offSeqListAdapter, selOverlay);
     }
 
 
@@ -245,19 +249,6 @@ public class OnOffFragment extends MapFragment {
                     }
                 }
         );
-        /*
-        locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
-                new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
-                    public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        selectLocType(item);
-                        return true;
-                    }
-                    public boolean onItemLongPress(final int index, final Marker item) {
-                        return true;
-                    }
-                }
-        );
-        */
         selOverlay = new ItemizedIconOverlay(mv.getContext(), selList, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
             public boolean onItemSingleTapUp(int i, Marker marker) {
@@ -269,24 +260,24 @@ public class OnOffFragment extends MapFragment {
                 return false;
             }
         });
-
         mv.addItemizedOverlay(boardOverlay);
         mv.addItemizedOverlay(alightOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
 
     private void setupStopSequenceList() {
-        seqView = view.findViewById(R.id.seq_list);
-        stopSeqBtn = (Button) view.findViewById(R.id.stop_seq_btn);
-        onSeqListView = (ListView) view.findViewById(R.id.on_stops_seq);
-        offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
-        osmText = (TextView) view.findViewById(R.id.osm_text);
+        //seqView = view.findViewById(R.id.seq_list);
+        //stopSeqBtn = (Button) view.findViewById(R.id.stop_seq_btn);
+        //onSeqListView = (ListView) view.findViewById(R.id.on_stops_seq);
+        //offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
+        //osmText = (TextView) view.findViewById(R.id.osm_text);
         /* if streetcar we need opposite direction stops in case
         /* if streetcar we need opposite direction stops in case
         user toggles that on or off was before start of line */
-        ArrayList<Stop> stops = stopsSequenceSort(locList);
-        onSeqListAdapter = new StopSequenceAdapter(activity, stops);
-        offSeqListAdapter = new StopSequenceAdapter(activity, stops);
+        ArrayList<Stop> boardStops = stopsSequenceSort(boardStopsList);
+        ArrayList<Stop> alightStops = stopsSequenceSort(alightStopsList);
+        onSeqListAdapter = new StopSequenceAdapter(activity, boardStops);
+        offSeqListAdapter = new StopSequenceAdapter(activity, alightStops);
         stopSequenceAdapterSetup(onSeqListView, onSeqListAdapter);
         stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
@@ -455,7 +446,7 @@ public class OnOffFragment extends MapFragment {
 
     //toggle visibility of sequence list depending on current visibility
     private void changeSeqListVisibility(int currentVisibility) {
-        osmText.setVisibility(currentVisibility);
+        //osmText.setVisibility(currentVisibility);
         if (currentVisibility == View.INVISIBLE) {
             stopSeqBtn.setText("Hide stop sequences");
             seqView.setVisibility(View.VISIBLE);

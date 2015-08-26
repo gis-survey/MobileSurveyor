@@ -85,12 +85,9 @@ public class Geocoder {
         else {
             lookupPelias(input, 8);
         }
-
-
     }
 
     protected void lookupPelias(String input, int count) {
-        Log.d(TAG, "lookup: " + input);
         String urlParams = peliasUrl + "?" + buildParams(input, count);
         this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
@@ -120,24 +117,18 @@ public class Geocoder {
         for(int i = 0; i < split.length; i++) {
             split[i] = solrTerm(field, split[i]);
         }
-        String search = TextUtils.join(" AND ", split);
-        Log.d(TAG, search);
-        return search;
+        return TextUtils.join(" AND ", split);
     }
 
     protected void lookupSolr(String street1, String street2) {
-        //Log.d(TAG, "lookup: " + input);
-        //String q = "street_1:\"" + street1 + "\" AND street_2:\"" + street2 + "\"";
-        //Log.d(TAG, q);
         String q = solrTerms("street_1", street1) + " AND " + solrTerms("street_2", street2);
-        Log.d(TAG, q);
         String urlParams = solrUrl + addParam("q", q);
         this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Log.d(TAG, responseString);
+                Log.d(TAG, "FAILURE: " + responseString);
             }
 
             @Override
@@ -146,7 +137,6 @@ public class Geocoder {
                 parseSolrResponse(responseString);
             }
         });
-        Log.d(TAG, "after");
     }
 
     public void clearResults() {
@@ -155,17 +145,11 @@ public class Geocoder {
     }
 
     protected void addRecord(LocationResult record) {
-        //int size = resultsInOrder.size();
-        //if(size > 5) {
-        //    resultsInOrder.remove(size - 1);
-        //}
-        //resultsInOrder.add(0, record.toString());
         resultsInOrder.add(record.toString());
         resultsHash.put(record.toString(), record);
     }
 
     protected void parseSolrResponse(String responseString) {
-
         JSONParser parser = new JSONParser();
         try {
             JSONObject responseJSON = (JSONObject) parser.parse(responseString);
@@ -176,7 +160,6 @@ public class Geocoder {
                 JSONObject record = (JSONObject) j;
                 addRecord(parseSolrRecord(record));
             }
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -187,17 +170,14 @@ public class Geocoder {
         JSONParser parser = new JSONParser();
         try {
             JSONObject responseJSON = (JSONObject) parser.parse(responseString);
-
+            Log.d(TAG, responseString);
             if(responseJSON.containsKey("features")) {
                 JSONArray features = (JSONArray) responseJSON.get("features");
                 for (Object obj : features) {
-                    JSONObject feature = (JSONObject) obj;
-                    Log.d(TAG, "loop: " + feature.toString());
-                    addRecord(parsePeliasRecord(feature));
+                    addRecord(parsePeliasRecord((JSONObject) obj));
                 }
             }
             else {
-                Log.d(TAG, "loop: " + responseJSON.toString());
                 addRecord(parsePeliasRecord(responseJSON));
             }
         } catch (ParseException e) {

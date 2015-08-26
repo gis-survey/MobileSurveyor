@@ -184,7 +184,7 @@ public class OnOffFragment extends MapFragment {
     }
 
     //modify mView for each toolTip in each marker to prevent closing it when touched
-    protected void setToolTipListener(final Marker marker) {
+    protected void setToolTipListener(final Marker marker, final String mode) {
         View mView = marker.getToolTip(mv).getView();
         mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -198,6 +198,7 @@ public class OnOffFragment extends MapFragment {
             @Override
             public boolean onLongClick(View v) {
                 selectLocType(marker);
+                selectedStops.setCurrentMarker(marker, mode);
                 return true;
             }
         });
@@ -210,10 +211,10 @@ public class OnOffFragment extends MapFragment {
         boardStopsList = getStops(first[0], first[1], false);
         alightStopsList = getStops(last[0], last[1], false);
         for (Marker marker: boardStopsList) {
-            setToolTipListener(marker);
+            setToolTipListener(marker, Cons.BOARD);
         }
         for (Marker marker: alightStopsList) {
-            setToolTipListener(marker);
+            setToolTipListener(marker, Cons.ALIGHT);
         }
         setItemizedOverlay();
         mv.addListener(new OnOffMapListener(mv, boardStopsList, boardOverlay));
@@ -231,6 +232,8 @@ public class OnOffFragment extends MapFragment {
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         selectLocType(item);
+                        //manager.setStop(item, Cons.BOARD);
+                        //selectedStops.saveCurrentMarker(item);
                         return true;
                     }
                     public boolean onItemLongPress(final int index, final Marker item) {
@@ -242,6 +245,8 @@ public class OnOffFragment extends MapFragment {
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         selectLocType(item);
+                        //manager.setStop(item, Cons.ALIGHT);
+                        //selectedStops.saveCurrentMarker(item);
                         return true;
                     }
                     public boolean onItemLongPress(final int index, final Marker item) {
@@ -260,8 +265,8 @@ public class OnOffFragment extends MapFragment {
                 return false;
             }
         });
-        mv.addItemizedOverlay(boardOverlay);
-        mv.addItemizedOverlay(alightOverlay);
+        //mv.addItemizedOverlay(boardOverlay);
+        //mv.addItemizedOverlay(alightOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
 
@@ -343,28 +348,14 @@ public class OnOffFragment extends MapFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String choice = items[i].toString();
-                        Log.d(TAG, "Choice: " + choice);
                         selectedStops.setCurrentMarker(selectedMarker, choice);
                     }
                 })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "Clicked OK");
-                        //check if choice (on-off) is being displayed in reverse
-                        //if so switch to regular direction
-                        //and highlight selected
                         String choice = selectedStops.getCurrentType();
                         Log.d(TAG, choice);
-
-                        /*
-                        if(choice.equals(Cons.BOARD) && isOnReversed) {
-                            reverseDirection(Cons.ON, isOnReversed);
-                        }
-                        if(choice.equals(Cons.ALIGHT) && isOffReversed) {
-                            reverseDirection(Cons.OFF, isOffReversed);
-                        }
-                        */
                         manager.setStop(selectedMarker, choice);
                         selectedStops.saveCurrentMarker(selectedMarker);
                     }
@@ -372,7 +363,6 @@ public class OnOffFragment extends MapFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "Clicked Cancel");
                         selectedStops.clearCurrentMarker();
                     }
                 });
@@ -380,41 +370,6 @@ public class OnOffFragment extends MapFragment {
         AlertDialog select = builder.create();
         select.show();
     }
-
-    /*
-    protected void setupReverseStops() {
-        String dirOpposite = dir.equals("0") ? "1" : "0";
-        locListOpposite = getStops(line, dirOpposite, false);
-        toggleOnBtn = (Button) view.findViewById(R.id.on_btn);
-        toggleOffBtn = (Button) view.findViewById(R.id.off_btn);
-        Drawable onDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
-        Drawable offDrawable = context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_none);
-        toggleOnBtn.setBackground(onDrawable);
-        toggleOffBtn.setBackground(offDrawable);
-        toggleOnBtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (isOffReversed) {
-                    Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
-                } else {
-                    reverseDirection(Cons.ON, isOnReversed);
-                }
-                return true;
-            }
-        });
-        toggleOffBtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (isOnReversed) {
-                    Utils.shortToastCenter(context, "Both on and off cannot have direction reversed");
-                } else {
-                    reverseDirection(Cons.OFF, isOffReversed);
-                }
-                return true;
-            }
-        });
-    }
-    */
 
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
@@ -434,7 +389,6 @@ public class OnOffFragment extends MapFragment {
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
                 if (listView == onSeqListView) {
                     selectedStops.saveSequenceMarker(Cons.BOARD, stop);
-                    Log.d(TAG, "set stop sequence");
                     manager.setStop(stop, Cons.BOARD);
                 } else {
                     selectedStops.saveSequenceMarker(Cons.ALIGHT, stop);

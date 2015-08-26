@@ -24,7 +24,6 @@ import com.meyersj.mobilesurveyor.app.util.Cons;
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
     private final String TAG = "SurveyActivity";
-    protected static final int SURVEY_FRAGMENTS = 5;
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
     protected static final String[] HEADERS = {"Origin", "Transfers", "On-Off", "Destination", "Confirm"};
 
@@ -51,7 +50,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.survey_pager);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
-        mViewPager.setOffscreenPageLimit(SURVEY_FRAGMENTS);
+        mViewPager.setOffscreenPageLimit(HEADERS.length);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -68,7 +67,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             }
         });
 
-        fragments = new Fragment[SURVEY_FRAGMENTS];
+        fragments = new Fragment[HEADERS.length];
         fragments[0] = new PickLocationFragment();
         ((PickLocationFragment) fragments[0]).initialize(manager, "origin", extras);
         fragments[1] = new TransfersMapFragment();
@@ -80,7 +79,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments[4] = new ConfirmFragment();
         ((ConfirmFragment) fragments[4]).setParams(this, manager, mViewPager);
 
-        for (int i = 0; i < SURVEY_FRAGMENTS; i++) {
+        for (int i = 0; i < HEADERS.length; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
         }
         toggleNavButtons(mViewPager.getCurrentItem());
@@ -105,7 +104,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         nextBtn.setEnabled(true);
         if(item == 0)
             previousBtn.setEnabled(false);
-        if(item == SURVEY_FRAGMENTS - 1)
+        if(item == HEADERS.length - 1)
             nextBtn.setEnabled(false);
     }
 
@@ -133,7 +132,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
 
         @Override
         public int getCount() {
-            return SURVEY_FRAGMENTS;
+            return HEADERS.length;
         }
 
         @Override

@@ -46,6 +46,13 @@ public class SelectedStops {
         stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
     }
 
+    public void setAdapter(StopSequenceAdapter adapter, String mode) {
+        if(mode.equals(Cons.BOARD))
+            this.onAdapter = adapter;
+        else
+            this.offAdapter = adapter;
+    }
+
     public void setOnAdapter(StopSequenceAdapter onAdapter) {
         this.onAdapter = onAdapter;
     }

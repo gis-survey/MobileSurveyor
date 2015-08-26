@@ -57,6 +57,7 @@ public class StopFragment extends MapFragment {
     //private Button toggleOffBtn;
     //private TextView osmText;
 
+    private OnOffMapListener mapListener;
     private SelectedStops selectedStops;
     private StopSequenceAdapter stopSequenceAdapter;
     //private StopSequenceAdapter offSeqListAdapter;
@@ -203,6 +204,10 @@ public class StopFragment extends MapFragment {
     }
 
     private void setupStops() {
+        if (mapListener != null) mv.removeListener(mapListener);
+        if (stopsOverlay != null) mv.removeOverlay(stopsOverlay);
+        if (selOverlay != null) mv.removeOverlay(selOverlay);
+
         addDefaultRoute(context, line, dir);
         String[] route;
         if(mode.equals(Cons.BOARD))
@@ -210,16 +215,17 @@ public class StopFragment extends MapFragment {
         else
             route = manager.getLastRoute();
         stopsList = getStops(route[0], route[1], false);
-        for (Marker marker: stopsList) {
-            setToolTipListener(marker, mode);
-        }
+        //for (Marker marker: stopsList) {
+        //    setToolTipListener(marker, mode);
+        //}
 
         setItemizedOverlay();
-        mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
+        mapListener = new OnOffMapListener(mv, stopsList, stopsOverlay);
+        mv.addListener(mapListener);
         setupStopSequenceList();
         //setupStopSearch();
         selectedStops = new SelectedStops(context, selOverlay);
-        selectedStops.setOnAdapter(stopSequenceAdapter);
+        selectedStops.setAdapter(stopSequenceAdapter, mode);
     }
 
 

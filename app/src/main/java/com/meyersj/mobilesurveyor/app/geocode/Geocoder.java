@@ -74,6 +74,7 @@ public class Geocoder {
     }
 
     protected void lookup(String input) {
+        clearResults();
         Pattern intersectionPattern = Pattern.compile("(.*)\\s(and|&)\\s(.*)");
         Matcher intersection = intersectionPattern.matcher(input);
         if (intersection.matches()) {

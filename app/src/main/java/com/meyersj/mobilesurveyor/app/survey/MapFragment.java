@@ -33,6 +33,7 @@ import com.meyersj.mobilesurveyor.app.util.Utils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import butterknife.Bind;
 
@@ -170,6 +171,15 @@ public abstract class MapFragment extends Fragment {
             TransitRoute route = transferRoutes.get(key);
             route.clearRoute(mv);
             transferRoutes.remove(key);
+        }
+    }
+
+    public void clearRoutes() {
+        Iterator it = transferRoutes.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry pair = (HashMap.Entry)it.next();
+            ((TransitRoute) pair.getValue()).clearRoute(mv);
+            it.remove(); // avoids a ConcurrentModificationException
         }
     }
 

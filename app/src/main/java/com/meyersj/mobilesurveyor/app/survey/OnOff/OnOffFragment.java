@@ -276,9 +276,7 @@ public class OnOffFragment extends MapFragment {
         //seqListView = (ListView) view.findViewById(R.id.on_stops_seq);
         //offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
         //osmText = (TextView) view.findViewById(R.id.osm_text);
-        /* if streetcar we need opposite direction stops in case
-        /* if streetcar we need opposite direction stops in case
-        user toggles that on or off was before start of line */
+
         ArrayList<Stop> boardStops = stopsSequenceSort(boardStopsList);
         ArrayList<Stop> alightStops = stopsSequenceSort(alightStopsList);
         onSeqListAdapter = new StopSequenceAdapter(activity, boardStops);

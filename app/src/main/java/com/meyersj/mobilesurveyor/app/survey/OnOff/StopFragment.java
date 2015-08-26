@@ -106,52 +106,9 @@ public class StopFragment extends MapFragment {
         context = activity.getApplicationContext();
         ButterKnife.bind(this, view);
         setTiles(mv);
-
-        // get first and last route from manager
-        // if view was first created it would be default route/direction
-
-        // board stops
-        // alight stops
-
-        //if (line != null && dir != null) {
-
         setupStops();
 
-
-        //locList = getStops(line, dir, true);
-
-        //selList = new ArrayList<Marker>();
-
-
-
-        /*
-            // set listener for when marker tooltip is selected
-            for (Marker marker: locList) {
-                setToolTipListener(marker);
-            }
-            if(bbox != null) {
-                mv.zoomToBoundingBox(bbox, true, false, true, true);
-            }
-            setItemizedOverlay(mv, locList, selList);
-            mv.addListener(new OnOffMapListener(mv, locList, locOverlay));
-
-            addDefaultRoute(context, line, dir);
-            setupStopSequenceList();
-            setupStopSearch();
-            selectedStops = new SelectedStops(
-                    context, stopSequenceAdapter, offSeqListAdapter, selOverlay);
-            //if line is a streetcar
-            //enable on or off to be reversed because streetcar runs in a loop
-            //for (String streetcar: Cons.STREETCARS) {
-            //    if (streetcar.equals(line)) {
-            //        setupReverseStops();
-            //        break;
-            //    }
-            //}
-            zoomToRoute(mv);
-        }
-        */
-
+        //zoomToRoute(mv); // zooms to default route which is not what we want now
         //restoreState();
         return view;
     }
@@ -204,16 +161,20 @@ public class StopFragment extends MapFragment {
     }
 
     private void setupStops() {
+        clearRoutes();
         if (mapListener != null) mv.removeListener(mapListener);
         if (stopsOverlay != null) mv.removeOverlay(stopsOverlay);
-        if (selOverlay != null) mv.removeOverlay(selOverlay);
+        if (selOverlay != null) {
+            mv.removeOverlay(selOverlay);
+        }
 
-        addDefaultRoute(context, line, dir);
+
         String[] route;
         if(mode.equals(Cons.BOARD))
             route = manager.getFirstRoute();
         else
             route = manager.getLastRoute();
+        addTransferRoute(context, route[0], route[1]);
         stopsList = getStops(route[0], route[1], false);
         //for (Marker marker: stopsList) {
         //    setToolTipListener(marker, mode);
@@ -223,7 +184,7 @@ public class StopFragment extends MapFragment {
         mapListener = new OnOffMapListener(mv, stopsList, stopsOverlay);
         mv.addListener(mapListener);
         setupStopSequenceList();
-        //setupStopSearch();
+        setupStopSearch();
         selectedStops = new SelectedStops(context, selOverlay);
         selectedStops.setAdapter(stopSequenceAdapter, mode);
     }
@@ -234,8 +195,8 @@ public class StopFragment extends MapFragment {
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
                         //selectLocType(item);
-                        //manager.setStop(item, Cons.BOARD);
-                        //selectedStops.saveCurrentMarker(item);
+                        manager.setStop(item, mode);
+                        selectedStops.saveCurrentMarker(item);
                         return true;
                     }
                     public boolean onItemLongPress(final int index, final Marker item) {
@@ -283,9 +244,9 @@ public class StopFragment extends MapFragment {
     }
 
 
-    /*
+
     private void setupStopSearch() {
-        String[] stopNames = buildStopsArray(locList);
+        String[] stopNames = buildStopsArray(stopsList);
         //String[] stopNames =
         //      {"N Lombard TC MAX Station", "SW 6th & Madison St MAX Station","13123", "11512", ... };
         final ArrayList<String> stopsList = new ArrayList<String>();
@@ -300,7 +261,9 @@ public class StopFragment extends MapFragment {
                                     long id) {
                 stopName.setText("");
                 Utils.closeKeypad(activity);
-                selectLocType(stopsMap.get(stopsList.get(position)));
+                selectedStops.saveSequenceMarker(mode, stopsMap.get(stopsList.get(position)));
+                manager.setStop(stopsMap.get(stopsList.get(position)), mode);
+                //selectLocType(stopsMap.get(stopsList.get(position)));
             }
         });
 
@@ -312,7 +275,7 @@ public class StopFragment extends MapFragment {
             }
         });
     }
-    */
+
 
     protected String[] buildStopsArray(ArrayList<Marker> locList) {
         stopsMap = new HashMap<String, Marker>();

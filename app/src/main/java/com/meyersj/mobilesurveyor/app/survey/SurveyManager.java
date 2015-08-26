@@ -410,4 +410,21 @@ public class SurveyManager {
         Log.d(TAG, "Transfers: " + sel);
     }
 
+    public String[] getFirstRoute() {
+        String[] first = {transfersRoutes[0], transfersDirections[0]};
+        return first;
+    }
+
+    public String[] getLastRoute() {
+        String[] last = {transfersRoutes[0], transfersDirections[0]};
+        for(int i = 1; i < transfersRoutes.length; i++) {
+            if(transfersRoutes[i] != null && !transfersRoutes[i].isEmpty()) {
+                last[0] = transfersRoutes[i];
+                last[1] = transfersDirections[i];
+            }
+        }
+        return last;
+    }
+
+
 }

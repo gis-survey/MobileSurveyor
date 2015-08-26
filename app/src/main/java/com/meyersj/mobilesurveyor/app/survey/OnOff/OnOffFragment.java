@@ -55,14 +55,29 @@ public class OnOffFragment extends MapFragment {
     private SelectedStops selectedStops;
     private StopSequenceAdapter onSeqListAdapter;
     private StopSequenceAdapter offSeqListAdapter;
+
     private ArrayList<Marker> locList = new ArrayList<Marker>();
+    private ArrayList<Marker> boardStopsList = new ArrayList<Marker>();
+    private ArrayList<Marker> alightStopsList = new ArrayList<Marker>();
+
     private ItemizedIconOverlay locOverlay;
-    private HashMap<String, Marker> stopsMap;
-    Boolean isOnReversed = false;
-    Boolean isOffReversed = false;
-    private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
+    private ItemizedIconOverlay boardOverlay;
+    private ItemizedIconOverlay alightOverlay;
+
     private ItemizedIconOverlay selOverlay;
+    //private ItemizedIconOverlay boardSelOverlay;
+    //private ItemizedIconOverlay alightSelOverlay;
+
     private ArrayList<Marker> selList = new ArrayList<Marker>();
+
+    private HashMap<String, Marker> stopsMap;
+
+
+    //Boolean isOnReversed = false;
+    //Boolean isOffReversed = false;
+    //private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
+
+
     private BoundingBox bbox;
     protected SurveyManager manager;
     protected Bundle extras;
@@ -93,9 +108,25 @@ public class OnOffFragment extends MapFragment {
         clear = (ImageButton) view.findViewById(R.id.clear_input_stop);
         stopName = (AutoCompleteTextView) view.findViewById(R.id.input_stop);
 
-        if (line != null && dir != null) {
-            locList = getStops(line, dir, true);
-            selList = new ArrayList<Marker>();
+
+        // get first and last route from manager
+        // if view was first created it would be default route/direction
+
+        // board stops
+        // alight stops
+
+        //if (line != null && dir != null) {
+
+        setupStops();
+
+
+        //locList = getStops(line, dir, true);
+
+        //selList = new ArrayList<Marker>();
+
+
+
+        /*
             // set listener for when marker tooltip is selected
             for (Marker marker: locList) {
                 setToolTipListener(marker);
@@ -113,16 +144,17 @@ public class OnOffFragment extends MapFragment {
                     context, onSeqListAdapter, offSeqListAdapter, selOverlay);
             //if line is a streetcar
             //enable on or off to be reversed because streetcar runs in a loop
-            for (String streetcar: Cons.STREETCARS) {
-                if (streetcar.equals(line)) {
-                    setupReverseStops();
-                    break;
-                }
-            }
+            //for (String streetcar: Cons.STREETCARS) {
+            //    if (streetcar.equals(line)) {
+            //        setupReverseStops();
+            //        break;
+            //    }
+            //}
             zoomToRoute(mv);
         }
+        */
 
-        restoreState();
+        //restoreState();
         return view;
     }
 
@@ -172,9 +204,48 @@ public class OnOffFragment extends MapFragment {
         });
     }
 
+    private void setupStops() {
+        addDefaultRoute(context, line, dir);
+        String[] first = manager.getFirstRoute();
+        String[] last = manager.getLastRoute();
+        boardStopsList = getStops(first[0], first[1], false);
+        alightStopsList = getStops(last[0], last[1], false);
+        for (Marker marker: boardStopsList) {
+            setToolTipListener(marker);
+        }
+        for (Marker marker: alightStopsList) {
+            setToolTipListener(marker);
+        }
+        setItemizedOverlay();
+        mv.addListener(new OnOffMapListener(mv, boardStopsList, boardOverlay));
+        mv.addListener(new OnOffMapListener(mv, alightStopsList, alightOverlay));
+    }
 
-    protected void setItemizedOverlay(
-            final MapView mapView, ArrayList<Marker> locList, ArrayList<Marker> selList) {
+
+    protected void setItemizedOverlay() {
+        boardOverlay = new ItemizedIconOverlay(mv.getContext(), boardStopsList,
+                new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+                    public boolean onItemSingleTapUp(final int index, final Marker item) {
+                        selectLocType(item);
+                        return true;
+                    }
+                    public boolean onItemLongPress(final int index, final Marker item) {
+                        return true;
+                    }
+                }
+        );
+        alightOverlay = new ItemizedIconOverlay(mv.getContext(), alightStopsList,
+                new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+                    public boolean onItemSingleTapUp(final int index, final Marker item) {
+                        selectLocType(item);
+                        return true;
+                    }
+                    public boolean onItemLongPress(final int index, final Marker item) {
+                        return true;
+                    }
+                }
+        );
+        /*
         locOverlay = new ItemizedIconOverlay(mv.getContext(), locList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
@@ -186,7 +257,7 @@ public class OnOffFragment extends MapFragment {
                     }
                 }
         );
-
+        */
         selOverlay = new ItemizedIconOverlay(mv.getContext(), selList, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
             public boolean onItemSingleTapUp(int i, Marker marker) {
@@ -199,7 +270,8 @@ public class OnOffFragment extends MapFragment {
             }
         });
 
-        mv.addItemizedOverlay(locOverlay);
+        mv.addItemizedOverlay(boardOverlay);
+        mv.addItemizedOverlay(alightOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
 
@@ -294,12 +366,14 @@ public class OnOffFragment extends MapFragment {
                         String choice = selectedStops.getCurrentType();
                         Log.d(TAG, choice);
 
+                        /*
                         if(choice.equals(Cons.BOARD) && isOnReversed) {
                             reverseDirection(Cons.ON, isOnReversed);
                         }
                         if(choice.equals(Cons.ALIGHT) && isOffReversed) {
                             reverseDirection(Cons.OFF, isOffReversed);
                         }
+                        */
                         manager.setStop(selectedMarker, choice);
                         selectedStops.saveCurrentMarker(selectedMarker);
                     }
@@ -316,6 +390,7 @@ public class OnOffFragment extends MapFragment {
         select.show();
     }
 
+    /*
     protected void setupReverseStops() {
         String dirOpposite = dir.equals("0") ? "1" : "0";
         locListOpposite = getStops(line, dirOpposite, false);
@@ -348,6 +423,7 @@ public class OnOffFragment extends MapFragment {
             }
         });
     }
+    */
 
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
@@ -394,6 +470,7 @@ public class OnOffFragment extends MapFragment {
         }
     }
 
+    /*
     protected void reverseDirection(String mode, Boolean isReversed) {
         if(mode.equals(Cons.ON)) {
             if(isReversed == false) {
@@ -420,6 +497,7 @@ public class OnOffFragment extends MapFragment {
             }
         }
     }
+    */
 
     private void changeAdapter(ListView listView, StopSequenceAdapter adapter, ArrayList<Marker> locList)  {
         ArrayList<Stop> stops = stopsSequenceSort(locList);
@@ -475,7 +553,7 @@ public class OnOffFragment extends MapFragment {
 
     public void updateView(SurveyManager manager) {
         Log.d(TAG, manager.toString());
-
+        setupStops();
         /*
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();

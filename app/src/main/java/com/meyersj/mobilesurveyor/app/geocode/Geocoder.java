@@ -1,6 +1,7 @@
 package com.meyersj.mobilesurveyor.app.geocode;
 
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.loopj.android.http.SyncHttpClient;
@@ -17,7 +18,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Geocoder {
@@ -58,27 +60,38 @@ public class Geocoder {
         }
     }
 
-    private String buildParams(String input) {
+    private String buildParams(String input, int count) {
         String lat = String.valueOf(Cons.CENTROID.getLatitude());
         String lon = String.valueOf(Cons.CENTROID.getLongitude());
 
         String params = addParam("input", input);
         params += addParam("lat", lat);
         params += addParam("lon", lon);
-        params += addParam("size", "4");
+        params += addParam("size", String.valueOf(count));
         params += addParam("layers", "poi");
         params += addParam("details", "false");
         return params;
     }
 
     protected void lookup(String input) {
-        lookupSolr(input);
-        lookupPelias(input);
+        Pattern intersectionPattern = Pattern.compile("(.*)\\s(and|&)\\s(.*)");
+        Matcher intersection = intersectionPattern.matcher(input);
+        if (intersection.matches()) {
+            String street1  = intersection.group(1);
+            String street2  = intersection.group(3);
+            lookupSolr(street1, street2);
+            lookupPelias(input, 4);
+        }
+        else {
+            lookupPelias(input, 8);
+        }
+
+
     }
 
-    protected void lookupPelias(String input) {
+    protected void lookupPelias(String input, int count) {
         Log.d(TAG, "lookup: " + input);
-        String urlParams = peliasUrl + "?" + buildParams(input);
+        String urlParams = peliasUrl + "?" + buildParams(input, count);
         this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
 
@@ -96,9 +109,29 @@ public class Geocoder {
         });
     }
 
-    protected void lookupSolr(String input) {
-        Log.d(TAG, "lookup: " + input);
-        String urlParams = solrUrl + addParam("q", input.replace(" & ", " and "));
+
+    protected String solrTerm(String field, String value) {
+        if(value.length() > 5) value = value + "~2";
+        return field + ":" + value;
+    }
+
+    protected String solrTerms(String field, String street) {
+        String[] split = street.split("\\s+");
+        for(int i = 0; i < split.length; i++) {
+            split[i] = solrTerm(field, split[i]);
+        }
+        String search = TextUtils.join(" AND ", split);
+        Log.d(TAG, search);
+        return search;
+    }
+
+    protected void lookupSolr(String street1, String street2) {
+        //Log.d(TAG, "lookup: " + input);
+        //String q = "street_1:\"" + street1 + "\" AND street_2:\"" + street2 + "\"";
+        //Log.d(TAG, q);
+        String q = solrTerms("street_1", street1) + " AND " + solrTerms("street_2", street2);
+        Log.d(TAG, q);
+        String urlParams = solrUrl + addParam("q", q);
         this.client = new SyncHttpClient();
         client.get(urlParams, new TextHttpResponseHandler() {
 

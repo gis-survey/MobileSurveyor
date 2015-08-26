@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
@@ -14,12 +12,9 @@ import android.widget.EditText;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
-import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.DataLoader;
-import com.meyersj.mobilesurveyor.app.util.Utils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -35,7 +30,8 @@ public class SurveyManager {
     protected Location dest;
     protected Marker onStop;
     protected Marker offStop;
-    protected String[] transfers;
+    protected String[] transfersRoutes;
+    protected String[] transfersDirections;
     protected String validated = "2"; //validated, yes == 1, no == 2, ignore location
     protected HashMap<String, String> routeLookup;
     protected HashMap<String, String[]> dirLookup;
@@ -94,7 +90,7 @@ public class SurveyManager {
         flags[3] = false;
         printTransfers();
         Log.d(TAG, line);
-        for(String route: transfers) {
+        for(String route: transfersRoutes) {
             if(route != null && !route.isEmpty() && route.equals(line)) {
                 flags[3] = true;
                 break;
@@ -258,8 +254,8 @@ public class SurveyManager {
         }
         Integer count = 0;
         for(int i = 0; i < Cons.MAX_TRANSFERS; i++) {
-            if(transfers[i] != null && !transfers[i].isEmpty()) {
-                intent.putExtra("route" + String.valueOf(++count), transfers[i]);
+            if(transfersRoutes[i] != null && !transfersRoutes[i].isEmpty()) {
+                intent.putExtra("route" + String.valueOf(++count), transfersRoutes[i]);
             }
             else {
                 intent.putExtra("route" + String.valueOf(++count), "");
@@ -297,7 +293,7 @@ public class SurveyManager {
         alert.show();
     }
 
-    public void inputTransferDirection(final Activity activity, final String rte) {
+    public void inputTransferDirection(final Activity activity, final String rte, final int routeIndex) {
         /*
         String title = "Direction";
         String prompt = "Specify other";
@@ -319,17 +315,15 @@ public class SurveyManager {
         builder.setItems(directions, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 Log.d(TAG, directions[item]);
-                //Log.d(TAG, noFareOptions[item]);
-                //callback.noFareOption(item + 1);
+                transfersDirections[routeIndex] = String.valueOf(item);
             }
         });
         AlertDialog alert = builder.create();
         alert.show();
-
-
-
     }
 
+    // commented out for LTD project
+    /*
     public void inputBlocks(final Activity activity, final String mode) {
         String title = "Number of Blocks";
         String prompt = "How many blocks did/will you walk?";
@@ -358,6 +352,7 @@ public class SurveyManager {
         });
         alert.show();
     }
+    */
 
     protected AlertDialog.Builder buildAlert(final Activity activity, String title, String prompt,
                                              EditText input) {
@@ -394,14 +389,18 @@ public class SurveyManager {
         select.show();
     }
 
-    public void setTransfers(String[] transfers) {
-        this.transfers = transfers;
+    public void setTransfersRoutes(String[] transfersRoutes) {
+        this.transfersRoutes = transfersRoutes;
+    }
+
+    public void setTransfersDirections(String[] transfersDirections) {
+        this.transfersDirections = transfersDirections;
     }
 
 
     protected void printTransfers() {
         String sel = "";
-        for (String s : transfers) {
+        for (String s : transfersRoutes) {
             if (s == null || s.isEmpty()) {
                 sel += "null, ";
             } else {

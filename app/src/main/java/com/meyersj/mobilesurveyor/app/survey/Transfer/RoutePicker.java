@@ -48,6 +48,7 @@ public class RoutePicker {
     protected RoutePicker previous;
     protected RoutePicker next;
     protected String[] selectedRoutes;
+    protected String[] selectedDirections;
     protected String[] rte;
     protected String dir;
     protected String curRte;
@@ -58,13 +59,15 @@ public class RoutePicker {
     public RoutePicker(MapFragment frag, Context context, LayoutInflater inflater,
                        ViewGroup parent, LinearLayout routeLayout, ArrayList<String> routes,
                        String line, Boolean first, Integer number,
-                       String[] selectedRoutes, String[] rte, SurveyManager manager) {
+                       String[] selectedRoutes, String[] selectedDirections,
+                       String[] rte, SurveyManager manager) {
         this.manager = manager;
         this.frag = frag;
         this.context = context;
         this.number = number;
         this.rte = rte;
         this.selectedRoutes = selectedRoutes;
+        this.selectedDirections = selectedDirections;
         this.routeLayout = routeLayout;
         this.view = (LinearLayout) inflater.inflate(R.layout.route_spinner_layout, parent, false);
         this.routeLayout.addView(view);
@@ -99,13 +102,10 @@ public class RoutePicker {
                             frag.clearRoute(selRte, rte[1]);
                         }
                         selectedRoutes[number - 1] = routeID;
-                        if(!routeID.equals(rte[0])) {
-
-                            manager.inputTransferDirection((Activity) context, routeID);
-                            // get direction
-
-                            frag.addTransferRoute(context, routeID, rte[1]);
-                        }
+                        //if(!routeID.equals(rte[0])) {
+                        manager.inputTransferDirection((Activity) context, routeID, number - 1);
+                        frag.addTransferRoute(context, routeID, rte[1]);
+                        //}
                     }
                     if (next != null) {
                         next.setViewVisibility(View.VISIBLE);
@@ -171,6 +171,7 @@ public class RoutePicker {
             public void onClick(View v) {
                 frag.clearRoute(selectedRoutes[number - 1], rte[1]);
                 selectedRoutes[number - 1] = null;
+                selectedDirections[number - 1] = null;
                 spinner.setSelection(0);
             }
         });

@@ -3,21 +3,16 @@ package com.meyersj.mobilesurveyor.app.survey.Transfer;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.mapbox.mapboxsdk.api.ILatLng;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
 import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
-import com.meyersj.mobilesurveyor.app.survey.Transfer.RoutePicker;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.DataLoader;
 
@@ -33,15 +28,17 @@ public class TransfersMapFragment extends MapFragment {
     protected ViewPager pager;
     protected Bundle extras;
     protected String[] selectedRoutes;
-
+    protected String[] selectedDirections;
 
     public void initialize(SurveyManager manager, ViewPager pager, Bundle extras) {
         this.manager = manager;
         this.pager = pager;
         this.extras = extras;
         this.selectedRoutes = new String[Cons.MAX_TRANSFERS];
-        line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
-        dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
+        this.selectedDirections = new String[Cons.MAX_TRANSFERS];
+        this.line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
+        this.dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
+        this.selectedDirections[0] = dir;
     }
 
     @Override
@@ -75,19 +72,20 @@ public class TransfersMapFragment extends MapFragment {
             }
         }
 
-        manager.setTransfers(selectedRoutes);
+        manager.setTransfersRoutes(selectedRoutes);
+        manager.setTransfersDirections(selectedDirections);
 
         //TODO create a factory to make RoutePicker objects and set Next/Previous
         final RoutePicker rp1 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, routesList, savedRoutes[0], true, 1, selectedRoutes, rte, manager);
+                routesLayout, routesList, savedRoutes[0], true, 1, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp2 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[1], false, 2, selectedRoutes, rte, manager);
+                routesLayout, defaultRoutesList, savedRoutes[1], false, 2, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp3 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[2], false, 3, selectedRoutes, rte, manager);
+                routesLayout, defaultRoutesList, savedRoutes[2], false, 3, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp4 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[3], false, 4, selectedRoutes, rte, manager);
+                routesLayout, defaultRoutesList, savedRoutes[3], false, 4, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp5 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[4], false, 5, selectedRoutes, rte, manager);
+                routesLayout, defaultRoutesList, savedRoutes[4], false, 5, selectedRoutes, selectedDirections, rte, manager);
 
         rp1.setNext(rp2);
         rp2.setNext(rp3);
@@ -141,5 +139,4 @@ public class TransfersMapFragment extends MapFragment {
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }
     }
-
 }

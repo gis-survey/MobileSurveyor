@@ -73,7 +73,7 @@ public class Cons {
 
 
     public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";
-    public static final String DEFAULT_RTE = "01";
+    public static final String DEFAULT_RTE = "101";
     public static final String DEFAULT_DIR = "0";
     public static final String MAPBOX_TOKEN = "mapbox_token";
     public static final String PELIAS_URL = "pelias_url";

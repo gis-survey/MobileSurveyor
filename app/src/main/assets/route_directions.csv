@@ -1,6 +1,6 @@
 rte,rte_desc,dir,dir_desc
-01,01-Campbell Center,0,Outbound
-01,01-Campbell Center,1,Inbound
+01,01-Campbell Center,0,Eugene Station > 2nd & Mill
+01,01-Campbell Center,1,2nd & Mill > Eugene Station
 101,EmX-101,0,Outbound
 101,EmX-101,1,Inbound
 102,EmX-102,0,Outbound

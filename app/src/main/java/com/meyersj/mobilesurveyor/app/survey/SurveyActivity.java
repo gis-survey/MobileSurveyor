@@ -18,6 +18,7 @@ import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.survey.Confirm.ConfirmFragment;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
 import com.meyersj.mobilesurveyor.app.survey.OnOff.OnOffFragment;
+import com.meyersj.mobilesurveyor.app.survey.OnOff.StopFragment;
 import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
@@ -25,7 +26,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
 
     private final String TAG = "SurveyActivity";
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
-    protected static final String[] HEADERS = {"Origin", "Transfers", "On-Off", "Destination", "Confirm"};
+    protected static final String[] HEADERS = {"Origin", "Transfers", "On", "On-Off", "Destination", "Confirm"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -56,10 +57,9 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
                 MapFragment fragment;
-                if(HEADERS[position].equals("On-Off")) {
+                if (HEADERS[position].equals("On-Off")) {
                     fragment = (OnOffFragment) fragments[position];
-                }
-                else {
+                } else {
                     fragment = (MapFragment) fragments[position];
                 }
                 fragment.updateView(manager);
@@ -72,12 +72,14 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         ((PickLocationFragment) fragments[0]).initialize(manager, "origin", extras);
         fragments[1] = new TransfersMapFragment();
         ((TransfersMapFragment) fragments[1]).initialize(manager, mViewPager, extras);
-        fragments[2] = new OnOffFragment();
-        ((OnOffFragment) fragments[2]).initialize(manager, extras);
-        fragments[3] = new PickLocationFragment();
-        ((PickLocationFragment) fragments[3]).initialize(manager, "destination", extras);
-        fragments[4] = new ConfirmFragment();
-        ((ConfirmFragment) fragments[4]).setParams(this, manager, mViewPager);
+        fragments[2] = new StopFragment();
+        ((StopFragment) fragments[2]).initialize(manager, extras);
+        fragments[3] = new OnOffFragment();
+        ((OnOffFragment) fragments[3]).initialize(manager, extras);
+        fragments[4] = new PickLocationFragment();
+        ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
+        fragments[5] = new ConfirmFragment();
+        ((ConfirmFragment) fragments[5]).setParams(this, manager, mViewPager);
 
         for (int i = 0; i < HEADERS.length; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));

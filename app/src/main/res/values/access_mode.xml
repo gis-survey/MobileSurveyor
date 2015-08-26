@@ -3,10 +3,13 @@
     <string-array name="access_mode_array">
         <item></item>
         <item>Walked</item>
-        <item>Dropped off</item>
-        <item>Bicycled</item>
-        <item>Drove &amp; parked</item>
-        <item>Carpooled &amp; parked</item>
-        <item>Other (specify)</item>
+        <item>Drove myself</item>
+        <item>Drove with another rider and parked</item>
+        <item>Dropped off by someone</item>
+        <item>Dropped off by a taxi or paid rideshare</item>
+        <item>Wheelchair/Scooter</item>
+        <item>Biked and put bike on bus/EMX</item>
+        <item>Biked and left bike at/near bus stop/station</item>
+        <item>Other</item>
     </string-array>
 </resources>

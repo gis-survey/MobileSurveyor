@@ -47,8 +47,9 @@ public class StopFragment extends MapFragment {
     @Bind(R.id.seq_list) View seqView;
     @Bind(R.id.input_stop) AutoCompleteTextView stopName;
     @Bind(R.id.clear_input_stop) ImageButton clear;
-    @Bind(R.id.on_stops_seq) ListView onSeqListView;
-    @Bind(R.id.off_stops_seq) ListView offSeqListView;
+    @Bind(R.id.stops_seq_list) ListView seqListView;
+    //@Bind(R.id.on_stops_seq) ListView seqListView;
+    //@Bind(R.id.off_stops_seq) ListView offSeqListView;
     @Bind(R.id.stop_seq_btn) Button stopSeqBtn;
 
 
@@ -57,16 +58,16 @@ public class StopFragment extends MapFragment {
     //private TextView osmText;
 
     private SelectedStops selectedStops;
-    private StopSequenceAdapter onSeqListAdapter;
-    private StopSequenceAdapter offSeqListAdapter;
+    private StopSequenceAdapter stopSequenceAdapter;
+    //private StopSequenceAdapter offSeqListAdapter;
 
-    private ArrayList<Marker> locList = new ArrayList<Marker>();
-    private ArrayList<Marker> boardStopsList = new ArrayList<Marker>();
-    private ArrayList<Marker> alightStopsList = new ArrayList<Marker>();
+    //private ArrayList<Marker> locList = new ArrayList<Marker>();
+    private ArrayList<Marker> stopsList = new ArrayList<Marker>();
+    //private ArrayList<Marker> alightStopsList = new ArrayList<Marker>();
 
 
-    private ItemizedIconOverlay boardOverlay;
-    private ItemizedIconOverlay alightOverlay;
+    private ItemizedIconOverlay stopsOverlay;
+    //private ItemizedIconOverlay alightOverlay;
     private ItemizedIconOverlay selOverlay;
 
     private ArrayList<Marker> selList = new ArrayList<Marker>();
@@ -74,23 +75,21 @@ public class StopFragment extends MapFragment {
     private HashMap<String, Marker> stopsMap;
 
 
-    //Boolean isOnReversed = false;
-    //Boolean isOffReversed = false;
-    //private ArrayList<Marker> locListOpposite = new ArrayList<Marker>();
-
 
     private BoundingBox bbox;
     protected SurveyManager manager;
     protected Bundle extras;
     protected String line;
     protected String dir;
+    protected String mode;
 
 
-    public void initialize(SurveyManager manager, Bundle extras) {
+    public void initialize(SurveyManager manager, Bundle extras, String mode) {
         this.manager = manager;
         this.extras = extras;
         line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
         dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
+        this.mode = mode;
     }
 
     @Override
@@ -101,7 +100,7 @@ public class StopFragment extends MapFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        view = inflater.inflate(R.layout.fragment_on_off_map, container, false);
+        view = inflater.inflate(R.layout.fragment_stop_map, container, false);
         activity = getActivity();
         context = activity.getApplicationContext();
         ButterKnife.bind(this, view);
@@ -139,7 +138,7 @@ public class StopFragment extends MapFragment {
             setupStopSequenceList();
             setupStopSearch();
             selectedStops = new SelectedStops(
-                    context, onSeqListAdapter, offSeqListAdapter, selOverlay);
+                    context, stopSequenceAdapter, offSeqListAdapter, selOverlay);
             //if line is a streetcar
             //enable on or off to be reversed because streetcar runs in a loop
             //for (String streetcar: Cons.STREETCARS) {
@@ -196,7 +195,7 @@ public class StopFragment extends MapFragment {
         mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                selectLocType(marker);
+                //selectLocType(marker);
                 selectedStops.setCurrentMarker(marker, mode);
                 return true;
             }
@@ -205,46 +204,31 @@ public class StopFragment extends MapFragment {
 
     private void setupStops() {
         addDefaultRoute(context, line, dir);
-        String[] first = manager.getFirstRoute();
-        String[] last = manager.getLastRoute();
-        boardStopsList = getStops(first[0], first[1], false);
-        alightStopsList = getStops(last[0], last[1], false);
-        for (Marker marker: boardStopsList) {
-            setToolTipListener(marker, Cons.BOARD);
+        String[] route;
+        if(mode.equals(Cons.BOARD))
+            route = manager.getFirstRoute();
+        else
+            route = manager.getLastRoute();
+        stopsList = getStops(route[0], route[1], false);
+        for (Marker marker: stopsList) {
+            setToolTipListener(marker, mode);
         }
-        for (Marker marker: alightStopsList) {
-            setToolTipListener(marker, Cons.ALIGHT);
-        }
-        setItemizedOverlay();
-        mv.addListener(new OnOffMapListener(mv, boardStopsList, boardOverlay));
-        mv.addListener(new OnOffMapListener(mv, alightStopsList, alightOverlay));
 
+        setItemizedOverlay();
+        mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
         setupStopSequenceList();
         //setupStopSearch();
-        selectedStops = new SelectedStops(
-                context, onSeqListAdapter, offSeqListAdapter, selOverlay);
+        selectedStops = new SelectedStops(context, selOverlay);
+        selectedStops.setOnAdapter(stopSequenceAdapter);
     }
 
 
     protected void setItemizedOverlay() {
-        boardOverlay = new ItemizedIconOverlay(mv.getContext(), boardStopsList,
+        stopsOverlay = new ItemizedIconOverlay(mv.getContext(), stopsList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        selectLocType(item);
+                        //selectLocType(item);
                         //manager.setStop(item, Cons.BOARD);
-                        //selectedStops.saveCurrentMarker(item);
-                        return true;
-                    }
-                    public boolean onItemLongPress(final int index, final Marker item) {
-                        return true;
-                    }
-                }
-        );
-        alightOverlay = new ItemizedIconOverlay(mv.getContext(), alightStopsList,
-                new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
-                    public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        selectLocType(item);
-                        //manager.setStop(item, Cons.ALIGHT);
                         //selectedStops.saveCurrentMarker(item);
                         return true;
                     }
@@ -264,7 +248,7 @@ public class StopFragment extends MapFragment {
                 return false;
             }
         });
-        //mv.addItemizedOverlay(boardOverlay);
+        //mv.addItemizedOverlay(stopsOverlay);
         //mv.addItemizedOverlay(alightOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
@@ -272,18 +256,18 @@ public class StopFragment extends MapFragment {
     private void setupStopSequenceList() {
         //seqView = view.findViewById(R.id.seq_list);
         //stopSeqBtn = (Button) view.findViewById(R.id.stop_seq_btn);
-        //onSeqListView = (ListView) view.findViewById(R.id.on_stops_seq);
+        //seqListView = (ListView) view.findViewById(R.id.on_stops_seq);
         //offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
         //osmText = (TextView) view.findViewById(R.id.osm_text);
         /* if streetcar we need opposite direction stops in case
         /* if streetcar we need opposite direction stops in case
         user toggles that on or off was before start of line */
-        ArrayList<Stop> boardStops = stopsSequenceSort(boardStopsList);
-        ArrayList<Stop> alightStops = stopsSequenceSort(alightStopsList);
-        onSeqListAdapter = new StopSequenceAdapter(activity, boardStops);
-        offSeqListAdapter = new StopSequenceAdapter(activity, alightStops);
-        stopSequenceAdapterSetup(onSeqListView, onSeqListAdapter);
-        stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
+        ArrayList<Stop> boardStops = stopsSequenceSort(stopsList);
+        //ArrayList<Stop> alightStops = stopsSequenceSort(alightStopsList);
+        stopSequenceAdapter = new StopSequenceAdapter(activity, boardStops);
+        //offSeqListAdapter = new StopSequenceAdapter(activity, alightStops);
+        stopSequenceAdapterSetup(seqListView, stopSequenceAdapter);
+        //stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -293,6 +277,7 @@ public class StopFragment extends MapFragment {
     }
 
 
+    /*
     private void setupStopSearch() {
         String[] stopNames = buildStopsArray(locList);
         //String[] stopNames =
@@ -321,6 +306,7 @@ public class StopFragment extends MapFragment {
             }
         });
     }
+    */
 
     protected String[] buildStopsArray(ArrayList<Marker> locList) {
         stopsMap = new HashMap<String, Marker>();
@@ -337,6 +323,7 @@ public class StopFragment extends MapFragment {
         return stopNames;
     }
 
+    /*
     protected void selectLocType(final Marker selectedMarker) {
         Log.d(TAG, "select loc type");
         String message = selectedMarker.getTitle();
@@ -369,6 +356,7 @@ public class StopFragment extends MapFragment {
         AlertDialog select = builder.create();
         select.show();
     }
+    */
 
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
@@ -386,13 +374,8 @@ public class StopFragment extends MapFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 adapter.setSelectedIndex(position);
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
-                if (listView == onSeqListView) {
-                    selectedStops.saveSequenceMarker(Cons.BOARD, stop);
-                    manager.setStop(stop, Cons.BOARD);
-                } else {
-                    selectedStops.saveSequenceMarker(Cons.ALIGHT, stop);
-                    manager.setStop(stop, Cons.ALIGHT);
-                }
+                selectedStops.saveSequenceMarker(mode, stop);
+                manager.setStop(stop, mode);
             }
         });
     }
@@ -414,50 +397,23 @@ public class StopFragment extends MapFragment {
         }
     }
 
-    /*
-    protected void reverseDirection(String mode, Boolean isReversed) {
-        if(mode.equals(Cons.ON)) {
-            if(isReversed == false) {
-                changeAdapter(onSeqListView, onSeqListAdapter, locListOpposite);
-                isOnReversed = true;
-                toggleOnBtn.setText("On Stop (Opposite Direction)");
-            }
-            else {
-                changeAdapter(onSeqListView, onSeqListAdapter, locList);
-                isOnReversed = false;
-                toggleOnBtn.setText("On Stop");
-            }
-        }
-        else {
-            if(isReversed == false) {
-                changeAdapter(offSeqListView, offSeqListAdapter, locListOpposite);
-                isOffReversed = true;
-                toggleOffBtn.setText("Off Stop (Opposite Direction)");
-            }
-            else {
-                changeAdapter(offSeqListView, offSeqListAdapter, locList);
-                isOffReversed = false;
-                toggleOffBtn.setText("Off Stop");
-            }
-        }
-    }
-    */
 
     private void changeAdapter(ListView listView, StopSequenceAdapter adapter, ArrayList<Marker> locList)  {
         ArrayList<Stop> stops = stopsSequenceSort(locList);
-        if (adapter == onSeqListAdapter) {
-            onSeqListAdapter = new StopSequenceAdapter(activity, stops);
-            selectedStops.setOnAdapter(onSeqListAdapter);
+        if (adapter == stopSequenceAdapter) {
+            stopSequenceAdapter = new StopSequenceAdapter(activity, stops);
+            selectedStops.setOnAdapter(stopSequenceAdapter);
             selectedStops.clearSequenceMarker(Cons.BOARD);
-            stopSequenceAdapterSetup(listView, onSeqListAdapter);
+            stopSequenceAdapterSetup(listView, stopSequenceAdapter);
         }
         else {
-            offSeqListAdapter = new StopSequenceAdapter(activity, stops);
-            selectedStops.setOffAdapter(offSeqListAdapter);
-            selectedStops.clearSequenceMarker(Cons.ALIGHT);
-            stopSequenceAdapterSetup(listView, offSeqListAdapter);
+            //offSeqListAdapter = new StopSequenceAdapter(activity, stops);
+            //selectedStops.setOffAdapter(offSeqListAdapter);
+            //selectedStops.clearSequenceMarker(Cons.ALIGHT);
+            //stopSequenceAdapterSetup(listView, offSeqListAdapter);
         }
     }
+
 
 
     protected void restoreState() {
@@ -471,7 +427,7 @@ public class StopFragment extends MapFragment {
     protected void selectStops(Integer boardID, Integer alightID) {
         Marker[] marker = new Marker[2];
         Integer[] index = new Integer[2];
-        ArrayList<Stop> sortedLocList = stopsSequenceSort(locList);
+        ArrayList<Stop> sortedLocList = stopsSequenceSort(stopsList);
 
         for(int i = 0; i < sortedLocList.size(); i++) {
             Stop stop = sortedLocList.get(i);
@@ -486,8 +442,7 @@ public class StopFragment extends MapFragment {
             }
         }
         if(index[0] != null && index[1] != null) {
-            onSeqListAdapter.setSelectedIndex(index[0]);
-            offSeqListAdapter.setSelectedIndex(index[1]);
+            stopSequenceAdapter.setSelectedIndex(index[0]);
             selectedStops.saveSequenceMarker(Cons.BOARD, marker[0]);
             selectedStops.saveSequenceMarker(Cons.ALIGHT, marker[1]);
             manager.setStop(marker[0], Cons.BOARD);

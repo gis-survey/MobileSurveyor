@@ -273,7 +273,7 @@ public class OnOffFragment extends MapFragment {
     private void setupStopSequenceList() {
         //seqView = view.findViewById(R.id.seq_list);
         //stopSeqBtn = (Button) view.findViewById(R.id.stop_seq_btn);
-        //onSeqListView = (ListView) view.findViewById(R.id.on_stops_seq);
+        //seqListView = (ListView) view.findViewById(R.id.on_stops_seq);
         //offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
         //osmText = (TextView) view.findViewById(R.id.osm_text);
         /* if streetcar we need opposite direction stops in case
@@ -419,12 +419,12 @@ public class OnOffFragment extends MapFragment {
     protected void reverseDirection(String mode, Boolean isReversed) {
         if(mode.equals(Cons.ON)) {
             if(isReversed == false) {
-                changeAdapter(onSeqListView, onSeqListAdapter, locListOpposite);
+                changeAdapter(seqListView, onSeqListAdapter, locListOpposite);
                 isOnReversed = true;
                 toggleOnBtn.setText("On Stop (Opposite Direction)");
             }
             else {
-                changeAdapter(onSeqListView, onSeqListAdapter, locList);
+                changeAdapter(seqListView, onSeqListAdapter, locList);
                 isOnReversed = false;
                 toggleOnBtn.setText("On Stop");
             }

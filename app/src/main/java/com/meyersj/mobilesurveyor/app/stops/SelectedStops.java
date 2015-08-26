@@ -38,6 +38,14 @@ public class SelectedStops {
         stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
     }
 
+    public SelectedStops(Context context, ItemizedIconOverlay selOverlay) {
+        this.context = context;
+        this.selOverlay = selOverlay;
+        onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
+        offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
+        stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
+    }
+
     public void setOnAdapter(StopSequenceAdapter onAdapter) {
         this.onAdapter = onAdapter;
     }

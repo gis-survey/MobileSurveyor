@@ -56,12 +56,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
-                MapFragment fragment;
-                if (HEADERS[position].equals("On-Off")) {
-                    fragment = (OnOffFragment) fragments[position];
-                } else {
-                    fragment = (MapFragment) fragments[position];
-                }
+                MapFragment fragment = (MapFragment) fragments[position];
                 fragment.updateView(manager);
                 toggleNavButtons(mViewPager.getCurrentItem());
             }

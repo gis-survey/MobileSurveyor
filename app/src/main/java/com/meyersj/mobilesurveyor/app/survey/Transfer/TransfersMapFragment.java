@@ -3,6 +3,7 @@ package com.meyersj.mobilesurveyor.app.survey.Transfer;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,18 +59,21 @@ public class TransfersMapFragment extends MapFragment {
 
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
-
-        // assume first route is survey route
-        String[] savedRoutes = {line, null, null, null, null};
+        
+        selectedRoutes[0] = rte[0];
+        selectedDirections[0] = rte[1];
 
         // make corrections if previous route information is known
         if(extras != null) {
             String key;
             for(int i = 0; i < 5; i++) {
                 key = "route" + Integer.toString(i+1);
-                int route = extras.getInt(key, -1);
-                if(route != -1) {
-                    savedRoutes[i] = Integer.toString(route);
+                String route = extras.getString(key, "");
+                if(!route.isEmpty()) {
+                    String[] split = route.split("-");
+                    Log.d(TAG, split.toString());
+                    selectedRoutes[i] = split[0];
+                    selectedDirections[i] = split[1];
                 }
             }
         }
@@ -79,15 +83,15 @@ public class TransfersMapFragment extends MapFragment {
 
         //TODO create a factory to make RoutePicker objects and set Next/Previous
         final RoutePicker rp1 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, routesList, savedRoutes[0], true, 1, selectedRoutes, selectedDirections, rte, manager);
+                routesLayout, routesList, selectedRoutes[0], true, 1, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp2 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[1], false, 2, selectedRoutes, selectedDirections, rte, manager);
+                routesLayout, defaultRoutesList, selectedRoutes[1], false, 2, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp3 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[2], false, 3, selectedRoutes, selectedDirections, rte, manager);
+                routesLayout, defaultRoutesList, selectedRoutes[2], false, 3, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp4 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[3], false, 4, selectedRoutes, selectedDirections, rte, manager);
+                routesLayout, defaultRoutesList, selectedRoutes[3], false, 4, selectedRoutes, selectedDirections, rte, manager);
         final RoutePicker rp5 = new RoutePicker(this, activity, inflater, container,
-                routesLayout, defaultRoutesList, savedRoutes[4], false, 5, selectedRoutes, selectedDirections, rte, manager);
+                routesLayout, defaultRoutesList, selectedRoutes[4], false, 5, selectedRoutes, selectedDirections, rte, manager);
 
         rp1.setNext(rp2);
         rp2.setNext(rp3);

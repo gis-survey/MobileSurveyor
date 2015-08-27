@@ -1,8 +1,6 @@
 package com.meyersj.mobilesurveyor.app.survey.OnOff;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -83,6 +81,7 @@ public class StopFragment extends MapFragment {
     protected String line;
     protected String dir;
     protected String mode;
+    protected String stopID;
 
 
     public void initialize(SurveyManager manager, Bundle extras, String mode, SelectedStops selectedStops) {
@@ -290,41 +289,6 @@ public class StopFragment extends MapFragment {
         return stopNames;
     }
 
-    /*
-    protected void selectLocType(final Marker selectedMarker) {
-        Log.d(TAG, "select loc type");
-        String message = selectedMarker.getTitle();
-        final CharSequence[] items = {Cons.BOARD, Cons.ALIGHT};
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(message)
-                .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String choice = items[i].toString();
-                        selectedStops.setCurrentMarker(selectedMarker, choice);
-                    }
-                })
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String choice = selectedStops.getCurrentType();
-                        Log.d(TAG, choice);
-                        manager.setStop(selectedMarker, choice);
-                        selectedStops.saveCurrentMarker(selectedMarker);
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        selectedStops.clearCurrentMarker();
-                    }
-                });
-
-        AlertDialog select = builder.create();
-        select.show();
-    }
-    */
-
     protected ArrayList<Stop> stopsSequenceSort(final ArrayList<Marker> locList) {
         ArrayList<Stop> stops = new ArrayList<Stop>();
         for(Marker marker: locList) {
@@ -365,6 +329,7 @@ public class StopFragment extends MapFragment {
     }
 
 
+    /*
     private void changeAdapter(ListView listView, StopSequenceAdapter adapter, ArrayList<Marker> locList)  {
         ArrayList<Stop> stops = stopsSequenceSort(locList);
         if (adapter == stopSequenceAdapter) {
@@ -380,31 +345,28 @@ public class StopFragment extends MapFragment {
             //stopSequenceAdapterSetup(listView, offSeqListAdapter);
         }
     }
+    */
 
 
 
     protected void restoreState() {
-        if(extras == null)
-            return;
+        if(extras == null) return;
 
-        String stopID;
         if(mode.equals(Cons.BOARD))
-            stopID = extras.getString(Cons.BOARD_ID_ODK, null);
+            this.stopID = extras.getString(Cons.BOARD_ID_ODK, null);
         else
-            stopID = extras.getString(Cons.ALIGHT_ID_ODK, null);
-        if(stopID != null)
-            selectStops(stopID, mode);
+            this.stopID = extras.getString(Cons.ALIGHT_ID_ODK, null);
+        if(this.stopID != null)
+            selectStop(this.stopID, mode);
     }
 
 
-    protected void selectStops(String stopID, String mode) {
+    protected void selectStop(String stopID, String mode) {
+        if(stopID == null || stopID.isEmpty()) return;
         Marker marker = null;
         Integer index = null;
 
-        //Marker[] marker = new Marker[2];
-        //Integer[] index = new Integer[2];
         ArrayList<Stop> sortedLocList = stopsSequenceSort(stopsList);
-
         for(int i = 0; i < sortedLocList.size(); i++) {
             Stop stop = sortedLocList.get(i);
 
@@ -415,15 +377,18 @@ public class StopFragment extends MapFragment {
         }
 
         if(marker != null) {
+            Log.d(TAG, "index: " + String.valueOf(index));
             stopSequenceAdapter.setSelectedIndex(index);
             selectedStops.saveSequenceMarker(mode, marker);
             manager.setStop(marker, mode);
         }
-
+        else {
+            Log.d(TAG, "marker is null");
+        }
     }
 
     public void updateView(SurveyManager manager) {
-        Log.d(TAG, manager.toString());
+        Log.d(TAG, "update view");
         setupStops();
 
         mv.removeOverlay(surveyOverlay);
@@ -434,8 +399,16 @@ public class StopFragment extends MapFragment {
             if(location != null) surveyOverlay.addItem(location);
         }
         mv.addItemizedOverlay(surveyOverlay);
+
+        //if(stopID != null && !stopID.isEmpty()) {
+        //Log.d(TAG, "select stop");
+        selectStop(manager.getStopID(mode), mode);
+        //}
+        //else {
+        //    Log.d(TAG, "stop id empty");
+        //}
     }
-    
+
 
 }
 

@@ -63,15 +63,13 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
 
                 label.setText(stop.getDesc());
 
-                if(position == selectedIndex)
-                {
+                if(position == selectedIndex) {
                     label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_light_grey_nofade));
                     label.setTextColor(context.getResources().getColor(R.color.black));
 
                 }
 
-                else
-                {
+                else {
                     label.setBackground(context.getResources().getDrawable(R.drawable.shape_rect_grey_nofade));
                     label.setTextColor(context.getResources().getColor(R.color.light_grey));
                 }
@@ -87,8 +85,7 @@ public class StopSequenceAdapter extends ArrayAdapter<Stop> {
     }
 
 
-    public void setSelectedIndex(int i)
-    {
+    public void setSelectedIndex(int i) {
         selectedIndex = i;
         notifyDataSetChanged();
     }

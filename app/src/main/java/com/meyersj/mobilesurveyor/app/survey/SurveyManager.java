@@ -197,6 +197,25 @@ public class SurveyManager {
         }
     }
 
+    public String getStopID(String mode) {
+        String stopID = null;
+        if(mode.equals(Cons.BOARD)) {
+            if(this.onStop != null) {
+                Log.d(TAG, "descr: " + onStop.getDescription());
+                stopID = onStop.getDescription();
+            }
+        }
+        else { // alight
+            if(this.offStop != null) {
+                Log.d(TAG, "descr: " + offStop.getDescription());
+                stopID = offStop.getDescription();
+            }
+        }
+        return stopID;
+    }
+
+
+
     public Marker getOnStop(){
         return this.onStop;
     }
@@ -255,7 +274,8 @@ public class SurveyManager {
         Integer count = 0;
         for(int i = 0; i < Cons.MAX_TRANSFERS; i++) {
             if(transfersRoutes[i] != null && !transfersRoutes[i].isEmpty()) {
-                intent.putExtra("route" + String.valueOf(++count), transfersRoutes[i]);
+                String route = transfersRoutes[i] + "-" + transfersDirections[i];
+                intent.putExtra("route" + String.valueOf(++count), route);
             }
             else {
                 intent.putExtra("route" + String.valueOf(++count), "");

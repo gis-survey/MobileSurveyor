@@ -351,54 +351,29 @@ public class PickLocationFragment extends MapFragment {
         return false;
     }
 
+    // gets called everytime a tab is switched
+    // this restores the state of the view showing the correct data
     public void updateView(SurveyManager manager) {
-
-        /*
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
-        Marker orig = manager.getOrig();
-        Marker dest = manager.getDest();
-        Marker onStop = manager.getOnStop();
-        Marker offStop = manager.getOffStop();
-        */
+        Marker location = null;
+        Marker stop = null;
 
         String[] route;
         if(mode.equals("origin")) {
             route = manager.getFirstRoute();
+            location = manager.getOrig();
         }
         else { // destination
             route = manager.getLastRoute();
+            stop = manager.getOffStop();
         }
         clearRoutes();
         addTransferRoute(context, route[0], route[1]);
 
-        /*
-        if(orig != null) {
-            if(mode.equals("origin")) {
-                locOverlay.addItem(orig);
-                orig.addTo(mv);
-            }
-            else {
-                surveyOverlay.addItem(orig);
-            }
-        }
-        if(dest != null) {
-            if(mode.equals("destination")) {
-                locOverlay.addItem(dest);
-                dest.addTo(mv);
-            }
-            else {
-                surveyOverlay.addItem(dest);
-            }
-        }
-        if(onStop != null) {
-            surveyOverlay.addItem(onStop);
-        }
-        if(offStop != null) {
-            surveyOverlay.addItem(offStop);
-        }
+        if(stop != null) surveyOverlay.addItem(stop);
+        if(location != null) surveyOverlay.addItem(location);
         mv.addItemizedOverlay(surveyOverlay);
-        */
     }
 
 }

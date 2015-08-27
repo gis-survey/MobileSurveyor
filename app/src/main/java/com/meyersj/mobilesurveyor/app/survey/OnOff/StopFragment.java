@@ -422,18 +422,34 @@ public class StopFragment extends MapFragment {
     public void updateView(SurveyManager manager) {
         Log.d(TAG, manager.toString());
         setupStops();
-        /*
+
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
-        Marker orig = manager.getOrig();
-        Marker dest = manager.getDest();
-        Marker onStop = manager.getOnStop();
-        Marker offStop = manager.getOffStop();
+
+        if(mode.equals(Cons.BOARD)) {
+            Marker location = manager.getOrig();
+            if(location != null) surveyOverlay.addItem(location);
+        }
+        mv.addItemizedOverlay(surveyOverlay);
+
+        /*
         if(orig != null) {
-            surveyOverlay.addItem(orig);
+            if(mode.equals("origin")) {
+                locOverlay.addItem(orig);
+                orig.addTo(mv);
+            }
+            else {
+                surveyOverlay.addItem(orig);
+            }
         }
         if(dest != null) {
-            surveyOverlay.addItem(dest);
+            if(mode.equals("destination")) {
+                locOverlay.addItem(dest);
+                dest.addTo(mv);
+            }
+            else {
+                surveyOverlay.addItem(dest);
+            }
         }
         if(onStop != null) {
             surveyOverlay.addItem(onStop);
@@ -441,8 +457,9 @@ public class StopFragment extends MapFragment {
         if(offStop != null) {
             surveyOverlay.addItem(offStop);
         }
-        mv.addItemizedOverlay(surveyOverlay);
         */
+
+
     }
 
 

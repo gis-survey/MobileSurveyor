@@ -85,9 +85,10 @@ public class StopFragment extends MapFragment {
     protected String mode;
 
 
-    public void initialize(SurveyManager manager, Bundle extras, String mode) {
+    public void initialize(SurveyManager manager, Bundle extras, String mode, SelectedStops selectedStops) {
         this.manager = manager;
         this.extras = extras;
+        this.selectedStops = selectedStops;
         line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
         dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
         this.mode = mode;
@@ -107,9 +108,8 @@ public class StopFragment extends MapFragment {
         ButterKnife.bind(this, view);
         setTiles(mv);
         setupStops();
-
         //zoomToRoute(mv); // zooms to default route which is not what we want now
-        //restoreState();
+        restoreState();
         return view;
     }
 
@@ -161,6 +161,10 @@ public class StopFragment extends MapFragment {
     }
 
     private void setupStops() {
+        //if(selectedStops == null) {
+        //    selectedStops = new SelectedStops(context, selOverlay);
+        //}
+
         clearRoutes();
         if (mapListener != null) mv.removeListener(mapListener);
         if (stopsOverlay != null) mv.removeOverlay(stopsOverlay);
@@ -185,8 +189,12 @@ public class StopFragment extends MapFragment {
         mv.addListener(mapListener);
         setupStopSequenceList();
         setupStopSearch();
-        selectedStops = new SelectedStops(context, selOverlay);
         selectedStops.setAdapter(stopSequenceAdapter, mode);
+        selectedStops.setOverlay(selOverlay, mode);
+
+        Marker onStop = manager.getOnStop();
+        Marker offStop = manager.getOnStop();
+
     }
 
 
@@ -221,20 +229,10 @@ public class StopFragment extends MapFragment {
     }
 
     private void setupStopSequenceList() {
-        //seqView = view.findViewById(R.id.seq_list);
-        //stopSeqBtn = (Button) view.findViewById(R.id.stop_seq_btn);
-        //seqListView = (ListView) view.findViewById(R.id.on_stops_seq);
-        //offSeqListView = (ListView) view.findViewById(R.id.off_stops_seq);
         //osmText = (TextView) view.findViewById(R.id.osm_text);
-        /* if streetcar we need opposite direction stops in case
-        /* if streetcar we need opposite direction stops in case
-        user toggles that on or off was before start of line */
-        ArrayList<Stop> boardStops = stopsSequenceSort(stopsList);
-        //ArrayList<Stop> alightStops = stopsSequenceSort(alightStopsList);
-        stopSequenceAdapter = new StopSequenceAdapter(activity, boardStops);
-        //offSeqListAdapter = new StopSequenceAdapter(activity, alightStops);
+        ArrayList<Stop> stops = stopsSequenceSort(stopsList);
+        stopSequenceAdapter = new StopSequenceAdapter(activity, stops);
         stopSequenceAdapterSetup(seqListView, stopSequenceAdapter);
-        //stopSequenceAdapterSetup(offSeqListView, offSeqListAdapter);
         stopSeqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -388,35 +386,40 @@ public class StopFragment extends MapFragment {
     protected void restoreState() {
         if(extras == null)
             return;
-        Integer boardID = extras.getInt("board_id", 0);
-        Integer alightID = extras.getInt("alight_id", 0);
-        selectStops(boardID, alightID);
+
+        String stopID;
+        if(mode.equals(Cons.BOARD))
+            stopID = extras.getString(Cons.BOARD_ID_ODK, null);
+        else
+            stopID = extras.getString(Cons.ALIGHT_ID_ODK, null);
+        if(stopID != null)
+            selectStops(stopID, mode);
     }
 
-    protected void selectStops(Integer boardID, Integer alightID) {
-        Marker[] marker = new Marker[2];
-        Integer[] index = new Integer[2];
+
+    protected void selectStops(String stopID, String mode) {
+        Marker marker = null;
+        Integer index = null;
+
+        //Marker[] marker = new Marker[2];
+        //Integer[] index = new Integer[2];
         ArrayList<Stop> sortedLocList = stopsSequenceSort(stopsList);
 
         for(int i = 0; i < sortedLocList.size(); i++) {
             Stop stop = sortedLocList.get(i);
 
-            if(stop.getDescription().equals(String.valueOf(boardID))) {
-                marker[0] = stop;
-                index[0] = i;
-            }
-            if(stop.getDescription().equals(String.valueOf(alightID))) {
-                marker[1] = stop;
-                index[1] = i;
+            if(stop.getDescription().equals(stopID)) {
+                marker = stop;
+                index = i;
             }
         }
-        if(index[0] != null && index[1] != null) {
-            stopSequenceAdapter.setSelectedIndex(index[0]);
-            selectedStops.saveSequenceMarker(Cons.BOARD, marker[0]);
-            selectedStops.saveSequenceMarker(Cons.ALIGHT, marker[1]);
-            manager.setStop(marker[0], Cons.BOARD);
-            manager.setStop(marker[1], Cons.ALIGHT);
+
+        if(marker != null) {
+            stopSequenceAdapter.setSelectedIndex(index);
+            selectedStops.saveSequenceMarker(mode, marker);
+            manager.setStop(marker, mode);
         }
+
     }
 
     public void updateView(SurveyManager manager) {
@@ -431,38 +434,8 @@ public class StopFragment extends MapFragment {
             if(location != null) surveyOverlay.addItem(location);
         }
         mv.addItemizedOverlay(surveyOverlay);
-
-        /*
-        if(orig != null) {
-            if(mode.equals("origin")) {
-                locOverlay.addItem(orig);
-                orig.addTo(mv);
-            }
-            else {
-                surveyOverlay.addItem(orig);
-            }
-        }
-        if(dest != null) {
-            if(mode.equals("destination")) {
-                locOverlay.addItem(dest);
-                dest.addTo(mv);
-            }
-            else {
-                surveyOverlay.addItem(dest);
-            }
-        }
-        if(onStop != null) {
-            surveyOverlay.addItem(onStop);
-        }
-        if(offStop != null) {
-            surveyOverlay.addItem(offStop);
-        }
-        */
-
-
     }
-
-
+    
 
 }
 

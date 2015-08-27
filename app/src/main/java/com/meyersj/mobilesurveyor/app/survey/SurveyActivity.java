@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.meyersj.mobilesurveyor.app.R;
+import com.meyersj.mobilesurveyor.app.stops.SelectedStops;
 import com.meyersj.mobilesurveyor.app.survey.Confirm.ConfirmFragment;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
 import com.meyersj.mobilesurveyor.app.survey.OnOff.OnOffFragment;
@@ -46,6 +47,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         String line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
 
         manager = new SurveyManager(getApplicationContext(), this, line);
+        SelectedStops selectedStops = new SelectedStops(this);
+
         actionBar.setHomeButtonEnabled(false);
         actionBar.setTitle("TransitSurveyor");
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -68,9 +71,9 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         fragments[1] = new PickLocationFragment();
         ((PickLocationFragment) fragments[1]).initialize(manager, "origin", extras);
         fragments[2] = new StopFragment();
-        ((StopFragment) fragments[2]).initialize(manager, extras, Cons.BOARD);
+        ((StopFragment) fragments[2]).initialize(manager, extras, Cons.BOARD, selectedStops);
         fragments[3] = new StopFragment();
-        ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT);
+        ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT, selectedStops);
         fragments[4] = new PickLocationFragment();
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
         fragments[5] = new ConfirmFragment();

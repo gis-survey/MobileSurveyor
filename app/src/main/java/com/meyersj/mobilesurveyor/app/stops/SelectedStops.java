@@ -18,6 +18,10 @@ public class SelectedStops {
     private StopSequenceAdapter onAdapter;
     private StopSequenceAdapter offAdapter;
     private ItemizedIconOverlay selOverlay;
+
+    private ItemizedIconOverlay onOverlay;
+    private ItemizedIconOverlay offOverlay;
+
     private Marker board = null;
     private Marker alight = null;
     private Marker current = null;
@@ -38,9 +42,8 @@ public class SelectedStops {
         stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
     }
 
-    public SelectedStops(Context context, ItemizedIconOverlay selOverlay) {
+    public SelectedStops(Context context) {
         this.context = context;
-        this.selOverlay = selOverlay;
         onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
         offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
         stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
@@ -61,6 +64,15 @@ public class SelectedStops {
         this.offAdapter = offAdapter;
     }
 
+    public void setOverlay(ItemizedIconOverlay overlay, String mode) {
+        if (mode.equals(Cons.BOARD))  {
+            onOverlay = overlay;
+        }
+        else { // alight
+            offOverlay = overlay;
+        }
+    }
+
     public String getCurrentType() {
         return this.currentType;
     }
@@ -71,12 +83,18 @@ public class SelectedStops {
     }
 
     private void refreshOverlay() {
-        selOverlay.removeAllItems();
-        if (board != null) {
-            selOverlay.addItem(board);
+        refreshOverlay(Cons.BOARD);
+        refreshOverlay(Cons.ALIGHT);
+    }
+
+    private void refreshOverlay(String mode) {
+        if (mode.equals(Cons.BOARD) && board != null)  {
+            onOverlay.removeAllItems();
+            onOverlay.addItem(board);
         }
-        if (alight != null) {
-            selOverlay.addItem(alight);
+        else if (mode.equals(Cons.ALIGHT) && alight != null)  {
+            offOverlay.removeAllItems();
+            offOverlay.addItem(alight);
         }
     }
 

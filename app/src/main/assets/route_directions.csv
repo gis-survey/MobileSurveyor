@@ -3,8 +3,8 @@ rte,rte_desc,dir,dir_desc
 101,EmX-101,1,Gateway Station > Eugene Station
 102,EmX-102,0,Eugene Station > Gateway Station
 102,EmX-102,1,Gateway Station > Eugene Station
-1,01-Campbell Center,0,Eugene Station > 2nd & Mill
-1,01-Campbell Center,1,2nd & Mill > Eugene Station
+01,01-Campbell Center,0,Eugene Station > 2nd & Mill
+01,01-Campbell Center,1,2nd & Mill > Eugene Station
 11,11-Thurston,0,Springfield Station > Thurston Station
 11,11-Thurston,1,Thurston Station > Springfield Station
 12,12-Gateway,0,Eugene Station > Gateway Station

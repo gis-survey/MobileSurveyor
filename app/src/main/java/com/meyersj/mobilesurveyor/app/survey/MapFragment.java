@@ -188,6 +188,7 @@ public abstract class MapFragment extends Fragment {
     }
 
     public void updateView(SurveyManager manager) {
+        /*
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
         Marker orig = manager.getOrig();
@@ -207,6 +208,7 @@ public abstract class MapFragment extends Fragment {
             surveyOverlay.addItem(offStop);
         }
         mv.addItemizedOverlay(surveyOverlay);
+        */
     }
 
 

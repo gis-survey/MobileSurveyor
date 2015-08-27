@@ -152,9 +152,7 @@ public class RoutePicker {
 
     protected void setSpinner(String line) {
         if (line != null && !line.isEmpty()){
-            if(!line.equals(rte[0])) {
-                frag.addTransferRoute(context, line, rte[1]);
-            }
+            frag.addTransferRoute(context, line, rte[1]);
             String lineDesc = routeLookup.get(line);
             for (int i = 0; i < routes.size(); i++) {
                 if (routes.get(i).equals(lineDesc)) {

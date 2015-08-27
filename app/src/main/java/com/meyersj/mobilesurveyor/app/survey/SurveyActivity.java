@@ -71,8 +71,6 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         ((StopFragment) fragments[2]).initialize(manager, extras, Cons.BOARD);
         fragments[3] = new StopFragment();
         ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT);
-        //fragments[4] = new OnOffFragment();
-        //((OnOffFragment) fragments[4]).initialize(manager, extras);
         fragments[4] = new PickLocationFragment();
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
         fragments[5] = new ConfirmFragment();

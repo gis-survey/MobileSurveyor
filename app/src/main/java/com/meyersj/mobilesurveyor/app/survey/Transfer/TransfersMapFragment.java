@@ -53,14 +53,16 @@ public class TransfersMapFragment extends MapFragment {
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         routesList = DataLoader.getRoutes(context);
 
-        addDefaultRoute(context, line, dir);
+        //addDefaultRoute(context, line, dir);
         String[] rte = new String[] {line, dir};
 
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
 
+        // assume first route is survey route
         String[] savedRoutes = {line, null, null, null, null};
 
+        // make corrections if previous route information is known
         if(extras != null) {
             String key;
             for(int i = 0; i < 5; i++) {

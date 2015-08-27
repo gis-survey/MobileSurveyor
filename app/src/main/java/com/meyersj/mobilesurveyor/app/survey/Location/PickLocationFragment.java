@@ -176,12 +176,6 @@ public class PickLocationFragment extends MapFragment {
                         manager.updateMode(mode, "");
                         Log.d(TAG, "selected IS empty");
                     }
-                    //if (selected.contains("walk")) {
-                    //    manager.inputBlocks(activity, mode);
-                    //} else if (selected.contains("parked") || selected.contains("drive") ||
-                    //        selected.contains("carpool")) {
-                    //    manager.inputParking(activity, mode);
-                    //} else
                     if (selected.contains("other")) {
                         manager.inputModeOther(activity, mode);
                     }

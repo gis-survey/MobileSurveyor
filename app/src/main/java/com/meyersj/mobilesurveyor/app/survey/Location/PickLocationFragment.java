@@ -122,7 +122,7 @@ public class PickLocationFragment extends MapFragment {
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        addDefaultRoute(context, line, dir);
+        //addDefaultRoute(context, line, dir);
         ArrayList<Marker> stopsList = getStops(line, dir, true);
         stopsOverlay = newItemizedOverlay(stopsList);
         mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
@@ -352,13 +352,27 @@ public class PickLocationFragment extends MapFragment {
     }
 
     public void updateView(SurveyManager manager) {
+
+        /*
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
         Marker orig = manager.getOrig();
         Marker dest = manager.getDest();
         Marker onStop = manager.getOnStop();
         Marker offStop = manager.getOffStop();
+        */
 
+        String[] route;
+        if(mode.equals("origin")) {
+            route = manager.getFirstRoute();
+        }
+        else { // destination
+            route = manager.getLastRoute();
+        }
+        clearRoutes();
+        addTransferRoute(context, route[0], route[1]);
+
+        /*
         if(orig != null) {
             if(mode.equals("origin")) {
                 locOverlay.addItem(orig);
@@ -384,6 +398,7 @@ public class PickLocationFragment extends MapFragment {
             surveyOverlay.addItem(offStop);
         }
         mv.addItemizedOverlay(surveyOverlay);
+        */
     }
 
 }

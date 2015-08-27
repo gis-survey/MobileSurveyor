@@ -96,9 +96,9 @@ public class RoutePicker {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String routeID = routeLookup.get(routes.get(i));
                 if(!noSelection) { //ignore when view is first constructed
-                    if (i > 0) { //ignore if route picked is first item in list (empty string)
+                    if (i > 0 || number == 1) { //ignore if route picked is first item in list (empty string)
                         String selRte = selectedRoutes[number - 1];
-                        if(selRte != null && !selRte.equals(rte[0])) {
+                        if(selRte != null) { // && !selRte.equals(rte[0])) {
                             frag.clearRoute(selRte, rte[1]);
                         }
                         selectedRoutes[number - 1] = routeID;

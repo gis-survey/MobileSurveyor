@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -39,7 +38,7 @@ public class SurveyManager {
 
     public class Location {
         public Marker loc;
-        public String region; //outside of region, yes == 1, no == 2, ignore location
+        public Boolean outsideRegion;
         public String purpose;
         public String purposeOther;
         public String mode;
@@ -49,7 +48,7 @@ public class SurveyManager {
 
         public Location() {
             loc = null;
-            region = "";  //default not outside region
+            outsideRegion = false;  //default not outside outsideRegion
             purpose = "";
             purposeOther = "";
             mode = "";
@@ -59,7 +58,7 @@ public class SurveyManager {
         }
 
         public Boolean validate() {
-            if(loc == null && region.isEmpty())
+            if(loc == null && !outsideRegion)
                 return false;
             if(purpose.isEmpty() || mode.isEmpty())
                 return false;
@@ -67,12 +66,13 @@ public class SurveyManager {
         }
     }
 
-    public SurveyManager(Context context, Activity activity, String line, Bundle extras) {
+    public SurveyManager(Context context, Activity activity, String line, String dir, Bundle extras) {
         this.context = context;
         this.activity = activity;
         this.orig = new Location();
         this.dest = new Location();
         this.line = line;
+        this.dir = dir;
         routeLookup = DataLoader.getRoutesLookup(context);
         dirLookup = DataLoader.getDirLookup(context);
         restoreData(extras);
@@ -83,29 +83,28 @@ public class SurveyManager {
     }
 
     public Boolean[] validate() {
-        Boolean[] flags = new Boolean[4];
-        flags[0] = this.orig.validate();
-        flags[1] = this.dest.validate();
-        flags[2] = false;
-        if(onStop != null && offStop != null)
-            flags[2] = true;
-        flags[3] = false;
-        printTransfers();
-        Log.d(TAG, line);
-        for(String route: transfersRoutes) {
-            if(route != null && !route.isEmpty() && route.equals(line)) {
-                flags[3] = true;
+        Boolean[] flags = new Boolean[5];
+        flags[0] = false;
+        for(int i = 0; i < transfersRoutes.length; i++) {
+            String[] rte = {transfersRoutes[i], transfersDirections[i]};
+            if(rte[0] != null && !rte[0].isEmpty() && rte[0].equals(line) &&
+                    rte[1] != null && !rte[1].isEmpty() && rte[1].equals(dir)) {
+                flags[0] = true;
                 break;
             }
         }
+        flags[1] = this.orig.validate();
+        flags[2] = onStop != null;
+        flags[3] = offStop != null;
+        flags[4] = this.dest.validate();
         return flags;
     }
 
     public void setLocation(Marker marker, String mode) {
-        if(mode.equals("origin")) {
+        if(mode.equals(Cons.ORIG)) {
             this.orig.loc = marker;
         }
-        else if(mode.equals("destination")) {
+        else if(mode.equals(Cons.DEST)) {
             this.dest.loc = marker;
         }
     }
@@ -131,40 +130,40 @@ public class SurveyManager {
         }
     }
 
-    public void setRegion(String region, String passage) {
-        if(passage.equals("origin")) {
-            this.orig.region = region;
+    public void setRegion(Boolean region, String passage) {
+        if(passage.equals(Cons.ORIG)) {
+            this.orig.outsideRegion = region;
         }
-        else if(passage.equals("destination")) {
-            this.dest.region = region;
+        else if(passage.equals(Cons.DEST)) {
+            this.dest.outsideRegion = region;
         }
     }
 
     public void updatePurpose(String passage, String purposeValue) {
-        if(passage.equals("origin")) {
+        if(passage.equals(Cons.ORIG)) {
             this.orig.purpose = purposeValue;
             this.orig.purposeOther = null;
         }
-        else if(passage.equals("destination")) {
+        else if(passage.equals(Cons.DEST)) {
             this.dest.purpose = purposeValue;
             this.dest.purposeOther = null;
         }
     }
     public void updatePurposeOther(String passage, String otherValue) {
-        if(passage.equals("origin")) {
+        if(passage.equals(Cons.ORIG)) {
             this.orig.purposeOther = otherValue;
         }
-        else if(passage.equals("destination")) {
+        else if(passage.equals(Cons.DEST)) {
             this.dest.purposeOther = otherValue;
         }
     }
 
     public void updateMode(String passage, String modeValue) {
-        if(passage.equals("origin")) {
+        if(passage.equals(Cons.ORIG)) {
             this.orig.mode = modeValue;
             this.orig.modeOther = null;
         }
-        else if(passage.equals("destination")) {
+        else if(passage.equals(Cons.DEST)) {
             this.dest.mode = modeValue;
             this.dest.modeOther = null;
 
@@ -172,10 +171,10 @@ public class SurveyManager {
     }
 
     public void updateModeOther(String passage, String otherValue) {
-        if(passage.equals("origin")) {
+        if(passage.equals(Cons.ORIG)) {
             this.orig.modeOther = otherValue;
         }
-        else if(passage.equals("destination")) {
+        else if(passage.equals(Cons.DEST)) {
             this.dest.modeOther = otherValue;
         }
     }
@@ -211,7 +210,7 @@ public class SurveyManager {
         intent.putExtra(key("orig", Cons.PURPOSE_OTHER_ODK), orig.purposeOther);
         intent.putExtra(key("orig", Cons.ACCESS_ODK), orig.mode);
         intent.putExtra(key("orig", Cons.ACCESS_OTHER_ODK), orig.modeOther);
-        intent.putExtra(key("orig", "region"), orig.region);
+        intent.putExtra(key("orig", "outside_region"), orig.outsideRegion.toString());
         if(orig.loc != null) {
             LatLng latLng = orig.loc.getPoint();
             intent.putExtra(key("orig", Cons.LAT_ODK), latLng.getLatitude());
@@ -225,7 +224,7 @@ public class SurveyManager {
         intent.putExtra(key("dest", Cons.PURPOSE_OTHER_ODK), dest.purposeOther);
         intent.putExtra(key("dest", Cons.EGRESS_ODK), dest.mode);
         intent.putExtra(key("dest", Cons.EGRESS_OTHER_ODK), dest.modeOther);
-        intent.putExtra(key("dest", "region"), dest.region);
+        intent.putExtra(key("dest", "outside_region"), dest.outsideRegion.toString());
         if(dest.loc != null) {
             LatLng latLng = dest.loc.getPoint();
             intent.putExtra(key("dest", Cons.LAT_ODK), latLng.getLatitude());
@@ -349,19 +348,6 @@ public class SurveyManager {
         this.transfersDirections = transfersDirections;
     }
 
-
-    protected void printTransfers() {
-        String sel = "";
-        for (String s : transfersRoutes) {
-            if (s == null || s.isEmpty()) {
-                sel += "null, ";
-            } else {
-                sel += s + ", ";
-            }
-        }
-        Log.d(TAG, "Transfers: " + sel);
-    }
-
     public String[] getFirstRoute() {
         String[] first = {transfersRoutes[0], transfersDirections[0]};
         return first;
@@ -410,6 +396,5 @@ public class SurveyManager {
             updateModeOther("destination", modeOther);
         }
     }
-
 
 }

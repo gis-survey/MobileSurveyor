@@ -98,14 +98,13 @@ public class RoutePicker {
                 if(!noSelection) { //ignore when view is first constructed
                     if (i > 0 || number == 1) { //ignore if route picked is first item in list (empty string)
                         String selRte = selectedRoutes[number - 1];
-                        if(selRte != null) { // && !selRte.equals(rte[0])) {
+                        if(selRte != null) {
                             frag.clearRoute(selRte, rte[1]);
                         }
                         selectedRoutes[number - 1] = routeID;
-                        //if(!routeID.equals(rte[0])) {
+                        selectedDirections[number - 1] = null;
                         manager.inputTransferDirection((Activity) context, routeID, number - 1);
                         frag.addTransferRoute(context, routeID, rte[1]);
-                        //}
                     }
                     if (next != null) {
                         next.setViewVisibility(View.VISIBLE);

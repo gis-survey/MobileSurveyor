@@ -54,22 +54,19 @@ public class Cons {
 
 
     // keys for survey valyes for ODK
+    public static final String ORIG = "origin";
+    public static final String DEST = "destination";
     public static final String PURPOSE_ODK = "purpose";
     public static final String PURPOSE_OTHER_ODK = "purpose_other";
     public static final String ACCESS_ODK = "access";
     public static final String ACCESS_OTHER_ODK = "access_other";
     public static final String EGRESS_ODK = "egress";
     public static final String EGRESS_OTHER_ODK = "egress_other";
-    public static final String BLOCKS_ODK = "blocks";
-    public static final String PARKING_ODK = "parking";
     public static final String LAT_ODK = "lat";
     public static final String LNG_ODK = "lng";
     public static final String BOARD_ID_ODK = "board_id";
     public static final String ALIGHT_ID_ODK = "alight_id";
-    public static final String TRANSFER_ODK = "transfer";
-
     public static final int MAX_TRANSFERS = 5;
-    public static final Double PADDING = 0.01;
 
 
     public static final String ROUTE_DIRECTIONS_CSV = "route_directions.csv";

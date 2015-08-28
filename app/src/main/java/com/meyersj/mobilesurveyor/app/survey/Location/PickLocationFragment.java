@@ -1,6 +1,9 @@
 package com.meyersj.mobilesurveyor.app.survey.Location;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,8 +77,8 @@ public class PickLocationFragment extends MapFragment {
         destIcon = context.getResources().getDrawable(R.drawable.end);
 
         TextView desc = (TextView) view.findViewById(R.id.mode_desc);
-        if(mode.equals("origin")) desc.setText("Starting Location");
-        else if(mode.equals("destination")) desc.setText("Ending Location");
+        if(mode.equals(Cons.ORIG)) desc.setText("Starting Location");
+        else if(mode.equals(Cons.DEST)) desc.setText("Ending Location");
         else desc.setText("Location");
 
         clear = (ImageButton) view.findViewById(R.id.clear_text);
@@ -94,16 +97,16 @@ public class PickLocationFragment extends MapFragment {
         setTiles(mv);
         locOverlay = newItemizedOverlay(locList);
         mv.addOverlay(locOverlay);
-        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, originIcon, destIcon));
+        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, originIcon, destIcon, region));
 
         prop = Utils.getProperties(context, Cons.PROPERTIES);
-        if (mode.equals("origin")) {
+        if (mode.equals(Cons.ORIG)) {
             ArrayAdapter<CharSequence> accessAdapter = ArrayAdapter.createFromResource(
                     view.getContext(), R.array.access_mode_array, android.R.layout.simple_spinner_item);
             accessAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             modeSpinner.setAdapter(accessAdapter);
             modeSpinnerText.setText("Mode of access: ");
-        } else if (mode.equals("destination")) {
+        } else if (mode.equals(Cons.DEST)) {
             ArrayAdapter<CharSequence> egressAdapter = ArrayAdapter.createFromResource(
                     view.getContext(), R.array.egress_mode_array, android.R.layout.simple_spinner_item);
             egressAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -155,10 +158,12 @@ public class PickLocationFragment extends MapFragment {
             @Override
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
-                    manager.setRegion("1", mode);
+                    manager.setRegion(true, mode);
+                    if(locOverlay.size() > 0)
+                        verifyClearLocation(getActivity());
                 }
                 else {
-                    manager.setRegion("2", mode);
+                    manager.setRegion(false, mode);
                 }
             }
         });
@@ -211,6 +216,26 @@ public class PickLocationFragment extends MapFragment {
         return view;
     }
 
+    public void verifyClearLocation(final Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setMessage("Do you also want to remove the location?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        clearMarkers();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+        AlertDialog select = builder.create();
+        select.show();
+    }
+
     protected ArrayList<Marker> getStops(String line, String dir, Boolean zoom) {
         String geoJSONName = line + "_" + dir + "_stops.geojson";
         Log.d(TAG, geoJSONName);
@@ -248,9 +273,9 @@ public class PickLocationFragment extends MapFragment {
         if(latLng != null) {
             clearMarkers();
             Marker m = new Marker(null, null, latLng);
-            if(mode.equals("origin"))
+            if(mode.equals(Cons.ORIG))
                 m.setMarker(originIcon);
-            if(mode.equals("destination")) {
+            if(mode.equals(Cons.DEST)) {
                 m.setMarker(destIcon);
             }
             m.addTo(mv);
@@ -259,12 +284,15 @@ public class PickLocationFragment extends MapFragment {
             mv.setCenter(latLng);
             mv.setZoom(17);
             manager.setLocation(m, mode);
+            manager.setRegion(false, mode);
+            if(region.isChecked()) region.setChecked(false);
         }
     }
 
     private void clearMarkers() {
         locOverlay.setFocus(null);
         locOverlay.removeAllItems();
+        manager.setLocation(null, mode);
         mv.invalidate();
     }
 
@@ -273,62 +301,36 @@ public class PickLocationFragment extends MapFragment {
             return;
 
         String purposeKey;
-        //String purposeOtherKey;
         String modeKey;
-        //String modeOtherKey;
-        //String blocksKey;
-        //String parkingKey;
         String latKey;
         String lngKey;
         String regionKey;
 
-        if(mode.equals("origin")) {
+        // TODO make this better
+        if(mode.equals(Cons.ORIG)) {
             purposeKey = "orig_purpose";
-            //purposeOtherKey = "orig_purpose_other";
             modeKey = "orig_access";
-            //modeOtherKey = "orig_access_other";
-            //blocksKey = "orig_blocks";
-            //parkingKey = "orig_parking";
             latKey = "orig_lat";
             lngKey = "orig_lng";
-            regionKey = "orig_region";
+            regionKey = "orig_outside_region";
         }
         else {
             purposeKey = "dest_purpose";
-            //purposeOtherKey = "dest_purpose_other";
             modeKey = "dest_egress";
-            //modeOtherKey = "dest_access_other";
-            //blocksKey = "dest_blocks";
-            //parkingKey = "dest_parking";
             latKey = "dest_lat";
             lngKey = "dest_lng";
-            regionKey = "dest_region";
+            regionKey = "dest_outside_region";
         }
         if(hasExtra(purposeKey)) {
             Integer index = extras.getInt(purposeKey, -1);
             if(index > 0) {
                 locationSpinner.setSelection(index);
-                //manager.updatePurpose(mode, String.valueOf(index));
-                //if (hasExtra(purposeOtherKey)) {
-                    //String purposeOther = extras.getString(purposeOtherKey);
-                    //manager.updatePurposeOther(mode, purposeOther);
-                //}
             }
         }
         if(hasExtra(modeKey)) {
             Integer index = extras.getInt(modeKey, -1);
             if(index > 0) {
                 modeSpinner.setSelection(index);
-                //manager.updateMode(mode, String.valueOf(index));
-                //if(hasExtra(modeOtherKey)) {
-                //    manager.updateModeOther(mode, extras.getString(modeOtherKey));
-               // }
-                //if(hasExtra(blocksKey)) {
-                //    manager.updateBlocks(mode, String.valueOf(extras.getInt(blocksKey)));
-                //}
-                //if(hasExtra(parkingKey)) {
-                //    manager.updateParking(mode, extras.getString(parkingKey));
-                //}
             }
         }
         if(hasExtra(latKey) && hasExtra(lngKey)) {
@@ -337,9 +339,9 @@ public class PickLocationFragment extends MapFragment {
             addMarker(new LatLng(lat, lng));
         }
         if(hasExtra(regionKey)) {
-            String reg = extras.getString(regionKey);
-            manager.setRegion(reg, mode);
-            if(reg.equals("1")) region.setChecked(true);
+            Boolean outsideRegion = Boolean.valueOf(extras.getString(regionKey, "false"));
+            manager.setRegion(outsideRegion, mode);
+            region.setChecked(outsideRegion);
         }
 
     }
@@ -374,8 +376,9 @@ public class PickLocationFragment extends MapFragment {
         addTransferRoute(context, route[0], route[1]);
 
         if(stop != null) surveyOverlay.addItem(stop);
-        if(location != null) surveyOverlay.addItem(location);
+        if(location != null) locOverlay.addItem(location);
         mv.addItemizedOverlay(surveyOverlay);
+        mv.addItemizedOverlay(locOverlay);
     }
 
 }

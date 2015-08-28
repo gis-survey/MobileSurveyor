@@ -1,6 +1,7 @@
 package com.meyersj.mobilesurveyor.app.survey.Location;
 
 import android.graphics.drawable.Drawable;
+import android.widget.CheckBox;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -9,25 +10,28 @@ import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.mapbox.mapboxsdk.views.MapViewListener;
 import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
 
 public class PickLocationMapViewListener implements MapViewListener {
-    private final String TAG = "MyMapViewListener";
+    private final String TAG = getClass().getCanonicalName();
     private ItemizedIconOverlay locOverlay;
-    private SurveyManager manager;
     private String mode;
-    private Drawable circle;
-    private Drawable square;
+    private Drawable start;
+    private Drawable end;
     private PickLocationFragment fragment;
+    private SurveyManager manager;
+    private CheckBox outsideRegion;
 
 
     public PickLocationMapViewListener(PickLocationFragment fragment, ItemizedIconOverlay locOverlay, SurveyManager manager, String mode,
-                                       Drawable circle, Drawable square) {
+                                       Drawable start, Drawable end, CheckBox outsideRegion) {
         this.locOverlay = locOverlay;
         this.manager = manager;
+        this.outsideRegion = outsideRegion;
         this.mode = mode;
-        this.circle = circle;
-        this.square = square;
+        this.start = start;
+        this.end = end;
         this.fragment = fragment;
     }
 
@@ -55,13 +59,13 @@ public class PickLocationMapViewListener implements MapViewListener {
         LatLng latLng = new LatLng(iLatLng.getLatitude(), iLatLng.getLongitude());
         Marker m = new Marker(mapView, "", null, latLng);
         if(manager != null) {
-            if(mode.equals("origin")) {
+            if(mode.equals(Cons.ORIG)) {
                 if (manager.getOrig() != null) fragment.removeLocation(manager.getOrig());
-                m.setMarker(circle);
+                m.setMarker(start);
             }
-            else if(mode.equals("destination")) {
+            else if(mode.equals(Cons.DEST)) {
                 if (manager.getDest() != null) fragment.removeLocation(manager.getDest());
-                m.setMarker(square);
+                m.setMarker(end);
             }
             manager.setLocation(m, mode);
         }
@@ -69,6 +73,8 @@ public class PickLocationMapViewListener implements MapViewListener {
         locOverlay.addItem(m);
         mapView.invalidate();
         m.addTo(mapView);
+        manager.setRegion(false, mode);
+        if(outsideRegion.isChecked()) outsideRegion.setChecked(false);
     }
 }
 

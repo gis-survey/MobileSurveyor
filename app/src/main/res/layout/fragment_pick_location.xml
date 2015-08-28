@@ -106,7 +106,8 @@
             android:textSize="20px"
             android:textColor="@color/black"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"/>
 
         <LinearLayout
 

@@ -16,18 +16,17 @@ import android.widget.Button;
 
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.stops.SelectedStops;
-import com.meyersj.mobilesurveyor.app.survey.Confirm.ConfirmFragment;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
-import com.meyersj.mobilesurveyor.app.survey.OnOff.OnOffFragment;
 import com.meyersj.mobilesurveyor.app.survey.OnOff.StopFragment;
 import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
 
-    private final String TAG = "SurveyActivity";
+    private final String TAG = getClass().getCanonicalName();
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
-    protected static final String[] HEADERS = {"Routes", "Start", "On", "Off", "End", "Confirm"};
+    protected static final String[] HEADERS = {"Routes", "Start", "On", "Off", "End"};
 
     protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected ViewPager mViewPager;
@@ -45,8 +44,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         final ActionBar actionBar = getActionBar();
         Bundle extras = getODKExtras();
         String line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
-
-        manager = new SurveyManager(getApplicationContext(), this, line, extras);
+        String dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
+        manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
         SelectedStops selectedStops = new SelectedStops(this);
 
         actionBar.setHomeButtonEnabled(false);
@@ -76,8 +75,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT, selectedStops);
         fragments[4] = new PickLocationFragment();
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
-        fragments[5] = new ConfirmFragment();
-        ((ConfirmFragment) fragments[5]).setParams(this, manager, mViewPager);
+        //fragments[5] = new ConfirmFragment();
+        //((ConfirmFragment) fragments[5]).setParams(this, manager, mViewPager);
 
         for (int i = 0; i < HEADERS.length; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
@@ -95,17 +94,58 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             public void onClick(View view) {
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
                 toggleNavButtons(mViewPager.getCurrentItem());
+                if(mViewPager.getCurrentItem() != HEADERS.length - 1) return;
+                validateSubmit();
             }
+
         });
+    }
+
+    protected void exitWithSurveyBundle(Boolean valid) {
+        int result  = this.RESULT_CANCELED;
+        Intent intent = new Intent();
+        if (valid) {
+            intent = manager.addExtras(intent);
+            result = RESULT_OK;
+        }
+        setResult(result, intent);
+        finish();
+    }
+
+    protected void validateSubmit() {
+        Boolean[] validate = manager.validate();
+        Log.d(TAG,validate.toString());
+        for (int i = 0; i < validate.length; i++) {
+            if (!validate[i]) {
+                String msg = "";
+                switch (i) {
+                    case 0: msg = "you must include the current route/direction"; break;
+                    case 1: msg = "missing information about start location"; break;
+                    case 2: msg = "on location is incomplete"; break;
+                    case 3: msg = "off location is incomplete"; break;
+                    case 4: msg = "missing information about ending location"; break;
+                }
+                if(!msg.isEmpty()) {
+                    Utils.shortToastCenter(getApplicationContext(), msg);
+                    mViewPager.setCurrentItem(i);
+                    return;
+                }
+            }
+        }
+        exitWithSurveyBundle(true);
     }
 
     protected void toggleNavButtons(int item) {
         previousBtn.setEnabled(true);
         nextBtn.setEnabled(true);
-        if(item == 0)
-            previousBtn.setEnabled(false);
-        if(item == HEADERS.length - 1)
-            nextBtn.setEnabled(false);
+        if(item == 0) previousBtn.setEnabled(false);
+        if(item == HEADERS.length - 1) {
+            nextBtn.setText("Submit");
+            //nextBtn.setEnabled(false);
+        }
+        else {
+            nextBtn.setText("Next");
+        }
     }
 
     @Override

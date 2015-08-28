@@ -180,24 +180,6 @@ public class SurveyManager {
         }
     }
 
-    public void updateBlocks(String passage, String blocksValue) {
-        if(passage.equals("origin")) {
-            this.orig.blocks = blocksValue;
-        }
-        else if(passage.equals("destination")) {
-            this.dest.blocks = blocksValue;
-        }
-    }
-
-    public void updateParking(String passage, String parkingValue) {
-        if(passage.equals("origin")) {
-            this.orig.parking = parkingValue;
-        }
-        else if(passage.equals("destination")) {
-            this.dest.parking = parkingValue;
-        }
-    }
-
     public String getStopID(String mode) {
         String stopID = null;
         if(mode.equals(Cons.BOARD)) {
@@ -216,7 +198,6 @@ public class SurveyManager {
     }
 
 
-
     public Marker getOnStop(){
         return this.onStop;
     }
@@ -230,8 +211,6 @@ public class SurveyManager {
         intent.putExtra(key("orig", Cons.PURPOSE_OTHER_ODK), orig.purposeOther);
         intent.putExtra(key("orig", Cons.ACCESS_ODK), orig.mode);
         intent.putExtra(key("orig", Cons.ACCESS_OTHER_ODK), orig.modeOther);
-        intent.putExtra(key("orig", Cons.BLOCKS_ODK), orig.blocks);
-        intent.putExtra(key("orig", Cons.PARKING_ODK), orig.parking);
         intent.putExtra(key("orig", "region"), orig.region);
         if(orig.loc != null) {
             LatLng latLng = orig.loc.getPoint();
@@ -246,8 +225,6 @@ public class SurveyManager {
         intent.putExtra(key("dest", Cons.PURPOSE_OTHER_ODK), dest.purposeOther);
         intent.putExtra(key("dest", Cons.EGRESS_ODK), dest.mode);
         intent.putExtra(key("dest", Cons.EGRESS_OTHER_ODK), dest.modeOther);
-        intent.putExtra(key("dest", Cons.BLOCKS_ODK), dest.blocks);
-        intent.putExtra(key("dest", Cons.PARKING_ODK), dest.parking);
         intent.putExtra(key("dest", "region"), dest.region);
         if(dest.loc != null) {
             LatLng latLng = dest.loc.getPoint();

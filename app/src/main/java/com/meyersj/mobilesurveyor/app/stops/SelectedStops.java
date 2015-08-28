@@ -2,19 +2,18 @@ package com.meyersj.mobilesurveyor.app.stops;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 
 public class SelectedStops {
 
-    private final String TAG = "SaveSelectedStops";
+    private final String TAG = getClass().getCanonicalName();
 
-    private Context context;
     private StopSequenceAdapter onAdapter;
     private StopSequenceAdapter offAdapter;
     private ItemizedIconOverlay selOverlay;
@@ -33,20 +32,18 @@ public class SelectedStops {
     public SelectedStops(
             Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter,
             ItemizedIconOverlay selOverlay) {
-        this.context = context;
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
-        stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
+        offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        stopIcon = Utils.getBusStopDrawable(context);
     }
 
     public SelectedStops(Context context) {
-        this.context = context;
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_30);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_30);
-        stopIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
+        offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        stopIcon = Utils.getBusStopDrawable(context);
     }
 
     public void setAdapter(StopSequenceAdapter adapter, String mode) {

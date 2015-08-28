@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -185,11 +186,15 @@ public class Utils {
 
     public static Paint  transferRoutePaint(Context context) {
         Paint paint = new Paint();
-        paint.setColor(context.getResources().getColor(R.color.bluer_lighter));
+        paint.setColor(context.getResources().getColor(R.color.blacker));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(5.5f);
+        paint.setStrokeWidth(4.0f);
         paint.setStyle(Paint.Style.STROKE);
         return paint;
+    }
+
+    public static Drawable getBusStopDrawable(Context context) {
+        return context.getResources().getDrawable(R.drawable.circle_32);
     }
 
 

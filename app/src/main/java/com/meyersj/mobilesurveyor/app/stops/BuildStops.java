@@ -12,8 +12,8 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
-import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.util.BuildBoundingBox;
+import com.meyersj.mobilesurveyor.app.util.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +49,8 @@ public class BuildStops {
     }
 
     private void parseGeoJSON(FeatureCollection parsed) {
-        Drawable circleIcon = context.getResources().getDrawable(R.drawable.circle_24);
+        Drawable circleIcon = Utils.getBusStopDrawable(context);
+
         try {
             for (Feature f : parsed.getFeatures()) {
                 if (f.getGeometry() instanceof Point) {

@@ -46,7 +46,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         Bundle extras = getODKExtras();
         String line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
 
-        manager = new SurveyManager(getApplicationContext(), this, line);
+        manager = new SurveyManager(getApplicationContext(), this, line, extras);
         SelectedStops selectedStops = new SelectedStops(this);
 
         actionBar.setHomeButtonEnabled(false);

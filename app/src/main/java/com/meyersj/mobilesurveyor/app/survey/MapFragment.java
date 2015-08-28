@@ -62,9 +62,6 @@ public abstract class MapFragment extends Fragment {
     protected String line;
     protected String dir;
 
-    //public MapFragment() {
-    //   //TODO move ODK extras fetching into this parent class instead of indiv. frags
-    //}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,6 +97,9 @@ public abstract class MapFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
+
 
     protected ITileLayer buildMapBoxTiles() {
         String tileID = "mapbox.streets";
@@ -192,67 +192,6 @@ public abstract class MapFragment extends Fragment {
         surveyOverlay.removeItem(loc);
     }
 
-    public void updateView(SurveyManager manager) {
-        /*
-        mv.removeOverlay(surveyOverlay);
-        surveyOverlay.removeAllItems();
-        Marker orig = manager.getOrig();
-        Marker dest = manager.getDest();
-        Marker onStop = manager.getOnStop();
-        Marker offStop = manager.getOffStop();
-        if(orig != null) {
-            surveyOverlay.addItem(orig);
-        }
-        if(dest != null) {
-            surveyOverlay.addItem(dest);
-        }
-        if(onStop != null) {
-            surveyOverlay.addItem(onStop);
-        }
-        if(offStop != null) {
-            surveyOverlay.addItem(offStop);
-        }
-        mv.addItemizedOverlay(surveyOverlay);
-        */
-    }
-
-
-    public class Bounds {
-        double north = 0;
-        double east = 0;
-        double south = 0;
-        double west = 0;
-        double BUFFER = 0.01;
-
-        public Bounds() {}
-
-        protected void update(Marker marker) {
-            if(marker != null) {
-                Double lat = marker.getPoint().getLatitude();
-                Double lng = marker.getPoint().getLongitude();
-                if(north == 0 || lat > north) north = lng;
-                if(south == 0 || lat < south) south = lng;
-                if(west == 0 || lat < west) west = lng;
-                if(east == 0 || lat > east) east = lng;
-            }
-        }
-
-        public BoundingBox getBounds() {
-            return new BoundingBox(north + BUFFER, east + BUFFER, south - BUFFER, west - BUFFER);
-        }
-
-    }
-
-
-    protected BoundingBox getBoundingBox(Bounds bounds, ArrayList<Marker> markers, int count) {
-        if (count <= 0) {
-            return bounds.getBounds();
-        }
-        if (bounds == null) {
-            bounds = new Bounds();
-        }
-        bounds.update(markers.get(count - 1));
-        return this.getBoundingBox(bounds, markers, count - 1);
-    }
+    public abstract void updateView(SurveyManager manager);
 
 }

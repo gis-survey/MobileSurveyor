@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
+import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.survey.MapFragment;
@@ -53,13 +55,9 @@ public class TransfersMapFragment extends MapFragment {
         setTiles(mv);
         transfersBtn = (Button) view.findViewById(R.id.transfers_btn);
         routesList = DataLoader.getRoutes(context);
-
-        //addDefaultRoute(context, line, dir);
         String[] rte = new String[] {line, dir};
-
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
-
         selectedRoutes[0] = rte[0];
         selectedDirections[0] = rte[1];
 
@@ -114,6 +112,7 @@ public class TransfersMapFragment extends MapFragment {
             }
         });
 
+        updateView(manager);
         return view;
     }
 
@@ -144,5 +143,20 @@ public class TransfersMapFragment extends MapFragment {
             transfersBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }
+    }
+
+    public void updateView(SurveyManager manager) {
+        mv.removeOverlay(surveyOverlay);
+        surveyOverlay.removeAllItems();
+        addItem(surveyOverlay, manager.getOrig());
+        addItem(surveyOverlay, manager.getDest());
+        addItem(surveyOverlay, manager.getOnStop());
+        addItem(surveyOverlay, manager.getOffStop());
+        mv.addItemizedOverlay(surveyOverlay);
+    }
+
+    public void addItem(ItemizedIconOverlay overlay, Marker item) {
+        if(item != null && overlay != null)
+            overlay.addItem(item);
     }
 }

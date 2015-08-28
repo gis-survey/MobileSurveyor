@@ -197,7 +197,7 @@ public class PickLocationFragment extends MapFragment {
                     else {
                         manager.updatePurpose(mode, "");
                     }
-                    if (selected.contains("other (specify)")) {
+                    if (selected.contains("other")) {
                         manager.inputPurposeOther(activity, mode); // specify other location type
                     }
                 }
@@ -273,33 +273,33 @@ public class PickLocationFragment extends MapFragment {
             return;
 
         String purposeKey;
-        String purposeOtherKey;
+        //String purposeOtherKey;
         String modeKey;
-        String modeOtherKey;
-        String blocksKey;
-        String parkingKey;
+        //String modeOtherKey;
+        //String blocksKey;
+        //String parkingKey;
         String latKey;
         String lngKey;
         String regionKey;
 
         if(mode.equals("origin")) {
             purposeKey = "orig_purpose";
-            purposeOtherKey = "orig_purpose_other";
+            //purposeOtherKey = "orig_purpose_other";
             modeKey = "orig_access";
-            modeOtherKey = "orig_access_other";
-            blocksKey = "orig_blocks";
-            parkingKey = "orig_parking";
+            //modeOtherKey = "orig_access_other";
+            //blocksKey = "orig_blocks";
+            //parkingKey = "orig_parking";
             latKey = "orig_lat";
             lngKey = "orig_lng";
             regionKey = "orig_region";
         }
         else {
             purposeKey = "dest_purpose";
-            purposeOtherKey = "dest_purpose_other";
+            //purposeOtherKey = "dest_purpose_other";
             modeKey = "dest_egress";
-            modeOtherKey = "dest_access_other";
-            blocksKey = "dest_blocks";
-            parkingKey = "dest_parking";
+            //modeOtherKey = "dest_access_other";
+            //blocksKey = "dest_blocks";
+            //parkingKey = "dest_parking";
             latKey = "dest_lat";
             lngKey = "dest_lng";
             regionKey = "dest_region";
@@ -308,27 +308,27 @@ public class PickLocationFragment extends MapFragment {
             Integer index = extras.getInt(purposeKey, -1);
             if(index > 0) {
                 locationSpinner.setSelection(index);
-                manager.updatePurpose(mode, String.valueOf(index));
-                if (hasExtra(purposeOtherKey)) {
-                    String purposeOther = extras.getString(purposeOtherKey);
-                    manager.updatePurposeOther(mode, purposeOther);
-                }
+                //manager.updatePurpose(mode, String.valueOf(index));
+                //if (hasExtra(purposeOtherKey)) {
+                    //String purposeOther = extras.getString(purposeOtherKey);
+                    //manager.updatePurposeOther(mode, purposeOther);
+                //}
             }
         }
         if(hasExtra(modeKey)) {
             Integer index = extras.getInt(modeKey, -1);
             if(index > 0) {
                 modeSpinner.setSelection(index);
-                manager.updateMode(mode, String.valueOf(index));
-                if(hasExtra(modeOtherKey)) {
-                    manager.updateModeOther(mode, extras.getString(modeOtherKey));
-                }
-                if(hasExtra(blocksKey)) {
-                    manager.updateBlocks(mode, String.valueOf(extras.getInt(blocksKey)));
-                }
-                if(hasExtra(parkingKey)) {
-                    manager.updateParking(mode, extras.getString(parkingKey));
-                }
+                //manager.updateMode(mode, String.valueOf(index));
+                //if(hasExtra(modeOtherKey)) {
+                //    manager.updateModeOther(mode, extras.getString(modeOtherKey));
+               // }
+                //if(hasExtra(blocksKey)) {
+                //    manager.updateBlocks(mode, String.valueOf(extras.getInt(blocksKey)));
+                //}
+                //if(hasExtra(parkingKey)) {
+                //    manager.updateParking(mode, extras.getString(parkingKey));
+                //}
             }
         }
         if(hasExtra(latKey) && hasExtra(lngKey)) {
@@ -362,11 +362,13 @@ public class PickLocationFragment extends MapFragment {
         String[] route;
         if(mode.equals("origin")) {
             route = manager.getFirstRoute();
+            stop = manager.getOnStop();
             location = manager.getOrig();
         }
         else { // destination
             route = manager.getLastRoute();
             stop = manager.getOffStop();
+            location = manager.getDest();
         }
         clearRoutes();
         addTransferRoute(context, route[0], route[1]);

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
@@ -48,7 +49,7 @@ public class SurveyManager {
 
         public Location() {
             loc = null;
-            region = "2";  //default not outside region
+            region = "";  //default not outside region
             purpose = "";
             purposeOther = "";
             mode = "";
@@ -58,7 +59,7 @@ public class SurveyManager {
         }
 
         public Boolean validate() {
-            if(loc == null && region.equals("2"))
+            if(loc == null && region.isEmpty())
                 return false;
             if(purpose.isEmpty() || mode.isEmpty())
                 return false;
@@ -66,7 +67,7 @@ public class SurveyManager {
         }
     }
 
-    public SurveyManager(Context context, Activity activity, String line) {
+    public SurveyManager(Context context, Activity activity, String line, Bundle extras) {
         this.context = context;
         this.activity = activity;
         this.orig = new Location();
@@ -74,6 +75,7 @@ public class SurveyManager {
         this.line = line;
         routeLookup = DataLoader.getRoutesLookup(context);
         dirLookup = DataLoader.getDirLookup(context);
+        restoreData(extras);
     }
 
     public String key(String prefix, String cons) {
@@ -160,13 +162,12 @@ public class SurveyManager {
     public void updateMode(String passage, String modeValue) {
         if(passage.equals("origin")) {
             this.orig.mode = modeValue;
-            this.orig.blocks = null;
-            this.orig.parking = null;
+            this.orig.modeOther = null;
         }
         else if(passage.equals("destination")) {
             this.dest.mode = modeValue;
-            this.dest.blocks = null;
-            this.dest.parking = null;
+            this.dest.modeOther = null;
+
         }
     }
 
@@ -314,20 +315,6 @@ public class SurveyManager {
     }
 
     public void inputTransferDirection(final Activity activity, final String rte, final int routeIndex) {
-        /*
-        String title = "Direction";
-        String prompt = "Specify other";
-        final EditText input = new EditText(context);
-        AlertDialog.Builder alert = buildAlert(activity, title, prompt, input);
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-                //updateModeOther(mode, value.toString());
-            }
-        });
-        alert.show();
-        */
-
         final String[] directions = dirLookup.get(rte);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -341,38 +328,6 @@ public class SurveyManager {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
-    // commented out for LTD project
-    /*
-    public void inputBlocks(final Activity activity, final String mode) {
-        String title = "Number of Blocks";
-        String prompt = "How many blocks did/will you walk?";
-        final EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        AlertDialog.Builder alert = buildAlert(activity, title, prompt, input);
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-                updateBlocks(mode, value.toString());
-            }
-        });
-        alert.show();
-    }
-
-    public void inputParking(final Activity activity, final String mode) {
-        String title = "Parking Location";
-        String prompt =  "Where were/are you parked?";
-        final EditText input = new EditText(context);
-        AlertDialog.Builder alert = buildAlert(activity, title, prompt, input);
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable value = input.getText();
-                updateParking(mode, value.toString());
-            }
-        });
-        alert.show();
-    }
-    */
 
     protected AlertDialog.Builder buildAlert(final Activity activity, String title, String prompt,
                                              EditText input) {
@@ -444,6 +399,39 @@ public class SurveyManager {
             }
         }
         return last;
+    }
+
+    public void restoreData(Bundle extras) {
+        if(extras == null)
+            return;
+
+        Integer index = extras.getInt("orig_purpose", -1);
+        if(index > 0) {
+            updatePurpose("origin", String.valueOf(index));
+            String purposeOther = extras.getString("orig_purpose_other", "");
+            updatePurposeOther("origin", purposeOther);
+        }
+
+        index = extras.getInt("dest_purpose", -1);
+        if(index > 0) {
+            updatePurpose("destination", String.valueOf(index));
+            String purposeOther = extras.getString("dest_purpose_other", "");
+            updatePurposeOther("destination", purposeOther);
+        }
+
+        index = extras.getInt("orig_access", -1);
+        if(index > 0) {
+            updateMode("origin", String.valueOf(index));
+            String modeOther = extras.getString("orig_access_other", "");
+            updateModeOther("origin", modeOther);
+        }
+
+        index = extras.getInt("dest_egress", -1);
+        if(index > 0) {
+            updateMode("destination", String.valueOf(index));
+            String modeOther = extras.getString("dest_egress_other", "");
+            updateModeOther("destination", modeOther);
+        }
     }
 
 

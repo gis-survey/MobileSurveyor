@@ -155,7 +155,6 @@ public class StopFragment extends MapFragment {
         zoomToRoute(mv, route[0], route[1]);
         stopsList = getStops(route[0], route[1], false);
         setItemizedOverlay();
-        //mapListener = new OnOffMapListener(mv, stopsList, stopsOverlay);
         mapListener.setMarkers(stopsList);
         mapListener.setOverlay(stopsOverlay);
         mv.addListener(mapListener);
@@ -327,11 +326,14 @@ public class StopFragment extends MapFragment {
         setupStops();
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
-
+        Marker location = null;
         if(mode.equals(Cons.BOARD)) {
-            Marker location = manager.getOrig();
-            if(location != null) surveyOverlay.addItem(location);
+            location = manager.getOrig();
         }
+        else {
+            location = manager.getDest();
+        }
+        if(location != null) surveyOverlay.addItem(location);
         mv.addItemizedOverlay(surveyOverlay);
         selectStop(manager.getStopID(mode), mode);
     }

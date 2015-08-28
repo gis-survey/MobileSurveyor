@@ -136,11 +136,16 @@ public abstract class MapFragment extends Fragment {
         defaultRoute.addRoute(mv, false);
     }
 
-    protected void zoomToRoute(MapView mapView) {
-        if(defaultRoute != null) {
-            defaultRoute.zoomTo(mapView);
+    protected void zoomToRoute(MapView mv, String rte, String dir) {
+        String key = rte + "_" + dir;
+        if(transferRoutes.containsKey(key)) {
+            // route is already displayed
+            TransitRoute route = transferRoutes.get(key);
+            route.zoomTo(mv);
+            return;
         }
     }
+
 
     public void addTransferRoute(Context context, String line, String dir) {
         String key = line + "_" + dir;

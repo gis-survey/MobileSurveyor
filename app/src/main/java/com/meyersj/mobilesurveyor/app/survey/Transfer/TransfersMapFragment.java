@@ -59,7 +59,7 @@ public class TransfersMapFragment extends MapFragment {
 
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
-        
+
         selectedRoutes[0] = rte[0];
         selectedDirections[0] = rte[1];
 

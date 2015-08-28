@@ -22,6 +22,9 @@ public class OnOffMapListener implements MapListener {
     ArrayList<Marker> markers;
     ItemizedIconOverlay locOverlay;
 
+    public OnOffMapListener(MapView mv) {
+        this.mv = mv;
+    }
 
     public OnOffMapListener(MapView mv, ArrayList<Marker> markers, ItemizedIconOverlay locOverlay) {
         this.mv = mv;
@@ -29,12 +32,25 @@ public class OnOffMapListener implements MapListener {
         this.locOverlay = locOverlay;
     }
 
-    @Override
-    public void onScroll(ScrollEvent scrollEvent) {
-        //Log.d(TAG, scrollEvent.toString());
+    public void setMarkers(ArrayList<Marker> markers) {
+        if(this.markers != null) {
+            for (Marker m : this.markers) {
+                m.getToolTip(mv).close();
+            }
+        }
+        this.markers = markers;
     }
 
-    //TODO only show tooltips inside current view?
+    public void setOverlay(ItemizedIconOverlay locOverlay) {
+        if(this.locOverlay != null) {
+            mv.removeOverlay(this.locOverlay);
+        }
+        this.locOverlay = locOverlay;
+    }
+
+    @Override
+    public void onScroll(ScrollEvent scrollEvent) {}
+
 
     @Override
     public void onZoom(ZoomEvent zoomEvent) {
@@ -42,10 +58,7 @@ public class OnOffMapListener implements MapListener {
         Float zoomLevel = zoomEvent.getZoomLevel();
         Log.d(TAG, "zoom level: " + String.valueOf(zoomLevel));
 
-        //Log.d(TAG, mv.getBoundingBox().toString());
-
         if (markers != null) {
-
             if (zoomLevel >= 15.5) {
                 for(Marker m: markers) {
                     InfoWindow toolTip = m.getToolTip(mv);

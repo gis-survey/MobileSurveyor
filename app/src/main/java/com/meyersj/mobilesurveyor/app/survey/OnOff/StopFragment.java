@@ -105,9 +105,9 @@ public class StopFragment extends MapFragment {
         activity = getActivity();
         context = activity.getApplicationContext();
         ButterKnife.bind(this, view);
+        mapListener = new OnOffMapListener(mv);
         setTiles(mv);
         setupStops();
-        //zoomToRoute(mv); // zooms to default route which is not what we want now
         restoreState();
         return view;
     }
@@ -138,39 +138,13 @@ public class StopFragment extends MapFragment {
         return stops.getStops();
     }
 
-    //modify mView for each toolTip in each marker to prevent closing it when touched
-    protected void setToolTipListener(final Marker marker, final String mode) {
-        View mView = marker.getToolTip(mv).getView();
-        mView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent e) {
-                if (e.getAction() == MotionEvent.ACTION_UP) {
-                }
-                return false;
-            }
-        });
-        mView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                //selectLocType(marker);
-                selectedStops.setCurrentMarker(marker, mode);
-                return true;
-            }
-        });
-    }
-
     private void setupStops() {
-        //if(selectedStops == null) {
-        //    selectedStops = new SelectedStops(context, selOverlay);
-        //}
-
         clearRoutes();
-        if (mapListener != null) mv.removeListener(mapListener);
-        if (stopsOverlay != null) mv.removeOverlay(stopsOverlay);
+        //if (mapListener != null) mv.removeListener(mapListener);
+        //if (stopsOverlay != null) mv.removeOverlay(stopsOverlay);
         if (selOverlay != null) {
             mv.removeOverlay(selOverlay);
         }
-
 
         String[] route;
         if(mode.equals(Cons.BOARD))
@@ -178,22 +152,17 @@ public class StopFragment extends MapFragment {
         else
             route = manager.getLastRoute();
         addTransferRoute(context, route[0], route[1]);
+        zoomToRoute(mv, route[0], route[1]);
         stopsList = getStops(route[0], route[1], false);
-        //for (Marker marker: stopsList) {
-        //    setToolTipListener(marker, mode);
-        //}
-
         setItemizedOverlay();
-        mapListener = new OnOffMapListener(mv, stopsList, stopsOverlay);
+        //mapListener = new OnOffMapListener(mv, stopsList, stopsOverlay);
+        mapListener.setMarkers(stopsList);
+        mapListener.setOverlay(stopsOverlay);
         mv.addListener(mapListener);
         setupStopSequenceList();
         setupStopSearch();
         selectedStops.setAdapter(stopSequenceAdapter, mode);
         selectedStops.setOverlay(selOverlay, mode);
-
-        Marker onStop = manager.getOnStop();
-        Marker offStop = manager.getOnStop();
-
     }
 
 
@@ -201,9 +170,7 @@ public class StopFragment extends MapFragment {
         stopsOverlay = new ItemizedIconOverlay(mv.getContext(), stopsList,
                 new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                     public boolean onItemSingleTapUp(final int index, final Marker item) {
-                        //selectLocType(item);
-                        manager.setStop(item, mode);
-                        selectedStops.saveCurrentMarker(item);
+                        selectStop(item.getDescription(), mode);
                         return true;
                     }
                     public boolean onItemLongPress(final int index, final Marker item) {
@@ -222,8 +189,6 @@ public class StopFragment extends MapFragment {
                 return false;
             }
         });
-        //mv.addItemizedOverlay(stopsOverlay);
-        //mv.addItemizedOverlay(alightOverlay);
         mv.addItemizedOverlay(selOverlay);
     }
 
@@ -258,9 +223,7 @@ public class StopFragment extends MapFragment {
                                     long id) {
                 stopName.setText("");
                 Utils.closeKeypad(activity);
-                selectedStops.saveSequenceMarker(mode, stopsMap.get(stopsList.get(position)));
-                manager.setStop(stopsMap.get(stopsList.get(position)), mode);
-                //selectLocType(stopsMap.get(stopsList.get(position)));
+                selectStop(stopsMap.get(stopsList.get(position)).getDescription(), mode);
             }
         });
 
@@ -305,8 +268,7 @@ public class StopFragment extends MapFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 adapter.setSelectedIndex(position);
                 Stop stop = (Stop) adapterView.getAdapter().getItem(position);
-                selectedStops.saveSequenceMarker(mode, stop);
-                manager.setStop(stop, mode);
+                selectStop(stop.getDescription(), mode);
             }
         });
     }
@@ -328,27 +290,6 @@ public class StopFragment extends MapFragment {
         }
     }
 
-
-    /*
-    private void changeAdapter(ListView listView, StopSequenceAdapter adapter, ArrayList<Marker> locList)  {
-        ArrayList<Stop> stops = stopsSequenceSort(locList);
-        if (adapter == stopSequenceAdapter) {
-            stopSequenceAdapter = new StopSequenceAdapter(activity, stops);
-            selectedStops.setOnAdapter(stopSequenceAdapter);
-            selectedStops.clearSequenceMarker(Cons.BOARD);
-            stopSequenceAdapterSetup(listView, stopSequenceAdapter);
-        }
-        else {
-            //offSeqListAdapter = new StopSequenceAdapter(activity, stops);
-            //selectedStops.setOffAdapter(offSeqListAdapter);
-            //selectedStops.clearSequenceMarker(Cons.ALIGHT);
-            //stopSequenceAdapterSetup(listView, offSeqListAdapter);
-        }
-    }
-    */
-
-
-
     protected void restoreState() {
         if(extras == null) return;
 
@@ -359,7 +300,6 @@ public class StopFragment extends MapFragment {
         if(this.stopID != null)
             selectStop(this.stopID, mode);
     }
-
 
     protected void selectStop(String stopID, String mode) {
         if(stopID == null || stopID.isEmpty()) return;
@@ -377,20 +317,14 @@ public class StopFragment extends MapFragment {
         }
 
         if(marker != null) {
-            Log.d(TAG, "index: " + String.valueOf(index));
             stopSequenceAdapter.setSelectedIndex(index);
             selectedStops.saveSequenceMarker(mode, marker);
             manager.setStop(marker, mode);
         }
-        else {
-            Log.d(TAG, "marker is null");
-        }
     }
 
     public void updateView(SurveyManager manager) {
-        Log.d(TAG, "update view");
         setupStops();
-
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
 
@@ -399,14 +333,7 @@ public class StopFragment extends MapFragment {
             if(location != null) surveyOverlay.addItem(location);
         }
         mv.addItemizedOverlay(surveyOverlay);
-
-        //if(stopID != null && !stopID.isEmpty()) {
-        //Log.d(TAG, "select stop");
         selectStop(manager.getStopID(mode), mode);
-        //}
-        //else {
-        //    Log.d(TAG, "stop id empty");
-        //}
     }
 
 

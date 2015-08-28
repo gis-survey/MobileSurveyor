@@ -13,7 +13,6 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import com.mapbox.mapboxsdk.overlay.PathOverlay;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
-//import com.mapbox.mapboxsdk.util.GeoUtils;
 import com.mapbox.mapboxsdk.views.MapView;
 
 import org.json.JSONArray;
@@ -22,9 +21,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by jeff on 1/26/15.
- */
+
 public class TransitRoute {
 
     protected final String TAG = "TransitRoute";
@@ -56,7 +53,7 @@ public class TransitRoute {
                     }
                 }
             }
-            bbox =  null; //GeoUtils.findBoundingBoxForGivenLocations(allPoints, Cons.PADDING);
+            bbox =  buildBBox();
         } catch (IOException e) {
             Log.d(TAG, e.toString());
             valid = false;
@@ -77,6 +74,7 @@ public class TransitRoute {
             double lon = (Double) coordinates.get(0);
             double lat = (Double) coordinates.get(1);
             LatLng latLng = new LatLng(lat, lon);
+            allPoints.add(latLng);
             path.addPoint(latLng);
         }
         path.setPaint(paint);
@@ -98,7 +96,7 @@ public class TransitRoute {
 
     public void zoomTo(MapView mapView) {
         if(bbox != null) {
-            //mapView.zoomToBoundingBox(bbox);
+            mapView.zoomToBoundingBox(bbox, true, true);
         }
     }
 
@@ -106,5 +104,15 @@ public class TransitRoute {
         return valid;
     }
 
+    public BoundingBox buildBBox() {
+        BoundingBox extent = BoundingBox.fromLatLngs(allPoints);
+        Double latPad = extent.getLatitudeSpan() * 0.1;
+        Double lonPad = extent.getLongitudeSpan() * 0.1;
+        return new BoundingBox(
+                extent.getLatNorth() + (latPad) * 2.5,
+                extent.getLonEast() + lonPad,
+                extent.getLatSouth() - latPad,
+                extent.getLonWest() - lonPad);
+    }
 
 }

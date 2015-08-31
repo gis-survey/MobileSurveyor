@@ -194,7 +194,7 @@ public class Utils {
     }
 
     public static Drawable getBusStopDrawable(Context context) {
-        return context.getResources().getDrawable(R.drawable.circle_32);
+        return context.getResources().getDrawable(R.drawable.circle_24);
     }
 
 

@@ -73,6 +73,7 @@ public class Cons {
     public static final String DEFAULT_RTE = "101";
     public static final String DEFAULT_DIR = "0";
     public static final String MAPBOX_TOKEN = "mapbox_token";
+    public static final String NEWRELIC_TOKEN = "newrelic_token";
     public static final String PELIAS_URL = "pelias_url";
     public static final String SOLR_URL = "solr_url";
 

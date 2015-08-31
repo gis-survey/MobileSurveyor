@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.meyersj.mobilesurveyor.app.util.Cons;
+import com.newrelic.agent.android.NewRelic;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -19,6 +22,11 @@ public class ODKApplication extends Application {
     public void onCreate() {
         super.onCreate();
         readProperties();
+
+        String token = properties.getProperty(Cons.NEWRELIC_TOKEN, "");
+        if(!token.isEmpty()) {
+            NewRelic.withApplicationToken(token).start(this);
+        }
     }
 
     private void readProperties() {

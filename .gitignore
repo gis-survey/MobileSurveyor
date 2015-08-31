@@ -33,6 +33,7 @@ keys/
 
 
 config.properties
+newrelic.properties
 gradle.properties
 geojson.1
 icons/

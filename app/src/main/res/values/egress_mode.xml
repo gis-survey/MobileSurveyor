@@ -8,8 +8,8 @@
         <item>Picked up by someone</item>
         <item>Take a taxi or paid rideshare</item>
         <item>Wheelchair/Scooter</item>
-        <item>Bike using my bike that I brought with me on bus</item>
-        <item>Bike using a different bike</item>
-        <item>Other</item>
+        <item>Bike using my bike that I brought with me on bus/EmX</item>
+        <item>Bike using a bike I did not bring on bus/EmX</item>
+        <item>Other (specify)</item>
     </string-array>
 </resources>

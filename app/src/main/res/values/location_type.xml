@@ -11,6 +11,6 @@
         <item>Social Service Appointment</item>
         <item>Visiting Others</item>
         <item>Entertainment/Recreation</item>
-        <item>Other</item>
+        <item>Other (specify)</item>
     </string-array>
 </resources>

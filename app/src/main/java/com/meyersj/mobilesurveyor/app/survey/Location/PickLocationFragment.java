@@ -126,9 +126,6 @@ public class PickLocationFragment extends MapFragment {
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        //addDefaultRoute(context, line, dir);
-        //ArrayList<Marker> stopsList = getStops(line, dir, true);
-        //stopsOverlay = newItemizedOverlay(stopsList);
         mapListener = new OnOffMapListener(mv);
         mv.addListener(mapListener);
 
@@ -184,7 +181,7 @@ public class PickLocationFragment extends MapFragment {
                         manager.updateMode(mode, "");
                         Log.d(TAG, "selected IS empty");
                     }
-                    if (selected.contains("other")) {
+                    if (selected.startsWith("other")) {
                         manager.inputModeOther(activity, mode);
                     }
                 }
@@ -205,7 +202,7 @@ public class PickLocationFragment extends MapFragment {
                     else {
                         manager.updatePurpose(mode, "");
                     }
-                    if (selected.contains("other")) {
+                    if (selected.startsWith("other")) {
                         manager.inputPurposeOther(activity, mode); // specify other location type
                     }
                 }
@@ -388,7 +385,6 @@ public class PickLocationFragment extends MapFragment {
         stopsOverlay = newItemizedOverlay(stopsList);
         mapListener.setMarkers(stopsList);
         mapListener.setOverlay(stopsOverlay);
-
 
         if(stop != null) surveyOverlay.addItem(stop);
         if(location != null) locOverlay.addItem(location);

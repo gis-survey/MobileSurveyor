@@ -136,7 +136,7 @@ public class SurveyManager {
 
     public void setRoute(String route, int index) {
         transfersRoutes[index] = route;
-        transfersDirections[index] = null;
+        transfersDirections[index] = "";
         if(route.equals(getFirstRoute()[0])) setStop(null, Cons.BOARD);
         if(route.equals(getLastRoute()[0])) setStop(null, Cons.ALIGHT);
     }
@@ -205,6 +205,7 @@ public class SurveyManager {
         else return offStop;
     }
 
+    /*
     public String getStopID(String mode) {
         String stopID = null;
         if(mode.equals(Cons.BOARD)) {
@@ -221,6 +222,7 @@ public class SurveyManager {
         }
         return stopID;
     }
+    */
 
 
     public Marker getOnStop(){
@@ -236,7 +238,9 @@ public class SurveyManager {
     }
 
     public String lookupDirection(String rte, String dir) {
-        return dirLookup.get(rte)[Integer.valueOf(dir)];
+        if(dir != null)
+            return dirLookup.get(rte)[Integer.valueOf(dir)];
+        return "";
     }
 
     public Intent addExtras(Intent intent) {
@@ -287,7 +291,9 @@ public class SurveyManager {
         Integer count = 0;
         for(int i = 0; i < Cons.MAX_TRANSFERS; i++) {
             if(transfersRoutes[i] != null && !transfersRoutes[i].isEmpty()) {
-                String route = transfersRoutes[i] + "-" + transfersDirections[i];
+                String route = transfersRoutes[i] + "-";
+                if(transfersDirections[i] != null && !transfersDirections[i].isEmpty())
+                    route += transfersDirections[i];
                 intent.putExtra("route" + String.valueOf(++count), route);
             }
             else {

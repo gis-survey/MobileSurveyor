@@ -186,11 +186,23 @@ public class StopFragment extends MapFragment {
                 changeSeqListVisibility(seqView.getVisibility());
             }
         });
-        String route = manager.lookupRoute(line);
-        String direction = manager.lookupDirection(line, dir);
-        stopSeqBtn.setText("Show stops: " + route + "/" + direction);
+        String[] route = getRouteDescription();
+        if(route[1].isEmpty())
+            stopSeqBtn.setText("No direction selected for route: " + route[0]);
+        else
+            stopSeqBtn.setText("Show stops: " + route[0] + "/" + route[1]);
     }
 
+    private String[] getRouteDescription() {
+        String[] route = {"", ""};
+        String[] rte;
+        if(mode.equals(Cons.BOARD)) rte = manager.getFirstRoute();
+        else rte = manager.getLastRoute();
+        route[0] = rte[0].isEmpty() ? "" : manager.lookupRoute(rte[0]);
+        if(rte[1] != null)
+            route[1] = rte[1].isEmpty() ? "" : manager.lookupDirection(rte[0], rte[1]);
+        return route;
+    }
 
 
     private void setupStopSearch() {
@@ -262,21 +274,21 @@ public class StopFragment extends MapFragment {
     //toggle visibility of sequence list depending on current visibility
     private void changeSeqListVisibility(int currentVisibility) {
         //osmText.setVisibility(currentVisibility);
-        String route = manager.lookupRoute(line);
-        String direction = manager.lookupDirection(line, dir);
+        String[] route = getRouteDescription();
         if (currentVisibility == View.INVISIBLE) {
-            // fetch route description
-            stopSeqBtn.setText("Hide stops: " + route + "/" + direction);
+            stopSeqBtn.setText("Hide stops: " + route[0] + "/" + route[1]);
             seqView.setVisibility(View.VISIBLE);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
         }
         else {
             seqView.setVisibility(View.INVISIBLE);
-            stopSeqBtn.setText("Show stops: " + route + "/" + direction);
+            stopSeqBtn.setText("Show stops: " + route[0] + "/" + route[1]);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }
+        if(route[1].isEmpty())
+            stopSeqBtn.setText("No direction selected for route: " + route[0]);
     }
 
     protected void restoreState() {

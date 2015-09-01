@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.stops.SelectedStops;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
@@ -34,6 +35,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     protected Button nextBtn;
     protected static SurveyManager manager;
     protected static Fragment[] fragments;
+    protected int previous = -1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +45,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
         final ActionBar actionBar = getActionBar();
         Bundle extras = getODKExtras();
-        String line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
-        String dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
+        String line = extras.getString(Cons.LINE);
+        String dir = extras.getString(Cons.DIR);
         manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
         SelectedStops selectedStops = new SelectedStops(this);
 
@@ -57,8 +59,14 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
+                MapFragment fragment;
+                if(previous > 0) {
+                    fragment = (MapFragment) fragments[previous];
+                    fragment.save(manager);
+                }
+                previous = position;
                 actionBar.setSelectedNavigationItem(position);
-                MapFragment fragment = (MapFragment) fragments[position];
+                fragment = (MapFragment) fragments[position];
                 fragment.updateView(manager);
                 toggleNavButtons(mViewPager.getCurrentItem());
             }
@@ -102,6 +110,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     }
 
     protected void exitWithSurveyBundle(Boolean valid) {
+        for(Fragment frag: fragments)
+            ((MapFragment)frag).save(manager);
         int result  = this.RESULT_CANCELED;
         Intent intent = new Intent();
         if (valid) {
@@ -185,6 +195,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)){
+            for(Fragment frag: fragments)
+                ((MapFragment)frag).save(manager);
             manager.unfinishedExit(this);
             return true;
         }
@@ -194,10 +206,22 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     protected Bundle getODKExtras() {
         Intent intent = this.getIntent();
         String action = intent.getAction();
+        Bundle extras;
         if (action.equals(ODK_ACTION)) {
-            return intent.getExtras();
+            extras = intent.getExtras();
+            String line = extras.getString(Cons.LINE, "");
+            String dir = extras.getString(Cons.DIR, "");
+            if(line.isEmpty() || dir.isEmpty()) {
+                Utils.shortToastCenter(this, "Error: Route and/or Direction not selected");
+                finish();
+            }
         }
-        return null;
+        else {
+            extras = new Bundle();
+            extras.putString(Cons.LINE, Cons.DEFAULT_RTE);
+            extras.putString(Cons.DIR, Cons.DEFAULT_DIR);
+        }
+        return extras;
     }
 
 }

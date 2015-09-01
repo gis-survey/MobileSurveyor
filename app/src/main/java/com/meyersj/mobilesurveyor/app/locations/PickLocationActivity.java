@@ -29,6 +29,7 @@ import com.meyersj.mobilesurveyor.app.ODKApplication;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.geocode.GeocodeAdapter;
 import com.meyersj.mobilesurveyor.app.geocode.LocationResult;
+import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
@@ -280,4 +281,6 @@ public class PickLocationActivity extends ActionBarActivity {
             mv.invalidate();
         }
     }
+
+
 }

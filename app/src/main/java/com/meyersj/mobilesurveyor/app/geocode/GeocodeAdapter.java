@@ -29,6 +29,7 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
                 app.getProperties().getProperty(Cons.PELIAS_URL));
     }
 
+
     @Override
     public int getCount() {
         return mData.size();
@@ -39,7 +40,6 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
     public String getItem(int index) {
         return mData.get(index);
     }
-
 
     //used to retrieve item picked after user selection
     public LocationResult getLocationResultItem(String name) {

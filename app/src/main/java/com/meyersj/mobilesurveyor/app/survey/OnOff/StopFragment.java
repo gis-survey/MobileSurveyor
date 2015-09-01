@@ -2,9 +2,10 @@ package com.meyersj.mobilesurveyor.app.survey.OnOff;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -46,35 +47,18 @@ public class StopFragment extends MapFragment {
     @Bind(R.id.input_stop) AutoCompleteTextView stopName;
     @Bind(R.id.clear_input_stop) ImageButton clear;
     @Bind(R.id.stops_seq_list) ListView seqListView;
-    //@Bind(R.id.on_stops_seq) ListView seqListView;
-    //@Bind(R.id.off_stops_seq) ListView offSeqListView;
     @Bind(R.id.stop_seq_btn) Button stopSeqBtn;
 
-
-    //private Button toggleOnBtn;
-    //private Button toggleOffBtn;
     //private TextView osmText;
 
     private OnOffMapListener mapListener;
     private SelectedStops selectedStops;
     private StopSequenceAdapter stopSequenceAdapter;
-    //private StopSequenceAdapter offSeqListAdapter;
-
-    //private ArrayList<Marker> locList = new ArrayList<Marker>();
     private ArrayList<Marker> stopsList = new ArrayList<Marker>();
-    //private ArrayList<Marker> alightStopsList = new ArrayList<Marker>();
-
-
     private ItemizedIconOverlay stopsOverlay;
-    //private ItemizedIconOverlay alightOverlay;
     private ItemizedIconOverlay selOverlay;
-
     private ArrayList<Marker> selList = new ArrayList<Marker>();
-
     private HashMap<String, Marker> stopsMap;
-
-
-
     private BoundingBox bbox;
     protected SurveyManager manager;
     protected Bundle extras;
@@ -202,6 +186,9 @@ public class StopFragment extends MapFragment {
                 changeSeqListVisibility(seqView.getVisibility());
             }
         });
+        String route = manager.lookupRoute(line);
+        String direction = manager.lookupDirection(line, dir);
+        stopSeqBtn.setText("Show stops: " + route + "/" + direction);
     }
 
 
@@ -275,15 +262,18 @@ public class StopFragment extends MapFragment {
     //toggle visibility of sequence list depending on current visibility
     private void changeSeqListVisibility(int currentVisibility) {
         //osmText.setVisibility(currentVisibility);
+        String route = manager.lookupRoute(line);
+        String direction = manager.lookupDirection(line, dir);
         if (currentVisibility == View.INVISIBLE) {
-            stopSeqBtn.setText("Hide stop sequences");
+            // fetch route description
+            stopSeqBtn.setText("Hide stops: " + route + "/" + direction);
             seqView.setVisibility(View.VISIBLE);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_top));
         }
         else {
             seqView.setVisibility(View.INVISIBLE);
-            stopSeqBtn.setText("Show stop sequences");
+            stopSeqBtn.setText("Show stops: " + route + "/" + direction);
             stopSeqBtn.setBackground(
                     context.getResources().getDrawable(R.drawable.shape_rect_grey_fade_round_all));
         }
@@ -319,6 +309,7 @@ public class StopFragment extends MapFragment {
             stopSequenceAdapter.setSelectedIndex(index);
             selectedStops.saveSequenceMarker(mode, marker);
             manager.setStop(marker, mode);
+            setStopName(marker.getTitle());
         }
     }
 
@@ -326,18 +317,25 @@ public class StopFragment extends MapFragment {
         setupStops();
         mv.removeOverlay(surveyOverlay);
         surveyOverlay.removeAllItems();
-        Marker location = null;
+        Marker location;
         if(mode.equals(Cons.BOARD)) {
             location = manager.getOrig();
         }
         else {
             location = manager.getDest();
         }
-        if(location != null) surveyOverlay.addItem(location);
-        mv.addItemizedOverlay(surveyOverlay);
-        selectStop(manager.getStopID(mode), mode);
+        if(location != null) {
+            surveyOverlay.addItem(location);
+            mv.addItemizedOverlay(surveyOverlay);
+            selectStop(location.getDescription(), mode);
+        }
     }
 
-
+    private void setStopName(String text) {
+        int threshold = stopName.getThreshold();
+        stopName.setThreshold(1000);
+        stopName.setText(text);
+        stopName.setThreshold(threshold);
+    }
 }
 

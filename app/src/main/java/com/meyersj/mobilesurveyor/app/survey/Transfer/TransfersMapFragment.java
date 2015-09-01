@@ -37,11 +37,8 @@ public class TransfersMapFragment extends MapFragment {
         this.manager = manager;
         this.pager = pager;
         this.extras = extras;
-        this.selectedRoutes = new String[Cons.MAX_TRANSFERS];
-        this.selectedDirections = new String[Cons.MAX_TRANSFERS];
         this.line = extras != null ? extras.getString(Cons.LINE, Cons.DEFAULT_RTE) : Cons.DEFAULT_RTE;
         this.dir = extras != null ? extras.getString(Cons.DIR, Cons.DEFAULT_DIR) : Cons.DEFAULT_DIR;
-        this.selectedDirections[0] = dir;
     }
 
     @Override
@@ -58,10 +55,13 @@ public class TransfersMapFragment extends MapFragment {
         String[] rte = new String[] {line, dir};
         ArrayList<String> defaultRoutesList = (ArrayList<String>) routesList.clone();
         defaultRoutesList.add(0, "");
-        selectedRoutes[0] = rte[0];
-        selectedDirections[0] = rte[1];
+
+
+        //selectedRoutes[0] = rte[0];
+        //selectedDirections[0] = rte[1];
 
         // make corrections if previous route information is known
+        /*
         if(extras != null) {
             String key;
             for(int i = 0; i < 5; i++) {
@@ -75,9 +75,10 @@ public class TransfersMapFragment extends MapFragment {
                 }
             }
         }
+        */
 
-        manager.setTransfersRoutes(selectedRoutes);
-        manager.setTransfersDirections(selectedDirections);
+        selectedRoutes = manager.getTransfersRoutes();
+        selectedDirections = manager.getTransfersDirections();
 
         //TODO create a factory to make RoutePicker objects and set Next/Previous
         final RoutePicker rp1 = new RoutePicker(this, activity, inflater, container,

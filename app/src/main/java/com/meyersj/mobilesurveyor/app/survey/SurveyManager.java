@@ -37,6 +37,8 @@ public class SurveyManager {
     protected HashMap<String, String[]> dirLookup;
 
     public class Location {
+
+        private String address;
         public Marker loc;
         public Boolean outsideRegion;
         public String purpose;
@@ -47,6 +49,7 @@ public class SurveyManager {
         public String parking;
 
         public Location() {
+            address = "";
             loc = null;
             outsideRegion = false;  //default not outside outsideRegion
             purpose = "";
@@ -64,6 +67,14 @@ public class SurveyManager {
                 return false;
             return true;
         }
+
+        public void setAddress(String addr) {
+            address = addr;
+        }
+
+        public String getAddress() {
+            return address;
+        }
     }
 
     public SurveyManager(Context context, Activity activity, String line, String dir, Bundle extras) {
@@ -75,6 +86,8 @@ public class SurveyManager {
         this.dir = dir;
         routeLookup = DataLoader.getRoutesLookup(context);
         dirLookup = DataLoader.getDirLookup(context);
+        this.transfersRoutes = new String[Cons.MAX_TRANSFERS];
+        this.transfersDirections = new String[Cons.MAX_TRANSFERS];
         restoreData(extras);
     }
 
@@ -196,6 +209,21 @@ public class SurveyManager {
         return stopID;
     }
 
+    public String getStopName(String mode) {
+        String stopName = null;
+        if(mode.equals(Cons.BOARD)) {
+            if(this.onStop != null) {
+                stopName = onStop.getTitle();
+            }
+        }
+        else { // alight
+            if(this.offStop != null) {
+                stopName = offStop.getTitle();
+            }
+        }
+        return stopName;
+    }
+
 
     public Marker getOnStop(){
         return this.onStop;
@@ -205,7 +233,16 @@ public class SurveyManager {
         return this.offStop;
     }
 
+    public String lookupRoute(String rte) {
+        return routeLookup.get(rte).toString();
+    }
+
+    public String lookupDirection(String rte, String dir) {
+        return dirLookup.get(rte)[Integer.valueOf(dir)];
+    }
+
     public Intent addExtras(Intent intent) {
+        intent.putExtra(key("orig", "address"), orig.getAddress());
         intent.putExtra(key("orig", Cons.PURPOSE_ODK), orig.purpose);
         intent.putExtra(key("orig", Cons.PURPOSE_OTHER_ODK), orig.purposeOther);
         intent.putExtra(key("orig", Cons.ACCESS_ODK), orig.mode);
@@ -220,6 +257,7 @@ public class SurveyManager {
             intent.putExtra(key("orig", Cons.LAT_ODK), "");
             intent.putExtra(key("orig", Cons.LNG_ODK), "");
         }
+        intent.putExtra(key("dest", "address"), dest.getAddress());
         intent.putExtra(key("dest", Cons.PURPOSE_ODK), dest.purpose);
         intent.putExtra(key("dest", Cons.PURPOSE_OTHER_ODK), dest.purposeOther);
         intent.putExtra(key("dest", Cons.EGRESS_ODK), dest.mode);
@@ -340,17 +378,26 @@ public class SurveyManager {
         select.show();
     }
 
-    public void setTransfersRoutes(String[] transfersRoutes) {
-        this.transfersRoutes = transfersRoutes;
+    public String[] getTransfersRoutes() {
+        return this.transfersRoutes;
     }
 
-    public void setTransfersDirections(String[] transfersDirections) {
-        this.transfersDirections = transfersDirections;
+    public String[] getTransfersDirections() {
+        return this.transfersDirections;
     }
 
     public String[] getFirstRoute() {
         String[] first = {transfersRoutes[0], transfersDirections[0]};
         return first;
+    }
+
+    public void setSeachString(String searchString, String mode) {
+        if(mode.equals(Cons.ORIG)) {
+            this.orig.setAddress(searchString);
+        }
+        else { // destination
+            this.dest.setAddress(searchString);
+        }
     }
 
     public String[] getLastRoute() {
@@ -365,8 +412,30 @@ public class SurveyManager {
     }
 
     public void restoreData(Bundle extras) {
+
         if(extras == null)
             return;
+
+        if(extras.getString("route1", "").isEmpty()) {
+            transfersRoutes[0] = line;
+            transfersDirections[0] = dir;
+        }
+        else {
+            String[] split;
+            String route;
+            String key;
+            for (int i = 0; i < 5; i++) {
+                key = "route" + Integer.toString(i + 1);
+                route = extras.getString(key, "");
+                if (!route.isEmpty()) {
+                    split = route.split("-");
+                    Log.d(TAG, split.toString());
+                    if(split.length >= 1) transfersRoutes[i] = split[0];
+                    if(split.length >= 2) transfersDirections[i] = split[1];
+                }
+            }
+        }
+
 
         Integer index = extras.getInt("orig_purpose", -1);
         if(index > 0) {

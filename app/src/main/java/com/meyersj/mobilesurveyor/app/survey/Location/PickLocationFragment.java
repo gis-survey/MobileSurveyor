@@ -300,6 +300,7 @@ public class PickLocationFragment extends MapFragment {
         if(extras == null)
             return;
 
+        String addressKey;
         String purposeKey;
         String modeKey;
         String latKey;
@@ -308,6 +309,7 @@ public class PickLocationFragment extends MapFragment {
 
         // TODO make this better
         if(mode.equals(Cons.ORIG)) {
+            addressKey = "orig_address";
             purposeKey = "orig_purpose";
             modeKey = "orig_access";
             latKey = "orig_lat";
@@ -315,6 +317,7 @@ public class PickLocationFragment extends MapFragment {
             regionKey = "orig_outside_region";
         }
         else {
+            addressKey = "dest_address";
             purposeKey = "dest_purpose";
             modeKey = "dest_egress";
             latKey = "dest_lat";
@@ -343,6 +346,7 @@ public class PickLocationFragment extends MapFragment {
             manager.setRegion(outsideRegion, mode);
             region.setChecked(outsideRegion);
         }
+        solrSearch.setText(extras.getString(addressKey, ""));
 
     }
 
@@ -360,6 +364,7 @@ public class PickLocationFragment extends MapFragment {
         surveyOverlay.removeAllItems();
         Marker location = null;
         Marker stop = null;
+
 
         String[] route;
         if(mode.equals("origin")) {
@@ -379,6 +384,10 @@ public class PickLocationFragment extends MapFragment {
         if(location != null) locOverlay.addItem(location);
         mv.addItemizedOverlay(surveyOverlay);
         mv.addItemizedOverlay(locOverlay);
+    }
+
+    public void save(SurveyManager manager) {
+        manager.setSeachString(solrSearch.getText().toString(), mode);
     }
 
 }

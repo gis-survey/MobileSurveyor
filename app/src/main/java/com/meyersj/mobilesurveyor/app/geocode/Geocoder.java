@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.loopj.android.http.SyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import org.apache.http.Header;
@@ -29,6 +30,8 @@ public class Geocoder {
     private String solrUrl = null;
     private String peliasUrl = null;
     private SyncHttpClient client;
+    private SurveyManager manager;
+    private String mode;
     private final String solrParams = "wt=json&rows=4&qt=dismax";
 
     private HashMap<String, LocationResult> resultsHash = new HashMap<String, LocationResult>();
@@ -38,6 +41,15 @@ public class Geocoder {
         this.solrUrl = solrUrl + "?" + solrParams;
         this.peliasUrl = peliasUrl;
         this.client = new SyncHttpClient();
+    }
+
+
+    public Geocoder(String solrUrl, String peliasUrl, SurveyManager manager, String mode) {
+        this.solrUrl = solrUrl + "?" + solrParams;
+        this.peliasUrl = peliasUrl;
+        this.client = new SyncHttpClient();
+        this.manager = manager;
+        this.mode = mode;
     }
 
     public HashMap<String, LocationResult> getResultsHash() {
@@ -74,6 +86,7 @@ public class Geocoder {
     }
 
     protected void lookup(String input) {
+        if(manager != null) manager.setSeachString(input, mode);
         clearResults();
         Pattern intersectionPattern = Pattern.compile("(.*)\\s(and|&)\\s(.*)");
         Matcher intersection = intersectionPattern.matcher(input);

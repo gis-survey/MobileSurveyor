@@ -35,7 +35,6 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     protected Button nextBtn;
     protected static SurveyManager manager;
     protected static Fragment[] fragments;
-    protected int previous = -1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +58,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                MapFragment fragment;
-                if(previous > 0) {
-                    fragment = (MapFragment) fragments[previous];
-                    fragment.save(manager);
-                }
-                previous = position;
                 actionBar.setSelectedNavigationItem(position);
-                fragment = (MapFragment) fragments[position];
+                MapFragment fragment = (MapFragment) fragments[position];
                 fragment.updateView(manager);
                 toggleNavButtons(mViewPager.getCurrentItem());
             }
@@ -83,8 +76,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT, selectedStops);
         fragments[4] = new PickLocationFragment();
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
-        //fragments[5] = new ConfirmFragment();
-        //((ConfirmFragment) fragments[5]).setParams(this, manager, mViewPager);
+
 
         for (int i = 0; i < HEADERS.length; i++) {
             actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
@@ -110,8 +102,6 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     }
 
     protected void exitWithSurveyBundle(Boolean valid) {
-        for(Fragment frag: fragments)
-            ((MapFragment)frag).save(manager);
         int result  = this.RESULT_CANCELED;
         Intent intent = new Intent();
         if (valid) {
@@ -195,8 +185,6 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)){
-            for(Fragment frag: fragments)
-                ((MapFragment)frag).save(manager);
             manager.unfinishedExit(this);
             return true;
         }

@@ -101,8 +101,9 @@ public class RoutePicker {
                         if(selRte != null) {
                             frag.clearRoute(selRte, rte[1]);
                         }
-                        selectedRoutes[number - 1] = routeID;
-                        selectedDirections[number - 1] = null;
+                        manager.setRoute(routeID, number - 1);
+                        //selectedRoutes[number - 1] = routeID;
+                        //selectedDirections[number - 1] = null;
                         manager.inputTransferDirection((Activity) context, routeID, number - 1);
                         frag.addTransferRoute(context, routeID, rte[1]);
                     }

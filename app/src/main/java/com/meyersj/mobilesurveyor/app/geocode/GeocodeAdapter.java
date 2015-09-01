@@ -6,6 +6,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.meyersj.mobilesurveyor.app.ODKApplication;
+import com.meyersj.mobilesurveyor.app.survey.SurveyManager;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;
@@ -28,6 +29,15 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
         geocoder = new Geocoder(app.getProperties().getProperty(Cons.SOLR_URL),
                 app.getProperties().getProperty(Cons.PELIAS_URL));
     }
+
+    public GeocodeAdapter(Context context, int resource, ODKApplication app, SurveyManager manager, String mode) {
+        super(context, resource);
+        mContext = context;
+        geocoder = new Geocoder(app.getProperties().getProperty(Cons.SOLR_URL),
+                app.getProperties().getProperty(Cons.PELIAS_URL), manager, mode);
+    }
+
+
 
 
     @Override

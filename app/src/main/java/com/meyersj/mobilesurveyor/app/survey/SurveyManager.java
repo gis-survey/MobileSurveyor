@@ -61,7 +61,7 @@ public class SurveyManager {
         }
 
         public Boolean validate() {
-            if(loc == null && !outsideRegion)
+            if(loc == null && !outsideRegion && address.isEmpty())
                 return false;
             if(purpose.isEmpty() || mode.isEmpty())
                 return false;
@@ -134,6 +134,13 @@ public class SurveyManager {
         this.validated = validated;
     }
 
+    public void setRoute(String route, int index) {
+        transfersRoutes[index] = route;
+        transfersDirections[index] = null;
+        if(route.equals(getFirstRoute()[0])) setStop(null, Cons.BOARD);
+        if(route.equals(getLastRoute()[0])) setStop(null, Cons.ALIGHT);
+    }
+
     public void setStop(Marker marker, String passage) {
         if(passage.equals(Cons.BOARD)) {
             this.onStop = marker;
@@ -192,6 +199,12 @@ public class SurveyManager {
         }
     }
 
+
+    public Marker getStop(String mode) {
+        if(mode.equals(Cons.BOARD)) return onStop;
+        else return offStop;
+    }
+
     public String getStopID(String mode) {
         String stopID = null;
         if(mode.equals(Cons.BOARD)) {
@@ -207,21 +220,6 @@ public class SurveyManager {
             }
         }
         return stopID;
-    }
-
-    public String getStopName(String mode) {
-        String stopName = null;
-        if(mode.equals(Cons.BOARD)) {
-            if(this.onStop != null) {
-                stopName = onStop.getTitle();
-            }
-        }
-        else { // alight
-            if(this.offStop != null) {
-                stopName = offStop.getTitle();
-            }
-        }
-        return stopName;
     }
 
 

@@ -57,6 +57,7 @@ public class PickLocationFragment extends MapFragment {
     protected Bundle extras;
     protected Integer locCount = 0;
     protected Integer modeCount = 0;
+    protected OnOffMapListener mapListener;
 
 
     public void initialize(SurveyManager manager, String mode, Bundle extras) {
@@ -121,14 +122,15 @@ public class PickLocationFragment extends MapFragment {
 
         solrSearch = (AutoCompleteTextView) view.findViewById(R.id.geocode_input);
         adapter = new GeocodeAdapter(context, android.R.layout.simple_list_item_1,
-                (ODKApplication) getActivity().getApplication());
+                (ODKApplication) getActivity().getApplication(), manager, mode);
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         //addDefaultRoute(context, line, dir);
-        ArrayList<Marker> stopsList = getStops(line, dir, true);
-        stopsOverlay = newItemizedOverlay(stopsList);
-        mv.addListener(new OnOffMapListener(mv, stopsList, stopsOverlay));
+        //ArrayList<Marker> stopsList = getStops(line, dir, true);
+        //stopsOverlay = newItemizedOverlay(stopsList);
+        mapListener = new OnOffMapListener(mv);
+        mv.addListener(mapListener);
 
         // set up listeners for view objects
         solrSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -151,6 +153,7 @@ public class PickLocationFragment extends MapFragment {
             public void onClick(View view) {
                 solrSearch.clearListSelection();
                 solrSearch.setText("");
+                manager.setSeachString("", mode);
             }
         });
 
@@ -347,6 +350,7 @@ public class PickLocationFragment extends MapFragment {
             region.setChecked(outsideRegion);
         }
         solrSearch.setText(extras.getString(addressKey, ""));
+        manager.setSeachString(extras.getString(addressKey, ""), mode);
 
     }
 
@@ -380,14 +384,16 @@ public class PickLocationFragment extends MapFragment {
         clearRoutes();
         addTransferRoute(context, route[0], route[1]);
 
+        ArrayList<Marker> stopsList = getStops(route[0], route[1], true);
+        stopsOverlay = newItemizedOverlay(stopsList);
+        mapListener.setMarkers(stopsList);
+        mapListener.setOverlay(stopsOverlay);
+
+
         if(stop != null) surveyOverlay.addItem(stop);
         if(location != null) locOverlay.addItem(location);
         mv.addItemizedOverlay(surveyOverlay);
         mv.addItemizedOverlay(locOverlay);
-    }
-
-    public void save(SurveyManager manager) {
-        manager.setSeachString(solrSearch.getText().toString(), mode);
     }
 
 }

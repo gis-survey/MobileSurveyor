@@ -192,8 +192,6 @@ public abstract class MapFragment extends Fragment {
         surveyOverlay.removeItem(loc);
     }
 
-    public void save(SurveyManager manager) {}
-
     public abstract void updateView(SurveyManager manager);
 
 

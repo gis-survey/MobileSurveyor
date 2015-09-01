@@ -327,7 +327,15 @@ public class StopFragment extends MapFragment {
         if(location != null) {
             surveyOverlay.addItem(location);
             mv.addItemizedOverlay(surveyOverlay);
-            selectStop(location.getDescription(), mode);
+
+        }
+        Marker stop = manager.getStop(mode);
+        if(stop != null) {
+            selectStop(stop.getDescription(), mode);
+        }
+        else {
+            setStopName("");
+            selOverlay.removeAllItems();
         }
     }
 

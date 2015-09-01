@@ -10,7 +10,7 @@ android {
         targetSdkVersion 19
         versionCode 4
         versionName "1.0.2"
-        applicationId "com.meyersj.mobilesurveyor.app"
+        applicationId "com.meyers.mobilesurveyor.app"
     }
     buildTypes {
         release {

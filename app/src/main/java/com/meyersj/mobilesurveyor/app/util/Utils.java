@@ -4,6 +4,9 @@ package com.meyersj.mobilesurveyor.app.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
@@ -193,8 +196,8 @@ public class Utils {
         return paint;
     }
 
-    public static Drawable getBusStopDrawable(Context context) {
-        return context.getResources().getDrawable(R.drawable.circle_24);
+    public static Drawable getBusStopDrawable(final Context context) {
+        return context.getResources().getDrawable(R.drawable.circle_28_extra_area);
     }
 
 

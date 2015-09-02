@@ -34,8 +34,10 @@ public class Geocoder {
     private String mode;
     private final String solrParams = "wt=json&rows=4&qt=dismax";
 
-    private HashMap<String, LocationResult> resultsHash = new HashMap<String, LocationResult>();
-    private ArrayList<String> resultsInOrder = new ArrayList<String>();
+    //private HashMap<String, LocationResult> resultsHash = new HashMap<String, LocationResult>();
+    //private ArrayList<String> resultsInOrder = new ArrayList<String>();
+    private ArrayList<LocationResult> resultsInOrder = new ArrayList<LocationResult>();
+
 
     public Geocoder(String solrUrl, String peliasUrl) {
         this.solrUrl = solrUrl + "?" + solrParams;
@@ -52,15 +54,13 @@ public class Geocoder {
         this.mode = mode;
     }
 
-    public HashMap<String, LocationResult> getResultsHash() {
-        return resultsHash;
-    }
+    //public HashMap<String, LocationResult> getResultsHash() {
+    //    return resultsHash;
+    //}
 
-    public ArrayList<String> getResultsInOrder() {
+    public ArrayList<LocationResult> getResultsInOrder() {
         return resultsInOrder;
     }
-
-
 
     private String addParam(String key, String value) {
         try {
@@ -154,13 +154,14 @@ public class Geocoder {
     }
 
     public void clearResults() {
-        resultsHash.clear();
+        //resultsHash.clear();
         resultsInOrder.clear();
     }
 
     protected void addRecord(LocationResult record) {
-        resultsInOrder.add(record.toString());
-        resultsHash.put(record.toString(), record);
+        resultsInOrder.add(record);
+        //resultsInOrder.add(record.toString());
+        //resultsHash.put(record.toString(), record);
     }
 
     protected void parseSolrResponse(String responseString) {

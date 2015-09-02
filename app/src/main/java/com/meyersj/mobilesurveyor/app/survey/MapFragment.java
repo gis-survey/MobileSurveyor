@@ -99,8 +99,6 @@ public abstract class MapFragment extends Fragment {
     }
 
 
-
-
     protected ITileLayer buildMapBoxTiles() {
         String tileID = "mapbox.streets";
         String token = app.getProperties().getProperty(Cons.MAPBOX_TOKEN);
@@ -123,6 +121,7 @@ public abstract class MapFragment extends Fragment {
     protected void setTiles(MapView mv) {
         //ITileLayer tileLayer = buildOSMTiles();
         ITileLayer tileLayer = buildMapBoxTiles();
+        //ITileLayer tileLayer = buildMBTiles();
         mv.setTileSource(tileLayer);
         mv.setMinZoomLevel(6);
         mv.setMaxZoomLevel(20);

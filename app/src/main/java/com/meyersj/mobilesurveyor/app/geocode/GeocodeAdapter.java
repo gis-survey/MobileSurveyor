@@ -18,27 +18,23 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
 
     private final String TAG = "SolrAdapter";
 
-    private Context mContext;
     private List<String> mData = new ArrayList<String>();
     private Geocoder geocoder;
     private HashMap<String, LocationResult> mResults;
 
     public GeocodeAdapter(Context context, int resource, ODKApplication app) {
         super(context, resource);
-        mContext = context;
         geocoder = new Geocoder(app.getProperties().getProperty(Cons.SOLR_URL),
                 app.getProperties().getProperty(Cons.PELIAS_URL));
+        mResults = new HashMap<String, LocationResult>();
     }
 
     public GeocodeAdapter(Context context, int resource, ODKApplication app, SurveyManager manager, String mode) {
         super(context, resource);
-        mContext = context;
         geocoder = new Geocoder(app.getProperties().getProperty(Cons.SOLR_URL),
                 app.getProperties().getProperty(Cons.PELIAS_URL), manager, mode);
+        mResults = new HashMap<String, LocationResult>();
     }
-
-
-
 
     @Override
     public int getCount() {
@@ -75,8 +71,12 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
                 FilterResults filterResults = new FilterResults();
                 if(constraint != null) {
                     geocoder.lookup(constraint.toString());
-                    mResults = geocoder.getResultsHash();
-                    ArrayList<String> resultsInOrder = geocoder.getResultsInOrder();
+
+                    //HashMap<String, LocationResult> map = geocoder.getResultsHash();
+                    ArrayList<LocationResult> resultsInOrder = geocoder.getResultsInOrder();
+                    //mResults =
+                    //ArrayList<LocationResult> results = new ArrayList<LocationResult>();
+
                     filterResults.values = resultsInOrder;
                     filterResults.count = resultsInOrder.size();
                 }
@@ -86,7 +86,14 @@ public class GeocodeAdapter extends ArrayAdapter<String> implements Filterable {
             @Override
             protected void publishResults(CharSequence contraint, FilterResults results) {
                 if(results != null && results.count > 0) {
-                    mData = (List<String>) results.values;
+                    ArrayList<LocationResult> records = (ArrayList <LocationResult>) results.values;
+                    mData.clear();
+                    mResults.clear();
+                    for(LocationResult record: records) {
+                        mData.add(record.toString());
+                        mResults.put(record.toString(), record);
+                    }
+                    //mData = (List<String>) results.values;
                     notifyDataSetChanged();
                 }
                 else {

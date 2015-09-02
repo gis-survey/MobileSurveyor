@@ -1,6 +1,7 @@
 package com.meyersj.mobilesurveyor.app.survey.Location;
 
 import android.graphics.drawable.Drawable;
+import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
@@ -22,10 +23,11 @@ public class PickLocationMapViewListener implements MapViewListener {
     private PickLocationFragment fragment;
     private SurveyManager manager;
     private CheckBox outsideRegion;
+    private AutoCompleteTextView stopSearch;
 
 
-    public PickLocationMapViewListener(PickLocationFragment fragment, ItemizedIconOverlay locOverlay, SurveyManager manager, String mode,
-                                       Drawable start, Drawable end, CheckBox outsideRegion) {
+    public PickLocationMapViewListener(PickLocationFragment fragment, ItemizedIconOverlay
+            locOverlay, SurveyManager manager, String mode, Drawable start, Drawable end, CheckBox outsideRegion, AutoCompleteTextView stopSearch) {
         this.locOverlay = locOverlay;
         this.manager = manager;
         this.outsideRegion = outsideRegion;
@@ -33,7 +35,9 @@ public class PickLocationMapViewListener implements MapViewListener {
         this.start = start;
         this.end = end;
         this.fragment = fragment;
+        this.stopSearch = stopSearch;
     }
+
 
     @Override
     public void onShowMarker(final MapView mapView, final Marker marker) {}
@@ -74,6 +78,9 @@ public class PickLocationMapViewListener implements MapViewListener {
         mapView.invalidate();
         m.addTo(mapView);
         manager.setRegion(false, mode);
+        manager.setSeachString("", mode);
+        if(stopSearch != null)
+            stopSearch.setText("");
         if(outsideRegion.isChecked()) outsideRegion.setChecked(false);
     }
 }

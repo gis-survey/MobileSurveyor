@@ -98,7 +98,6 @@ public class PickLocationFragment extends MapFragment {
         setTiles(mv);
         locOverlay = newItemizedOverlay(locList);
         mv.addOverlay(locOverlay);
-        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, originIcon, destIcon, region));
 
         prop = Utils.getProperties(context, Cons.PROPERTIES);
         if (mode.equals(Cons.ORIG)) {
@@ -126,6 +125,7 @@ public class PickLocationFragment extends MapFragment {
         solrSearch.setAdapter(adapter);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        mv.setMapViewListener(new PickLocationMapViewListener(this, locOverlay, this.manager, mode, originIcon, destIcon, region, solrSearch));
         mapListener = new OnOffMapListener(mv);
         mv.addListener(mapListener);
 

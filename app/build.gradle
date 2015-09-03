@@ -12,6 +12,7 @@ android {
         versionName "1.0.5"
         applicationId "com.meyers.mobilesurveyor.app"
     }
+    
     buildTypes {
         release {
             minifyEnabled false

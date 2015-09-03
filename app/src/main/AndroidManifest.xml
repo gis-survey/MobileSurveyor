@@ -75,6 +75,20 @@
 
         </activity>
 
+        <!--activity
+            android:name=".survey.TestActivity"
+            android:hardwareAccelerated="false"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait">
+
+        <intent-filter >
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+
+        </activity-->
 
         <activity
             android:name=".survey.SurveyActivity"

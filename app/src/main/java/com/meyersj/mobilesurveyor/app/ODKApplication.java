@@ -24,9 +24,9 @@ public class ODKApplication extends Application {
         readProperties();
 
         String token = properties.getProperty(Cons.NEWRELIC_TOKEN, "");
-        if(!token.isEmpty()) {
-            NewRelic.withApplicationToken(token).start(this);
-        }
+        //if(!token.isEmpty()) {
+        //    NewRelic.withApplicationToken(token).start(this);
+        //}
     }
 
     private void readProperties() {

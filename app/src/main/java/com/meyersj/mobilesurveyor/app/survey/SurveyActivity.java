@@ -2,8 +2,10 @@ package com.meyersj.mobilesurveyor.app.survey;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -23,13 +25,14 @@ import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
-public class SurveyActivity extends FragmentActivity implements ActionBar.TabListener {
+public class SurveyActivity extends FragmentActivity { //implements ActionBar.TabListener {
 
     private final String TAG = getClass().getCanonicalName();
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
     protected static final String[] HEADERS = {"Routes", "Start", "On", "Off", "End"};
 
-    protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
+    //protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
+    protected SurveyFragmentPagerAdapter pagerAdapter;
     protected ViewPager mViewPager;
     protected Button previousBtn;
     protected Button nextBtn;
@@ -39,20 +42,36 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
+
+
+        pagerAdapter = new SurveyFragmentPagerAdapter(getSupportFragmentManager(), SurveyActivity.this);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.survey_pager);
+        viewPager.setAdapter(pagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
-        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
-        final ActionBar actionBar = getActionBar();
+
+        //final ActionBar actionBar = getActionBar();
         Bundle extras = getODKExtras();
         String line = extras.getString(Cons.LINE);
         String dir = extras.getString(Cons.DIR);
         manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
         SelectedStops selectedStops = new SelectedStops(this);
 
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setTitle("TransitSurveyor");
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        mViewPager = (ViewPager) findViewById(R.id.survey_pager);
+        //if(actionBar != null) {
+        //    actionBar.setHomeButtonEnabled(false);
+        //    actionBar.setTitle("TransitSurveyor");
+        //    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        //}
+        //mViewPager = (ViewPager) findViewById(R.id.survey_pager);
+
+        //TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        //tabLayout.setupWithViewPager(mViewPager);
+
+
+        /*
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(HEADERS.length);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -64,6 +83,9 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
                 toggleNavButtons(mViewPager.getCurrentItem());
             }
         });
+        */
+
+
 
         fragments = new Fragment[HEADERS.length];
         fragments[0] = new TransfersMapFragment();
@@ -78,9 +100,11 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
 
 
-        for (int i = 0; i < HEADERS.length; i++) {
-            actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
-        }
+        //for (int i = 0; i < HEADERS.length; i++) {
+        //    actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
+        //}
+
+        /*
         toggleNavButtons(mViewPager.getCurrentItem());
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +123,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             }
 
         });
+        */
     }
 
     protected void exitWithSurveyBundle(Boolean valid) {
@@ -148,6 +173,7 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
         }
     }
 
+    /*
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {}
 
@@ -158,11 +184,42 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {}
+    */
 
-    public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SurveyFragmentPagerAdapter extends FragmentPagerAdapter {
+        final int PAGE_COUNT = HEADERS.length;
+        private Context context;
 
-        public AppSectionsPagerAdapter(FragmentManager fm) {
+        public SurveyFragmentPagerAdapter(FragmentManager fm, Context context) {
             super(fm);
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            return PAGE_COUNT;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments[position];
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // Generate title based on item position
+            return HEADERS[position];
+        }
+    }
+
+    /*
+    public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
+
+        private Context context;
+
+        public AppSectionsPagerAdapter(FragmentManager fm, Context context) {
+            super(fm);
+            this.context = context;
         }
 
         @Override
@@ -180,6 +237,8 @@ public class SurveyActivity extends FragmentActivity implements ActionBar.TabLis
             return "Section " + (position + 1);
         }
     }
+    */
+
 
 
     @Override

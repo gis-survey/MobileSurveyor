@@ -50,7 +50,6 @@ public abstract class MapFragment extends Fragment {
     protected Activity activity;
     protected Context context;
     protected View view;
-    //protected MapView mv;
     @Bind(R.id.mapview) public MapView mv;
 
     protected ItemizedIconOverlay surveyOverlay;
@@ -103,7 +102,9 @@ public abstract class MapFragment extends Fragment {
         String tileID = "mapbox.streets";
         String token = app.getProperties().getProperty(Cons.MAPBOX_TOKEN);
         String url = MAPBOX_BASE_URL_V4 + "/" + tileID + "/{z}/{x}/{y}{2x}.png?access_token=" + token;
-        return new MapboxTileLayerV4("mapbox.streets", url, token);
+        mv.setAccessToken(token);
+        return new MapboxTileLayer("mapbox.streets");
+        //return new MapboxTileLayerV4("mapbox.streets", url, token);
     }
 
     protected ITileLayer buildOSMTiles() {

@@ -1,7 +1,5 @@
 package com.meyersj.mobilesurveyor.app.survey;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +14,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.mapbox.mapboxsdk.views.MapView;
 import com.meyersj.mobilesurveyor.app.R;
 import com.meyersj.mobilesurveyor.app.stops.SelectedStops;
 import com.meyersj.mobilesurveyor.app.survey.Location.PickLocationFragment;
@@ -31,7 +28,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
     protected final String ODK_ACTION = "com.meyersj.mobilesurveyor.app.ODK_SURVEY";
     protected static final String[] HEADERS = {"Routes", "Start", "On", "Off", "End"};
 
-    //protected AppSectionsPagerAdapter mAppSectionsPagerAdapter;
     protected SurveyFragmentPagerAdapter pagerAdapter;
     protected ViewPager mViewPager;
     protected Button previousBtn;
@@ -49,37 +45,16 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         mViewPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
 
-        //final ActionBar actionBar = getActionBar();
         Bundle extras = getODKExtras();
         String line = extras.getString(Cons.LINE);
         String dir = extras.getString(Cons.DIR);
         manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
         SelectedStops selectedStops = new SelectedStops(this);
-
-        //if(actionBar != null) {
-        //    actionBar.setHomeButtonEnabled(false);
-        //    actionBar.setTitle("TransitSurveyor");
-        //    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        //}
-
-
-        /*
-        //mViewPager.setAdapter(mAppSectionsPagerAdapter);
-        mViewPager.setOffscreenPageLimit(HEADERS.length);
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-                MapFragment fragment = (MapFragment) fragments[position];
-                fragment.updateView(manager);
-                toggleNavButtons(mViewPager.getCurrentItem());
-            }
-        });
-        */
 
         mViewPager.setOffscreenPageLimit(HEADERS.length);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -90,7 +65,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
 
             @Override
             public void onPageSelected(int position) {
-                //actionBar.setSelectedNavigationItem(position);
                 MapFragment fragment = (MapFragment) fragments[position];
                 fragment.updateView(manager);
                 toggleNavButtons(mViewPager.getCurrentItem());
@@ -101,30 +75,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
 
             }
         });
-
-
-        /*
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                Log.d(TAG, "tab selected " + String.valueOf(tab.getPosition()));
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                Log.d(TAG, "tab unselected " + String.valueOf(tab.getPosition()));
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                Log.d(TAG, "tab reselected " + String.valueOf(tab.getPosition()));
-            }
-        });
-        */
-
-
-
 
         fragments = new Fragment[HEADERS.length];
         fragments[0] = new TransfersMapFragment();
@@ -138,12 +88,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         fragments[4] = new PickLocationFragment();
         ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
 
-
-        //for (int i = 0; i < HEADERS.length; i++) {
-        //    actionBar.addTab(actionBar.newTab().setText(HEADERS[i]).setTabListener(this));
-        //}
-
-        /*
         toggleNavButtons(mViewPager.getCurrentItem());
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,7 +106,7 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
             }
 
         });
-        */
+
     }
 
     protected void exitWithSurveyBundle(Boolean valid) {
@@ -212,19 +156,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         }
     }
 
-    /*
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {}
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        mViewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {}
-    */
-
     public class SurveyFragmentPagerAdapter extends FragmentPagerAdapter {
         final int PAGE_COUNT = HEADERS.length;
         private Context context;
@@ -250,35 +181,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
             return HEADERS[position];
         }
     }
-
-    /*
-    public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
-
-        private Context context;
-
-        public AppSectionsPagerAdapter(FragmentManager fm, Context context) {
-            super(fm);
-            this.context = context;
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            return fragments[i];
-        }
-
-        @Override
-        public int getCount() {
-            return HEADERS.length;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return "Section " + (position + 1);
-        }
-    }
-    */
-
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

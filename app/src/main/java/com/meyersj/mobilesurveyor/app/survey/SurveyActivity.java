@@ -45,10 +45,10 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
 
 
         pagerAdapter = new SurveyFragmentPagerAdapter(getSupportFragmentManager(), SurveyActivity.this);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.survey_pager);
-        viewPager.setAdapter(pagerAdapter);
+        mViewPager = (ViewPager) findViewById(R.id.survey_pager);
+        mViewPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(mViewPager);
 
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
@@ -65,14 +65,10 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         //    actionBar.setTitle("TransitSurveyor");
         //    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         //}
-        //mViewPager = (ViewPager) findViewById(R.id.survey_pager);
-
-        //TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        //tabLayout.setupWithViewPager(mViewPager);
 
 
         /*
-        mViewPager.setAdapter(mAppSectionsPagerAdapter);
+        //mViewPager.setAdapter(mAppSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(HEADERS.length);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -84,6 +80,49 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
             }
         });
         */
+
+        mViewPager.setOffscreenPageLimit(HEADERS.length);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //actionBar.setSelectedNavigationItem(position);
+                MapFragment fragment = (MapFragment) fragments[position];
+                fragment.updateView(manager);
+                toggleNavButtons(mViewPager.getCurrentItem());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+        /*
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                Log.d(TAG, "tab selected " + String.valueOf(tab.getPosition()));
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Log.d(TAG, "tab unselected " + String.valueOf(tab.getPosition()));
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                Log.d(TAG, "tab reselected " + String.valueOf(tab.getPosition()));
+            }
+        });
+        */
+
 
 
 

@@ -1,6 +1,7 @@
 package com.meyersj.mobilesurveyor.app.stops;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import com.cocoahero.android.geojson.FeatureCollection;
 import com.cocoahero.android.geojson.Point;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.Icon;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.util.DataLoadingUtils;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -49,13 +51,10 @@ public class BuildStops {
     }
 
     private void parseGeoJSON(FeatureCollection parsed) {
-        Drawable circleIcon = Utils.getBusStopDrawable(context);
-
         try {
             for (Feature f : parsed.getFeatures()) {
                 if (f.getGeometry() instanceof Point) {
-                    JSONArray coordinates = null;
-                    coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
+                    JSONArray coordinates = (JSONArray) f.getGeometry().toJSON().get("coordinates");
                     double lon = (Double) coordinates.get(0);
                     double lat = (Double) coordinates.get(1);
                     bboxBuilder.checkPoint(lon, lat);
@@ -63,9 +62,9 @@ public class BuildStops {
                     String stopID = properties.get("stop_id").toString();
                     String stopName = properties.get("stop_name").toString();
                     String stopSeq = properties.get("stop_seq").toString();
-                    Stop stop = new Stop(
-                            mv, stopName, stopID, Integer.parseInt(stopSeq), new LatLng(lat, lon), dir);
-                    stop.setMarker(circleIcon);
+                    Stop stop = new Stop(mv, stopName, stopID,
+                            Integer.parseInt(stopSeq), new LatLng(lat, lon), dir);
+                    stop.setIcon(Utils.getBusStopIcon(context));
                     stops.add(stop);
                 }
             }

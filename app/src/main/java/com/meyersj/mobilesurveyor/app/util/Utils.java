@@ -14,11 +14,13 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.mapbox.mapboxsdk.overlay.Icon;
 import com.meyersj.mobilesurveyor.app.R;
 
 import org.joda.time.DateTime;
@@ -196,9 +198,15 @@ public class Utils {
         return paint;
     }
 
-    public static Drawable getBusStopDrawable(final Context context) {
-        return context.getResources().getDrawable(R.drawable.circle_28_extra_area);
+    public static Icon getBusStopIcon(final Context context) {
+        return new Icon(ResourcesCompat.getDrawable(context.getResources(), R.drawable.circle_28_extra_area, null));
     }
 
+    public static Icon getStopActionIcon(final Context context, String mode) {
+        if(mode.equals(Cons.BOARD))
+            return new Icon(ResourcesCompat.getDrawable(context.getResources(), R.drawable.transit_green_40, null));
+        else
+            return new Icon(ResourcesCompat.getDrawable(context.getResources(), R.drawable.transit_red_40, null));
+    }
 
 }

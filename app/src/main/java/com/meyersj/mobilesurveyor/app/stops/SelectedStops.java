@@ -3,6 +3,7 @@ package com.meyersj.mobilesurveyor.app.stops;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import com.mapbox.mapboxsdk.overlay.Icon;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.meyersj.mobilesurveyor.app.R;
@@ -25,25 +26,33 @@ public class SelectedStops {
     private Marker alight = null;
     private Marker current = null;
     private String currentType = null;
-    private Drawable onIcon;
-    private Drawable offIcon;
-    private Drawable stopIcon;
+
+    private Icon onIcon;
+    private Icon offIcon;
+    private Icon stopIcon;
+    //private Drawable onIcon;
+    //private Drawable offIcon;
+    //private Drawable stopIcon;
 
     public SelectedStops(
             Context context, StopSequenceAdapter onAdapter, StopSequenceAdapter offAdapter,
             ItemizedIconOverlay selOverlay) {
+        this(context);
         this.onAdapter = onAdapter;
         this.offAdapter = offAdapter;
         this.selOverlay = selOverlay;
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
-        stopIcon = Utils.getBusStopDrawable(context);
+        //onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
+        //offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        //stopIcon = Utils.getBusStopDrawable(context);
     }
 
     public SelectedStops(Context context) {
-        onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
-        offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
-        stopIcon = Utils.getBusStopDrawable(context);
+        onIcon = Utils.getStopActionIcon(context, Cons.BOARD);
+        offIcon = Utils.getStopActionIcon(context, Cons.ALIGHT);
+        stopIcon = Utils.getBusStopIcon(context);
+        //onIcon = context.getResources().getDrawable(R.drawable.transit_green_40);
+        //offIcon = context.getResources().getDrawable(R.drawable.transit_red_40);
+        //stopIcon = Utils.getBusStopDrawable(context);
     }
 
     public void setAdapter(StopSequenceAdapter adapter, String mode) {
@@ -99,28 +108,34 @@ public class SelectedStops {
         if (currentType != null) {
             //if board or alight marker is already set switch it back to default icon
             if (alight != null && alight == current) {
-                alight.setMarker(stopIcon);
+                //alight.setMarker(stopIcon);
+                alight.setIcon(stopIcon);
                 alight = null;
             }
             if (board != null && board == current) {
-                board.setMarker(stopIcon);
+                board.setIcon(stopIcon);
+                //board.setMarker(stopIcon);
                 board = null;
             }
 
             if (currentType.equals(Cons.BOARD)) {
                 if(board != null) {
-                    board.setMarker(stopIcon);
+                    board.setIcon(stopIcon);
+                   // board.setMarker(stopIcon);
                 }
                 board = current;
-                board.setMarker(onIcon);
+                board.setIcon(onIcon);
+                //board.setMarker(onIcon);
                 onAdapter.setSelectedIndex(onAdapter.getItemIndex(board.getTitle()));
             }
             else {
                 if (alight != null) {
-                    alight.setMarker(stopIcon);
+                    alight.setIcon(stopIcon);
+                    //alight.setMarker(stopIcon);
                 }
                 alight = current;
-                alight.setMarker(offIcon);
+                alight.setIcon(offIcon);
+                //alight.setMarker(offIcon);
                 offAdapter.setSelectedIndex(offAdapter.getItemIndex(alight.getTitle()));
             }
             clearCurrentMarker();
@@ -131,13 +146,15 @@ public class SelectedStops {
     public void clearSequenceMarker(String mode) {
         if (mode.equals(Cons.BOARD)) {
             if(board != null) {
-                board.setMarker(stopIcon);
+                board.setIcon(stopIcon);
+                //board.setMarker(stopIcon);
                 board = null;
             }
         }
         else {
             if(alight != null) {
-                alight.setMarker(stopIcon);
+                alight.setIcon(stopIcon);
+                //alight.setMarker(stopIcon);
                 alight = null;
             }
         }
@@ -147,23 +164,29 @@ public class SelectedStops {
     public void saveSequenceMarker(String mode, Marker newMarker) {
         if (mode.equals(Cons.BOARD)) {
             if (board != null) {
-                board.setMarker(stopIcon);
+                board.setIcon(stopIcon);
+                //board.setMarker(stopIcon);
             }
             if(newMarker == alight) {
-                alight.setMarker(stopIcon);
+                alight.setIcon(stopIcon);
+                //alight.setMarker(stopIcon);
             }
             board = newMarker;
-            board.setMarker(onIcon);
+            board.setIcon(onIcon);
+            //board.setMarker(onIcon);
         }
         else {
             if (alight != null) {
-                alight.setMarker(stopIcon);
+                alight.setIcon(stopIcon);
+                //alight.setMarker(stopIcon);
             }
             if(newMarker == board) {
-                board.setMarker(stopIcon);
+                board.setIcon(stopIcon);
+                //board.setMarker(stopIcon);
             }
             alight = newMarker;
-            alight.setMarker(offIcon);
+            alight.setIcon(offIcon);
+            //alight.setMarker(offIcon);
         }
         refreshOverlay();
     }

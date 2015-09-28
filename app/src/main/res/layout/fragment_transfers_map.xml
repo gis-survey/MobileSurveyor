@@ -37,7 +37,15 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u00A9 OpenStreetMap contributors"
+            android:textSize="11dp"
+            android:textColor="@color/black"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 

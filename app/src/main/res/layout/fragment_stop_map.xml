@@ -88,55 +88,15 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/osm"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/bottom_layout"
-            android:visibility="invisible">
-
-            <TextView
-                android:id="@+id/osm_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="\u00A9 OpenStreetMap contributors"
-                android:textSize="20px"
-                android:textColor="@color/black"
-                android:layout_marginRight="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@id/bottom_layout"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:weightSum="10"
-            android:visibility="invisible">
-
-            <Spinner
-                android:id="@+id/count_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/shape_rect_grey_fade_round_all"
-                android:layout_gravity="center"
-                android:padding="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:visibility="invisible"/>
-
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_rect_grey_fade_round_all"
-                android:text="Submit"
-                style="@style/ButtonText"
-                android:padding="5dp"
-                android:layout_weight="9"
-                android:visibility="invisible"/>
-        </LinearLayout>
+            android:text="\u00A9 OpenStreetMap contributors"
+            android:textSize="11dp"
+            android:textColor="@color/black"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 

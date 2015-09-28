@@ -22,6 +22,7 @@ import com.meyersj.mobilesurveyor.app.survey.Transfer.TransfersMapFragment;
 import com.meyersj.mobilesurveyor.app.util.Cons;
 import com.meyersj.mobilesurveyor.app.util.Utils;
 
+
 public class SurveyActivity extends FragmentActivity { //implements ActionBar.TabListener {
 
     private final String TAG = getClass().getCanonicalName();
@@ -39,8 +40,13 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
 
+        Bundle extras = getODKExtras();
+        String line = extras.getString(Cons.LINE);
+        String dir = extras.getString(Cons.DIR);
+        manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
+        SelectedStops selectedStops = new SelectedStops(this);
 
-        pagerAdapter = new SurveyFragmentPagerAdapter(getSupportFragmentManager(), SurveyActivity.this);
+        pagerAdapter = new SurveyFragmentPagerAdapter(getSupportFragmentManager(), SurveyActivity.this, extras, selectedStops);
         mViewPager = (ViewPager) findViewById(R.id.survey_pager);
         mViewPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
@@ -49,12 +55,6 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
 
         previousBtn = (Button) this.findViewById(R.id.previous_fragment);
         nextBtn = (Button) this.findViewById(R.id.next_fragment);
-
-        Bundle extras = getODKExtras();
-        String line = extras.getString(Cons.LINE);
-        String dir = extras.getString(Cons.DIR);
-        manager = new SurveyManager(getApplicationContext(), this, line, dir, extras);
-        SelectedStops selectedStops = new SelectedStops(this);
 
         mViewPager.setOffscreenPageLimit(HEADERS.length);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -77,18 +77,8 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         });
 
         fragments = new Fragment[HEADERS.length];
-        fragments[0] = new TransfersMapFragment();
-        ((TransfersMapFragment) fragments[0]).initialize(manager, mViewPager, extras);
-        fragments[1] = new PickLocationFragment();
-        ((PickLocationFragment) fragments[1]).initialize(manager, "origin", extras);
-        fragments[2] = new StopFragment();
-        ((StopFragment) fragments[2]).initialize(manager, extras, Cons.BOARD, selectedStops);
-        fragments[3] = new StopFragment();
-        ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT, selectedStops);
-        fragments[4] = new PickLocationFragment();
-        ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
-
         toggleNavButtons(mViewPager.getCurrentItem());
+
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,10 +149,14 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
     public class SurveyFragmentPagerAdapter extends FragmentPagerAdapter {
         final int PAGE_COUNT = HEADERS.length;
         private Context context;
+        private Bundle extras;
+        private SelectedStops selectedStops;
 
-        public SurveyFragmentPagerAdapter(FragmentManager fm, Context context) {
+        public SurveyFragmentPagerAdapter(FragmentManager fm, Context context, Bundle extras, SelectedStops selectedStops) {
             super(fm);
             this.context = context;
+            this.extras = extras;
+            this.selectedStops = selectedStops;
         }
 
         @Override
@@ -172,6 +166,29 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
 
         @Override
         public Fragment getItem(int position) {
+            if(fragments[position] != null) return fragments[position];
+            switch (position) {
+                case 0:
+                    fragments[0] = new TransfersMapFragment();
+                    ((TransfersMapFragment) fragments[0]).initialize(manager, mViewPager, extras);
+                    break;
+                case 1:
+                    fragments[1] = new PickLocationFragment();
+                    ((PickLocationFragment) fragments[1]).initialize(manager, "origin", extras);
+                    break;
+                case 2:
+                    fragments[2] = new StopFragment();
+                    ((StopFragment) fragments[2]).initialize(manager, extras, Cons.BOARD, selectedStops);
+                    break;
+                case 3:
+                    fragments[3] = new StopFragment();
+                    ((StopFragment) fragments[3]).initialize(manager, extras, Cons.ALIGHT, selectedStops);
+                    break;
+                case 4:
+                    fragments[4] = new PickLocationFragment();
+                    ((PickLocationFragment) fragments[4]).initialize(manager, "destination", extras);
+                    break;
+            }
             return fragments[position];
         }
 

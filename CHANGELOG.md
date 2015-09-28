@@ -19,3 +19,5 @@ instead of on and off both being from survey route
 ##### 1.0.7
 
 + lower minimum sdk from 19 to 16
++ create MapFragments dynamically instead of during activity creation
++ fix location of OSM attribution

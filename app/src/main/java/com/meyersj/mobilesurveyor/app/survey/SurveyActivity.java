@@ -89,10 +89,12 @@ public class SurveyActivity extends FragmentActivity { //implements ActionBar.Ta
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mViewPager.getCurrentItem() == HEADERS.length - 1) {
+                    validateSubmit();
+                    return;
+                }
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
                 toggleNavButtons(mViewPager.getCurrentItem());
-                if(mViewPager.getCurrentItem() != HEADERS.length - 1) return;
-                validateSubmit();
             }
 
         });

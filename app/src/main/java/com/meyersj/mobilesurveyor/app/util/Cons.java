@@ -80,5 +80,8 @@ public class Cons {
     public static final LatLng CENTROID = new LatLng(44.051944, -123.086667); // Eugene
     //public static final LatLng CENTROID = new LatLng(45.49186, -122.679005); // Portland
 
+    public static final Double ZOOM_LEVEL_STOP_MARKER = 14.0;
+    public static final Double ZOOM_LEVEL_STOP_LABEL = 16.0;
+
 }
 

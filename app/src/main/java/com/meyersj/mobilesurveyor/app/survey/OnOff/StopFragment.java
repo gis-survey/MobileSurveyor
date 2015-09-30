@@ -47,8 +47,6 @@ public class StopFragment extends MapFragment {
     @Bind(R.id.stops_seq_list) ListView seqListView;
     @Bind(R.id.stop_seq_btn) Button stopSeqBtn;
 
-    //private TextView osmText;
-
     private OnOffMapListener mapListener;
     private SelectedStops selectedStops;
     private StopSequenceAdapter stopSequenceAdapter;
@@ -155,6 +153,7 @@ public class StopFragment extends MapFragment {
                         return true;
                     }
                     public boolean onItemLongPress(final int index, final Marker item) {
+                        selectStop(item.getDescription(), mode);
                         return true;
                     }
                 }

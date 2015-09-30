@@ -11,13 +11,14 @@ import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.views.InfoWindow;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.meyersj.mobilesurveyor.app.util.Cons;
 
 import java.util.ArrayList;
 
 
 public class OnOffMapListener implements MapListener {
 
-    private static final String TAG = "OnOffMapListener";
+    private final String TAG = this.getClass().getCanonicalName();
 
     MapView mv;
     ArrayList<Marker> markers;
@@ -55,12 +56,11 @@ public class OnOffMapListener implements MapListener {
 
     @Override
     public void onZoom(ZoomEvent zoomEvent) {
-
         Float zoomLevel = zoomEvent.getZoomLevel();
         Log.d(TAG, "zoom level: " + String.valueOf(zoomLevel));
 
         if (markers != null) {
-            if (zoomLevel >= 15.5) {
+            if (zoomLevel >= Cons.ZOOM_LEVEL_STOP_LABEL) {
                 for(Marker m: markers) {
                     InfoWindow toolTip = m.getToolTip(mv);
                     m.showBubble(toolTip, mv, false);
@@ -74,7 +74,7 @@ public class OnOffMapListener implements MapListener {
         }
 
         if (locOverlay != null) {
-            if (zoomLevel < 14.0) {
+            if (zoomLevel < Cons.ZOOM_LEVEL_STOP_MARKER) {
                 mv.removeOverlay(locOverlay);
             }
             else {
